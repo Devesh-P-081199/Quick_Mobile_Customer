@@ -1,0 +1,244 @@
+/* Constrained Range Slider - Proper Thumb and Label Positioning */
+
+.range-slider-constrained {
+  position: relative;
+  width: 100%;
+  padding: 40px 20px 20px 20px; /* Extra top padding for value labels */
+  box-sizing: border-box;
+  overflow: visible; /* Allow labels to show above */
+}
+
+.range-slider-constrained .slider-container {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.range-slider-constrained .slider-track {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background-color: #e5e7eb;
+  border-radius: 2px;
+  margin: 0 10px; /* Margin to contain thumbs */
+}
+
+.range-slider-constrained .slider-fill {
+  position: absolute;
+  height: 100%;
+  background-color: #1968b3;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.range-slider-constrained .slider-thumb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #1968b3;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translateY(-50%);
+  top: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  transition: all 0.2s ease;
+}
+
+/* Constrain thumbs to track boundaries */
+.range-slider-constrained .slider-thumb.min-thumb {
+  left: 0;
+  transform: translateY(-50%) translateX(-50%);
+  min-left: 0;
+  max-left: calc(100% - 20px);
+}
+
+.range-slider-constrained .slider-thumb.max-thumb {
+  right: 0;
+  transform: translateY(-50%) translateX(50%);
+  min-right: 0;
+  max-right: calc(100% - 20px);
+}
+
+/* Value labels above thumbs */
+.range-slider-constrained .thumb-label {
+  position: absolute;
+  bottom: 30px; /* Position above thumb */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1968b3;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Arrow pointing down from label to thumb */
+.range-slider-constrained .thumb-label::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #1968b3;
+}
+
+/* Hover effects */
+.range-slider-constrained .slider-thumb:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.range-slider-constrained .slider-thumb:active {
+  transform: translateY(-50%) scale(1.2);
+}
+
+/* Bottom labels */
+.range-slider-constrained .slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #6b7280;
+  padding: 0 10px; /* Align with track margins */
+}
+
+/* Fix for HTML range inputs */
+.range-slider-constrained input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: calc(100% - 20px); /* Account for thumb width */
+  height: 4px;
+  border-radius: 2px;
+  background: #e5e7eb;
+  outline: none;
+  margin: 0 10px; /* Center and contain */
+  position: relative;
+}
+
+.range-slider-constrained input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1968b3;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.range-slider-constrained input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1968b3;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  border: none;
+}
+
+/* Dual range slider setup */
+.range-slider-constrained.dual-range {
+  position: relative;
+}
+
+.range-slider-constrained.dual-range input[type="range"] {
+  position: absolute;
+  width: calc(100% - 20px);
+  margin: 0 10px;
+  background: transparent;
+  pointer-events: none;
+}
+
+.range-slider-constrained.dual-range input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  position: relative;
+}
+
+.range-slider-constrained.dual-range input[type="range"]::-moz-range-thumb {
+  pointer-events: all;
+  position: relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .range-slider-constrained {
+    padding: 35px 15px 15px 15px;
+  }
+
+  .range-slider-constrained .slider-track {
+    margin: 0 8px;
+  }
+
+  .range-slider-constrained input[type="range"] {
+    width: calc(100% - 16px);
+    margin: 0 8px;
+  }
+
+  .range-slider-constrained .slider-labels {
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  .range-slider-constrained .thumb-label {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .range-slider-constrained {
+    padding: 30px 10px 10px 10px;
+  }
+
+  .range-slider-constrained .slider-track {
+    margin: 0 6px;
+  }
+
+  .range-slider-constrained input[type="range"] {
+    width: calc(100% - 12px);
+    margin: 0 6px;
+  }
+
+  .range-slider-constrained .slider-labels {
+    padding: 0 6px;
+    font-size: 11px;
+  }
+
+  .range-slider-constrained .thumb-label {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+}
+
+/* JavaScript helper classes for dynamic positioning */
+.range-slider-constrained .slider-thumb[data-constrained="true"] {
+  /* Ensure thumb never goes beyond track */
+  min-left: 0 !important;
+  max-left: 100% !important;
+}
+
+.range-slider-constrained .thumb-label[data-edge="left"] {
+  /* Adjust label position when thumb is at left edge */
+  transform: translateX(0);
+  left: 0;
+}
+
+.range-slider-constrained .thumb-label[data-edge="right"] {
+  /* Adjust label position when thumb is at right edge */
+  transform: translateX(-100%);
+  left: 100%;
+}

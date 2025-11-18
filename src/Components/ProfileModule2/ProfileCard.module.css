@@ -1,0 +1,99 @@
+.cardContainer {
+  /* position: absolute;/ */
+  width: 340px;
+  height: 374px;
+  left: 800px;
+  top: 0px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.profile {
+  /* position: absolute; */
+  top: 40px;
+  left: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  width: 320px;
+  height: 84px;
+}
+
+.profileImage img {
+  width: 86px;
+  height: 84px;
+  /* background: url('/your-image.jpg'); */
+  border-radius: 50%;
+  z-index: 0;
+  object-fit: cover;
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 84px;
+  z-index: 1;
+}
+
+.profileName {
+  font-family: "IBM Plex Sans";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #000000;
+}
+
+.profileEmail {
+  font-family: "IBM Plex Sans";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #000000;
+}
+
+.profilePhone {
+  font-family: "IBM Plex Sans";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #000000;
+}
+
+.editIcon {
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  left: 54px;
+  top: 57px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.options {
+  /* position: absolute; */
+  top: 149px;
+  left: 10px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.optionRow {
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  gap: 10px;
+  height: 45px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-family: "IBM Plex Sans";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #000000;
+}

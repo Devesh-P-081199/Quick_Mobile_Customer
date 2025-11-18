@@ -1,0 +1,224 @@
+/* Modernized ProfileCard with Tailwind Integration */
+
+.cardContainer {
+  @apply w-80 h-full bg-gray-50 rounded-lg flex flex-col p-5;
+}
+
+.profile {
+  @apply flex flex-row items-center gap-1 relative w-full bg-white p-3 pt-0;
+}
+
+.profileImage img {
+  @apply rounded-full object-cover;
+}
+
+.profileDetails {
+  @apply flex flex-col gap-3 h-21 z-10;
+}
+
+.profileName {
+  @apply font-primary text-xl font-medium leading-7 text-gray-900;
+}
+
+.profileEmail {
+  @apply font-primary text-sm font-medium leading-5 text-gray-900;
+}
+
+.profilePhone {
+  @apply font-primary text-sm font-medium leading-5 text-gray-900;
+}
+
+.editIcon {
+  @apply absolute w-7 h-7 bg-white border border-gray-300 rounded-full z-20 flex justify-center items-center p-2 cursor-pointer hover:bg-gray-50 transition-colors duration-200;
+  bottom: 2px;
+  right: 10px;
+}
+
+.options {
+  @apply flex flex-col gap-3 mt-5;
+}
+
+.optionRow {
+  @apply flex items-center gap-3 cursor-pointer bg-white rounded-lg text-gray-900;
+}
+
+/* ProfileCard.module.css */
+
+.cardContainer {
+  width: 340px;
+  /* width: 100%; */
+  /* height: 374px; */
+  height: 100%;
+  background: #f5f6fa;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 12px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+  position: relative;
+  width: 100%;
+  margin-top: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px 1px #00000002;
+}
+
+.profileImage {
+  /* background-color: #FF9933; */
+  border-radius: 50%;
+}
+
+.profileImage img {
+  margin-top: -50%;
+  width: 90px;
+  height: 90px;
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0px;
+}
+
+.profileName {
+  font-family: "IBM Plex Sans";
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000;
+  margin: auto;
+}
+
+.profileEmail,
+.profilePhone {
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+  font-size: 12px;
+  color: #000000;
+  margin: auto;
+}
+
+.editIcon {
+  position: absolute;
+  bottom: 2px;
+  right: 10px;
+  width: 27px;
+  height: 27px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  margin-top: 15px;
+  background: #ffffff;
+  box-shadow: 0 0 12px 1px #00000002;
+  border-radius: 10px;
+}
+
+.optionRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px;
+  cursor: pointer;
+  border-radius: 0px;
+  color: #000000;
+  border-bottom: 1px solid #0000000e;
+}
+
+.optionRow:last-child {
+  border: none;
+}
+
+.optionRow:not(:last-child) {
+  padding: 0 0 15px 0;
+  margin: 15px 15px 0px 15px;
+}
+
+.optionRow:not(:first-child):not(:last-child) {
+}
+
+/* .optionRow:last-child {
+  padding: 10px 0 0 10px 0;
+  margin: 5px 15px 15px 15px;
+  padding: 0;
+  margin: 15px;
+}
+.optionRow:first-child {
+  padding: 0;
+  margin: 15px;
+} */
+
+.optionRow span img {
+  width: 19px;
+  height: 19px;
+}
+
+.optionRow span {
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+  font-size: 16px;
+  color: #000000;
+}
+
+.optionRow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.optionRow:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 900px) {
+  .cardContainer {
+    margin-top: 3.5rem;
+    width: 100%;
+  }
+}
+
+.optionRow span {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.optionRow span img {
+  transform: rotate(180deg);
+}
+.optionRow span {
+  @apply font-primary font-medium text-base text-gray-900 flex justify-between w-full items-center;
+}
+
+.optionRow svg {
+  @apply w-5 h-5 text-gray-600;
+}
+
+.optionRow:last-child {
+  @apply border-b-0;
+}
+
+.optionRow span img {
+  @apply rotate-180;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .cardContainer {
+    @apply w-full;
+  }
+}

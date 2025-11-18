@@ -1,0 +1,137 @@
+/* Tailwind + Custom Components Integration */
+/* Import custom components that work with Tailwind v3 */
+@import "./styles/main.css";
+
+/* Legacy CSS Custom Properties - Mapped to Design Tokens */
+:root {
+  /* Legacy variables mapped to design tokens for backward compatibility */
+  --section-bg: #f9fafb; /* Tailwind gray-50 equivalent */
+  --btn-desable: #9ca3af; /* Tailwind gray-400 equivalent */
+  --btn-enable: #1968b3; /* Custom primary color */
+  --primary-font: "IBM Plex Sans", sans-serif;
+  --heading-font: "Hedvig Letters Serif", serif;
+
+  /* Additional legacy mappings that work with Tailwind */
+  --primary-color: #1968b3;
+  --secondary-color: #6b7280; /* Tailwind gray-500 */
+  --background-color: #f9fafb; /* Tailwind gray-50 */
+  --text-color: #111827; /* Tailwind gray-900 */
+  --border-color: #e5e7eb; /* Tailwind gray-200 */
+}
+
+/* Global styles that complement Tailwind */
+/* Let Tailwind handle most base styles, only override where necessary */
+
+body {
+  font-family: var(--primary-font);
+  background-color: var(--section-bg);
+  /* Let Tailwind handle line-height and color in most cases */
+}
+
+/* Mobile padding-top for fixed header - Override any inline styles */
+@media screen and (max-width: 768px) {
+  body {
+    padding-top: 55px !important;
+  }
+}
+
+/* Additional specificity to override inline styles */
+body[style*="padding-top"] {
+  padding-top: 55px !important;
+}
+
+@media screen and (max-width: 768px) {
+  body[style*="padding-top"] {
+    padding-top: 55px !important;
+  }
+}
+
+/* Headings - Work with Tailwind typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--primary-font);
+  /* Let Tailwind handle font-weight, line-height, color via classes */
+  margin: 0;
+}
+
+/* Section padding - Use Tailwind responsive classes where possible */
+/* Keep this for legacy compatibility, but prefer Tailwind classes like py-8 px-24 lg:px-20 md:px-12 sm:px-5 */
+section {
+  padding: var(--spacing-2) 12.5%; /* 32px 96px - equivalent to py-8 px-24 */
+}
+
+@media screen and (max-width: 1200px) {
+  section {
+    padding: var(--spacing-2) 12.5%; /* py-8 px-20 */
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  section {
+    padding: 2rem 3rem; /* py-8 px-12 */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    padding: 0rem 0rem; /* py-8 px-5 */
+  }
+}
+/* Wrapper - Use Tailwind container class where possible */
+/* Keep for legacy compatibility: prefer Tailwind's "container mx-auto px-4" */
+.wrapper {
+  max-width: 1200px; /* max-w-7xl equivalent */
+  margin: 0 auto; /* mx-auto */
+  width: 100%; /* w-full */
+}
+
+/* Flexible row layout - Use Tailwind flex classes where possible */
+/* Keep for legacy compatibility: prefer Tailwind's "flex gap-4" */
+.flex {
+  display: flex;
+  gap: 1rem; /* gap-4 equivalent */
+}
+
+/* Image fluidity - Enhanced with design tokens */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-base);
+}
+
+/* Completely hide scrollbars for all browsers */
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow: hidden; /* Prevent scrolling if needed */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Responsive typography using design tokens */
+@media screen and (max-width: 375px) {
+  h1 {
+    font-size: var(--font-size-lg) !important;
+  }
+}
+
+.header_searchBar ._searchContainer_1erli_79 {
+  position: unset;
+}
+.header_searchBar {
+  position: relative;
+}
+
+/* Custom radio button - Enhanced with design tokens */
+.custom-2-radio {
+  height: var(--space-5);
+  width: var(--space-8);
+  border-radius: var(--radius-base);
+}

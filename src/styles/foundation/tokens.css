@@ -1,0 +1,348 @@
+/* Enhanced Global Design Tokens - Mobile-First Responsive System */
+:root {
+  /* ===== RESPONSIVE BREAKPOINTS ===== */
+  --breakpoint-xs: 320px; /* Extra small devices (small phones) */
+  --breakpoint-sm: 576px; /* Small devices (landscape phones) */
+  --breakpoint-md: 768px; /* Medium devices (tablets) */
+  --breakpoint-lg: 992px; /* Large devices (desktops) */
+  --breakpoint-xl: 1200px; /* Extra large devices */
+  --breakpoint-xxl: 1400px; /* Extra extra large devices */
+
+  /* ===== UNIFIED BRAND COLOR SYSTEM ===== */
+  /* Primary Brand Colors (Blue) - Main brand identity */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #1968b3; /* Main brand color */
+  --color-primary-600: #1557a0;
+  --color-primary-700: #11468d;
+  --color-primary-800: #0d357a;
+  --color-primary-900: #0c2d5a;
+  --color-primary-950: #051a2e;
+
+  /* Secondary Brand Colors (Orange) - Accent color */
+  --color-secondary-50: #fff7ed;
+  --color-secondary-100: #ffedd5;
+  --color-secondary-200: #fed7aa;
+  --color-secondary-300: #fdba74;
+  --color-secondary-400: #fb923c;
+  --color-secondary-500: #ff6b35; /* Secondary brand color */
+  --color-secondary-600: #ea580c;
+  --color-secondary-700: #c2410c;
+  --color-secondary-800: #9a3412;
+  --color-secondary-900: #7c2d12;
+  --color-secondary-950: #431407;
+
+  /* Neutral Colors (Gray Scale) - Text and backgrounds */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+  --color-neutral-950: #030712;
+
+  /* Semantic Colors - Status and feedback */
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+  --color-success-900: #14532d;
+
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-900: #78350f;
+
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2;
+  --color-error-500: #ef4444;
+  --color-error-600: #dc2626;
+  --color-error-900: #7f1d1d;
+
+  --color-info-50: #eff6ff;
+  --color-info-100: #dbeafe;
+  --color-info-500: #3b82f6;
+  --color-info-600: #2563eb;
+  --color-info-900: #1e3a8a;
+
+  /* Special Colors */
+  --background-color: #aaaaaaaa;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* ===== FLUID TYPOGRAPHY SYSTEM ===== */
+  /* Font Families */
+  --font-family-primary: "IBM Plex Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-family-heading: "IBM Plex Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "IBM Plex Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+
+  /* Fluid Font Sizes - Mobile-first with clamp() */
+  --font-size-xs: clamp(0.75rem, 1.5vw, 0.875rem); /* 12px -> 14px */
+  --font-size-sm: clamp(0.875rem, 2vw, 1rem); /* 14px -> 16px */
+  --font-size-base: clamp(1rem, 2.5vw, 1.125rem); /* 16px -> 18px */
+  --font-size-lg: clamp(1.125rem, 3vw, 1.25rem); /* 18px -> 20px */
+  --font-size-xl: clamp(1.25rem, 3.5vw, 1.5rem); /* 20px -> 24px */
+  --font-size-2xl: clamp(1.5rem, 4vw, 1.875rem); /* 24px -> 30px */
+  --font-size-3xl: clamp(1.875rem, 5vw, 2.25rem); /* 30px -> 36px */
+  --font-size-4xl: clamp(2.25rem, 6vw, 3rem); /* 36px -> 48px */
+  --font-size-5xl: clamp(3rem, 8vw, 4rem); /* 48px -> 64px */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* ===== RESPONSIVE SPACING SYSTEM ===== */
+  /* Base spacing scale (4px grid) */
+  --spacing-0: 0;
+  --spacing-px: 1px;
+  --spacing-0-5: 0.125rem; /* 2px */
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-1-5: 0.375rem; /* 6px */
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-2-5: 0.625rem; /* 10px */
+  --spacing-3: 0.75rem; /* 12px */
+  --spacing-3-5: 0.875rem; /* 14px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-5: 1.25rem; /* 20px */
+  --spacing-6: 1.5rem; /* 24px */
+  --spacing-7: 1.75rem; /* 28px */
+  --spacing-8: 2rem; /* 32px */
+  --spacing-9: 2.25rem; /* 36px */
+  --spacing-10: 2.5rem; /* 40px */
+  --spacing-11: 2.75rem; /* 44px */
+  --spacing-12: 3rem; /* 48px */
+  --spacing-14: 3.5rem; /* 56px */
+  --spacing-16: 4rem; /* 64px */
+  --spacing-20: 5rem; /* 80px */
+  --spacing-24: 6rem; /* 96px */
+  --spacing-28: 7rem; /* 112px */
+  --spacing-32: 8rem; /* 128px */
+
+  /* Fluid spacing for responsive design */
+  --spacing-fluid-xs: clamp(0.5rem, 2vw, 1rem); /* 8px -> 16px */
+  --spacing-fluid-sm: clamp(1rem, 3vw, 1.5rem); /* 16px -> 24px */
+  --spacing-fluid-md: clamp(1.5rem, 4vw, 2.5rem); /* 24px -> 40px */
+  --spacing-fluid-lg: clamp(2rem, 5vw, 4rem); /* 32px -> 64px */
+  --spacing-fluid-xl: clamp(3rem, 8vw, 6rem); /* 48px -> 96px */
+
+  /* ===== BORDER RADIUS SYSTEM ===== */
+  --border-radius-none: 0;
+  --border-radius-sm: 0.125rem; /* 2px */
+  --border-radius-base: 0.25rem; /* 4px */
+  --border-radius-md: 0.375rem; /* 6px */
+  --border-radius-lg: 0.5rem; /* 8px */
+  --border-radius-xl: 0.75rem; /* 12px */
+  --border-radius-2xl: 1rem; /* 16px */
+  --border-radius-3xl: 1.5rem; /* 24px */
+  --border-radius-full: 9999px;
+
+  /* ===== SHADOW SYSTEM ===== */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+  /* ===== Z-INDEX SCALE ===== */
+  --z-index-hide: -1;
+  --z-index-auto: auto;
+  --z-index-base: 0;
+  --z-index-docked: 10;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1100;
+  --z-index-banner: 1200;
+  --z-index-overlay: 1300;
+  --z-index-modal: 1400;
+  --z-index-popover: 1500;
+  --z-index-skipLink: 1600;
+  --z-index-toast: 1700;
+  --z-index-tooltip: 1800;
+
+  /* ===== TRANSITION SYSTEM ===== */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slower: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ===== COMPONENT TOKENS ===== */
+  /* Button System */
+  --button-padding-xs: var(--spacing-1) var(--spacing-2);
+  --button-padding-sm: var(--spacing-2) var(--spacing-3);
+  --button-padding-md: var(--spacing-3) var(--spacing-6);
+  --button-padding-lg: var(--spacing-4) var(--spacing-8);
+  --button-radius: var(--border-radius-lg);
+  --button-font-weight: var(--font-weight-medium);
+  --button-transition: var(--transition-fast);
+
+  /* Card System */
+  --card-padding-xs: var(--spacing-3);
+  --card-padding-sm: var(--spacing-4);
+  --card-padding-md: var(--spacing-6);
+  --card-padding-lg: var(--spacing-8);
+  --card-radius: var(--border-radius-xl);
+  --card-shadow: var(--shadow-base);
+
+  /* Form System */
+  --form-input-padding: var(--spacing-3);
+  --form-input-radius: var(--border-radius-lg);
+  --form-input-border-width: 1px;
+  --form-input-height: 2.75rem; /* 44px - touch-friendly */
+
+  /* Container System */
+  --container-padding-mobile: var(--spacing-4);
+  --container-padding-tablet: var(--spacing-6);
+  --container-padding-desktop: var(--spacing-8);
+  --container-max-width: 1200px;
+
+  /* ===== SEMANTIC THEME VARIABLES ===== */
+  /* Light theme (default) */
+  --color-background: var(--background-color);
+  --color-surface: var(--color-white);
+  --color-surface-secondary: var(--color-neutral-50);
+  --color-surface-tertiary: var(--color-neutral-100);
+
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-600);
+  --color-text-muted: var(--color-neutral-500);
+  --color-text-inverse: var(--color-white);
+
+  --color-border: var(--color-neutral-200);
+  --color-border-strong: var(--color-neutral-300);
+  --color-border-subtle: var(--color-neutral-100);
+
+  --color-focus: var(--color-primary-500);
+  --color-focus-ring: var(--color-primary-100);
+
+  --color-link: var(--color-primary-600);
+  --color-link-hover: var(--color-primary-700);
+  --color-link-visited: var(--color-primary-800);
+
+  /* Interactive States */
+  --color-interactive-primary: var(--color-primary-500);
+  --color-interactive-primary-hover: var(--color-primary-600);
+  --color-interactive-primary-active: var(--color-primary-700);
+
+  --color-interactive-secondary: var(--color-secondary-500);
+  --color-interactive-secondary-hover: var(--color-secondary-600);
+  --color-interactive-secondary-active: var(--color-secondary-700);
+
+  /* Legacy compatibility - maintain existing variable names */
+  --space-0: var(--spacing-0);
+  --space-1: var(--spacing-1);
+  --space-2: var(--spacing-2);
+  --space-3: var(--spacing-3);
+  --space-4: var(--spacing-4);
+  --space-5: var(--spacing-5);
+  --space-6: var(--spacing-6);
+  --space-8: var(--spacing-8);
+  --space-10: var(--spacing-10);
+  --space-12: var(--spacing-12);
+  --space-16: var(--spacing-16);
+  --space-20: var(--spacing-20);
+  --space-24: var(--spacing-24);
+
+  --radius-none: var(--border-radius-none);
+  --radius-sm: var(--border-radius-sm);
+  --radius-base: var(--border-radius-base);
+  --radius-md: var(--border-radius-md);
+  --radius-lg: var(--border-radius-lg);
+  --radius-xl: var(--border-radius-xl);
+  --radius-2xl: var(--border-radius-2xl);
+  --radius-full: var(--border-radius-full);
+
+  --z-dropdown: var(--z-index-dropdown);
+  --z-sticky: var(--z-index-sticky);
+  --z-fixed: var(--z-index-sticky);
+  --z-modal-backdrop: var(--z-index-overlay);
+  --z-modal: var(--z-index-modal);
+  --z-popover: var(--z-index-popover);
+  --z-tooltip: var(--z-index-tooltip);
+}
+
+/* Dark mode removed - Website uses light mode only */
+
+/* ===== REDUCED MOTION SUPPORT ===== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+    --transition-slower: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== HIGH CONTRAST MODE SUPPORT ===== */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border: var(--color-black);
+    --color-border-strong: var(--color-black);
+    --color-text-primary: var(--color-black);
+    --color-focus: var(--color-black);
+  }
+}
+
+/* ===== MOBILE-SPECIFIC OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+  :root {
+    /* Increase touch targets on mobile */
+    --button-padding-sm: var(--spacing-3) var(--spacing-4);
+    --button-padding-md: var(--spacing-4) var(--spacing-6);
+    --form-input-height: 3rem; /* 48px for better touch */
+
+    /* Adjust spacing for mobile */
+    --container-padding-mobile: var(--spacing-3);
+
+    /* Optimize shadows for mobile */
+    --shadow-base: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 8px -2px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  :root {
+    --color-background: white;
+    --color-text-primary: black;
+    --color-text-secondary: #333;
+    --shadow-base: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+  }
+}

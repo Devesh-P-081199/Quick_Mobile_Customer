@@ -1,0 +1,100 @@
+{
+  "hash": "8e2692c1",
+  "configHash": "9d7fa560",
+  "lockfileHash": "04d14c72",
+  "browserHash": "1cfdb0ea",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "6b35d931",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "ef1ceb7c",
+      "needsInterop": true
+    },
+    "js-cookie": {
+      "src": "../../node_modules/js-cookie/dist/js.cookie.mjs",
+      "file": "js-cookie.js",
+      "fileHash": "ea89f0ae",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "13e4f171",
+      "needsInterop": false
+    },
+    "react-toastify": {
+      "src": "../../node_modules/react-toastify/dist/index.mjs",
+      "file": "react-toastify.js",
+      "fileHash": "3cb0f45e",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "8c623307",
+      "needsInterop": false
+    },
+    "react-icons/io": {
+      "src": "../../node_modules/react-icons/io/index.mjs",
+      "file": "react-icons_io.js",
+      "fileHash": "2e98427f",
+      "needsInterop": false
+    },
+    "react-icons/bi": {
+      "src": "../../node_modules/react-icons/bi/index.mjs",
+      "file": "react-icons_bi.js",
+      "fileHash": "5d9e24a8",
+      "needsInterop": false
+    },
+    "lodash.debounce": {
+      "src": "../../node_modules/lodash.debounce/index.js",
+      "file": "lodash__debounce.js",
+      "fileHash": "feea6362",
+      "needsInterop": true
+    },
+    "react-icons/fa": {
+      "src": "../../node_modules/react-icons/fa/index.mjs",
+      "file": "react-icons_fa.js",
+      "fileHash": "cd9a8c42",
+      "needsInterop": false
+    },
+    "react-icons/md": {
+      "src": "../../node_modules/react-icons/md/index.mjs",
+      "file": "react-icons_md.js",
+      "fileHash": "6b16d943",
+      "needsInterop": false
+    },
+    "react-helmet": {
+      "src": "../../node_modules/react-helmet/es/Helmet.js",
+      "file": "react-helmet.js",
+      "fileHash": "5445dadf",
+      "needsInterop": false
+    },
+    "react-icons/ai": {
+      "src": "../../node_modules/react-icons/ai/index.mjs",
+      "file": "react-icons_ai.js",
+      "fileHash": "4c818d9c",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-IFXVA7FZ": {
+      "file": "chunk-IFXVA7FZ.js"
+    },
+    "chunk-TKHB4QMX": {
+      "file": "chunk-TKHB4QMX.js"
+    },
+    "chunk-YLDSBLSF": {
+      "file": "chunk-YLDSBLSF.js"
+    },
+    "chunk-DC5AMYBS": {
+      "file": "chunk-DC5AMYBS.js"
+    }
+  }
+}

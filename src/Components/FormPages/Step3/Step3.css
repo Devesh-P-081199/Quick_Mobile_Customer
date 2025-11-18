@@ -1,0 +1,669 @@
+.form-section .wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.form-left {
+  width: 35.09%;
+  /* height: 550; */
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-right-width: 0.5px;
+  padding: 25px;
+  gap: 13px;
+  background: #ffffff;
+  border-right: 0.5px solid #00000040;
+  display: flex;
+  gap: 13px;
+  flex-direction: column;
+}
+
+.form-right {
+  width: 64.91%;
+  /* height: 550; */
+  /* border-radius: 10px; */
+  background-color: #ffffff;
+  /* max-height: 550px; */
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  /* height: 460px; */
+  overflow-y: auto;
+  padding-bottom: 25px;
+}
+
+.icon-space {
+ height: 176px;
+    /* width: 100%; */
+    display: flex
+;
+    padding: 20px 0px;
+}
+
+.select-box .label-inside-icon {
+  /* height: auto !important; */
+}
+
+.select-box .icon-space img {
+  height: 100%;
+  width: 100%;
+  /* padding: 18px; */
+}
+
+.select-box .label-inside-icon {
+  height: 80%;
+}
+
+.device-detail {
+  display: flex;
+  align-items: start;
+  /* justify-content: center; */
+  gap: 10px;
+
+  /* width: 350px; */
+  border-bottom-width: 0.5px;
+  padding-bottom: 13px;
+  border-bottom: 0.5px solid #00000040;
+}
+
+.device-detail img {
+  height: 75px;
+}
+
+.device-name {
+  font-family: IBM Plex Sans;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.device-name span {
+  font-family: IBM Plex Sans;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.form-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-details span {
+  font-family: IBM Plex Sans;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #007fee;
+}
+
+.form-right h2 {
+  font-family: IBM Plex Sans;
+  font-weight: 500;
+  font-size: 28px;
+  padding: 25px;
+}
+
+.form-box {
+  /* padding: 5px 25px; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-box .question {
+  font-family: IBM Plex Sans;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-box .question span {
+  font-family: IBM Plex Sans;
+  font-weight: 400;
+  font-size: 14px;
+
+  color: #00000080;
+}
+
+.form-box .options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.form-box .options label {
+  /* width: 260px; */
+  /* height: 39px; */
+  border-width: 0.5px;
+  padding: 10px 10px;
+  gap: 10px;
+  border-radius: 5px;
+  border-width: 0.5px;
+  display: flex;
+  
+
+  border: 0.5px solid #dddddd;
+  align-items: center;
+}
+
+.form-box label span {
+  font-family: IBM Plex Sans;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.button-box {
+  padding: 0px 25px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+}
+
+.pre-btn {
+  width: 150px;
+  height: 54px;
+  padding-top: 11px;
+  padding-right: 35px;
+  padding-bottom: 11px;
+  padding-left: 35px;
+  gap: 10px;
+  border-radius: 10px;
+  background: #000000;
+  color: #ffffff;
+}
+
+.continue-btn {
+  width: 150px;
+  height: 54px;
+  padding-top: 11px;
+  padding-right: 35px;
+  padding-bottom: 11px;
+  padding-left: 35px;
+  gap: 10px;
+  border-radius: 10px;
+  background: #00000040;
+  color: #ffffff;
+  cursor: not-allowed;
+  transition: background 0.3s ease-in-out;
+}
+
+.answer-item {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.answer-item .question-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: black;
+  font-family: IBM Plex Sans;
+  line-height: 16px !important;
+}
+
+.answer-item .answer-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: orange;
+}
+
+.answer-heading {
+  font-family: IBM Plex Sans;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.continue-btn.enabled {
+  background: #1968b3;
+  cursor: pointer;
+}
+
+.warrenty-img {
+  padding: 16px 0px;
+}
+
+/* Conditions-specific pagination styles */
+.conditions-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 10px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.conditions-pagination .pagination-btn {
+  padding: 8px 8px;
+  background-color: #007fee;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: white;
+  border-radius: 50%;
+}
+
+.conditions-pagination .pagination-btn:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+.conditions-pagination .pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.conditions-page-indicator {
+  font-size: 14px;
+  color: #666;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .form-left {
+    display: none;
+  }
+
+  .form-right {
+    width: 100%;
+    background: none;
+  }
+
+  .form-box .options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-box .options label {
+    min-height: 50px;
+    background-color: #ffffff;
+  }
+
+  .form-right h2 {
+    padding: 5px 0px;
+    font-size: 18px;
+  }
+
+  .form-box {
+    /* padding: 5px 25px; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-content {
+    gap: 30px;
+  }
+
+  .button-box button {
+    width: 149px;
+    height: 44px;
+    padding-top: 5px;
+    padding-right: 23px;
+    padding-bottom: 5px;
+    padding-left: 24px;
+    gap: 10px;
+    border-radius: 10px;
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .form-box label span {
+    font-family: IBM Plex Sans;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .icon-option-container .select-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    gap: 5px;
+    text-align: center;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 0px;
+    position: relative;
+  }
+
+  .form-box .icon-option-container label {
+    height: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+    background: none;
+    justify-content: center;
+  }
+
+  .icon-option-container .icon-space img {
+    height: 120px;
+    width: 120px;
+    margin: auto;
+  }
+
+  .label-inside-icon {}
+
+  .label-inside-icon span {
+    padding: 0px;
+  }
+}
+
+.select-box:hover {
+  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #dfdfdf; */
+}
+
+.select-box.selected {
+  border-color: #000;
+  /* Black border when selected */
+  background-color: #fff;
+  transform: scale(1);
+  /* Slight zoom effect */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
+}
+
+@media (min-width: 769px) {
+  .form-content {
+    padding: 0px 25px;
+    padding-bottom: 30px;
+  }
+
+  .form-box .options label {
+    /* height: 52px; */
+    width: 100%;
+    max-width: 330px;
+  }
+
+  .question-explaination-text {
+    font-size: 14px;
+    color: grey;
+    font-weight: 400;
+  }
+
+  .form-left .device-name h2 {
+    font-size: 20px;
+  }
+
+  .form-left .package-answers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-box .options label {
+    justify-content: start;
+    gap: 10px;
+    align-items: center;
+  }
+  
+/* default (short text → 2 cols) */
+.options.short-text {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* long text → force 1 col */
+.options.long-text {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* icons always stay 2 cols */
+.icon-option-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+  .button-box button {
+    width: 100%;
+  }
+
+  .button-box {
+    padding: 0px 0px;
+  }
+
+  .button-box .pre-btn {
+    display: none;
+  }
+}
+
+.answers-box {
+  display: block;
+}
+
+.form-right.d-mobile-none {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .select-box {
+    /* height: 180px; */
+    width: 150px;
+    border: 0.3px solid #dddddd;
+    border-radius: 5px;
+    /* padding: 3px 3px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+  }
+
+  .form-box .options label {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .select-box .icon-space img {
+    padding: 14px;
+    object-fit: contain;
+  }
+}
+
+.middle-login-modal {}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background: none;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 100%;
+  position: relative;
+}
+
+@media screen and (max-width: 480px) {
+  .bottom-fixed-btn {
+    position: fixed;
+    bottom: 0vh;
+    left: 0vh;
+    height: 92px;
+    border-radius: 0px;
+    /* height: 39px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 11px;
+    background-color: #ffffff;
+    width: 100%;
+    border: none;
+    z-index: 99;
+  }
+
+  .form-content {
+    padding-bottom: 90px;
+  }
+
+  .bottom-fixed-btn button {
+    border-radius: 0px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 25px 11px; */
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .fixed-btn {
+
+    position: fixed;
+    bottom: 0vh;
+    left: 0vh;
+    height: 71px;
+    border-radius: 0px;
+    /* height: 39px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 11px;
+    background-color: #ffffff;
+    width: 100%;
+    border: none;
+    z-index: 8;
+  }
+
+  .fixed-btn button {
+
+    border-radius: 0px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 25px 11px; */
+    width: 100%;
+    border-radius: 5px;
+  }
+}
+
+
+/* Add this CSS */
+.option.selected,
+.select-box.selected {
+  border: 1px solid #1968b3 !important;
+  background: #ddefff !important;
+}
+
+.select-box.selected label {
+
+  background-color: #1968b2 !important;
+  color: #ffffff;
+  border-radius: 0px;
+}
+
+.option-with-des-box {
+
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+
+}
+
+.option-input-flex {
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 5px;
+}
+
+
+.option-text-des {
+
+  font-size: 12px !important;
+  color: rgb(80, 80, 80);
+  text-align: left;
+  /* padding-left: 28px; */
+}
+
+
+.form-box .options .label-inside-icon {
+  /* width: 260px; */
+ flex-direction: column;
+ gap: 0px;
+ justify-content: center;
+ background-color: #d8d8d8;
+ border-radius: 5px;
+ /* padding: 0px 10px; */
+}
+
+.label-inside-icon .option-text {
+  font-size: 14px;
+}
+
+
+.dropdown-select {
+  width: 100%;
+  max-width: 400px; /* keeps it responsive */
+  padding: 12px 16px;
+  font-size: 16px;
+  font-family: inherit;
+  color: #333;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  outline: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  appearance: none; /* removes default arrow */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23333' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+}
+
+/* When user selects */
+.dropdown-select:focus,
+.dropdown-select:active {
+  border-color: #0056b3; /* dark blue */
+  /* box-shadow: 0 0 6px rgba(0, 86, 179, 0.3); */
+}
+
+/* Placeholder option (disabled) */
+.dropdown-select option[value=""] {
+  color: #888;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .dropdown-select {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+}
+
+
+.error-text {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

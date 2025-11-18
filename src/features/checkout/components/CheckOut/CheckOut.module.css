@@ -1,0 +1,459 @@
+.Wrapper {
+  max-width: 1140px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: auto;
+  /* gap: 15px; */
+}
+
+
+.AddressBox {
+  display: flex;
+  flex-direction: column;
+}
+.AddressBox h2 {
+  /* font-family: IBM Plex Sans; */
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.FormBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.LeftContainer {
+  width: 715px;
+  height: 100%;
+  border-width: 0.3px;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border: 0.3px solid #e1e1e1;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.input {
+  border-width: 1px;
+  padding-top: 10px;
+  /* padding-right: 20px; */
+  padding-bottom: 10px;
+  padding-left: 10px;
+  gap: 10px;
+  border-radius: 5px;
+  border: 1px solid #00000033;
+}
+
+.label {
+  /* font-family: IBM Plex Sans; */
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #00000080;
+}
+
+.input::placeholder {
+  color: rgb(147, 147, 147);
+  /* font-family: IBM Plex Sans; */
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.AddressBox h3 {
+  /* font-family: IBM Plex Sans; */
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.inputContainer2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+.infoText {
+  margin: 20px 0px;
+  font-size: 14px;
+  color: #555555;
+}
+
+@media (max-width: 1200px) {
+  .Wrapper {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Wrapper {
+    flex-direction: column;
+    /* gap: 30px; */
+  }
+  .CheckOutSection img {
+    /* display: none; */
+  }
+
+  @media (max-width: 480px) {
+    /* h2 {
+
+        display: none;
+       } */
+    .LeftContainer h2 {
+      display: none;
+    }
+    .input {
+      background-color: #ffffff;
+    }
+  }
+
+  .LeftContainer {
+    width: 100%;
+    height: 100%;
+    border-width: 0.3px;
+    border-radius: 10px;
+    padding: 0px;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: none;
+  }
+  .label {
+    font-size: 12px;
+  }
+  .input {
+    font-size: 14px;
+    height: 50px;
+  }
+  .input::placeholder {
+    font-size: 12px;
+  }
+}
+
+.buttonContainer {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.submitButton {
+  background: #1968b3;
+  padding:10px 50px;
+  border-radius: 10px;
+  width: fit-content;
+  color: #ffffff;
+  float: inline-end;
+  height: 50px;
+}
+
+/* Container for address boxes */
+.AddressBoxes {
+  margin-top: 1rem;
+}
+
+/* Outer flex for column layout */
+.addressList {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 20px;
+  overflow: scroll;
+}
+
+/* Row flex for wrapping address cards */
+.addressFlex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+/* Single address card */
+.addressCard {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 8px;
+  background-color: #ebebeb;
+  border-radius: 8px;
+  width: 165px;
+  height: 149px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+
+
+/* Radio button styling */
+.addressRadio {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Address text block */
+.addressDetails {
+  position: absolute;
+  left: 12px;
+  top: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.addressDetails p {
+  font-size: 14px;
+  line-height: 18px;
+  color: #000;
+  margin: 0;
+}
+
+/* Save As Tag */
+.addressTag {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 8px;
+  background-color: #000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .addressCard {
+    width: 48%;
+    height: auto;
+    min-height: 170px;
+  }
+
+  .addressDetails {
+    top: 40px;
+  }
+}
+
+.addressBoxes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.addressList {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+   scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.addressList::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.addressCard {
+ position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: #ffffff;
+    border-radius: 10px;
+    width: 70%;
+    /* height: 160px; */
+    padding: 1rem;
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+    cursor: pointer;
+    transition: all 0.2s 
+ease-in-out;
+    border: none;
+    align-items: start;
+    border: 0.3px solid #00000033;
+    flex: 0 0 auto;
+}
+
+.selectedCard {
+  /* border: 0.3px solid #000000;  */
+}
+
+.radioInput {
+  display: none;
+}
+
+.customRadio {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 23px;
+  width: 23px;
+  border: 2px solid #dfdfdf;
+  border-radius: 50%;
+  background: white;
+}
+
+.radioInput:checked + .customRadio {
+  background: rgb(255, 255, 255);
+  box-shadow: inset 0 0 0 7px #005fb2;
+}
+
+.addressContent {
+  margin-top: 25px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #111827;
+  padding-left: 28px;
+}
+
+.saveTag {
+  position: absolute;
+  top: 10px;
+  left: 38px;
+  /* background: #1968b3; */
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.inputContainer {
+  margin-top: 1rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+/* Hide default checkbox */
+.checkboxInput {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  background-color: white;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Tick mark when checked */
+.checkboxInput:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.checkboxInput:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Hover effect */
+.checkboxInput:hover {
+  border-color: #0056b3;
+}
+
+/* Checkbox text */
+.checkboxText {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.checkboxText a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.checkboxText a:hover {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {
+  .addressVerifyRadio {
+        height: 16px;
+        width: 31px !important;
+    }
+    .CheckOutSection{
+  padding-bottom: 90px;
+}
+
+.gridBoxes {
+
+  grid-template-columns: repeat(1,1fr) !important;
+}
+
+}
+
+.address-heading h4 {
+  text-align: left;
+}
+
+
+.topLabel {
+
+  font-size: 12px;
+}
+
+
+
+.addressCard {
+  background: #fff !important;
+  border: 0.3px solid #ddd !important;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.selectedCard {
+  /* background: #e6f0ff ;
+  border: 1px solid #007bff !important; */
+}
+
+.addNewCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plusIcon {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}

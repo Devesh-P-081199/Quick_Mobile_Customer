@@ -1,0 +1,250 @@
+/* SelectSeries.module.css */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1140px;
+  margin: auto;
+}
+
+.seriesList {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  overflow: auto;
+  gap: 15px;
+  /*display: grid;
+  grid-template-columns: repeat(5,1fr);*/
+}
+
+.brandImageBox {
+  height: 146px;
+  width: 150px;
+  border: 0.3px solid #e1e1e1;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.seriesItem {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 5px;
+  /* max-width: 216px; */
+  /* width: 100%; */
+  font-weight: 500;
+  font-family: "IBM Plex Sans";
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  min-width: fit-content;
+  gap: 10px;
+  align-items: center;
+}
+.headingFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionHeading {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: #000; /* adjust if needed */
+}
+
+.topSellingWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.brandImageBox {
+  display: flex;
+}
+
+.imgIndividual {
+  width: 100%;
+  height: 100%;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.sectionHeading {
+  font-size: 18px;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+}
+.imgIndividual img {
+  width: 146px;
+  height: 169px;
+  object-fit: contain;
+}
+
+.brandSingleBox {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 11px;
+  /* width: fit-content; */
+  align-items: center;
+  font-weight: 500;
+  font-family: "IBM Plex Sans";
+}
+
+.searchBox input {
+  background-color: #ffffff;
+  padding: 15px 10px;
+  border-radius: 8px;
+  border: 0.3px solid #e1e1e1;
+  max-width: 595px;
+  width: 100%;
+}
+
+.searchBox {
+  margin-left: 10px;
+  max-width: 367px;
+  width: 100%;
+  position: relative;
+}
+
+.headingFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brandlists {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modallist {
+  display: flex;
+  overflow: auto;
+  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 3%;
+  top: 30%;
+}
+.brandlist {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+}
+.brandItem {
+  /* height: 100%; */
+  width: 100%;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  transition: border 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+}
+.brandItem.active {
+  border: 2px solid rgb(66, 66, 66); /* Black border when selected */
+  height: auto;
+}
+
+.brandlist span {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.brandItem img {
+  height: 176px;
+  width: 100%;
+  object-fit: contain;
+  /* padding: 10px; */
+}
+
+.brandFullBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+@media (max-width: 1200px) {
+  .brandlist {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .brandlist {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionHeading {
+    font-size: 18px;
+  }
+  .seriesItem {
+    gap: 20px;
+  }
+  .brandlist span {
+    font-size: 12px;
+  }
+  .searchBox {
+    width: 44%;
+  }
+  .searchBox input {
+    background-color: #ffffff;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 0.3px solid #e1e1e1;
+    max-width: 595px;
+    width: 100%;
+    font-size: 12px;
+  }
+  .searchIcon {
+    position: absolute;
+    right: 5%;
+    top: 25%;
+    width: 20%;
+    background: white;
+    padding-left: 10px;
+  }
+
+  .brandlist {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .brandItem img {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+  }
+
+  .seriesItem {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 350px) {
+  .brandlist {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+}

@@ -1,0 +1,45 @@
+.blackBanner {
+  background-color: #000;
+  width: 100%;
+  padding: 0.75rem 0;
+}
+
+.blackBanner .wrapper {
+  margin: auto;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12.5%;
+  width: 100%;
+}
+
+.text {
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 0 5%;
+  }
+
+  .text {
+    font-size: 0.875rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .blackBanner {
+    padding: 0.5rem 0;
+  }
+
+  .text {
+    font-size: 0.8125rem;
+  }
+}

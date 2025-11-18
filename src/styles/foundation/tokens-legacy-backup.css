@@ -1,0 +1,151 @@
+/* BACKUP - Original Design Tokens - CSS Custom Properties */
+/* Backed up on implementation of enhanced system */
+:root {
+  /* Color System */
+  /* Primary Colors */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #1968b3;
+  --color-primary-600: #1557a0;
+  --color-primary-700: #11468d;
+  --color-primary-800: #0d357a;
+  --color-primary-900: #0c2d5a;
+
+  /* Neutral Colors */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+
+  /* Semantic Colors */
+  --color-success-50: #f0fdf4;
+  --color-success-500: #22c55e;
+  --color-success-900: #14532d;
+
+  --color-warning-50: #fffbeb;
+  --color-warning-500: #f59e0b;
+  --color-warning-900: #78350f;
+
+  --color-error-50: #fef2f2;
+  --color-error-500: #ef4444;
+  --color-error-900: #7f1d1d;
+
+  /* Special Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Typography Scale */
+  --font-family-primary: "IBM Plex Sans", sans-serif;
+  --font-family-heading: "Hedvig Letters Serif", serif;
+  --font-family-mono: "IBM Plex Mono", monospace;
+
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing Scale (4px base grid) */
+  --space-0: 0;
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.25rem; /* 20px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+
+  /* Border Radius Scale */
+  --radius-none: 0;
+  --radius-sm: 0.125rem; /* 2px */
+  --radius-base: 0.25rem; /* 4px */
+  --radius-md: 0.375rem; /* 6px */
+  --radius-lg: 0.5rem; /* 8px */
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-2xl: 1rem; /* 16px */
+  --radius-full: 9999px;
+
+  /* Shadow Scale */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* Container Sizes */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+  --container-max-width: 1200px;
+  --container-padding: var(--space-4);
+
+  /* Component Tokens */
+  --button-padding-sm: var(--space-2) var(--space-3);
+  --button-padding-md: var(--space-3) var(--space-6);
+  --button-padding-lg: var(--space-4) var(--space-8);
+  --button-radius: var(--radius-lg);
+  --button-font-weight: var(--font-weight-medium);
+
+  --card-padding-sm: var(--space-4);
+  --card-padding-md: var(--space-6);
+  --card-padding-lg: var(--space-8);
+  --card-radius: var(--radius-xl);
+  --card-shadow: var(--shadow-base);
+
+  --form-input-padding: var(--space-3);
+  --form-input-radius: var(--radius-lg);
+  --form-input-border-width: 1px;
+
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  /* Transition Tokens */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+}

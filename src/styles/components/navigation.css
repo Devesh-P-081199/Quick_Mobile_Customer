@@ -1,0 +1,35 @@
+/* Navigation Components */
+/* MINIMAL FIXES ONLY - Preserve original header design */
+
+/* Fix header positioning stability - don't change appearance */
+.header {
+  position: sticky !important;
+  z-index: 1030 !important;
+  transform: translateZ(0); /* Force hardware acceleration for stability */
+  backface-visibility: hidden;
+}
+
+/* Fix search bar positioning issue only */
+.header_searchBar {
+  position: relative !important;
+}
+
+.header_searchBar ._searchContainer_1erli_79 {
+  position: unset !important;
+}
+
+/* Fix dropdown z-index only */
+.dropdownMenu {
+  z-index: 1000 !important;
+}
+
+/* Prevent layout shifts */
+.header-spacer {
+  height: 70px;
+}
+
+@media (max-width: 780px) {
+  .header-spacer {
+    height: 60px;
+  }
+}

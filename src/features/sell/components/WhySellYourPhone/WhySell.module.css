@@ -1,0 +1,183 @@
+.wrapper {
+  padding: 35px 25px;
+  border: 0.3px solid #e1e1e1;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.sectionHeading {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.cardsBox {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 341px;
+}
+
+.card h3 {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-xl);
+  text-align: center;
+}
+
+.upper {
+  background: #282a2b;
+  display: flex;
+  gap: 10px;
+  padding: 0px 80px;
+  padding-bottom: 11px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  color: #ffffff;
+  height: 160px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.lower {
+  background: #ebffcb;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.lower span {
+  width: 264px;
+  height: 57px;
+  text-align: center;
+  font-family: var(--font-family-primary);
+}
+
+/* Extra large desktops */
+
+@media (min-width: 1600px) {
+}
+
+/* Standard desktops and laptops */
+
+@media (max-width: 1440px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 280px;
+  }
+  .upper {
+    padding: 0px 50px;
+    justify-content: center;
+  }
+  .lower span {
+    padding: 0px 10px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 260px;
+  }
+  .upper {
+    padding: 0px 50px;
+    justify-content: center;
+  }
+
+  .card h3 {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1024px) {
+  .card h3 {
+    font-size: 16px;
+  }
+}
+
+/* Tablets */
+
+@media (max-width: 950px) {
+  .card {
+    width: 240px;
+  }
+  .card img {
+    width: 50%;
+  }
+  .card h3 {
+    font-size: 12px;
+  }
+  .lower {
+    font-size: 12px;
+    height: 80px;
+  }
+  .lower span {
+    /* height: 0px; */
+    height: 35px;
+  }
+}
+
+/* Phones */
+
+@media (max-width: 480px) {
+  .cardsBox {
+    /* display: grid
+; */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    display: flex;
+    justify-content: start;
+    width: 350px;
+    overflow: scroll;
+  }
+  .wrapper {
+    padding: 25px 10px;
+  }
+  .card {
+    width: 370px;
+  }
+
+  .upper {
+    padding: 0px 10px;
+    height: 106px;
+  }
+  .lower span {
+    height: 23px;
+  }
+
+  h3 br {
+    display: none;
+  }
+
+  .lower {
+    height: 60px;
+    font-size: 12px;
+  }
+
+  .card img {
+    width: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: 200px;
+  }
+}

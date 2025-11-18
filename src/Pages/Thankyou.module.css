@@ -1,0 +1,274 @@
+.wrapper {
+  /* background: #f9fafb; */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  /* padding: 2rem 1rem; */
+}
+
+.container {
+  max-width: 1140px;
+  /* background: #fff; */
+  /* padding: 2rem; */
+  border-radius: 12px;
+  text-align: center;
+  margin: auto;
+}
+
+.iconBox {
+  background: #007fee;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkIcon {
+  font-size: 40px;
+  color: white;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.desc {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Offer Box */
+.offerBox {
+  display: flex;
+  align-items: center;
+  background: #fff3e6;
+  padding: 1rem;
+  border-radius: 10px;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.offerImage {
+  width: 90px;
+  height: auto;
+  border-radius: 6px;
+}
+
+.offerContent {
+  flex: 1;
+}
+
+.offerTitle {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 0.25rem;
+}
+
+.offerSubtext {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.buyBtn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Info Grid */
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.infoCard {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0.75rem;
+  background: #f9fbff;
+  border-radius: 8px;
+}
+
+.infoCard h4 {
+  font-weight: 600;
+}
+
+.infoIcon {
+  background: #e6f4ff;
+  border-radius: 8px;
+  padding: 6px;
+  font-size: 22px;
+}
+
+/* Buttons */
+.btnBox {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.homeBtn {
+  max-width: 250px;
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.orderBtn {
+  max-width: 250px;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media  (max-width: 1540px) and (min-width: 900px) {
+  .offerContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5rem;
+  }
+  .offerTitle{
+    padding: 15px 80px;
+    font-size: 22px;
+  }
+  .buyBtn{
+    width: 20%;
+    font-size: 20px;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .offerBox {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .offerContent {
+    text-align: center;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .btnBox {
+    flex-direction: column;
+  }
+
+  .homeBtn,
+  .orderBtn {
+    width: 100%;
+  }
+}
+
+/* Buttons */
+.btnBox {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.homeBtn {
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.orderBtn {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  flex: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .offerBox {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .offerContent {
+    text-align: left;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Fix buttons at bottom */
+  .btnBox {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 10px;
+    gap: 0.5rem;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+  }
+
+  .homeBtn,
+  .orderBtn {
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  /* add padding at bottom so content not hidden */
+  .container {
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+  .checkIcon {
+    font-size: 25px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .subtitle {
+    font-size: 16px;
+  }
+  .desc {
+    font-size: 14px;
+  }
+}

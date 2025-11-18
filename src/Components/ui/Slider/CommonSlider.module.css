@@ -1,0 +1,224 @@
+/* Enhanced CommonSlider with overflow fixes */
+
+.sliderWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Prevent wrapper overflow */
+  border-radius: var(--radius-lg);
+}
+
+.sliderTrack {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden; /* Prevent vertical overflow */
+  gap: 16px;
+  scroll-behavior: smooth;
+  justify-content: flex-start;
+  padding: var(--space-2) 0; /* Add padding to prevent content cutoff */
+
+  /* Enhanced scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-neutral-300) transparent;
+}
+
+/* Webkit scrollbar styling */
+.sliderTrack::-webkit-scrollbar {
+  height: 6px;
+}
+
+.sliderTrack::-webkit-scrollbar-track {
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-full);
+}
+
+.sliderTrack::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-300);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+}
+
+.sliderTrack::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-400);
+}
+
+/* Navigation Buttons - Fixed positioning within container bounds */
+.navButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  position: relative;
+  z-index: 2;
+  padding-right: var(--space-2); /* Ensure buttons stay within container */
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.navBtn {
+  @apply flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-full cursor-pointer transition-all duration-200 hover:bg-gray-50 hover:border-gray-400 hover:shadow-md;
+
+  /* Ensure buttons stay within bounds */
+  flex-shrink: 0;
+  position: relative;
+}
+
+.navBtn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+  pointer-events: none;
+}
+
+.navBtn svg,
+.navBtn img {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition-fast);
+}
+
+.navBtn:hover svg,
+.navBtn:hover img {
+  transform: scale(1.1);
+}
+
+/* Slider Items - Prevent overflow */
+.sliderItem {
+  flex-shrink: 0;
+  min-width: 0; /* Allow items to shrink if needed */
+  max-width: 100%; /* Prevent items from exceeding container */
+  overflow: hidden; /* Prevent content overflow */
+}
+
+/* Enhanced slider with fade edges */
+.sliderWrapper::before,
+.sliderWrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+/* Hide fade edges when not needed */
+.sliderWrapper[data-at-start="true"]::before {
+  opacity: 0;
+}
+
+.sliderWrapper[data-at-end="true"]::after {
+  opacity: 0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .sliderTrack {
+    gap: var(--space-3);
+    padding: var(--space-1) 0;
+  }
+
+  .navButtons {
+    display: none; /* Hide navigation buttons on mobile */
+  }
+
+  .navBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .sliderWrapper::before,
+  .sliderWrapper::after {
+    width: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sliderTrack {
+    gap: var(--space-2);
+  }
+
+  .navBtn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .navBtn svg,
+  .navBtn img {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Touch-friendly scrolling on mobile */
+@media (hover: none) and (pointer: coarse) {
+  .sliderTrack {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .sliderItem {
+    scroll-snap-align: start;
+  }
+}
+
+/* Accessibility improvements */
+.navBtn:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+.sliderTrack:focus {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Animation for smooth transitions */
+.sliderTrack {
+  transition: transform var(--transition-base);
+}
+
+/* Prevent text selection during drag */
+.sliderWrapper {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Loading state */
+.sliderWrapper--loading {
+  position: relative;
+  min-height: 200px;
+}
+
+.sliderWrapper--loading::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-neutral-200);
+  border-top: 3px solid var(--color-primary-500);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Error state */
+.sliderWrapper--error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--color-error-500);
+  font-size: var(--font-size-sm);
+}

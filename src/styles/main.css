@@ -1,0 +1,1247 @@
+/* Enhanced Main CSS Entry Point - Mobile-First Responsive System */
+/* Optimized import order for performance and consistency */
+
+/* ===== 1. EXTERNAL FONTS ===== */
+@import url("https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+/* ===== 2. ENHANCED DESIGN TOKENS ===== */
+@import "./foundation/tokens.css";
+
+/* ===== 3. CSS RESET & BASE STYLES ===== */
+@import "./foundation/reset.css";
+@import "./foundation/base.css";
+
+/* ===== 4. ENHANCED UTILITY SYSTEM ===== */
+@import "./utilities/enhanced-global-utilities.css";
+
+/* ===== 5. LAYOUT SYSTEM ===== */
+@import "./layout/containers.css";
+@import "./layout/grid.css";
+@import "./layout/spacing.css";
+
+/* ===== 6. COMPONENT SYSTEM ===== */
+@import "./components/buttons.css";
+@import "./components/forms.css";
+@import "./components/cards.css";
+@import "./components/navigation.css";
+@import "./components/range-slider.css";
+@import "./components/range-slider-constrained.css";
+
+/* ===== 7. ENHANCED UTILITIES ===== */
+@import "./utilities/colors.css";
+@import "./utilities/typography.css";
+@import "./utilities/responsive.css";
+@import "./utilities/slider-overflow-fix.css";
+
+/* ===== 8. LEGACY COMPATIBILITY (Gradual Phase-out) ===== */
+/* These imports maintain existing functionality during migration */
+@import "../index.css";
+@import "../kstyle.css";
+@import "../assets/css/BuyCss.css";
+
+/* ===== 9. GLOBAL ENHANCEMENTS ===== */
+
+/* Enhanced base styles for better mobile experience */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Improved font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Better text rendering */
+  text-rendering: optimizeLegibility;
+
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
+
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+
+  /* Better mobile scrolling */
+  -webkit-overflow-scrolling: touch;
+
+  /* Prevent text size adjustment on mobile */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Mobile padding-top for fixed header */
+@media (max-width: 768px) {
+  body {
+    padding-top: 55px !important;
+  }
+}
+
+/* Enhanced focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+/* Remove default focus styles for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Enhanced link styles */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+a:visited {
+  color: var(--color-link-visited);
+}
+
+/* Enhanced button reset */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Enhanced form element styles */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--form-input-radius);
+  /* padding: var(--form-input-padding); */
+  transition: border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+  outline: none;
+}
+
+/* Enhanced image styles */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Enhanced table styles */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: var(--spacing-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  font-weight: var(--font-weight-semibold);
+  background-color: var(--color-surface-secondary);
+}
+
+/* Enhanced list styles */
+ul,
+ol {
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 0;
+}
+
+/* Enhanced heading styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin-top: 0;
+  margin-bottom: var(--spacing-4);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+}
+
+/* Enhanced paragraph styles */
+p {
+  margin-top: 0;
+  margin-bottom: var(--spacing-4);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Enhanced code styles */
+code,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: 0.875em;
+  background-color: var(--color-surface-secondary);
+  border-radius: var(--border-radius-sm);
+}
+
+code {
+  padding: var(--spacing-1) var(--spacing-2);
+}
+
+pre {
+  padding: var(--spacing-4);
+  overflow-x: auto;
+  line-height: var(--line-height-normal);
+}
+
+pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+/* Enhanced blockquote styles */
+blockquote {
+  margin: var(--spacing-6) 0;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-left: 4px solid var(--color-primary-500);
+  background-color: var(--color-surface-secondary);
+  border-radius: var(--border-radius-md);
+  font-style: italic;
+}
+
+/* Enhanced horizontal rule styles */
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--spacing-8) 0;
+}
+
+/* ===== MOBILE-SPECIFIC ENHANCEMENTS ===== */
+
+/* Improve touch targets on mobile */
+@media (max-width: 768px) {
+  button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  .btn,
+  .touch-target {
+    min-height: 35px;
+    min-width: 35px;
+  }
+
+  /* Improve form inputs on mobile */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: var(--spacing-2) var(--spacing-1);
+  }
+
+  /* Better mobile typography */
+  body {
+    font-size: var(--font-size-base);
+  }
+
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+/* Optimize animations for better performance */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ===== UTILITY CLASSES FOR COMMON PATTERNS ===== */
+
+/* Loading states */
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-primary-500);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-secondary) 25%,
+    var(--color-surface-tertiary) 50%,
+    var(--color-surface-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Truncate text */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Aspect ratio utilities */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-photo {
+  aspect-ratio: 4 / 3;
+}
+
+/* Gradient utilities */
+.gradient-primary {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-500),
+    var(--color-primary-700)
+  );
+}
+
+.gradient-secondary {
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary-500),
+    var(--color-secondary-700)
+  );
+}
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-500),
+    var(--color-secondary-500)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== COMPONENT INTEGRATION HELPERS ===== */
+
+/* Ensure components work well together */
+.component-spacing > * + * {
+  margin-top: var(--spacing-4);
+}
+
+.component-spacing-sm > * + * {
+  margin-top: var(--spacing-2);
+}
+
+.component-spacing-lg > * + * {
+  margin-top: var(--spacing-6);
+}
+
+/* Form component integration */
+.form-group {
+  margin-bottom: var(--spacing-4);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-2);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.form-group .form-help {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.form-group .form-error {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-error-500);
+}
+
+/* Card component integration */
+.card-grid {
+  display: grid;
+  gap: var(--spacing-6);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+}
+
+/* Navigation component integration */
+.nav-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.nav-inline {
+  display: flex;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .nav-inline {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-2);
+  }
+}
+/* ===== GLOBAL SECTION PADDING SYSTEM ===== */
+/* Consistent padding system matching header container */
+
+/* Base section container - matches header padding exactly */
+.section-container {
+  padding: 0 12.5%; /* Horizontal padding matches header: var(--spacing-2) 12.5% */
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Section padding variants */
+.section-padding-sm {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.section-padding-md {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-padding-lg {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Responsive section padding system */
+@media (max-width: 1440px) {
+  .section-container {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .section-container {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+}
+
+@media (max-width: 992px) {
+  .section-container {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .section-padding-sm {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .section-padding-md {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .section-padding-lg {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-container {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .section-padding-sm {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .section-padding-md {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .section-padding-lg {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-container {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
+
+@media (max-width: 320px) {
+  .section-container {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+
+/* Content width constraints for better readability */
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-container-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Grid system for sections */
+.section-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.section-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.section-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.section-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .section-grid {
+    gap: 1.5rem;
+  }
+
+  .section-grid-2,
+  .section-grid-3,
+  .section-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-grid {
+    gap: 1rem;
+  }
+}
+
+/* Flex utilities for sections */
+.section-flex {
+  display: flex;
+  gap: 2rem;
+}
+
+.section-flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.section-flex-between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-flex-column {
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .section-flex {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+/* Typography utilities for sections */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.section-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+/* ===== GLOBAL SECTION PADDING SYSTEM - MATCHES HEADER EXACTLY ===== */
+
+/* Base section container - matches header padding exactly */
+.section-container {
+  padding-left: 12.5%;
+  padding-right: 12.5%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Section padding variants */
+.section-padding-sm {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.section-padding-md {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-padding-lg {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Responsive section padding system - MATCHES HEADER EXACTLY */
+
+/* Tablet Large (992px-1199px) - Matches header: padding: var(--spacing-3) var(--spacing-4) + width: 80% */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .section-container {
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/* Tablet Small (769px-991px) - Matches header: padding: var(--spacing-2) var(--spacing-3) + width: 85% */
+@media (max-width: 991px) and (min-width: 769px) {
+  .section-container {
+    padding-left: var(--spacing-3);
+    padding-right: var(--spacing-3);
+    width: 85%;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile (≤950px) - Matches header: width: 90% */
+@media (max-width: 950px) {
+  .section-container {
+    width: 90%;
+    margin: 0 auto;
+    padding-left: var(--spacing-2);
+    padding-right: var(--spacing-2);
+  }
+
+  .section-padding-sm {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .section-padding-md {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .section-padding-lg {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* Small Mobile (≤480px) - Additional refinement */
+@media (max-width: 480px) {
+  .section-container {
+    width: 90%;
+    padding-left: var(--spacing-1);
+    padding-right: var(--spacing-1);
+  }
+
+  .section-padding-sm {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .section-padding-md {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .section-padding-lg {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Content width constraints for better readability */
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-container-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Grid system for sections */
+.section-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.section-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.section-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.section-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .section-grid {
+    gap: 1.5rem;
+  }
+
+  .section-grid-2,
+  .section-grid-3,
+  .section-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-grid {
+    gap: 1rem;
+  }
+}
+
+/* Flex utilities for sections */
+.section-flex {
+  display: flex;
+  gap: 2rem;
+}
+
+.section-flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.section-flex-between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-flex-column {
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .section-flex {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+/* Typography utilities for sections */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.section-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+/* ===== GLOBAL SECTION PADDING SYSTEM ===== */
+/* Consistent horizontal padding system matching header container */
+
+/* Base section container - matches header padding exactly */
+.section-container {
+  padding: 0 12.5%; /* Horizontal padding matches header: var(--spacing-2) 12.5% */
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Section vertical padding variants */
+.section-padding-sm {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.section-padding-md {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-padding-lg {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Only adjust vertical padding for mobile - keep horizontal at 12.5% */
+@media (max-width: 768px) {
+  .section-padding-sm {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .section-padding-md {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .section-padding-lg {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-padding-sm {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .section-padding-md {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .section-padding-lg {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Content width constraints for better readability */
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-container-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Grid system for sections */
+.section-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.section-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.section-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.section-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .section-grid {
+    gap: 1.5rem;
+  }
+
+  .section-grid-2,
+  .section-grid-3,
+  .section-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Flex utilities for sections */
+.section-flex {
+  display: flex;
+  gap: 2rem;
+}
+
+.section-flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.section-flex-between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-flex-column {
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .section-flex {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+/* Typography utilities for sections */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.section-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,957 @@
+.footerContainer {
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 30px 12.5%; /* Match header container padding exactly */
+}
+
+.footerContent {
+  margin: 0 auto;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap; /* Enable wrapping for responsive design */
+  gap: 20px; /* Reduced gap from 30px to 20px */
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Reduced gap from 22px to 12px */
+}
+
+.footerHeading {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  color: black;
+  margin-bottom: 8px; /* Added margin bottom for better spacing */
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Reduced gap from 10px to 6px */
+}
+
+.footerLink {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.footerLink:hover {
+  color: gray;
+}
+
+.iconbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  /* width: 109px; */
+}
+
+.footerBottom {
+  /* width: 1060px; */
+  margin: 30px auto;
+  margin-bottom: 0px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.footerRightBox {
+  display: flex;
+  gap: 4px;
+}
+
+.footerRightBox img {
+  width: 125px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerCopyright {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: black;
+}
+
+/* Desktop footer responsive styles */
+@media (max-width: 768px) {
+  .footerContainer.md-none {
+    padding-top: 60px;
+  }
+
+  .footerContainer.md-none .footerContent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .footerContainer.md-none .footerBottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footerContainer.md-none .footerHeading {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    color: black;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerHeading {
+    font-size: 18px;
+  }
+
+  .footerContent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .footerHeading {
+    font-size: 18px;
+  }
+
+  .footerLink {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18.2px;
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  .footerColumn {
+    width: auto;
+  }
+  .footerContainer {
+    padding: 0px 10px !important;
+  }
+}
+
+/* Removed .socialIcons - replaced by .socialIconsLarge in new Follow Us section */
+
+.footerSection {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+.footerSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.footerSectionHeader h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  /* padding: 10px 0 0 10px; */
+  gap: 8px;
+}
+
+.footerLinks a {
+  font-size: 13px;
+  color: #000;
+  text-decoration: none;
+}
+
+.footerLinks a:hover {
+  color: #555;
+}
+
+.logoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 0;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 10px;
+}
+
+.mobileFooterContent {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.footerBottom {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center; /* Center align for better mobile experience */
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.footerRightBox img {
+  width: 120px;
+  height: 38px;
+}
+
+@media (max-width: 1200px) {
+  .footerLinks {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0 0 0px;
+    gap: 8px;
+  }
+  .footerHeading {
+    font-size: 18px;
+  }
+  .footerContainer {
+    padding: 30px 80px;
+  }
+  .footerContent {
+    gap: 2px;
+  }
+
+  .footerSectionHeader h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  .footerLinks {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0 0 0px;
+    gap: 8px;
+  }
+  .footerHeading {
+    font-size: 18px;
+  }
+  .footerContent {
+    gap: 30px;
+  }
+
+  .footerSectionHeader h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.footerLinks a {
+  color: #000000;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 0.3s ease, color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: black;
+  text-decoration-color: rgb(1, 1, 1);
+}
+
+@media (max-width: 480px) {
+  .footerContainer {
+    padding: 15px 0px !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  .mobileFooterContent {
+    padding: 0 10px;
+  }
+  .footerSectionHeader {
+    margin-bottom: 0px;
+  }
+  .footerLinks a:hover {
+    color: black;
+    text-decoration: none;
+  }
+  .footerLinks {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0 0 0px;
+    gap: 8px;
+    margin-top: 0px;
+  }
+}
+
+/* Mobile Footer Column - Matches Desktop Last Column */
+.mobileFooterColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.mobileFooterColumn .logoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.mobileFooterColumn .logoContainer p {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.mobileFooterColumn .followUsSection {
+  margin-top: 0px;
+}
+
+.mobileFooterColumn .helpCenterTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.mobileFooterColumn .helpCenterSubtitle {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  color: #666;
+}
+
+.mobileFooterColumn .helpCenterAction {
+  display: flex;
+  align-items: center;
+}
+
+.mobileFooterColumn .getAnswersBtn {
+  display: inline-block;
+  background: #1968b3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.mobileFooterColumn .getAnswersBtn:hover {
+  background: #155a9a;
+}
+
+.chatbox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #1968b3;
+  padding: 6px 15px;
+  color: white;
+  border-radius: 8px;
+  margin-top: 10px;
+  justify-content: center;
+  width: 100%;
+  font-size: 20px;
+}
+.chatbox h5 {
+  font-size: 16px;
+}
+.chatbox img {
+  height: 38px;
+}
+
+.chatbox p {
+  font-size: 12px;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 2480px) {
+  .chatbox {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #1968b3;
+    padding: 5px;
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+  }
+  .chatbox h5 {
+    font-size: 10px;
+  }
+  .chatbox img {
+    height: 22px;
+  }
+  .chatbox p {
+    font-size: 8px;
+  }
+}
+
+.socialIcons img {
+  height: 30px;
+  width: 30px;
+  margin-top: 8px;
+}
+
+.uparrow {
+  transform: rotate(270deg);
+  height: 21px;
+}
+
+.downarrow {
+  height: 21px;
+  transform: rotate(90deg);
+}
+
+.notice {
+  padding-bottom: 20px;
+  border-bottom: 0.3px solid #ddd;
+  text-align: left;
+}
+
+/* Logo Container Styling */
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Logo Styling - Match Header Logo */
+.logo {
+  height: 50px;
+  width: auto; /* Maintains aspect ratio */
+  max-width: 120px; /* Match header logo max-width */
+  object-fit: contain; /* Ensures the image fits within the dimensions */
+  cursor: pointer;
+}
+
+.followText {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+/* Get Answers Button Styling */
+.getAnswersButton {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+
+.getAnswersButton:hover {
+  text-decoration: none;
+}
+
+.getAnswersButton .chatbox {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.getAnswersButton .chatbox:hover {
+  background-color: #155a9a; /* Slightly darker blue on hover */
+}
+
+/* Responsive Footer Display Classes */
+
+/* Desktop Footer - Show on screens larger than 770px */
+.footerContainer.mdNone {
+  display: block;
+}
+
+@media (max-width: 770px) {
+  .footerContainer.mdNone {
+    display: none !important;
+  }
+}
+
+/* Mobile Footer - Show on screens 770px and smaller */
+.footerContainer.mdBlock {
+  display: none;
+}
+
+@media (max-width: 770px) {
+  .footerContainer.mdBlock {
+    display: block !important;
+  }
+}
+
+.followUsTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.followUsSection {
+  margin-top: 15 !important;
+}
+
+.socialIconsLarge {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  align-items: center;
+}
+
+.socialIconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.socialIconLink:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.socialIconLink img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* Help Center Section - Compact version for footer column */
+.helpCenterSection {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  padding: 15px;
+  text-align: center;
+  color: white;
+  border-radius: 12px; /* Rounded borders */
+}
+
+.helpCenterContent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.helpCenterTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.helpCenterSubtitle {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.getAnswersBtn {
+  display: inline-block;
+  background: #3b82f6;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 20px; /* Rounded button */
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.getAnswersBtn:hover {
+  background: transparent;
+  border-color: white;
+  color: white;
+}
+
+/* Tablet Landscape (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footerContainer {
+    padding: 25px 5%;
+  }
+
+  .footerContent {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+  }
+
+  .footerColumn {
+    width: 45%;
+    min-width: 200px;
+  }
+
+  .followUsSection,
+  .helpCenterSection {
+    width: 100%;
+    max-width: 400px;
+    margin: 0px auto;
+    padding: 25px;
+  }
+
+  .followUsTitle,
+  .helpCenterTitle {
+    font-size: 24px;
+  }
+
+  .helpCenterSubtitle {
+    font-size: 16px;
+  }
+}
+
+/* Mobile Landscape & Small Tablet (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .footerContainer {
+    padding: 20px 4%;
+  }
+
+  .footerContent {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footerColumn {
+    width: 100%;
+  }
+
+  .socialIconsLarge {
+    gap: 25px;
+  }
+
+  .socialIconLink {
+    width: 50px;
+    height: 50px;
+  }
+
+  .socialIconLink img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Mobile Portrait (320px - 480px) */
+@media (max-width: 480px) {
+  .footerContainer {
+    padding: 15px 3%;
+  }
+
+  .footerContent {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footerColumn {
+    width: 100%;
+  }
+
+  .footerHeading {
+    font-size: 16px;
+  }
+
+  .footerLinks a {
+    font-size: 13px;
+  }
+
+  .followUsSection,
+  .helpCenterSection {
+    width: 100%;
+    padding: 0px;
+    margin-top: 0px;
+  }
+
+  .mobileFooterColumn .followUsSection {
+    margin-top: 0px;
+  }
+
+  .followUsTitle,
+  .helpCenterTitle {
+    font-size: 24px;
+  }
+
+  .mobileFooterColumn .helpCenterTitle {
+    margin-top: 0px;
+  }
+
+  .getHelpcenter p.helpCenterSubtitle {
+    margin: 0px;
+  }
+
+  .mobileFooterColumn .topContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  .getHelpcenter {
+    padding: 10px;
+    background-color: #0000000f;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .getHelpcenter .helpCenterAction .getAnswersBtn {
+    border-radius: 10px;
+  }
+
+  .helpCenterSubtitle {
+    font-size: 14px;
+  }
+
+  .socialIconsLarge {
+    margin-top: 15px;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .socialIconLink {
+    width: 30px;
+    height: 30helpCenterTitlepx;
+  }
+
+  .socialIconLink img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .footerBottom .logoHeader {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  .getAnswersBtn {
+    padding: 10px 25px;
+    font-size: 11px;
+  }
+}
+
+/* Extra Small Mobile (below 320px) */
+@media (max-width: 319px) {
+  .footerContainer {
+    padding: 10px 2%;
+  }
+
+  .followUsSection,
+  .helpCenterSection {
+    padding: 0px 10px;
+  }
+
+  .followUsTitle,
+  .helpCenterTitle {
+    font-size: 20px;
+  }
+
+  .helpCenterSubtitle {
+    font-size: 12px;
+  }
+
+  .socialIconsLarge {
+    gap: 15px;
+  }
+
+  .socialIconLink {
+    width: 40px;
+    height: 40px;
+  }
+
+  .socialIconLink img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .getAnswersBtn {
+    padding: 8px 20px;
+    font-size: 10px;
+  }
+}
+
+/* Footer Bottom Responsive */
+@media (max-width: 768px) {
+  .footerBottom {
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  .footerBottom p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+}
+
+/* Logo Responsive - Match Header Logo */
+@media (max-width: 480px) {
+  .logo {
+    height: 40px; /* Match header mobile logo height */
+    width: auto;
+    max-height: 65px; /* Prevents logo from being too tall on mobile */
+  }
+}
+
+/* Social Icons Responsive */
+@media (max-width: 480px) {
+  .socialIcons img {
+    height: 25px;
+    width: 25px;
+  }
+}
+/* Help Center Text and Action Sections */
+.helpCenterText {
+  flex: 1;
+  text-align: left;
+}
+
+.helpCenterAction {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive adjustments for help center split layout */
+@media (max-width: 768px) {
+  .helpCenterContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .helpCenterText {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .helpCenterContent {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .footerContainer {
+    padding: 30px 8%;
+  }
+}
+
+@media (max-width: 992px) {
+  .footerContainer {
+    padding: 25px 6%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerContainer {
+    padding: 20px 5%;
+  }
+
+  .footerContent {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footerColumn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .footerContainer {
+    padding: 15px 4%;
+  }
+
+  .footerHeading {
+    font-size: 16px;
+  }
+
+  .footerLinks a {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerContainer {
+    padding: 15px 3%;
+  }
+}
+
+@media (max-width: 320px) {
+  .footerContainer {
+    padding: 10px 2%;
+  }
+}
+/* Footer Responsive Padding - MATCHES HEADER EXACTLY */
+
+/* Tablet Large (992px-1199px) - Matches header exactly */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .footerContainer {
+    padding: 30px var(--spacing-4);
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/* Tablet Small (769px-991px) - Matches header exactly */
+@media (max-width: 991px) and (min-width: 769px) {
+  .footerContainer {
+    padding: 25px var(--spacing-3);
+    width: 85%;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile (≤950px) - Full width on mobile */
+@media (max-width: 950px) {
+  .footerContainer {
+    width: 100%;
+    margin: 0;
+    padding: 20px 0px;
+  }
+  .mobileFooterContent {
+    padding: 0 10px;
+  }
+}
+
+/* Small Mobile (≤480px) - Full width, no side margins */
+@media (max-width: 480px) {
+  .footerContainer {
+    width: 100% !important;
+    padding: 0px !important;
+    margin: 0 !important;
+  }
+}

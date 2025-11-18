@@ -1,0 +1,310 @@
+/* Collapsible Dropdown Styles */
+.collapsibleDropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-4);
+  min-width: 400px;
+  max-width: 500px;
+  max-height: 500px;
+  overflow-y: auto;
+  z-index: var(--z-index-dropdown);
+  animation: fadeInDown 0.2s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropdown Header */
+.dropdownHeader {
+  margin-bottom: var(--spacing-3);
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dropdownHeader h4 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* Brands List Container */
+.brandsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+/* Individual Brand Item */
+.collapsibleBrandItem {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.collapsibleBrandItem:hover {
+  border-color: var(--color-interactive-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Brand Header (Clickable) */
+.brandHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-3);
+  cursor: pointer;
+  background: var(--color-surface);
+  transition: background-color var(--transition-fast);
+}
+
+.brandHeader:hover {
+  background-color: var(--color-surface-secondary);
+}
+
+.brandInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex: 1;
+}
+
+.brandLogo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: var(--border-radius-sm);
+}
+
+.brandName {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.productCount {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-left: auto;
+}
+
+/* Expand/Collapse Arrow */
+.expandArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: transform var(--transition-fast);
+}
+
+.expandArrow img {
+  width: 12px;
+  height: 12px;
+  transition: transform var(--transition-fast);
+}
+
+.expandArrow.expanded img {
+  transform: rotate(90deg);
+}
+
+/* Products Container (Collapsible) */
+.productsContainer {
+  background: var(--color-surface-secondary);
+  border-top: 1px solid var(--color-border);
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 400px;
+  }
+}
+
+.productsList {
+  padding: var(--spacing-3);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2);
+}
+
+/* Individual Product Item */
+.productItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-2);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.productItem:hover {
+  background-color: var(--color-surface);
+}
+
+.productImage {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: var(--border-radius-sm);
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-0-5);
+  flex: 1;
+}
+
+.productName {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.productPrice {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* View All Products Link */
+.viewAllProducts {
+  padding: var(--spacing-2);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-interactive-primary);
+  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast);
+  margin-top: var(--spacing-1);
+}
+
+.viewAllProducts:hover {
+  background-color: var(--color-surface);
+}
+
+/* Dropdown Footer */
+.dropdownFooter {
+  margin-top: var(--spacing-3);
+  padding-top: var(--spacing-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.viewAllBrands {
+  text-align: center;
+  padding: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-interactive-primary);
+  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.viewAllBrands:hover {
+  background-color: var(--color-surface-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .collapsibleDropdownMenu {
+    min-width: 320px;
+    max-width: 90vw;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .brandInfo {
+    gap: var(--spacing-2);
+  }
+
+  .brandLogo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .brandName {
+    font-size: var(--font-size-sm);
+  }
+
+  .productCount {
+    font-size: var(--font-size-xs);
+  }
+
+  .productImage {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Scrollbar Styling */
+.collapsibleDropdownMenu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.collapsibleDropdownMenu::-webkit-scrollbar-track {
+  background: var(--color-surface-secondary);
+  border-radius: 3px;
+}
+
+.collapsibleDropdownMenu::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+.collapsibleDropdownMenu::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Loading State */
+.loadingState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-6);
+  color: var(--color-text-muted);
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-6);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.emptyState h4 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: var(--font-size-sm);
+}

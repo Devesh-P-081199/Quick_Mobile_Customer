@@ -1,0 +1,300 @@
+.contactPage {
+  font-family: var(--font-family-primary);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Contact Form Section */
+.contactSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 40px;
+  gap: 30px;
+}
+.formContainer {
+  flex: 1;
+}
+.formContainer h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.formContainer h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.formContainer p {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #555;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.row {
+  display: flex;
+  gap: 20px;
+}
+.inputBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.inputBox label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #444;
+}
+.inputBox input,
+.inputBox select,
+.inputBox textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.inputBox textarea {
+  min-height: 80px;
+  resize: none;
+}
+.submitBtn {
+  background: #007bff;
+  width: 50%;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+.submitBtn:hover {
+  background: #0062cc;
+}
+.imageBox {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imageBox img {
+  width: 100%;
+  max-width: 625px;
+  max-height: 550px;
+}
+
+/* Help Section */
+
+.helpSection {
+  width: 100%;
+  padding: 40px 0px;
+  text-align: center;
+  background: #000;
+  color: #fff;
+  border-radius: 8px;
+}
+.helpSection h3 {
+  font-size: 20px;
+}
+.helpSection p {
+  font-size: 18px;
+  margin: 10px 0 20px;
+  color: #fff;
+}
+.helpButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.outlineBtn {
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: white;
+  border-radius: 6px;
+  color: black;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Info Section */
+.infoSection {
+  padding: 40px 20px;
+}
+.infoSection h3 {
+  font-size: 28px;
+  text-align: left;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+.infoGrid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.infoCard {
+  flex: 1;
+  min-width: 250px;
+  max-width: 320px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+}
+.infoCard h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.infoCard p {
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+.infoCard small {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .contactSection {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+  .row {
+    flex-direction: column;
+  }
+  .imageBox {
+    order: -1;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .formContainer h2 {
+    font-size: 22px;
+  }
+  .submitBtn {
+    font-size: 14px;
+  }
+  .helpSection h3 {
+    font-size: 18px;
+  }
+  .help {
+    margin: 0px -20px;
+  }
+}
+
+/* Fixing typo in your last query: max-widh -> max-width */
+@media (max-width: 380px) {
+  .contactSection {
+    padding: 20px 10px;
+  }
+
+  .formContainer {
+    width: 100%;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .inputBox input,
+  .inputBox select,
+  .inputBox textarea {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .inputBox label {
+    font-size: 12px;
+  }
+
+  .submitBtn {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .helpSection p {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .outlineBtn {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  .infoCard {
+    min-width: 100%;
+    padding: 15px;
+  }
+}
+@media (max-width: 300px) {
+  .formContainer h2 {
+    font-size: 18px;
+  }
+
+  .formContainer h4 {
+    font-size: 14px;
+  }
+
+  .formContainer p {
+    font-size: 12px;
+  }
+
+  .inputBox input,
+  .inputBox select,
+  .inputBox textarea {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .inputBox label {
+    font-size: 11px;
+  }
+
+  .submitBtn {
+    width: 100%;
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .helpSection h3 {
+    font-size: 16px;
+  }
+
+  .helpSection p {
+    font-size: 12px;
+    padding: 0 5px;
+  }
+
+  .outlineBtn {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .infoCard {
+    min-width: 100%;
+    padding: 10px;
+  }
+
+  .infoCard h4 {
+    font-size: 14px;
+  }
+
+  .infoCard p {
+    font-size: 5px;
+  }
+
+  .infoCard small {
+    font-size: 11px;
+  }
+}

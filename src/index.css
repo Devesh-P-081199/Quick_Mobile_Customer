@@ -1,0 +1,7 @@
+/* Tailwind CSS v3 */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Custom Components that enhance Tailwind */
+@import "./kstyle.css";

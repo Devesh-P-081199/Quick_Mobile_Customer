@@ -1,0 +1,286 @@
+.selectBrandWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.brandImageBox {
+  display: flex;
+  gap: 19px;
+  flex-wrap: wrap;
+  overflow: scroll;
+  /* justify-content: center; */
+}
+
+.imgIndividual {
+  width: 146px;
+  height: 150px;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  /* padding: 2px; */
+  overflow: hidden;
+}
+.imgIndividual img {
+  /* height: 60px; */
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+.sectionHeading {
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+}
+
+.brandImageBox span {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.brandSingleBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+}
+
+.searchBox input {
+  background-color: #ffffff;
+  padding: 15px 10px;
+  border-radius: 8px;
+  border: 0.3px solid #e1e1e1;
+  max-width: 595px;
+  width: 100%;
+}
+
+.searchBox {
+  margin-left: 10px;
+  max-width: 367px;
+  width: 100%;
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 3%;
+  top: 30%;
+}
+
+.headingFlex {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Extra large desktops */
+
+@media (min-width: 1600px) {
+}
+
+/* Standard desktops and laptops */
+
+@media (max-width: 1440px) {
+}
+@media screen and (max-width: 1280px) {
+}
+@media (max-width: 1024px) {
+}
+
+/* Tablets */
+
+@media (max-width: 768px) {
+  .headingFlex {
+    align-items: center;
+  }
+}
+
+/* Phones */
+
+@media (max-width: 480px) {
+  .searchBox {
+    width: 44%;
+  }
+  .searchBox input {
+    background-color: #ffffff;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 0.3px solid #e1e1e1;
+    max-width: 595px;
+    width: 100%;
+    font-size: 12px;
+  }
+  .searchIcon {
+    position: absolute;
+    right: 5%;
+    top: 30%;
+    width: 20%;
+    background: white;
+    padding-left: 10px;
+  }
+
+  .sectionHeading {
+    font-size: 18px;
+    font-family: "IBM Plex Sans";
+    font-weight: 500;
+  }
+
+  .imgIndividual {
+    height: 88px;
+    width: 88px;
+  }
+
+  .brandImageBox {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .brandSingleBox {
+    gap: 6px;
+  }
+
+  .brandImageBox span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 402px) {
+  .imgIndividual {
+    height: 85px;
+    width: 85px;
+  }
+}
+
+@media (max-width: 387px) {
+  .imgIndividual {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+@media (max-width: 364px) {
+  .imgIndividual {
+    height: 70px;
+    width: 70px;
+    padding: 2px;
+  }
+}
+
+@media (max-width: 327px) {
+  .imgIndividual {
+    height: 60px;
+    width: 60px;
+    padding: 2px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .brandImageBox {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 30px;
+    column-gap: 10px;
+  }
+  .imgIndividual {
+    height: 176px;
+    width: 100%;
+  }
+  .imgIndividual img {
+    /* height: 60px; */
+    object-fit: contain;
+    height: 139px;
+    width: 139px;
+    /* padding: 10px; */
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .brandImageBox span {
+    font-size: 14px;
+  }
+  .brandImageBox {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 30px;
+    column-gap: 10px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 993px) {
+  .brandImageBox {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr);
+    grid-row-gap: 30px;
+    grid-column-gap: 10px;
+  }
+
+  .imgIndividual {
+    height: 100%;
+    width: 100%;
+  }
+  .imgIndividual img {
+    /* height: 60px; */
+    object-fit: contain;
+    height: 130px;
+    width: 100px;
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 490px) and (max-width: 767px) {
+  .brandImageBox {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+  }
+
+  .imgIndividual {
+    height: 100%;
+    width: 100%;
+  }
+  .imgIndividual img {
+    /* height: 60px; */
+    object-fit: contain;
+    height: 110px;
+    /* width: 80px; */
+    padding: 10px;
+  }
+}
+@media screen and (min-width: 200px) and (max-width: 489px) {
+  .brandImageBox {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 20px;
+    column-gap: 10px;
+  }
+  .imgIndividual {
+    height: 100%;
+    width: 100%;
+  }
+  .imgIndividual img {
+    /* height: 60px; */
+    object-fit: contain;
+    height: 95px;
+    /* width: 80px; */
+    /* padding: 10px; */
+  }
+}
+
+.viewAllCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.viewAllCircle span {
+  font-size: 20px;
+}

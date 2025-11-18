@@ -1,0 +1,108 @@
+.modalWrapper {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  /* padding: 10px; */
+  /* border-bottom: 1px solid #eee; */
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+  height: 50px;
+  position: fixed;
+  width: 92vw;
+  background-color: white;
+  /* margin: 16px; */
+  margin: 16px;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  margin-right: 10px;
+  position: absolute;
+  left: 5px;
+  z-index: 99;
+}
+
+.searchBox {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  position: relative;
+  border: 1px solid #ddd;
+  padding: 6px 30px;
+  border-radius: 6px;
+  height: 47px;
+  padding-right: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* When input inside is focused */
+.searchBox:focus-within {
+  border-color: #1968b3; /* dark blue border */
+  /* box-shadow: 0 0 0 2px rgba(0, 22, 66, 0.3);  */
+  border: 1px solid #1968b3;
+}
+
+.searchBox img {
+
+  /* height: 21px; */
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+.searchIcon {
+  color: #666;
+}
+
+.content {
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.sectionGroup {
+  margin-bottom: 15px;
+}
+
+.suggestionRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f2f2f2;
+  cursor: pointer;
+}
+
+.name {
+  color: #222;
+}
+
+.tag {
+  color: #888;
+  font-size: 12px;
+}
+.searchInput {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+}
+
+/* Custom focus outline */
+/* .searchInput:focus {
+  outline: 2px solid #0044cc;
+  border-radius: 4px;
+} */

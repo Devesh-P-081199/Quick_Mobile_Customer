@@ -1,0 +1,397 @@
+.RightBox {
+  width: 404px;
+  border-width: 0.3px;
+  gap: 30px;
+  border-radius: 10px;
+  padding: 20px;
+  border: 0.3px solid #e1e1e1;
+  background-color: #ffffff;
+}
+
+.BottomPara {
+  font-family: IBM Plex Sans;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  letter-spacing: 0%;
+  margin-top: 30px;
+  color: #00000080;
+}
+
+.DeviceImg {
+  display: flex;
+  gap: 30px;
+}
+
+.mobileImg {
+  width: 255px;
+  border-width: 1px;
+  padding-right: 30px;
+  padding-left: 30px;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid #0000001a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileImg img {
+  height: 188px;
+}
+
+.DeviceDetails {
+  width: 394px;
+  height: 278px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-between;
+  gap: 0px;
+}
+
+.DeviceDetails h2 {
+  font-family: IBM Plex Sans;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.DeviceDetails .name {
+  margin-bottom: 52px;
+}
+
+.DeviceDetails span {
+  font-family: IBM Plex Sans;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #00000080;
+}
+
+.recalculateImg {
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border-right-width: 1px;
+}
+
+.FreePickupImg {
+  width: 370px;
+  height: 40;
+  gap: 5px;
+  border-radius: 5px;
+}
+
+.RightBox {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 30px;
+  margin: 0 auto;
+  width: 404px;
+  height: auto;
+  background: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 10px;
+}
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 30px;
+  margin: 0 auto;
+  width: 404px;
+  height: 499px;
+  background: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 10px;
+}
+
+.summary {
+  width: 364px;
+  height: 26px;
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  text-decoration: underline;
+  color: #000000;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 364px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 5px 0;
+  /* width: 364px; */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.label,
+.value {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.value {
+  text-align: right;
+  color: #000000;
+}
+
+.pickupCharges {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.free {
+  font-weight: 500;
+  color: #34a853;
+}
+
+.striked {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  /* width: 364px; */
+}
+
+.totalLabel,
+.totalValue {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.sellNow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11px 35px;
+  width: 364px;
+  height: 54px;
+  background: #1968b3;
+  border-radius: 10px;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  /* margin: 0px 10px; */
+}
+
+.applyCoupon {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 19px;
+  gap: 5px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.couponContent {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
+
+/* .couponIcon {
+      width: 24px;
+      height: 24px;
+      background: #000000;
+    }
+     */
+.couponText {
+  font-family: var(--font-family-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000000;
+}
+
+.arrow {
+  float: right;
+}
+@media (max-width: 768px) {
+  .RightBox {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 30px;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    background: #ffffff;
+    border: 0.3px solid #e1e1e1;
+    border-radius: 10px;
+  }
+  /* .row {
+      flex-direction: column;
+      width: 290px;
+    } */
+  .sellNow {
+    width: 100%;
+  }
+
+  .totalRow {
+    /* flex-direction: column; */
+  }
+}
+
+.Frame1597882160 {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 20px 5px;
+  gap: 30px;
+  width: 100%;
+  height: 97px;
+  left: 0px;
+  top: 13px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.ImageContainer {
+  width: 70px;
+  height: 80px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.ImageContainer img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.Frame1597882163 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 10px;
+  /* width: 209px; */
+  height: 52px;
+  /* flex: none; */
+  /* order: 1; */
+  flex-grow: 0;
+}
+
+.ProductName {
+  margin: 0 auto;
+  /* width: 187px; */
+  height: 52px;
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+}
+
+.sellNowMobile {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .DeviceDetails {
+    width: 100%;
+  }
+  .summary {
+    width: 100%;
+  }
+  .details {
+    width: 100%;
+  }
+  .totalRow {
+    width: 100%;
+  }
+  .ImageContainer {
+    width: auto;
+  }
+
+  .Frame1597882160 {
+    padding: 20px 0px;
+    height: 100%;
+    gap: 10px;
+  }
+  .sellNowMobileContainer {
+    position: fixed;
+    bottom: 0vh;
+    left: 0vh;
+    height: 71px;
+    border-radius: 0px;
+    /* height: 39px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 11px;
+    background-color: #ffffff;
+    width: 100%;
+    border: none;
+    z-index: 99;
+  }
+  .sellNowMobile {
+    border-radius: 0px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 25px 11px; */
+    width: 100%;
+    border-radius: 5px;
+    background-color: #1968b3;
+    color: #ffffff;
+  }
+  .sellNowMobile {
+    display: block;
+  }
+  .RightBox {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .ProductName {
+    font-size: 18px;
+  }
+
+  .details {
+    width: 100%;
+  }
+}

@@ -1,0 +1,68 @@
+.panelWrapper .left {
+    position: relative;
+    width: 772px;
+    height: 374px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: auto;
+  }
+
+  .panelWrapper {
+    max-width: 1140px;
+    display: flex;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31px;
+    color: #000;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+  
+  .filterButtons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .filterBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 15px;
+    height: 38px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: black;
+    cursor: pointer;
+    background-color: white;
+  }
+  
+  .activeBtn {
+    background-color: black;
+    color: white;
+  }
+  
+  .ordersList {
+    margin-top: 20px;
+    /* Add list styling here later */
+  }
+  
+  .placeholderText {
+    color: #999;
+    font-style: italic;
+  }
+  

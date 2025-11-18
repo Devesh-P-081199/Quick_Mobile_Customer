@@ -1,0 +1,334 @@
+.CheckOutSection {
+  padding: 40px 20px;
+  background: #f9f9f9;
+}
+
+.Wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.PaymentBox {
+  flex: 1;
+  /* min-width: 700px; */
+  padding: 30px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.Title {
+  font-size: 28px;
+  font-weight: 500;
+  font-family: var(--font-family-primary);
+  color: #000;
+}
+
+.SubTitle {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+.Description {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.PaymentSection,
+.DetailsSection {
+  display: flex;
+  flex-direction: column;
+  /* gap: 20px; */
+}
+
+.PaymentOptionContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.PaymentOption {
+  display: flex;
+  align-items: center;
+  padding: 16px 0px;
+  border-bottom: 1px solid #a8a8a8;
+  cursor: pointer;
+  gap: 15px;
+}
+
+.PaymentOption:hover {
+  background-color: #f0f8ff;
+}
+
+.Selected .Radio {
+  background-color: #fdfeff;
+  border-color: #1968b3;
+  border: 5px solid #1968b3;
+}
+
+.Radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #aaa;
+  border-radius: 50%;
+}
+
+.IconLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.IconLabel img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.IconLabel span {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+}
+
+.DropDown {
+  padding: 16px;
+}
+
+.DefaultInfo {
+  margin-bottom: 10px;
+  background: #e4e4e4;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  margin-top: 10px;
+  display: flex;
+  padding: 5px 10px;
+  gap: 5px;
+  align-items: center;
+}
+
+.DefaultInfo ul {
+  padding-left: 20px;
+}
+
+.InputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.InputGroup input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.InputHint {
+  font-size: 12px;
+  color: #777;
+}
+
+.SmallInfo {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.Notice {
+  font-size: 13px;
+  color: #444;
+  background: #eaeaea;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+.AgreeBox {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  color: #444;
+  margin: 10px 0;
+}
+
+.SaveButton {
+  padding: 10px 20px;
+  background: #007fee;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.SaveButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.IMEITitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+}
+
+.IMEIInfo {
+  font-size: 14px;
+  color: #444;
+  background: #fff4e5;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.UploadBill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.UploadBill img {
+  width: 24px;
+  height: 24px;
+}
+
+.ActionButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.SkipButton {
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 6px;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+}
+
+.SaveNav {
+  padding: 10px 20px;
+  border-radius: 6px;
+  background-color: #1968b3;
+  color: #fff;
+  text-decoration: none;
+}
+
+.cardAdd {
+  background: #1968b3;
+  color: white;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 5px;
+  /* float: right; */
+  margin: 11px 0px;
+}
+
+@media (max-width: 480px) {
+  .DropDown {
+    padding: 0px;
+    margin-top: 10px;
+  }
+  .Wrapper {
+    flex-direction: column;
+  }
+  .DefaultInfo {
+    /* width: fit-content; */
+  }
+
+  .PaymentBox {
+    padding: 0px 10px;
+  }
+  .CheckOutSection {
+    padding: 20px 0px;
+    background: none;
+    border: none;
+  }
+
+  .PaymentBox {
+    background: none;
+    border: none;
+  }
+
+  .PaymentBox h2 {
+    display: none;
+  }
+
+  .CheckOutSection {
+    padding-bottom: 90px;
+  }
+}
+
+.ActionButtons a {
+  width: auto;
+}
+
+/* Default card style */
+.paymentCard {
+  /* background: #f6efef; */
+  border: 0.3px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 270px;
+  flex: 0 0 auto;
+}
+
+/* Selected card */
+.paymentCard.selected {
+  background: #e6f0ff;
+  border: 1px solid #007bff;
+}
+
+/* + Add card */
+.addCard {
+  background: #fff;
+  border: 0.3px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #007bff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addCard:hover {
+  background: #f5faff;
+  border: 1px solid #007bff;
+  width: 92vw;
+}
+
+.accountBoxes {
+  display: flex;
+  gap: 10px;
+  overflow-y: auto;
+  width: 92vw;
+}
+
+.upiBoxes {
+  display: flex;
+  width: 92vw;
+  overflow-y: auto;
+  gap: 10px;
+}

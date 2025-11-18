@@ -1,0 +1,47 @@
+/* OurService.module.css */
+
+.heading {
+  width: 100%;
+  font-size: 1.5rem; /* 24px */
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.cardContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  overflow: auto;
+  gap: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardText {
+  text-align: left;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 1rem; /* 16px */
+}
+
+@media screen and (max-width: 480px) {
+  .cardContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: auto;
+    gap: 1rem;
+  }
+  .cardText {
+    font-size: 12px;
+  }
+
+  .heading {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,143 @@
+.topSellingWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.brandImageBox {
+  display: flex;
+  gap: 19px;
+  /* flex-wrap: wrap; */
+  overflow: scroll;
+  /* justify-content: center; */
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.imgIndividual {
+  width: 170px;
+  height: 180px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.sectionHeading {
+  font-size: 18px;
+  margin: 0;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+}
+
+.brandImageBox span {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.brandSingleBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+}
+
+.searchBox input {
+  background-color: #ffffff;
+  padding: 15px 10px;
+  border-radius: 8px;
+  border: 0.3px solid #e1e1e1;
+  max-width: 595px;
+  width: 100%;
+}
+
+.searchBox {
+  margin-left: 10px;
+  max-width: 367px;
+  width: 100%;
+}
+
+.headingFlex {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+.imgIndividual img {
+  /* 
+     width: 146px;
+    height: 169px; */
+  object-fit: contain;
+  /* padding: 10px; */
+  padding: 15px;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .brandImageBox span {
+    font-size: 12px;
+  }
+
+  .brandSingleBox span {
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .imgIndividual {
+    height: 150px;
+    width: 130px;
+  }
+  .topSellingWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .absoluteButtons {
+    display: none;
+  }
+}
+
+.sliderContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sliderBtn {
+  /* background-color: #fff; */
+  /* border: 1px solid #ddd; */
+  /* padding: 12px 12px; */
+  cursor: pointer;
+  font-size: 18px;
+  margin: 0 3px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+.sliderBtn:hover {
+  background-color: #f0f0f0;
+}
+
+.brandImageBox {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+.absoluteButtons {
+  display: flex;
+  justify-content: end;
+}
+
+@media (max-width: 480px) {
+  .imgIndividual {
+    /* background: none; */
+  }
+}

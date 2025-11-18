@@ -1,0 +1,83 @@
+/* Homepage sections consistent padding and alignment */
+
+/* Ensure homepage background is maintained */
+.homepage-main-content {
+  background-color: #aaaaaaaa !important;
+}
+
+/* Homepage section consistent padding class */
+.homepage-section {
+  padding: var(--spacing-2) 12.5% !important;
+}
+
+/* Remove conflicting padding from global classes within homepage sections */
+.homepage-section.section-container,
+.homepage-section.section-padding-md,
+.homepage-section.section-padding-lg,
+.homepage-section.zero-padding-section,
+.homepage-section.default-padding-section {
+  padding: var(--spacing-2) 12.5% !important;
+}
+
+/* Remove max-width constraints from homepage sections */
+.homepage-section .content-container,
+.homepage-section .wrapper,
+.homepage-section .container {
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+/* Remove any conflicting max-width from specific components */
+.homepage-section .heading {
+  max-width: none !important;
+}
+
+/* Remove any background colors that might obstruct the main background */
+.homepage-main-content .homepage-section {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Remove specific background colors from common elements */
+.homepage-main-content .blogs-container,
+.homepage-main-content .used-vs-brand,
+.homepage-main-content .slider-container,
+.homepage-main-content .inner-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Ensure section backgrounds don't override main background */
+.homepage-main-content section {
+  background: transparent !important;
+}
+
+/* Remove white backgrounds from containers */
+.homepage-main-content .wrapper,
+.homepage-main-content .container,
+.homepage-main-content .content-container {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Override specific section classes that might have backgrounds */
+.homepage-main-content .blogs-section,
+.homepage-main-content .use-brand-section,
+.homepage-main-content .home-two-slider {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Ensure all divs within homepage sections are transparent */
+.homepage-main-content div {
+  background-color: transparent !important;
+}
+
+/* Keep only specific elements with their backgrounds (like cards) */
+.homepage-main-content .FeatureLists ul,
+.homepage-main-content .FeatureLists ul li,
+.homepage-main-content .card,
+.homepage-main-content .cardImageWrapper,
+.homepage-main-content .blog-card {
+  background-color: #ffffff !important; /* Keep card backgrounds white */
+}

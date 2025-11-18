@@ -1,0 +1,35 @@
+/* Simple Slider Overflow Fix - Only targets specific classes */
+
+/* Only apply to elements with these specific classes */
+.price-slider-fix,
+.range-slider-fix,
+.slider-container-fix {
+  position: relative;
+  width: 100%;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.price-slider-fix input[type="range"],
+.range-slider-fix input[type="range"],
+.slider-container-fix input[type="range"] {
+  width: calc(100% - 30px);
+  margin: 0 auto;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .price-slider-fix,
+  .range-slider-fix,
+  .slider-container-fix {
+    padding: 15px 10px;
+  }
+
+  .price-slider-fix input[type="range"],
+  .range-slider-fix input[type="range"],
+  .slider-container-fix input[type="range"] {
+    width: calc(100% - 20px);
+  }
+}

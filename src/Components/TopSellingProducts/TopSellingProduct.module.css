@@ -1,0 +1,141 @@
+.card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 15px;
+    width: 222px;
+    height: 259px;
+    background: #fff;
+    border: 0.3px solid #E1E1E1;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+  }
+  
+  .badge {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 11px;
+    gap: 10px;
+    width: 72px;
+    height: 24px;
+    background: #F4F4F4;
+    border-radius: 5px;
+  }
+  
+  .badge span {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #34A853;
+  }
+  
+  .imageSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 74px;
+    width: 192px;
+    height: 126px;
+  }
+  
+  .productImage {
+    width: 53px;
+    height: 106px;
+  }
+  
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 192px;
+    height: 79px;
+  }
+  
+  .title {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #000;
+  }
+  
+  .subtitle {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 13px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .ratingRow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5px;
+    height: 15px;
+  }
+  
+  .stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    height: 15px;
+  }
+  
+  .starIcon {
+    width: 16px;
+    height: 15px;
+  }
+  
+  .reviewText {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 13px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .priceRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 192px;
+    height: 18px;
+  }
+  
+  .priceInfo {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    width: 145px;
+    height: 18px;
+  }
+  
+  .priceLabel, .priceValue {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #000;
+  }
+  
+  .oldPrice {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 13px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  

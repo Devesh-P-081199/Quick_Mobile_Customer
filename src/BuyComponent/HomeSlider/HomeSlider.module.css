@@ -1,0 +1,265 @@
+.wrapper {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  height: auto;
+
+  touch-action: pan-y;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    width: 100%;
+  }
+}
+
+.banner {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 0.5rem 0;
+  /* font-weight: 600; */
+}
+
+.sliderContainer {
+  background-color: #ecfccb;
+  padding: 32px 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .sliderContainer {
+    flex-direction: row;
+    gap: 2.5rem;
+  }
+  .banner {
+    padding: 0.8rem 0;
+    font-size: 1.2rem;
+  }
+}
+
+.arrowButton {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .arrowButton {
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+.activeArrow {
+  background-color: black;
+  color: white;
+}
+
+.inactiveArrow {
+  background-color: #e5e5e5;
+  color: #aeaeae;
+}
+
+.arrowSymbol {
+  margin-top: -2px;
+}
+
+.slideContentWrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  flex: 1;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .slideContentWrapper {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.textSection {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .textSection {
+    text-align: left;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+.description {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  max-width: 90%;
+}
+
+@media (min-width: 768px) {
+  .description {
+    font-size: 1.25rem;
+    max-width: 600px;
+  }
+}
+
+.ctaButton {
+  background-color: #1968b3;
+
+  display: inline-block;
+  /* background-color: black; */
+  margin-top: 1rem;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .ctaButton {
+    font-size: 1rem;
+  }
+}
+
+.image {
+  width: 9rem;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .image {
+    width: 15rem;
+  }
+}
+
+/* 🔹 Tablet-specific enhancements only */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .image {
+    width: 12rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    max-width: 85%;
+  }
+
+  .ctaButton {
+    font-size: 0.95rem;
+  }
+}
+
+.dotsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.dot {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.activeDot {
+  width: 1.5rem;
+  height: 0.5rem;
+  background-color: black;
+  border-radius: 9999px;
+}
+
+.inactiveDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 9999px;
+}
+
+@keyframes fillBar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.activeDot {
+  width: 2rem;
+  height: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+}
+
+.activeDot::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: black;
+  animation: fillBar 4s linear forwards;
+  animation-play-state: running;
+}
+
+/* Pause on hover (desktop) */
+.activeDot:hover::before {
+  animation-play-state: paused;
+}
+
+@media screen and (max-width: 480px) {
+  .banner {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 379px) {
+  .banner {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 380px) and (max-width: 480px) {
+  .banner {
+    font-size: 16px;
+  }
+}

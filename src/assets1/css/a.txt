@@ -1,0 +1,53 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap');
+
+
+
+:root {
+
+    --section-bg : #F5F6FA;
+    --btn-desable : #00000040;
+    --btn-enable : #007FEE;
+    --primary-font: 'IBM Plex Sans';
+    --heading-font: 'Hedvig Letters Serif', serif;   
+
+}
+
+*{
+
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #F5F6FA;
+}
+
+h1 {
+    font-size: 24px;
+    font-family: 'IBM Plex Sans';
+
+
+}
+
+section{
+
+    padding: 30px 150px;
+}
+
+.wrapper {
+
+    max-width: 1140px;
+    margin: auto;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hidden {
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }

@@ -1,0 +1,127 @@
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #fff;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Left Section (Illustration placeholder) */
+.imageSection {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.illustration {
+  width: 100%;
+  /* aspect-ratio: 1 / 1; */
+  /* background: #ededed; */
+  border-radius: 12px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.illustration img {
+  /* width: 90%; */
+}
+
+/* Right Section */
+.textSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.errorCode {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: #000;
+  margin: 0;
+}
+
+.title {
+  font-family: var(--font-family-primary);
+  font-size: 2rem !important;
+  font-weight: 300;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: #b0b0b0;
+  max-width: 350px;
+  margin: 0;
+}
+
+/* Button */
+.backButton {
+  display: inline-block;
+  padding: 12px 18px;
+  margin-top: 1rem;
+  background: var(--color-primary-500);
+  color: var(--color-white);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.backButton:hover {
+  background: #005bb5;
+}
+
+/* Desktop Layout */
+@media (min-width: 1280px) {
+  .errorPage {
+    flex-direction: row;
+    text-align: left;
+    padding: 0;
+    justify-content: center;
+    max-height: 100vh;
+  }
+
+  .imageSection {
+    /* flex: 1; */
+    /* margin-bottom: 0; */
+    /* margin-right: 3rem; */
+    max-width: 50%;
+    height: 100%;
+  }
+
+  .textSection {
+    /* flex: 1; */
+    align-items: center;
+    max-width: 50%;
+  }
+
+  .illustration {
+    background: #ededed;
+  }
+
+  .subtitle {
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .errorPage {
+    padding: 50px 0px;
+    justify-content: start;
+    gap: 20px;
+  }
+}

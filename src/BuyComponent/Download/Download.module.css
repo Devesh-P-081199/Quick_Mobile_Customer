@@ -1,0 +1,151 @@
+/* Download.module.css */
+.container {
+  margin: auto;
+}
+
+@media (min-width: 640px) {
+  .downloadContainer {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: var(--spacing-2) 12.5%;
+  }
+}
+
+.downloadContainer {
+  width: 100%;
+  padding: 30px 10px;
+}
+
+.downloadBox {
+  background-color: #007fee;
+  width: 100%;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px;
+}
+
+@media (min-width: 768px) {
+  .downloadContainer {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .downloadBox {
+    flex-direction: row;
+    padding: 40px;
+  }
+}
+
+.imageWrapper {
+  flex-shrink: 0;
+}
+
+.mobileImage {
+  width: 160px;
+}
+
+@media (min-width: 640px) {
+  .downloadContainer {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .mobileImage {
+    width: 192px;
+  }
+}
+
+@media (min-width: 768px) {
+  .downloadContainer {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .mobileImage {
+    width: 224px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobileImage {
+    width: 256px;
+  }
+}
+
+.textSection {
+  text-align: center;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .downloadContainer {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .textSection {
+    text-align: left;
+  }
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 640px) {
+  .downloadContainer {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .heading {
+    font-size: 24px;
+  }
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 640px) {
+  .downloadContainer {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .description {
+    font-size: 16px;
+  }
+}
+
+.storeButtons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .storeButtons {
+    justify-content: flex-start;
+  }
+}
+
+.storeImage {
+  height: 40px;
+}
+
+@media (min-width: 640px) {
+  .storeImage {
+    height: 48px;
+  }
+}

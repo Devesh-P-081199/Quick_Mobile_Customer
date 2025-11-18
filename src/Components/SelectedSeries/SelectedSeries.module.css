@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.headingWrapper {
+  /* Additional styles if needed */
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: 500;
+  color: #000;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.seriesBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 16px;
+  width: fit-content;
+  background-color: #ffffff;
+  border: 1px solid #000;
+  border-radius: 6px;
+}
+
+.seriesBox a {
+  width: auto;
+}
+
+.seriesLabel {
+  font-weight: 500;
+  color: #000;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.closeIcon {
+  color: #ef4444; /* Tailwind's red-500 */
+  font-weight: bold;
+  cursor: pointer;
+}

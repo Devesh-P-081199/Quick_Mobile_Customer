@@ -1,0 +1,39 @@
+/* SelectSeries.module.css */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.seriesList {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.seriesItem {
+  padding: 10px;
+  background-color: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 5px;
+  max-width: 216px;
+  width: 100%;
+  font-weight: 500;
+  font-family: "IBM Plex Sans";
+  cursor: pointer;
+}
+.headingFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionHeading {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: #000; /* adjust if needed */
+}
