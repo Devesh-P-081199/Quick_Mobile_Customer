@@ -363,7 +363,7 @@ hr {
   textarea,
   select {
     font-size: 16px; /* Prevent zoom on iOS */
-    padding: var(--spacing-2) var(--spacing-1);
+    /* padding: var(--spacing-2) var(--spacing-1); */
   }
 
   /* Better mobile typography */
@@ -806,7 +806,7 @@ hr {
   textarea,
   select {
     font-size: 16px;
-    padding: var(--spacing-2) var(--spacing-1);
+    /* padding: var(--spacing-2) var(--spacing-1); */
   }
 
   /* Typography */

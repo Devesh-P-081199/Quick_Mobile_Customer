@@ -14,9 +14,11 @@ function SelectVarient() {
         title="Your Device"
         onBack={() => window.history.back()}
       />
-      <SellDeviceVarient />
-      <TopSellingBrand />
-      <TopSellingModel />
+      <div className="page-content-wrapper">
+        <SellDeviceVarient />
+        <TopSellingBrand />
+        <TopSellingModel />
+      </div>
     </>
   );
 }

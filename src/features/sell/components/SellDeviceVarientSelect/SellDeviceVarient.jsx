@@ -38,7 +38,7 @@ function SellDeviceVarient() {
       variantId: null,
       variantSlug: null,
     }));
-  }, [slug2]);
+  }, [setUserSelection, setVariants, slug2]);
 
   useEffect(() => {
     if (seoDataFromContext) setSeoData(seoDataFromContext);
@@ -132,7 +132,50 @@ function SellDeviceVarient() {
 
       // else → wait for user to select
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug2, slug1]);
+
+  // Dynamic width calculation - runs once after variants load
+  useEffect(() => {
+    if (window.innerWidth > 480) return; // Only on mobile
+    if (!variants?.variants || isLoading) return;
+
+    const timer = setTimeout(() => {
+      const formElement = document.querySelector('[class*="form"]');
+      const labels = formElement?.querySelectorAll(
+        'label[class*="radioLabel"]'
+      );
+
+      if (!labels || labels.length === 0) return;
+
+      const containerWidth = formElement.offsetWidth;
+      const halfWidth = containerWidth * 0.5;
+
+      // Calculate all label widths
+      const labelWidths = Array.from(labels).map((label) => {
+        const span = label.querySelector("span");
+        return span ? span.scrollWidth + 60 : 0; // +60 for padding and radio
+      });
+
+      // Check if ANY label exceeds 50%
+      const hasLongLabel = labelWidths.some((width) => width > halfWidth);
+
+      // Apply classes based on rule
+      labels.forEach((label) => {
+        if (hasLongLabel) {
+          // If ANY > 50%, ALL become 100%
+          label.style.flex = "1 1 100%";
+          label.style.maxWidth = "100%";
+        } else {
+          // If ALL < 50%, ALL become 50%
+          label.style.flex = "1 1 calc(50% - 5px)";
+          label.style.maxWidth = "calc(50% - 5px)";
+        }
+      });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [variants, isLoading]);
 
   const handleChange = (wholeVariantId, variantId, variantSlug) => {
     setSelectedMemory({ wholeVariantId, variantId });
@@ -166,8 +209,8 @@ function SellDeviceVarient() {
   const isPhoneNameLoading = !phoneName;
 
   return (
-    <div className="default-padding-section mobile-pt-section { ">
-      <div className="wrapper page-content-wrapper">
+    <div className="default-padding-section mobile-pt-section">
+      <div className="wrapper">
         <div className={`${styles.wrapper}`}>
           <div className={styles.leftContent}>
             <div className={styles.leftImgBox}>
@@ -264,6 +307,15 @@ function SellDeviceVarient() {
               </div>
             </form>
           </div>
+
+          {/* <hr
+            style={{
+              border: "none",
+              margin: "-10px 0px 10px",
+              maxHeight: "1px",
+              height: "1px",
+            }}
+          /> */}
         </div>
       </div>
     </div>

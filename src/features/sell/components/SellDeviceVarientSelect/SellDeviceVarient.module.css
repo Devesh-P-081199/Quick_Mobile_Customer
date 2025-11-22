@@ -49,7 +49,7 @@
 .selectBox {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
 }
 
 .selectBox span {
@@ -66,15 +66,16 @@
   font-weight: 400;
   font-size: 12px;
   max-width: 570px;
+  margin-bottom: 0;
 }
 
 .form {
   display: flex;
   gap: 10px;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .radioLabel {
@@ -84,12 +85,10 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  border-radius: 5px;
-  /* height: 53px; */
-  min-width: 100%;
-  max-width: fit-content;
+  border-radius: 10px;
   gap: 16px;
   white-space: nowrap;
+  width: 100%;
 }
 
 /* .radioLabel:hover {
@@ -109,6 +108,37 @@
   font-size: 14px;
 }
 
+/* Custom radio button styling */
+.radioLabel input[type="radio"] {
+  padding: none !important;
+  cursor: pointer;
+  accent-color: #1968b3;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid #b4b4b4;
+  border-radius: 50%;
+  outline: none;
+  position: relative;
+}
+
+/* Radio button checked state */
+.radioLabel input[type="radio"]:checked {
+  border-color: #1968b3;
+}
+
+/* Inner circle when checked */
+.radioLabel input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #1968b3;
+}
+
 .button {
   width: 200px;
   padding: 11px 35px;
@@ -120,12 +150,24 @@
 }
 
 @media (max-width: 480px) {
+  .form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
   .radioLabel {
-    /* width: 144px; */
+    flex: 1 1 calc(50% - 5px);
+    min-width: calc(50% - 5px);
+    max-width: 100%;
+  }
+
+  /* If text is too long, take full width */
+  .radioLabel:has(span) {
+    flex-basis: auto;
   }
   .wrapper {
     padding: 10px 0px;
-    margin: -10px 0px;
     flex-direction: column;
     gap: 15px;
   }
@@ -146,8 +188,8 @@
     justify-content: center;
     padding-right: 0px;
     background-color: #ffffff;
-    border: 1px solid #e1e1e1;
-    border-radius: 10px;
+    border: 0.3px solid #e1e1e1;
+    border-radius: 20px;
   }
   .leftImgBox {
     height: 100%;
@@ -166,15 +208,14 @@
 
   .heading {
     text-align: start;
-    /* border-bottom: 1px solid; */
-    padding-bottom: 10px;
     font-size: 20px;
+    margin-bottom: 0;
   }
   .selectBox p {
     font-size: 12px;
   }
   .rightContent {
-    gap: 17px;
+    gap: 19px;
     width: 100%;
     padding-left: 0px;
   }
@@ -191,14 +232,6 @@
     border-radius: 10px;
   }
 
-  .form {
-    /* display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px; */
-    /* align-items: flex-start;
-  flex-wrap: wrap;
-  padding-bottom: 20px; */
-  }
   .radioLabel span {
     font-size: 14px;
   }
@@ -209,7 +242,7 @@
   .selectBox span {
     font-family: "IBM Plex Sans", sans-serif;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
   }
   .button {
     /* position: fixed;
@@ -223,7 +256,7 @@
     /* padding: 25px 11px; */
     width: 100%;
     /* padding: ; */
-    border-radius: 5px;
+    border-radius: 13px;
   }
   .buttonBottomBox {
     position: fixed;
@@ -287,8 +320,8 @@
   align-items: center;
   gap: 8px;
   padding: 10px 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
@@ -296,29 +329,4 @@
 .radioLabel.active {
   border: 1px solid #1968b3 !important;
   background: #ddefff !important;
-}
-
-.radioLabel {
-  flex: 0 1 auto;
-}
-
-.radioLabel:has(span:only-child:where(:not(:empty))) {
-  width: auto;
-}
-
-/* Force full width only when content wraps */
-.radioLabel:has(br) {
-  flex: 1 1 100%;
-}
-.radioLabel {
-  padding: 10px 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  flex: 0 1 auto; /* default → shrink/grow by content */
-  min-width: fit-content;
-  max-width: 100%; /* if content is too long, allow wrapping */
-  white-space: normal; /* allow wrapping only if text is too long */
-  word-break: break-word;
 }

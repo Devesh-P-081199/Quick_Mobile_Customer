@@ -27,7 +27,6 @@
 
 .sectionHeading {
   font-size: 18px;
-  margin: 0;
   font-family: "IBM Plex Sans";
   font-weight: 500;
 }
@@ -88,13 +87,21 @@
   }
 
   .imgIndividual {
-    height: 150px;
-    width: 130px;
+    width: 115px;
+    height: 135px;
+    border: 0.3px solid #e1e1e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
   }
   .topSellingWrapper {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 25px;
   }
   .absoluteButtons {
     display: none;
@@ -134,10 +141,4 @@
 .absoluteButtons {
   display: flex;
   justify-content: end;
-}
-
-@media (max-width: 480px) {
-  .imgIndividual {
-    /* background: none; */
-  }
 }

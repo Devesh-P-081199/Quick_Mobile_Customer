@@ -32,7 +32,7 @@ const brands = [
 function TopSellingBrand() {
   return (
     <section className="default-padding-section">
-      <div className="wrapper page-content-wrapper">
+      <div className="wrapper">
         <div className={styles.topSellingWrapper}>
           <div className={styles.headingFlex}>
             <h2 className={styles.sectionHeading}>Top Selling Brand</h2>
@@ -52,6 +52,15 @@ function TopSellingBrand() {
             leftIcon={leftCircleIcon}
             rightIcon={rightCircleIcon}
           />
+
+          {/* <hr
+            style={{
+              border: "none",
+              margin: "10px 0px",
+              maxHeight: "1px",
+              height: "1px",
+            }}
+          /> */}
         </div>
       </div>
     </section>

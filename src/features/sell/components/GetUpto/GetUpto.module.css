@@ -8,8 +8,6 @@
   border-radius: 10px;
 }
 
-
-
 .leftContent {
   width: 38%;
   height: 388px;
@@ -40,7 +38,7 @@
   flex-direction: column;
   /* justify-content: center; */
   padding: 0px 30px;
-  gap: 10px;
+  gap: 19px;
   width: 55%;
   /* height: 448px; */
 }
@@ -86,6 +84,7 @@
 .userData {
   font-size: 12px;
   color: #000;
+  margin-bottom: 0;
 }
 
 .extraInfo {
@@ -98,6 +97,7 @@
   font-size: 24px;
   font-weight: 500;
   color: #000;
+  margin-bottom: 0;
 }
 
 .highlightBox {
@@ -115,7 +115,7 @@
   color: white;
   font-size: 16px;
   font-weight: 500;
-  border-radius: 10px;
+  border-radius: 13px;
   border: none;
   cursor: pointer;
   padding: 25px 11px;
@@ -162,36 +162,31 @@
     width: 100%;
   }
 }
-.verient{
-
+.verient {
   font-size: 22px;
-
 }
 
 @media (max-width: 480px) {
-
-  .getuptosection{
+  /* .getuptosection {
     padding: 2px 0px;
-  }
+  } */
 
   .wrapper {
-
-    padding: 10px;
+    padding: 10px 0px;
     flex-direction: column;
+    gap: 15px;
   }
   .leftContent {
-
-  width: 100%; 
-  height: 210px;
-border-right: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-   padding-right: 0px;
+    width: 100%;
+    height: 210px;
+    border-right: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0px;
     background-color: #ffffff;
-    border: 1px solid #e1e1e1;
-    border-radius: 10px;
-    
+    border: 0.3px solid #e1e1e1;
+    border-radius: 20px;
   }
   .leftImgBox {
     height: 100%;
@@ -199,15 +194,13 @@ border-right: none;
     padding: 20px 0px;
   }
 
-  .leftImgBox>img {
-
+  .leftImgBox > img {
     height: 100%;
     width: 100%;
     object-fit: contain;
   }
 
   .heading {
-
     text-align: start;
     /* border-bottom: 1px solid; */
     padding-bottom: 10px;
@@ -224,70 +217,69 @@ border-right: none;
   .productTitle {
     font-size: 20px;
     text-align: start;
+    margin-bottom: 0;
     /* border-bottom: 1px solid; */
-  
   }
 
-  .productTitle br{
+  .productTitle br {
     display: none;
   }
 
   .productDetails {
-    padding: 10px;
+    padding: 10px 0;
   }
 
-  .extraInfo  br {
+  .extraInfo {
+    padding-bottom: 15px;
+  }
+
+  .extraInfo br {
     display: none;
   }
   .backArrowImg {
-   display: none;
+    display: none;
   }
-  
-  .wrapper {
-  background: none;
-  border: none;
-  /* padding: 30px; */
-  display: flex;
-  position: relative;
-  border-radius: 10px;
-}
 
-.form {
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  /* align-items: flex-start;
+  .wrapper {
+    background: none;
+    border: none;
+    /* padding: 30px; */
+    display: flex;
+    position: relative;
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    /* align-items: flex-start;
   flex-wrap: wrap;
   padding-bottom: 20px; */
-}
-.radioLabel span {
-  font-size: 12px;
-}
-.leftImgBox > img {
+  }
+  .radioLabel span {
+    font-size: 12px;
+  }
+  .leftImgBox > img {
+    padding: 0px;
+  }
+  .verient {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .extraInfo p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .extraInfo p span {
+    font-size: 22px;
+  }
 
-  padding: 0px;
-}
-.verient{
-
-  font-size: 18px;
-  font-weight: 600;
-}
-.extraInfo p {
-  font-size: 20px;
-  font-weight: 500;
-  color: #000;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.extraInfo p span {
-
-  font-size: 22px;
-}
-
-.sellButton {
-
-   /* position: fixed;
+  .sellButton {
+    /* position: fixed;
     bottom: 0vh;
     left: 0vh; */
     border-radius: 0px;
@@ -298,9 +290,9 @@ border-right: none;
     /* padding: 25px 11px; */
     width: 100%;
     /* padding: ; */
-    border-radius: 5px;
-}
- .buttonBottomBox {
+    border-radius: 13px;
+  }
+  .buttonBottomBox {
     position: fixed;
     bottom: 0vh;
     left: 0vh;
@@ -317,12 +309,9 @@ border-right: none;
     border: none;
     z-index: 99;
   }
-  
 }
 
-
 .userData span {
-
   color: #1968b3;
   font-weight: 600;
 }
@@ -403,5 +392,3 @@ border-right: none;
     width: calc(100% - 40px);
   }
 }
-
-

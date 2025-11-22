@@ -195,171 +195,146 @@ const GetUpto = () => {
 
   return (
     <>
-      <section className={styles.getuptosection}>
-        {/* {seoData && (
-        <Helmet>
-          {seoData.title && <title>{seoData.title}</title>}
-          {seoData.description && (
-            <meta name="description" content={seoData.description} />
-          )}
-          {seoData.footer && <meta name="footer" content={seoData.footer} />}
-          {seoData.title && (
-            <meta property="og:title" content={seoData.title} />
-          )}
-          {seoData.description && (
-            <meta property="og:description" content={seoData.description} />
-          )}
-          {seoData.headings?.h1 && (
-            <meta name="h1" content={seoData.headings.h1} />
-          )}
-          {seoData.others?.map(
-            (item, index) =>
-              item?.type &&
-              item?.text && (
-                <meta
-                  key={index}
-                  name={item.type.toLowerCase()}
-                  content={item.text}
-                />
-              )
-          )}
-        </Helmet>
-      )} */}
+      <MobileCommonHeaderthree
+        title="Get Price"
+        onBack={() => window.history.back()}
+      />
+      <div className="page-content-wrapper">
+        <section className={styles.getuptosection}>
+          <div className="wrapper mobile-pt-section">
+            <div className={styles.wrapper}>
+              {/* Left Section: Product Image */}
+              <div className={styles.leftContent}>
+                <div className={styles.leftImgBox}>
+                  {deviceInfo?.devicePic ? (
+                    <img
+                      src={deviceInfo.devicePic}
+                      alt={deviceInfo.deviceName}
+                      title={deviceInfo.deviceName}
+                    />
+                  ) : (
+                    <Skeleton height={300} width={200} />
+                  )}
 
-        <MobileCommonHeaderthree
-          title="Get Price"
-          onBack={() => window.history.back()}
-        />
-
-        <div className="wrapper mobile-pt-section">
-          <div className={styles.wrapper}>
-            {/* Left Section: Product Image */}
-            <div className={styles.leftContent}>
-              <div className={styles.leftImgBox}>
-                {deviceInfo?.devicePic ? (
-                  <img
-                    src={deviceInfo.devicePic}
-                    alt={deviceInfo.deviceName}
-                    title={deviceInfo.deviceName}
-                  />
-                ) : (
-                  <Skeleton height={300} width={200} />
-                )}
-
-                <NavLink to="/select-varient">
-                  <img
-                    src={backarrow}
-                    alt="back-arrow"
-                    title="back-arrow"
-                    className={styles.backArrowImg}
-                  />
-                </NavLink>
-              </div>
-            </div>
-
-            {/* Right Section: Product Details */}
-            <div className={styles.productDetails}>
-              <h2 className={styles.productTitle}>
-                Sell Old{" "}
-                {deviceInfo?.deviceName ? (
-                  deviceInfo.deviceName
-                ) : (
-                  <Skeleton width={150} />
-                )}
-              </h2>
-              <span className={styles.verient}>
-                {deviceInfo?.variantDetail && `(${deviceInfo.variantDetail})`}
-              </span>
-
-              {/* Price Info */}
-              <div className={styles.priceInfo}>
-                <div className={styles.priceLabel}>
-                  <span>Average price user gets!</span>
-                  {/* <span className={styles.infoIcon}>ℹ️</span> */}
+                  <NavLink to="/select-varient">
+                    <img
+                      src={backarrow}
+                      alt="back-arrow"
+                      title="back-arrow"
+                      className={styles.backArrowImg}
+                    />
+                  </NavLink>
                 </div>
-                <div className={styles.priceBox}>
-                  {prices ? (
-                    <div className={styles.sliderContainer}>
-                      <div className={styles.priceLabelMin}>
-                        ₹{min.toLocaleString()}
-                      </div>
-                      <div className={styles.priceLabelMax}>
-                        ₹{max.toLocaleString()}
-                      </div>
+              </div>
 
-                      <span
-                        className={`${styles.currentPrice} ${styles.currentPriceMin}`}
-                        style={{
-                          left: `${((prices[0] - min) / (max - min)) * 90}%`,
-                        }}
-                      >
-                        ₹{prices[0].toLocaleString()}
-                      </span>
+              {/* Right Section: Product Details */}
+              <div className={styles.productDetails}>
+                <h2 className={styles.productTitle}>
+                  Sell Old{" "}
+                  {deviceInfo?.deviceName ? (
+                    deviceInfo.deviceName
+                  ) : (
+                    <Skeleton width={150} />
+                  )}{" "}
+                  {deviceInfo?.variantDetail && `(${deviceInfo.variantDetail})`}
+                </h2>
+                {/* <span className={styles.verient}>
+                  {deviceInfo?.variantDetail && `(${deviceInfo.variantDetail})`}
+                </span> */}
 
-                      <span
-                        className={`${styles.currentPrice} ${styles.currentPriceMax}`}
-                        style={{
-                          left: `${((prices[1] - min) / (max - min)) * 110}%`,
-                        }}
-                      >
-                        ₹{prices[1].toLocaleString()}
-                      </span>
+                {/* Price Info */}
+                <div className={styles.priceInfo}>
+                  <div className={styles.priceLabel}>
+                    <span>Average price user gets!</span>
+                    {/* <span className={styles.infoIcon}>ℹ️</span> */}
+                  </div>
+                  <div className={styles.priceBox}>
+                    {prices ? (
+                      <div className={styles.sliderContainer}>
+                        <div className={styles.priceLabelMin}>
+                          ₹{min.toLocaleString()}
+                        </div>
+                        <div className={styles.priceLabelMax}>
+                          ₹{max.toLocaleString()}
+                        </div>
 
-                      <div ref={sliderRef} className={styles.track}></div>
-
-                      {prices.map((price, index) => (
-                        <div
-                          key={index}
-                          className={styles.thumb}
+                        <span
+                          className={`${styles.currentPrice} ${styles.currentPriceMin}`}
                           style={{
-                            left: `${((price - min) / (max - min)) * 100}%`,
+                            left: `${((prices[0] - min) / (max - min)) * 90}%`,
                           }}
-                          onPointerDown={(e) => handlePointerDown(index, e)}
-                        ></div>
-                      ))}
-                    </div>
-                  ) : (
-                    <Skeleton height={80} width={390} />
-                  )}
+                        >
+                          ₹{prices[0].toLocaleString()}
+                        </span>
+
+                        <span
+                          className={`${styles.currentPrice} ${styles.currentPriceMax}`}
+                          style={{
+                            left: `${((prices[1] - min) / (max - min)) * 110}%`,
+                          }}
+                        >
+                          ₹{prices[1].toLocaleString()}
+                        </span>
+
+                        <div ref={sliderRef} className={styles.track}></div>
+
+                        {prices.map((price, index) => (
+                          <div
+                            key={index}
+                            className={styles.thumb}
+                            style={{
+                              left: `${((price - min) / (max - min)) * 100}%`,
+                            }}
+                            onPointerDown={(e) => handlePointerDown(index, e)}
+                          ></div>
+                        ))}
+                      </div>
+                    ) : (
+                      <Skeleton height={80} width={390} />
+                    )}
+                  </div>
+
+                  <div className={styles.priceDivider}></div>
+                  <p className={styles.userData}>
+                    According to <span>985</span> Recent Users
+                  </p>
                 </div>
 
-                <div className={styles.priceDivider}></div>
-                <p className={styles.userData}>
-                  According to <span>985</span> Recent Users
-                </p>
-              </div>
+                {/* Extra Info */}
+                <div className={styles.extraInfo}>
+                  <p>
+                    Get up to <br />
+                    {finalPrice !== null ? (
+                      <span className={styles.redText}>₹{finalPrice}</span>
+                    ) : (
+                      <Skeleton width={100} />
+                    )}
+                  </p>
 
-              {/* Extra Info */}
-              <div className={styles.extraInfo}>
-                <p>
-                  Get up to <br />
-                  {finalPrice !== null ? (
-                    <span className={styles.redText}>₹{finalPrice}</span>
-                  ) : (
-                    <Skeleton width={100} />
-                  )}
-                </p>
-
-                <div className={styles.highlightBox}>
-                  Apple: Go to “Settings” {">"} “General” {">"} “iPhone
-                  Storage”. You will see a breakdown of your used and available
-                  storage, along with app-wise storage usage.
+                  <div className={styles.highlightBox}>
+                    Apple: Go to “Settings” {">"} “General” {">"} “iPhone
+                    Storage”. You will see a breakdown of your used and
+                    available storage, along with app-wise storage usage.
+                  </div>
                 </div>
-              </div>
 
-              {/* Sell Now Button */}
-              <div className={styles.buttonBottomBox}>
-                <button onClick={handleNavigate} className={styles.sellButton}>
-                  Sell Now
-                </button>
+                {/* Sell Now Button */}
+                <div className={styles.buttonBottomBox}>
+                  <button
+                    onClick={handleNavigate}
+                    className={styles.sellButton}
+                  >
+                    Sell Now
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <TopSellingBrand />
+        </section>
+        <TopSellingBrand />
 
-      <TopSellingModel />
+        <TopSellingModel />
+      </div>
     </>
   );
 };

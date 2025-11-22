@@ -17,7 +17,7 @@
 .imgIndividual {
   width: 170px;
   height: 180px;
-  border: 1px solid #e1e1e1;
+  border: 0.3px solid #e1e1e1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +30,6 @@
   font-size: 18px;
   font-family: "IBM Plex Sans";
   font-weight: 500;
-  margin-bottom: 0;
 }
 
 .brandImageBox span {
@@ -95,12 +94,13 @@
   }
 
   .imgIndividual {
-    height: 104px;
-    width: 100px;
+    height: 95px;
+    width: 95px;
   }
   .topSellingWrapper {
     display: flex;
     flex-direction: column;
+    padding-bottom: 25px;
     gap: 10px;
   }
   .absoluteButtons {

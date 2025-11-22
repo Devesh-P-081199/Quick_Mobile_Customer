@@ -163,8 +163,9 @@ button.laptopviewall {
 }
 
 .brandImageBg {
-  height: 70px;
-  width: 70px;
+  /* height: 70px; */
+  aspect-ratio: 1;
+  width: 95%;
   border: 0.3px solid #e1e1e1;
   background-color: #ffffff;
   border-radius: 5px;
@@ -272,15 +273,10 @@ button.laptopviewall {
     grid-template-columns: repeat(4, 1fr);
   }
   .brandImageBg {
-    height: 80px !important;
-    /* width: 70px !important; */
+    width: 100%;
+    aspect-ratio: 1;
   }
 
-  .brandImageBg img {
-    /* height: 70px !important;
-    width: 70px !important;
-    padding: 7px; */
-  }
   .searchBox input {
     max-width: none !important;
   }
@@ -617,8 +613,8 @@ span.dotButton {
   }
 
   .brandImageBg {
-    height: 60px;
     width: 100%;
+    aspect-ratio: 1;
   }
 
   .brandImageBg img {
