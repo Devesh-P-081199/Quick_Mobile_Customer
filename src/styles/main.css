@@ -35,9 +35,73 @@
 
 /* ===== 8. LEGACY COMPATIBILITY (Gradual Phase-out) ===== */
 /* These imports maintain existing functionality during migration */
-@import "../index.css";
-@import "../kstyle.css";
+/* REMOVED CIRCULAR IMPORTS - Styles consolidated below */
 @import "../assets/css/BuyCss.css";
+
+/* Legacy styles from kstyle.css - consolidated here to avoid circular imports */
+section {
+  padding: var(--spacing-2) 12.5%;
+}
+
+@media screen and (max-width: 1200px) {
+  section {
+    padding: var(--spacing-2) 12.5%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  section {
+    padding: 2rem 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  section {
+    padding: 0rem 0rem;
+  }
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 375px) {
+  h1 {
+    font-size: var(--font-size-lg) !important;
+  }
+}
+
+.header_searchBar ._searchContainer_1erli_79 {
+  position: unset;
+}
+
+.header_searchBar {
+  position: relative;
+}
+
+.custom-2-radio {
+  height: var(--space-5);
+  width: var(--space-8);
+  border-radius: var(--radius-base);
+}
+
+/* Additional specificity to override inline styles for body padding */
+body[style*="padding-top"] {
+  padding-top: 55px !important;
+}
+
+@media screen and (max-width: 768px) {
+  body[style*="padding-top"] {
+    padding-top: 55px !important;
+  }
+}
 
 /* ===== 9. GLOBAL ENHANCEMENTS ===== */
 
@@ -613,464 +677,11 @@ hr {
   }
 }
 /* ===== GLOBAL SECTION PADDING SYSTEM ===== */
-/* Consistent padding system matching header container */
+/* CONSOLIDATED - Removed 3 duplicate definitions */
 
 /* Base section container - matches header padding exactly */
 .section-container {
-  padding: 0 12.5%; /* Horizontal padding matches header: var(--spacing-2) 12.5% */
-  width: 100%;
-  margin: 0 auto;
-}
-
-/* Section padding variants */
-.section-padding-sm {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-.section-padding-md {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-.section-padding-lg {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-
-/* Responsive section padding system */
-@media (max-width: 1440px) {
-  .section-container {
-    padding-left: 10%;
-    padding-right: 10%;
-  }
-}
-
-@media (max-width: 1200px) {
-  .section-container {
-    padding-left: 8%;
-    padding-right: 8%;
-  }
-}
-
-@media (max-width: 992px) {
-  .section-container {
-    padding-left: 6%;
-    padding-right: 6%;
-  }
-}
-
-@media (max-width: 768px) {
-  .section-container {
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-
-  .section-padding-sm {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-
-  .section-padding-md {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  .section-padding-lg {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .section-container {
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-
-  .section-padding-sm {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
-  .section-padding-md {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-
-  .section-padding-lg {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-container {
-    padding-left: 3%;
-    padding-right: 3%;
-  }
-}
-
-@media (max-width: 320px) {
-  .section-container {
-    padding-left: 2%;
-    padding-right: 2%;
-  }
-}
-
-/* Content width constraints for better readability */
-.content-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.content-container-wide {
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.content-container-narrow {
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* Grid system for sections */
-.section-grid {
-  display: grid;
-  gap: 2rem;
-}
-
-.section-grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.section-grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-.section-grid-4 {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-@media (max-width: 768px) {
-  .section-grid {
-    gap: 1.5rem;
-  }
-
-  .section-grid-2,
-  .section-grid-3,
-  .section-grid-4 {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-grid {
-    gap: 1rem;
-  }
-}
-
-/* Flex utilities for sections */
-.section-flex {
-  display: flex;
-  gap: 2rem;
-}
-
-.section-flex-center {
-  justify-content: center;
-  align-items: center;
-}
-
-.section-flex-between {
-  justify-content: space-between;
-  align-items: center;
-}
-
-.section-flex-column {
-  flex-direction: column;
-}
-
-@media (max-width: 768px) {
-  .section-flex {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-}
-
-/* Typography utilities for sections */
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.section-subtitle {
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin-bottom: 2rem;
-  color: #666;
-  line-height: 1.4;
-}
-
-.section-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .section-subtitle {
-    font-size: 1.125rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 1.75rem;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-}
-/* ===== GLOBAL SECTION PADDING SYSTEM - MATCHES HEADER EXACTLY ===== */
-
-/* Base section container - matches header padding exactly */
-.section-container {
-  padding-left: 12.5%;
-  padding-right: 12.5%;
-  width: 100%;
-  margin: 0 auto;
-}
-
-/* Section padding variants */
-.section-padding-sm {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-.section-padding-md {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-.section-padding-lg {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-
-/* Responsive section padding system - MATCHES HEADER EXACTLY */
-
-/* Tablet Large (992px-1199px) - Matches header: padding: var(--spacing-3) var(--spacing-4) + width: 80% */
-@media (max-width: 1199px) and (min-width: 992px) {
-  .section-container {
-    padding-left: var(--spacing-4);
-    padding-right: var(--spacing-4);
-    width: 80%;
-    margin: 0 auto;
-  }
-}
-
-/* Tablet Small (769px-991px) - Matches header: padding: var(--spacing-2) var(--spacing-3) + width: 85% */
-@media (max-width: 991px) and (min-width: 769px) {
-  .section-container {
-    padding-left: var(--spacing-3);
-    padding-right: var(--spacing-3);
-    width: 85%;
-    margin: 0 auto;
-  }
-}
-
-/* Mobile (≤950px) - Matches header: width: 90% */
-@media (max-width: 950px) {
-  .section-container {
-    width: 90%;
-    margin: 0 auto;
-    padding-left: var(--spacing-2);
-    padding-right: var(--spacing-2);
-  }
-
-  .section-padding-sm {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-
-  .section-padding-md {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  .section-padding-lg {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-}
-
-/* Small Mobile (≤480px) - Additional refinement */
-@media (max-width: 480px) {
-  .section-container {
-    width: 90%;
-    padding-left: var(--spacing-1);
-    padding-right: var(--spacing-1);
-  }
-
-  .section-padding-sm {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
-  .section-padding-md {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-
-  .section-padding-lg {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-}
-
-/* Content width constraints for better readability */
-.content-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.content-container-wide {
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.content-container-narrow {
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* Grid system for sections */
-.section-grid {
-  display: grid;
-  gap: 2rem;
-}
-
-.section-grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.section-grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-.section-grid-4 {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-@media (max-width: 768px) {
-  .section-grid {
-    gap: 1.5rem;
-  }
-
-  .section-grid-2,
-  .section-grid-3,
-  .section-grid-4 {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-grid {
-    gap: 1rem;
-  }
-}
-
-/* Flex utilities for sections */
-.section-flex {
-  display: flex;
-  gap: 2rem;
-}
-
-.section-flex-center {
-  justify-content: center;
-  align-items: center;
-}
-
-.section-flex-between {
-  justify-content: space-between;
-  align-items: center;
-}
-
-.section-flex-column {
-  flex-direction: column;
-}
-
-@media (max-width: 768px) {
-  .section-flex {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-}
-
-/* Typography utilities for sections */
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.section-subtitle {
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin-bottom: 2rem;
-  color: #666;
-  line-height: 1.4;
-}
-
-.section-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .section-subtitle {
-    font-size: 1.125rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 1.75rem;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-}
-/* ===== GLOBAL SECTION PADDING SYSTEM ===== */
-/* Consistent horizontal padding system matching header container */
-
-/* Base section container - matches header padding exactly */
-.section-container {
-  padding: 0 12.5%; /* Horizontal padding matches header: var(--spacing-2) 12.5% */
+  padding: 0 12.5%;
   width: 100%;
   margin: 0 auto;
 }
@@ -1091,42 +702,7 @@ hr {
   padding-bottom: 6rem;
 }
 
-/* Only adjust vertical padding for mobile - keep horizontal at 12.5% */
-@media (max-width: 768px) {
-  .section-padding-sm {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-
-  .section-padding-md {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  .section-padding-lg {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .section-padding-sm {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
-  .section-padding-md {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-
-  .section-padding-lg {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-}
-
-/* Content width constraints for better readability */
+/* Content width constraints */
 .content-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -1163,18 +739,6 @@ hr {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-@media (max-width: 768px) {
-  .section-grid {
-    gap: 1.5rem;
-  }
-
-  .section-grid-2,
-  .section-grid-3,
-  .section-grid-4 {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Flex utilities for sections */
 .section-flex {
   display: flex;
@@ -1193,13 +757,6 @@ hr {
 
 .section-flex-column {
   flex-direction: column;
-}
-
-@media (max-width: 768px) {
-  .section-flex {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
 }
 
 /* Typography utilities for sections */
@@ -1224,7 +781,93 @@ hr {
   color: #555;
 }
 
+/* ===== CONSOLIDATED RESPONSIVE STYLES ===== */
+/* All @media queries for same breakpoints merged */
+
 @media (max-width: 768px) {
+  /* Body padding */
+  body {
+    padding-top: 55px !important;
+  }
+
+  /* Touch targets */
+  button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  .btn,
+  .touch-target {
+    min-height: 35px;
+    min-width: 35px;
+  }
+
+  /* Form inputs */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+    padding: var(--spacing-2) var(--spacing-1);
+  }
+
+  /* Typography */
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  h2 {
+    font-size: var(--font-size-2xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  /* Section padding */
+  .section-padding-sm {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .section-padding-md {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .section-padding-lg {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  /* Grid */
+  .section-grid {
+    gap: 1.5rem;
+  }
+
+  .section-grid-2,
+  .section-grid-3,
+  .section-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Card grid */
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+
+  /* Flex */
+  .section-flex,
+  .nav-inline {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .nav-inline {
+    align-items: stretch;
+    gap: var(--spacing-2);
+  }
+
+  /* Typography */
   .section-title {
     font-size: 2rem;
   }
@@ -1235,7 +878,28 @@ hr {
   }
 }
 
+@media (max-width: 576px) {
+  .section-padding-sm {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .section-padding-md {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .section-padding-lg {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
 @media (max-width: 480px) {
+  .section-grid {
+    gap: 1rem;
+  }
+
   .section-title {
     font-size: 1.75rem;
   }

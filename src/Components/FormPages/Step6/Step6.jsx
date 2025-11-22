@@ -5,9 +5,9 @@ import styles from "./Step6.module.css";
 import MobileImg from "../../../assets/images/Products/mobile.png";
 import coupenicon from "../../../assets/images/icons/coupen.png";
 import rightarrow from "../../../assets/images/icons/rightarrow.png";
-import Recalculate from "../../../assets/kimages/t1.png";
-import FreePickup from "../../../assets/kimages/t2.png";
-import FreePickup2 from "../../../assets/kimages/t5.png";
+import Recalculate from "../../../assets1/kimages/t1.png";
+import FreePickup from "../../../assets1/kimages/t2.png";
+import FreePickup2 from "../../../assets1/kimages/t5.png";
 
 import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../Context/contextAPI";
@@ -22,10 +22,10 @@ import closeIcon from "../../../assets/QuickSellNewIcons/cross.svg";
 
 function Step6() {
   const {
-    allPackageData,
+    // allPackageData,
     currentEvaluationId,
     setCurrentEvaluationId,
-    userSelection,
+    // userSelection,
   } = useContext(UserContext);
 
   const [isCouponModalOpen, setIsCouponModalOpen] = useState(false);

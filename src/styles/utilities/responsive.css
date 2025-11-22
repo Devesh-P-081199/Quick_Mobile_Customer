@@ -713,3 +713,36 @@
     padding: 0 var(--spacing-3);
   }
 }
+
+/* ===== PAGE CONTENT WRAPPER ===== */
+/* Utility class for individual component padding control */
+/* Wraps each component separately for granular control */
+
+.page-content-wrapper {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure child elements respect box-sizing */
+.page-content-wrapper > * {
+  box-sizing: border-box;
+}
+
+/* Mobile-specific padding (≤768px) */
+@media (max-width: 768px) {
+  .page-content-wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* Small mobile optimization (≤480px) */
+@media (max-width: 480px) {
+  .page-content-wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

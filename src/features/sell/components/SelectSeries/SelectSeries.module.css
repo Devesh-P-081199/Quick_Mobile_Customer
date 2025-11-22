@@ -20,7 +20,6 @@
 }
 
 .mobilePtSection {
-  margin-top: 55px !important;
   padding: 10px 8px 0 8px;
 }
 
@@ -162,7 +161,7 @@ section.default-padding-section {
   }
 
   section {
-    padding: 10px 0;
+    padding: 0px 0;
   }
 }
 

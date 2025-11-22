@@ -97,7 +97,7 @@ const Footer = () => {
               <Link to="/About-us">About us</Link>
               <Link to="/Impact">Impact</Link>
               <a href="#">Press Release</a>
-              <a href="#">Blogs</a>
+              <Link to="/blogs">Blogs</Link>
               <a href="#">Career</a>
             </div>
           </div>

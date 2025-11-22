@@ -28,6 +28,37 @@
   border-bottom-right-radius: 20px;
 }
 
+/* Package Progress Bar Styles */
+.package-progress {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 2px;
+  background-color: #f9fafb;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #1968b3;
+  transition: width 0.3s ease-in-out;
+  border-radius: 1px;
+}
+
+.progress-text {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666666;
+  text-align: left;
+}
+
 .form-content {
   display: flex;
   flex-direction: column;
@@ -38,11 +69,10 @@
 }
 
 .icon-space {
- height: 176px;
-    /* width: 100%; */
-    display: flex
-;
-    padding: 20px 0px;
+  height: 176px;
+  /* width: 100%; */
+  display: flex;
+  padding: 20px 0px;
 }
 
 .select-box .label-inside-icon {
@@ -148,7 +178,6 @@
   border-radius: 5px;
   border-width: 0.5px;
   display: flex;
-  
 
   border: 0.5px solid #dddddd;
   align-items: center;
@@ -298,6 +327,15 @@
     font-size: 18px;
   }
 
+  /* Mobile Progress Bar Styles */
+  .package-progress {
+    padding: 0;
+  }
+
+  .progress-text {
+    font-size: 12px;
+  }
+
   .form-box {
     /* padding: 5px 25px; */
     display: flex;
@@ -356,7 +394,8 @@
     margin: auto;
   }
 
-  .label-inside-icon {}
+  .label-inside-icon {
+  }
 
   .label-inside-icon span {
     padding: 0px;
@@ -412,27 +451,27 @@
     gap: 10px;
     align-items: center;
   }
-  
-/* default (short text → 2 cols) */
-.options.short-text {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
 
-/* long text → force 1 col */
-.options.long-text {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
+  /* default (short text → 2 cols) */
+  .options.short-text {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 
-/* icons always stay 2 cols */
-.icon-option-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
+  /* long text → force 1 col */
+  .options.long-text {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* icons always stay 2 cols */
+  .icon-option-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 
   .button-box button {
     width: 100%;
@@ -478,8 +517,6 @@
   }
 }
 
-.middle-login-modal {}
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -519,6 +556,12 @@
     z-index: 99;
   }
 
+  .package-progress {
+    padding: 0;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
   .form-content {
     padding-bottom: 90px;
   }
@@ -535,7 +578,6 @@
   }
 
   .fixed-btn {
-
     position: fixed;
     bottom: 0vh;
     left: 0vh;
@@ -553,7 +595,6 @@
   }
 
   .fixed-btn button {
-
     border-radius: 0px;
     min-height: 50px;
     display: flex;
@@ -565,7 +606,6 @@
   }
 }
 
-
 /* Add this CSS */
 .option.selected,
 .select-box.selected {
@@ -574,52 +614,44 @@
 }
 
 .select-box.selected label {
-
   background-color: #1968b2 !important;
   color: #ffffff;
   border-radius: 0px;
 }
 
 .option-with-des-box {
-
   display: flex;
   /* flex-direction: column; */
   align-items: center;
-
 }
 
 .option-input-flex {
-
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 5px;
 }
 
-
-.option-text-des {
-
+.option-textDes {
   font-size: 12px !important;
   color: rgb(80, 80, 80);
   text-align: left;
   /* padding-left: 28px; */
 }
 
-
 .form-box .options .label-inside-icon {
   /* width: 260px; */
- flex-direction: column;
- gap: 0px;
- justify-content: center;
- background-color: #d8d8d8;
- border-radius: 5px;
- /* padding: 0px 10px; */
+  flex-direction: column;
+  gap: 0px;
+  justify-content: center;
+  background-color: #d8d8d8;
+  border-radius: 5px;
+  /* padding: 0px 10px; */
 }
 
 .label-inside-icon .option-text {
   font-size: 14px;
 }
-
 
 .dropdown-select {
   width: 100%;
@@ -661,9 +693,10 @@
   }
 }
 
-
 .error-text {
   color: red;
   font-size: 12px;
   margin-top: 5px;
 }
+
+

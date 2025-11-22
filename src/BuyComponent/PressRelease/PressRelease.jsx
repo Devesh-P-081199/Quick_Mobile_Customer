@@ -34,7 +34,7 @@ export function PressReleaseCard({ logo, title, date }) {
 
 export default function PressRelease() {
   return (
-    <section className="section-container section-padding-lg">
+    <div>
       <div className={styles.container}>
         <h2 className={styles.heading}>Press Release</h2>
         <div className={styles.grid}>
@@ -48,6 +48,6 @@ export default function PressRelease() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

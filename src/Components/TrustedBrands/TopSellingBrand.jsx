@@ -32,7 +32,7 @@ const brands = [
 function TopSellingBrand() {
   return (
     <section className="default-padding-section">
-      <div className="wrapper">
+      <div className="wrapper page-content-wrapper">
         <div className={styles.topSellingWrapper}>
           <div className={styles.headingFlex}>
             <h2 className={styles.sectionHeading}>Top Selling Brand</h2>

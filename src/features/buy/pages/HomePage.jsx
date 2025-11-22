@@ -14,22 +14,53 @@ const HomePage = () => {
   return (
     <>
       <div>
+        {/* COMPONENT WRAPPER: Each component wrapped individually for granular padding control */}
+
         <BlackBanner />
         <HomeSlider />
         {/* <SellingService/> */}
         {/* <OurServices/> */}
         {/* <AllCategory/> */}
-        <Allcategoryhome />
+
+        <div className="page-content-wrapper">
+          <Allcategoryhome />
+        </div>
+
         {/*<BuyPhone/>*/}
-        <LearnTemplate />
+
+        <div className="page-content-wrapper">
+          <LearnTemplate />
+        </div>
+
         {/*<BuyDevices/>*/}
-        <Blogs />
-        <Testimonials />
-        <UsedvsBrand />
-        <PressRelease />
-        <Newsletter />
+
+        <div className="page-content-wrapper">
+          <Blogs />
+        </div>
+
+        <div className="page-content-wrapper">
+          <Testimonials />
+        </div>
+
+        <div className="page-content-wrapper">
+          <UsedvsBrand />
+        </div>
+
+        <div className="page-content-wrapper">
+          <PressRelease />
+        </div>
+
+        <div className="page-content-wrapper">
+          <Newsletter />
+        </div>
+
         {/* <GuidePrivacyPolicy/> */}
-        <Download />
+
+        <div className="page-content-wrapper">
+          <Download />
+        </div>
+
+        {/* FooterContent excluded - no wrapper */}
         <FooterContent />
       </div>
     </>

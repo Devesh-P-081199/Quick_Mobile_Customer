@@ -3,11 +3,15 @@ import styles from "./MobileCommonHeader.module.css";
 import { useNavigate } from "react-router-dom";
 import newBackIcon from "../../../assets/QuickSellNewIcons/BackArrow.svg";
 
-const MobileCommonHeaderthree = ({ title, onSearch }) => {
+const MobileCommonHeaderthree = ({ title, onSearch, onBack }) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate(-1); // ✅ go back one page
+    if (onBack) {
+      onBack(); // Use custom back handler if provided
+    } else {
+      navigate(-1); // Default: go back one page
+    }
   };
 
   return (

@@ -78,6 +78,8 @@ import Loader from "./components/layout/Loader/Loader";
 import CategoryRouter from "./features/sell/pages/CategoryRouter";
 import DynamicRouteHandler from "./pages/DynamicRouteHandler";
 import NotFoundPage from "./pages/NotFoundPage";
+const BlogDetail = React.lazy(() => import("./pages/BlogDetail"));
+const BlogsPage = React.lazy(() => import("./pages/BlogsPage"));
 import HomePage from "./features/buy/pages/HomePage";
 import AboutUs from "./pages/general/AboutUs/AboutUs";
 import Cookies from "./pages/general/Cookies/Cookies";
@@ -330,6 +332,22 @@ const AppContent = () => {
         <Route path="/Impact" element={<QuickImpact />} />
         <Route path="/Search" element={<SearchBar />} />
         <Route path="/Privacy" element={<GuidePrivacyPolicy />} />
+        <Route
+          path="/blogs"
+          element={
+            <Suspense fallback={<Loader />}>
+              <BlogsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/:blogId"
+          element={
+            <Suspense fallback={<Loader />}>
+              <BlogDetail />
+            </Suspense>
+          }
+        />
       </Routes>
       {!hideFooter && <Footer />}
     </>

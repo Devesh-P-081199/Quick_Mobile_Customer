@@ -166,9 +166,9 @@ function SellDeviceVarient() {
   const isPhoneNameLoading = !phoneName;
 
   return (
-    <section className="default-padding-section mobile-pt-section { ">
-      <div className="wrapper">
-        <div className={styles.wrapper}>
+    <div className="default-padding-section mobile-pt-section { ">
+      <div className="wrapper page-content-wrapper">
+        <div className={`${styles.wrapper}`}>
           <div className={styles.leftContent}>
             <div className={styles.leftImgBox}>
               {isImageLoading ? (
@@ -266,7 +266,7 @@ function SellDeviceVarient() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

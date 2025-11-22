@@ -1,6 +1,5 @@
 /* Tailwind + Custom Components Integration */
-/* Import custom components that work with Tailwind v3 */
-@import "./styles/main.css";
+/* CIRCULAR IMPORT REMOVED - main.css now imports this file */
 
 /* Legacy CSS Custom Properties - Mapped to Design Tokens */
 :root {
@@ -28,35 +27,9 @@ body {
   /* Let Tailwind handle line-height and color in most cases */
 }
 
-/* Mobile padding-top for fixed header - Override any inline styles */
-@media screen and (max-width: 768px) {
-  body {
-    padding-top: 55px !important;
-  }
-}
+/* Mobile padding-top handled in main.css - REMOVED DUPLICATE */
 
-/* Additional specificity to override inline styles */
-body[style*="padding-top"] {
-  padding-top: 55px !important;
-}
-
-@media screen and (max-width: 768px) {
-  body[style*="padding-top"] {
-    padding-top: 55px !important;
-  }
-}
-
-/* Headings - Work with Tailwind typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--primary-font);
-  /* Let Tailwind handle font-weight, line-height, color via classes */
-  margin: 0;
-}
+/* Headings handled in main.css - REMOVED DUPLICATE */
 
 /* Section padding - Use Tailwind responsive classes where possible */
 /* Keep this for legacy compatibility, but prefer Tailwind classes like py-8 px-24 lg:px-20 md:px-12 sm:px-5 */
@@ -96,24 +69,9 @@ section {
   gap: 1rem; /* gap-4 equivalent */
 }
 
-/* Image fluidity - Enhanced with design tokens */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius-base);
-}
+/* Image styles handled in main.css - REMOVED DUPLICATE */
 
-/* Completely hide scrollbars for all browsers */
-.scrollbar-hidden {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  overflow: hidden; /* Prevent scrolling if needed */
-}
-
-.scrollbar-hidden::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
-}
+/* Scrollbar styles handled in responsive.css - REMOVED DUPLICATE */
 
 /* Responsive typography using design tokens */
 @media screen and (max-width: 375px) {

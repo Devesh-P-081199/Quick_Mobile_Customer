@@ -2067,11 +2067,13 @@ function Step3() {
           deviceInfo.variantDetail || urlParams.get("vid") || "Unknown Variant",
       });
 
-      // Clear session storage after successful submission
-      const storageKey = getStorageKey();
-      sessionStorage.removeItem(storageKey);
-      sessionStorage.removeItem(`currentPackageIndex_${storageKey}`);
-      sessionStorage.removeItem(`packages_${urlParams.get("pid")}`);
+      // Set flag that form was submitted (so data persists if user comes back)
+      const productId = urlParams.get("pid");
+      const formSubmittedKey = `formSubmitted_${productId}`;
+      sessionStorage.setItem(formSubmittedKey, "true");
+
+      // Don't clear session storage - keep data so user can come back and edit
+      // Data will only be cleared when user goes back to Get Price page
 
       navigate(`/${slug}/price-summary?${urlParams.toString()}`);
     } catch (error) {
@@ -2091,22 +2093,9 @@ function Step3() {
       }
     }
 
-    // Find next package with unanswered questions
+    // Move to next package sequentially (one at a time)
     if (currentPackageIndex < allPackageData.length - 1) {
-      const nextUnansweredIndex = allPackageData.findIndex(
-        (pkg, index) =>
-          index > currentPackageIndex &&
-          (!pkg.answers || Object.keys(pkg.answers).length === 0)
-      );
-
-      let nextIndex;
-      if (nextUnansweredIndex !== -1) {
-        nextIndex = nextUnansweredIndex;
-      } else {
-        // All packages have some answers, move to the next one
-        nextIndex = currentPackageIndex + 1;
-      }
-
+      const nextIndex = currentPackageIndex + 1;
       setCurrentPackageIndex(nextIndex);
 
       // Save the current package index to session storage
@@ -2127,31 +2116,45 @@ function Step3() {
   };
 
   const handlePrevious = () => {
+    // First check if we're in paginated conditions and not on first page
     if (conditionsPaginationEnabled && currentConditionsPage > 0) {
       goToPrevConditionsPage();
       return;
     }
 
-    if (currentPackageIndex === 0) {
-      // Instead of navigate(-1), use a direct route to avoid refresh issues
-      const urlParams = new URLSearchParams(location.search);
-      const productId = urlParams.get("pid");
-      if (productId) {
-        navigate(
-          `/${slug}/${userSelection?.variantSlug || ""}?pid=${productId}`
-        );
-      } else {
-        navigate(`/${slug}`);
-      }
-    } else {
-      // Find previous package
+    // If we're not on the first package, go to previous package
+    if (currentPackageIndex > 0) {
       const prevIndex = currentPackageIndex - 1;
       setCurrentPackageIndex(prevIndex);
 
       // Save the current package index to session storage
       const currentIndexKey = `currentPackageIndex_${getStorageKey()}`;
       sessionStorage.setItem(currentIndexKey, prevIndex.toString());
+      return;
     }
+
+    // Only navigate away if we're on the first package and first page
+    const storageKey = getStorageKey();
+    const currentIndexKey = `currentPackageIndex_${storageKey}`;
+    const urlParams = new URLSearchParams(location.search);
+    const productId = urlParams.get("pid");
+    const packagesKey = `packages_${productId}`;
+
+    // Check if form was submitted (user went to Order Summary)
+    const formSubmittedKey = `formSubmitted_${productId}`;
+    const wasFormSubmitted = sessionStorage.getItem(formSubmittedKey);
+
+    // Only clear data if coming from Get Price (not from Order Summary)
+    if (!wasFormSubmitted) {
+      // Remove all form-related data when going back to Get Price
+      sessionStorage.removeItem(storageKey);
+      sessionStorage.removeItem(currentIndexKey);
+      sessionStorage.removeItem(packagesKey);
+    }
+    // If coming from Order Summary, keep the data so user can edit
+
+    // Use browser history to go back to the previous page
+    navigate(-1);
   };
 
   const getButtonText = () => {
@@ -2262,7 +2265,7 @@ function Step3() {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Calculation" />
+      <MobileCommonHeaderthree title="Calculation" onBack={handlePrevious} />
       <section className="form-section mobile-pt-section">
         <div className="wrapper">
           {/* Left Side */}
@@ -2288,11 +2291,19 @@ function Step3() {
           </div>
 
           {/* Right Side */}
-          <div className="form-right">
+          <div className="form-right page-content-wrapper">
             <div className="package-progress">
-              <span>
-                Package {currentPackageIndex + 1} of {allPackageData.length}
-              </span>
+              {/* Progress Bar */}
+              <div className="progress-bar-container">
+                <div
+                  className="progress-bar-fill"
+                  style={{
+                    width: `${
+                      ((currentPackageIndex + 1) / allPackageData.length) * 100
+                    }%`,
+                  }}
+                />
+              </div>
             </div>
 
             <h2>
