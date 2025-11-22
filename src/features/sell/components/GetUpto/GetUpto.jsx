@@ -175,6 +175,11 @@ const GetUpto = () => {
       variantDetail,
     } = deviceInfo;
     const price = finalPrice || 0;
+
+    // Set flag to indicate fresh entry from Get Price (form should reset)
+    const freshEntryKey = `freshEntry_${productId}`;
+    sessionStorage.setItem(freshEntryKey, "true");
+
     navigate(
       `/${slug1}/final-price-calculator?pid=${encodeURIComponent(
         productId
