@@ -53,13 +53,13 @@ const SignUp = React.lazy(() =>
   import("./features/profile/components/Signup/Signup")
 );
 const Address = React.lazy(() =>
-  import("./features/profile/components/Address/Address")
+  import("./features/profile/pages/SavedAddress")
 );
 const PaymentOptions = React.lazy(() =>
   import("./features/checkout/components/Payment/Payment")
 );
 const ProfilePayments = React.lazy(() =>
-  import("./features/profile/components/PaymentOptions/PaymentOptions")
+  import("./features/profile/pages/PaymentOptions")
 );
 
 const SetupProfile = React.lazy(() =>
