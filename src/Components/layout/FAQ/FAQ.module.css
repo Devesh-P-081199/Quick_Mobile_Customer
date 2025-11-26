@@ -46,10 +46,11 @@
   transition: background 0.3s ease;
   padding-left: 0px;
   gap: 18px;
+  width: 100%;
 }
 
-.faqQuestion:hover {
-  /* background: #f9f9f9; */
+.faqQuestion span {
+  width: 80%;
 }
 
 /* FAQ Answer */
@@ -68,8 +69,13 @@
 
 /* FAQ Icon */
 .faqIcon {
-  font-size: 16px;
+  /* font-size: 16px; */
   transition: transform 0.3s ease;
+}
+
+.faqIcon img {
+  width: 21px;
+  transform: rotate(-90deg);
 }
 
 .open {
@@ -86,7 +92,7 @@
     padding: 0px 2px;
   }
 
-  .faqQuestion {
+  .faqQuestion span {
     font-size: 14px;
   }
 

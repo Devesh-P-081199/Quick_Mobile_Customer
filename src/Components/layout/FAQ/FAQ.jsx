@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./FAQ.module.css";
-import DownArrow from "../../../assets1/images/icons/back.png";
+import uparrow from "../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -44,13 +44,13 @@ const FAQ = () => {
                 onClick={() => toggleFAQ(index)}
               >
                 <span>{faq.question}</span>
-                <span
+                <div
                   className={`${styles.faqIcon} ${
                     openIndex === index ? styles.open : ""
                   }`}
                 >
-                  <img src={DownArrow} alt="" />
-                </span>
+                  <img src={uparrow} alt="" />
+                </div>
               </div>
               <div
                 className={`${styles.faqAnswer} ${
