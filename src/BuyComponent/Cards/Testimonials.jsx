@@ -12,7 +12,7 @@ const Testimonials = () => {
       rating: 4.2,
       review:
         "I recently purchased an iPhone from QuickMobile, and I couldn't be happier with my experience! The website was easy to navigate, and the phone arrived quickly with free shipping.",
-      image: profile,
+      image: "",
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ const Testimonials = () => {
       rating: 4.2,
       review:
         "I recently purchased an iPhone from QuickMobile, and I couldn't be happier with my experience! The website was easy to navigate, and the phone arrived quickly with free shipping.",
-      image: profile,
+      image: "",
     },
     {
       id: 4,
@@ -48,7 +48,7 @@ const Testimonials = () => {
       rating: 4.2,
       review:
         "I recently purchased an iPhone from QuickMobile, and I couldn't be happier with my experience! The website was easy to navigate, and the phone arrived quickly with free shipping.",
-      image: profile,
+      image: "",
     },
   ];
 
@@ -76,7 +76,7 @@ const Testimonials = () => {
 
   return (
     <section>
-      <div className={styles.container}>
+      <div className={(styles.container, styles.testimonialWrapper)}>
         <div className={styles.headerSection}>
           <h2 className={styles.heading}>Testimonials</h2>
           <div className={styles.navButtons}>
@@ -107,15 +107,15 @@ const Testimonials = () => {
                   />
                 ) : (
                   <div className={styles.avatarFallback}>
-                    {getInitials(item.name)}
+                    <p>{getInitials(item.name)}</p>
                   </div>
                 )}
 
-                <div>
+                <div className={styles.userDetails}>
                   <h3 className={styles.name}>{item.name}</h3>
                   <p className={styles.date}>{item.date}</p>
                   <p className={styles.rating}>
-                    {"★".repeat(5)}
+                    {"☆".repeat(5)}
                     <span className={styles.ratingValue}>{item.rating}</span>
                   </p>
                 </div>

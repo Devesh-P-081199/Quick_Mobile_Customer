@@ -1,17 +1,25 @@
-.container{
+.container {
   max-width: 1140px;
   margin: auto;
 }
+
+.testimonialWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .headerSection {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
 }
 
 .heading {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 18px;
+  margin: 25px 0 0 0;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
 }
 
 .navButtons {
@@ -23,10 +31,10 @@
     display: flex;
     gap: 0.5rem;
   }
-  .navButtons button{
+  .navButtons button {
     cursor: pointer;
   }
-  .heading{
+  .heading {
     font-size: 1.5rem;
   }
 }
@@ -56,9 +64,9 @@
 
 .cardContainer {
   display: flex;
-  gap: 1rem;
+  gap: 16px;
   overflow-x: auto;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
@@ -69,22 +77,25 @@
 
 .card {
   background-color: white;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e5e7eb;
+  padding: 10px;
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
   width: 20rem;
   flex-shrink: 0;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 .profileSection {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
+}
+
+.userDetails {
+  width: -webkit-fill-available;
 }
 
 .avatar {
@@ -96,34 +107,43 @@
 
 .name {
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 14px;
+  margin-bottom: 0;
 }
 
 .date {
-  font-size: 0.75rem;
-  color: #6b7280;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 0;
 }
 
 .rating {
   color: #facc15; /* yellow-500 */
-  font-size: 0.875rem;
+  font-size: 18px;
+  width: fit-content;
+  margin-bottom: 0;
+  line-height: 1.2;
 }
 
 .ratingValue {
-  color: #4b5563; /* gray-600 */
-  margin-left: 0.25rem;
+  color: #ffff;
+  font-size: 14px;
+  margin-left: 5px;
+  background: #000;
+  border-radius: 5px;
+  padding: 2px 4px;
 }
 
 .review {
-  font-size: 0.875rem;
-  color: #374151;
-  line-height: 1.5;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 0;
 }
 
 .avatarFallback {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 9999px;
+  width: 70px;
+  height: 55px;
+  border-radius: 50%;
   background-color: transparent; /* gray-400 or choose theme */
   display: flex;
   align-items: center;
@@ -132,6 +152,10 @@
   color: black;
   font-size: 1rem; /* same size balance as text */
   text-transform: uppercase;
-  border: 0.3px solid;
-  border-radius: 50%;
+  border: 0.3px solid #e1e1e1;
+}
+
+.avatarFallback p {
+  margin: 0;
+  line-height: 0.5;
 }

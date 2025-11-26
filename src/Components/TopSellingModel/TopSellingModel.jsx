@@ -27,7 +27,7 @@ const brands = [
 
 function TopSellingModel() {
   return (
-    <section className="default-padding-section">
+    <div className="page-content-wrapper">
       <div className="wrapper">
         <div className={styles.topSellingWrapper}>
           <div className={styles.headingFlex}>
@@ -50,7 +50,7 @@ function TopSellingModel() {
           />
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

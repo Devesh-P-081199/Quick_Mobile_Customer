@@ -1,4 +1,10 @@
 /* BrowserPopularPick.module.css */
+.browserPick {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
 
 .container {
   width: 100%;
@@ -10,10 +16,10 @@
 
 .heading {
   width: 100%;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
   font-family: "IBM Plex Sans", sans-serif;
-  margin-bottom: 30px; /* Equivalent to mb-7 */
+  margin: 25px 0 0 0;
 }
 
 .cardContainer {
@@ -36,6 +42,8 @@
   gap: 16px;
   height: 210px;
   width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .cardText {
@@ -43,6 +51,8 @@
   font-weight: 500;
   font-size: 16px;
   text-align: left;
+  margin: 0;
+  color: #000000;
 }
 
 .cardContainer {
@@ -80,7 +90,6 @@
     font-size: 18px;
     font-weight: 500;
     font-family: "IBM Plex Sans", sans-serif;
-    margin-bottom: 20px; /* Equivalent to mb-7 */
   }
 
   .imageWrapper {

@@ -30,22 +30,22 @@ const serviceData = [
 
 const BrowsePicks = () => {
   return (
-    <section className="homepage-section">
-      {/* Top Selling Products - Aligned to Start */}
-      <h2 className={styles.heading}>Top Selling Category</h2>
+    <div className="page-content-wrapper">
+      <div className={styles.browserPick}>
+        <h2 className={styles.heading}>Top Selling Category</h2>
 
-      {/* Card Container - Centered */}
-      <div className={styles.cardContainer}>
-        {serviceData.map((data, index) => (
-          <div key={index} className={styles.card}>
-            <div className={styles.imageWrapper}>
-              <img src={data.img} alt={data.title} />
+        <div className={styles.cardContainer}>
+          {serviceData.map((data, index) => (
+            <div key={index} className={styles.card}>
+              <div className={styles.imageWrapper}>
+                <img src={data.img} alt={data.title} />
+              </div>
+              <p className={styles.cardText}>{data.text}</p>
             </div>
-            <p className={styles.cardText}>{data.text}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -69,10 +69,11 @@
 }
 
 .icon-space {
-  height: 176px;
-  /* width: 100%; */
+  width: 100%;
+  aspect-ratio: 1;
   display: flex;
-  padding: 20px 0px;
+  padding: 0px 0px;
+  background-color: #ffffff;
 }
 
 .select-box .label-inside-icon {
@@ -80,8 +81,8 @@
 }
 
 .select-box .icon-space img {
-  height: 100%;
-  width: 100%;
+  /* height: 90%;
+  width: 90%; */
   /* padding: 18px; */
 }
 
@@ -169,24 +170,68 @@
   flex-wrap: wrap;
 }
 
+.form-box .options .option {
+  align-items: flex-start;
+  margin-bottom: 0px;
+}
+
 .form-box .options label {
-  /* width: 260px; */
+  /* width: 90%; */
   /* height: 39px; */
+  background: #ffffff;
   border-width: 0.5px;
   padding: 10px 10px;
   gap: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   border-width: 0.5px;
   display: flex;
-
-  border: 0.5px solid #dddddd;
+  border: 0.3px solid #e1e1e1;
   align-items: center;
+}
+
+/* Custom radio button styling */
+.form-box .options label input[type="radio"] {
+  padding: none !important;
+  cursor: pointer;
+  accent-color: #1968b3;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid #b4b4b4;
+  border-radius: 50%;
+  outline: none;
+  position: relative;
+  width: 16px;
+  aspect-ratio: 1;
+  margin-top: 4px;
+}
+
+/* Radio button checked state */
+.form-box .options label input[type="radio"]:checked {
+  border-color: #1968b3;
+}
+
+/* Inner circle when checked */
+.form-box .options label input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #1968b3;
 }
 
 .form-box label span {
   font-family: IBM Plex Sans;
   font-weight: 500;
   font-size: 16px;
+}
+
+.form-box label span.option-text-des {
+  font-size: 12px;
+  opacity: 0.8;
 }
 
 .button-box {
@@ -318,13 +363,22 @@
   }
 
   .form-box .options label {
-    min-height: 50px;
+    min-height: 45px;
     background-color: #ffffff;
   }
 
   .form-right h2 {
     padding: 5px 0px;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 10px 0 0px 0;
+  }
+
+  .form-right h3 {
+    font-size: 12px;
+    font-weight: 500;
+    color: #374151;
+    opacity: 0.8;
   }
 
   /* Mobile Progress Bar Styles */
@@ -343,8 +397,35 @@
     gap: 10px;
   }
 
+  .form-box .question {
+    gap: 0;
+  }
+
+  .form-box .question .question-text {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0;
+    color: #000000;
+  }
+
+  .form-box .question .question-text .required-asterisk {
+    color: #ff0000;
+    white-space: nowrap;
+  }
+
+  .form-box .question .question-text .required-asterisk::before {
+    content: "\00A0"; /* Non-breaking space before asterisk */
+  }
+
+  .form-box .question .question-explaination-text {
+    font-size: 12px;
+    margin: 0;
+    opacity: 0.8;
+  }
+
   .form-content {
-    gap: 30px;
+    margin-top: 26px;
+    gap: 26px;
   }
 
   .button-box button {
@@ -370,31 +451,35 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: auto;
-    gap: 5px;
+    /* aspect-ratio: 1; */
+    gap: 0px;
     text-align: center;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
+    border: 0.3px solid #e1e1e1;
+    border-radius: 15px;
     background-color: #ffffff;
     padding: 0px;
     position: relative;
+    overflow: hidden;
   }
 
   .form-box .icon-option-container label {
     height: auto;
-    padding-right: 0px;
-    padding-left: 0px;
+    /* padding-right: 0px;
+    padding-left: 0px; */
     background: none;
     justify-content: center;
   }
 
   .icon-option-container .icon-space img {
-    height: 120px;
-    width: 120px;
+    width: 30%;
+    aspect-ratio: 1;
     margin: auto;
   }
 
-  .label-inside-icon {
+  .form-box .options .label-inside-icon {
+    width: 100%;
+    margin: 0;
+    border-radius: 0px 0px 15px 15px;
   }
 
   .label-inside-icon span {
@@ -408,12 +493,8 @@
 }
 
 .select-box.selected {
-  border-color: #000;
-  /* Black border when selected */
   background-color: #fff;
   transform: scale(1);
-  /* Slight zoom effect */
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
 }
 
 @media (min-width: 769px) {
@@ -448,7 +529,7 @@
 @media (max-width: 480px) {
   .form-box .options label {
     justify-content: start;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
   }
 
@@ -467,7 +548,7 @@
   }
 
   /* icons always stay 2 cols */
-  .icon-option-container {
+  .form-box .options.icon-option-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
@@ -619,6 +700,10 @@
   border-radius: 0px;
 }
 
+.select-box.selected .label-inside-icon .option-text {
+  color: #ffffff;
+}
+
 .option-with-des-box {
   display: flex;
   /* flex-direction: column; */
@@ -629,7 +714,7 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 5px;
+  gap: 0px;
 }
 
 .option-textDes {
@@ -643,14 +728,26 @@
   /* width: 260px; */
   flex-direction: column;
   gap: 0px;
-  justify-content: center;
-  background-color: #d8d8d8;
-  border-radius: 5px;
+  justify-content: flex-start;
+  background-color: #ededed;
+  border: none;
+  border-radius: 0px 0px 14px 14px;
+  height: -webkit-fill-available;
   /* padding: 0px 10px; */
 }
 
 .label-inside-icon .option-text {
   font-size: 14px;
+  color: #000;
+}
+
+.select-box input.custom-radio {
+  visibility: hidden;
+  position: absolute;
+}
+
+.select-box .option-text {
+  font-size: 12px;
 }
 
 .dropdown-select {
@@ -696,5 +793,5 @@
 .error-text {
   color: red;
   font-size: 12px;
-  margin-top: 5px;
+  margin: 0;
 }

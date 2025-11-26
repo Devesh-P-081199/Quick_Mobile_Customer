@@ -5,7 +5,17 @@
   margin: auto;
   overflow: hidden;
   position: relative;
+  padding: 0 10px;
+  background: linear-gradient(
+    to bottom,
+    #ededed 50%,
+    var(--background-color) 50%
+  );
 }
+
+/* .page-content-wrapper {
+  background-color: linear-gradient(to bottom, #1968b3 50%, white 50%);
+} */
 
 .sliderWrapper {
   display: flex;
@@ -25,6 +35,7 @@
   display: flex;
   transition: transform 0.5s ease-in-out;
   width: 100%;
+  gap: 10px;
 }
 
 .card {
@@ -44,13 +55,13 @@
   border-radius: 5px;
   width: 100%;
   height: 99px;
-  padding: 10px;
+  padding: 15px;
   box-sizing: border-box;
-  margin-right: 5px;
+  border-radius: 15px;
 }
 
 .image {
-  width: 31px;
+  width: 62px;
   height: 62px;
   object-fit: contain;
 }
@@ -67,33 +78,45 @@
   color: #1968b3;
   font-size: 16px;
   font-weight: 500;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .title {
   color: #000;
   font-size: 12px;
   font-weight: 500;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .price {
   color: #000;
   font-size: 12px;
   font-weight: 500;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .sellBtn {
   background-color: #1968b3;
   color: white;
   border: none;
-  padding: 3px 19px;
-  border-radius: 5px;
+  padding: 3px 15px;
+  border-radius: 7px;
   font-size: 12px;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   cursor: pointer;
   height: 30px;
+  width: 100px;
 }
 
 .dots {
@@ -117,11 +140,8 @@
   background: #1968b3;
 }
 
-
-@media screen and  (min-width : 480px ) {
-
-  .sliderContainer{
-
+@media screen and (min-width: 480px) {
+  .sliderContainer {
     display: none;
-  }  
+  }
 }

@@ -31,12 +31,13 @@ const CommonSlider = ({
 
   return (
     <div className={styles.sliderWrapper}>
-      <div
-        className={`${styles.sliderTrack} scrollbar-hidden`}
-        ref={scrollRef}
-      >
+      <div className={`${styles.sliderTrack} scrollbar-hidden`} ref={scrollRef}>
         {items.map((item, index) => (
-          <div key={index} ref={index === 0 ? itemRef : null}>
+          <div
+            className="brandContainer"
+            key={index}
+            ref={index === 0 ? itemRef : null}
+          >
             {renderItem(item, index)}
           </div>
         ))}

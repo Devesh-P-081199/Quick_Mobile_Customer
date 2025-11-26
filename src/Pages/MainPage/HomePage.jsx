@@ -11,7 +11,7 @@ import BrowsePicks from "../../Components/BrowsePicks/BrowsePicks";
 // import SelectBrand from "../../Components/SelectBrand/SelectBrand";
 import Blogs from "../../BuyComponents/Blogs/Blogs";
 // import FAQ from "../../Components/FAQ/FAQ";
-import TopSellingProducts from "../../BuyComponents/TopSellingProducts/TopSellingProducts";
+import TopSellingProducts from "../../BuyComponents/TopSellingProducts/TopSellingProducts.jsx";
 
 import FAQ from "../../Components/layout/FAQ/FAQ";
 // import FooterContent from "../../../src/Components/layout/Footer/FooterContent.jsx";

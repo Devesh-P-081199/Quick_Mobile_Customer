@@ -1,29 +1,41 @@
 .selectBrandWrapper {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 8px;
+  margin-top: 25px;
 }
 
 .brandImageBox {
-  display: flex;
-  gap: 19px;
-  flex-wrap: wrap;
-  overflow: scroll;
-  /* justify-content: center; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  overflow: auto;
 }
 
 .imgIndividual {
-  width: 146px;
-  height: 150px;
+  width: 100%;
+  aspect-ratio: 1;
   border: 0.3px solid #e1e1e1;
-  border-radius: 10px;
+  border-radius: 15px !important;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  /* padding: 2px; */
   overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
+
+.brandImageBox .imgIndividual:hover {
+  border-color: rgb(147 197 253) !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
+.selectBrandWrapper .brandImageBox .imgIndividual:hover {
+  border-color: rgb(147 197 253) !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
 .imgIndividual img {
   /* height: 60px; */
   object-fit: contain;
@@ -131,15 +143,11 @@
     padding: 0px 2px;
   }
 
-  .imgIndividual {
-    height: 88px;
-    width: 88px;
-  }
-
   .brandImageBox {
-    flex-wrap: wrap;
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   }
+
   .brandSingleBox {
     gap: 6px;
   }
@@ -149,123 +157,34 @@
   }
 }
 
-@media (max-width: 402px) {
-  .imgIndividual {
-    height: 85px;
-    width: 85px;
-  }
-}
-
-@media (max-width: 387px) {
-  .imgIndividual {
-    height: 80px;
-    width: 80px;
-  }
-}
-
-@media (max-width: 364px) {
-  .imgIndividual {
-    height: 70px;
-    width: 70px;
-    padding: 2px;
-  }
-}
-
-@media (max-width: 327px) {
-  .imgIndividual {
-    height: 60px;
-    width: 60px;
-    padding: 2px;
-  }
-}
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .brandImageBox {
-    display: grid !important;
     grid-template-columns: repeat(6, 1fr);
-    row-gap: 30px;
-    column-gap: 16px;
-  }
-  .imgIndividual {
-    height: 160px;
-    width: 100%;
-  }
-  .imgIndividual img {
-    /* height: 60px; */
-    object-fit: contain;
-    height: 139px;
-    width: 139px;
-    /* padding: 10px; */
+    gap: 20px;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1200px) {
+
+@media screen and (min-width: 993px) and (max-width: 1199px) {
+  .brandImageBox {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .brandImageBox {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
   .brandImageBox span {
     font-size: 14px;
   }
-  .brandImageBox {
-    display: grid !important;
-    grid-template-columns: repeat(6, 1fr);
-    row-gap: 20px;
-    column-gap: 16px;
-  }
 }
 
-@media screen and (min-width: 768px) and (max-width: 993px) {
+@media screen and (min-width: 481px) and (max-width: 767px) {
   .brandImageBox {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr);
-    grid-row-gap: 20px;
-    grid-column-gap: 10px;
-  }
-
-  .imgIndividual {
-    height: 160px;
-    width: 100%;
-  }
-  .imgIndividual img {
-    /* height: 60px; */
-    object-fit: contain;
-    height: 130px;
-    width: 100px;
-    padding: 10px;
-  }
-}
-
-@media screen and (min-width: 380px) and (max-width: 767px) {
-  .brandImageBox {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr);
-    grid-row-gap: 20px;
-    grid-column-gap: 10px;
-  }
-
-  .imgIndividual {
-    height: 160px;
-    width: 100%;
-  }
-  .imgIndividual img {
-    /* height: 60px; */
-    object-fit: contain;
-    height: 80px;
-    width: 80px;
-    padding: 10px;
-  }
-}
-@media screen and (min-width: 200px) and (max-width: 480px) {
-  .brandImageBox {
-    display: grid !important;
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 10px;
-    column-gap: 10px;
-  }
-  .imgIndividual {
-    height: 100%;
-    width: 100%;
-  }
-  .imgIndividual img {
-    /* height: 60px; */
-    object-fit: contain;
-    height: 95px;
-    /* width: 80px; */
-    padding: 16px;
+    gap: 12px;
   }
 }

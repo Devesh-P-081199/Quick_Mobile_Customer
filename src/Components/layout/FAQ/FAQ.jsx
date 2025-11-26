@@ -33,35 +33,37 @@ const FAQ = () => {
   };
 
   return (
-    <section className={`${styles.faqSection} homepage-section`}>
-      <h2 className={styles.faqTitle}>FAQs</h2>
-      <div className={styles.faqList}>
-        {faqs.map((faq, index) => (
-          <div key={index} className={styles.faqItem}>
-            <div
-              className={styles.faqQuestion}
-              onClick={() => toggleFAQ(index)}
-            >
-              <span>{faq.question}</span>
-              <span
-                className={`${styles.faqIcon} ${
-                  openIndex === index ? styles.open : ""
+    <div className="page-content-wrapper">
+      <div className={`${styles.faqSection}`}>
+        <h2 className={styles.faqTitle}>FAQs</h2>
+        <div className={styles.faqList}>
+          {faqs.map((faq, index) => (
+            <div key={index} className={styles.faqItem}>
+              <div
+                className={styles.faqQuestion}
+                onClick={() => toggleFAQ(index)}
+              >
+                <span>{faq.question}</span>
+                <span
+                  className={`${styles.faqIcon} ${
+                    openIndex === index ? styles.open : ""
+                  }`}
+                >
+                  <img src={DownArrow} alt="" />
+                </span>
+              </div>
+              <div
+                className={`${styles.faqAnswer} ${
+                  openIndex === index ? styles.visible : ""
                 }`}
               >
-                <img src={DownArrow} alt="" />
-              </span>
+                {faq.answer}
+              </div>
             </div>
-            <div
-              className={`${styles.faqAnswer} ${
-                openIndex === index ? styles.visible : ""
-              }`}
-            >
-              {faq.answer}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 

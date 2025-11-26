@@ -1087,7 +1087,14 @@ const Header = () => {
               <li>Buy Phone</li>
               <li>Recycle Device</li>
               <li>Accessories</li>
-              <li>Our Store</li>
+              <li
+                onClick={() => {
+                  setIsOpen(false);
+                  navigate("/our-stores");
+                }}
+              >
+                Our Stores
+              </li>
               <li>Become Partner</li>
               <li>More</li>
             </ul>
@@ -1677,9 +1684,13 @@ const Header = () => {
                       }}
                     >
                       <div className={styles.categories}>
-                        <div className={styles.categoryItem}>
-                          <span>Store Locations</span>
-                        </div>
+                        <NavLink
+                          to="/our-stores"
+                          className={styles.categoryItem}
+                          onClick={() => setHoveredItem(null)}
+                        >
+                          <span>Visit Our Stores</span>
+                        </NavLink>
                         <div className={styles.categoryItem}>
                           <span>Store Hours</span>
                         </div>

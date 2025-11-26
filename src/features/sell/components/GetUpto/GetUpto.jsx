@@ -24,55 +24,57 @@ const GetUpto = () => {
     toggleModal,
   } = useContext(UserContext);
   const [finalPrice, setFinalPrice] = useState(null); // null means loading
-  const min = 3000;
-  const max = 29000;
-  const step = 100;
-  const [prices, setPrices] = useState(null); // null means loading
+  const [priceRange, setPriceRange] = useState(null); // null means loading
   const [, setSeoData] = useState(null); // null means loading
   const { slug1, slug2 } = useParams();
 
   const navigate = useNavigate();
 
-  const sliderRef = useRef(null);
-  const dragIndex = useRef(null);
   const cityModalShown = useRef(false);
   const lastFetchedVariantId = useRef(null);
 
-  const getNewPrice = (clientX) => {
-    if (!sliderRef.current) return;
-    const rect = sliderRef.current.getBoundingClientRect();
-    let percentage = (clientX - rect.left) / rect.width;
-    let newValue = Math.round(min + percentage * (max - min));
-    return Math.round(newValue / step) * step;
+  // Calculate slider positions dynamically from priceRange
+  // Note: Track width is calc(100% - 40px) starting at left: 20px
+  const calculateSliderPositions = () => {
+    if (!priceRange) return null;
+
+    const { minPrice, maxPrice, rangeMin, rangeMax } = priceRange;
+    const fullRange = maxPrice - minPrice;
+
+    // Calculate percentage within the price range
+    const thumb1Percentage = ((rangeMin - minPrice) / fullRange) * 100;
+    const thumb2Percentage = ((rangeMax - minPrice) / fullRange) * 100;
+
+    // Adjust for track: starts at 20px, width is calc(100% - 40px)
+    // Convert percentage to decimal for calc multiplication
+    const thumb1Decimal = thumb1Percentage / 100;
+    const thumb2Decimal = thumb2Percentage / 100;
+
+    const thumb1Pos = `calc(20px + (100% - 40px) * ${thumb1Decimal})`;
+    const thumb2Pos = `calc(20px + (100% - 40px) * ${thumb2Decimal})`;
+
+    // FilledTrack with -5px offset for alignment
+    const filledLeft = `calc(20px + (100% - 40px) * ${thumb1Decimal} - 5%)`;
+
+    // Width is the difference between thumb positions
+    const widthDecimal = (thumb2Percentage - thumb1Percentage) / 100;
+    const filledWidth = `calc((100% - 40px) * ${widthDecimal})`;
+
+    // Check if price difference is less than 10% of full range for transform adjustment
+    const priceDifference = rangeMax - rangeMin;
+    const percentageDifference = (priceDifference / fullRange) * 100;
+    const isNarrowRange = percentageDifference < 10.5;
+
+    return {
+      filledLeft,
+      filledWidth,
+      isNarrowRange,
+      thumb1Position: thumb1Pos,
+      thumb2Position: thumb2Pos,
+    };
   };
 
-  const handlePointerMove = (event) => {
-    if (dragIndex.current === null) return;
-    let newValue = getNewPrice(event.clientX);
-
-    setPrices((prev) => {
-      let updated = [...prev];
-      if (dragIndex.current === 0) {
-        updated[0] = Math.max(min, Math.min(newValue, prev[1] - step));
-      } else {
-        updated[1] = Math.min(max, Math.max(newValue, prev[0] + step));
-      }
-      return updated;
-    });
-  };
-
-  const handlePointerUp = () => {
-    dragIndex.current = null;
-    window.removeEventListener("pointermove", handlePointerMove);
-    window.removeEventListener("pointerup", handlePointerUp);
-  };
-
-  const handlePointerDown = (index, event) => {
-    dragIndex.current = index;
-    event.preventDefault();
-    window.addEventListener("pointermove", handlePointerMove);
-    window.addEventListener("pointerup", handlePointerUp);
-  };
+  const sliderPositions = calculateSliderPositions();
 
   console.log("userSelection:", userSelection);
 
@@ -118,7 +120,15 @@ const GetUpto = () => {
         setFinalPrice(response?.data?.finalPrice || 0);
         setDeviceInfo(response?.data?.deviceInfo || {});
         setSeoData(response.data.seo);
-        setPrices([12000, 17000]);
+
+        // Set price range from API or use defaults
+        const apiPriceRange = response?.data?.priceRange;
+        setPriceRange({
+          minPrice: apiPriceRange?.minPrice || 1000,
+          maxPrice: apiPriceRange?.maxPrice || 50000,
+          rangeMin: apiPriceRange?.rangeMin || 30000,
+          rangeMax: apiPriceRange?.rangeMax || 35000,
+        });
       } catch (error) {
         console.error("Error fetching price and packages:", error);
         toast.error("Failed to fetch price and packages");
@@ -146,7 +156,7 @@ const GetUpto = () => {
 
       // Clear old product data
       setFinalPrice(null);
-      setPrices(null);
+      setPriceRange(null);
       setDeviceInfo({});
       setSeoData(null);
 
@@ -249,52 +259,73 @@ const GetUpto = () => {
                     {/* <span className={styles.infoIcon}>ℹ️</span> */}
                   </div>
                   <div className={styles.priceBox}>
-                    {prices ? (
+                    {priceRange && sliderPositions ? (
                       <div className={styles.sliderContainer}>
                         <div className={styles.priceLabelMin}>
-                          ₹{min.toLocaleString()}
+                          ₹{priceRange.minPrice.toLocaleString()}
                         </div>
                         <div className={styles.priceLabelMax}>
-                          ₹{max.toLocaleString()}
+                          ₹{priceRange.maxPrice.toLocaleString()}
                         </div>
 
                         <span
-                          className={`${styles.currentPrice} ${styles.currentPriceMin}`}
+                          className={`${styles.currentPrice} ${
+                            sliderPositions.isNarrowRange
+                              ? styles.currentPriceMinNarrow
+                              : styles.currentPriceMin
+                          }`}
                           style={{
-                            left: `${((prices[0] - min) / (max - min)) * 90}%`,
+                            left: sliderPositions.thumb1Position,
                           }}
                         >
-                          ₹{prices[0].toLocaleString()}
+                          ₹{priceRange.rangeMin.toLocaleString()}
                         </span>
 
                         <span
-                          className={`${styles.currentPrice} ${styles.currentPriceMax}`}
+                          className={`${styles.currentPrice} ${
+                            sliderPositions.isNarrowRange
+                              ? styles.currentPriceMaxNarrow
+                              : styles.currentPriceMax
+                          }`}
                           style={{
-                            left: `${((prices[1] - min) / (max - min)) * 110}%`,
+                            left: sliderPositions.thumb2Position,
                           }}
                         >
-                          ₹{prices[1].toLocaleString()}
+                          ₹{priceRange.rangeMax.toLocaleString()}
                         </span>
 
-                        <div ref={sliderRef} className={styles.track}></div>
+                        <div className={styles.track}></div>
 
-                        {prices.map((price, index) => (
-                          <div
-                            key={index}
-                            className={styles.thumb}
-                            style={{
-                              left: `${((price - min) / (max - min)) * 100}%`,
-                            }}
-                            onPointerDown={(e) => handlePointerDown(index, e)}
-                          ></div>
-                        ))}
+                        {/* Filled track between thumbs - offset by -5px for alignment */}
+                        <div
+                          className={styles.filledTrack}
+                          style={{
+                            left: sliderPositions.filledLeft,
+                            width: sliderPositions.filledWidth,
+                          }}
+                        ></div>
+
+                        {/* Thumb 1 */}
+                        <div
+                          className={styles.thumb}
+                          style={{
+                            left: sliderPositions.thumb1Position,
+                          }}
+                        ></div>
+
+                        {/* Thumb 2 */}
+                        <div
+                          className={styles.thumb}
+                          style={{
+                            left: sliderPositions.thumb2Position,
+                          }}
+                        ></div>
                       </div>
                     ) : (
                       <Skeleton height={80} width={390} />
                     )}
                   </div>
 
-                  <div className={styles.priceDivider}></div>
                   <p className={styles.userData}>
                     According to <span>985</span> Recent Users
                   </p>

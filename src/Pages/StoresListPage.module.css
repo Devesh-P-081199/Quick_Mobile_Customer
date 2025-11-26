@@ -1,0 +1,167 @@
+.storesListPage {
+  padding: 30px 0;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.pageTitle {
+  font-size: 32px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.pageDescription {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.storesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+/* Store Card */
+.storeCard {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.storeCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Section */
+.imageSection {
+  position: relative;
+}
+
+.mainImage {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.mainImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnails {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  background: #f9f9f9;
+}
+
+.thumbnail {
+  flex: 1;
+  height: 60px;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.thumbnail:hover {
+  border-color: #1968b3;
+}
+
+.thumbnail.active {
+  border-color: #1968b3;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Store Info */
+.storeInfo {
+  padding: 20px;
+}
+
+.storeName {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+.address {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.locationIcon {
+  color: #1968b3;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.address p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.viewDetailsBtn {
+  width: 100%;
+  padding: 12px;
+  background-color: #1968b3;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.viewDetailsBtn:hover {
+  background-color: #145a94;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .storesListPage {
+    padding: 15px 0;
+  }
+
+  .pageTitle {
+    font-size: 24px;
+  }
+
+  .pageDescription {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .storesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .mainImage {
+    height: 200px;
+  }
+
+  .thumbnail {
+    height: 50px;
+  }
+}

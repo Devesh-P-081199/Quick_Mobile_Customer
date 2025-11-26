@@ -3,8 +3,7 @@
 }
 
 .bannerWrapper {
-  background-color: #000;
-  color: #fff;
+  background-color: #ededed;
   padding: 2rem;
   margin: 2rem;
   text-align: center;
@@ -12,12 +11,12 @@
 }
 
 .bannerWrapper h2 {
-  font-size: 34px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .highlight {
-  color: #2196f3;
+  color: #1968b3;
 }
 
 .statsContainer {
@@ -32,7 +31,8 @@
   background-color: #fff;
   color: #000;
   padding: 1rem 2rem;
-  border-radius: 8px;
+  border-radius: 10px;
+  border: 0.3px solid #e1e1e1;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -42,13 +42,23 @@
   justify-content: center;
 }
 
+.statBox img {
+  height: 50px;
+}
+
+.statBox span {
+  font-size: 12px;
+}
+
 .icon {
   font-size: 1.2rem;
 }
 
 .ewasteHelp {
-  font-size: 30px;
+  font-size: 16px;
   font-weight: 600;
+  color: #000000;
+  margin: 0;
 }
 
 .ewaste {
@@ -56,24 +66,19 @@
 }
 
 .ewasteInfo {
-  color: #ccc;
+  color: #2e2e2e;
   font-size: 24px;
-  margin-top: 0.5rem;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  .container {
-    padding: 20px 0px;
-    margin: 0px;
-  }
   .bannerWrapper {
     padding: 24px 10px;
     border-radius: 0px;
   }
 
   .bannerWrapper h2 {
-    font-size: 24px;
+    font-size: 18px;
     line-height: 1.4;
   }
 
@@ -82,7 +87,7 @@
     flex-wrap: nowrap;
     flex-direction: row;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .statBox {
@@ -94,7 +99,7 @@
   }
 
   .ewasteHelp {
-    font-size: 26px;
+    font-size: 16px;
   }
 
   .ewasteInfo {
@@ -104,31 +109,31 @@
 
 @media (max-width: 480px) {
   .container {
-    padding: 20px 0px;
+    padding: 25px 0px;
     margin: 0px;
   }
   .bannerWrapper h2 {
-    font-size: 20px;
+    font-size: 18px;
     border-radius: 0px;
+    margin: 0;
   }
 
   .statBox {
     font-size: 14px;
   }
 
-  .statsContainer { 
+  .statsContainer {
     gap: 10px;
   }
 
   .ewasteHelp {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .ewasteInfo {
-    font-size: 18px;
+    font-size: 14px;
   }
   .bannerWrapper {
     margin: 0px;
   }
 }
-

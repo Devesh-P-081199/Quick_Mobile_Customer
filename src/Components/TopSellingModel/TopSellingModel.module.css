@@ -27,6 +27,7 @@
 
 .sectionHeading {
   font-size: 18px;
+  margin: 0;
   font-family: "IBM Plex Sans";
   font-weight: 500;
 }
@@ -100,8 +101,7 @@
   .topSellingWrapper {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 25px;
+    gap: 20px;
   }
   .absoluteButtons {
     display: none;

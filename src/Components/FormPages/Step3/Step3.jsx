@@ -3,10 +3,44 @@ import "./Step3.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import DeviceImg from "../../../assets/images/Products/mobile.png";
 import { UserContext } from "../../../Context/contextAPI";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import api from "../../../Utils/api";
 import MobileCommonHeaderthree from "../../layout/MobileCommonHeader/MobileCommonHeaderthree";
+
+// Import flaticons for broken items
+import cameraIcon from "../../../assets/flaticons/camera.png";
+import issueIcon from "../../../assets/flaticons/issue.png";
+import bluetoothIcon from "../../../assets/flaticons/bluetooth-off.png";
+import muteIcon from "../../../assets/flaticons/mute.png";
+import silenceIcon from "../../../assets/flaticons/silence.png";
+import lightningIcon from "../../../assets/flaticons/lightning.png";
+
+// ====== Icon mapping for broken items ======
+const getIconForOption = (optionLabel) => {
+  const label = optionLabel.toLowerCase();
+
+  if (label.includes("front camera") || label.includes("back camera")) {
+    return cameraIcon;
+  }
+  if (label.includes("wifi")) {
+    return issueIcon;
+  }
+  if (label.includes("bluetooth")) {
+    return bluetoothIcon;
+  }
+  if (label.includes("audio receiver")) {
+    return muteIcon;
+  }
+  if (label.includes("speaker")) {
+    return silenceIcon;
+  }
+  if (label.includes("charging port")) {
+    return lightningIcon;
+  }
+
+  return null; // Return null if no match, will use API icon or no icon
+};
 
 // ====== Transform questions ======
 const transformQuestions = (apiQuestions) =>
@@ -186,6 +220,68 @@ function Step3() {
     resetConditionsPagination();
   }, [currentPackageIndex]);
 
+  // ===== Adjust icon option containers for long text and equalize label heights =====
+  useEffect(() => {
+    const adjustIconOptions = () => {
+      const iconContainers = document.querySelectorAll(
+        ".icon-option-container"
+      );
+
+      iconContainers.forEach((container) => {
+        // Check for long text (more than 3 lines)
+        const optionTexts = container.querySelectorAll(".option-text");
+        let hasLongText = false;
+
+        optionTexts.forEach((textElement) => {
+          const lineHeight = parseFloat(
+            getComputedStyle(textElement).lineHeight
+          );
+          const height = textElement.offsetHeight;
+          const lines = Math.round(height / lineHeight);
+
+          if (lines > 3) {
+            hasLongText = true;
+          }
+        });
+
+        // Add or remove two-columns class
+        if (hasLongText) {
+          container.classList.add("two-columns");
+        } else {
+          container.classList.remove("two-columns");
+        }
+
+        // Equalize label heights within this container
+        const labels = container.querySelectorAll(".label-inside-icon");
+        if (labels.length > 0) {
+          // Reset heights first
+          labels.forEach((label) => {
+            label.style.height = "auto";
+          });
+
+          // Find max height
+          let maxHeight = 0;
+          labels.forEach((label) => {
+            const height = label.offsetHeight;
+            if (height > maxHeight) {
+              maxHeight = height;
+            }
+          });
+
+          // Apply max height to all labels
+          labels.forEach((label) => {
+            label.style.height = `${maxHeight}px`;
+          });
+        }
+      });
+    };
+
+    // Run after render
+    const timer = setTimeout(adjustIconOptions, 100);
+
+    return () => clearTimeout(timer);
+  }, [allPackageData, currentPackageIndex, currentConditionsPage]);
+
   const getQuestionNumber = (index) => {
     if (!conditionsPaginationEnabled) return index + 1;
     return index + 1 + currentConditionsPage * conditionsQuestionsPerPage;
@@ -220,9 +316,9 @@ function Step3() {
         });
       }
 
-      toast.error(
-        `Please answer ${unansweredRequired.length} required question(s) before continuing`
-      );
+      // toast.error(
+      //   `Please answer ${unansweredRequired.length} required question(s) before continuing`
+      // );
       return false;
     }
 
@@ -261,7 +357,7 @@ function Step3() {
         });
       }
 
-      toast.error("Please answer all required questions before continuing");
+      // toast.error("Please answer all required questions before continuing");
       return false;
     }
 
@@ -327,7 +423,7 @@ function Step3() {
         const productId = urlParams.get("pid");
 
         if (!productId) {
-          toast.error("Invalid URL. Please start over.");
+          // toast.error("Invalid URL. Please start over.");
           // Redirect to product selection page instead of using navigate(-1)
           navigate(`/${slug}`);
           return;
@@ -360,7 +456,7 @@ function Step3() {
         }
 
         // If we can't restore packages, redirect to variant selection
-        toast.error("Session expired. Please select device variant again.");
+        // toast.error("Session expired. Please select device variant again.");
         navigate(`/${slug}`);
         return;
       }
@@ -436,6 +532,58 @@ function Step3() {
     });
 
     setMissingQuestions((prev) => prev.filter((id) => id !== questionId));
+
+    // Auto-scroll to next question after selection (only for single-select types)
+    if (!isMulti) {
+      setTimeout(() => {
+        const paginatedQuestions = getPaginatedQuestions();
+        const currentQuestionIndex = paginatedQuestions.findIndex(
+          (q) => q.id === questionId
+        );
+
+        // If there's a next question, check if it's visible and scroll if needed
+        if (
+          currentQuestionIndex !== -1 &&
+          currentQuestionIndex < paginatedQuestions.length - 1
+        ) {
+          const nextQuestion = paginatedQuestions[currentQuestionIndex + 1];
+          const nextQuestionRef = questionRefs.current[nextQuestion.id];
+
+          if (nextQuestionRef) {
+            // Check if the options of next question are visible in viewport (using 80% of screen)
+            const optionsContainer = nextQuestionRef.querySelector(
+              ".options, .dropdown-select"
+            );
+            const viewportHeight = window.innerHeight * 0.8;
+
+            if (optionsContainer) {
+              const rect = optionsContainer.getBoundingClientRect();
+              const isOptionsVisible =
+                rect.top >= 0 && rect.bottom <= viewportHeight;
+
+              // Only scroll if options are not fully visible in 80% viewport
+              if (!isOptionsVisible) {
+                nextQuestionRef.scrollIntoView({
+                  behavior: "smooth",
+                  block: "center",
+                });
+              }
+            } else {
+              // Fallback: if no options container found, check the whole question
+              const rect = nextQuestionRef.getBoundingClientRect();
+              const isVisible = rect.top >= 0 && rect.bottom <= viewportHeight;
+
+              if (!isVisible) {
+                nextQuestionRef.scrollIntoView({
+                  behavior: "smooth",
+                  block: "center",
+                });
+              }
+            }
+          }
+        }
+      }, 300); // Small delay to allow state update
+    }
   };
 
   // ===== Render options =====
@@ -486,15 +634,19 @@ function Step3() {
             ? selected.includes(opt.value)
             : selected === opt.value;
 
+          // Get local icon based on option label, fallback to API icon
+          const localIcon = getIconForOption(opt.label);
+          const iconToUse = localIcon || opt.img;
+
           return showIcons ? (
             <div
               key={opt.id}
               className={`select-box ${isSelected ? "selected" : ""}`}
               onClick={() => handleOptionChange(q.id, opt.value, isMulti)}
             >
-              {opt.img && (
+              {iconToUse && (
                 <div className="icon-space">
-                  <img src={opt.img} alt={opt.label} />
+                  <img src={iconToUse} alt={opt.label} />
                 </div>
               )}
               <label
@@ -579,7 +731,7 @@ function Step3() {
         deviceInfo.deviceName || urlParams.get("pn") || "Unknown Device";
 
       if (!userSelection?.cityId || !userSelection?.cityName) {
-        toast.error("Please select city first");
+        // toast.error("Please select city first");
         return;
       }
 
@@ -613,7 +765,7 @@ function Step3() {
       navigate(`/${slug}/price-summary?${urlParams.toString()}`);
     } catch (error) {
       console.error("Error fetching final price:", error);
-      toast.error("Error fetching final price");
+      // toast.error("Error fetching final price");
     }
   };
 
@@ -861,22 +1013,22 @@ function Step3() {
                   <div className="question">
                     <p className="question-text">
                       {`${getQuestionNumber(index)}. ${q?.question}`}
-                      {isConditionRelatedPackage &&
-                        (q.type === "radio" ||
-                          q.type === "icon-radio" ||
-                          q.type === "dropdown") && (
-                          <span className="required-asterisk">*</span>
-                        )}
+                      {(q.type === "radio" ||
+                        q.type === "icon-radio" ||
+                        q.type === "dropdown") && (
+                        <sup className="required-asterisk">*</sup>
+                      )}
                     </p>
                     <p className="question-explaination-text">
                       {q?.questionExplanation}
                     </p>
+                    {missingQuestions.includes(q.id) && (
+                      <p className="error-text">
+                        Please fill required question
+                      </p>
+                    )}
                   </div>
                   {renderOptions(q)}
-
-                  {missingQuestions.includes(q.id) && (
-                    <p className="error-text">Please fill required question</p>
-                  )}
                 </div>
               ))}
 

@@ -46,20 +46,10 @@ const SelectBrand = forwardRef((props, ref) => {
   }, [selectedCategory]);
 
   return (
-    <section ref={ref} className="homepage-section scrollbar-hidden">
+    <section ref={ref} className="page-content-wrapper scrollbar-hidden">
       <div className={styles.selectBrandWrapper}>
         <div className={styles.headingFlex}>
           <h2 className={styles.sectionHeading}>Select Brand</h2>
-          {/* Optional search */}
-          {/* <div className={styles.searchBox}>
-              <input
-                type="text"
-                placeholder="Discover your next tech upgrade"
-                value={searchTerm}
-                onChange={handleSearchChange}
-              />
-              <BiSearch className={styles.searchIcon} size={20} />
-            </div> */}
         </div>
 
         <div className={`${styles.brandImageBox} scrollbar-hidden`}>

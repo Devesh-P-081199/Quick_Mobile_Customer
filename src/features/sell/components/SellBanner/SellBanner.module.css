@@ -38,9 +38,24 @@
 
 .sellerbanner .rightContent .sliderWrapper .imgSlider .imgCard .imageBg {
   border-radius: 15px;
-  overflow: hidden;
+  /* overflow: hidden; */
   justify-content: space-around;
+  position: relative;
 }
+
+/* .selectedCategory .imageBg::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  top: -5px;
+  right: -5px;
+  z-index: 1;
+  border: 7px solid #1968b3;
+  outline: 5px solid #ffffff;
+} */
 
 .sellerbanner .rightContent .sliderWrapper .imgSlider .imgCard .imageBg img {
   overflow: hidden;
@@ -117,7 +132,7 @@ button.laptopviewall {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .cardName {
@@ -546,6 +561,19 @@ button.laptopviewall {
   border: 1px solid #1968b3;
   border-radius: 5px;
 }
+
+.selectedCategory .imageBg {
+  /* background-color: #1968b3; */
+  border: 1px solid #1968b3;
+}
+
+.selectedCategory .imageBg .cardName {
+  /* background-color: #1968b3; */
+  font-weight: 700;
+  color: #1968b3;
+  width: auto;
+}
+
 span.dotButton {
   width: 40px !important;
   height: 40px !important;

@@ -94,7 +94,11 @@ const SuggestionProductSlider = () => {
                 index === currentIndex ? styles.activeCard : ""
               }`}
               key={index}
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              style={{
+                transform: `translateX(calc(-${currentIndex * 100}% - ${
+                  currentIndex * 10
+                }px))`,
+              }}
             >
               <div className={styles.innerBox}>
                 <img

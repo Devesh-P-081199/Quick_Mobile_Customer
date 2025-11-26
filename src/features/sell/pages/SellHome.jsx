@@ -111,7 +111,9 @@ function SellHome() {
       <TopSellingModel />
       <BrowsePicks />
 
-      <Testimonials />
+      <div className="page-content-wrapper">
+        <Testimonials />
+      </div>
 
       <FAQ />
     </>

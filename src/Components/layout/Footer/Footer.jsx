@@ -130,6 +130,7 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <h3 className={styles.footerHeading}>Others</h3>
             <div className={styles.footerLinks}>
+              <Link to="/our-stores">Our Stores</Link>
               <a href="#">Register Warranty</a>
               <a href="#">Claim Warranty</a>
               <a href="#">Become Partner</a>
@@ -248,6 +249,7 @@ const Footer = () => {
           <FooterSection
             title="Others"
             links={[
+              { text: "Our Stores", path: "/our-stores" },
               "Register Warranty",
               "Claim Warranty",
               "Become Partner",

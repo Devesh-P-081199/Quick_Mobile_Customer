@@ -8,7 +8,7 @@ const SellBannerSkeleton = () => {
         <div className={styles.skeletonFlex}>
           <div className={styles.leftSkeleton}></div>
           <div className={styles.rightSkeleton}>
-             <div className={styles.brandSkeletonGroup}>
+            <div className={styles.brandSkeletonGroup}>
               <div className={styles.brandSkeleton}></div>
               <div className={styles.brandSkeleton}></div>
               <div className={styles.brandSkeleton}></div>

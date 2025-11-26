@@ -35,7 +35,7 @@ export function PressReleaseCard({ logo, title, date }) {
 export default function PressRelease() {
   return (
     <div>
-      <div className={styles.container}>
+      <div className={(styles.container, styles.presswrapper)}>
         <h2 className={styles.heading}>Press Release</h2>
         <div className={styles.grid}>
           {pressReleases.map((item) => (

@@ -80,6 +80,8 @@ import DynamicRouteHandler from "./pages/DynamicRouteHandler";
 import NotFoundPage from "./pages/NotFoundPage";
 const BlogDetail = React.lazy(() => import("./pages/BlogDetail"));
 const BlogsPage = React.lazy(() => import("./pages/BlogsPage"));
+const StorePage = React.lazy(() => import("./pages/StorePage"));
+const StoresListPage = React.lazy(() => import("./pages/StoresListPage"));
 import HomePage from "./features/buy/pages/HomePage";
 import AboutUs from "./pages/general/AboutUs/AboutUs";
 import Cookies from "./pages/general/Cookies/Cookies";
@@ -338,6 +340,22 @@ const AppContent = () => {
             <Suspense fallback={<Loader />}>
               <BlogsPage />
             </Suspense>
+          }
+        />
+        <Route
+          path="/our-stores"
+          element={
+            <React.Suspense fallback={<Loader />}>
+              <StoresListPage />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/our-store/:storeId"
+          element={
+            <React.Suspense fallback={<Loader />}>
+              <StorePage />
+            </React.Suspense>
           }
         />
         <Route
