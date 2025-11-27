@@ -432,6 +432,14 @@
   margin-bottom: 24px;
 }
 
+.popularCityGrid:has(.noCitiesText) {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.noCitiesText {
+  font-size: 14px;
+}
+
 .popularCityButton {
   padding: 5px;
   border-radius: 8px;

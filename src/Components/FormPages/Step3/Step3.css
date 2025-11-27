@@ -540,6 +540,10 @@
     gap: 12px;
   }
 
+  .options:has(.option-with-des-box) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   /* long text → force 1 col */
   .options.long-text {
     display: grid;
@@ -708,6 +712,7 @@
   display: flex;
   /* flex-direction: column; */
   align-items: center;
+  width: 100%;
 }
 
 .option-input-flex {
