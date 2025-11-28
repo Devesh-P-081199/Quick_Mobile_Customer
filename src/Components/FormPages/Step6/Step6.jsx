@@ -8,6 +8,9 @@ import rightarrow from "../../../assets/images/icons/rightarrow.png";
 import Recalculate from "../../../assets1/kimages/t1.png";
 import FreePickup from "../../../assets1/kimages/t2.png";
 import FreePickup2 from "../../../assets1/kimages/t5.png";
+import clock from "../../.../../../assets/flaticons/back-in-time.png";
+import van from "../../.../../../assets/flaticons/van.png";
+import secureShield from "../../.../../../assets/flaticons/secure-shield.png";
 
 import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../Context/contextAPI";
@@ -68,7 +71,8 @@ function Step6() {
       <MobileCommonHeaderthree title="Order Summery" />
 
       <section className={`${styles.StepSix} mobile-pt-section `}>
-        <div className={styles.wrapper}>
+        <div className="page-content-wrapper">
+          {/* <div className={styles.wrapper}> */}
           {/* Left Section */}
           <div className={styles.LeftBox}>
             <div className={styles.DeviceImg}>
@@ -93,8 +97,8 @@ function Step6() {
                     </>
                   )}
                 </h2>
-                <h2 className={styles.price}>
-                  Selling Price :{" "}
+                <div className={styles.pricing}>
+                  <h2 className={styles.price}>Selling Price</h2>
                   <span className="color-red">
                     {loading ? (
                       <Skeleton width={80} />
@@ -102,7 +106,7 @@ function Step6() {
                       `₹ ${(currentEvaluationId?.finalPrice).toFixed(2)}`
                     )}
                   </span>
-                </h2>
+                </div>
                 <span className={styles.infoLine}>
                   {loading ? (
                     <Skeleton width={150} />
@@ -131,11 +135,24 @@ function Step6() {
                 )}
               </div>
             </div>
-            <img
-              src={FreePickup2}
-              alt=""
-              className={styles.FreePickupImgMobile}
-            />
+            <div className={styles.deliveryfeature}>
+              <div className={styles.feature}>
+                <img src={clock} alt="" className={styles.featureOption}></img>
+                <p>Instant Payment</p>
+              </div>
+              <div className={styles.feature}>
+                <img src={van} alt="" className={styles.featureOption}></img>
+                <p>Free Pickup</p>
+              </div>
+              <div className={styles.feature}>
+                <img
+                  src={secureShield}
+                  alt=""
+                  className={styles.featureOption}
+                ></img>
+                <p>100% Safe & Secure</p>
+              </div>
+            </div>
             <p className={styles.BottomPara}>
               {loading ? (
                 <Skeleton count={3} />

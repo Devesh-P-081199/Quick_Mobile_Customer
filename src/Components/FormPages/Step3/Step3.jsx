@@ -256,6 +256,7 @@ function Step3() {
         if (labels.length > 0) {
           // Reset heights first
           labels.forEach((label) => {
+            label.style.minHeight = "auto";
             label.style.height = "auto";
           });
 
@@ -268,9 +269,10 @@ function Step3() {
             }
           });
 
-          // Apply max height to all labels
+          // Apply min-height instead of fixed height to allow growth
           labels.forEach((label) => {
-            label.style.height = `${maxHeight}px`;
+            label.style.minHeight = `${maxHeight}px`;
+            label.style.height = "auto";
           });
         }
       });

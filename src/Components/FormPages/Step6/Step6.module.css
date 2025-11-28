@@ -6,14 +6,19 @@
   margin: auto;
 }
 
+.page-content-wrapper {
+  padding-bottom: 50px;
+}
+
 .LeftBox {
   width: 715px;
   border-width: 0.3px;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 20px;
   border: 0.3px solid #e1e1e1;
   background-color: #ffffff;
   height: 100%;
+  margin: 10px 0;
 }
 
 .RightBox {
@@ -24,6 +29,41 @@
   padding: 20px;
   border: 0.3px solid #e1e1e1;
   background-color: #ffffff;
+}
+
+.deliveryfeature {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.deliveryfeature .feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  border-right: 0.3px solid #e1e1e1;
+}
+
+.deliveryfeature .feature:last-child {
+  border-right: none !important;
+}
+
+.featureOption {
+  height: 45px;
+  aspect-ratio: 1;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f9fafb;
+}
+
+.deliveryfeature .feature p {
+  font-size: 12px;
+  font-weight: 500;
+  margin: 10px 0 0 0;
+  text-align: center;
 }
 
 .BottomPara {
@@ -52,10 +92,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .mobileImg img {
-  height: 188px;
+  width: auto;
+  height: 100%;
 }
 
 .DeviceDetails {
@@ -82,8 +124,8 @@
 
 .DeviceDetails span {
   font-family: IBM Plex Sans;
+  font-size: 20px;
   font-weight: 500;
-  /* font-size: 14px; */
   line-height: 100%;
   letter-spacing: 0%;
   /* color: #00000080; */
@@ -235,7 +277,6 @@
   align-items: center;
   padding: 10px 12px;
   gap: 5px;
-  border: 1px solid #000000;
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
@@ -360,13 +401,6 @@
     font-size: 20px;
   }
 
-  .mobileImg img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    padding: 10px 0px;
-  }
-
   .row {
     /* flex-direction: column; */
     /* width: 290px; */
@@ -468,6 +502,11 @@
     padding: 20px 0px;
   }
 
+  .mobileImg img {
+    width: auto;
+    height: 100%;
+  }
+
   .wrapper {
     gap: 15px;
   }
@@ -478,32 +517,31 @@
 }
 
 @media (max-width: 480px) {
-  .mobileImg {
-    width: auto;
-    height: 80px;
-  }
-
   .LeftBox {
     padding: 10px;
   }
 
   .DeviceDetails .name {
     font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
+    line-height: 1.3;
   }
 
-  .DeviceDetails h2 {
-    font-size: 16px;
+  .DeviceDetails .price {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .DeviceDetails .price span {
+    font-weight: 500;
   }
 
   .wrapper {
     gap: 0px;
     margin: -10px 0px;
     padding-bottom: 90px;
-  }
-
-  .DeviceImg {
-    flex-direction: row;
-    margin-bottom: 10px;
   }
 
   .recalculateImg {
@@ -523,39 +561,42 @@
   }
 
   .mobileImg {
-    /* width: 255px; */
     border-width: 1px;
     padding-right: 0px;
     padding-left: 0px;
     gap: 10px;
-    border-radius: 10px;
+    border-radius: 15px;
     border: none;
     display: flex;
     align-items: start;
     justify-content: center;
     padding: 0px 0px;
     padding: 12px;
-    border-radius: 5px;
-    border: 0.3px solid #dbdbdb;
-    width: 80px;
+    border: 0.3px solid #e1e1e1;
+    width: 100px;
+    height: 100px;
+  }
+
+  .mobileImg img {
+    width: auto;
+    height: 100%;
   }
 
   .DeviceImg {
     display: flex;
-    gap: 10px;
-    align-items: center;
-    border-bottom: 1px dotted #bcbcbc;
-    padding-bottom: 20px;
-  }
-
-  .mobileImg img {
-    padding: 0px 0px;
+    gap: 15px;
+    align-items: flex-start;
+    border-bottom: 0.3px solid #e1e1e1;
+    padding-bottom: 10px;
+    flex-direction: row;
+    margin-bottom: 10px;
   }
 
   .DeviceDetails {
-    justify-content: start;
+    justify-content: center;
     align-items: start;
-    gap: 5px;
+    gap: 10px;
+    width: calc(100% - 100px);
   }
 
   .details {
@@ -621,7 +662,6 @@
     padding: 10px 12px;
     margin-top: 12px;
     display: block;
-    background: rgb(231, 231, 231);
     border-radius: 8px;
     width: 100%;
     text-align: start;
