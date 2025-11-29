@@ -10,7 +10,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .right {
@@ -34,19 +34,18 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #1968b3;
-  color: white;
   border: none;
-  padding: 10px 20px;
+  min-height: 45px;
+  padding: 10px 15px;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
-}
-
-.addBtn:hover {
-  background-color: #145a9a;
+  background-color: #fff;
+  color: #1968b3;
+  border-radius: 10px;
+  border: 0.3px solid #e1e1e1;
 }
 
 .formCard {
@@ -355,5 +354,12 @@
   .addressActions {
     width: 100%;
     justify-content: flex-end;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .addBtn {
+    width: 100%;
+    justify-content: flex-start;
   }
 }

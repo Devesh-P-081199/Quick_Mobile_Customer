@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./Checkout.module.css";
 import RightCard from "./RightCard";
 import { toast } from "react-toastify";
@@ -9,12 +10,11 @@ import MobileCommonHeaderthree from "../../../../Components/layout/MobileCommonH
 import { FaPlus } from "react-icons/fa";
 import trash from "../../../../assets/flaticons/trash-basecolor.png";
 import edit from "../../../../assets/flaticons/pen-basecolor.png";
-import AddressModal from "../AddressModal/AddressModal";
 
 function CheckOut() {
   const [address, setAddress] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingAddress, setEditingAddress] = useState(null);
+  const navigate = useNavigate();
+  const { slug } = useParams();
 
   const { selectedAddress, setSelectedAddress } = useContext(UserContext);
 
@@ -31,8 +31,10 @@ function CheckOut() {
 
   // Handle edit address
   const handleEdit = (address) => {
-    setEditingAddress(address);
-    setIsModalOpen(true);
+    const addressId = address._id || address.id;
+    navigate(`/${slug}/check-out/edit-address/${addressId}`, {
+      state: { address },
+    });
   };
 
   // Handle delete address
@@ -52,19 +54,7 @@ function CheckOut() {
 
   // Handle add new address
   const handleAddNew = () => {
-    setEditingAddress(null);
-    setIsModalOpen(true);
-  };
-
-  // Handle modal close
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-    setEditingAddress(null);
-  };
-
-  // Handle successful address save
-  const handleAddressSuccess = () => {
-    fetchAddress();
+    navigate(`/${slug}/check-out/add-address`);
   };
 
   useEffect(() => {
@@ -93,69 +83,65 @@ function CheckOut() {
               </button>
               <div className={styles.addressList}>
                 {address?.length > 0 ? (
-                  <>
-                    {address.map((item, index) => (
-                      <div
-                        key={item._id || item.id || index}
-                        className={`${styles.addressCard} ${
-                          selectedAddress !== null &&
-                          (selectedAddress?.id === item.id ||
-                            selectedAddress?._id === item._id)
-                            ? styles.selectedCard
-                            : ""
-                        }`}
-                      >
-                        <label className={styles.addressLabel}>
-                          <input
-                            type="radio"
-                            name="address"
-                            className={styles.radioInput}
-                            onChange={() => setSelectedAddress(item)}
-                            checked={
-                              selectedAddress !== null &&
-                              (selectedAddress?.id === item.id ||
-                                selectedAddress?._id === item._id)
-                            }
-                          />
-                          <span className={styles.customRadio}></span>
-                          <div className={styles.addressContent}>
-                            <span className={styles.saveTag}>
-                              {item?.saveAs}
-                            </span>
-                            <p>
-                              {item?.houseNumber}, {item?.street},
-                              {item?.landmark}
-                            </p>
-                            <p>
-                              {item?.cityName}, {item?.state} - {item?.zipCode}
-                            </p>
-                          </div>
-                        </label>
-                        <div className={styles.addressActions}>
-                          <button
-                            className={styles.editIconBtn}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleEdit(item);
-                            }}
-                          >
-                            <img src={edit} alt="edit" />
-                          </button>
-                          <button
-                            className={styles.deleteIconBtn}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleDelete(item);
-                            }}
-                          >
-                            <img src={trash} alt="trash" />
-                          </button>
+                  address.map((item, index) => (
+                    <div
+                      key={item._id || item.id || index}
+                      className={`${styles.addressCard} ${
+                        selectedAddress !== null &&
+                        (selectedAddress?.id === item.id ||
+                          selectedAddress?._id === item._id)
+                          ? styles.selectedCard
+                          : ""
+                      }`}
+                    >
+                      <label className={styles.addressLabel}>
+                        <input
+                          type="radio"
+                          name="address"
+                          className={styles.radioInput}
+                          onChange={() => setSelectedAddress(item)}
+                          checked={
+                            selectedAddress !== null &&
+                            (selectedAddress?.id === item.id ||
+                              selectedAddress?._id === item._id)
+                          }
+                        />
+                        <span className={styles.customRadio}></span>
+                        <div className={styles.addressContent}>
+                          <span className={styles.saveTag}>{item?.saveAs}</span>
+                          <p>
+                            {item?.houseNumber}, {item?.street},{item?.landmark}
+                          </p>
+                          <p>
+                            {item?.cityName}, {item?.state} - {item?.zipCode}
+                          </p>
+                          <p>{item?.alternatePhone}</p>
                         </div>
+                      </label>
+                      <div className={styles.addressActions}>
+                        <button
+                          className={styles.editIconBtn}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleEdit(item);
+                          }}
+                        >
+                          <img src={edit} alt="edit" />
+                        </button>
+                        <button
+                          className={styles.deleteIconBtn}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDelete(item);
+                          }}
+                        >
+                          <img src={trash} alt="trash" />
+                        </button>
                       </div>
-                    ))}
-                  </>
+                    </div>
+                  ))
                 ) : (
-                  <p>No address found</p>
+                  <p></p>
                 )}
               </div>
             </div>
@@ -164,14 +150,6 @@ function CheckOut() {
           <RightCard />
         </div>
       </section>
-
-      {/* Address Modal */}
-      <AddressModal
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-        editingAddress={editingAddress}
-        onSuccess={handleAddressSuccess}
-      />
     </>
   );
 }

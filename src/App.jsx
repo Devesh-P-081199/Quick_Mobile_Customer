@@ -28,6 +28,9 @@ const FormStep6 = React.lazy(() => import("./features/sell/pages/FormStep6"));
 const CheckOut = React.lazy(() =>
   import("./features/checkout/components/CheckOut/CheckOut")
 );
+const AddressForm = React.lazy(() =>
+  import("./features/checkout/components/AddressForm/AddressForm")
+);
 const PaymentComponent = React.lazy(() =>
   import("./features/checkout/components/Payment/Payment")
 );
@@ -210,6 +213,24 @@ const AppContent = () => {
           element={
             <Suspense fallback={<Loader />}>
               <CheckOut />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/:slug/check-out/add-address"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AddressForm />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/:slug/check-out/edit-address/:addressId"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AddressForm />
             </Suspense>
           }
         />
