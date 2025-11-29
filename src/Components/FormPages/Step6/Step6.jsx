@@ -4,13 +4,13 @@ import "react-loading-skeleton/dist/skeleton.css"; // import skeleton CSS
 import styles from "./Step6.module.css";
 import MobileImg from "../../../assets/images/Products/mobile.png";
 import coupenicon from "../../../assets/images/icons/coupen.png";
-import rightarrow from "../../../assets/images/icons/rightarrow.png";
+import "../../../assets/images/icons/rightarrow.png";
 import Recalculate from "../../../assets1/kimages/t1.png";
 import FreePickup from "../../../assets1/kimages/t2.png";
 import FreePickup2 from "../../../assets1/kimages/t5.png";
-import clock from "../../.../../../assets/flaticons/back-in-time.png";
-import van from "../../.../../../assets/flaticons/van.png";
-import secureShield from "../../.../../../assets/flaticons/secure-shield.png";
+import clock from "../../.../../../assets/flaticons/clock-basecolor.png";
+import van from "../../.../../../assets/flaticons/delivery-van-basecolor.png";
+import secureShield from "../../.../../../assets/flaticons/secure-basecolor.png";
 
 import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../Context/contextAPI";
@@ -60,6 +60,7 @@ function Step6() {
 
   useEffect(() => {
     FetchPriceDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSellNow = () => {
@@ -119,6 +120,41 @@ function Step6() {
                     <NavLink
                       to={`/${slug}/final-price-calculator?${queryParams.toString()}`}
                       className={styles.recalculate}
+                      onClick={() => {
+                        // Clear all Step3 form data when recalculating
+                        const productId = queryParams.get("pid");
+                        const variantId = queryParams.get("vid");
+
+                        if (productId) {
+                          // Clear packageDetails so old selections don't show in Device Details
+                          const packageDetailsKey = `packageDetails_${productId}`;
+                          sessionStorage.removeItem(packageDetailsKey);
+
+                          // Clear step3 form data
+                          const storageKey = `step3PackageData_${productId}_${
+                            variantId || "unknown"
+                          }`;
+                          sessionStorage.removeItem(storageKey);
+
+                          // Clear current package index
+                          const currentIndexKey = `currentPackageIndex_${storageKey}`;
+                          sessionStorage.removeItem(currentIndexKey);
+
+                          // Clear packages data
+                          const packagesKey = `packages_${productId}`;
+                          sessionStorage.removeItem(packagesKey);
+
+                          // Clear form submitted flag
+                          const formSubmittedKey = `formSubmitted_${productId}`;
+                          sessionStorage.removeItem(formSubmittedKey);
+
+                          // Set recalculate flag to force Step3 to load fresh
+                          const recalculateKey = `recalculate_${productId}`;
+                          sessionStorage.setItem(recalculateKey, "true");
+
+                          console.log("🗑️ Cleared ALL data for recalculation");
+                        }
+                      }}
                     >
                       <img
                         src={Recalculate}
@@ -164,49 +200,38 @@ function Step6() {
               )}
             </p>
           </div>
-          <div className={styles.deviceDetailsBtn}>
-            <button onClick={() => setShowAnswersModal(true)}>
-              Device Details{" "}
-              <span>
-                <img src={arrow} alt="" />
-              </span>
-            </button>
-          </div>
-          <div className={styles.applyCoupon} onClick={openCouponModal}>
-            <div className={styles.couponContent}>
-              <div className={styles.couponIcon}>
-                {loading ? (
-                  <Skeleton circle height={30} width={30} />
-                ) : (
-                  <img src={coupenicon} alt="Coupon Icon" />
-                )}
-              </div>
-              <span className={styles.couponText}>
-                {loading ? <Skeleton width={100} /> : "Apply Coupon"}
-              </span>
+          <div className={styles.detailsDown}>
+            <div className={styles.deviceDetailsBtn}>
+              <button onClick={() => setShowAnswersModal(true)}>
+                <div className={styles.bottonTitle}>
+                  <img
+                    src={clock}
+                    alt=""
+                    className={styles.featureOption}
+                  ></img>
+                  <p>Device Details</p>
+                </div>
+                <span>
+                  <img src={arrow} alt="" />
+                </span>
+              </button>
             </div>
-            <div className={styles.arrow}>
-              {loading ? (
-                <Skeleton circle height={20} width={20} />
-              ) : (
-                <img src={arrow} alt="Right Arrow" />
-              )}
-            </div>
-          </div>
-          {/* {showAnswersModal && (
-          <div className={styles.modalOverlay}>
-            <div className={styles.modalContent}>
-              <div className={styles.modalHeader}>
-                <FaArrowLeft
-                  className={styles.backArrow}
-                  onClick={() => setShowAnswersModal(false)}
-                />
-                <h3>Device Details</h3>
-              </div>
-              <Answers />
+            <div className={styles.applyCoupon} onClick={openCouponModal}>
+              <button>
+                <div className={styles.bottonTitle}>
+                  <img
+                    src={clock}
+                    alt=""
+                    className={styles.featureOption}
+                  ></img>
+                  <p>Apply Coupon</p>
+                </div>
+                <span>
+                  <img src={arrow} alt="" />
+                </span>
+              </button>
             </div>
           </div>
-        )} */}
 
           {showAnswersModal && (
             <div className={styles.modalOverlay}>
@@ -223,10 +248,10 @@ function Step6() {
 
           {/* Right Section */}
           <div className={styles.RightBox}>
-            <div className={styles.summary}>
-              {loading ? <Skeleton width={100} /> : "Summary"}
-            </div>
             <div className={styles.details}>
+              <div className={styles.summary}>
+                {loading ? <Skeleton width={100} /> : "Summary"}
+              </div>
               <div className={styles.row}>
                 <span className={styles.label}>
                   {loading ? <Skeleton width={80} /> : "Phone Price"}

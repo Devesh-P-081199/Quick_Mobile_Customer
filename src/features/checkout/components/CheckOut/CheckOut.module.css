@@ -7,7 +7,6 @@
   /* gap: 15px; */
 }
 
-
 .AddressBox {
   display: flex;
   flex-direction: column;
@@ -153,7 +152,7 @@
 
 .submitButton {
   background: #1968b3;
-  padding:10px 50px;
+  padding: 10px 50px;
   border-radius: 10px;
   width: fit-content;
   color: #ffffff;
@@ -193,13 +192,11 @@
   gap: 8px;
   background-color: #ebebeb;
   border-radius: 8px;
-  width: 165px;
+  width: 100%;
   height: 149px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
-
-
 
 /* Radio button styling */
 .addressRadio {
@@ -245,7 +242,7 @@
 /* Responsive adjustments */
 @media (max-width: 480px) {
   .addressCard {
-    width: 48%;
+    width: 100%;
     height: auto;
     min-height: 170px;
   }
@@ -258,37 +255,56 @@
 .addressBoxes {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 10px;
 }
 
 .addressList {
   display: flex;
-  flex-wrap: nowrap;
-  gap: 1rem;
-   scrollbar-width: none; /* Firefox */
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
 }
 .addressList::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  min-height: 45px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: #fff;
+  color: #1968b3;
+  border-radius: 10px;
+  border: 0.3px solid #e1e1e1;
+}
+
 .addressCard {
- position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background: #ffffff;
-    border-radius: 10px;
-    width: 70%;
-    /* height: 160px; */
-    padding: 1rem;
-    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
-    cursor: pointer;
-    transition: all 0.2s 
-ease-in-out;
-    border: none;
-    align-items: start;
-    border: 0.3px solid #00000033;
-    flex: 0 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #ffffff;
+  border-radius: 10px;
+  /* height: 160px; */
+  padding: 1rem;
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  align-items: start;
+  border: 0.3px solid #00000033;
+  flex: 0 0 auto;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 .selectedCard {
@@ -301,37 +317,40 @@ ease-in-out;
 
 .customRadio {
   position: absolute;
-  top: 10px;
-  left: 10px;
   height: 23px;
   width: 23px;
   border: 2px solid #dfdfdf;
   border-radius: 50%;
+  margin-top: 5px;
   background: white;
+}
+
+.addressLabel input[type="radio"] {
+  margin-right: 0px;
+  position: relative;
+  border: 1px solid #e1e1e1 !important;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
 }
 
 .radioInput:checked + .customRadio {
   background: rgb(255, 255, 255);
-  box-shadow: inset 0 0 0 7px #005fb2;
 }
 
 .addressContent {
-  margin-top: 25px;
   font-size: 14px;
   line-height: 1.4;
-  color: #111827;
-  padding-left: 28px;
+  color: #000000;
 }
 
 .saveTag {
-  position: absolute;
-  top: 10px;
-  left: 38px;
-  /* background: #1968b3; */
   color: rgb(0, 0, 0);
   font-size: 14px;
-  padding: 3px 6px;
-  border-radius: 6px;
   font-weight: 500;
 }
 
@@ -402,36 +421,31 @@ ease-in-out;
 
 @media screen and (max-width: 480px) {
   .addressVerifyRadio {
-        height: 16px;
-        width: 31px !important;
-    }
-    .CheckOutSection{
-  padding-bottom: 90px;
+    height: 16px;
+    width: 31px !important;
+  }
+  .CheckOutSection {
+    padding: 10px 10px 0 10px;
+  }
+
+  .gridBoxes {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
 }
 
-.gridBoxes {
-
-  grid-template-columns: repeat(1,1fr) !important;
+.addBtn {
+  width: 100%;
+  justify-content: flex-start;
 }
-
-}
-
-.address-heading h4 {
-  text-align: left;
-}
-
 
 .topLabel {
-
   font-size: 12px;
 }
 
-
-
 .addressCard {
   background: #fff !important;
-  border: 0.3px solid #ddd !important;
-  border-radius: 6px;
+  border: 0.3px solid #e1e1e1 !important;
+  border-radius: 15px;
   padding: 12px;
   margin-bottom: 12px;
   display: flex;
@@ -456,4 +470,202 @@ ease-in-out;
   font-size: 24px;
   font-weight: bold;
   color: #007bff;
+}
+
+/* Address card with edit/delete buttons */
+.addressLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.addressLabel input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #1968b3;
+}
+
+.addressContent {
+  flex: 1;
+}
+
+.addressContent p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  margin: 4px 0;
+}
+
+.saveTag {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.addressActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto 0 26px;
+}
+
+.editIconBtn,
+.deleteIconBtn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  transition: background-color 0.2s;
+}
+
+.editIconBtn img,
+.deleteIconBtn img {
+  width: 23px;
+  height: 23px;
+}
+
+.editIconBtn {
+  color: #1968b3;
+  background-color: #ddefff;
+}
+
+.deleteIconBtn {
+  color: #dc3545;
+  background-color: #ffe6e6;
+}
+
+.customRadio {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #e1e1e1;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.radioInput:checked + .customRadio {
+  border-color: #1968b3;
+}
+
+.radioInput:checked + .customRadio::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #1968b3;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.addNewCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  border: 2px dashed #ccc;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-height: 149px;
+}
+
+.addNewCard:hover {
+  background-color: #e6f0ff;
+  border-color: #1968b3;
+}
+
+.plusIcon {
+  font-size: 48px;
+  color: #666;
+}
+
+.addNewCard:hover .plusIcon {
+  color: #1968b3;
+}
+
+.cancelButton {
+  background-color: #f5f5f5;
+  color: #333;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 10px;
+}
+
+.cancelButton:hover {
+  background-color: #e1e1e1;
+}
+
+.topLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.continueBtn {
+  width: 100%;
+  padding: 15px 24px;
+  background-color: #1968b3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.continueBtn:hover:not(:disabled) {
+  background-color: #145a9a;
+}
+
+.continueBtn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.emptyState p {
+  font-size: 16px;
+  color: #666;
+  margin: 10px 0;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.emptyHint {
+  font-size: 14px !important;
+  color: #999 !important;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./SavedAddress.module.css";
 import ProfileCard from "../components/ProfileCard";
 import MobileCommonHeaderthree from "../../../Components/layout/MobileCommonHeader/MobileCommonHeaderthree";
@@ -10,77 +10,128 @@ import {
   FaHome,
   FaBriefcase,
 } from "react-icons/fa";
+import api from "../../../Utils/api";
+import { toast } from "react-toastify";
 
 const SavedAddress = () => {
-  const [addresses, setAddresses] = useState([
-    {
-      id: 1,
-      type: "Home",
-      name: "John Doe",
-      phone: "+91 9876543210",
-      addressLine1: "123 Main Street",
-      addressLine2: "Apartment 4B",
-      city: "Mumbai",
-      state: "Maharashtra",
-      pincode: "400001",
-      isDefault: true,
-    },
-  ]);
+  const [addresses, setAddresses] = useState([]);
 
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
-    type: "Home",
-    name: "",
-    phone: "",
-    addressLine1: "",
-    addressLine2: "",
-    city: "",
+    saveAs: "Home",
+    houseNumber: "",
+    street: "",
+    landmark: "",
+    cityName: "",
+    zipCode: "",
     state: "",
-    pincode: "",
-    isDefault: false,
+    alternatePhone: "",
+    date: "",
   });
+
+  // Fetch addresses from API
+  useEffect(() => {
+    fetchAddresses();
+  }, []);
+
+  const fetchAddresses = async () => {
+    try {
+      const response = await api.get("/sell-module/user/address");
+      setAddresses(response?.data?.data?.addresses || []);
+    } catch (error) {
+      console.error("Error fetching addresses:", error);
+      toast.error("Error fetching addresses");
+    }
+  };
 
   const handleAddNew = () => {
     setShowAddForm(true);
     setEditingId(null);
     setFormData({
-      type: "Home",
-      name: "",
-      phone: "",
-      addressLine1: "",
-      addressLine2: "",
-      city: "",
+      saveAs: "Home",
+      houseNumber: "",
+      street: "",
+      landmark: "",
+      cityName: "",
+      zipCode: "",
       state: "",
-      pincode: "",
-      isDefault: false,
+      alternatePhone: "",
+      date: "",
     });
   };
 
   const handleEdit = (address) => {
+    console.log("Editing address:", address);
+    const addressId = address._id || address.id;
+    console.log("Address ID:", addressId);
     setShowAddForm(true);
-    setEditingId(address.id);
+    setEditingId(addressId);
     setFormData(address);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (address) => {
     if (confirm("Are you sure you want to delete this address?")) {
-      setAddresses(addresses.filter((a) => a.id !== id));
+      try {
+        const addressId = address._id || address.id;
+        await api.delete(`/sell-module/user/address/${addressId}`);
+        toast.success("Address deleted successfully");
+        fetchAddresses();
+      } catch (error) {
+        console.error("Error deleting address:", error);
+        toast.error("Error deleting address");
+      }
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (editingId) {
-      setAddresses(
-        addresses.map((a) =>
-          a.id === editingId ? { ...formData, id: a.id } : a
-        )
-      );
-    } else {
-      setAddresses([...addresses, { ...formData, id: Date.now() }]);
+
+    // Validate required fields
+    if (
+      !formData.houseNumber ||
+      !formData.street ||
+      !formData.cityName ||
+      !formData.zipCode ||
+      !formData.state
+    ) {
+      toast.error("Please fill all required fields");
+      return;
     }
-    setShowAddForm(false);
+
+    try {
+      if (editingId) {
+        // Update existing address
+        await api.put(
+          `/sell-module/user/update-address/${editingId}`,
+          formData
+        );
+        toast.success("Address updated successfully");
+      } else {
+        // Add new address
+        await api.post("/sell-module/user/address", formData);
+        toast.success("Address added successfully");
+      }
+
+      setShowAddForm(false);
+      fetchAddresses();
+
+      // Reset form
+      setFormData({
+        saveAs: "Home",
+        houseNumber: "",
+        street: "",
+        landmark: "",
+        cityName: "",
+        zipCode: "",
+        state: "",
+        alternatePhone: "",
+        date: "",
+      });
+    } catch (error) {
+      console.error("Error saving address:", error);
+      toast.error("Error saving address");
+    }
   };
 
   const handleInputChange = (e) => {
@@ -91,10 +142,11 @@ const SavedAddress = () => {
     });
   };
 
-  const getAddressIcon = (type) => {
-    switch (type) {
+  const getAddressIcon = (saveAs) => {
+    switch (saveAs) {
       case "Home":
         return <FaHome />;
+      case "Office":
       case "Work":
         return <FaBriefcase />;
       default:
@@ -109,7 +161,6 @@ const SavedAddress = () => {
         <div className={styles.panelWrapper}>
           <div className={styles.left}>
             <div className={styles.header}>
-              <h2>Saved Addresses</h2>
               <button className={styles.addBtn} onClick={handleAddNew}>
                 <FaPlus /> Add New Address
               </button>
@@ -118,77 +169,99 @@ const SavedAddress = () => {
             {showAddForm && (
               <div className={styles.formCard}>
                 <h3>{editingId ? "Edit Address" : "Add New Address"}</h3>
+                {console.log("Form heading - editingId:", editingId)}
                 <form onSubmit={handleSubmit}>
                   <div className={styles.formGroup}>
                     <label>Address Type</label>
-                    <select
-                      name="type"
-                      value={formData.type}
+                    <div className={styles.radioGroup}>
+                      <label>
+                        <input
+                          type="radio"
+                          name="saveAs"
+                          value="Home"
+                          checked={formData.saveAs === "Home"}
+                          onChange={handleInputChange}
+                        />{" "}
+                        Home
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name="saveAs"
+                          value="Office"
+                          checked={formData.saveAs === "Office"}
+                          onChange={handleInputChange}
+                        />{" "}
+                        Office
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name="saveAs"
+                          value="Other"
+                          checked={formData.saveAs === "Other"}
+                          onChange={handleInputChange}
+                        />{" "}
+                        Other
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label>Flat no/House no</label>
+                    <input
+                      type="text"
+                      name="houseNumber"
+                      value={formData.houseNumber}
                       onChange={handleInputChange}
+                      placeholder="Flat no 9"
                       required
-                    >
-                      <option value="Home">Home</option>
-                      <option value="Work">Work</option>
-                      <option value="Other">Other</option>
-                    </select>
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label>Area/Street/Locality</label>
+                    <input
+                      type="text"
+                      name="street"
+                      value={formData.street}
+                      onChange={handleInputChange}
+                      placeholder="Colony name/ Street number"
+                      required
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label>Landmark</label>
+                    <input
+                      type="text"
+                      name="landmark"
+                      value={formData.landmark}
+                      onChange={handleInputChange}
+                      placeholder="Near..."
+                    />
                   </div>
 
                   <div className={styles.formRow}>
                     <div className={styles.formGroup}>
-                      <label>Full Name</label>
+                      <label>Pincode</label>
                       <input
                         type="text"
-                        name="name"
-                        value={formData.name}
+                        name="zipCode"
+                        value={formData.zipCode}
                         onChange={handleInputChange}
-                        placeholder="John Doe"
+                        placeholder="400001"
+                        maxLength="6"
                         required
                       />
                     </div>
 
-                    <div className={styles.formGroup}>
-                      <label>Phone Number</label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="+91 9876543210"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label>Address Line 1</label>
-                    <input
-                      type="text"
-                      name="addressLine1"
-                      value={formData.addressLine1}
-                      onChange={handleInputChange}
-                      placeholder="House No., Building Name"
-                      required
-                    />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label>Address Line 2</label>
-                    <input
-                      type="text"
-                      name="addressLine2"
-                      value={formData.addressLine2}
-                      onChange={handleInputChange}
-                      placeholder="Road Name, Area, Colony"
-                    />
-                  </div>
-
-                  <div className={styles.formRow}>
                     <div className={styles.formGroup}>
                       <label>City</label>
                       <input
                         type="text"
-                        name="city"
-                        value={formData.city}
+                        name="cityName"
+                        value={formData.cityName}
                         onChange={handleInputChange}
                         placeholder="Mumbai"
                         required
@@ -206,30 +279,27 @@ const SavedAddress = () => {
                         required
                       />
                     </div>
-
-                    <div className={styles.formGroup}>
-                      <label>Pincode</label>
-                      <input
-                        type="text"
-                        name="pincode"
-                        value={formData.pincode}
-                        onChange={handleInputChange}
-                        placeholder="400001"
-                        maxLength="6"
-                        required
-                      />
-                    </div>
                   </div>
 
-                  <div className={styles.checkboxGroup}>
+                  <div className={styles.formGroup}>
+                    <label>Alternate Phone Number</label>
                     <input
-                      type="checkbox"
-                      name="isDefault"
-                      checked={formData.isDefault}
+                      type="tel"
+                      name="alternatePhone"
+                      value={formData.alternatePhone}
                       onChange={handleInputChange}
-                      id="isDefault"
+                      placeholder="+91 9876543210"
                     />
-                    <label htmlFor="isDefault">Set as default address</label>
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label>Date</label>
+                    <input
+                      type="date"
+                      name="date"
+                      value={formData.date}
+                      onChange={handleInputChange}
+                    />
                   </div>
 
                   <div className={styles.formActions}>
@@ -250,28 +320,31 @@ const SavedAddress = () => {
 
             <div className={styles.addressList}>
               {addresses.length > 0 ? (
-                addresses.map((address) => (
-                  <div key={address.id} className={styles.addressCard}>
+                addresses.map((address, index) => (
+                  <div
+                    key={address._id || address.id || index}
+                    className={styles.addressCard}
+                  >
                     <div className={styles.addressIcon}>
-                      {getAddressIcon(address.type)}
+                      {getAddressIcon(address.saveAs)}
                     </div>
                     <div className={styles.addressDetails}>
                       <div className={styles.addressHeader}>
                         <span className={styles.addressType}>
-                          {address.type}
+                          {address.saveAs}
                         </span>
-                        {address.isDefault && (
-                          <span className={styles.defaultBadge}>Default</span>
-                        )}
                       </div>
-                      <div className={styles.addressName}>{address.name}</div>
-                      <div className={styles.addressPhone}>{address.phone}</div>
+                      {address.alternatePhone && (
+                        <div className={styles.addressPhone}>
+                          {address.alternatePhone}
+                        </div>
+                      )}
                       <div className={styles.addressText}>
-                        {address.addressLine1}
-                        {address.addressLine2 && `, ${address.addressLine2}`}
+                        {address.houseNumber}, {address.street}
+                        {address.landmark && `, ${address.landmark}`}
                       </div>
                       <div className={styles.addressText}>
-                        {address.city}, {address.state} - {address.pincode}
+                        {address.cityName}, {address.state} - {address.zipCode}
                       </div>
                     </div>
                     <div className={styles.addressActions}>
@@ -283,7 +356,7 @@ const SavedAddress = () => {
                       </button>
                       <button
                         className={styles.deleteIconBtn}
-                        onClick={() => handleDelete(address.id)}
+                        onClick={() => handleDelete(address)}
                       >
                         <FaTrash />
                       </button>

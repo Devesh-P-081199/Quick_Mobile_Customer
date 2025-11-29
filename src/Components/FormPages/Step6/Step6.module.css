@@ -55,8 +55,9 @@
   height: 45px;
   aspect-ratio: 1;
   padding: 10px;
-  border-radius: 10px;
-  background-color: #f9fafb;
+  border-radius: 15px;
+  background-color: #ddefff;
+  /* border: 0.3px solid #1968b3; */
 }
 
 .deliveryfeature .feature p {
@@ -160,6 +161,14 @@
   border-radius: 10px;
 }
 
+.details {
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #fff;
+  border: 0.3px solid #e1e1e1;
+  gap: 0;
+}
+
 .DeviceDetails a {
   width: fit-content;
 }
@@ -184,17 +193,17 @@
   height: 26px;
   font-family: "IBM Plex Sans";
   font-style: normal;
+  font-size: 16px;
   font-weight: 500;
-  font-size: 20px;
   line-height: 26px;
-  text-decoration: underline;
   color: #000000;
+  margin: 10px 0px;
 }
 
 .details {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 0px;
   width: 364px;
 }
 
@@ -202,9 +211,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 5px 0;
+  padding: 7px 0;
   width: 364px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 0.3px solid #e1e1e1;
 }
 
 .label,
@@ -214,7 +223,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 23px;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0);
 }
 
 .value {
@@ -245,11 +254,12 @@
   display: flex;
   justify-content: space-between;
   width: 364px;
+  margin: 15px 0;
 }
 
 .totalLabel,
 .totalValue {
-  font-weight: 600;
+  font-weight: 500;
   /* font-size: 20px; */
 }
 
@@ -275,27 +285,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 12px;
   gap: 5px;
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
-  margin-top: 12px;
 }
 
-.couponContent {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  width: 100%;
-}
-
-/* .couponIcon {
-    width: 24px;
-    height: 24px;
-    background: #000000;
-  }
-   */
 .couponText {
   font-family: var(--font-family-primary);
   font-style: normal;
@@ -450,7 +445,7 @@
 
   .RightBox {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .row {
@@ -599,11 +594,12 @@
     width: calc(100% - 100px);
   }
 
-  .details {
+  .detailsDown {
     background-color: #ffffff;
     padding: 8px;
-    border: 0.3px solid rgb(227, 227, 227);
-    border-radius: 10px;
+    border: 0.3px solid #e1e1e1;
+    gap: 0px;
+    border-radius: 15px;
   }
 
   .infoLine {
@@ -614,6 +610,7 @@
     background: none;
     border: none;
     padding: 0px;
+    padding-bottom: 80px;
     gap: 16px;
   }
 
@@ -658,19 +655,62 @@
     display: block;
   }
 
+  .bottonTitle {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bottonTitle .featureOption {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: none;
+    border: none;
+  }
+
+  .bottonTitle p {
+    color: #000;
+    margin: 0 0 0 5px;
+    font-weight: 500;
+  }
+
   .deviceDetailsBtn button {
-    padding: 10px 12px;
-    margin-top: 12px;
     display: block;
     border-radius: 8px;
+    padding: 5px 0 5px 0px;
     width: 100%;
     text-align: start;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     display: flex;
     justify-content: space-between;
-    height: 50px;
     align-items: center;
+    border-radius: 0;
+  }
+
+  .applyCoupon button {
+    display: block;
+    border-radius: 8px;
+    padding: 5px 0 5px 0px;
+    width: 100%;
+    text-align: start;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.3px solid #e1e1e1;
+    border-radius: 0;
+  }
+
+  .deviceDetailsBtn img {
+    width: 22px;
+  }
+
+  .applyCoupon img {
+    width: 22px;
   }
 }
 
@@ -685,7 +725,7 @@
   transform: rotate(180deg);
 }
 
-.arrow {
+.applyCoupon img {
   transform: rotate(180deg);
 }
 
