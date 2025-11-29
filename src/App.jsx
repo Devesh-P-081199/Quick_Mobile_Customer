@@ -34,6 +34,9 @@ const AddressForm = React.lazy(() =>
 const PaymentComponent = React.lazy(() =>
   import("./features/checkout/components/Payment/Payment")
 );
+const PaymentForm = React.lazy(() =>
+  import("./features/checkout/components/PaymentForm/PaymentForm")
+);
 // import ThankYouPage from "./Pages/ThankYouPage";
 const ThankYouPage = React.lazy(() => import("./pages/ThankYouPage"));
 // import SelectSubCata from "./Components/SelectSubCategories/SelectSubCata";
@@ -240,6 +243,24 @@ const AppContent = () => {
           element={
             <Suspense fallback={<Loader />}>
               <PaymentComponent />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/:slug/check-out/payment"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PaymentComponent />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/:slug/check-out/add-payment"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PaymentForm />
             </Suspense>
           }
         />

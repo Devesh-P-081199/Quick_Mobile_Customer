@@ -2,15 +2,19 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./Payment.module.css";
 import bank from "../../../../assets/images/icons/bank.png";
 import upi from "../../../../assets/images/icons/upi.png";
-import uploadimg from "../../../../assets/images/icons/upload.png";
-import { NavLink } from "react-router-dom";
+import "../../../../assets/images/icons/upload.png";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import RightCard from "../CheckOut/RightCard";
 import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
 import MobileCommonHeaderthree from "../../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import { FaPlus } from "react-icons/fa";
 
 function PaymentComponent() {
+  const navigate = useNavigate();
+  const { slug } = useParams();
+
   const paymentMethods = [
     { name: "UPI/ G Pay/ Phonepe", icon: upi },
     { name: "Bank Transfer (IMPS)", icon: bank },
@@ -160,6 +164,14 @@ function PaymentComponent() {
         <div className={styles.Wrapper}>
           <div className={styles.PaymentBox}>
             <h2 className={styles.Title}>Payment</h2>
+
+            {/* Add New Payment Method Button */}
+            <button
+              className={styles.addBtn}
+              onClick={() => navigate(`/${slug}/check-out/add-payment`)}
+            >
+              <FaPlus /> Add New Payment Method
+            </button>
 
             <div className={styles.PaymentSection}>
               {paymentMethods.map((method, index) => (

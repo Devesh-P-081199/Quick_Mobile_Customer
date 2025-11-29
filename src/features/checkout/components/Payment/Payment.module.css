@@ -20,7 +20,7 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
 }
 
 .Title {
@@ -332,4 +332,24 @@
   width: 92vw;
   overflow-y: auto;
   gap: 10px;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  min-height: 45px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: #fff;
+  color: #1968b3;
+  border-radius: 10px;
+  border: 0.3px solid #e1e1e1;
+  width: 100%;
+  justify-content: flex-start;
 }
