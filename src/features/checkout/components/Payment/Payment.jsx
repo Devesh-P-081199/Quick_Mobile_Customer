@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./Payment.module.css";
 import bank from "../../../../assets/images/icons/bank.png";
 import upi from "../../../../assets/images/icons/upi.png";
-import wallet from "../../../../assets/images/icons/wallet.png";
-import coupen2 from "../../../../assets/images/icons/coupen2.png";
 import uploadimg from "../../../../assets/images/icons/upload.png";
 import { NavLink } from "react-router-dom";
 import RightCard from "../CheckOut/RightCard";
@@ -16,8 +14,6 @@ function PaymentComponent() {
   const paymentMethods = [
     { name: "UPI/ G Pay/ Phonepe", icon: upi },
     { name: "Bank Transfer (IMPS)", icon: bank },
-    { name: "Wallet", icon: wallet },
-    { name: "Coupons", icon: coupen2 },
   ];
 
   const { setSelectedPaymentMethod } = useContext(UserContext);
@@ -166,8 +162,6 @@ function PaymentComponent() {
             <h2 className={styles.Title}>Payment</h2>
 
             <div className={styles.PaymentSection}>
-              <h3 className={styles.SubTitle}>Choose payment method</h3>
-
               {paymentMethods.map((method, index) => (
                 <div key={index} className={styles.PaymentOptionContainer}>
                   <div
@@ -386,7 +380,7 @@ function PaymentComponent() {
               ))}
             </div>
 
-            <div className={styles.DetailsSection}>
+            {/* <div className={styles.DetailsSection}>
               <h3 className={styles.SubTitle}>Details (Non-mandatory)</h3>
               <div className={styles.IMEITitle}>Enter IMEI Number</div>
               <div className={styles.IMEIInfo}>
@@ -412,7 +406,7 @@ function PaymentComponent() {
               <NavLink to="/sellhome" className={styles.SaveNav}>
                 Save
               </NavLink>
-            </div>
+            </div> */}
           </div>
           <RightCard />
         </div>

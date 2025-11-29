@@ -276,6 +276,33 @@ const AppContent = () => {
         />
 
         <Route
+          path="/profile/saved-address"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Address />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/profile/saved-address/add-address"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AddressForm />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/profile/saved-address/edit-address/:addressId"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AddressForm />
+            </Suspense>
+          }
+        />
+
+        <Route
           path="/my-profile-payments"
           element={
             <Suspense fallback={<Loader />}>

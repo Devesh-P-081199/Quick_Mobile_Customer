@@ -138,7 +138,12 @@ const AddressForm = () => {
         toast.success("Address added successfully");
       }
 
-      navigate(`/${slug}/check-out`);
+      // Check if we're coming from profile/saved-address or checkout
+      if (location.pathname.includes("/profile/saved-address")) {
+        navigate("/profile/saved-address");
+      } else {
+        navigate(`/${slug}/check-out`);
+      }
     } catch (error) {
       console.error("Error saving address:", error);
       toast.error("Error saving address");

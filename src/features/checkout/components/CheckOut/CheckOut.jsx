@@ -73,7 +73,7 @@ function CheckOut() {
   return (
     <>
       <BreadCrumb items={["Home", "Sell Your Phone"]} />
-      <MobileCommonHeaderthree title="Checkout" />
+      <MobileCommonHeaderthree title="Address" />
       <section className={`${styles.CheckOutSection} mobile-pt-section `}>
         <div className={styles.Wrapper}>
           <div className={styles.LeftContainer}>

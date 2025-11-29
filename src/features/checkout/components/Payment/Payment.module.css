@@ -253,12 +253,13 @@
     padding: 0px 10px;
   }
   .CheckOutSection {
-    padding: 20px 0px;
+    padding: 0px;
     background: none;
     border: none;
   }
 
   .PaymentBox {
+    padding-top: 10px;
     background: none;
     border: none;
   }
