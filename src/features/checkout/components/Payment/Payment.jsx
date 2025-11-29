@@ -67,23 +67,19 @@ function PaymentComponent() {
   }, []);
 
   useEffect(() => {
-    if (paymentBank.length > 0 && selectedMethod === null) {
-      setSelectedMethod(1); // Default Bank
+    // Set default tab to UPI (0)
+    if (selectedMethod === null) {
+      setSelectedMethod(0);
+    }
+
+    if (paymentBank.length > 0 && selectedMethod === 1) {
       setSelectedBankIndex(0);
       setSelectedPaymentMethod({ type: "bank", ...paymentBank[0] });
-    } else if (paymentUpi.length > 0 && selectedMethod === null) {
-      setSelectedMethod(0); // Default UPI
+    } else if (paymentUpi.length > 0 && selectedMethod === 0) {
       setSelectedUpiIndex(0);
       setSelectedPaymentMethod({ type: "upi", ...paymentUpi[0] });
     }
-
-    // Auto-open form if no saved methods
-    if (paymentBank.length === 0 && paymentUpi.length === 0) {
-      setSelectedMethod(0);
-      setUpiFormOpen(true);
-      setSelectedOption("upi");
-    }
-  }, [paymentBank, paymentUpi]);
+  }, [paymentBank, paymentUpi, selectedMethod, setSelectedPaymentMethod]);
 
   const resetForm = () => {
     setBankDetails({
@@ -173,20 +169,43 @@ function PaymentComponent() {
               <FaPlus /> Add New Payment Method
             </button>
 
+            {/* Tabs for UPI and Bank */}
+            <div className={styles.tabContainer}>
+              <button
+                className={`${styles.tabButton} ${
+                  selectedMethod === 0 ? styles.activeTab : ""
+                }`}
+                onClick={() => {
+                  setSelectedMethod(0);
+                  setSelectedBankIndex(null);
+                  setSelectedUpiIndex(null);
+                  setSelectedPaymentMethod(null);
+                }}
+              >
+                <img src={upi} alt="UPI" className={styles.tabIcon} />
+                UPI
+              </button>
+              <button
+                className={`${styles.tabButton} ${
+                  selectedMethod === 1 ? styles.activeTab : ""
+                }`}
+                onClick={() => {
+                  setSelectedMethod(1);
+                  setSelectedBankIndex(null);
+                  setSelectedUpiIndex(null);
+                  setSelectedPaymentMethod(null);
+                }}
+              >
+                <img src={bank} alt="Bank" className={styles.tabIcon} />
+                Bank Transfer
+              </button>
+            </div>
+
             <div className={styles.PaymentSection}>
               {paymentMethods.map((method, index) => (
                 <div key={index} className={styles.PaymentOptionContainer}>
-                  <div
-                    className={`${styles.PaymentOption} ${
-                      selectedMethod === index ? styles.Selected : ""
-                    }`}
-                    onClick={() => {
-                      setSelectedMethod(index);
-                      setSelectedBankIndex(null);
-                      setSelectedUpiIndex(null);
-                      setSelectedPaymentMethod(null);
-                    }}
-                  >
+                  {/* Hide the old payment option UI */}
+                  <div style={{ display: "none" }}>
                     <div className={styles.Radio} />
                     <div className={styles.IconLabel}>
                       <img src={method.icon} alt={method.name} />

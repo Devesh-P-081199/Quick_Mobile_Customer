@@ -353,3 +353,44 @@
   width: 100%;
   justify-content: flex-start;
 }
+
+/* Tab Container */
+.tabContainer {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.tabButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  background-color: white;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "IBM Plex Sans", sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tabButton:hover {
+  border-color: #1968b3;
+}
+
+.activeTab {
+  border-color: #1968b3 !important;
+  background-color: #ddefff !important;
+  color: #1968b3 !important;
+}
+
+.tabIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
