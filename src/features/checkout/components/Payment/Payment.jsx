@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./Payment.module.css";
 import bank from "../../../../assets/images/icons/bank.png";
 import upi from "../../../../assets/images/icons/upi.png";
-import "../../../../assets/images/icons/upload.png";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import RightCard from "../CheckOut/RightCard";
 import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
@@ -22,32 +21,18 @@ function PaymentComponent() {
 
   const { setSelectedPaymentMethod } = useContext(UserContext);
 
-  const [isChecked, setIsChecked] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState(null);
   const [paymentBank, setPaymentBank] = useState([]);
   const [paymentUpi, setPaymentUpi] = useState([]);
-  const [bankFormOpen, setBankFormOpen] = useState(false);
-  const [upiFormOpen, setUpiFormOpen] = useState(false);
   const [selectedBankIndex, setSelectedBankIndex] = useState(null);
   const [selectedUpiIndex, setSelectedUpiIndex] = useState(null);
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const [bankDetails, setBankDetails] = useState({
-    accountNumber: "",
-    confirmAccountNumber: "",
-    ifscCode: "",
-    bankName: "",
-    beneficiaryName: "",
-    mobileNumber: "",
-  });
-
-  const [upiId, setUpiId] = useState("");
 
   const getSavedPaymentBank = async () => {
     try {
       const res = await api.get(`/sell-module/user/payment-bank`);
       setPaymentBank(res.data?.bankMethods || []);
-    } catch (err) {
+    } catch (error) {
+      console.error("Failed to fetch bank methods:", error);
       toast.error("Failed to fetch bank methods");
     }
   };
@@ -56,7 +41,8 @@ function PaymentComponent() {
     try {
       const res = await api.get(`/sell-module/user/payment-upi`);
       setPaymentUpi(res.data?.upiMethods || []);
-    } catch (err) {
+    } catch (error) {
+      console.error("Failed to fetch UPI methods:", error);
       toast.error("Failed to fetch UPI methods");
     }
   };
@@ -80,77 +66,6 @@ function PaymentComponent() {
       setSelectedPaymentMethod({ type: "upi", ...paymentUpi[0] });
     }
   }, [paymentBank, paymentUpi, selectedMethod, setSelectedPaymentMethod]);
-
-  const resetForm = () => {
-    setBankDetails({
-      accountNumber: "",
-      confirmAccountNumber: "",
-      beneficiaryName: "",
-      mobileNumber: "",
-      ifscCode: "",
-      bankName: "",
-    });
-    setUpiId("");
-    setBankFormOpen(false);
-    setUpiFormOpen(false);
-    setIsChecked(false);
-    setSelectedOption(null);
-  };
-
-  const handleAddBank = async () => {
-    if (selectedOption === "bank") {
-      const {
-        accountNumber,
-        confirmAccountNumber,
-        beneficiaryName,
-        mobileNumber,
-        ifscCode,
-        bankName,
-      } = bankDetails;
-
-      if (
-        !accountNumber ||
-        !confirmAccountNumber ||
-        !beneficiaryName ||
-        !mobileNumber ||
-        !ifscCode ||
-        !bankName
-      ) {
-        toast.warning("Please fill all fields");
-        return;
-      }
-
-      if (accountNumber !== confirmAccountNumber) {
-        toast.warning("Account numbers do not match");
-        return;
-      }
-
-      try {
-        await api.post(`/sell-module/user/payment-bank`, bankDetails);
-        toast.success("Bank added successfully");
-        getSavedPaymentBank();
-        resetForm();
-      } catch (err) {
-        toast.error("Failed to submit bank details");
-      }
-    }
-
-    if (selectedOption === "upi") {
-      if (!upiId) {
-        toast.warning("Please enter a UPI ID");
-        return;
-      }
-
-      try {
-        await api.post(`/sell-module/user/payment-upi`, { upiId });
-        toast.success("UPI added successfully");
-        getSavedPaymentUpi();
-        resetForm();
-      } catch (err) {
-        toast.error("Failed to submit UPI");
-      }
-    }
-  };
 
   return (
     <>
@@ -217,7 +132,7 @@ function PaymentComponent() {
                   {selectedMethod === index && index === 0 && (
                     <div className={styles.DropDown}>
                       <div className={styles.upiBoxes}>
-                        {paymentUpi.length > 0 &&
+                        {paymentUpi.length > 0 ? (
                           paymentUpi.map((upi, i) => (
                             <label
                               key={i}
@@ -242,61 +157,20 @@ function PaymentComponent() {
                                 UPI ID: <span>{upi?.upiId}</span>
                               </div>
                             </label>
-                          ))}
+                          ))
+                        ) : (
+                          <p className={styles.emptyMessage}>
+                            No UPI methods added yet. Click "Add New Payment
+                            Method" to add one.
+                          </p>
+                        )}
                       </div>
-
-                      {/* + Add UPI card */}
-                      <div
-                        className={styles.addCard}
-                        onClick={() => {
-                          setUpiFormOpen(true);
-                          setSelectedOption("upi");
-                        }}
-                      >
-                        +
-                      </div>
-
-                      {(upiFormOpen || paymentUpi.length === 0) && (
-                        <>
-                          <div className={styles.InputGroup}>
-                            <label>UPI ID*</label>
-                            <input
-                              type="text"
-                              value={upiId}
-                              onChange={(e) => setUpiId(e.target.value)}
-                            />
-                            <p className={styles.InputHint}>
-                              For ex: yourupi@bank
-                            </p>
-                          </div>
-
-                          <div className={styles.AgreeBox}>
-                            <input
-                              type="checkbox"
-                              checked={isChecked}
-                              onChange={() => setIsChecked(!isChecked)}
-                            />
-                            <label>
-                              I agree to the QuickMobile Terms and Conditions
-                              and certify this info is correct.
-                            </label>
-                          </div>
-
-                          <button
-                            onClick={handleAddBank}
-                            disabled={!isChecked}
-                            className={styles.SaveButton}
-                          >
-                            Add UPI
-                          </button>
-                        </>
-                      )}
                     </div>
                   )}
                   {selectedMethod === index && index === 1 && (
                     <div className={styles.DropDown}>
                       <div className={styles.accountBoxes}>
-                        {paymentBank.length > 0 &&
+                        {paymentBank.length > 0 ? (
                           paymentBank.map((bank, i) => (
                             <label
                               key={i}
@@ -333,73 +207,14 @@ function PaymentComponent() {
                                 </li>
                               </ul>
                             </label>
-                          ))}
+                          ))
+                        ) : (
+                          <p className={styles.emptyMessage}>
+                            No bank accounts added yet. Click "Add New Payment
+                            Method" to add one.
+                          </p>
+                        )}
                       </div>
-
-                      {/* + Add Bank card */}
-                      <div
-                        className={styles.addCard}
-                        onClick={() => {
-                          setBankFormOpen(true);
-                          setSelectedOption("bank");
-                        }}
-                      >
-                        +
-                      </div>
-
-                      {(bankFormOpen || paymentBank.length === 0) && (
-                        <>
-                          {[
-                            { key: "accountNumber", label: "Account Number" },
-                            {
-                              key: "confirmAccountNumber",
-                              label: "Confirm Account Number",
-                            },
-                            { key: "ifscCode", label: "IFSC Code" },
-                            { key: "bankName", label: "Bank Name" },
-                            {
-                              key: "beneficiaryName",
-                              label: "Beneficiary Name",
-                            },
-                            { key: "mobileNumber", label: "Mobile Number" },
-                          ].map((field, i) => (
-                            <div className={styles.InputGroup} key={i}>
-                              <label>{field.label}*</label>
-                              <input
-                                type="text"
-                                value={bankDetails[field.key]}
-                                onChange={(e) =>
-                                  setBankDetails({
-                                    ...bankDetails,
-                                    [field.key]: e.target.value,
-                                  })
-                                }
-                              />
-                              <p className={styles.InputHint}>For ex:</p>
-                            </div>
-                          ))}
-
-                          <div className={styles.AgreeBox}>
-                            <input
-                              type="checkbox"
-                              checked={isChecked}
-                              onChange={() => setIsChecked(!isChecked)}
-                            />
-                            <label>
-                              I agree to the QuickMobile Terms and Conditions
-                              and certify this info is correct.
-                            </label>
-                          </div>
-
-                          <button
-                            onClick={handleAddBank}
-                            disabled={!isChecked}
-                            className={styles.SaveButton}
-                          >
-                            Save
-                          </button>
-                        </>
-                      )}
 
                       <div className={styles.Notice}>
                         All Banking Details are saved according to RBI

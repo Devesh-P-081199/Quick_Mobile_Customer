@@ -280,22 +280,21 @@
 /* Default card style */
 .paymentCard {
   /* background: #f6efef; */
-  border: 0.3px solid #ddd;
+  border: 0.3px solid #e1e1e1;
   border-radius: 6px;
-  padding: 12px;
+  padding: 10px;
   margin-bottom: 12px;
   display: flex;
   align-items: flex-start;
   cursor: pointer;
   transition: all 0.2s ease;
-  width: 270px;
   flex: 0 0 auto;
 }
 
 /* Selected card */
 .paymentCard.selected {
   background: #e6f0ff;
-  border: 1px solid #007bff;
+  border-color: #007bff;
 }
 
 /* + Add card */
@@ -329,8 +328,7 @@
 
 .upiBoxes {
   display: flex;
-  width: 92vw;
-  overflow-y: auto;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -393,4 +391,14 @@
   width: 24px;
   height: 24px;
   object-fit: contain;
+}
+
+.emptyMessage {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin: 10px 0;
 }
