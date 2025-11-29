@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
 import MobileCommonHeaderthree from "../../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 import { FaPlus } from "react-icons/fa";
+import trash from "../../../../assets/flaticons/trash-basecolor.png";
+import edit from "../../../../assets/flaticons/pen-basecolor.png";
 
 function PaymentComponent() {
   const navigate = useNavigate();
@@ -150,11 +152,35 @@ function PaymentComponent() {
                                     ...upi,
                                   });
                                 }}
-                                className="custom-radio"
-                                style={{ display: "none" }}
+                                className={styles.radioInput}
                               />
-                              <div>
-                                UPI ID: <span>{upi?.upiId}</span>
+                              <span className={styles.customRadio}></span>
+                              <div className={styles.cardDetails}>
+                                UPI
+                                <div className={styles.cardContent}>
+                                  UPI ID : <span>{upi?.upiId}</span>
+                                  <br></br>
+                                  Verfied Name :{" "}
+                                  <span>namesurname39428@hdbsdkbank</span>
+                                </div>
+                                <div className={styles.cardActions}>
+                                  <button
+                                    className={styles.editIconBtn}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                    }}
+                                  >
+                                    <img src={edit} alt="edit" />
+                                  </button>
+                                  <button
+                                    className={styles.deleteIconBtn}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                    }}
+                                  >
+                                    <img src={trash} alt="trash" />
+                                  </button>
+                                </div>
                               </div>
                             </label>
                           ))
@@ -188,24 +214,40 @@ function PaymentComponent() {
                                     ...bank,
                                   });
                                 }}
-                                className="custom-radio"
-                                style={{ display: "none" }}
+                                className={styles.radioInput}
                               />
-                              <ul>
-                                <li>
+                              <span className={styles.customRadio}></span>
+                              <div className={styles.cardDetails}>
+                                Bank Transfer
+                                <div className={styles.cardContent}>
                                   Acc no : {bank?.bankDetails?.accountNumber}
-                                </li>
-                                <li>
+                                  <br></br>
                                   IFSC Code : {bank?.bankDetails?.ifscCode}
-                                </li>
-                                <li>
+                                  <br></br>
                                   Bank name : {bank?.bankDetails?.bankName}
-                                </li>
-                                <li>
+                                  <br></br>
                                   Beneficiary name :{" "}
                                   {bank?.bankDetails?.beneficiaryName}
-                                </li>
-                              </ul>
+                                </div>
+                                <div className={styles.cardActions}>
+                                  <button
+                                    className={styles.editIconBtn}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                    }}
+                                  >
+                                    <img src={edit} alt="edit" />
+                                  </button>
+                                  <button
+                                    className={styles.deleteIconBtn}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                    }}
+                                  >
+                                    <img src={trash} alt="trash" />
+                                  </button>
+                                </div>
+                              </div>
                             </label>
                           ))
                         ) : (
@@ -214,11 +256,6 @@ function PaymentComponent() {
                             Method" to add one.
                           </p>
                         )}
-                      </div>
-
-                      <div className={styles.Notice}>
-                        All Banking Details are saved according to RBI
-                        guidelines.
                       </div>
                     </div>
                   )}

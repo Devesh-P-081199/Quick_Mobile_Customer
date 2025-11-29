@@ -556,7 +556,6 @@
   display: inline-block;
   position: relative;
   flex-shrink: 0;
-  margin-right: 10px;
 }
 
 .radioInput:checked + .customRadio {

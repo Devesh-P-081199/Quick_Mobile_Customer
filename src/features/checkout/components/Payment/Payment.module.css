@@ -237,10 +237,127 @@
   margin: 11px 0px;
 }
 
+.paymentCard input[type="radio"] {
+  margin-right: 10px;
+  position: relative;
+  border: 1px solid #e1e1e1 !important;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}
+
+.paymentCard input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #1968b3;
+}
+
+.paymentCard input[type="radio"]:checked {
+  border-color: #1968b3 !important;
+}
+
+.customRadio {
+  position: absolute;
+  height: 23px;
+  width: 23px;
+  border: 2px solid #dfdfdf;
+  border-radius: 50%;
+  margin-top: 5px;
+  background: white;
+}
+
+.radioInput:checked + .customRadio {
+  background: rgb(255, 255, 255);
+}
+
+.customRadio {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #e1e1e1;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.radioInput:checked + .customRadio {
+  border-color: #1968b3;
+}
+
+.radioInput:checked + .customRadio::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #1968b3;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radioInput {
+  display: none;
+}
+
+.cardDetails {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardContent {
+  font-size: 14px;
+}
+
+.cardActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 10px auto 0 0;
+}
+
+.editIconBtn,
+.deleteIconBtn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  transition: background-color 0.2s;
+}
+
+.editIconBtn img,
+.deleteIconBtn img {
+  width: 23px;
+  height: 23px;
+}
+
+.editIconBtn {
+  color: #1968b3;
+  background-color: #ddefff;
+}
+
+.deleteIconBtn {
+  color: #dc3545;
+  background-color: #ffe6e6;
+}
+
 @media (max-width: 480px) {
   .DropDown {
     padding: 0px;
-    margin-top: 10px;
   }
   .Wrapper {
     flex-direction: column;
@@ -281,20 +398,14 @@
 .paymentCard {
   /* background: #f6efef; */
   border: 0.3px solid #e1e1e1;
-  border-radius: 6px;
+  border-radius: 15px;
   padding: 10px;
-  margin-bottom: 12px;
   display: flex;
   align-items: flex-start;
   cursor: pointer;
   transition: all 0.2s ease;
   flex: 0 0 auto;
-}
-
-/* Selected card */
-.paymentCard.selected {
-  background: #e6f0ff;
-  border-color: #007bff;
+  gap: 10px;
 }
 
 /* + Add card */
@@ -321,9 +432,8 @@
 
 .accountBoxes {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  overflow-y: auto;
-  width: 92vw;
 }
 
 .upiBoxes {
@@ -356,7 +466,6 @@
 .tabContainer {
   display: flex;
   gap: 12px;
-  margin-bottom: 20px;
 }
 
 .tabButton {

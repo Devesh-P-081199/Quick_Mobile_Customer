@@ -177,13 +177,15 @@ const AppContent = () => {
   }, []);
 
   // hide footer if mobile & url includes "final-price-calculator"
+  // Also hide footer for checkout and payment routes on all devices
   const hideFooter =
-    isMobile &&
-    (location.pathname.includes("final-price-calculator") ||
-      location.pathname === "/404" ||
-      location.pathname.includes("price-summary") ||
-      location.pathname.includes("check-out") ||
-      location.pathname.includes("dfds"));
+    (isMobile &&
+      (location.pathname.includes("final-price-calculator") ||
+        location.pathname === "/404" ||
+        location.pathname.includes("price-summary") ||
+        location.pathname.includes("dfds"))) ||
+    location.pathname.includes("check-out") ||
+    location.pathname.includes("payment-mode-selection");
 
   return (
     <>
