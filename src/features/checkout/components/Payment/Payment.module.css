@@ -396,7 +396,7 @@
 
 /* Default card style */
 .paymentCard {
-  /* background: #f6efef; */
+  background: #fff;
   border: 0.3px solid #e1e1e1;
   border-radius: 15px;
   padding: 10px;
