@@ -5,9 +5,10 @@ import styles from "./SelectSubCata.module.css";
 import api from "../../../../Utils/api";
 // import { Helmet } from "react-helmet-async";
 import BrowsePicks from "../../../../Components/BrowsePicks/BrowsePicks";
-import TopSellingProducts from "../../BuyComponents/TopSellingProducts/TopSellingProducts";
+// import TopSellingProducts from "../../BuyComponents/TopSellingProducts/TopSellingProducts";
 import closeicon from "../../../../assets/flaticons/close.png";
-import FAQ from "../../../../components/layout/FAQ/FAQ";
+import FAQ from "../../../Components/layout/FAQ/FAQ";
+
 import BreadCrumb from "../../../../components/layout/BreadCrumb/BreadCrumb";
 import TopSellingModel from "../../../../Components/TopSellingModel/TopSellingModel";
 

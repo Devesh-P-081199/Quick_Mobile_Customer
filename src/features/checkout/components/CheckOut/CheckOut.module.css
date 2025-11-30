@@ -264,6 +264,7 @@
 .addressList {
   display: flex;
   flex-wrap: nowrap;
+   flex-direction: column;
   gap: 1rem;
    scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */

@@ -24,6 +24,7 @@ function SellHomeBanner({ onViewAllClick }) {
   const sliderRef = useRef(null);
   const brandSectionRef = useRef(null);
   const [catName, setCatName] = useState("");
+    const [bannerimg, setbannerimg] = useState("");
   const [results, setResults] = useState({
     ActiveBrands: { buy: [], repair: [], sell: [] },
     ActiveProducts: { buy: [], repair: [], sell: [] },
@@ -354,7 +355,7 @@ function SellHomeBanner({ onViewAllClick }) {
       <div className="common-container wrapper">
         <div className={styles.sellerbanner}>
           <div className={styles.leftImg}>
-            <img src={BannerImage} alt="Sell Banner" title="Sell Banner" />
+            <img src={bannerimg} alt="Sell Banner" title="Sell Banner" />
           </div>
           <div className={styles.rightContent}>
             <div className={styles.sliderWrapper}>
@@ -403,13 +404,15 @@ function SellHomeBanner({ onViewAllClick }) {
                         <div
                           // className={styles.imgCard}
                           key={index}
-                          onClick={() =>
-                            handleNavigate(
-                              cat._id,
-                              cat.categoryName,
-                              cat?.slug?.sell
-                            )
-                          }
+                         onClick={() =>
+                          {handleNavigate(
+                            cat._id,
+                            cat.categoryName,
+                            cat?.slug?.sell,
+
+                          )
+                          setbannerimg(cat?.categoryBannerUrl)}
+                        }
                           className={`${styles.imgCard} ${
                             selectedCategoryId === cat._id
                               ? styles.selectedCategory
