@@ -20,6 +20,18 @@ const EditProfile = () => {
     phone: user?.phone || "",
   });
 
+  // Function to get initials from name
+  const getInitials = (name) => {
+    if (!name) return "";
+    const names = name.trim().split(" ");
+    if (names.length === 1) {
+      return names[0].charAt(0).toUpperCase();
+    }
+    return (
+      names[0].charAt(0) + names[names.length - 1].charAt(0)
+    ).toUpperCase();
+  };
+
   const [isPhoneVerified] = useState(true); // mock for now
   const [isEmailVerified, setIsEmailVerified] = useState(false); // mock for now
   const [showEmailOtp, setShowEmailOtp] = useState(false);
@@ -189,11 +201,19 @@ const EditProfile = () => {
       <section className={styles.container}>
         <div className={styles.left}>
           <div className={styles.avatarWrapper}>
-            <img
-              src={profileImage || "https://via.placeholder.com/90"}
-              alt="profile"
-              className={styles.avatar}
-            />
+            <div className={styles.profile}>
+              {profileImage ? (
+                <img
+                  src={profileImage}
+                  alt="profile"
+                  className={styles.avatar}
+                />
+              ) : (
+                <div className={styles.initialsAvatar}>
+                  {getInitials(ProfileUpdate.name)}
+                </div>
+              )}
+            </div>
             {isUploadingImage && (
               <div className={styles.uploadingOverlay}>
                 <div className={styles.uploadingSpinner}></div>
@@ -299,7 +319,6 @@ const EditProfile = () => {
                 <span className={styles.verify}>Verify</span>
               )}
             </div>
-            <div className={styles.notEditable}>Not Editable</div>
           </div>
 
           {/* Email */}

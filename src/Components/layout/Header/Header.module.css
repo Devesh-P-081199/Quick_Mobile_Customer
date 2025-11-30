@@ -11,12 +11,12 @@
 }
 
 :global(input[type="email"]:focus) {
-  border: none !important;
+  /* border: none !important; */
   outline: none !important;
 }
 
 :global(input[type="password"]:focus) {
-  border: none !important;
+  /* border: none !important; */
   outline: none !important;
 }
 
