@@ -20,7 +20,7 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
 }
 
 .Title {
@@ -237,10 +237,127 @@
   margin: 11px 0px;
 }
 
+.paymentCard input[type="radio"] {
+  margin-right: 10px;
+  position: relative;
+  border: 1px solid #e1e1e1 !important;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}
+
+.paymentCard input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #1968b3;
+}
+
+.paymentCard input[type="radio"]:checked {
+  border-color: #1968b3 !important;
+}
+
+.customRadio {
+  position: absolute;
+  height: 23px;
+  width: 23px;
+  border: 2px solid #dfdfdf;
+  border-radius: 50%;
+  margin-top: 5px;
+  background: white;
+}
+
+.radioInput:checked + .customRadio {
+  background: rgb(255, 255, 255);
+}
+
+.customRadio {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #e1e1e1;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.radioInput:checked + .customRadio {
+  border-color: #1968b3;
+}
+
+.radioInput:checked + .customRadio::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #1968b3;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radioInput {
+  display: none;
+}
+
+.cardDetails {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardContent {
+  font-size: 14px;
+}
+
+.cardActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 10px auto 0 0;
+}
+
+.editIconBtn,
+.deleteIconBtn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  transition: background-color 0.2s;
+}
+
+.editIconBtn img,
+.deleteIconBtn img {
+  width: 23px;
+  height: 23px;
+}
+
+.editIconBtn {
+  color: #1968b3;
+  background-color: #ddefff;
+}
+
+.deleteIconBtn {
+  color: #dc3545;
+  background-color: #ffe6e6;
+}
+
 @media (max-width: 480px) {
   .DropDown {
     padding: 0px;
-    margin-top: 10px;
   }
   .Wrapper {
     flex-direction: column;
@@ -253,12 +370,13 @@
     padding: 0px 10px;
   }
   .CheckOutSection {
-    padding: 20px 0px;
+    padding: 0px;
     background: none;
     border: none;
   }
 
   .PaymentBox {
+    padding-top: 10px;
     background: none;
     border: none;
   }
@@ -278,23 +396,16 @@
 
 /* Default card style */
 .paymentCard {
-  /* background: #f6efef; */
-  border: 0.3px solid #ddd;
-  border-radius: 6px;
-  padding: 12px;
-  margin-bottom: 12px;
+  background: #fff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 15px;
+  padding: 10px;
   display: flex;
   align-items: flex-start;
   cursor: pointer;
   transition: all 0.2s ease;
-  width: 270px;
   flex: 0 0 auto;
-}
-
-/* Selected card */
-.paymentCard.selected {
-  background: #e6f0ff;
-  border: 1px solid #007bff;
+  gap: 10px;
 }
 
 /* + Add card */
@@ -321,14 +432,82 @@
 
 .accountBoxes {
   display: flex;
+  flex-direction: column;
   gap: 10px;
-  overflow-y: auto;
-  width: 92vw;
 }
 
 .upiBoxes {
   display: flex;
-  width: 92vw;
-  overflow-y: auto;
+  flex-direction: column;
   gap: 10px;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  min-height: 45px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: #fff;
+  color: #1968b3;
+  border-radius: 10px;
+  border: 0.3px solid #e1e1e1;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Tab Container */
+.tabContainer {
+  display: flex;
+  gap: 12px;
+}
+
+.tabButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  background-color: white;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "IBM Plex Sans", sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tabButton:hover {
+  border-color: #1968b3;
+}
+
+.activeTab {
+  border-color: #1968b3 !important;
+  background-color: #ddefff !important;
+  color: #1968b3 !important;
+}
+
+.tabIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.emptyMessage {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin: 10px 0;
 }

@@ -1,0 +1,283 @@
+.addressFormSection {
+  min-height: 100vh;
+}
+
+.formContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 15px 10px;
+  padding-bottom: 100px; /* Space for sticky bottom */
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.topLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  font-family: "IBM Plex Sans", sans-serif;
+  margin: 0;
+}
+
+.input {
+  width: 100% !important;
+  padding: 12px !important;
+  border: 0.3px solid #e1e1e1 !important;
+  border-radius: 10px !important;
+  font-size: 16px !important;
+  font-family: "IBM Plex Sans", sans-serif !important;
+  transition: border-color 0.2s !important;
+  background-color: white !important;
+}
+
+.input:focus {
+  outline: none !important;
+  border-color: #1968b3 !important;
+  border: 1px solid #1968b3 !important;
+}
+
+.input:disabled,
+.input:read-only {
+  background-color: #ffffff !important;
+  cursor: not-allowed !important;
+  color: #000000 !important;
+  opacity: 1 !important;
+  -webkit-opacity: 1 !important;
+}
+
+/* Safari-specific disabled input fix - using readOnly instead of disabled */
+.disabledInput {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  cursor: not-allowed !important;
+  opacity: 1 !important;
+  -webkit-opacity: 1 !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  border-color: #e1e1e1 !important;
+  pointer-events: none !important;
+}
+
+.disabledInput::placeholder {
+  color: #999 !important;
+  -webkit-text-fill-color: #999 !important;
+  opacity: 1 !important;
+  -webkit-opacity: 1 !important;
+}
+
+/* Select placeholder styling - when no value selected */
+select.input.placeholderSelect {
+  color: #999 !important;
+  -webkit-text-fill-color: #999 !important;
+}
+
+/* When an option is selected, use black color */
+select.input:not(.placeholderSelect) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Style the default "Select State" option */
+select.input option[value=""] {
+  color: #999 !important;
+}
+
+/* Style all other options */
+select.input option:not([value=""]) {
+  color: #000 !important;
+}
+
+.gridBoxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Save As Button Group */
+.saveAsContainer {
+  margin-bottom: 20px;
+}
+
+.saveAsLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  font-family: "IBM Plex Sans", sans-serif;
+  margin-bottom: 12px;
+}
+
+.radioButtonGroup {
+  display: flex;
+  gap: 12px;
+}
+
+.radioButton {
+  flex: 1;
+  padding: 12px 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  background-color: white;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "IBM Plex Sans", sans-serif;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radioButton:hover {
+  border-color: #1968b3;
+}
+
+.radioButtonSelected {
+  border-color: #1968b3 !important;
+  background-color: #ddefff !important;
+  color: #1968b3 !important;
+}
+
+.hiddenRadio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: #1968b3;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid #e1e1e1;
+  border-radius: 5px;
+  background-color: white;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.checkboxLabel input[type="checkbox"]:checked {
+  background-color: #1968b3;
+  border-color: #1968b3;
+}
+
+.checkboxLabel input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkboxText {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.checkboxText a {
+  color: #1968b3;
+  text-decoration: underline;
+}
+
+/* Sticky Bottom Buttons */
+.stickyBottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #e1e1e1;
+  padding: 10px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  z-index: 100;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.submitButton {
+  height: 50px;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.submitButton {
+  background-color: #1968b3;
+  color: white;
+}
+
+.submitButton:hover {
+  background-color: #145a9a;
+}
+
+@media (max-width: 768px) {
+  .gridBoxes {
+    grid-template-columns: 1fr;
+  }
+
+  .inputContainer2 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .stickyBottom {
+    flex-direction: column-reverse;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+
+  /* Prevent mobile zoom on input focus */
+  .input,
+  .input:focus,
+  select.input,
+  select.input:focus {
+    font-size: 16px !important;
+  }
+}

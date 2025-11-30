@@ -4,18 +4,15 @@ import RightCard from "./RightCard";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../../Context/contextAPI";
 import api from "../../../../Utils/api";
-import axios from "axios";
 import BreadCrumb from "../../../../components/layout/BreadCrumb/BreadCrumb";
 // import MobileCommonHeadertwo from "../../../../components/layout/MobileCommonHeader/MobileCommonHeadertwo";
 import MobileCommonHeaderthree from "../../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 // import BreadCrumb from "../BreadCrumb/BreadCrumb";
 
 function CheckOut() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [address, setAddress] = useState([]);
-  const [fromOpen, setFromOpen] = useState(false);
-  // Add this new state
-  const [showForm, setShowForm] = useState(false);
+  const navigate = useNavigate();
+  const { slug } = useParams();
 
   const { selectedAddress, setSelectedAddress } = useContext(UserContext);
   const [cities, setCities] = useState([]);
@@ -88,16 +85,12 @@ function CheckOut() {
     }
   };
 
-  const getCities = async () => {
-    try {
-      const response = await api.get(`/common-module/view-cities`);
-      // console.log("Cities data", response.data);
-
-      setCities(response.data.data);
-    } catch (error) {
-      console.error(error);
-      toast.error("Error in fetching Cities");
-    }
+  // Handle edit address
+  const handleEdit = (address) => {
+    const addressId = address._id || address.id;
+    navigate(`/${slug}/check-out/edit-address/${addressId}`, {
+      state: { address },
+    });
   };
 
   // Submit new address
@@ -149,48 +142,28 @@ function CheckOut() {
 
   useEffect(() => {
     fetchAddress();
-    getCities();
+    // Clear any previously selected address when component mounts
+    console.log("Clearing selectedAddress on mount");
+    setSelectedAddress(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Debug: Log selectedAddress changes
   useEffect(() => {
-    if (newAddress.zipCode.length === 6) {
-      fetchZipDetails(newAddress.zipCode);
-    }
-  }, [newAddress.zipCode]);
-
-  const fetchZipDetails = async (zipcode) => {
-    // console.log("API IS CALLED FOR BACKEND ")
-    try {
-      const response = await api.get(
-        `/sell-module/user/getZipDetails/${zipcode}`
-      );
-      // console.log(response.data[0]?.PostOffice)
-      let cityFromZip = response.data[0]?.PostOffice[0].Block || "";
-      setCityName(cityFromZip);
-      setNewAddress({ ...newAddress, cityName: cityFromZip });
-    } catch (error) {
-      console.error(error);
-      toast.error("Invalid ZIP code or no data found.");
-    }
-  };
+    console.log("selectedAddress changed:", selectedAddress);
+  }, [selectedAddress]);
 
   return (
     <>
       <BreadCrumb items={["Home", "Sell Your Phone"]} />
-      <MobileCommonHeaderthree title="Checkout" />
-      {/* <section className= {`${styles.StepSix} mobile-pt-section `}></section> */}
+      <MobileCommonHeaderthree title="Address" />
       <section className={`${styles.CheckOutSection} mobile-pt-section `}>
         <div className={styles.Wrapper}>
           <div className={styles.LeftContainer}>
-            <h2>Checkout</h2>
-            <div className="address-heading">
-              <h4 className="w-[279px] h-[26px] font-medium text-[20px] leading-[26px] text-left text-black">
-                Confirm Pickup Address
-              </h4>
-              <p className="edit-shipping-address-btn">Edit shipping address</p>
-            </div>
-
             <div className={styles.addressBoxes}>
+              <button className={styles.addBtn} onClick={handleAddNew}>
+                <FaPlus /> Add New Address
+              </button>
               <div className={styles.addressList}>
                 {address?.length > 0 ? (
                   <>
@@ -207,18 +180,23 @@ function CheckOut() {
                           name="address"
                           className={styles.radioInput}
                           onChange={() => setSelectedAddress(item)}
+                          checked={
+                            selectedAddress !== null &&
+                            (selectedAddress?.id === item.id ||
+                              selectedAddress?._id === item._id)
+                          }
                         />
                         <span className={styles.customRadio}></span>
                         <div className={styles.addressContent}>
+                          <span className={styles.saveTag}>{item?.saveAs}</span>
                           <p>
-                            {item?.houseNumber} {item?.city}
+                            {item?.houseNumber}, {item?.street},{item?.landmark}
                           </p>
                           <p>
-                            {item?.street} - {item?.zipCode}
+                            {item?.cityName}, {item?.state} - {item?.zipCode}
                           </p>
-                          <p>{item?.state}</p>
+                          <p>{item?.alternatePhone}</p>
                         </div>
-                        <span className={styles.saveTag}>{item?.saveAs}</span>
                       </label>
                     ))}
 
@@ -231,7 +209,7 @@ function CheckOut() {
                     </div>
                   </>
                 ) : (
-                  <p>No address found</p>
+                  <p></p>
                 )}
               </div>
             </div>

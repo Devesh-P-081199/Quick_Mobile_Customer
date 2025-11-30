@@ -256,6 +256,7 @@ function Step3() {
         if (labels.length > 0) {
           // Reset heights first
           labels.forEach((label) => {
+            label.style.minHeight = "auto";
             label.style.height = "auto";
           });
 
@@ -268,9 +269,10 @@ function Step3() {
             }
           });
 
-          // Apply max height to all labels
+          // Apply min-height instead of fixed height to allow growth
           labels.forEach((label) => {
-            label.style.height = `${maxHeight}px`;
+            label.style.minHeight = `${maxHeight}px`;
+            label.style.height = "auto";
           });
         }
       });
@@ -374,19 +376,24 @@ function Step3() {
       const urlParams = new URLSearchParams(location.search);
       const productId = urlParams.get("pid");
 
-      // Check if this is a fresh entry from Get Price
+      // Check if this is a fresh entry from Get Price or Recalculate
       const freshEntryKey = `freshEntry_${productId}`;
+      const recalculateKey = `recalculate_${productId}`;
       const isFreshEntry = sessionStorage.getItem(freshEntryKey);
+      const isRecalculate = sessionStorage.getItem(recalculateKey);
 
-      if (isFreshEntry) {
-        // Clear the flag immediately
+      if (isFreshEntry || isRecalculate) {
+        // Clear the flags immediately
         sessionStorage.removeItem(freshEntryKey);
+        sessionStorage.removeItem(recalculateKey);
 
         // Clear all old form data for fresh start
         sessionStorage.removeItem(storageKey);
         sessionStorage.removeItem(`currentPackageIndex_${storageKey}`);
         sessionStorage.removeItem(`packages_${productId}`);
         sessionStorage.removeItem(`formSubmitted_${productId}`);
+
+        console.log("🔄 Loading fresh Step3 form (recalculate mode)");
       }
 
       const savedData = sessionStorage.getItem(storageKey);
@@ -754,8 +761,19 @@ function Step3() {
           deviceInfo.variantDetail || urlParams.get("vid") || "Unknown Variant",
       });
 
-      // Set flag that form was submitted (so data persists if user comes back)
+      // Store allPackageData in sessionStorage for device details component
       const productId = urlParams.get("pid");
+      const packageDetailsKey = `packageDetails_${productId}`;
+
+      // Store the original allPackageData which has questions, options, and answers
+      sessionStorage.setItem(packageDetailsKey, JSON.stringify(allPackageData));
+
+      console.log(
+        "💾 Stored packageDetails in sessionStorage:",
+        allPackageData
+      );
+
+      // Set flag that form was submitted (so data persists if user comes back)
       const formSubmittedKey = `formSubmitted_${productId}`;
       sessionStorage.setItem(formSubmittedKey, "true");
 

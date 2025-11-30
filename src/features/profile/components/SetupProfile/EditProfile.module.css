@@ -11,7 +11,7 @@
 
 .left {
   flex: 2;
-  padding: 70px 12px;
+  padding: 24px 12px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
@@ -31,6 +31,21 @@
   height: 90px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.initialsAvatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1968b3 0%, #145a9a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 600;
+  color: white;
+  font-family: "IBM Plex Sans", sans-serif;
+  text-transform: uppercase;
 }
 
 .editIcon {
@@ -74,8 +89,10 @@
   background-color: white;
 }
 
-.input:focus {
-  border-color: #007bff;
+.input:disabled {
+  background-color: white !important;
+  cursor: not-allowed;
+  opacity: 1;
 }
 
 .statusIcon {
@@ -93,7 +110,7 @@
   transform: translateY(-50%);
   font-size: 0.9rem;
   font-weight: 600;
-  color: #007bff;
+  color: #1968b3;
   cursor: pointer;
 }
 
@@ -105,7 +122,7 @@
 
 .saveButton {
   width: 100%;
-  background: #0058b6;
+  background: #1968b3;
   color: white;
   border: none;
   padding: 0.9rem;
@@ -114,10 +131,6 @@
   cursor: pointer;
   margin-top: 1.2rem;
   transition: 0.2s;
-}
-
-.saveButton:hover {
-  background: #0056b3;
 }
 
 @media screen and (max-width: 480px) {
@@ -143,7 +156,7 @@
   width: 20px;
   height: 20px;
   border: 2px solid #f3f3f3;
-  border-top: 2px solid #007bff;
+  border-top: 2px solid #1968b3;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -271,7 +284,7 @@
 
 .modalButton:hover {
   background: #f5f5f5;
-  border-color: #007bff;
+  border-color: #1968b3;
 }
 
 /* Uploading Overlay */
@@ -293,7 +306,7 @@
   width: 30px;
   height: 30px;
   border: 3px solid #f3f3f3;
-  border-top: 3px solid #007bff;
+  border-top: 3px solid #1968b3;
   border-radius: 50%;
   animation: uploadSpin 0.8s linear infinite;
 }

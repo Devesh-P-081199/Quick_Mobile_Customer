@@ -28,8 +28,14 @@ const FormStep6 = React.lazy(() => import("./features/sell/pages/FormStep6"));
 const CheckOut = React.lazy(() =>
   import("./features/checkout/components/CheckOut/CheckOut")
 );
+const AddressForm = React.lazy(() =>
+  import("./features/checkout/components/AddressForm/AddressForm")
+);
 const PaymentComponent = React.lazy(() =>
   import("./features/checkout/components/Payment/Payment")
+);
+const PaymentForm = React.lazy(() =>
+  import("./features/checkout/components/PaymentForm/PaymentForm")
 );
 // import ThankYouPage from "./Pages/ThankYouPage";
 const ThankYouPage = React.lazy(() => import("./pages/ThankYouPage"));
@@ -171,13 +177,15 @@ const AppContent = () => {
   }, []);
 
   // hide footer if mobile & url includes "final-price-calculator"
+  // Also hide footer for checkout and payment routes on all devices
   const hideFooter =
-    isMobile &&
-    (location.pathname.includes("final-price-calculator") ||
-      location.pathname === "/404" ||
-      location.pathname.includes("price-summary") ||
-      location.pathname.includes("check-out") ||
-      location.pathname.includes("dfds"));
+    (isMobile &&
+      (location.pathname.includes("final-price-calculator") ||
+        location.pathname === "/404" ||
+        location.pathname.includes("price-summary") ||
+        location.pathname.includes("dfds"))) ||
+    location.pathname.includes("check-out") ||
+    location.pathname.includes("payment-mode-selection");
 
   return (
     <>
@@ -215,10 +223,55 @@ const AppContent = () => {
         />
 
         <Route
+          path="/:slug/check-out/add-address"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AddressForm />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/:slug/check-out/edit-address/:addressId"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AddressForm />
+            </Suspense>
+          }
+        />
+
+        <Route
           path="/:slug/payment-mode-selection"
           element={
             <Suspense fallback={<Loader />}>
               <PaymentComponent />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/:slug/check-out/payment"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PaymentComponent />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/:slug/check-out/add-payment"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PaymentForm />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/:slug/check-out/edit-payment/:paymentId"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PaymentForm />
             </Suspense>
           }
         />
@@ -250,6 +303,33 @@ const AppContent = () => {
           element={
             <Suspense fallback={<Loader />}>
               <Address />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/profile/saved-address"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Address />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/profile/saved-address/add-address"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AddressForm />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/profile/saved-address/edit-address/:addressId"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AddressForm />
             </Suspense>
           }
         />

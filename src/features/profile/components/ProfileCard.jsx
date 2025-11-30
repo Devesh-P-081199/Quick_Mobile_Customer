@@ -32,13 +32,29 @@ const ProfileCard = () => {
     }
   };
 
+  // Get user initials from name
+  const getInitials = (name) => {
+    if (!name) return "U";
+    const names = name.trim().split(" ");
+    if (names.length === 1) return names[0].charAt(0).toUpperCase();
+    return (
+      names[0].charAt(0) + names[names.length - 1].charAt(0)
+    ).toUpperCase();
+  };
+
   return (
     <>
       <MobileCommonHeaderthree title="Profile" />
       <div className={styles.cardContainer}>
         <div className={styles.profile}>
           <div className={styles.profileImage}>
-            <img src={user?.profilePic} alt={user?.name} title={user?.name} />
+            {user?.profilePic ? (
+              <img src={user.profilePic} alt={user?.name} title={user?.name} />
+            ) : (
+              <div className={styles.initialsCircle}>
+                <p>{getInitials(user?.name)}</p>
+              </div>
+            )}
           </div>
           <div className={styles.profileDetails}>
             <div className={styles.profileName}>
