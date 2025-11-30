@@ -69,6 +69,52 @@ function PaymentComponent() {
     }
   }, [paymentBank, paymentUpi, selectedMethod, setSelectedPaymentMethod]);
 
+  // Handle edit UPI
+  const handleEditUpi = (upiData) => {
+    const upiId = upiData._id || upiData.id;
+    navigate(`/${slug}/check-out/edit-payment/${upiId}`, {
+      state: { paymentData: upiData, paymentType: "UPI" },
+    });
+  };
+
+  // Handle edit Bank
+  const handleEditBank = (bankData) => {
+    const bankId = bankData._id || bankData.id;
+    navigate(`/${slug}/check-out/edit-payment/${bankId}`, {
+      state: { paymentData: bankData, paymentType: "Bank" },
+    });
+  };
+
+  // Handle delete UPI
+  const handleDeleteUpi = async (upiData) => {
+    if (confirm("Are you sure you want to delete this UPI method?")) {
+      try {
+        const upiId = upiData._id || upiData.id;
+        await api.delete(`/sell-module/user/payment-upi/${upiId}`);
+        toast.success("UPI method deleted successfully");
+        getSavedPaymentUpi();
+      } catch (error) {
+        console.error("Error deleting UPI method:", error);
+        toast.error("Error deleting UPI method");
+      }
+    }
+  };
+
+  // Handle delete Bank
+  const handleDeleteBank = async (bankData) => {
+    if (confirm("Are you sure you want to delete this bank account?")) {
+      try {
+        const bankId = bankData._id || bankData.id;
+        await api.delete(`/sell-module/user/payment-bank/${bankId}`);
+        toast.success("Bank account deleted successfully");
+        getSavedPaymentBank();
+      } catch (error) {
+        console.error("Error deleting bank account:", error);
+        toast.error("Error deleting bank account");
+      }
+    }
+  };
+
   return (
     <>
       <MobileCommonHeaderthree title="Payment" />
@@ -168,6 +214,7 @@ function PaymentComponent() {
                                     className={styles.editIconBtn}
                                     onClick={(e) => {
                                       e.stopPropagation();
+                                      handleEditUpi(upi);
                                     }}
                                   >
                                     <img src={edit} alt="edit" />
@@ -176,6 +223,7 @@ function PaymentComponent() {
                                     className={styles.deleteIconBtn}
                                     onClick={(e) => {
                                       e.stopPropagation();
+                                      handleDeleteUpi(upi);
                                     }}
                                   >
                                     <img src={trash} alt="trash" />
@@ -234,6 +282,7 @@ function PaymentComponent() {
                                     className={styles.editIconBtn}
                                     onClick={(e) => {
                                       e.stopPropagation();
+                                      handleEditBank(bank);
                                     }}
                                   >
                                     <img src={edit} alt="edit" />
@@ -242,6 +291,7 @@ function PaymentComponent() {
                                     className={styles.deleteIconBtn}
                                     onClick={(e) => {
                                       e.stopPropagation();
+                                      handleDeleteBank(bank);
                                     }}
                                   >
                                     <img src={trash} alt="trash" />

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import styles from "./PaymentForm.module.css";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
@@ -8,7 +8,10 @@ import BreadCrumb from "../../../../components/layout/BreadCrumb/BreadCrumb";
 
 const PaymentForm = () => {
   const navigate = useNavigate();
-  const { slug } = useParams();
+  const { slug, paymentId } = useParams();
+  const location = useLocation();
+  const editingPayment = location.state?.paymentData;
+  const editingPaymentType = location.state?.paymentType;
 
   const [formData, setFormData] = useState({
     paymentType: "UPI",
@@ -21,6 +24,36 @@ const PaymentForm = () => {
     mobileNumber: "",
     agreement: true,
   });
+
+  useEffect(() => {
+    if (editingPayment && editingPaymentType) {
+      if (editingPaymentType === "UPI") {
+        setFormData({
+          paymentType: "UPI",
+          upiId: editingPayment.upiId || "",
+          accountNumber: "",
+          confirmAccountNumber: "",
+          ifscCode: "",
+          bankName: "",
+          beneficiaryName: "",
+          mobileNumber: "",
+          agreement: true,
+        });
+      } else if (editingPaymentType === "Bank") {
+        setFormData({
+          paymentType: "Bank",
+          upiId: "",
+          accountNumber: editingPayment.bankDetails?.accountNumber || "",
+          confirmAccountNumber: editingPayment.bankDetails?.accountNumber || "",
+          ifscCode: editingPayment.bankDetails?.ifscCode || "",
+          bankName: editingPayment.bankDetails?.bankName || "",
+          beneficiaryName: editingPayment.bankDetails?.beneficiaryName || "",
+          mobileNumber: editingPayment.bankDetails?.mobileNumber || "",
+          agreement: true,
+        });
+      }
+    }
+  }, [editingPayment, editingPaymentType]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -37,16 +70,28 @@ const PaymentForm = () => {
         return;
       }
 
+      const editPaymentId =
+        editingPayment?._id || editingPayment?.id || paymentId;
+
       if (formData.paymentType === "UPI") {
         if (!formData.upiId) {
           toast.error("Please enter UPI ID");
           return;
         }
 
-        await api.post("/sell-module/user/payment-upi", {
-          upiId: formData.upiId,
-        });
-        toast.success("UPI added successfully");
+        if (editPaymentId) {
+          // Update existing UPI
+          await api.put(`/sell-module/user/payment-upi/${editPaymentId}`, {
+            upiId: formData.upiId,
+          });
+          toast.success("UPI updated successfully");
+        } else {
+          // Add new UPI
+          await api.post("/sell-module/user/payment-upi", {
+            upiId: formData.upiId,
+          });
+          toast.success("UPI added successfully");
+        }
       } else {
         if (
           !formData.accountNumber ||
@@ -65,15 +110,27 @@ const PaymentForm = () => {
           return;
         }
 
-        await api.post("/sell-module/user/payment-bank", {
+        const bankData = {
           accountNumber: formData.accountNumber,
           confirmAccountNumber: formData.confirmAccountNumber,
           ifscCode: formData.ifscCode,
           bankName: formData.bankName,
           beneficiaryName: formData.beneficiaryName,
           mobileNumber: formData.mobileNumber,
-        });
-        toast.success("Bank details added successfully");
+        };
+
+        if (editPaymentId) {
+          // Update existing Bank
+          await api.put(
+            `/sell-module/user/payment-bank/${editPaymentId}`,
+            bankData
+          );
+          toast.success("Bank details updated successfully");
+        } else {
+          // Add new Bank
+          await api.post("/sell-module/user/payment-bank", bankData);
+          toast.success("Bank details added successfully");
+        }
       }
 
       navigate(`/${slug}/check-out/payment`);
@@ -86,7 +143,9 @@ const PaymentForm = () => {
   return (
     <>
       <BreadCrumb items={["Home", "Sell Your Phone"]} />
-      <MobileCommonHeaderthree title="Add Payment Method" />
+      <MobileCommonHeaderthree
+        title={editingPayment ? "Edit Payment Method" : "Add Payment Method"}
+      />
       <section className={`${styles.paymentFormSection} mobile-pt-section`}>
         <div className={styles.formContainer}>
           <div className={styles.formContent}>
@@ -247,7 +306,7 @@ const PaymentForm = () => {
           {/* Sticky Bottom Button */}
           <div className={styles.stickyBottom}>
             <button className={styles.submitButton} onClick={handleSubmit}>
-              Submit
+              {editingPayment ? "Update & Save" : "Submit"}
             </button>
           </div>
         </div>

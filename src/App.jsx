@@ -267,6 +267,15 @@ const AppContent = () => {
           }
         />
 
+        <Route
+          path="/:slug/check-out/edit-payment/:paymentId"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PaymentForm />
+            </Suspense>
+          }
+        />
+
         <Route path="/:slug1/:slug2/:slug3" element={<DynamicRouteHandler />} />
         <Route path="/:slug1/:slug2" element={<DynamicRouteHandler />} />
         <Route path="/:slug1" element={<DynamicRouteHandler />} />
