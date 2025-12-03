@@ -129,7 +129,7 @@ function PaymentComponent() {
               className={styles.addBtn}
               onClick={() => navigate(`/${slug}/check-out/add-payment`)}
             >
-              <FaPlus /> Add New Payment Method
+              <FaPlus /> Add Payment Method
             </button>
 
             {/* Tabs for UPI and Bank */}
@@ -145,7 +145,6 @@ function PaymentComponent() {
                   setSelectedPaymentMethod(null);
                 }}
               >
-                <img src={upi} alt="UPI" className={styles.tabIcon} />
                 UPI
               </button>
               <button
@@ -159,7 +158,6 @@ function PaymentComponent() {
                   setSelectedPaymentMethod(null);
                 }}
               >
-                <img src={bank} alt="Bank" className={styles.tabIcon} />
                 Bank Transfer
               </button>
             </div>

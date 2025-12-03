@@ -10,7 +10,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .right {
@@ -21,7 +21,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .header h2 {
@@ -35,19 +34,18 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #1968b3;
-  color: white;
   border: none;
-  padding: 10px 20px;
+  min-height: 45px;
+  padding: 10px 15px;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
-}
-
-.addBtn:hover {
-  background-color: #145a9a;
+  background-color: #fff;
+  color: #1968b3;
+  border-radius: 10px;
+  border: 0.3px solid #e1e1e1;
 }
 
 .formCard {
@@ -160,22 +158,17 @@
 .paymentsList {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .paymentCard {
   display: flex;
   align-items: center;
-  gap: 15px;
   background: white;
   border: 0.3px solid #e1e1e1;
   border-radius: 15px;
-  padding: 20px;
+  padding: 10px 15px;
   transition: box-shadow 0.2s;
-}
-
-.paymentCard:hover {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
 .cardIcon {
@@ -189,30 +182,39 @@
 
 .cardType {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: #000;
-  margin-bottom: 5px;
   font-family: "IBM Plex Sans", sans-serif;
 }
 
 .cardNumber {
   font-size: 14px;
-  color: #666;
-  margin-bottom: 3px;
+  color: #000;
   font-family: "IBM Plex Sans", sans-serif;
 }
 
 .cardHolder {
   font-size: 14px;
-  color: #666;
-  margin-bottom: 3px;
+  color: #000;
   font-family: "IBM Plex Sans", sans-serif;
 }
 
 .cardExpiry {
   font-size: 12px;
-  color: #999;
+  color: #000;
   font-family: "IBM Plex Sans", sans-serif;
+}
+
+.cardNumber {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+}
+
+.cardHolder {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
 }
 
 .defaultBadge {
@@ -287,6 +289,47 @@
   font-family: "IBM Plex Sans", sans-serif;
 }
 
+.cardActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 0 auto;
+}
+
+.editIconBtn,
+.deleteIconBtn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  transition: background-color 0.2s;
+}
+
+.editIconBtn img,
+.deleteIconBtn img {
+  width: 23px;
+  height: 23px;
+}
+
+.editIconBtn {
+  color: #1968b3;
+  background-color: #ddefff;
+}
+
+.deleteIconBtn {
+  color: #dc3545;
+  background-color: #ffe6e6;
+}
+
+.tabIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
 @media (max-width: 768px) {
   .panelWrapper {
     flex-direction: column;
@@ -309,7 +352,7 @@
 
   .addBtn {
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .formRow {
@@ -323,6 +366,40 @@
 
   .cardActions {
     width: 100%;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
+}
+
+/* Tab Container */
+.tabContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.tabButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  background-color: white;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "IBM Plex Sans", sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tabButton:hover {
+  border-color: #1968b3;
+}
+
+.activeTab {
+  border-color: #1968b3 !important;
+  background-color: #ddefff !important;
+  color: #1968b3 !important;
 }

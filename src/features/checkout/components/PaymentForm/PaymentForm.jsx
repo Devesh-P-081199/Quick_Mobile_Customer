@@ -133,7 +133,12 @@ const PaymentForm = () => {
         }
       }
 
-      navigate(`/${slug}/check-out/payment`);
+      // Navigate back based on where we came from
+      if (window.location.pathname.includes("/profile/")) {
+        navigate("/my-profile-payments");
+      } else {
+        navigate(`/${slug}/check-out/payment`);
+      }
     } catch (error) {
       console.error("Error saving payment method:", error);
       toast.error("Error saving payment method");

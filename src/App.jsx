@@ -344,6 +344,24 @@ const AppContent = () => {
         />
 
         <Route
+          path="/profile/add-payment"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PaymentForm />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/profile/edit-payment/:paymentId"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PaymentForm />
+            </Suspense>
+          }
+        />
+
+        <Route
           path="/customer/user-profile"
           element={
             <Suspense fallback={<Loader />}>
