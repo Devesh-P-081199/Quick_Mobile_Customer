@@ -55,7 +55,7 @@ Added mobile padding to account for fixed header:
 
 ## Header Behavior
 
-### Mobile (<480px)
+### Mobile (<550px)
 
 - Shows **MobileCommonHeaderthree** component
 - Fixed position at top
@@ -63,7 +63,7 @@ Added mobile padding to account for fixed header:
 - Back button navigates to previous page
 - Universal header is hidden
 
-### Desktop (≥480px)
+### Desktop (≥550px)
 
 - **MobileCommonHeaderthree** is hidden (CSS: `display: none !important`)
 - Universal header shows normally

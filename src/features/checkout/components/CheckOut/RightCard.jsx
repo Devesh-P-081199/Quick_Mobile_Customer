@@ -39,7 +39,7 @@ function RightCard() {
       // navigate("/step6");
       navigate(`/${slug}/price-summary`);
     }
-  }, [currentEvaluationId]);
+  }, [currentEvaluationId, navigate, slug]);
 
   // console.log("selectedAddress", selectedAddress);
 
@@ -52,7 +52,16 @@ function RightCard() {
         return;
       }
 
-      navigate(`/${slug}/payment-mode-selection`); // Redirect to payment page
+      // Navigate back to order summary page
+      navigate(`/${slug}/price-summary`);
+    } else if (location.pathname === `/${slug}/check-out/payment`) {
+      if (!selectedPaymentMethod) {
+        toast.error("Please select a payment method");
+        return;
+      }
+
+      // Navigate back to order summary page
+      navigate(`/${slug}/price-summary`);
     } else if (location.pathname === `/${slug}/payment-mode-selection`) {
       // This is the actual order placing step
       try {
@@ -136,6 +145,8 @@ function RightCard() {
         <button onClick={handlePlaceOrder} className={styles.sellNow}>
           {location.pathname === `/${slug}/payment-mode-selection`
             ? "Place Order"
+            : location.pathname === `/${slug}/check-out/payment`
+            ? "Continue"
             : "Continue"}
         </button>
 
@@ -156,6 +167,8 @@ function RightCard() {
         <button onClick={handlePlaceOrder} className={styles.sellNowMobile}>
           {location.pathname === `/${slug}/payment-mode-selection`
             ? "Place Order"
+            : location.pathname === `/${slug}/check-out/payment`
+            ? "Continue"
             : "Continue"}
         </button>
       </div>

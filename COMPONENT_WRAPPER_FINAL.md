@@ -20,7 +20,7 @@ Successfully added **10px horizontal padding** to components with mobile support
 - **All Devices:** 10px left/right, 0 top/bottom
 - **Desktop (>768px):** 10px left/right
 - **Mobile (≤768px):** 10px left/right
-- **Small Mobile (≤480px):** 10px left/right
+- **Small Mobile (≤550px):** 10px left/right
 
 ---
 
@@ -51,7 +51,7 @@ Successfully added **10px horizontal padding** to components with mobile support
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .page-content-wrapper {
     padding-left: 10px;
     padding-right: 10px;
@@ -129,7 +129,7 @@ npm run dev
 
 - [x] CSS class created
 - [x] Mobile padding added (≤768px)
-- [x] Small mobile padding added (≤480px)
+- [x] Small mobile padding added (≤550px)
 - [x] HomePage components wrapped
 - [x] FooterContent excluded
 - [ ] Test on desktop
@@ -144,7 +144,7 @@ npm run dev
 
 - Desktop view
 - Mobile view (≤768px)
-- Small mobile (≤480px)
+- Small mobile (≤550px)
 - Check for horizontal scroll
 - Verify padding is correct
 

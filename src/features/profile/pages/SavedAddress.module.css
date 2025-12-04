@@ -354,7 +354,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .addBtn {
     width: 100%;
     justify-content: flex-start;

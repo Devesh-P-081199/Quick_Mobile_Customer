@@ -94,7 +94,7 @@ src/styles/
 
 ```css
 /* Inconsistent patterns across components */
-@media (max-width: 768px) /* 47 occurrences */ @media (max-width: 480px) /* 23 occurrences */ @media (min-width: 768px) /* 31 occurrences */ @media (max-width: 1024px) /* 18 occurrences */ @media (max-width: 640px); /* 12 occurrences */
+@media (max-width: 768px) /* 47 occurrences */ @media (max-width: 550px) /* 23 occurrences */ @media (min-width: 768px) /* 31 occurrences */ @media (max-width: 1024px) /* 18 occurrences */ @media (max-width: 640px); /* 12 occurrences */
 ```
 
 **Issue**: Mixed max-width and min-width approaches, inconsistent breakpoint values.

@@ -306,7 +306,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .blogDetailContainer {
     padding: 15px 10px;
   }

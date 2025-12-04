@@ -119,7 +119,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .footerHeading {
     font-size: 18px;
   }
@@ -278,7 +278,7 @@
   text-decoration-color: rgb(1, 1, 1);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .footerContainer {
     padding: 15px 0px !important;
     margin: 0 !important;
@@ -390,7 +390,7 @@
   font-size: 12px;
 }
 
-@media screen and (min-width: 1024px) and (max-width: 2480px) {
+@media screen and (min-width: 1024px) and (max-width: 2550px) {
   .chatbox {
     display: flex;
     align-items: center;
@@ -657,8 +657,8 @@
   }
 }
 
-/* Mobile Portrait (320px - 480px) */
-@media (max-width: 480px) {
+/* Mobile Portrait (320px - 550px) */
+@media (max-width: 550px) {
   .footerContainer {
     padding: 15px 3%;
   }
@@ -814,7 +814,7 @@
 }
 
 /* Logo Responsive - Match Header Logo */
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .logo {
     height: 40px; /* Match header mobile logo height */
     width: auto;
@@ -823,7 +823,7 @@
 }
 
 /* Social Icons Responsive */
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .socialIcons img {
     height: 25px;
     width: 25px;
@@ -854,7 +854,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .helpCenterContent {
     gap: 12px;
   }
@@ -901,7 +901,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .footerContainer {
     padding: 15px 3%;
   }
@@ -944,8 +944,8 @@
   }
 }
 
-/* Small Mobile (≤480px) - Full width, no side margins */
-@media (max-width: 480px) {
+/* Small Mobile (≤550px) - Full width, no side margins */
+@media (max-width: 550px) {
   .footerContainer {
     width: 100% !important;
     padding: 0px !important;

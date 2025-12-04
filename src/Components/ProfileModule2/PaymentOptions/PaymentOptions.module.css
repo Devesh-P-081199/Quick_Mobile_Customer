@@ -4,108 +4,107 @@
 }
 
 .wrapper {
-    padding: 20px;
-  }
-  
-  .title {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  
-  .optionList {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    margin-bottom: 20px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .option {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 0;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-    font-weight: 600;
-  }
-  
-  .formBox {
-    background-color: #fff;
-    padding: 24px;
-    border-radius: 10px;
-    max-width: 720px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
-  }
-  
-  .heading {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-  
-  .labelGroup {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-  
-  .inputGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  
-  .inputGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  
-  .inputGroup label {
-    font-size: 14px;
-    color: #888;
-  }
-  
-  .inputGroup input {
-    padding: 10px 12px;
-    font-size: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-  
-  .infoBox {
-    background-color: #f0f0f0;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 14px;
-    color: #444;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .lockIcon {
-    color: green;
-    font-size: 16px;
-  }
-  
-  .addButton {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
+  padding: 20px;
+}
 
-  /* PaymentOptions.module.css */
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.optionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-bottom: 20px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.option {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+}
+
+.formBox {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 10px;
+  max-width: 720px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.labelGroup {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.inputGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroup label {
+  font-size: 14px;
+  color: #888;
+}
+
+.inputGroup input {
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.infoBox {
+  background-color: #f0f0f0;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lockIcon {
+  color: green;
+  font-size: 16px;
+}
+
+.addButton {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* PaymentOptions.module.css */
 
 .paymentOption {
   display: flex;
@@ -165,7 +164,7 @@
   position: relative;
 }
 
-.card input[type='radio'] {
+.card input[type="radio"] {
   margin-right: 10px;
 }
 
@@ -264,7 +263,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .toggleBox {
     flex-direction: column;
     align-items: center;

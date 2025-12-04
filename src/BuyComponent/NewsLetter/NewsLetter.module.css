@@ -149,7 +149,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .heading {
     font-size: 18px;
     font-weight: 500 !important;

@@ -1,5 +1,4 @@
 .addressContainer {
-
   /* padding: 30px 150px; */
   max-width: 1140px;
   display: flex;
@@ -7,7 +6,6 @@
   margin: auto;
   justify-content: center;
 }
-
 
 .addressContainer .left {
   /* position: absolute; */
@@ -22,7 +20,6 @@
   gap: 50px;
   align-items: flex-start;
   /* margin: 30px 150px; */
-
 }
 
 .editbutton {
@@ -61,7 +58,7 @@
   flex-wrap: wrap;
 }
 
-.agreement{
+.agreement {
   padding-inline-start: 0.5rem;
   color: #6b7280;
   font-size: 14px;
@@ -78,7 +75,7 @@
 }
 
 .title {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 500;
   font-size: 28px;
@@ -117,7 +114,7 @@
 }
 
 .label {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -126,7 +123,7 @@
 }
 
 .value {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -163,11 +160,11 @@
 .ellipse {
   width: 12px;
   height: 12px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #34A853;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    #34a853;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
 }
-
 
 .input {
   width: 100%;
@@ -290,40 +287,35 @@
   margin-right: 10px;
 }
 
-@media (max-width: 480px) {
-.addressContainer {
-  gap: 2px;
-}
-.title {
-  text-align: center;
-}
-.right {
-  display: none;
-}
+@media (max-width: 550px) {
+  .addressContainer {
+    gap: 2px;
+  }
+  .title {
+    text-align: center;
+  }
+  .right {
+    display: none;
+  }
 }
 
 @media (max-width: 900px) {
-
   .addressContainer {
-
-
-   flex-direction: column-reverse;
+    flex-direction: column-reverse;
   }
-  
-  
+
   .addressContainer .left {
     /* position: absolute; */
     width: 100%;
+  }
 
-}
+  .addressWrapper {
+    width: 100%;
+  }
 
-.addressWrapper {
-  width: 100%;
-}
-
-.AddressBox {
-  padding: 5px;
-}
+  .AddressBox {
+    padding: 5px;
+  }
 }
 
 .addressheading {
@@ -331,7 +323,7 @@
   padding: 20px 0px;
 }
 
- .mobileOverlay {
+.mobileOverlay {
   position: fixed;
   top: 0;
   left: 0;

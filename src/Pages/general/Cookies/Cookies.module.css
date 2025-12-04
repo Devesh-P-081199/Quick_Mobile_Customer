@@ -201,7 +201,7 @@ input:checked + .slider:before {
   }
 }
 
-/* Extra small (phones < 480px) */
+/* Extra small (phones < 550px) */
 @media (max-width: 520px) {
   .section {
     padding: 15px 20px;

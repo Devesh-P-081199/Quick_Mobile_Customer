@@ -85,7 +85,7 @@
 
 /* Phones */
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .searchBox {
     width: 44%;
   }
@@ -233,7 +233,7 @@
     padding: 10px;
   }
 }
-@media screen and (min-width: 200px) and (max-width: 480px) {
+@media screen and (min-width: 200px) and (max-width: 550px) {
   .brandImageBox {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr);
@@ -278,7 +278,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .searchBox {
     @apply w-2/5;
   }

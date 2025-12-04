@@ -53,7 +53,7 @@ Created a dedicated blogs page accessible from the footer's "About" dropdown wit
 
 ### Responsive Design
 
-- **Mobile (<480px)**:
+- **Mobile (<550px)**:
   - Custom header with "Blogs" title and back button
   - Single column layout
   - Fixed header with proper content padding

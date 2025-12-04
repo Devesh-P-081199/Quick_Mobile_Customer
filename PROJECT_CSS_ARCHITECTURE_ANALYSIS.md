@@ -156,7 +156,7 @@ screens: {
 
 - `@media (max-width: 320px)` - 2 occurrences
 - `@media (max-width: 375px)` - 3 occurrences
-- `@media (max-width: 480px)` - 15+ occurrences
+- `@media (max-width: 550px)` - 15+ occurrences
 - `@media (max-width: 576px)` - 8 occurrences
 - `@media (max-width: 640px)` - 5 occurrences
 - `@media (max-width: 768px)` - 80+ occurrences ⚠️ MOST COMMON
@@ -377,7 +377,7 @@ section {
   padding-left: 4%;
   padding-right: 4%;
 }
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   padding-left: 3%;
   padding-right: 3%;
 }

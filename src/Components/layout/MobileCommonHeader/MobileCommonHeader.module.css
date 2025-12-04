@@ -68,7 +68,7 @@
   font-weight: 600;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 550px) {
   .header {
     display: none !important;
   }

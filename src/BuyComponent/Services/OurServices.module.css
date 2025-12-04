@@ -85,10 +85,8 @@
   margin-top: 0.5rem;
 }
 
-
-@media (max-width: 480px) { 
-.cardLabel {
-  font-size: 12px;
-
-}
+@media (max-width: 550px) {
+  .cardLabel {
+    font-size: 12px;
+  }
 }

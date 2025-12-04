@@ -118,7 +118,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .errorPage {
     padding: 50px 0px;
     justify-content: start;

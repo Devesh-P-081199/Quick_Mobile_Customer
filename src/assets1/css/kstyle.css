@@ -85,7 +85,7 @@ section {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   section {
     padding: 20px 10px;
   }
@@ -246,7 +246,7 @@ img {
 /* .Toastify {
   display: none;
 } */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .ty-bg {
     background-image: none;
     height: 100%;
@@ -369,7 +369,7 @@ body::-webkit-scrollbar-thumb {
 .question-text {
   font-size: 16px;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .md-block {
     display: block;
   }

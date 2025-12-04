@@ -526,7 +526,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .form-box .options label {
     justify-content: start;
     gap: 5px;
@@ -623,7 +623,7 @@
   position: relative;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .bottom-fixed-btn {
     position: fixed;
     bottom: 0vh;

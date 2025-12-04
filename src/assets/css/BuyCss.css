@@ -365,7 +365,7 @@ body {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .slider-nav {
     display: none;
   }
@@ -2019,7 +2019,7 @@ h1 {
   width: 222px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .used-vs-brand .stats-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -2088,7 +2088,7 @@ h1 {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .used-vs-brand {
     padding: 30px 5px;
   }

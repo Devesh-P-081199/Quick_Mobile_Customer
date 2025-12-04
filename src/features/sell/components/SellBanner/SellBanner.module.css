@@ -320,7 +320,7 @@ button.laptopviewall {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .suggestionBrandBox {
     /* justify-content: center; */
     width: auto;
@@ -620,7 +620,7 @@ span.dotButton {
   outline: none;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .cardName {
     font-size: 12px;
   }

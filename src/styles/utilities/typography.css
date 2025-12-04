@@ -455,7 +455,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .text-3xl {
     font-size: var(--font-size-xl);
   }

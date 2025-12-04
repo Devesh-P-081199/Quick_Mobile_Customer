@@ -89,7 +89,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .cardLabel {
     font-size: 12px;
   }

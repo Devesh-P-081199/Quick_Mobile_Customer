@@ -628,7 +628,7 @@
 }
 
 /* Small Mobile (480px and below) */
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .mobileContainer {
     padding: var(--spacing-2) var(--spacing-3);
   }

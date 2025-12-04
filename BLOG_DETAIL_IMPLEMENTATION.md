@@ -199,7 +199,7 @@ const fetchBlogDetail = async () => {
 
 - [ ] Desktop view (>768px) - centered, max-width 900px
 - [ ] Tablet view (≤768px) - adjusted font sizes
-- [ ] Mobile view (≤480px) - single column, smaller text
+- [ ] Mobile view (≤550px) - single column, smaller text
 
 ---
 

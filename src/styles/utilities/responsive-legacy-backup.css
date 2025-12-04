@@ -717,7 +717,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .slider-container-fix {
     padding: 0 10px;
   }

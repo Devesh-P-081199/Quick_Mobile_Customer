@@ -148,18 +148,18 @@
   cursor: pointer;
 }
 
-@media  (max-width: 1540px) and (min-width: 900px) {
+@media (max-width: 1540px) and (min-width: 900px) {
   .offerContent {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 5rem;
   }
-  .offerTitle{
+  .offerTitle {
     padding: 15px 80px;
     font-size: 22px;
   }
-  .buyBtn{
+  .buyBtn {
     width: 20%;
     font-size: 20px;
   }
@@ -233,7 +233,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   /* Fix buttons at bottom */
   .btnBox {
     position: fixed;

@@ -355,7 +355,7 @@
   background-color: #ffe6e6;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .DropDown {
     padding: 0px;
   }

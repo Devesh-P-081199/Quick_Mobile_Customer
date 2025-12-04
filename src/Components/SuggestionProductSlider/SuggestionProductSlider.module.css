@@ -140,7 +140,7 @@
   background: #1968b3;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 550px) {
   .sliderContainer {
     display: none;
   }

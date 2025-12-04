@@ -4,108 +4,107 @@
 }
 
 .wrapper {
-    padding: 20px;
-  }
-  
-  .title {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  
-  .optionList {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    margin-bottom: 20px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .option {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 0;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-    font-weight: 600;
-  }
-  
-  .formBox {
-    background-color: #fff;
-    padding: 24px;
-    border-radius: 10px;
-    max-width: 720px;
-    /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.05); */
-  }
-  
-  .heading {
-    font-size: 22px;
-    /* font-weight: 700; */
-    margin-bottom: 12px;
-  }
-  
-  .labelGroup {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-  
-  .inputGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 20px;
-  }
-  
-  .inputGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  
-  .inputGroup label {
-    font-size: 14px;
-    color: #000000;
-  }
-  
-  .inputGroup input {
-    padding: 10px 12px;
-    font-size: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-  
-  .infoBox {
-    background-color: #f0f0f0;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 14px;
-    color: #444;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .lockIcon {
-    color: green;
-    font-size: 16px;
-  }
-  
-  .addButton {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
+  padding: 20px;
+}
 
-  /* PaymentOptions.module.css */
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.optionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-bottom: 20px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.option {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-weight: 600;
+}
+
+.formBox {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 10px;
+  max-width: 720px;
+  /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.05); */
+}
+
+.heading {
+  font-size: 22px;
+  /* font-weight: 700; */
+  margin-bottom: 12px;
+}
+
+.labelGroup {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.inputGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroup label {
+  font-size: 14px;
+  color: #000000;
+}
+
+.inputGroup input {
+  padding: 10px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.infoBox {
+  background-color: #f0f0f0;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lockIcon {
+  color: green;
+  font-size: 16px;
+}
+
+.addButton {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* PaymentOptions.module.css */
 
 .paymentOption {
   display: flex;
@@ -168,7 +167,7 @@
   gap: 16px;
 }
 
-.card input[type='radio'] {
+.card input[type="radio"] {
   margin-right: 10px;
 }
 
@@ -271,7 +270,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .toggleBox {
     flex-direction: column;
     align-items: center;
@@ -284,7 +283,6 @@
 }
 
 .addressContainer {
-
   /* padding: 30px 150px; */
   max-width: 1140px;
   display: flex;
@@ -292,7 +290,6 @@
   margin: auto;
   justify-content: center;
 }
-
 
 .addressContainer .left {
   /* position: absolute; */
@@ -307,7 +304,6 @@
   gap: 50px;
   align-items: flex-start;
   /* margin: 30px 150px; */
-
 }
 
 .editbutton {
@@ -345,7 +341,7 @@
   gap: 20px;
 }
 
-.agreement{
+.agreement {
   padding-inline-start: 0.5rem;
   color: #6b7280;
   font-size: 14px;
@@ -362,7 +358,7 @@
 }
 
 .title {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 500;
   font-size: 28px;
@@ -401,7 +397,7 @@
 }
 
 .label {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -410,7 +406,7 @@
 }
 
 .value {
-  font-family: 'IBM Plex Sans';
+  font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -447,11 +443,11 @@
 .ellipse {
   width: 12px;
   height: 12px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #34A853;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    #34a853;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
 }
-
 
 .input {
   width: 100%;
@@ -488,7 +484,6 @@
   padding: 16px 12px;
   background-color: white;
   border-radius: 5px;
-
 }
 
 .dropdownHeader {
@@ -504,23 +499,20 @@
   padding: 12px 0;
 }
 .headingflex {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .panelWrapper {
-        gap: 2px;
-      }
-
-    }
+    gap: 2px;
+  }
+}
 
 @media (max-width: 900px) {
   .addressContainer {
-
-  flex-direction: column-reverse;
-  /* padding: 30px 5px; */
+    flex-direction: column-reverse;
+    /* padding: 30px 5px; */
   }
   .addressWrapper {
     width: 100%;
@@ -528,7 +520,7 @@
   .cardAdd {
     padding: 0px;
   }
-  .cardAdd p{
+  .cardAdd p {
     display: none;
   }
   .heading {
@@ -581,21 +573,17 @@
   }
  */
 
- @media screen and (max-width : 480px) {
-  
+@media screen and (max-width: 550px) {
   .right {
-     display: none;
+    display: none;
   }
-  
- }
+}
 
- .rightangle {
-
+.rightangle {
   transform: rotate(180deg);
- }
+}
 
-
- .mobileOverlay {
+.mobileOverlay {
   position: fixed;
   top: 0;
   left: 0;

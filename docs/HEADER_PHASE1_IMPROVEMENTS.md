@@ -14,7 +14,7 @@
 @media (max-width: 768px) {
   /* Other elements */
 }
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   /* Mobile specific */
 }
 @media (max-width: 1440px) {

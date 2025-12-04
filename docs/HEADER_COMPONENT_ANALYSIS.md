@@ -114,7 +114,7 @@ The Header component currently uses a **mixed approach** with both responsive CS
   @media (max-width: 768px) {
     /* Other elements */
   }
-  @media (max-width: 480px) {
+  @media (max-width: 550px) {
     /* Mobile specific */
   }
   ```

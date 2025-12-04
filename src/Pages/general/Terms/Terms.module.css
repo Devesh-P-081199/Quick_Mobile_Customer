@@ -104,8 +104,8 @@
   }
 }
 
-/* Small Mobile (max 480px) */
-@media (max-width: 480px) {
+/* Small Mobile (max 550px) */
+@media (max-width: 550px) {
   .wrapper {
     padding: 15px 15px;
   }

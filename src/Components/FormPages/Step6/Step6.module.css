@@ -511,7 +511,7 @@
   display: none;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .LeftBox {
     padding: 10px;
   }
@@ -797,8 +797,204 @@
   }
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 550px) {
   .applyCoupon {
     display: none;
+  }
+}
+
+/* Checkout Summary Section */
+.checkoutSummary {
+  background-color: #ffffff;
+  padding: 15px;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.sectionTitle {
+  font-family: IBM Plex Sans;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 15px 0;
+}
+
+.summaryCard {
+  background-color: #f9f9f9;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.summaryCard:last-child {
+  margin-bottom: 0;
+}
+
+.summaryHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 0.3px solid #e1e1e1;
+}
+
+.summaryHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summaryIcon {
+  width: 24px;
+  height: 24px;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: #ddefff;
+}
+
+.summaryLabel {
+  font-family: IBM Plex Sans;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.summaryContent {
+  padding: 5px 0;
+}
+
+.addressTag {
+  display: inline-block;
+  background-color: #1968b3;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.addressText {
+  font-family: IBM Plex Sans;
+  font-size: 13px;
+  font-weight: 400;
+  color: #000000;
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+.paymentType {
+  display: inline-block;
+  background-color: #34a853;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.paymentText {
+  font-family: IBM Plex Sans;
+  font-size: 13px;
+  font-weight: 400;
+  color: #000000;
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+.paymentValue {
+  font-weight: 500;
+  color: #1968b3;
+}
+
+.notSelected {
+  font-family: IBM Plex Sans;
+  font-size: 13px;
+  font-weight: 400;
+  color: #999999;
+  font-style: italic;
+  margin: 5px 0;
+}
+
+.changeBtn {
+  background-color: #1968b3;
+  color: #ffffff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.changeBtn:hover {
+  background-color: #145a94;
+}
+
+.sellNow.disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.orderWarning {
+  font-family: IBM Plex Sans;
+  font-size: 12px;
+  font-weight: 400;
+  color: #ff4d4d;
+  text-align: center;
+  margin-top: 8px;
+}
+
+@media (max-width: 550px) {
+  .checkoutSummary {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .sectionTitle {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .summaryCard {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .summaryIcon {
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+  }
+
+  .summaryLabel {
+    font-size: 13px;
+  }
+
+  .addressText,
+  .paymentText {
+    font-size: 12px;
+  }
+
+  .addressTag,
+  .paymentType {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  .changeBtn {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+
+  .orderWarning {
+    font-size: 11px;
   }
 }

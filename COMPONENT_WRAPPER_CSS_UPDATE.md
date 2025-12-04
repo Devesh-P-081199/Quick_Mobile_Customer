@@ -35,8 +35,8 @@ Added **10px horizontal padding** for mobile view to `.page-content-wrapper` cla
   }
 }
 
-/* Small mobile optimization (≤480px) */
-@media (max-width: 480px) {
+/* Small mobile optimization (≤550px) */
+@media (max-width: 550px) {
   .page-content-wrapper {
     padding-left: 10px;
     padding-right: 10px;
@@ -52,7 +52,7 @@ Added **10px horizontal padding** for mobile view to `.page-content-wrapper` cla
 | ------------------------- | ------------ | ------------- | ---------- |
 | **Desktop (>768px)**      | 10px         | 10px          | 0          |
 | **Mobile (≤768px)**       | 10px         | 10px          | 0          |
-| **Small Mobile (≤480px)** | 10px         | 10px          | 0          |
+| **Small Mobile (≤550px)** | 10px         | 10px          | 0          |
 
 ---
 
@@ -76,7 +76,7 @@ Added **10px horizontal padding** for mobile view to `.page-content-wrapper` cla
 └─────────────────────┘
 ```
 
-### **Small Mobile (≤480px):**
+### **Small Mobile (≤550px):**
 
 ```
 ┌───────────────┐
@@ -122,7 +122,7 @@ Added **10px horizontal padding** for mobile view to `.page-content-wrapper` cla
 - [ ] Check component has 10px padding on sides
 - [ ] Verify no horizontal scroll
 
-### **Small Mobile (≤480px):**
+### **Small Mobile (≤550px):**
 
 - [ ] Set viewport to 480px or less
 - [ ] Check component has 10px padding on sides

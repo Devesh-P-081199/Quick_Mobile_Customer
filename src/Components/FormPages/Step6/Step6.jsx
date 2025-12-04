@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css"; // import skeleton CSS
 import styles from "./Step6.module.css";
 import MobileImg from "../../../assets/images/Products/mobile.png";
-import coupenicon from "../../../assets/images/icons/coupen.png";
 import "../../../assets/images/icons/rightarrow.png";
 import Recalculate from "../../../assets1/kimages/t1.png";
 import FreePickup from "../../../assets1/kimages/t2.png";
-import FreePickup2 from "../../../assets1/kimages/t5.png";
 import clock from "../../.../../../assets/flaticons/clock-basecolor.png";
 import van from "../../.../../../assets/flaticons/delivery-van-basecolor.png";
 import secureShield from "../../.../../../assets/flaticons/secure-basecolor.png";
@@ -17,8 +15,6 @@ import { UserContext } from "../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import api from "../../../Utils/api";
 import Answers from "../AnswerList/answers";
-import { FaArrowLeft } from "react-icons/fa";
-import MobileCommonHeadertwo from "../../layout/MobileCommonHeader/MobileCommonHeadertwo";
 import MobileCommonHeaderthree from "../../layout/MobileCommonHeader/MobileCommonHeaderthree";
 import arrow from "../../../assets/QuickSellNewIcons/backarrowwithouttail.svg";
 import closeIcon from "../../../assets/QuickSellNewIcons/cross.svg";
@@ -28,6 +24,8 @@ function Step6() {
     // allPackageData,
     currentEvaluationId,
     setCurrentEvaluationId,
+    selectedAddress,
+    selectedPaymentMethod,
     // userSelection,
   } = useContext(UserContext);
 
@@ -63,9 +61,42 @@ function Step6() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleSellNow = () => {
+  const handlePlaceOrder = async () => {
+    if (!selectedAddress || !selectedPaymentMethod) {
+      toast.error("Please select address and payment method");
+      return;
+    }
+
+    try {
+      const orderPayload = {
+        deviceEvaluationId: currentEvaluationId?._id,
+        address: selectedAddress,
+        paymentDetail: selectedPaymentMethod,
+      };
+
+      const placeOrder = await api.post(
+        "/sell-module/user/orders",
+        orderPayload
+      );
+
+      console.log("Order response", placeOrder.data);
+      toast.success("Order placed successfully!");
+      navigate("/thank-you");
+    } catch (error) {
+      console.error("Error placing order:", error);
+      toast.error(`${error?.response?.data?.error || "Failed to place order"}`);
+    }
+  };
+
+  const handleChangeAddress = () => {
     navigate(`/${slug}/check-out`);
   };
+
+  const handleChangePayment = () => {
+    navigate(`/${slug}/check-out/payment`);
+  };
+
+  const isOrderReady = selectedAddress && selectedPaymentMethod;
 
   return (
     <>
@@ -104,7 +135,7 @@ function Step6() {
                     {loading ? (
                       <Skeleton width={80} />
                     ) : (
-                      `₹ ${(currentEvaluationId?.finalPrice).toFixed(2)}`
+                      `₹ ${(currentEvaluationId?.finalPrice || 0).toFixed(2)}`
                     )}
                   </span>
                 </div>
@@ -200,6 +231,115 @@ function Step6() {
               )}
             </p>
           </div>
+
+          {/* Checkout Summary Section */}
+          <div className={styles.checkoutSummary}>
+            <h3 className={styles.sectionTitle}>Checkout Summary</h3>
+
+            {/* Address Section */}
+            <div className={styles.summaryCard}>
+              <div className={styles.summaryHeader}>
+                <div className={styles.summaryHeaderLeft}>
+                  <img src={van} alt="Address" className={styles.summaryIcon} />
+                  <span className={styles.summaryLabel}>Delivery Address</span>
+                </div>
+                <button
+                  className={styles.changeBtn}
+                  onClick={handleChangeAddress}
+                >
+                  {selectedAddress ? "Change" : "Add"}
+                </button>
+              </div>
+              {selectedAddress ? (
+                <div className={styles.summaryContent}>
+                  <span className={styles.addressTag}>
+                    {selectedAddress?.saveAs}
+                  </span>
+                  <p className={styles.addressText}>
+                    {selectedAddress?.houseNumber}, {selectedAddress?.street}
+                    {selectedAddress?.landmark &&
+                      `, ${selectedAddress?.landmark}`}
+                  </p>
+                  <p className={styles.addressText}>
+                    {selectedAddress?.cityName}, {selectedAddress?.state} -{" "}
+                    {selectedAddress?.zipCode}
+                  </p>
+                  <p className={styles.addressText}>
+                    {selectedAddress?.alternatePhone}
+                  </p>
+                </div>
+              ) : (
+                <p className={styles.notSelected}>
+                  No address selected. Click "Add" to select an address.
+                </p>
+              )}
+            </div>
+
+            {/* Payment Section */}
+            <div className={styles.summaryCard}>
+              <div className={styles.summaryHeader}>
+                <div className={styles.summaryHeaderLeft}>
+                  <img
+                    src={secureShield}
+                    alt="Payment"
+                    className={styles.summaryIcon}
+                  />
+                  <span className={styles.summaryLabel}>Payment Method</span>
+                </div>
+                <button
+                  className={styles.changeBtn}
+                  onClick={handleChangePayment}
+                >
+                  {selectedPaymentMethod ? "Change" : "Add"}
+                </button>
+              </div>
+              {selectedPaymentMethod ? (
+                <div className={styles.summaryContent}>
+                  {selectedPaymentMethod.type === "upi" ? (
+                    <>
+                      <span className={styles.paymentType}>UPI Payment</span>
+                      <p className={styles.paymentText}>
+                        UPI ID:{" "}
+                        <span className={styles.paymentValue}>
+                          {selectedPaymentMethod?.upiId}
+                        </span>
+                      </p>
+                    </>
+                  ) : selectedPaymentMethod.type === "bank" ? (
+                    <>
+                      <span className={styles.paymentType}>
+                        Bank Transfer (IMPS)
+                      </span>
+                      <p className={styles.paymentText}>
+                        Account:{" "}
+                        <span className={styles.paymentValue}>
+                          {selectedPaymentMethod?.bankDetails?.accountNumber}
+                        </span>
+                      </p>
+                      <p className={styles.paymentText}>
+                        IFSC:{" "}
+                        <span className={styles.paymentValue}>
+                          {selectedPaymentMethod?.bankDetails?.ifscCode}
+                        </span>
+                      </p>
+                      <p className={styles.paymentText}>
+                        Bank:{" "}
+                        <span className={styles.paymentValue}>
+                          {selectedPaymentMethod?.bankDetails?.bankName}
+                        </span>
+                      </p>
+                    </>
+                  ) : null}
+                </div>
+              ) : (
+                <p className={styles.notSelected}>
+                  No payment method selected. Click "Add" to select a payment
+                  method.
+                </p>
+              )}
+            </div>
+          </div>
+
           <div className={styles.detailsDown}>
             <div className={styles.deviceDetailsBtn}>
               <button onClick={() => setShowAnswersModal(true)}>
@@ -318,15 +458,22 @@ function Step6() {
               </div>
             </div>
 
-            {/* Sell Now Button */}
+            {/* Place Order Button */}
             <div className={styles.sellNowContainer}>
               <button
-                className={styles.sellNow}
-                onClick={handleSellNow}
-                disabled={loading}
+                className={`${styles.sellNow} ${
+                  !isOrderReady ? styles.disabled : ""
+                }`}
+                onClick={handlePlaceOrder}
+                disabled={loading || !isOrderReady}
               >
-                Sell Now
+                Place Order
               </button>
+              {!isOrderReady && (
+                <p className={styles.orderWarning}>
+                  Please select address and payment method to continue
+                </p>
+              )}
             </div>
 
             {/* Apply Coupon Button */}

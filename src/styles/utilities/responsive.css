@@ -708,7 +708,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .slider-container-fix {
     padding: 0 var(--spacing-3);
   }
@@ -739,8 +739,8 @@
   }
 }
 
-/* Small mobile optimization (≤480px) */
-@media (max-width: 480px) {
+/* Small mobile optimization (≤550px) */
+@media (max-width: 550px) {
   .page-content-wrapper {
     padding-left: 10px;
     padding-right: 10px;

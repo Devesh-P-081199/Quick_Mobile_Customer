@@ -85,7 +85,7 @@ section {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   section {
     padding: 20px 10px;
   }
@@ -252,7 +252,7 @@ img {
 /* .Toastify {
   display: none;
 } */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .ty-bg {
     background-image: none;
     height: 100%;
@@ -392,7 +392,7 @@ body::-webkit-scrollbar-thumb {
     border-radius: 5px;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .md-block {
     display: block;
   }
@@ -477,7 +477,7 @@ body::-webkit-scrollbar-thumb {
   height: 30px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .mobile-pt-section {
     margin-top: 0px !important;
   }
