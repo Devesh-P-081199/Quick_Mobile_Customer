@@ -115,6 +115,8 @@ function SellDeviceVarient() {
           variantId: variant._id,
           variantSlug: variant.slug,
           catSubcatSlug: userSelection.catSubcatSlug,
+          productSlug: slug2, // Store current product slug for back navigation from GetUpto
+          brandSlug: userSelection.brandSlug, // Preserve brand slug
         };
 
         // Update cookie immediately so GetUpto sees complete data
@@ -127,7 +129,7 @@ function SellDeviceVarient() {
         setUserSelection(newSelection);
 
         // Safe to navigate
-        navigate(`/${slug1}/${variant.slug}`);
+        navigate(`/${slug1}/${variant.slug}`, { replace: true });
       }
 
       // else → wait for user to select
@@ -185,6 +187,7 @@ function SellDeviceVarient() {
       wholeVariantId,
       variantId,
       variantSlug,
+      productSlug: slug2, // Store current product slug for back navigation from GetUpto
     }));
   };
 
@@ -198,7 +201,7 @@ function SellDeviceVarient() {
     }
     if (selectedMemory?.wholeVariantId) {
       //  navigate(`/get-price-upto`);
-      navigate(`/${slug1}/${userSelection.variantSlug}`);
+      navigate(`/${slug1}/${userSelection.variantSlug}`, { replace: true });
     } else {
       toast.warning("Please select a variant to continue.");
     }
@@ -253,40 +256,39 @@ function SellDeviceVarient() {
               <div className={styles.form}>
                 {isVariantsLoading
                   ? Array(3)
-                      .fill()
-                      .map((_, i) => (
-                        <Skeleton
-                          key={i}
-                          height={20}
-                          width={150}
-                          style={{ marginBottom: 12 }}
-                        />
-                      ))
+                    .fill()
+                    .map((_, i) => (
+                      <Skeleton
+                        key={i}
+                        height={20}
+                        width={150}
+                        style={{ marginBottom: 12 }}
+                      />
+                    ))
                   : variants.variants.map((option) => (
-                      <label
-                        key={option._id}
-                        className={`${styles.radioLabel} ${
-                          selectedMemory?.variantId === option._id
-                            ? styles.active
-                            : ""
+                    <label
+                      key={option._id}
+                      className={`${styles.radioLabel} ${selectedMemory?.variantId === option._id
+                        ? styles.active
+                        : ""
                         }`}
-                      >
-                        <input
-                          type="radio"
-                          name="memory"
-                          checked={selectedMemory?.variantId === option._id}
-                          className="custom-radio"
-                          onChange={() =>
-                            handleChange(
-                              option.wholeVariantId,
-                              option._id,
-                              option.slug
-                            )
-                          }
-                        />
-                        <span>{option.variantDetail}</span>
-                      </label>
-                    ))}
+                    >
+                      <input
+                        type="radio"
+                        name="memory"
+                        checked={selectedMemory?.variantId === option._id}
+                        className="custom-radio"
+                        onChange={() =>
+                          handleChange(
+                            option.wholeVariantId,
+                            option._id,
+                            option.slug
+                          )
+                        }
+                      />
+                      <span>{option.variantDetail}</span>
+                    </label>
+                  ))}
               </div>
               <div className={styles.buttonBottomBox}>
                 <button

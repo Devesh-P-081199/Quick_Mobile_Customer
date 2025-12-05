@@ -237,15 +237,15 @@ function SellHomeBanner({ onViewAllClick }) {
     await GotoSearchBrands(id);
 
     if (slug1 !== slug) {
-      navigate(`/${slug}`);
+      navigate(`/${slug}`, { replace: true });
     }
   };
 
   const handleBrandClick = (brand) => {
     if (brand?.subCategorySlug) {
-      navigate(`/${brand?.subCategorySlug}/${brand.slugSell}`);
+      navigate(`/${brand?.subCategorySlug}/${brand.slugSell}`, { replace: true });
     } else {
-      navigate(`/${brand.categorySlug}/${brand.slugSell}`);
+      navigate(`/${brand.categorySlug}/${brand.slugSell}`, { replace: true });
     }
     setShowDropdown(false);
     setSearchTerm("");
@@ -254,9 +254,9 @@ function SellHomeBanner({ onViewAllClick }) {
   const handleProductClick = (prod) => {
     //console.log("Product clicked:", prod);
     if (prod?.subCategorySlug) {
-      navigate(`/${prod?.subCategorySlug}/${prod.slugSell}`);
+      navigate(`/${prod?.subCategorySlug}/${prod.slugSell}`, { replace: true });
     } else {
-      navigate(`/${prod.categorySlug}/${prod.slugSell}`);
+      navigate(`/${prod.categorySlug}/${prod.slugSell}`, { replace: true });
     }
     setShowDropdown(false);
     setSearchTerm("");
@@ -380,54 +380,53 @@ function SellHomeBanner({ onViewAllClick }) {
               >
                 {isLoadingCategories
                   ? Array(5)
-                      .fill()
-                      .map((_, index) => (
-                        <div className={styles.imgCard} key={index}>
-                          <div className={styles.imageBg}>
-                            <Skeleton circle height={50} width={50} />
-                          </div>
-                          <Skeleton
-                            width={70}
-                            height={10}
-                            style={{ marginTop: "5px" }}
-                          />
+                    .fill()
+                    .map((_, index) => (
+                      <div className={styles.imgCard} key={index}>
+                        <div className={styles.imageBg}>
+                          <Skeleton circle height={50} width={50} />
                         </div>
-                      ))
+                        <Skeleton
+                          width={70}
+                          height={10}
+                          style={{ marginTop: "5px" }}
+                        />
+                      </div>
+                    ))
                   : [...category]
-                      .sort((a, b) => {
-                        if (a._id === selectedCategoryId) return -1;
-                        if (b._id === selectedCategoryId) return 1;
-                        return 0;
-                      })
-                      .map((cat, index) => (
-                        <div
-                          // className={styles.imgCard}
-                          key={index}
-                          onClick={() =>
-                            handleNavigate(
-                              cat._id,
-                              cat.categoryName,
-                              cat?.slug?.sell
-                            )
-                          }
-                          className={`${styles.imgCard} ${
-                            selectedCategoryId === cat._id
-                              ? styles.selectedCategory
-                              : ""
+                    .sort((a, b) => {
+                      if (a._id === selectedCategoryId) return -1;
+                      if (b._id === selectedCategoryId) return 1;
+                      return 0;
+                    })
+                    .map((cat, index) => (
+                      <div
+                        // className={styles.imgCard}
+                        key={index}
+                        onClick={() =>
+                          handleNavigate(
+                            cat._id,
+                            cat.categoryName,
+                            cat?.slug?.sell
+                          )
+                        }
+                        className={`${styles.imgCard} ${selectedCategoryId === cat._id
+                            ? styles.selectedCategory
+                            : ""
                           }`}
-                        >
-                          <div className={styles.imageBg}>
-                            <img
-                              src={cat?.categoryImageUrl || MobileIcon}
-                              alt={cat?.categoryName}
-                              title={cat?.categoryName}
-                            />
-                            <span className={styles.cardName}>
-                              {cat.categoryName}
-                            </span>
-                          </div>
+                      >
+                        <div className={styles.imageBg}>
+                          <img
+                            src={cat?.categoryImageUrl || MobileIcon}
+                            alt={cat?.categoryName}
+                            title={cat?.categoryName}
+                          />
+                          <span className={styles.cardName}>
+                            {cat.categoryName}
+                          </span>
                         </div>
-                      ))}
+                      </div>
+                    ))}
 
                 <div
                   className={`${styles.imgCard} ${styles.viewAllCard}`}
@@ -527,34 +526,34 @@ function SellHomeBanner({ onViewAllClick }) {
             <div className={styles.suggestionBrandBox}>
               {isLoadingBrands
                 ? Array(4)
-                    .fill()
-                    .map((_, i) => (
-                      <div key={i} className={styles.brands}>
-                        <div className={styles.brandImageBg}>
-                          <Skeleton circle width={50} height={50} />
-                        </div>
-                        <Skeleton
-                          width={60}
-                          height={9}
-                          style={{ marginTop: 5 }}
-                        />
+                  .fill()
+                  .map((_, i) => (
+                    <div key={i} className={styles.brands}>
+                      <div className={styles.brandImageBg}>
+                        <Skeleton circle width={50} height={50} />
                       </div>
-                    ))
-                : brands.slice(0, 4).map((icon, index) => (
-                    <div key={index}>
-                      <div
-                        className={styles.brandImageBg}
-                        onClick={() => navigate(`${icon.slugSell}`)}
-                      >
-                        <img
-                          src={icon?.brandLogo}
-                          alt={icon?.brandName}
-                          title={icon?.brandName}
-                        />
-                      </div>
-                      {/* <span className={styles.cardName}>{icon?.brandName}</span> */}
+                      <Skeleton
+                        width={60}
+                        height={9}
+                        style={{ marginTop: 5 }}
+                      />
                     </div>
-                  ))}
+                  ))
+                : brands.slice(0, 4).map((icon, index) => (
+                  <div key={index}>
+                    <div
+                      className={styles.brandImageBg}
+                      onClick={() => navigate(`${icon.slugSell}`, { replace: true })}
+                    >
+                      <img
+                        src={icon?.brandLogo}
+                        alt={icon?.brandName}
+                        title={icon?.brandName}
+                      />
+                    </div>
+                    {/* <span className={styles.cardName}>{icon?.brandName}</span> */}
+                  </div>
+                ))}
               {/* {!isLoadingBrands && brands.length > 4 && (
               )} */}
             </div>

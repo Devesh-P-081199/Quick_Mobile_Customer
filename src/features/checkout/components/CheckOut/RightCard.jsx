@@ -52,16 +52,24 @@ function RightCard() {
         return;
       }
 
-      // Navigate back to order summary page
-      navigate(`/${slug}/price-summary`, { replace: true });
+      // Navigate back to order summary page - preserve query params
+      const queryString = new URLSearchParams(location.search).toString();
+      const targetUrl = queryString
+        ? `/${slug}/price-summary?${queryString}`
+        : `/${slug}/price-summary`;
+      navigate(targetUrl, { replace: true });
     } else if (location.pathname === `/${slug}/payment`) {
       if (!selectedPaymentMethod) {
         toast.error("Please select a payment method");
         return;
       }
 
-      // Navigate back to order summary page
-      navigate(`/${slug}/price-summary`, { replace: true });
+      // Navigate back to order summary page - preserve query params
+      const queryString = new URLSearchParams(location.search).toString();
+      const targetUrl = queryString
+        ? `/${slug}/price-summary?${queryString}`
+        : `/${slug}/price-summary`;
+      navigate(targetUrl, { replace: true });
     } else if (location.pathname === `/${slug}/payment-mode-selection`) {
       // This is the actual order placing step
       try {
@@ -83,7 +91,7 @@ function RightCard() {
         // console.log("Order response", placeOrder.data);
 
         toast.success("Order placed successfully!");
-        navigate("/thank-you"); // Redirect to success page
+        navigate("/thank-you", { replace: true }); // Redirect to success page
       } catch (error) {
         console.error("Error placing order:", error);
         toast.error(`${error?.response?.data?.error}`);
@@ -141,8 +149,8 @@ function RightCard() {
           {location.pathname === `/${slug}/payment-mode-selection`
             ? "Place Order"
             : location.pathname === `/${slug}/payment`
-            ? "Continue"
-            : "Continue"}
+              ? "Continue"
+              : "Continue"}
         </button>
 
         <div className={styles.applyCoupon}>
@@ -163,8 +171,8 @@ function RightCard() {
           {location.pathname === `/${slug}/payment-mode-selection`
             ? "Place Order"
             : location.pathname === `/${slug}/payment`
-            ? "Continue"
-            : "Continue"}
+              ? "Continue"
+              : "Continue"}
         </button>
       </div>
     </>

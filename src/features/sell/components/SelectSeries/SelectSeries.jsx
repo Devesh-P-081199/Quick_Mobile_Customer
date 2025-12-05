@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./SelectSeries.module.css";
 import api from "../../../../Utils/api";
@@ -7,16 +7,19 @@ import closeicon from "../../../../assets/QuickSellNewIcons/Cross.svg";
 import MobileCommonHeader from "../../../../components/layout/MobileCommonHeader/MobileCommonHeader";
 import TopSellingModel from "../../../../Components/TopSellingModel/TopSellingModel";
 import TopSellingBrand from "../../../../Components/TrustedBrands/TopSellingBrand";
+import { UserContext } from "../../../../Context/contextAPI";
 
 function SelectSeries() {
   const [series, setSeries] = useState([]);
   const [seriesId, setSeriesId] = useState(null);
   const [allModels, setAllModels] = useState([]);
   const [, setSeoData] = useState({});
+  const { setUserSelection } = useContext(UserContext);
 
   const navigate = useNavigate();
   const { slug1, slug2 } = useParams();
   const finalSlug = slug2 || slug1;
+
 
   useEffect(() => {
     const fetchSeriesModels = async () => {
@@ -42,8 +45,8 @@ function SelectSeries() {
   // Filter models based on selected series
   const filteredModels = seriesId
     ? allModels.filter(
-        (model) => model.deviceSeries?.toString() === seriesId?.toString()
-      )
+      (model) => model.deviceSeries?.toString() === seriesId?.toString()
+    )
     : allModels;
 
   // Debug: Log filtered models
@@ -55,7 +58,21 @@ function SelectSeries() {
 
   return (
     <>
-      <MobileCommonHeader title="Sell {Brand} {Category}" onSearch />
+      <MobileCommonHeader
+        title="Sell {Brand} {Category}"
+        onBack={() => {
+          // Linear navigation: Go back to SellHome (category page)
+          // Use replace: true to avoid adding history entries that cause back loops
+          if (slug1) {
+            navigate(`/${slug1}`, { replace: true });
+          } else {
+            navigate('/', { replace: true });
+          }
+        }}
+        onSearch
+      />
+
+
 
       <div className={styles.mobilePtSection}>
         {displayedSeries.length > 0 && (
@@ -74,9 +91,8 @@ function SelectSeries() {
                           prev === item._id ? null : item._id
                         )
                       }
-                      className={`${styles.seriesItem} ${
-                        seriesId === item._id ? styles.active : ""
-                      }`}
+                      className={`${styles.seriesItem} ${seriesId === item._id ? styles.active : ""
+                        }`}
                     >
                       {item.seriesName}
                       {seriesId === item._id && (
@@ -126,6 +142,13 @@ function SelectSeries() {
                         console.log("variantId:", modelItem?.variantId);
                         console.log("_id:", modelItem?._id);
 
+                        // Store brandSlug (current page's brand) for back navigation from SelectVarient
+                        setUserSelection((prev) => ({
+                          ...prev,
+                          catSubcatSlug: slug1,
+                          brandSlug: finalSlug, // Store brand slug for back navigation
+                        }));
+
                         if (modelItem?.singleVariant) {
                           // Use variantSlug preferably, fallback to variantId
                           const variantPath =
@@ -135,14 +158,14 @@ function SelectSeries() {
                             `/${slug1}/${variantPath}`
                           );
                           console.log("variantPath chosen:", variantPath);
-                          navigate(`/${slug1}/${variantPath}`);
+                          navigate(`/${slug1}/${variantPath}`, { replace: true });
                           return;
                         } else {
                           console.log(
                             "Navigating to model:",
                             `/${slug1}/${modelItem.slugSell}`
                           );
-                          navigate(`/${slug1}/${modelItem.slugSell}`);
+                          navigate(`/${slug1}/${modelItem.slugSell}`, { replace: true });
                           return;
                         }
                       }}

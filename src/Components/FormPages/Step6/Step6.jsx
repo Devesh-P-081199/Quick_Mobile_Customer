@@ -182,7 +182,7 @@ function Step6() {
 
       console.log("Order response", placeOrder.data);
       toast.success("Order placed successfully!");
-      navigate("/thank-you");
+      navigate("/thank-you", { replace: true });
     } catch (error) {
       console.error("Error placing order:", error);
       toast.error(`${error?.response?.data?.error || "Failed to place order"}`);
@@ -190,22 +190,30 @@ function Step6() {
   };
 
   const handleChangeAddress = () => {
+    // Preserve query params for back navigation
+    const queryString = queryParams.toString();
+    const urlSuffix = queryString ? `?${queryString}` : '';
+
     // If no addresses exist, go directly to add-address page
     if (addresses.length === 0) {
-      navigate(`/${slug}/check-out/add-address`);
+      navigate(`/${slug}/check-out/add-address${urlSuffix}`);
     } else {
       // Pass addresses to CheckOut component via navigation state
-      navigate(`/${slug}/check-out`, { state: { addresses } });
+      navigate(`/${slug}/check-out${urlSuffix}`, { state: { addresses } });
     }
   };
 
   const handleChangePayment = () => {
+    // Preserve query params for back navigation
+    const queryString = queryParams.toString();
+    const urlSuffix = queryString ? `?${queryString}` : '';
+
     // If no payment methods exist, go directly to add-payment page
     if (paymentMethods.upi.length === 0 && paymentMethods.bank.length === 0) {
-      navigate(`/${slug}/payment/add-payment`);
+      navigate(`/${slug}/payment/add-payment${urlSuffix}`);
     } else {
       // Pass payment methods to Payment component via navigation state
-      navigate(`/${slug}/payment`, { state: { paymentMethods } });
+      navigate(`/${slug}/payment${urlSuffix}`, { state: { paymentMethods } });
     }
   };
 
@@ -280,9 +288,8 @@ function Step6() {
                           sessionStorage.removeItem(packageDetailsKey);
 
                           // Clear step3 form data
-                          const storageKey = `step3PackageData_${productId}_${
-                            variantId || "unknown"
-                          }`;
+                          const storageKey = `step3PackageData_${productId}_${variantId || "unknown"
+                            }`;
                           sessionStorage.removeItem(storageKey);
 
                           // Clear current package index
@@ -591,9 +598,8 @@ function Step6() {
             {/* Place Order Button */}
             <div className={styles.sellNowContainer}>
               <button
-                className={`${styles.sellNow} ${
-                  !isOrderReady ? styles.disabled : ""
-                }`}
+                className={`${styles.sellNow} ${!isOrderReady ? styles.disabled : ""
+                  }`}
                 onClick={handlePlaceOrder}
                 disabled={loading || !isOrderReady}
               >

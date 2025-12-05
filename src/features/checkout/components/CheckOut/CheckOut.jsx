@@ -58,10 +58,15 @@ function CheckOut() {
     navigate(`/${slug}/check-out/add-address`);
   };
 
-  // Handle back navigation
+  // Handle back navigation - preserve query params for Step6
   const handleBack = () => {
-    navigate(`/${slug}/price-summary`, { replace: true });
+    const queryParams = new URLSearchParams(location.search).toString();
+    const targetUrl = queryParams
+      ? `/${slug}/price-summary?${queryParams}`
+      : `/${slug}/price-summary`;
+    navigate(targetUrl, { replace: true });
   };
+
 
   useEffect(() => {
     // Check if addresses were passed from Step6 via navigation state
@@ -114,7 +119,7 @@ function CheckOut() {
           <div className={styles.LeftContainer}>
             <div className={styles.addressBoxes}>
               <button className={styles.addBtn} onClick={handleAddNew}>
-                <FaPlus /> Add New Address
+                <FaPlus /> Add New Addressx
               </button>
               <div className={styles.addressList}>
                 {address?.length > 0 ? (
@@ -135,9 +140,8 @@ function CheckOut() {
                     return (
                       <div
                         key={itemId || index}
-                        className={`${styles.addressCard} ${
-                          isSelected ? styles.selectedCard : ""
-                        }`}
+                        className={`${styles.addressCard} ${isSelected ? styles.selectedCard : ""
+                          }`}
                       >
                         <label className={styles.addressLabel}>
                           <input

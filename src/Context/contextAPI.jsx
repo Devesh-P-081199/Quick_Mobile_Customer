@@ -32,6 +32,8 @@ const ContextAPI = (props) => {
     variantId: null,
     variantSlug: null,
     catSubcatSlug: null,
+    productSlug: null, // For back navigation from GetUpto to SelectVarient
+    brandSlug: null,   // For back navigation from SelectVarient to SelectSeries
   });
   const [currentEvaluationId, setCurrentEvaluationId] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState(null);

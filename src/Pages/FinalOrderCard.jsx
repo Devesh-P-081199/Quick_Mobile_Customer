@@ -80,7 +80,7 @@ function FinalOrderCard() {
         // console.log("Order response", placeOrder.data);
 
         toast.success("Order placed successfully!");
-        navigate("/thank-you"); // Redirect to success page
+        navigate("/thank-you", { replace: true }); // Redirect to success page
       } catch (error) {
         console.error("Error placing order:", error);
         toast.error(`${error?.response?.data?.error}`);

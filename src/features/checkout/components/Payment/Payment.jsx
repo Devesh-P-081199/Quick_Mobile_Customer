@@ -235,8 +235,12 @@ function PaymentComponent() {
   };
 
   const handleBack = () => {
-    // Navigate back to order summary
-    navigate(`/${slug}/price-summary`, { replace: true });
+    // Navigate back to order summary - preserve query params
+    const queryString = new URLSearchParams(location.search).toString();
+    const targetUrl = queryString
+      ? `/${slug}/price-summary?${queryString}`
+      : `/${slug}/price-summary`;
+    navigate(targetUrl, { replace: true });
   };
 
   const handleContinue = () => {
@@ -244,8 +248,12 @@ function PaymentComponent() {
       toast.error("Please select a payment method");
       return;
     }
-    // Navigate back to order summary
-    navigate(`/${slug}/price-summary`, { replace: true });
+    // Navigate back to order summary - preserve query params
+    const queryString = new URLSearchParams(location.search).toString();
+    const targetUrl = queryString
+      ? `/${slug}/price-summary?${queryString}`
+      : `/${slug}/price-summary`;
+    navigate(targetUrl, { replace: true });
   };
 
   return (
@@ -268,9 +276,8 @@ function PaymentComponent() {
             {/* Tabs for UPI and Bank */}
             <div className={styles.tabContainer}>
               <button
-                className={`${styles.tabButton} ${
-                  selectedMethod === 0 ? styles.activeTab : ""
-                }`}
+                className={`${styles.tabButton} ${selectedMethod === 0 ? styles.activeTab : ""
+                  }`}
                 onClick={() => {
                   setSelectedMethod(0);
                   setSelectedBankIndex(null);
@@ -281,9 +288,8 @@ function PaymentComponent() {
                 UPI
               </button>
               <button
-                className={`${styles.tabButton} ${
-                  selectedMethod === 1 ? styles.activeTab : ""
-                }`}
+                className={`${styles.tabButton} ${selectedMethod === 1 ? styles.activeTab : ""
+                  }`}
                 onClick={() => {
                   setSelectedMethod(1);
                   setSelectedBankIndex(null);
@@ -315,9 +321,8 @@ function PaymentComponent() {
                           paymentUpi.map((upi, i) => (
                             <label
                               key={i}
-                              className={`${styles.paymentCard} ${
-                                selectedUpiIndex === i ? styles.selected : ""
-                              }`}
+                              className={`${styles.paymentCard} ${selectedUpiIndex === i ? styles.selected : ""
+                                }`}
                             >
                               <input
                                 type="radio"
@@ -379,9 +384,8 @@ function PaymentComponent() {
                           paymentBank.map((bank, i) => (
                             <label
                               key={i}
-                              className={`${styles.paymentCard} ${
-                                selectedBankIndex === i ? styles.selected : ""
-                              }`}
+                              className={`${styles.paymentCard} ${selectedBankIndex === i ? styles.selected : ""
+                                }`}
                             >
                               <input
                                 type="radio"

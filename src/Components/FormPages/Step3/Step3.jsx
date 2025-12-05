@@ -624,17 +624,16 @@ function Step3() {
 
     return (
       <div
-        className={`options ${
-          showIcons
-            ? "box-grid icon-option-container"
-            : q.options.some(
-                (opt) =>
-                  (opt.label?.length || 0) > 40 ||
-                  (opt.description?.length || 0) > 60
-              )
+        className={`options ${showIcons
+          ? "box-grid icon-option-container"
+          : q.options.some(
+            (opt) =>
+              (opt.label?.length || 0) > 40 ||
+              (opt.description?.length || 0) > 60
+          )
             ? "long-text"
             : "short-text"
-        }`}
+          }`}
       >
         {q.options.map((opt) => {
           const isSelected = isMulti
@@ -677,9 +676,8 @@ function Step3() {
           ) : (
             <label
               key={opt.id}
-              className={`option ${
-                isSelected ? "selected" : ""
-              } option-with-des-box`}
+              className={`option ${isSelected ? "selected" : ""
+                } option-with-des-box`}
               onClick={() => handleOptionChange(q.id, opt.value, isMulti)}
             >
               <input
@@ -780,7 +778,7 @@ function Step3() {
       // Don't clear session storage - keep data so user can come back and edit
       // Data will only be cleared when user goes back to Get Price page
 
-      navigate(`/${slug}/price-summary?${urlParams.toString()}`);
+      navigate(`/${slug}/price-summary?${urlParams.toString()}`, { replace: true });
     } catch (error) {
       console.error("Error fetching final price:", error);
       // toast.error("Error fetching final price");
@@ -861,17 +859,28 @@ function Step3() {
     // ALWAYS clear the flag when exiting form (so next fresh entry is clean)
     sessionStorage.removeItem(formSubmittedKey);
 
-    // Use browser history to go back to the previous page
-    navigate(-1);
+    // Navigate to GetUpto component with the respective model
+    // Use userSelection slugs to construct the correct URL
+    const catSubcatSlug = userSelection?.catSubcatSlug || slug;
+    const variantSlug = userSelection?.variantSlug;
+
+    if (variantSlug) {
+      // Navigate to the variant page (GetUpto component)
+      navigate(`/${catSubcatSlug}/${variantSlug}`, { replace: true });
+    } else {
+      // Fallback to category/subcategory page
+      navigate(`/${catSubcatSlug}`, { replace: true });
+    }
   };
+
 
   const getButtonText = () => {
     if (conditionsPaginationEnabled) {
       return currentConditionsPage < totalConditionsPages - 1
         ? "Next Page"
         : currentPackageIndex < allPackageData.length - 1
-        ? "Continue"
-        : "Get Price";
+          ? "Continue"
+          : "Get Price";
     }
     return currentPackageIndex < allPackageData.length - 1
       ? "Continue"
@@ -890,9 +899,8 @@ function Step3() {
       return (
         <div key={packageData.packageId} className="package-answers">
           <h3 className="answer-heading">
-            {`${index + 1}. ${
-              packageData?.packageType || packageData?.packageName
-            }`}
+            {`${index + 1}. ${packageData?.packageType || packageData?.packageName
+              }`}
           </h3>
           {Object.entries(packageData.answers).map(([qid, ans], ansIndex) => {
             const q = packageData.questions.find((q) => q.id === qid);
@@ -1006,9 +1014,8 @@ function Step3() {
                 <div
                   className="progress-bar-fill"
                   style={{
-                    width: `${
-                      ((currentPackageIndex + 1) / allPackageData.length) * 100
-                    }%`,
+                    width: `${((currentPackageIndex + 1) / allPackageData.length) * 100
+                      }%`,
                   }}
                 />
               </div>
@@ -1034,8 +1041,8 @@ function Step3() {
                       {(q.type === "radio" ||
                         q.type === "icon-radio" ||
                         q.type === "dropdown") && (
-                        <sup className="required-asterisk">*</sup>
-                      )}
+                          <sup className="required-asterisk">*</sup>
+                        )}
                     </p>
                     <p className="question-explaination-text">
                       {q?.questionExplanation}

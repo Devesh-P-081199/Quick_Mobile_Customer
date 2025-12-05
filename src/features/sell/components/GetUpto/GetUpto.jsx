@@ -199,7 +199,8 @@ const GetUpto = () => {
         price
       )}&vid=${encodeURIComponent(variantDetail)}&pin=${encodeURIComponent(
         devicePic
-      )}`
+      )}`,
+      { replace: true }
     );
   };
 
@@ -207,7 +208,21 @@ const GetUpto = () => {
     <>
       <MobileCommonHeaderthree
         title="Get Price"
-        onBack={() => window.history.back()}
+        onBack={() => {
+          // Linear navigation: Go back to SelectVarient (product page)
+          // Use productSlug from userSelection (stored when navigating here from SelectVarient)
+          const productSlug = userSelection?.productSlug;
+          const catSlug = userSelection?.catSubcatSlug || slug1;
+
+          if (productSlug && catSlug) {
+            navigate(`/${catSlug}/${productSlug}`, { replace: true });
+          } else if (catSlug) {
+            // Fallback to category page if no product slug
+            navigate(`/${catSlug}`, { replace: true });
+          } else {
+            navigate('/', { replace: true });
+          }
+        }}
       />
       <div className="page-content-wrapper">
         <section className={styles.getuptosection}>
@@ -269,11 +284,10 @@ const GetUpto = () => {
                         </div>
 
                         <span
-                          className={`${styles.currentPrice} ${
-                            sliderPositions.isNarrowRange
-                              ? styles.currentPriceMinNarrow
-                              : styles.currentPriceMin
-                          }`}
+                          className={`${styles.currentPrice} ${sliderPositions.isNarrowRange
+                            ? styles.currentPriceMinNarrow
+                            : styles.currentPriceMin
+                            }`}
                           style={{
                             left: sliderPositions.thumb1Position,
                           }}
@@ -282,11 +296,10 @@ const GetUpto = () => {
                         </span>
 
                         <span
-                          className={`${styles.currentPrice} ${
-                            sliderPositions.isNarrowRange
-                              ? styles.currentPriceMaxNarrow
-                              : styles.currentPriceMax
-                          }`}
+                          className={`${styles.currentPrice} ${sliderPositions.isNarrowRange
+                            ? styles.currentPriceMaxNarrow
+                            : styles.currentPriceMax
+                            }`}
                           style={{
                             left: sliderPositions.thumb2Position,
                           }}
