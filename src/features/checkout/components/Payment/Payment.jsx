@@ -2,8 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import styles from "./Payment.module.css";
 import bank from "../../../../assets/images/icons/bank.png";
 import upi from "../../../../assets/images/icons/upi.png";
-import { useNavigate, useParams } from "react-router-dom";
-import RightCard from "../CheckOut/RightCard";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
@@ -15,64 +14,158 @@ import edit from "../../../../assets/flaticons/pen-basecolor.png";
 function PaymentComponent() {
   const navigate = useNavigate();
   const { slug } = useParams();
+  const location = useLocation();
 
   const paymentMethods = [
     { name: "UPI/ G Pay/ Phonepe", icon: upi },
     { name: "Bank Transfer (IMPS)", icon: bank },
   ];
 
-  const { setSelectedPaymentMethod } = useContext(UserContext);
+  const { selectedPaymentMethod, setSelectedPaymentMethod } =
+    useContext(UserContext);
 
   const [selectedMethod, setSelectedMethod] = useState(null);
   const [paymentBank, setPaymentBank] = useState([]);
   const [paymentUpi, setPaymentUpi] = useState([]);
   const [selectedBankIndex, setSelectedBankIndex] = useState(null);
   const [selectedUpiIndex, setSelectedUpiIndex] = useState(null);
+  const [initialSortDone, setInitialSortDone] = useState(false);
 
   const getSavedPaymentBank = async () => {
     try {
       const res = await api.get(`/sell-module/user/payment-bank`);
-      setPaymentBank(res.data?.bankMethods || []);
+      return res.data?.bankMethods || [];
     } catch (error) {
       console.error("Failed to fetch bank methods:", error);
       toast.error("Failed to fetch bank methods");
+      return [];
     }
   };
 
   const getSavedPaymentUpi = async () => {
     try {
       const res = await api.get(`/sell-module/user/payment-upi`);
-      setPaymentUpi(res.data?.upiMethods || []);
+      return res.data?.upiMethods || [];
     } catch (error) {
       console.error("Failed to fetch UPI methods:", error);
       toast.error("Failed to fetch UPI methods");
+      return [];
     }
   };
 
+  // Sort payment methods to show selected one on top
+  const sortPaymentMethodsBySelected = (methods, type) => {
+    if (!selectedPaymentMethod || selectedPaymentMethod.type !== type)
+      return methods;
+
+    const selectedId = selectedPaymentMethod._id || selectedPaymentMethod.id;
+    return [...methods].sort((a, b) => {
+      const aId = a._id || a.id;
+      const bId = b._id || b.id;
+      if (aId === selectedId) return -1;
+      if (bId === selectedId) return 1;
+      return 0;
+    });
+  };
+
   useEffect(() => {
-    getSavedPaymentBank();
-    getSavedPaymentUpi();
+    const loadPaymentMethods = async () => {
+      console.log("Payment component mounted");
+      console.log("Location state:", location.state);
+
+      let upiMethods = [];
+      let bankMethods = [];
+
+      // Check if payment methods were passed from Step6 via navigation state
+      if (location.state?.paymentMethods) {
+        const { upi, bank } = location.state.paymentMethods;
+        console.log("Received UPI methods:", upi);
+        console.log("Received Bank methods:", bank);
+        upiMethods = upi || [];
+        bankMethods = bank || [];
+        console.log("Payment methods set from Step6");
+      } else {
+        // Fallback: fetch payment methods if not passed
+        console.log("Fetching payment methods from API");
+        [upiMethods, bankMethods] = await Promise.all([
+          getSavedPaymentUpi(),
+          getSavedPaymentBank(),
+        ]);
+      }
+
+      // Sort once on initial load
+      const sortedUpi = sortPaymentMethodsBySelected(upiMethods, "upi");
+      const sortedBank = sortPaymentMethodsBySelected(bankMethods, "bank");
+
+      setPaymentUpi(sortedUpi);
+      setPaymentBank(sortedBank);
+      setInitialSortDone(true);
+    };
+
+    loadPaymentMethods();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    // Set default tab to UPI (0)
+    // Only run this after initial sort is done
+    if (!initialSortDone) return;
+
+    // Set default tab based on selected payment method or default to UPI
     if (selectedMethod === null) {
-      setSelectedMethod(0);
+      if (selectedPaymentMethod?.type === "bank") {
+        setSelectedMethod(1);
+      } else {
+        setSelectedMethod(0);
+      }
     }
 
-    if (paymentBank.length > 0 && selectedMethod === 1) {
-      setSelectedBankIndex(0);
-      setSelectedPaymentMethod({ type: "bank", ...paymentBank[0] });
-    } else if (paymentUpi.length > 0 && selectedMethod === 0) {
-      setSelectedUpiIndex(0);
-      setSelectedPaymentMethod({ type: "upi", ...paymentUpi[0] });
+    // Set the selected index based on the selectedPaymentMethod from context
+    if (selectedPaymentMethod) {
+      if (selectedPaymentMethod.type === "upi" && paymentUpi.length > 0) {
+        const selectedId =
+          selectedPaymentMethod._id || selectedPaymentMethod.id;
+        const index = paymentUpi.findIndex(
+          (upi) => (upi._id || upi.id) === selectedId
+        );
+        if (index !== -1) {
+          setSelectedUpiIndex(index);
+        }
+      } else if (
+        selectedPaymentMethod.type === "bank" &&
+        paymentBank.length > 0
+      ) {
+        const selectedId =
+          selectedPaymentMethod._id || selectedPaymentMethod.id;
+        const index = paymentBank.findIndex(
+          (bank) => (bank._id || bank.id) === selectedId
+        );
+        if (index !== -1) {
+          setSelectedBankIndex(index);
+        }
+      }
+    } else {
+      // Auto-select first item if nothing is selected
+      if (paymentBank.length > 0 && selectedMethod === 1) {
+        setSelectedBankIndex(0);
+        setSelectedPaymentMethod({ type: "bank", ...paymentBank[0] });
+      } else if (paymentUpi.length > 0 && selectedMethod === 0) {
+        setSelectedUpiIndex(0);
+        setSelectedPaymentMethod({ type: "upi", ...paymentUpi[0] });
+      }
     }
-  }, [paymentBank, paymentUpi, selectedMethod, setSelectedPaymentMethod]);
+  }, [
+    paymentBank,
+    paymentUpi,
+    selectedMethod,
+    setSelectedPaymentMethod,
+    initialSortDone,
+    selectedPaymentMethod,
+  ]);
 
   // Handle edit UPI
   const handleEditUpi = (upiData) => {
     const upiId = upiData._id || upiData.id;
-    navigate(`/${slug}/check-out/edit-payment/${upiId}`, {
+    navigate(`/${slug}/payment/edit-payment/${upiId}`, {
       state: { paymentData: upiData, paymentType: "UPI" },
     });
   };
@@ -80,7 +173,7 @@ function PaymentComponent() {
   // Handle edit Bank
   const handleEditBank = (bankData) => {
     const bankId = bankData._id || bankData.id;
-    navigate(`/${slug}/check-out/edit-payment/${bankId}`, {
+    navigate(`/${slug}/payment/edit-payment/${bankId}`, {
       state: { paymentData: bankData, paymentType: "Bank" },
     });
   };
@@ -92,7 +185,20 @@ function PaymentComponent() {
         const upiId = upiData._id || upiData.id;
         await api.delete(`/sell-module/user/payment-upi/${upiId}`);
         toast.success("UPI method deleted successfully");
-        getSavedPaymentUpi();
+
+        // Refetch and update
+        const updatedUpi = await getSavedPaymentUpi();
+        setPaymentUpi(updatedUpi);
+
+        // Clear selection if deleted item was selected
+        if (
+          selectedPaymentMethod?.type === "upi" &&
+          (selectedPaymentMethod._id === upiId ||
+            selectedPaymentMethod.id === upiId)
+        ) {
+          setSelectedPaymentMethod(null);
+          setSelectedUpiIndex(null);
+        }
       } catch (error) {
         console.error("Error deleting UPI method:", error);
         toast.error("Error deleting UPI method");
@@ -107,7 +213,20 @@ function PaymentComponent() {
         const bankId = bankData._id || bankData.id;
         await api.delete(`/sell-module/user/payment-bank/${bankId}`);
         toast.success("Bank account deleted successfully");
-        getSavedPaymentBank();
+
+        // Refetch and update
+        const updatedBank = await getSavedPaymentBank();
+        setPaymentBank(updatedBank);
+
+        // Clear selection if deleted item was selected
+        if (
+          selectedPaymentMethod?.type === "bank" &&
+          (selectedPaymentMethod._id === bankId ||
+            selectedPaymentMethod.id === bankId)
+        ) {
+          setSelectedPaymentMethod(null);
+          setSelectedBankIndex(null);
+        }
       } catch (error) {
         console.error("Error deleting bank account:", error);
         toast.error("Error deleting bank account");
@@ -115,9 +234,23 @@ function PaymentComponent() {
     }
   };
 
+  const handleBack = () => {
+    // Navigate back to order summary
+    navigate(`/${slug}/price-summary`, { replace: true });
+  };
+
+  const handleContinue = () => {
+    if (!selectedPaymentMethod) {
+      toast.error("Please select a payment method");
+      return;
+    }
+    // Navigate back to order summary
+    navigate(`/${slug}/price-summary`, { replace: true });
+  };
+
   return (
     <>
-      <MobileCommonHeaderthree title="Payment" />
+      <MobileCommonHeaderthree title="Payment" onBack={handleBack} />
 
       <section className={styles.CheckOutSection}>
         <div className={styles.Wrapper}>
@@ -127,7 +260,7 @@ function PaymentComponent() {
             {/* Add New Payment Method Button */}
             <button
               className={styles.addBtn}
-              onClick={() => navigate(`/${slug}/check-out/add-payment`)}
+              onClick={() => navigate(`/${slug}/payment/add-payment`)}
             >
               <FaPlus /> Add Payment Method
             </button>
@@ -339,7 +472,13 @@ function PaymentComponent() {
               </NavLink>
             </div> */}
           </div>
-          <RightCard />
+
+          {/* Continue and Back Buttons */}
+          <div className={styles.continueButtonContainer}>
+            <button className={styles.continueButton} onClick={handleContinue}>
+              Continue
+            </button>
+          </div>
         </div>
       </section>
     </>

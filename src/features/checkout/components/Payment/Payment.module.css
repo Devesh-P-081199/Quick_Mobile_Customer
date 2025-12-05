@@ -405,6 +405,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   flex: 0 0 auto;
+  margin-bottom: 0;
   gap: 10px;
 }
 
@@ -510,4 +511,91 @@
   background: #f9f9f9;
   border-radius: 8px;
   margin: 10px 0;
+}
+
+/* Continue Button Container */
+.continueButtonContainer {
+  width: 100%;
+  max-width: 404px;
+  margin: 20px auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.backButton {
+  flex: 1;
+  padding: 15px 35px;
+  background: #ffffff;
+  border: 1px solid #1968b3;
+  border-radius: 10px;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+  font-size: 16px;
+  color: #1968b3;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.backButton:hover {
+  background: #f0f8ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(25, 104, 179, 0.15);
+}
+
+.backButton:active {
+  transform: translateY(0);
+}
+
+.continueButton {
+  flex: 2;
+  padding: 15px 35px;
+  background: #1968b3;
+  border-radius: 10px;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.continueButton:hover {
+  background: #145a94;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(25, 104, 179, 0.3);
+}
+
+.continueButton:active {
+  transform: translateY(0);
+}
+
+.continueButton:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .continueButtonContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    margin: 0;
+    padding: 15px;
+    background: #ffffff;
+    z-index: 99;
+  }
+
+  .backButton,
+  .continueButton {
+    border-radius: 13px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

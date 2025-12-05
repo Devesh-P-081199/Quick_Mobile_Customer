@@ -185,6 +185,7 @@ const AppContent = () => {
         location.pathname.includes("price-summary") ||
         location.pathname.includes("dfds"))) ||
     location.pathname.includes("check-out") ||
+    location.pathname.includes("/payment") ||
     location.pathname.includes("payment-mode-selection");
 
   return (
@@ -250,7 +251,7 @@ const AppContent = () => {
         />
 
         <Route
-          path="/:slug/check-out/payment"
+          path="/:slug/payment"
           element={
             <Suspense fallback={<Loader />}>
               <PaymentComponent />
@@ -259,7 +260,7 @@ const AppContent = () => {
         />
 
         <Route
-          path="/:slug/check-out/add-payment"
+          path="/:slug/payment/add-payment"
           element={
             <Suspense fallback={<Loader />}>
               <PaymentForm />
@@ -268,7 +269,7 @@ const AppContent = () => {
         />
 
         <Route
-          path="/:slug/check-out/edit-payment/:paymentId"
+          path="/:slug/payment/edit-payment/:paymentId"
           element={
             <Suspense fallback={<Loader />}>
               <PaymentForm />

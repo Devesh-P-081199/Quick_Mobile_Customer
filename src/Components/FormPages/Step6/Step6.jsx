@@ -25,12 +25,16 @@ function Step6() {
     currentEvaluationId,
     setCurrentEvaluationId,
     selectedAddress,
+    setSelectedAddress,
     selectedPaymentMethod,
+    setSelectedPaymentMethod,
     // userSelection,
   } = useContext(UserContext);
 
   const [isCouponModalOpen, setIsCouponModalOpen] = useState(false);
   const [loading, setLoading] = useState(true); // new loading state
+  const [addresses, setAddresses] = useState([]);
+  const [paymentMethods, setPaymentMethods] = useState({ upi: [], bank: [] });
   const navigate = useNavigate();
   const [showAnswersModal, setShowAnswersModal] = useState(false);
   const openCouponModal = () => setIsCouponModalOpen(true);
@@ -56,10 +60,107 @@ function Step6() {
     }
   };
 
+  // Fetch addresses and auto-select default
+  const fetchAddresses = async () => {
+    try {
+      const resp = await api.get("/sell-module/user/address");
+      const fetchedAddresses = resp?.data.data?.addresses || [];
+      console.log("Fetched addresses from API:", fetchedAddresses);
+      setAddresses(fetchedAddresses);
+
+      // Auto-select address with isActive: true, or first address if none have isActive
+      if (fetchedAddresses.length > 0 && !selectedAddress) {
+        const activeAddress = fetchedAddresses.find(
+          (addr) => addr.isActive === true
+        );
+        console.log("Active address found:", activeAddress);
+        const defaultAddress = activeAddress || fetchedAddresses[0];
+        console.log("Default address to select:", defaultAddress);
+        setSelectedAddress(defaultAddress);
+        console.log(
+          "Auto-selected address with ID:",
+          defaultAddress._id || defaultAddress.id
+        );
+      } else {
+        console.log(
+          "Skipping auto-select. Addresses length:",
+          fetchedAddresses.length,
+          "Current selectedAddress:",
+          selectedAddress
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching addresses:", error);
+      toast.error("Error fetching addresses");
+    }
+  };
+
+  // Fetch payment methods and auto-select default
+  const fetchPaymentMethods = async () => {
+    try {
+      const [upiResp, bankResp] = await Promise.all([
+        api.get("/sell-module/user/payment-upi"),
+        api.get("/sell-module/user/payment-bank"),
+      ]);
+
+      const upiMethods = upiResp.data?.upiMethods || [];
+      const bankMethods = bankResp.data?.bankMethods || [];
+
+      setPaymentMethods({ upi: upiMethods, bank: bankMethods });
+
+      // Auto-select payment method with isActive: true, or first available method
+      if (!selectedPaymentMethod) {
+        // Check UPI methods first
+        const activeUpi = upiMethods.find((method) => method.isActive === true);
+        if (activeUpi) {
+          setSelectedPaymentMethod({ type: "upi", ...activeUpi });
+          console.log("Auto-selected UPI payment:", activeUpi);
+          return;
+        }
+
+        // Check Bank methods
+        const activeBank = bankMethods.find(
+          (method) => method.isActive === true
+        );
+        if (activeBank) {
+          setSelectedPaymentMethod({ type: "bank", ...activeBank });
+          console.log("Auto-selected Bank payment:", activeBank);
+          return;
+        }
+
+        // If no active method, select first available
+        if (upiMethods.length > 0) {
+          setSelectedPaymentMethod({ type: "upi", ...upiMethods[0] });
+          console.log("Auto-selected first UPI payment:", upiMethods[0]);
+        } else if (bankMethods.length > 0) {
+          setSelectedPaymentMethod({ type: "bank", ...bankMethods[0] });
+          console.log("Auto-selected first Bank payment:", bankMethods[0]);
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching payment methods:", error);
+      toast.error("Error fetching payment methods");
+    }
+  };
+
   useEffect(() => {
     FetchPriceDetails();
+    fetchAddresses();
+    fetchPaymentMethods();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Debug: Log when selectedAddress or selectedPaymentMethod changes
+  useEffect(() => {
+    console.log("Step6 - selectedAddress updated:", selectedAddress);
+  }, [selectedAddress]);
+
+  useEffect(() => {
+    console.log(
+      "Step6 - selectedPaymentMethod updated:",
+      selectedPaymentMethod
+    );
+  }, [selectedPaymentMethod]);
 
   const handlePlaceOrder = async () => {
     if (!selectedAddress || !selectedPaymentMethod) {
@@ -89,18 +190,35 @@ function Step6() {
   };
 
   const handleChangeAddress = () => {
-    navigate(`/${slug}/check-out`);
+    // If no addresses exist, go directly to add-address page
+    if (addresses.length === 0) {
+      navigate(`/${slug}/check-out/add-address`);
+    } else {
+      // Pass addresses to CheckOut component via navigation state
+      navigate(`/${slug}/check-out`, { state: { addresses } });
+    }
   };
 
   const handleChangePayment = () => {
-    navigate(`/${slug}/check-out/payment`);
+    // If no payment methods exist, go directly to add-payment page
+    if (paymentMethods.upi.length === 0 && paymentMethods.bank.length === 0) {
+      navigate(`/${slug}/payment/add-payment`);
+    } else {
+      // Pass payment methods to Payment component via navigation state
+      navigate(`/${slug}/payment`, { state: { paymentMethods } });
+    }
+  };
+
+  const handleBack = () => {
+    // Navigate back to Step3 (final price calculator)
+    navigate(`/${slug}/final-price-calculator?${queryParams.toString()}`);
   };
 
   const isOrderReady = selectedAddress && selectedPaymentMethod;
 
   return (
     <>
-      <MobileCommonHeaderthree title="Order Summery" />
+      <MobileCommonHeaderthree title="Order Summery" onBack={handleBack} />
 
       <section className={`${styles.StepSix} mobile-pt-section `}>
         <div className="page-content-wrapper">
@@ -268,9 +386,15 @@ function Step6() {
                     {selectedAddress?.alternatePhone}
                   </p>
                 </div>
+              ) : addresses.length === 0 ? (
+                <p className={styles.notSelected}>
+                  No addresses found. Click "Add" button above to add a delivery
+                  address.
+                </p>
               ) : (
                 <p className={styles.notSelected}>
-                  No address selected. Click "Add" to select an address.
+                  No address selected. Click "Add" button above to select an
+                  address.
                 </p>
               )}
             </div>
@@ -331,10 +455,16 @@ function Step6() {
                     </>
                   ) : null}
                 </div>
+              ) : paymentMethods.upi.length === 0 &&
+                paymentMethods.bank.length === 0 ? (
+                <p className={styles.notSelected}>
+                  No payment methods found. Click "Add" button above to add a
+                  payment method.
+                </p>
               ) : (
                 <p className={styles.notSelected}>
-                  No payment method selected. Click "Add" to select a payment
-                  method.
+                  No payment method selected. Click "Add" button above to select
+                  a payment method.
                 </p>
               )}
             </div>

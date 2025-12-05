@@ -53,15 +53,15 @@ function RightCard() {
       }
 
       // Navigate back to order summary page
-      navigate(`/${slug}/price-summary`);
-    } else if (location.pathname === `/${slug}/check-out/payment`) {
+      navigate(`/${slug}/price-summary`, { replace: true });
+    } else if (location.pathname === `/${slug}/payment`) {
       if (!selectedPaymentMethod) {
         toast.error("Please select a payment method");
         return;
       }
 
       // Navigate back to order summary page
-      navigate(`/${slug}/price-summary`);
+      navigate(`/${slug}/price-summary`, { replace: true });
     } else if (location.pathname === `/${slug}/payment-mode-selection`) {
       // This is the actual order placing step
       try {
@@ -79,11 +79,6 @@ function RightCard() {
           address: selectedAddress,
           paymentDetail: selectedPaymentMethod,
         };
-
-        const placeOrder = await api.post(
-          "/sell-module/user/orders",
-          orderPayload
-        );
 
         // console.log("Order response", placeOrder.data);
 
@@ -145,7 +140,7 @@ function RightCard() {
         <button onClick={handlePlaceOrder} className={styles.sellNow}>
           {location.pathname === `/${slug}/payment-mode-selection`
             ? "Place Order"
-            : location.pathname === `/${slug}/check-out/payment`
+            : location.pathname === `/${slug}/payment`
             ? "Continue"
             : "Continue"}
         </button>
@@ -167,7 +162,7 @@ function RightCard() {
         <button onClick={handlePlaceOrder} className={styles.sellNowMobile}>
           {location.pathname === `/${slug}/payment-mode-selection`
             ? "Place Order"
-            : location.pathname === `/${slug}/check-out/payment`
+            : location.pathname === `/${slug}/payment`
             ? "Continue"
             : "Continue"}
         </button>

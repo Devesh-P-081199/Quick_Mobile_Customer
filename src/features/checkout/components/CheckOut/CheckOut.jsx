@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import styles from "./Checkout.module.css";
 import RightCard from "./RightCard";
 import { toast } from "react-toastify";
@@ -12,6 +12,7 @@ import trash from "../../../../assets/flaticons/trash-basecolor.png";
 import edit from "../../../../assets/flaticons/pen-basecolor.png";
 
 function CheckOut() {
+  const location = useLocation();
   const [address, setAddress] = useState([]);
   const navigate = useNavigate();
   const { slug } = useParams();
@@ -57,13 +58,47 @@ function CheckOut() {
     navigate(`/${slug}/check-out/add-address`);
   };
 
+  // Handle back navigation
+  const handleBack = () => {
+    navigate(`/${slug}/price-summary`, { replace: true });
+  };
+
   useEffect(() => {
-    fetchAddress();
-    // Clear any previously selected address when component mounts
-    console.log("Clearing selectedAddress on mount");
-    setSelectedAddress(null);
+    // Check if addresses were passed from Step6 via navigation state
+    if (location.state?.addresses && location.state.addresses.length > 0) {
+      console.log("Received addresses from Step6:", location.state.addresses);
+      console.log("Current selectedAddress:", selectedAddress);
+      const sortedAddresses = sortAddressesBySelected(location.state.addresses);
+      setAddress(sortedAddresses);
+      console.log("Sorted addresses:", sortedAddresses);
+    } else {
+      // Fallback: fetch addresses if not passed
+      fetchAddress();
+    }
+    // Don't clear selectedAddress - keep the one from Step6
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Sort addresses to show selected one on top
+  const sortAddressesBySelected = (addresses) => {
+    if (!selectedAddress) {
+      console.log("No selectedAddress, returning original order");
+      return addresses;
+    }
+
+    const selectedId = selectedAddress._id || selectedAddress.id;
+    console.log("Sorting addresses, selectedId:", selectedId);
+
+    const sorted = [...addresses].sort((a, b) => {
+      const aId = a._id || a.id;
+      const bId = b._id || b.id;
+      if (aId === selectedId) return -1;
+      if (bId === selectedId) return 1;
+      return 0;
+    });
+
+    return sorted;
+  };
 
   // Debug: Log selectedAddress changes
   useEffect(() => {
@@ -73,7 +108,7 @@ function CheckOut() {
   return (
     <>
       <BreadCrumb items={["Home", "Sell Your Phone"]} />
-      <MobileCommonHeaderthree title="Address" />
+      <MobileCommonHeaderthree title="Address" onBack={handleBack} />
       <section className={`${styles.CheckOutSection} mobile-pt-section `}>
         <div className={styles.Wrapper}>
           <div className={styles.LeftContainer}>
@@ -83,63 +118,76 @@ function CheckOut() {
               </button>
               <div className={styles.addressList}>
                 {address?.length > 0 ? (
-                  address.map((item, index) => (
-                    <div
-                      key={item._id || item.id || index}
-                      className={`${styles.addressCard} ${
-                        selectedAddress !== null &&
-                        (selectedAddress?.id === item.id ||
-                          selectedAddress?._id === item._id)
-                          ? styles.selectedCard
-                          : ""
-                      }`}
-                    >
-                      <label className={styles.addressLabel}>
-                        <input
-                          type="radio"
-                          name="address"
-                          className={styles.radioInput}
-                          onChange={() => setSelectedAddress(item)}
-                          checked={
-                            selectedAddress !== null &&
-                            (selectedAddress?.id === item.id ||
-                              selectedAddress?._id === item._id)
-                          }
-                        />
-                        <span className={styles.customRadio}></span>
-                        <div className={styles.addressContent}>
-                          <span className={styles.saveTag}>{item?.saveAs}</span>
-                          <p>
-                            {item?.houseNumber}, {item?.street},{item?.landmark}
-                          </p>
-                          <p>
-                            {item?.cityName}, {item?.state} - {item?.zipCode}
-                          </p>
-                          <p>{item?.alternatePhone}</p>
+                  address.map((item, index) => {
+                    const itemId = item._id || item.id;
+                    const selectedId =
+                      selectedAddress?._id || selectedAddress?.id;
+                    const isSelected =
+                      selectedAddress !== null && itemId === selectedId;
+
+                    if (index === 0) {
+                      console.log("First address item:", item);
+                      console.log("Item ID:", itemId);
+                      console.log("Selected ID:", selectedId);
+                      console.log("Is selected:", isSelected);
+                    }
+
+                    return (
+                      <div
+                        key={itemId || index}
+                        className={`${styles.addressCard} ${
+                          isSelected ? styles.selectedCard : ""
+                        }`}
+                      >
+                        <label className={styles.addressLabel}>
+                          <input
+                            type="radio"
+                            name="address"
+                            className={styles.radioInput}
+                            onChange={() => {
+                              console.log("Address selected:", item);
+                              setSelectedAddress(item);
+                            }}
+                            checked={isSelected}
+                          />
+                          <span className={styles.customRadio}></span>
+                          <div className={styles.addressContent}>
+                            <span className={styles.saveTag}>
+                              {item?.saveAs}
+                            </span>
+                            <p>
+                              {item?.houseNumber}, {item?.street},
+                              {item?.landmark}
+                            </p>
+                            <p>
+                              {item?.cityName}, {item?.state} - {item?.zipCode}
+                            </p>
+                            <p>{item?.alternatePhone}</p>
+                          </div>
+                        </label>
+                        <div className={styles.addressActions}>
+                          <button
+                            className={styles.editIconBtn}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleEdit(item);
+                            }}
+                          >
+                            <img src={edit} alt="edit" />
+                          </button>
+                          <button
+                            className={styles.deleteIconBtn}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDelete(item);
+                            }}
+                          >
+                            <img src={trash} alt="trash" />
+                          </button>
                         </div>
-                      </label>
-                      <div className={styles.addressActions}>
-                        <button
-                          className={styles.editIconBtn}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleEdit(item);
-                          }}
-                        >
-                          <img src={edit} alt="edit" />
-                        </button>
-                        <button
-                          className={styles.deleteIconBtn}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleDelete(item);
-                          }}
-                        >
-                          <img src={trash} alt="trash" />
-                        </button>
                       </div>
-                    </div>
-                  ))
+                    );
+                  })
                 ) : (
                   <p></p>
                 )}

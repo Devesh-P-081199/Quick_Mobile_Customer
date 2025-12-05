@@ -425,7 +425,7 @@
     width: 31px !important;
   }
   .CheckOutSection {
-    padding: 10px 10px 0 10px;
+    padding: 10px 10px 90px 10px;
   }
 
   .gridBoxes {
@@ -447,7 +447,6 @@
   border: 0.3px solid #e1e1e1 !important;
   border-radius: 15px;
   padding: 12px;
-  margin-bottom: 12px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

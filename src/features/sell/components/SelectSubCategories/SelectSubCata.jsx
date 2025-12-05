@@ -5,7 +5,7 @@ import styles from "./SelectSubCata.module.css";
 import api from "../../../../Utils/api";
 // import { Helmet } from "react-helmet-async";
 import BrowsePicks from "../../../../Components/BrowsePicks/BrowsePicks";
-import TopSellingProducts from "../../BuyComponents/TopSellingProducts/TopSellingProducts";
+import TopSellingProducts from "../../../../BuyComponents/TopSellingProducts/TopSellingProducts";
 import closeicon from "../../../../assets/flaticons/close.png";
 import FAQ from "../../../../components/layout/FAQ/FAQ";
 import BreadCrumb from "../../../../components/layout/BreadCrumb/BreadCrumb";
@@ -81,9 +81,9 @@ function SelectSubCata() {
 
   const filteredBrands = selectedSubCategoryId
     ? allBrands.filter(
-        (b) =>
-          b.subCategoryId?._id?.toString() === selectedSubCategoryId.toString()
-      )
+      (b) =>
+        b.subCategoryId?._id?.toString() === selectedSubCategoryId.toString()
+    )
     : allBrands;
 
   return (
@@ -101,9 +101,8 @@ function SelectSubCata() {
                 <li
                   key={index}
                   onClick={() => handleSubCategoryClick(subcata)}
-                  className={`${styles.seriesItem} ${
-                    selectedSubCategoryId === subcata._id ? styles.active : ""
-                  }`}
+                  className={`${styles.seriesItem} ${selectedSubCategoryId === subcata._id ? styles.active : ""
+                    }`}
                 >
                   {subcata.subCategoryName}
                   {selectedSubCategoryId === subcata._id && (
