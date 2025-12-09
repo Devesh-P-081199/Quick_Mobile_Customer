@@ -622,11 +622,10 @@ const Header = () => {
                         {category?.map((cat) => (
                           <div
                             key={cat._id}
-                            className={`${styles.categoryItem} ${
-                              activeCategory === cat.categoryName
+                            className={`${styles.categoryItem} ${activeCategory === cat.categoryName
                                 ? styles.active
                                 : ""
-                            }`}
+                              }`}
                             onMouseEnter={() => handleCategoryHover(cat)}
                           >
                             <img src={cat?.categoryPic} alt="" />
@@ -722,6 +721,14 @@ const Header = () => {
                         ref={searchInputRef}
                       />
                       <img src={NewSearchIcon} alt="" />
+                      {searchTerm && (
+                        <img
+                          src={NewCloseIcon}
+                          alt="Clear"
+                          className={styles.clearSearchIcon}
+                          onClick={() => setSearchTerm("")}
+                        />
+                      )}
                       <img
                         src={NewBackArrow}
                         alt=""

@@ -445,7 +445,6 @@
 
   .RightBox {
     width: 100%;
-    margin-top: 10px;
   }
 
   .row {
@@ -600,6 +599,7 @@
     border: 0.3px solid #e1e1e1;
     gap: 0px;
     border-radius: 15px;
+    margin-bottom: 10px;
   }
 
   .infoLine {
@@ -701,7 +701,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 0.3px solid #e1e1e1;
     border-radius: 0;
   }
 
@@ -714,8 +713,7 @@
   }
 }
 
-@media (min-width: 881px) and (max-width: 1300px) {
-}
+@media (min-width: 881px) and (max-width: 1300px) {}
 
 .DeviceDetails .price {
   font-weight: 400 !important;
@@ -750,7 +748,8 @@
 
 .modalIcon {
   font-size: 40px;
-  color: #ff4d4d; /* red-ish for warning */
+  color: #ff4d4d;
+  /* red-ish for warning */
 }
 
 .modalTitle {
@@ -791,6 +790,7 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -821,11 +821,18 @@
 }
 
 .summaryCard {
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border: 0.3px solid #e1e1e1;
   border-radius: 10px;
   padding: 12px;
   margin-bottom: 12px;
+}
+
+.summaryCard .summaryHeaderLeft img {
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  background-color: transparent;
 }
 
 .summaryCard:last-child {
@@ -836,10 +843,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 10px;
-  padding-bottom: 8px;
-  border-bottom: 0.3px solid #e1e1e1;
 }
 
 .summaryHeaderLeft {
@@ -858,24 +861,20 @@
 
 .summaryLabel {
   font-family: IBM Plex Sans;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   color: #000000;
 }
 
 .summaryContent {
-  padding: 5px 0;
+  padding: 5px 0 5px 42px;
 }
 
 .addressTag {
   display: inline-block;
-  background-color: #1968b3;
-  color: #ffffff;
-  padding: 4px 10px;
-  border-radius: 5px;
-  font-size: 12px;
-  font-weight: 500;
-  margin-bottom: 8px;
+  color: #1968b3;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .addressText {
@@ -889,13 +888,9 @@
 
 .paymentType {
   display: inline-block;
-  background-color: #34a853;
-  color: #ffffff;
-  padding: 4px 10px;
-  border-radius: 5px;
+  color: #1968b3;
   font-size: 12px;
-  font-weight: 500;
-  margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .paymentText {
@@ -922,15 +917,16 @@
 }
 
 .changeBtn {
-  background-color: #1968b3;
-  color: #ffffff;
-  border: none;
+  color: #1968b3;
+  border: 0.3px solid #1968b3;
   padding: 6px 16px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s;
+  line-height: 0.9;
+  min-height: 30px;
 }
 
 .changeBtn:hover {
@@ -975,7 +971,7 @@
   }
 
   .summaryLabel {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .addressText,
@@ -985,13 +981,11 @@
 
   .addressTag,
   .paymentType {
-    font-size: 11px;
-    padding: 3px 8px;
+    font-size: 14px;
   }
 
   .changeBtn {
-    padding: 5px 12px;
-    font-size: 12px;
+    padding: 0px 12px;
   }
 
   .orderWarning {

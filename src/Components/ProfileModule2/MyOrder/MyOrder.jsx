@@ -10,31 +10,30 @@ const MyOrder = () => {
         {/* <h1>Hello</h1> */}
         {/* Header */}
         <div className={styles.left}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>My Orders</h2>
-          <div className={styles.filterButtons}>
-            {["All Orders", "Buy", "Sell", "Repair"].map((label) => (
-              <div
-                key={label}
-                className={`${styles.filterBtn} ${
-                  label === "Sell" ? styles.activeBtn : ""
-                }`}
-              >
-                <span>{label}</span>
-              </div>
-            ))}
+          <div className={styles.header}>
+            <h2 className={styles.title}>My Orders</h2>
+            <div className={styles.filterButtons}>
+              {["All Orders", "Buy", "Sell", "Repair"].map((label) => (
+                <div
+                  key={label}
+                  className={`${styles.filterBtn} ${label === "Sell" ? styles.activeBtn : ""
+                    }`}
+                >
+                  <span>{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Orders List (placeholder) */}
+          <div className={styles.ordersList}>
+            {/* You can map your orders here later */}
+            <OrderCard />
           </div>
         </div>
-
-        {/* Orders List (placeholder) */}
-        <div className={styles.ordersList}>
-          {/* You can map your orders here later */}
-          <OrderCard />
+        <div className={styles.right}>
+          <ProfileCard />
         </div>
-        </div>
-       <div className={styles.right}>
-        <ProfileCard/>
-       </div>
       </div>
     </section>
   );

@@ -357,126 +357,6 @@ function Step6() {
             </p>
           </div>
 
-          {/* Checkout Summary Section */}
-          <div className={styles.checkoutSummary}>
-            <h3 className={styles.sectionTitle}>Checkout Summary</h3>
-
-            {/* Address Section */}
-            <div className={styles.summaryCard}>
-              <div className={styles.summaryHeader}>
-                <div className={styles.summaryHeaderLeft}>
-                  <img src={van} alt="Address" className={styles.summaryIcon} />
-                  <span className={styles.summaryLabel}>Delivery Address</span>
-                </div>
-                <button
-                  className={styles.changeBtn}
-                  onClick={handleChangeAddress}
-                >
-                  {selectedAddress ? "Change" : "Add"}
-                </button>
-              </div>
-              {selectedAddress ? (
-                <div className={styles.summaryContent}>
-                  <span className={styles.addressTag}>
-                    {selectedAddress?.saveAs}
-                  </span>
-                  <p className={styles.addressText}>
-                    {selectedAddress?.houseNumber}, {selectedAddress?.street}
-                    {selectedAddress?.landmark &&
-                      `, ${selectedAddress?.landmark}`}
-                  </p>
-                  <p className={styles.addressText}>
-                    {selectedAddress?.cityName}, {selectedAddress?.state} -{" "}
-                    {selectedAddress?.zipCode}
-                  </p>
-                  <p className={styles.addressText}>
-                    {selectedAddress?.alternatePhone}
-                  </p>
-                </div>
-              ) : addresses.length === 0 ? (
-                <p className={styles.notSelected}>
-                  No addresses found. Click "Add" button above to add a delivery
-                  address.
-                </p>
-              ) : (
-                <p className={styles.notSelected}>
-                  No address selected. Click "Add" button above to select an
-                  address.
-                </p>
-              )}
-            </div>
-
-            {/* Payment Section */}
-            <div className={styles.summaryCard}>
-              <div className={styles.summaryHeader}>
-                <div className={styles.summaryHeaderLeft}>
-                  <img
-                    src={secureShield}
-                    alt="Payment"
-                    className={styles.summaryIcon}
-                  />
-                  <span className={styles.summaryLabel}>Payment Method</span>
-                </div>
-                <button
-                  className={styles.changeBtn}
-                  onClick={handleChangePayment}
-                >
-                  {selectedPaymentMethod ? "Change" : "Add"}
-                </button>
-              </div>
-              {selectedPaymentMethod ? (
-                <div className={styles.summaryContent}>
-                  {selectedPaymentMethod.type === "upi" ? (
-                    <>
-                      <span className={styles.paymentType}>UPI Payment</span>
-                      <p className={styles.paymentText}>
-                        UPI ID:{" "}
-                        <span className={styles.paymentValue}>
-                          {selectedPaymentMethod?.upiId}
-                        </span>
-                      </p>
-                    </>
-                  ) : selectedPaymentMethod.type === "bank" ? (
-                    <>
-                      <span className={styles.paymentType}>
-                        Bank Transfer (IMPS)
-                      </span>
-                      <p className={styles.paymentText}>
-                        Account:{" "}
-                        <span className={styles.paymentValue}>
-                          {selectedPaymentMethod?.bankDetails?.accountNumber}
-                        </span>
-                      </p>
-                      <p className={styles.paymentText}>
-                        IFSC:{" "}
-                        <span className={styles.paymentValue}>
-                          {selectedPaymentMethod?.bankDetails?.ifscCode}
-                        </span>
-                      </p>
-                      <p className={styles.paymentText}>
-                        Bank:{" "}
-                        <span className={styles.paymentValue}>
-                          {selectedPaymentMethod?.bankDetails?.bankName}
-                        </span>
-                      </p>
-                    </>
-                  ) : null}
-                </div>
-              ) : paymentMethods.upi.length === 0 &&
-                paymentMethods.bank.length === 0 ? (
-                <p className={styles.notSelected}>
-                  No payment methods found. Click "Add" button above to add a
-                  payment method.
-                </p>
-              ) : (
-                <p className={styles.notSelected}>
-                  No payment method selected. Click "Add" button above to select
-                  a payment method.
-                </p>
-              )}
-            </div>
-          </div>
-
           <div className={styles.detailsDown}>
             <div className={styles.deviceDetailsBtn}>
               <button onClick={() => setShowAnswersModal(true)}>
@@ -493,6 +373,125 @@ function Step6() {
                 </span>
               </button>
             </div>
+          </div>
+
+          <div className={styles.summaryCard}>
+            <div className={styles.summaryHeader}>
+              <div className={styles.summaryHeaderLeft}>
+                <img
+                  src={van}
+                  alt=""
+                  className={styles.featureOption}
+                ></img>
+                <span className={styles.summaryLabel}>Delivery Address</span>
+              </div>
+              <button
+                className={styles.changeBtn}
+                onClick={handleChangeAddress}
+              >
+                {selectedAddress ? "Change" : "Add"}
+              </button>
+            </div>
+            {selectedAddress ? (
+              <div className={styles.summaryContent}>
+                <span className={styles.addressTag}>
+                  {selectedAddress?.saveAs}
+                </span>
+                <p className={styles.addressText}>
+                  {selectedAddress?.houseNumber}, {selectedAddress?.street}
+                  {selectedAddress?.landmark &&
+                    `, ${selectedAddress?.landmark}`}
+                </p>
+                <p className={styles.addressText}>
+                  {selectedAddress?.cityName}, {selectedAddress?.state} -{" "}
+                  {selectedAddress?.zipCode}
+                </p>
+                <p className={styles.addressText}>
+                  {selectedAddress?.alternatePhone}
+                </p>
+              </div>
+            ) : addresses.length === 0 ? (
+              <p className={styles.notSelected}>
+                No addresses found. Click "Add" button above to add a delivery
+                address.
+              </p>
+            ) : (
+              <p className={styles.notSelected}>
+                No address selected. Click "Add" button above to select an
+                address.
+              </p>
+            )}
+          </div>
+
+          <div className={styles.summaryCard}>
+            <div className={styles.summaryHeader}>
+              <div className={styles.summaryHeaderLeft}>
+                <img
+                  src={secureShield}
+                  alt=""
+                  className={styles.featureOption}
+                ></img>
+                <span className={styles.summaryLabel}>Payment Method</span>
+              </div>
+              <button
+                className={styles.changeBtn}
+                onClick={handleChangePayment}
+              >
+                {selectedPaymentMethod ? "Change" : "Add"}
+              </button>
+            </div>
+            {selectedPaymentMethod ? (
+              <div className={styles.summaryContent}>
+                {selectedPaymentMethod.type === "upi" ? (
+                  <>
+                    <span className={styles.paymentType}>UPI Payment</span>
+                    <p className={styles.paymentText}>
+                      UPI ID:{" "}
+                      <span className={styles.paymentValue}>
+                        {selectedPaymentMethod?.upiId}
+                      </span>
+                    </p>
+                  </>
+                ) : selectedPaymentMethod.type === "bank" ? (
+                  <>
+                    <span className={styles.paymentType}>
+                      Bank Transfer (IMPS)
+                    </span>
+                    <p className={styles.paymentText}>
+                      Account:{" "}
+                      <span className={styles.paymentValue}>
+                        {selectedPaymentMethod?.bankDetails?.accountNumber}
+                      </span>
+                    </p>
+                    <p className={styles.paymentText}>
+                      IFSC:{" "}
+                      <span className={styles.paymentValue}>
+                        {selectedPaymentMethod?.bankDetails?.ifscCode}
+                      </span>
+                    </p>
+                    <p className={styles.paymentText}>
+                      Bank:{" "}
+                      <span className={styles.paymentValue}>
+                        {selectedPaymentMethod?.bankDetails?.bankName}
+                      </span>
+                    </p>
+                  </>
+                ) : null}
+              </div>
+            ) : paymentMethods.upi.length === 0 &&
+              paymentMethods.bank.length === 0 ? (
+              <p className={styles.notSelected}>
+                No payment methods found. Click "Add" button above to add a
+                payment method.
+              </p>
+            ) : (
+              <p className={styles.notSelected}>
+                No payment method selected. Click "Add" button above to select
+                a payment method.
+              </p>
+            )}
+          </div>
+          <div className={styles.detailsDown}>
             <div className={styles.applyCoupon} onClick={openCouponModal}>
               <button>
                 <div className={styles.bottonTitle}>
@@ -516,7 +515,7 @@ function Step6() {
                 <Answers
                   onBack={() => setShowAnswersModal(false)}
                   onRecalculate={() =>
-                    navigate(`/${slug}/final-price-calculator`)
+                    navigate(`/${slug}/final-price-calculator${location.search}`)
                   }
                 />
               </div>

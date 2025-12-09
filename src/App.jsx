@@ -77,6 +77,9 @@ const MyOrder = React.lazy(() =>
 const EditProfile = React.lazy(() =>
   import("./features/profile/components/SetupProfile/EditProfile")
 );
+const OrderDetails = React.lazy(() =>
+  import("./features/profile/components/MyOrder/OrderDetails")
+);
 import { Suspense } from "react";
 
 // testing for loader
@@ -101,11 +104,12 @@ import ProfileCard from "./features/profile/components/ProfileCard";
 import NoOffer from "./features/profile/components/Offer/Offer";
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // Scroll to top immediately on any route change
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname, search]);
 
   return null;
 };
@@ -402,6 +406,15 @@ const AppContent = () => {
           element={
             <Suspense fallback={<Loader />}>
               <SetupProfile />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/profile/order-details/:orderId"
+          element={
+            <Suspense fallback={<Loader />}>
+              <OrderDetails />
             </Suspense>
           }
         />

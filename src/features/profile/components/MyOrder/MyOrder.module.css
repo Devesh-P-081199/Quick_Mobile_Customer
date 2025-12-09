@@ -1,15 +1,14 @@
 .panelWrapper {
   display: flex;
   gap: 20px;
-  /* padding: 20px; */
+  padding-bottom: 20px;
 }
 
 .left {
   flex: 2;
   /* background: #fff; */
-  padding: 15px 12px;
+  padding: 10px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .right {
@@ -21,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 5px 0 15px 0;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -33,36 +32,36 @@
 }
 
 .filterButtons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  /* background-color: #fff;
+  border: 0.3px solid #e1e1e1; */
+  border-radius: 15px;
   gap: 10px;
   width: 100%;
 }
 
 .filterBtn {
-  padding: 12px 8px;
-  height: 50px;
-  border: 1px solid #ddd;
-  background: #f9f9f9;
-  color: #444;
-  border-radius: 5px;
+  flex: 1;
+  padding: 10px 5px;
+  height: 45px;
+  color: #000000;
+  background-color: #fff;
+  border: 0.3px solid #e1e1e1;
   font-size: 14px;
   cursor: pointer;
   transition: 0.3s ease;
+  border-radius: 15px;
+  font-weight: 500;
 }
 
-/* .filterBtn:hover {
-  background: #efefef;
-} */
-
 .activeBtn {
-  background: #1968b3;
-  color: #fff;
-  /* border-color: #007bff; */
+  color: #1968b3;
+  background-color: #ddefff !important;
+  border: 1px solid #1968b3;
 }
 
 .ordersList {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 15px;

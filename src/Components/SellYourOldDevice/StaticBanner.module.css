@@ -1,330 +1,312 @@
 .StaticSection {
   font-family: IBM Plex Sans;
 }
-h1 {
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-normal);
-  font-size: var(--font-size-4xl);
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-align: center;
-}
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-}
-.heading p {
-  font-family: IBM Plex Sans;
+
+.heading h2 {
+  font-size: 18px;
+  margin: 35px 0 0 0;
+  font-family: "IBM Plex Sans";
   font-weight: 500;
-  font-size: 20px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-align: center;
 }
 
 .heading {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  align-items: center;
-}
-
-.StaticSection .wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  align-items: center;
-}
-
-.FeatureLists ul {
-  background-color: #ffffff;
-  border-width: 0.3px;
-  display: flex;
-  /* flex-wrap: wrap; */
-  gap: 20px;
-  border-radius: 10px;
-  padding: 20px;
-  border: 0.3px solid #e1e1e1;
-  list-style: none;
-}
-
-.FeatureLists ul li {
-  border-width: 1px;
-  display: flex;
   gap: 10px;
-  border-radius: 6px;
-  border: 1px solid #00000033;
-  padding: 10px;
-  /* justify-content: space-around; */
   align-items: center;
-  width: 260px;
+  margin-bottom: 25px;
 }
 
-.FeatureLists span {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
+.heading p {
+  font-family: IBM Plex Sans;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
   text-align: center;
+  color: #555;
+  margin-bottom: 0px;
+}
+
+/* Custom Timeline Container */
+.customTimelineContainer {
+  position: relative;
   width: 100%;
-}
-
-/* Extra large desktops */
-@media (min-width: 1600px) {
-}
-
-/* Standard desktops and laptops */
-@media (max-width: 1440px) {
-}
-
-@media screen and (max-width: 1280px) {
-  .FeatureLists ul {
-    /* flex-wrap: wrap; */
-  }
-  .FeatureLists ul li {
-    width: 200px;
-  }
-  .FeatureLists ul li span {
-    font-size: 12px;
-  }
-}
-@media (max-width: 1024px) {
-  .heading p {
-    font-size: 18px;
-  }
-}
-
-/* Tablets */
-@media (max-width: 920px) {
-  .FeatureLists ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .FeatureLists ul li {
-    width: 320px;
-  }
-}
-
-/* Phones */
-@media (max-width: 550px) {
-  .FeatureLists ul li {
-    width: 42vw;
-  }
-
-  .FeatureLists ul li img {
-    width: 8%;
-  }
-  .FeatureLists ul li {
-    gap: 5px;
-  }
-
-  .heading p {
-    /* margin-top: 8px; */
-    font-size: 16px;
-    color: #555;
-    font-weight: 400;
-    line-height: 24px;
-    /* display: none; */
-  }
-  .FeatureLists ul {
-    padding: 12px;
-    gap: 12px;
-  }
-  .StaticSection .wrapper {
-    gap: 19px;
-  }
-  .FeatureLists ul {
-    background-color: transparent;
-    border-width: 0px;
-    display: flex;
-    /* flex-wrap: wrap; */
-    gap: 16px;
-    border-radius: 0px;
-    padding: 10px;
-    border: none;
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .FeatureLists ul li {
-    background-color: #ffffff;
-    flex-direction: column;
-  }
-  .StaticSection {
-    margin-top: 12px;
-  }
-}
-
-@media (max-width: 950px) {
-  .FeatureLists ul {
-    flex-wrap: wrap;
-  }
-}
-
-@media screen and (min-width: 550px) and (max-width: 767px) {
-  .FeatureLists ul li {
-    width: 240px;
-  }
-}
-
-.timelineContainer {
-  display: flex;
-  position: relative;
-  gap: 40px;
-  justify-content: center;
-  height: 100%;
-}
-
-.timeline {
-  position: relative;
-  width: 60px;
-  /* height: 100%; */
-  background-color: #f1f1f1;
-  border-radius: 30px;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.fillLine {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 0%;
-  background-color: #1968b3;
-  border-radius: 30px;
-  z-index: 1;
-  transition: height 1.5s ease;
-}
-
-/* Hover Effect */
-.StaticSection:hover .fillLine {
-  height: 100%;
-}
-.StaticSection:hover .iconWrapper {
-  color: #ffffff;
-}
-.icons {
-  position: relative;
-  z-index: 2;
+  /* Default Desktop: Horizontal */
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-around; */
-  /* gap: 61px; */
+}
+
+.progressBarContainer {
+  position: absolute;
+  top: 60px;
+  /* Constrain line to be between the centers of first and last item */
+  /* Items are 18% width. Center is at 9%. */
+  left: 9%;
+  width: 82%;
+  height: 4px;
+  z-index: 0;
+}
+
+.progressBarTrack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  padding: 30px 0;
+  background-color: #e1e1e1;
+  border-radius: 2px;
 }
 
-.iconWrapper {
-  color: #a8a8a8;
-  font-size: 30px;
-  padding: 0px 12px;
-  background-color: transparent;
-  z-index: 2;
-  /* margin-bottom: 20px; */
+.progressBarFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--fill-percent);
+  height: 100%;
+  background-color: #1968b3;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+  /* Reduced delay/lag */
 }
 
-.stepsContent {
+.timelineItems {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.timelineItem {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 70%;
-  padding: 30px 0px;
-  padding-bottom: 5px;
+  align-items: center;
+  width: 18%;
+  text-align: center;
+  position: relative;
 }
 
-.stepText {
-  margin-bottom: 30px;
+.markerContainer {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  /* Optional border to make it pop more? */
+  border: 0.3px solid #e1e1e1;
+  /* Mask the line behind it cleanly */
 }
 
-.stepText h4 {
-  font-size: 18px;
+.marker {
+  font-size: 30px;
+  color: #e1e1e1;
+  transition: color 0.1s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.active .marker {
+  transform: scale(1.1);
+  color: inherit;
+  /* Takes color from inline style */
+}
+
+/* Content Box Pop-out effect */
+/* Content Box Pop-out effect - Dramatic Increase */
+.contentBox {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  opacity: 0;
+  /* More dramatic start state: scaled down further, pushed down more */
+  transform: scale(0.5) translateY(50px);
+  /* Bouncy spring effect */
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  width: 100%;
+  /* Consistent width filling the item container */
+  min-height: 120px;
+  border: 0.3px solid #e1e1e1;
+  /* Ensure some uniformity in height */
+}
+
+.active .contentBox {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Notch / Arrow */
+.contentBox::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border: 0.3px solid #e1e1e1;
+  /* Rotate to form triangle */
+  transform: rotate(45deg);
+  /* Top-pointing arrow (Desktop horizontal content below): 
+     Need Top-Left corner of square to be the tip? 
+     No, rotated 45deg:
+     Top-Left corner becomes Top.
+     So border-top and border-left form the top point.
+     But for a box BELOW the marker, the arrow points UP.
+     The arrow connects to the top of the box.
+     So the bottom half of the diamond is inside the box.
+     The top half is sticking out.
+     So border-top and border-left should be visible.
+  */
+  border-right: none;
+  border-bottom: none;
+
+  /* Position centered on top edge */
+  top: -7px;
+  /* half of diagonal roughly to spill over? 14px * 1.414 = 20px diag. Half is 10px. -7px? */
+  left: 50%;
+  margin-left: -7px;
+  /* Center horizontally */
+}
+
+
+
+
+
+.contentBox h3 {
+  font-size: 16px;
   font-weight: 600;
-  margin: 0;
-  width: 38%;
+  margin-bottom: 5px;
 }
 
-.stepText:nth-last-child h4 {
-  margin-bottom: 0px;
-}
-.stepText:nth-last-child {
-  margin-bottom: 0px;
-}
-
-.stepText p {
-  margin-top: 8px;
+.contentBox h4 {
   font-size: 14px;
-  color: #555;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 0px;
 }
 
-.finalNote {
-  color: #007f36;
-  font-weight: bold;
+.contentBox p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 0px;
+}
+
+/* Responsive: Mobile / Vertical Layout */
+@media (max-width: 900px) {
+  .customTimelineContainer {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    /* Space at bottom */
+  }
+
+  /* Adjust line logic for vertical */
+  .progressBarContainer {
+    top: 25px;
+    /* Center of first marker approx */
+    left: 43px;
+    /* Align with marker center approx. 20px padding + 25px center - 2px line width */
+    width: 4px;
+    height: var(--mobile-line-height, 100%);
+    bottom: auto;
+  }
+
+  .progressBarFill {
+    width: 100%;
+    height: var(--fill-percent);
+    transition: height 0.1s linear;
+  }
+
+  .timelineItems {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .timelineItem {
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    align-items: flex-start;
+    /* Remove padding or margins that distort calculation */
+  }
+
+  .markerContainer {
+    margin-bottom: 0;
+    margin-top: 0px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Update Notch for Left Arrow */
+  .contentBox::before {
+    /* Reset transform */
+    transform: rotate(45deg);
+
+    /* Left-pointing arrow (Bottom-Left corner): */
+    border: 0.3px solid #e1e1e1;
+    border-top: none;
+    border-right: none;
+
+    /* Position on left edge */
+    top: 20px;
+    left: -7px;
+    margin-left: 0;
+  }
+
+  .contentBox {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .progressBarContainer {
+    /* Recalculate left for mobile specific padding */
+    left: calc(20px + 25px - 2px);
+  }
 }
 
 @media (max-width: 550px) {
-  .stepText h4 {
+  .heading h2 {
     font-size: 18px;
-    font-weight: 600;
-    margin: 0;
-    width: 100%;
-  }
-  .stepsContent {
-    width: 80%;
-  }
-  .timelineContainer {
-    gap: 21px;
-  }
-}
-
-@media (max-width: 380px) {
-  .StaticSection .wrapper {
-    gap: 30px;
-  }
-  .FeatureLists ul li span {
-    font-size: 10px;
-  }
-  .FeatureLists ul li {
-    width: 42vw;
-  }
-  .FeatureLists ul {
-    gap: 7px;
   }
 
-  .stepText h4 {
+  .heading p {
     font-size: 14px;
-    font-weight: 600;
-    margin: 0;
   }
 
-  .stepText p {
+  .markerContainer {
+    width: 55px;
+    height: 55px;
+    margin-left: 2px;
+  }
+
+  .timelineItem:first-child .markerContainer {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
     margin-top: 8px;
-    font-size: 12px;
-    color: #555;
   }
 
-  .stepText {
-    margin-bottom: 20px;
+  .timelineItem:last-child .markerContainer {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-top: 8px;
   }
 
-  .timelineContainer {
-    display: flex;
-    position: relative;
-    gap: 16px;
-    justify-content: center;
-    height: 100%;
+  .marker {
+    font-size: 18px;
   }
-  .timeline {
-    position: relative;
-    width: 50px;
-    /* height: 100%; */
-    background-color: #f1f1f1;
-    border-radius: 30px;
-    overflow: hidden;
-    cursor: pointer;
+
+  .progressBarContainer {
+    left: calc(20px + 10px - 2px);
+    /* Mobile Padding + Half Icon 20px - Half Line 2px */
   }
 }

@@ -114,6 +114,7 @@ const Header = () => {
   const searchRef = useRef(null); // Search container reference
   const dropdownRef = useRef(null); // Dropdown container reference
   const searchInputRef = useRef(null); // Mobile search input reference
+  const lastSearchRef = useRef(""); // Track latest search to avoid race conditions
 
   // Context data from UserContext
   const {
@@ -328,6 +329,9 @@ const Header = () => {
         `/sell-module/user/SearchUniversal?search=${search}`
       );
 
+      // Guard: If this result doesn't match the latest search term, ignore it
+      if (search !== lastSearchRef.current) return;
+
       if (resp.data == null) {
         setShowDropdown(false);
         return;
@@ -337,14 +341,36 @@ const Header = () => {
       setShowDropdown(true);
     } catch (error) {
       console.error("Search error:", error);
-      setShowDropdown(false);
+      // Only hide dropdown if this was the latest search
+      if (search === lastSearchRef.current) {
+        setShowDropdown(false);
+      }
     }
+  };
+
+  // Clear search state helper
+  const handleClearSearch = () => {
+    debouncedSearchMain.cancel();
+    lastSearchRef.current = ""; // Reset tracker
+    setSearchTerm("");
+    setShowDropdown(false);
+    setResults({
+      ActiveBrands: { buy: [], recycle: [], sell: [] },
+      ActiveProducts: { buy: [], recycle: [], sell: [] },
+      ActiveCategories: { buy: [], recycle: [], sell: [] },
+    });
   };
 
   // Handle search input changes
   const handleMainSearchChange = (e) => {
     const value = e.target.value.trimStart();
     setSearchTerm(value);
+    lastSearchRef.current = value; // Update tracker
+
+    if (!value) {
+      handleClearSearch();
+      return;
+    }
     debouncedSearchMain(value);
   };
 
@@ -865,6 +891,14 @@ const Header = () => {
                           alt=""
                           className={[styles.searchIcon, "nav-icons"].join(" ")}
                         />
+                        {searchTerm && (
+                          <img
+                            src={NewCloseIcon}
+                            alt="Clear"
+                            className={styles.clearSearchIcon}
+                            onClick={handleClearSearch}
+                          />
+                        )}
                         <img
                           src={NewBackArrow}
                           alt=""
@@ -1332,11 +1366,10 @@ const Header = () => {
                         {category?.map((cat) => (
                           <div
                             key={cat._id}
-                            className={`${styles.categoryItem} ${
-                              activeCategory === cat.categoryName
-                                ? styles.active
-                                : ""
-                            }`}
+                            className={`${styles.categoryItem} ${activeCategory === cat.categoryName
+                              ? styles.active
+                              : ""
+                              }`}
                             onMouseEnter={() => handleCategoryHover(cat)}
                           >
                             <img
@@ -1413,11 +1446,10 @@ const Header = () => {
                           <div
                             key={brand._id}
                             className={`${styles.categoryItem} 
-                            ${
-                              activeBrand === brand.brandName
+                            ${activeBrand === brand.brandName
                                 ? styles.active
                                 : ""
-                            }
+                              }
                             `}
                             onMouseEnter={() => handleBrandHover(brand)}
                           >
@@ -1491,11 +1523,10 @@ const Header = () => {
                         {brandsWithProducts?.slice(0, 3)?.map((brand) => (
                           <div
                             key={brand._id}
-                            className={`${styles.categoryItem} ${
-                              activeBrand === brand.brandName
-                                ? styles.active
-                                : ""
-                            }`}
+                            className={`${styles.categoryItem} ${activeBrand === brand.brandName
+                              ? styles.active
+                              : ""
+                              }`}
                             onMouseEnter={() => handleBrandHover(brand)}
                           >
                             <img src={brand?.brandLogo} alt="" />

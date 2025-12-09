@@ -479,6 +479,7 @@ body::-webkit-scrollbar-thumb {
 
 @media screen and (max-width: 550px) {
   .mobile-pt-section {
+    padding-top: 60px !important; /* Account for fixed MobileCommonHeader (55px height + 5px buffer) */
     margin-top: 0px !important;
   }
 }

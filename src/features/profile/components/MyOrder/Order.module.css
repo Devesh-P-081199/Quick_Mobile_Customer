@@ -1,33 +1,38 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 /* Card */
 .card {
   background: #ffffff;
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 15px;
+  padding: 10px 15px;
+  /* More horizontal padding */
   position: relative;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  border: 0.3px solid #e1e1e1;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+.card:active {
+  transform: translateY(0);
 }
 
 .cardBody {
   display: flex;
   gap: 15px;
-  align-items: flex-start;
+  align-items: center;
+  /* Center align vertically */
+  width: 100%;
 }
 
 /* Device */
 .deviceImage {
-  width: 70px;
-  height: 120px;
+  width: 80px;
+  /* Balanced size */
+  height: 100px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -35,38 +40,84 @@
 .infoBlock {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   flex: 1;
   min-width: 0;
+  justify-content: center;
+  position: relative;
+}
+
+.infoBlock::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 5px;
+  transform: translateY(-50%);
+  width: 10px;
+  /* Width of the indicator bar */
+  height: 10px;
+  /* Height relative to content */
+  background-color: var(--status-color, #fbbc05);
+  /* Default to yellow if variable missing */
+  border-radius: 10px;
+}
+
+.viewIcon {
+  position: absolute;
+  right: -5px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5px;
+  opacity: 1;
+  position: absolute;
+  right: 3px;
+}
+
+.chevron img {
+  transform: rotate(180deg);
 }
 
 .title {
   font-size: 16px;
   font-weight: 600;
-  color: #000;
-  line-height: 1.4;
+  color: #111;
+  line-height: 1.3;
+  margin-bottom: 2px;
 }
 
 .priceRow {
   display: flex;
   align-items: center;
+  margin-bottom: 2px;
 }
 
 .price {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
   color: #e51b1b;
 }
 
-.imei,
-.pickup {
+.imei {
   font-size: 12px;
-  line-height: 16px;
-  color: #666;
+  color: #888;
+  /* Softer text for ID */
+  margin-bottom: 4px;
 }
 
 .pickup {
-  color: #005ec3;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #1968b3;
 }
 
 /* Buttons top-right */
@@ -135,66 +186,83 @@
 
 /* Expanded section */
 .details {
-  margin-top: 20px;
-  background: #f8f9fa;
+  margin-top: 0px;
   border-radius: 8px;
-  padding: 20px;
-  border: 1px solid #e9ecef;
+  padding: 0px;
 }
 
 /* Partner */
 .partnerBox {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  padding: 15px;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
   background: #fff;
-  border-radius: 8px;
-  border: 1px solid #e9ecef;
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
+  position: relative;
 }
 
-.partnerImg {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
+.account {
+  width: 65px;
+  height: 65px;
+  border-radius: 24%;
   object-fit: cover;
 }
 
 .partnerName {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .rating {
-  font-size: 13px;
+  font-size: 12px;
   color: #666;
-  margin-top: 2px;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2px 6px;
+  transform: translateX(-50%);
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.rating svg {
+  width: 12px;
+  height: 12px;
+  color: #fff;
+}
+
+.partnerAchivement {
+  font-size: 12px;
+  color: #666;
 }
 
 .partnerIcons {
   margin-left: auto;
   display: flex;
   gap: 12px;
-  color: #007fee;
+  color: #1968b3;
 }
 
-.partnerIcons > * {
+.partnerIcons>* {
   cursor: pointer;
   padding: 8px;
   border-radius: 50%;
   transition: background-color 0.2s ease;
-}
-
-.partnerIcons > *:hover {
-  background-color: #f0f8ff;
+  background-color: #ddefff !important
 }
 
 /* Timeline */
 .timelineWrapper {
   display: flex;
   justify-content: space-between;
-  margin: 25px 0;
+  margin: 10px 0;
   position: relative;
   background: #fff;
   padding: 20px;
@@ -393,6 +461,7 @@
   from {
     transform: translateY(100%);
   }
+
   to {
     transform: translateY(0);
   }
@@ -438,14 +507,14 @@
 .modalDeviceInfo {
   display: flex;
   gap: 15px;
-  margin-bottom: 20px;
   padding: 15px;
-  background: #f8f9fa;
-  border-radius: 8px;
+  background: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 15px;
 }
 
 .modalDeviceImage {
-  width: 60px;
+  width: 100px;
   height: 100px;
   object-fit: contain;
   flex-shrink: 0;
@@ -454,62 +523,66 @@
 .modalDeviceTitle {
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 5px;
 }
 
 .modalDevicePrice {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
   color: #e51b1b;
-  margin-bottom: 5px;
 }
 
 .modalOrderId {
   font-size: 12px;
-  color: #666;
+  color: #888;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .card {
-    padding: 15px;
-    border-radius: 8px;
-  }
-  
+
   .cardBody {
     flex-direction: row;
     gap: 12px;
   }
-  
+
   .deviceImage {
-    width: 60px;
-    height: 100px;
+    width: 90px;
+    min-height: 100px;
+    max-height: 100px;
     align-self: flex-start;
   }
-  
+
+  .infoBlock {
+    min-height: 100px;
+    justify-content: space-between;
+  }
+
+  .imei {
+    margin-bottom: 5px;
+  }
+
   .actionRow {
     flex-direction: row;
     align-self: flex-end;
     margin-top: 10px;
   }
-  
+
   .blackButton,
   .greenButton {
     padding: 6px 10px;
     font-size: 11px;
     min-width: 70px;
   }
-  
+
   .timelineWrapper {
     flex-direction: column;
     gap: 15px;
     padding: 15px;
   }
-  
+
   .timelineWrapper::before {
     display: none;
   }
-  
+
   .step {
     display: flex;
     align-items: center;
@@ -517,7 +590,7 @@
     position: relative;
     padding-left: 30px;
   }
-  
+
   .step::before {
     content: "";
     position: absolute;
@@ -527,41 +600,41 @@
     width: 2px;
     background: #e0e0e0;
   }
-  
+
   .step:last-child::before {
     display: none;
   }
-  
+
   .active::before {
     background: #000;
   }
-  
+
   .circle {
     position: absolute;
     left: 0;
     margin: 0;
   }
-  
+
   .step span {
     margin-top: 0;
     margin-left: 0;
   }
-  
+
   .step small {
     margin-left: 8px;
     margin-top: 0;
   }
-  
+
   .conditionBtns {
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .footerBtns {
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .denyBtn,
   .approveBtn {
     padding: 10px 16px;
@@ -573,11 +646,11 @@
   .timelineWrapper {
     padding: 15px;
   }
-  
+
   .step span {
     font-size: 11px;
   }
-  
+
   .step small {
     font-size: 10px;
   }

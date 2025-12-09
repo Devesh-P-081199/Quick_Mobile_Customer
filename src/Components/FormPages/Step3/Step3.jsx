@@ -163,6 +163,16 @@ function Step3() {
   // Check if we have valid packages data
   const hasValidPackages = assignedPackages && assignedPackages.length > 0;
 
+  // Scroll to top on component mount
+  useEffect(() => {
+    // Immediate scroll
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    // Also scroll after a short delay to handle async rendering
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    });
+  }, []);
+
   const currentPackageData = allPackageData[currentPackageIndex] || {};
   const currentQuestions = currentPackageData?.questions || [];
 
@@ -200,6 +210,7 @@ function Step3() {
       ...prev,
       currentPage: prev.currentPage + 1,
     }));
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   };
 
   const goToPrevConditionsPage = () => {
@@ -207,6 +218,7 @@ function Step3() {
       ...prev,
       currentPage: prev.currentPage - 1,
     }));
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   };
 
   const resetConditionsPagination = () => {
@@ -605,7 +617,7 @@ function Step3() {
       const selectedValue = currentAnswers[q.id] || "";
       return (
         <select
-          className="dropdown-select"
+          className={`dropdown-select ${selectedValue !== "" ? "selected" : ""}`}
           name={q.id}
           value={selectedValue}
           onChange={(e) => handleOptionChange(q.id, e.target.value, false)}
@@ -800,6 +812,7 @@ function Step3() {
     if (currentPackageIndex < allPackageData.length - 1) {
       const nextIndex = currentPackageIndex + 1;
       setCurrentPackageIndex(nextIndex);
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 
       // Save the current package index to session storage
       const currentIndexKey = `currentPackageIndex_${getStorageKey()}`;

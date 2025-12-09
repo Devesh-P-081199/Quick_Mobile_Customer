@@ -104,11 +104,10 @@ const Answers = ({ onBack, onRecalculate }) => {
     <div className={styles.modal}>
       {/* Header */}
       <div className={styles.header}>
-        <div className={styles.left} onClick={onBack}>
-          <img src={backArrow} alt="" />
-          <span className={styles.title}>Device Details</span>
-        </div>
-
+        <button className={styles.iconButton} onClick={onBack}>
+          <img src={backArrow} alt="Back" style={{ width: '28px', height: '28px' }} />
+        </button>
+        <h2 className={styles.title}>Device Details</h2>
         <button
           className={styles.recalculateButton}
           onClick={() => {
@@ -122,9 +121,8 @@ const Answers = ({ onBack, onRecalculate }) => {
               sessionStorage.removeItem(packageDetailsKey);
 
               // Clear step3 form data
-              const storageKey = `step3PackageData_${productId}_${
-                queryParams.get("vid") || "unknown"
-              }`;
+              const storageKey = `step3PackageData_${productId}_${queryParams.get("vid") || "unknown"
+                }`;
               sessionStorage.removeItem(storageKey);
 
               // Clear current package index
@@ -132,8 +130,8 @@ const Answers = ({ onBack, onRecalculate }) => {
               sessionStorage.removeItem(currentIndexKey);
 
               // Clear packages data
-              const packagesKey = `packages_${productId}`;
-              sessionStorage.removeItem(packagesKey);
+              // const packagesKey = `packages_${productId}`;
+              // sessionStorage.removeItem(packagesKey);
 
               // Clear form submitted flag
               const formSubmittedKey = `formSubmitted_${productId}`;
@@ -166,15 +164,17 @@ const Answers = ({ onBack, onRecalculate }) => {
                 <li key={qIndex}>
                   <p className={styles.question}>{q.question}</p>
                   {q?.selectedAnswers?.length > 0 ? (
-                    <span
+                    <div
                       className={
-                        q.selectedAnswers[0].toLowerCase() === "yes"
+                        q.selectedAnswers[0]?.toLowerCase() === "yes"
                           ? styles.yes
                           : styles.no
                       }
                     >
-                      {q.selectedAnswers[0]}
-                    </span>
+                      {q.selectedAnswers.map((ans, idx) => (
+                        <div key={idx}>{ans}</div>
+                      ))}
+                    </div>
                   ) : (
                     <span className={styles.no}>No answer</span>
                   )}
@@ -183,8 +183,8 @@ const Answers = ({ onBack, onRecalculate }) => {
             </ol>
           </div>
         ))}
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

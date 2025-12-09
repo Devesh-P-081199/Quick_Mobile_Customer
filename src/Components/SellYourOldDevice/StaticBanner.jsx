@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import style from "./StaticBanner.module.css";
 import {
-  FaClipboardList,
   FaRegCalendarCheck,
   FaPaperPlane,
   FaCheckCircle,
@@ -10,20 +9,110 @@ import {
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
+const steps = [
+  {
+    icon: <FaCircle />,
+    iconStyle: { color: "#f26921" },
+    title: "If you sell your device today",
+    subtitle: "By 4 PM",
+    subtitleStyle: { color: "#f26921" },
+  },
+  {
+    icon: <FaRegCalendarCheck />,
+    iconStyle: { color: "#a8a8a8" },
+    title: "Get Quote",
+    description:
+      "Select your device and answer a few questions about its condition, our smart tech will instantly calculate the best price.",
+  },
+  {
+    icon: <FaPaperPlane />,
+    iconStyle: { color: "#a8a8a8" },
+    title: "Assign pick-up partner",
+    description:
+      "A nearby partner will be assigned to collect your device right from your doorstep.",
+  },
+  {
+    icon: <FaCheckCircle />,
+    iconStyle: { color: "#a8a8a8" },
+    title: "Get paid",
+    description:
+      "Once your device is inspected by our partner and approved, your payment is processed instantly straight to your UPI or bank account.",
+  },
+  {
+    icon: <FaCircle />,
+    iconStyle: { color: "#29d929" },
+    title: "Your phone is sold",
+    subtitle: "By 23 June",
+    subtitleStyle: { color: "#29d929" },
+  },
+];
+
 function StaticBanner() {
   const [loading, setLoading] = useState(false);
+  const [fillPercent, setFillPercent] = useState(0);
+  const [mobileLineHeight, setMobileLineHeight] = useState('100%');
+  const timelineRef = useRef(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false); // simulate loading
-    }, 100);
-    return () => clearTimeout(timer);
+    const calculateHeight = () => {
+      if (!timelineRef.current) return;
+      const markers = timelineRef.current.querySelectorAll('[data-marker="true"]');
+      if (markers.length >= 2) {
+        const first = markers[0].getBoundingClientRect();
+        const last = markers[markers.length - 1].getBoundingClientRect();
+        // Distance center to center = (last top + last height/2) - (first top + first height/2)
+        // Since markers are same size, it's just last.top - first.top
+        const height = last.top - first.top;
+        setMobileLineHeight(`${height}px`);
+      }
+    };
+
+    // Run initially and on resize
+    calculateHeight();
+    window.addEventListener('resize', calculateHeight);
+    return () => window.removeEventListener('resize', calculateHeight);
+  }, [loading]); // Re-run when loading finishes and real content appears
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!timelineRef.current) return;
+
+      const rect = timelineRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Trigger point: Bottom of the viewport (1.0) so it starts filling as soon as it enters.
+      const triggerPoint = windowHeight;
+
+      const componentTop = rect.top;
+      const componentHeight = rect.height;
+
+      let percent = 0;
+
+      // Calculate filled amount based on how much of the component has passed the trigger point.
+      const distance = triggerPoint - componentTop;
+      const totalDistance = componentHeight;
+
+      if (totalDistance > 0) {
+        percent = (distance / totalDistance) * 100;
+      }
+
+      // Clamp
+      if (percent < 0) percent = 0;
+      if (percent > 100) percent = 100;
+
+      // "when scrolling back up the content should stay visible" -> Monotonic increase only
+      setFillPercent(prev => Math.max(prev, percent));
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section className={`${style.StaticSection} homepage-section`}>
+    <section className={`${style.StaticSection} page-content-wrapper`}>
       <div className={style.heading}>
-        <h1>Sell your old devices for instant cash</h1>
+        <h2>Sell your old devices for instant cash</h2>
         <p>
           Whether pristine or broken, secure the best deal from over 300+
           refurbishers
@@ -31,171 +120,63 @@ function StaticBanner() {
       </div>
 
       <div className={style.wrapper}>
-        <div className={style.timelineContainer}>
-          <div className={style.timeline}>
-            <div className={style.fillLine}></div>
-            <div className={style.icons}>
-              {loading ? (
-                <>
-                  <div
-                    className={style.iconWrapper}
-                    style={{ marginBottom: "45px" }}
-                  >
+        {loading ? (
+          // Kept Skeleton as requested / existing behavior
+          <div className={style.timelineContainer}>
+            {/* Skeleton structure reused roughly */}
+            <div className={style.timeline}>
+              <div className={style.icons}>
+                {[1, 2, 3, 4, 5].map(i => (
+                  <div key={i} className={style.iconWrapper} style={{ marginBottom: i < 5 ? '60px' : 0 }}>
                     <Skeleton circle width={40} height={40} />
                   </div>
-                  <div
-                    className={style.iconWrapper}
-                    style={{ marginBottom: "81px" }}
-                  >
-                    <Skeleton circle width={40} height={40} />
-                  </div>
-                  <div
-                    className={style.iconWrapper}
-                    style={{ marginBottom: "62px" }}
-                  >
-                    <Skeleton circle width={40} height={40} />
-                  </div>
-                  <div
-                    className={style.iconWrapper}
-                    style={{ marginTop: "86px" }}
-                  >
-                    <Skeleton circle width={40} height={40} />
-                  </div>
-                  <div className={style.iconWrapper}>
-                    <Skeleton circle width={40} height={40} />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div
-                    className={style.iconWrapper}
-                    style={{
-                      marginBottom: "50px",
-                      color: "#f26921",
-                      fontSize: "36px",
-                    }}
-                  >
-                    <FaCircle />
-                  </div>
-                  <div
-                    className={style.iconWrapper}
-                    style={{ marginBottom: "97px" }}
-                  >
-                    <FaRegCalendarCheck />
-                  </div>
-                  <div
-                    className={style.iconWrapper}
-                    style={{ marginBottom: "75px" }}
-                  >
-                    <FaPaperPlane />
-                  </div>
-                  <div
-                    className={style.iconWrapper}
-                    style={{ marginBottom: "97px" }}
-                  >
-                    <FaCheckCircle />
-                  </div>
-                  <div
-                    className={style.iconWrapper}
-                    style={{ color: "#29d929", fontSize: "36px" }}
-                  >
-                    <FaCircle />
-                  </div>
-                </>
-              )}
+                ))}
+              </div>
+            </div>
+            <div className={style.stepsContent}>
+              {[1, 2, 3, 4, 5].map(i => (
+                <div key={i} className={style.stepText}>
+                  <h4><Skeleton width={150} /></h4>
+                  <p><Skeleton count={1} /></p>
+                </div>
+              ))}
             </div>
           </div>
+        ) : (
+          <div className={style.customTimelineContainer} ref={timelineRef}>
+            <div className={style.progressBarContainer} style={{ '--mobile-line-height': mobileLineHeight }}>
+              <div className={style.progressBarTrack}></div>
+              <div className={style.progressBarFill} style={{ '--fill-percent': `${fillPercent}%` }}></div>
+            </div>
 
-          <div className={style.stepsContent}>
-            {loading ? (
-              <>
-                <div className={style.stepText}>
-                  <h4>
-                    <Skeleton width={200} />
-                  </h4>
-                  <p>
-                    <Skeleton count={2} />
-                  </p>
-                </div>
-                <div className={style.stepText}>
-                  <h4>
-                    <Skeleton width={200} />
-                  </h4>
-                  <p>
-                    <Skeleton count={2} />
-                  </p>
-                </div>
-                <div className={style.stepText}>
-                  <h4>
-                    <Skeleton width={200} />
-                  </h4>
-                  <p>
-                    <Skeleton count={2} />
-                  </p>
-                </div>
-                <div className={style.stepText}>
-                  <h4>
-                    <Skeleton width={200} />
-                  </h4>
-                  <p>
-                    <Skeleton count={2} />
-                  </p>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className={style.stepText}>
-                  <h4>
-                    If you sell your device today <br />
-                    <span className={style.highlight}>By 4 pm</span>
-                  </h4>
-                </div>
-                <div className={style.stepText}>
-                  <h4>Get Quote</h4>
-                  <p>
-                    Select your device and answer a few questions about its
-                    condition, our smart tech will instantly calculate the best
-                    price.
-                  </p>
-                </div>
-                <div className={style.stepText}>
-                  <h4>Assign pick-up partner</h4>
-                  <p>
-                    A nearby partner will be assigned to collect your device
-                    right from your doorstep.
-                  </p>
-                </div>
-                <div className={style.stepText}>
-                  <h4>Get paid</h4>
-                  <p>
-                    Once your device is inspected by our partner and approved,
-                    your payment is processed instantly straight to your UPI or
-                    bank account.
-                  </p>
-                </div>
-                <div className={style.stepText}>
-                  <h4>
-                    Get sold your phone <br />
-                    <span className={style.highlight}>By 23 June</span>
-                  </h4>
-                </div>
-              </>
-            )}
+            <div className={style.timelineItems}>
+              {steps.map((step, index) => {
+                // Calculate if this step is "active" based on fill percent
+                // Assume equal spacing: 0%, 25%, 50%, 75%, 100% logic?
+                // Or: 5 items. Spacing is 0, 25, 50, 75, 100.
+                // Step 0 active at >0%?
+                // Let's say triggers are at (index / (steps.length - 1)) * 100
+                const threshold = (index / (steps.length - 1)) * 100;
+                const active = fillPercent >= threshold; // Or slightly before?
 
-            <div className={style.finalNote}>
-              {loading && (
-                <>
-                  <p>
-                    <Skeleton width={100} />
-                  </p>
-                  <h4>
-                    <Skeleton width={80} />
-                  </h4>
-                </>
-              )}
+                return (
+                  <div key={index} className={`${style.timelineItem} ${active ? style.active : ''}`}>
+                    <div className={style.markerContainer} data-marker="true">
+                      <div className={style.marker} style={active ? step.iconStyle : {}}>
+                        {step.icon}
+                      </div>
+                    </div>
+                    <div className={style.contentBox}>
+                      <h3>{step.title}</h3>
+                      {step.subtitle && <h4 style={step.subtitleStyle}>{step.subtitle}</h4>}
+                      {step.description && <p>{step.description}</p>}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
