@@ -163,8 +163,8 @@ function Step6() {
   }, [selectedPaymentMethod]);
 
   const handlePlaceOrder = async () => {
-    if (!selectedAddress || !selectedPaymentMethod) {
-      toast.error("Please select address and payment method");
+    if (!selectedAddress) {
+      toast.error("Please select an address");
       return;
     }
 
@@ -226,7 +226,7 @@ function Step6() {
     navigate(`/${slug}/final-price-calculator?${queryParams.toString()}`);
   };
 
-  const isOrderReady = selectedAddress && selectedPaymentMethod;
+  const isOrderReady = !!selectedAddress;
 
   return (
     <>
@@ -601,16 +601,15 @@ function Step6() {
             {/* Place Order Button */}
             <div className={styles.sellNowContainer}>
               <button
-                className={`${styles.sellNow} ${!isOrderReady ? styles.disabled : ""
-                  }`}
-                onClick={handlePlaceOrder}
-                disabled={loading || !isOrderReady}
+                className={styles.sellNow}
+                onClick={selectedAddress ? handlePlaceOrder : handleChangeAddress}
+                disabled={loading}
               >
-                Place Order
+                {selectedAddress ? "Place Order" : "Add Address"}
               </button>
-              {!isOrderReady && (
+              {!selectedAddress && (
                 <p className={styles.orderWarning}>
-                  Please select address and payment method to continue
+                  Please select an address to continue
                 </p>
               )}
             </div>

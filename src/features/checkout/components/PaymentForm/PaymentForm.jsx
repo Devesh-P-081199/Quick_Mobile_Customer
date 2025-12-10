@@ -313,7 +313,7 @@ const PaymentForm = () => {
           {/* Sticky Bottom Button */}
           <div className={styles.stickyBottom}>
             <button className={styles.submitButton} onClick={handleSubmit}>
-              {editingPayment ? "Update & Save" : "Submit"}
+              {editingPayment ? "Update" : "Save and Continue"}
             </button>
           </div>
         </div>

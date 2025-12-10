@@ -406,7 +406,7 @@ const AddressForm = () => {
           {/* Sticky Bottom Buttons */}
           <div className={styles.stickyBottom}>
             <button className={styles.submitButton} onClick={handleSubmit}>
-              {editingAddress ? "Update" : "Submit"}
+              {editingAddress ? "Update" : "Save and Continue"}
             </button>
           </div>
         </div>
