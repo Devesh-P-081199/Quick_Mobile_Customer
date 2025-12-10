@@ -157,7 +157,7 @@ const Answers = ({ onBack, onRecalculate }) => {
         {displayAnswers?.map((pkg, pkgIndex) => (
           <div key={pkgIndex} className={styles.packageBlock}>
             <h4>
-              <strong>{pkgIndex + 1}.</strong> {pkg.packageType}
+              {pkgIndex + 1}. {pkg.packageType}
             </h4>
             <ol className={styles.questionList}>
               {pkg.questions?.map((q, qIndex) => (

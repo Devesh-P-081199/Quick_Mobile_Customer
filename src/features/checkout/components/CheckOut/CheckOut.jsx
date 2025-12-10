@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { UserContext } from "../../../../Context/contextAPI";
 import api from "../../../../Utils/api";
 import BreadCrumb from "../../../../components/layout/BreadCrumb/BreadCrumb";
-import MobileCommonHeaderthree from "../../../../Components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileCommonHeaderthree from "../../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 import { FaPlus } from "react-icons/fa";
 import trash from "../../../../assets/flaticons/trash-basecolor.png";
 import edit from "../../../../assets/flaticons/pen-basecolor.png";
@@ -34,7 +34,7 @@ function CheckOut() {
   const handleEdit = (address) => {
     const addressId = address._id || address.id;
     navigate(`/${slug}/check-out/edit-address/${addressId}`, {
-      state: { address },
+      state: { address, returnPath: location.pathname },
     });
   };
 
@@ -55,7 +55,9 @@ function CheckOut() {
 
   // Handle add new address
   const handleAddNew = () => {
-    navigate(`/${slug}/check-out/add-address`);
+    navigate(`/${slug}/check-out/add-address`, {
+      state: { returnPath: location.pathname }
+    });
   };
 
   // Handle back navigation - preserve query params for Step6
@@ -119,7 +121,7 @@ function CheckOut() {
           <div className={styles.LeftContainer}>
             <div className={styles.addressBoxes}>
               <button className={styles.addBtn} onClick={handleAddNew}>
-                <FaPlus /> Add New Addressx
+                <FaPlus /> Add New Address
               </button>
               <div className={styles.addressList}>
                 {address?.length > 0 ? (

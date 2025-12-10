@@ -134,10 +134,14 @@ const PaymentForm = () => {
       }
 
       // Navigate back based on where we came from
-      if (window.location.pathname.includes("/profile/")) {
+      if (location.state?.returnPath) {
+        navigate(location.state.returnPath, {
+          state: { returnPath: location.state.prevReturnPath }
+        });
+      } else if (window.location.pathname.includes("/profile/")) {
         navigate("/my-profile-payments");
       } else {
-        navigate(`/${slug}/check-out/payment`);
+        navigate(`/${slug}/payment`);
       }
     } catch (error) {
       console.error("Error saving payment method:", error);
@@ -159,11 +163,10 @@ const PaymentForm = () => {
               <span className={styles.paymentTypeLabel}>Payment Type:</span>
               <div className={styles.radioButtonGroup}>
                 <label
-                  className={`${styles.radioButton} ${
-                    formData.paymentType === "UPI"
-                      ? styles.radioButtonSelected
-                      : ""
-                  }`}
+                  className={`${styles.radioButton} ${formData.paymentType === "UPI"
+                    ? styles.radioButtonSelected
+                    : ""
+                    }`}
                 >
                   <input
                     type="radio"
@@ -176,11 +179,10 @@ const PaymentForm = () => {
                   UPI
                 </label>
                 <label
-                  className={`${styles.radioButton} ${
-                    formData.paymentType === "Bank"
-                      ? styles.radioButtonSelected
-                      : ""
-                  }`}
+                  className={`${styles.radioButton} ${formData.paymentType === "Bank"
+                    ? styles.radioButtonSelected
+                    : ""
+                    }`}
                 >
                   <input
                     type="radio"

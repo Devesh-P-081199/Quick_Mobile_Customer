@@ -14,8 +14,8 @@ import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import api from "../../../Utils/api";
-import Answers from "../AnswerList/answers";
-import MobileCommonHeaderthree from "../../layout/MobileCommonHeader/MobileCommonHeaderthree";
+import Answers from "../AnswerList/Answers";
+import MobileCommonHeaderthree from "../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 import arrow from "../../../assets/QuickSellNewIcons/backarrowwithouttail.svg";
 import closeIcon from "../../../assets/QuickSellNewIcons/cross.svg";
 
@@ -196,7 +196,9 @@ function Step6() {
 
     // If no addresses exist, go directly to add-address page
     if (addresses.length === 0) {
-      navigate(`/${slug}/check-out/add-address${urlSuffix}`);
+      navigate(`/${slug}/check-out/add-address${urlSuffix}`, {
+        state: { returnPath: location.pathname + location.search }
+      });
     } else {
       // Pass addresses to CheckOut component via navigation state
       navigate(`/${slug}/check-out${urlSuffix}`, { state: { addresses } });
@@ -210,7 +212,9 @@ function Step6() {
 
     // If no payment methods exist, go directly to add-payment page
     if (paymentMethods.upi.length === 0 && paymentMethods.bank.length === 0) {
-      navigate(`/${slug}/payment/add-payment${urlSuffix}`);
+      navigate(`/${slug}/payment/add-payment${urlSuffix}`, {
+        state: { returnPath: location.pathname + location.search }
+      });
     } else {
       // Pass payment methods to Payment component via navigation state
       navigate(`/${slug}/payment${urlSuffix}`, { state: { paymentMethods } });

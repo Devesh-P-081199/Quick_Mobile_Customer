@@ -166,7 +166,7 @@ function PaymentComponent() {
   const handleEditUpi = (upiData) => {
     const upiId = upiData._id || upiData.id;
     navigate(`/${slug}/payment/edit-payment/${upiId}`, {
-      state: { paymentData: upiData, paymentType: "UPI" },
+      state: { paymentData: upiData, paymentType: "UPI", returnPath: location.pathname, prevReturnPath: location.state?.returnPath },
     });
   };
 
@@ -174,7 +174,7 @@ function PaymentComponent() {
   const handleEditBank = (bankData) => {
     const bankId = bankData._id || bankData.id;
     navigate(`/${slug}/payment/edit-payment/${bankId}`, {
-      state: { paymentData: bankData, paymentType: "Bank" },
+      state: { paymentData: bankData, paymentType: "Bank", returnPath: location.pathname, prevReturnPath: location.state?.returnPath },
     });
   };
 
@@ -235,6 +235,15 @@ function PaymentComponent() {
   };
 
   const handleBack = () => {
+    // Check for custom return path in state
+    if (location.state?.returnPath) {
+      navigate(location.state.returnPath, {
+        replace: true,
+        state: { paymentUpdated: true }
+      });
+      return;
+    }
+
     // Navigate back to order summary - preserve query params
     const queryString = new URLSearchParams(location.search).toString();
     const targetUrl = queryString
@@ -248,6 +257,16 @@ function PaymentComponent() {
       toast.error("Please select a payment method");
       return;
     }
+
+    // Check for custom return path in state
+    if (location.state?.returnPath) {
+      navigate(location.state.returnPath, {
+        replace: true,
+        state: { paymentUpdated: true }
+      });
+      return;
+    }
+
     // Navigate back to order summary - preserve query params
     const queryString = new URLSearchParams(location.search).toString();
     const targetUrl = queryString
@@ -268,7 +287,7 @@ function PaymentComponent() {
             {/* Add New Payment Method Button */}
             <button
               className={styles.addBtn}
-              onClick={() => navigate(`/${slug}/payment/add-payment`)}
+              onClick={() => navigate(`/${slug}/payment/add-payment`, { state: { returnPath: location.pathname, prevReturnPath: location.state?.returnPath } })}
             >
               <FaPlus /> Add Payment Method
             </button>

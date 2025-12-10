@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SavedAddress.module.css";
 import ProfileCard from "../components/ProfileCard";
-import MobileCommonHeaderthree from "../../../Components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileCommonHeaderthree from "../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 import { FaMapMarkerAlt, FaPlus, FaHome, FaBriefcase } from "react-icons/fa";
 import api from "../../../Utils/api";
 import { toast } from "react-toastify";
@@ -29,13 +29,15 @@ const SavedAddress = () => {
   };
 
   const handleAddNew = () => {
-    navigate("/profile/saved-address/add-address");
+    navigate("/profile/saved-address/add-address", {
+      state: { returnPath: location.pathname }
+    });
   };
 
   const handleEdit = (address) => {
     const addressId = address._id || address.id;
     navigate(`/profile/saved-address/edit-address/${addressId}`, {
-      state: { address },
+      state: { address, returnPath: location.pathname },
     });
   };
 

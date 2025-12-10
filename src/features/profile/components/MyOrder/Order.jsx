@@ -40,7 +40,7 @@ const OrderCard = () => {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.orderContainer}>
         {orders?.map((ord) => (
           <div
             key={ord._id}

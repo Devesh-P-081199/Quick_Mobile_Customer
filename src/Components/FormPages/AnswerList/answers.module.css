@@ -53,7 +53,7 @@
 }
 
 .recalculateButton {
-  padding: 0px 25px;
+  padding: 0px 15px;
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -61,14 +61,11 @@
   font-weight: 600;
   cursor: pointer;
   transition: 0.2s ease-in-out;
-  border: 0.3px solid #e1e1e1;
   width: 270px;
 }
 
 .recalculateButton:hover {
-  background-color: #000;
-  color: #fff;
-  border-color: #000;
+  color: #2f39ee;
 }
 
 .calcIcon {
@@ -85,7 +82,7 @@
 
 .packageBlock h4 {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 10px;
   color: #111;
 }
@@ -111,28 +108,30 @@
 
 /* Custom bullet point */
 .questionList li::before {
-  content: "•";
+  content: "-";
   position: absolute;
   left: 0;
   top: 0;
   font-weight: bold;
   color: #000000;
-  font-size: 20px;
-  line-height: 1.2;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .question {
   color: #000000;
+  font-size: 14px;
   margin-bottom: 0px;
 }
 
 /* Answer styles */
 .yes {
-  color: #F4911E;
-
+  color: #f26921;
+  font-size: 12px;
 }
 
 .no {
-  color: #F4911E;
+  color: #f26921;
+  font-size: 12px;
 
 }

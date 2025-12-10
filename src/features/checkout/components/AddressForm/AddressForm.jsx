@@ -3,7 +3,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import styles from "./AddressForm.module.css";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
-import MobileCommonHeaderthree from "../../../../Components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileCommonHeaderthree from "../../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 import BreadCrumb from "../../../../components/layout/BreadCrumb/BreadCrumb";
 
 const AddressForm = () => {
@@ -139,7 +139,9 @@ const AddressForm = () => {
       }
 
       // Check if we're coming from profile/saved-address or checkout
-      if (location.pathname.includes("/profile/saved-address")) {
+      if (location.state?.returnPath) {
+        navigate(location.state.returnPath);
+      } else if (location.pathname.includes("/profile/saved-address")) {
         navigate("/profile/saved-address");
       } else {
         navigate(`/${slug}/check-out`);
@@ -284,9 +286,8 @@ const AddressForm = () => {
                 name="state"
                 value={formData.state}
                 onChange={handleInputChange}
-                className={`${styles.input} ${
-                  !formData.state ? styles.placeholderSelect : ""
-                }`}
+                className={`${styles.input} ${!formData.state ? styles.placeholderSelect : ""
+                  }`}
               >
                 <option value="">Select State</option>
                 {statesAddress.map((state) => (
@@ -318,9 +319,8 @@ const AddressForm = () => {
               <span className={styles.saveAsLabel}>Save as:</span>
               <div className={styles.radioButtonGroup}>
                 <label
-                  className={`${styles.radioButton} ${
-                    formData.saveAs === "Home" ? styles.radioButtonSelected : ""
-                  }`}
+                  className={`${styles.radioButton} ${formData.saveAs === "Home" ? styles.radioButtonSelected : ""
+                    }`}
                 >
                   <input
                     type="radio"
@@ -333,11 +333,10 @@ const AddressForm = () => {
                   Home
                 </label>
                 <label
-                  className={`${styles.radioButton} ${
-                    formData.saveAs === "Office"
-                      ? styles.radioButtonSelected
-                      : ""
-                  }`}
+                  className={`${styles.radioButton} ${formData.saveAs === "Office"
+                    ? styles.radioButtonSelected
+                    : ""
+                    }`}
                 >
                   <input
                     type="radio"
@@ -350,11 +349,10 @@ const AddressForm = () => {
                   Office
                 </label>
                 <label
-                  className={`${styles.radioButton} ${
-                    formData.saveAs === "Other"
-                      ? styles.radioButtonSelected
-                      : ""
-                  }`}
+                  className={`${styles.radioButton} ${formData.saveAs === "Other"
+                    ? styles.radioButtonSelected
+                    : ""
+                    }`}
                 >
                   <input
                     type="radio"
