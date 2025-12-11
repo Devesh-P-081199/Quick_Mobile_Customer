@@ -182,7 +182,10 @@ function Step6() {
 
       console.log("Order response", placeOrder.data);
       toast.success("Order placed successfully!");
-      navigate("/thank-you", { replace: true });
+      navigate("/thank-you", {
+        replace: true,
+        state: { orderData: placeOrder.data }
+      });
     } catch (error) {
       console.error("Error placing order:", error);
       toast.error(`${error?.response?.data?.error || "Failed to place order"}`);
