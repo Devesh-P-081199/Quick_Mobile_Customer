@@ -100,67 +100,73 @@ function PaymentComponent() {
       setPaymentUpi(sortedUpi);
       setPaymentBank(sortedBank);
       setInitialSortDone(true);
+
+      // Handle Selection Logic Immediately
+      if (location.state?.paymentUpdated && selectedPaymentMethod) {
+        // If coming back from update, keep the selected method
+        // Just ensure indices and tabs are correct
+        if (selectedPaymentMethod.type === "upi") {
+          setSelectedMethod(0);
+          const idx = sortedUpi.findIndex(u => (u._id || u.id) === (selectedPaymentMethod._id || selectedPaymentMethod.id));
+          if (idx !== -1) setSelectedUpiIndex(idx);
+        } else if (selectedPaymentMethod.type === "bank") {
+          setSelectedMethod(1);
+          const idx = sortedBank.findIndex(b => (b._id || b.id) === (selectedPaymentMethod._id || selectedPaymentMethod.id));
+          if (idx !== -1) setSelectedBankIndex(idx);
+        }
+      } else if (!selectedPaymentMethod) {
+        // Auto-select defaults if nothing selected
+        if (sortedUpi.length > 0) {
+          setSelectedMethod(0);
+          setSelectedUpiIndex(0);
+          setSelectedPaymentMethod({ type: "upi", ...sortedUpi[0] });
+        } else if (sortedBank.length > 0) {
+          setSelectedMethod(1);
+          setSelectedBankIndex(0);
+          setSelectedPaymentMethod({ type: "bank", ...sortedBank[0] });
+        } else {
+          // No methods, default to UPI tab
+          setSelectedMethod(0);
+        }
+      } else {
+        // selectedPaymentMethod exists (e.g. from context navigation)
+        // Ensure UI matches context
+        if (selectedPaymentMethod.type === "upi") {
+          const idx = sortedUpi.findIndex(u => (u._id || u.id) === (selectedPaymentMethod._id || selectedPaymentMethod.id));
+          if (idx !== -1) {
+            setSelectedMethod(0);
+            setSelectedUpiIndex(idx);
+          } else if (sortedUpi.length > 0) {
+            // Fallback if ID not found (e.g. deleted)
+            setSelectedMethod(0);
+            setSelectedUpiIndex(0);
+            setSelectedPaymentMethod({ type: "upi", ...sortedUpi[0] });
+          }
+        } else if (selectedPaymentMethod.type === "bank") {
+          const idx = sortedBank.findIndex(b => (b._id || b.id) === (selectedPaymentMethod._id || selectedPaymentMethod.id));
+          if (idx !== -1) {
+            setSelectedMethod(1);
+            setSelectedBankIndex(idx);
+          } else if (sortedBank.length > 0) {
+            // Fallback
+            setSelectedMethod(1);
+            setSelectedBankIndex(0);
+            setSelectedPaymentMethod({ type: "bank", ...sortedBank[0] });
+          }
+        }
+      }
     };
 
     loadPaymentMethods();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Sync effect to handle external updates to context (if any) or tab switching
   useEffect(() => {
-    // Only run this after initial sort is done
     if (!initialSortDone) return;
-
-    // Set default tab based on selected payment method or default to UPI
-    if (selectedMethod === null) {
-      if (selectedPaymentMethod?.type === "bank") {
-        setSelectedMethod(1);
-      } else {
-        setSelectedMethod(0);
-      }
-    }
-
-    // Set the selected index based on the selectedPaymentMethod from context
-    if (selectedPaymentMethod) {
-      if (selectedPaymentMethod.type === "upi" && paymentUpi.length > 0) {
-        const selectedId =
-          selectedPaymentMethod._id || selectedPaymentMethod.id;
-        const index = paymentUpi.findIndex(
-          (upi) => (upi._id || upi.id) === selectedId
-        );
-        if (index !== -1) {
-          setSelectedUpiIndex(index);
-        }
-      } else if (
-        selectedPaymentMethod.type === "bank" &&
-        paymentBank.length > 0
-      ) {
-        const selectedId =
-          selectedPaymentMethod._id || selectedPaymentMethod.id;
-        const index = paymentBank.findIndex(
-          (bank) => (bank._id || bank.id) === selectedId
-        );
-        if (index !== -1) {
-          setSelectedBankIndex(index);
-        }
-      }
-    } else {
-      // Auto-select first item if nothing is selected
-      if (paymentBank.length > 0 && selectedMethod === 1) {
-        setSelectedBankIndex(0);
-        setSelectedPaymentMethod({ type: "bank", ...paymentBank[0] });
-      } else if (paymentUpi.length > 0 && selectedMethod === 0) {
-        setSelectedUpiIndex(0);
-        setSelectedPaymentMethod({ type: "upi", ...paymentUpi[0] });
-      }
-    }
-  }, [
-    paymentBank,
-    paymentUpi,
-    selectedMethod,
-    setSelectedPaymentMethod,
-    initialSortDone,
-    selectedPaymentMethod,
-  ]);
+    // Only run if we have a selected method but indices aren't matching or need tab switch
+    // This is a safety/sync check, but main logic is now in load
+  }, [selectedPaymentMethod, initialSortDone]);
 
   // Handle edit UPI
   const handleEditUpi = (upiData) => {

@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import styles from "./PaymentForm.module.css";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
 import MobileCommonHeaderthree from "../../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 import BreadCrumb from "../../../../components/layout/BreadCrumb/BreadCrumb";
+import { UserContext } from "../../../../Context/contextAPI";
 
 const PaymentForm = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const PaymentForm = () => {
   const location = useLocation();
   const editingPayment = location.state?.paymentData;
   const editingPaymentType = location.state?.paymentType;
+  const { setSelectedPaymentMethod } = useContext(UserContext);
 
   const [formData, setFormData] = useState({
     paymentType: "UPI",
@@ -73,6 +75,9 @@ const PaymentForm = () => {
       const editPaymentId =
         editingPayment?._id || editingPayment?.id || paymentId;
 
+      let response;
+      let newPaymentData;
+
       if (formData.paymentType === "UPI") {
         if (!formData.upiId) {
           toast.error("Please enter UPI ID");
@@ -81,17 +86,24 @@ const PaymentForm = () => {
 
         if (editPaymentId) {
           // Update existing UPI
-          await api.put(`/sell-module/user/payment-upi/${editPaymentId}`, {
+          response = await api.put(`/sell-module/user/payment-upi/${editPaymentId}`, {
             upiId: formData.upiId,
           });
           toast.success("UPI updated successfully");
         } else {
           // Add new UPI
-          await api.post("/sell-module/user/payment-upi", {
+          response = await api.post("/sell-module/user/payment-upi", {
             upiId: formData.upiId,
           });
           toast.success("UPI added successfully");
         }
+        // Prepare data for context - explicitly structure it to match UI expectations
+        newPaymentData = {
+          type: "upi",
+          upiId: formData.upiId,
+          ...response.data
+        };
+
       } else {
         if (
           !formData.accountNumber ||
@@ -121,16 +133,27 @@ const PaymentForm = () => {
 
         if (editPaymentId) {
           // Update existing Bank
-          await api.put(
+          response = await api.put(
             `/sell-module/user/payment-bank/${editPaymentId}`,
             bankData
           );
           toast.success("Bank details updated successfully");
         } else {
           // Add new Bank
-          await api.post("/sell-module/user/payment-bank", bankData);
+          response = await api.post("/sell-module/user/payment-bank", bankData);
           toast.success("Bank details added successfully");
         }
+        // Prepare data for context - explicitly nest bankDetails
+        newPaymentData = {
+          type: "bank",
+          bankDetails: bankData,
+          ...response.data
+        };
+      }
+
+      // Auto-select the new/updated payment method
+      if (newPaymentData) {
+        setSelectedPaymentMethod(newPaymentData);
       }
 
       // Navigate back based on where we came from

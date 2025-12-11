@@ -929,10 +929,6 @@
   min-height: 30px;
 }
 
-.changeBtn:hover {
-  background-color: #145a94;
-}
-
 .sellNow.disabled {
   background-color: #cccccc;
   cursor: not-allowed;

@@ -605,13 +605,8 @@ function Step6() {
                 onClick={selectedAddress ? handlePlaceOrder : handleChangeAddress}
                 disabled={loading}
               >
-                {selectedAddress ? "Place Order" : "Add Address"}
+                {selectedAddress ? "Place Order" : "Add Address to Continue"}
               </button>
-              {!selectedAddress && (
-                <p className={styles.orderWarning}>
-                  Please select an address to continue
-                </p>
-              )}
             </div>
 
             {/* Apply Coupon Button */}

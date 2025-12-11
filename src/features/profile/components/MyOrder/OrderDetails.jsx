@@ -21,6 +21,7 @@ const OrderDetails = () => {
     const [selected, setSelected] = useState("user");
     const [rating, setRating] = useState(0);
     const [reviewMessage, setReviewMessage] = useState("");
+    const [hasSavedPayments, setHasSavedPayments] = useState(false);
 
     const defaultTransaction = {
         transactionId: "TXN" + Math.random().toString(36).substr(2, 9).toUpperCase() + Math.random().toString(36).substr(2, 4).toUpperCase(), // Approx 16 chars
@@ -69,6 +70,23 @@ const OrderDetails = () => {
         }
     }, [orderId]);
 
+    useEffect(() => {
+        const checkSavedPayments = async () => {
+            try {
+                const [upiResp, bankResp] = await Promise.all([
+                    api.get("/sell-module/user/payment-upi"),
+                    api.get("/sell-module/user/payment-bank")
+                ]);
+                const hasUpi = upiResp?.data?.upiMethods?.length > 0;
+                const hasBank = bankResp?.data?.bankMethods?.length > 0;
+                setHasSavedPayments(hasUpi || hasBank);
+            } catch (error) {
+                console.error("Error checking saved payments", error);
+            }
+        };
+        checkSavedPayments();
+    }, []);
+
     const getRatingColor = (rating) => {
         if (rating > 3.5) return "#34a853"; // Green
         if (rating >= 2) return "#fbbc05"; // Yellow
@@ -86,11 +104,18 @@ const OrderDetails = () => {
         if (order?.paymentDetail) {
             setSelectedPaymentMethod(order.paymentDetail);
         }
-        // Navigate to payment page with return path
-        // Using "user" as generic slug since this is a profile page
-        navigate(`/user/payment`, {
-            state: { returnPath: location.pathname }
-        });
+
+        if (displayPayment || hasSavedPayments) {
+            // Navigate to payment list page with return path
+            navigate(`/user/payment`, {
+                state: { returnPath: location.pathname }
+            });
+        } else {
+            // Navigate directly to add payment page with return path
+            navigate(`/user/payment/add-payment`, {
+                state: { returnPath: location.pathname }
+            });
+        }
     };
 
     const handleUpdatePayment = async () => {
@@ -131,7 +156,7 @@ const OrderDetails = () => {
         if (selectedPaymentMethod && order && selectedPaymentMethod._id !== order.paymentDetail?._id) {
             handleUpdatePayment();
         }
-    }, [selectedPaymentMethod]);
+    }, [selectedPaymentMethod, order]);
 
     if (loading) return <div className="p-4">Loading...</div>;
     if (!order) return <div className="p-4">Order not found</div>;
@@ -217,7 +242,7 @@ const OrderDetails = () => {
                                 className={styles.changeBtn}
                                 onClick={handleChangePayment}
                             >
-                                {displayPayment ? "Change" : "Add"}
+                                {displayPayment ? "Change" : (hasSavedPayments ? "Select" : "Add")}
                             </button>
                         </div>
                         {displayPayment ? (
