@@ -245,7 +245,10 @@ function PaymentComponent() {
     if (location.state?.returnPath) {
       navigate(location.state.returnPath, {
         replace: true,
-        state: { paymentUpdated: true }
+        state: {
+          paymentUpdated: true,
+          orderData: location.state?.orderData
+        }
       });
       return;
     }
@@ -268,7 +271,10 @@ function PaymentComponent() {
     if (location.state?.returnPath) {
       navigate(location.state.returnPath, {
         replace: true,
-        state: { paymentUpdated: true }
+        state: {
+          paymentUpdated: true,
+          orderData: location.state?.orderData
+        }
       });
       return;
     }
@@ -291,9 +297,16 @@ function PaymentComponent() {
             <h2 className={styles.Title}>Payment</h2>
 
             {/* Add New Payment Method Button */}
+            {/* Add New Payment Method Button */}
             <button
               className={styles.addBtn}
-              onClick={() => navigate(`/${slug}/payment/add-payment`, { state: { returnPath: location.pathname, prevReturnPath: location.state?.returnPath } })}
+              onClick={() => navigate(`/${slug}/payment/add-payment`, {
+                state: {
+                  returnPath: location.pathname,
+                  prevReturnPath: location.state?.returnPath,
+                  orderData: location.state?.orderData
+                }
+              })}
             >
               <FaPlus /> Add Payment Method
             </button>

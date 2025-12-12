@@ -6,16 +6,14 @@
 
 .pageTitle {
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 500;
   color: #000;
   margin-bottom: 10px;
-  text-align: center;
 }
 
 .pageDescription {
   font-size: 16px;
   color: #666;
-  text-align: center;
   margin-bottom: 40px;
 }
 
@@ -32,12 +30,8 @@
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.storeCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
 }
 
 /* Image Section */
@@ -61,7 +55,6 @@
   display: flex;
   gap: 8px;
   padding: 10px;
-  background: #f9f9f9;
 }
 
 .thumbnail {
@@ -90,14 +83,29 @@
 
 /* Store Info */
 .storeInfo {
-  padding: 20px;
+  padding: 10px;
 }
 
 .storeName {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   color: #000;
   margin-bottom: 12px;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.time img {
+  width: 30px;
+  height: 30px;
+  padding: 5.3px;
+  border-radius: 50%;
+  background-color: #ddefff !important;
 }
 
 .address {
@@ -107,6 +115,14 @@
   margin-bottom: 15px;
 }
 
+.address img {
+  width: 30px;
+  height: 30px;
+  padding: 5.3px;
+  border-radius: 50%;
+  background-color: #ddefff !important;
+}
+
 .locationIcon {
   color: #1968b3;
   flex-shrink: 0;
@@ -114,6 +130,13 @@
 }
 
 .address p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.time p {
   color: #666;
   font-size: 14px;
   line-height: 1.5;
@@ -144,12 +167,12 @@
   }
 
   .pageTitle {
-    font-size: 24px;
+    font-size: 16px;
   }
 
   .pageDescription {
     font-size: 14px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
 
   .storesGrid {

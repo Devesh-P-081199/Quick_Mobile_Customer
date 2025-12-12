@@ -159,7 +159,10 @@ const PaymentForm = () => {
       // Navigate back based on where we came from
       if (location.state?.returnPath) {
         navigate(location.state.returnPath, {
-          state: { returnPath: location.state.prevReturnPath }
+          state: {
+            returnPath: location.state.prevReturnPath,
+            orderData: location.state?.orderData
+          }
         });
       } else if (window.location.pathname.includes("/profile/")) {
         navigate("/my-profile-payments");
