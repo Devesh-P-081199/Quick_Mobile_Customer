@@ -3,6 +3,7 @@ import styles from "./StoresListPage.module.css";
 import MobileCommonHeaderthree from "../Components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 import location from "../assets/flaticons/location.png";
 import time from "../assets/flaticons/clock.png";
+import storeImg from "../assets/images/store_img.jpg";
 
 // Sample stores data - replace with API call
 const STORES_DATA = [
@@ -12,7 +13,7 @@ const STORES_DATA = [
     time: "9:00 AM - 6:00 PM",
     address: "Shop no. 09, St. John Baptist School Building, Opp. Jyoti Stores, Charai, Thane West - 400601",
     images: [
-      "../assets/images/store_img.jpg",
+      storeImg,
     ],
   }
 ];
