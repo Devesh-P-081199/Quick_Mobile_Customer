@@ -990,7 +990,7 @@ const Header = () => {
                 <div>
                   <p className={styles.greeting}>Hi!</p>
                   <p className={styles.prompt}>
-                    <strong>{user?.userName || "Please Login/Signup"}</strong>
+                    {user?.userName || "Please Login/Signup"}
                   </p>
                   <p className={styles.note}>
                     For the best experience and customized offer

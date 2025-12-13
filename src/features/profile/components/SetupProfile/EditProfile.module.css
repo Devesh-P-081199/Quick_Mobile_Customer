@@ -11,10 +11,11 @@
 
 .left {
   flex: 2;
-  padding: 24px 12px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 20px 10px;
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
 }
+
 .right {
   flex: 1;
 }
@@ -23,7 +24,7 @@
   display: flex;
   justify-content: start;
   position: relative;
-  margin-bottom: 1.5rem;
+  margin-bottom: 25px;
 }
 
 .avatar {
@@ -65,7 +66,7 @@
 }
 
 .formGroup {
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
 }
 
 .label {
@@ -81,9 +82,9 @@
 
 .input {
   width: 100%;
-  padding: 0.65rem 1rem;
+  padding: 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 0.3px solid #e1e1e1;
   outline: none;
   font-size: 16px;
   background-color: white;
@@ -165,6 +166,7 @@
   0% {
     transform: translateY(-50%) rotate(0deg);
   }
+
   100% {
     transform: translateY(-50%) rotate(360deg);
   }
@@ -197,7 +199,7 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   z-index: 1000;
   animation: fadeIn 0.2s ease-out;
@@ -208,6 +210,7 @@
   from {
     background: rgba(0, 0, 0, 0);
   }
+
   to {
     background: rgba(0, 0, 0, 0.5);
   }
@@ -315,7 +318,56 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 756px) {
+  .input {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .saveButton {
+    margin-top: 0;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    height: 45px;
+  }
+
+  .modalOverlay {
+    padding: 0;
+  }
+
+  .modalContent {
+    border-radius: 15px;
+    padding: 20px 15px;
+    margin: 0 20px;
+  }
+
+  .modalCloseButton {
+    top: 10px;
+    right: 10px;
+  }
+
+  .modalTitle {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+
+  .modalOptions {
+    margin-bottom: 0;
+    gap: 10px;
+  }
+
+  .modalButton {
+    padding: 0px;
+  }
+
+  .modalButton:hover {
+    background: transparent;
   }
 }

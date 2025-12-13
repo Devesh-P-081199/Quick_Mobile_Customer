@@ -157,11 +157,11 @@ function StorePage() {
           <div className={styles.storeInfo}>
             <h3 className={styles.storeName}>{STORE_DATA.name}</h3>
             <div className={styles.address}>
-              <img src={location} alt="" />
+              <img src={location} alt="" className="navIcon" />
               <p>{STORE_DATA.address}</p>
             </div>
             <div className={styles.time}>
-              <img src={time} alt="" />
+              <img src={time} alt="" className="navIcon" />
               <p>{STORE_DATA.time}</p>
             </div>
 

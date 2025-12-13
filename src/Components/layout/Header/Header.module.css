@@ -419,7 +419,6 @@
   display: flex;
   gap: 12px;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .locationDetectButton {
@@ -2327,7 +2326,7 @@
 }
 
 .sidebarContent {
-  padding: var(--spacing-3);
+  padding: 10px;
   /* Reduced padding for content */
 }
 
@@ -2396,24 +2395,22 @@
 }
 
 .greeting {
-  font-weight: bold;
   margin: 0;
   font-size: 18px;
+  font-weight: 500;
 }
 
 .prompt {
   margin-bottom: 5px;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .note {
-  font-size: 12px;
+  font-size: 14px;
   color: #000000;
   padding: 0;
-  /* Remove padding */
   margin: 0;
-  /* Remove margin */
 }
 
 .menuList {
@@ -3303,8 +3300,9 @@
 }
 
 .MobileInnerBox .rightBrandBox .mobileModalUl :global(img.brandimage) {
-  width: 90px !important;
-  height: 90px !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 100px !important;
   object-fit: contain;
 }
 
@@ -3870,6 +3868,10 @@
     border-color: #1968b3;
   }
 
+  .modalHeader {
+    margin-bottom: 20px;
+  }
+
   .modalHeader h2 {
     font-size: 18px;
     font-weight: 500;
@@ -3884,6 +3886,84 @@
   }
 
   .modalCityHeading {
-    margin: 15px 0;
+    margin: 25px 0 15px;
+  }
+
+  .otherCityPill {
+    height: 39px;
+    border: 1px solid #e1e1e1;
+  }
+
+  .selectedCityPill {
+    border-color: #1968b3;
+  }
+
+  .sidebarHeader {
+    padding: 10px;
+  }
+
+  .sidebarContent {
+    padding: 10px;
+  }
+
+  .loginButton {
+    border-radius: 10px;
+    color: #ffffff !important;
+    background-color: #1968b3;
+    font-size: 16px;
+    padding: 12px 30px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-left: 10px;
+  }
+
+  .closeBtn {
+    top: 8px;
+    right: 7px;
+  }
+
+  .loginBox {
+    margin: 0;
+  }
+
+  .menuList {
+    margin-top: 3px;
+  }
+
+  .loginButton {
+    padding: 8px 30px;
+  }
+
+  .note {
+    font-size: 14px;
+  }
+
+  .mobileModalUl li {
+    font-size: 12px;
+    border-bottom: 0.7px solid #e1e1e1;
+  }
+
+  .MobileInnerBox .leftBrandBox {
+    min-width: 30%;
+  }
+
+  .leftBrandBox img {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    border: 0.3px solid #e1e1e1;
+  }
+
+  .MobileInnerBox .rightBrandBox {
+    min-width: 70%;
+    padding: 10px;
+  }
+
+  .MobileInnerBox .rightBrandBox .mobileModalUl :global(img.brandimage) {
+    border-radius: 10px;
   }
 }

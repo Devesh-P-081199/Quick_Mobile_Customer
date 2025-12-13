@@ -9,7 +9,7 @@
   background: #ffffff;
   border-radius: 15px;
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .mainImage {
@@ -94,7 +94,7 @@
   background: #ffffff;
   padding: 10px;
   border-radius: 15px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border: 0.3px solid #e1e1e1;
 }
 
@@ -109,21 +109,21 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .storeName {
   font-size: 16px;
   font-weight: 500;
   color: #000;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .time {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .time img {
@@ -138,7 +138,6 @@
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  margin-bottom: 15px;
 }
 
 .address img {
@@ -237,6 +236,7 @@
   gap: 10px;
   display: flex;
   flex-direction: column;
+  border: 0.3px solid #e1e1e1;
 }
 
 .reviewSection h2 {
@@ -293,7 +293,7 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .storePage {
-    padding: 15px 0;
+    padding: 20px 0;
   }
 
   .mainImage {
@@ -302,15 +302,21 @@
 
   .storeName {
     font-size: 16px;
+    margin-bottom: 10px;
   }
 
   .actionButtons {
     flex-direction: row;
+    gap: 10px;
   }
 
   .directionsBtn,
   .callBtn {
     width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    height: 45px;
+    padding: 11px 20px;
   }
 
   .servicesSection h2,
@@ -318,7 +324,35 @@
     font-size: 16px;
   }
 
+  .servicesSection {
+    margin-bottom: 15px;
+  }
+
   .sliderBtn {
     display: none;
+  }
+
+  .bannerSection {
+    margin-bottom: 15px;
+  }
+
+  .storeInfo {
+    margin-bottom: 15px;
+  }
+
+  .address {
+    margin-bottom: 10px;
+  }
+
+  .time {
+    margin-bottom: 10px;
+  }
+
+  .servicesList li {
+    height: 45px;
+  }
+
+  .submitButton {
+    padding: 12px 16px;
   }
 }

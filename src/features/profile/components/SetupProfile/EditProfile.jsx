@@ -274,7 +274,7 @@ const EditProfile = () => {
                     onClick={handleFileUpload}
                   >
                     <img src={folderIcon} alt="folder" className="nav-icons" />
-                    Choose from Device
+                    Choose Photo
                   </button>
                 </div>
               </div>

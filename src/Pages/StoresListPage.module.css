@@ -13,7 +13,6 @@
 
 .pageDescription {
   font-size: 16px;
-  color: #666;
   margin-bottom: 40px;
 }
 
@@ -61,7 +60,7 @@
   font-size: 16px;
   font-weight: 500;
   color: #000;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .time {
@@ -139,16 +138,26 @@
 
   .pageTitle {
     font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .address {
+    margin-bottom: 10px;
+  }
+
+  .time {
+    margin-bottom: 10px;
   }
 
   .pageDescription {
     font-size: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
 
   .storesGrid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 15px;
+    margin-top: 15px;
   }
 
   .mainImage {

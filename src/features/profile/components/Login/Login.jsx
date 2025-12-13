@@ -130,7 +130,7 @@ const Login = ({ setShowLoginModal }) => {
               <>
                 <h3 className={styles.heading}>Login/Signup</h3>
                 <p className={styles.mobileLoginTagLine}>
-                  For the best experience and customized offer
+                  For the best experience and customized offer Login or Signup with Quick Mobile.
                 </p>
                 <label className={styles.label}>Enter Your Mobile Number</label>
 
@@ -171,7 +171,7 @@ const Login = ({ setShowLoginModal }) => {
                 <h3 className={styles.heading}>Login/Signup</h3>
                 <p className={styles.otpSentText}>
                   We’ve sent an OTP to your registered mobile number{" "}
-                  <strong>+91-{mobile}</strong>{" "}
+                  <span>+91-{mobile}</span>
                   <span
                     className={styles.editLink}
                     onClick={() => setOtpSent(false)}
@@ -226,14 +226,14 @@ const Login = ({ setShowLoginModal }) => {
               style={
                 !otpSent && !isTermsChecked
                   ? {
-                      backgroundColor: "#e0e0e0",
-                      color: "#aaa",
-                      cursor: "not-allowed",
-                    }
+                    backgroundColor: "#e0e0e0",
+                    color: "#aaa",
+                    cursor: "not-allowed",
+                  }
                   : {}
               }
             >
-              {otpSent ? "Login" : "Send OTP"}
+              {otpSent ? "Submit" : "Send OTP"}
             </button>
           </form>
         </div>
