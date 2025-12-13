@@ -6,11 +6,9 @@
   overflow: hidden;
   position: relative;
   padding: 0 10px;
-  background: linear-gradient(
-    to bottom,
-    #ededed 50%,
-    var(--background-color) 50%
-  );
+  background: linear-gradient(to bottom,
+      #ededed 50%,
+      var(--background-color) 50%);
 }
 
 /* .page-content-wrapper {
@@ -112,7 +110,7 @@
   border: none;
   padding: 3px 15px;
   border-radius: 7px;
-  font-size: 12px;
+  font-size: 14px;
   font-family: "IBM Plex Sans", sans-serif;
   cursor: pointer;
   height: 30px;

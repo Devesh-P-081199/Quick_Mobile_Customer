@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./BlogsPage.module.css";
 import MobileCommonHeaderthree from "../Components/layout/MobileCommonHeader/MobileCommonHeaderthree";
-import blog from "../assets/images/store_img.jpg";
 import blogsData from "./block-content.json";
 
 const BlogsPage = () => {
@@ -19,6 +18,10 @@ const BlogsPage = () => {
 
   const handleBlogClick = (id) => {
     navigate(`/blog-details/${id}`);
+  };
+
+  const getImageUrl = (name) => {
+    return new URL(`../assets/images/blog/${name}`, import.meta.url).href;
   };
 
   const filteredBlogs =
@@ -45,7 +48,7 @@ const BlogsPage = () => {
               onClick={() => handleBlogClick(blogItem._id)}
             >
               <img
-                src={blog}
+                src={getImageUrl(blogItem.img)}
                 alt={blogItem.title}
                 className={styles.blogImage}
               />

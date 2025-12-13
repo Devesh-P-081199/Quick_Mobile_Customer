@@ -298,7 +298,7 @@ h6 {
 /* Enhanced paragraph styles */
 p {
   margin-top: 0;
-  margin-bottom: var(--spacing-4);
+  margin-bottom: 0;
   line-height: var(--line-height-relaxed);
 }
 
@@ -348,6 +348,7 @@ hr {
 
 /* Improve touch targets on mobile */
 @media (max-width: 768px) {
+
   button,
   input[type="button"],
   input[type="submit"],
@@ -362,7 +363,8 @@ hr {
   input,
   textarea,
   select {
-    font-size: 16px; /* Prevent zoom on iOS */
+    font-size: 16px;
+    /* Prevent zoom on iOS */
     /* padding: var(--spacing-2) var(--spacing-1); */
   }
 
@@ -405,6 +407,7 @@ hr {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -415,6 +418,7 @@ hr {
     transform: translateY(20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -426,6 +430,7 @@ hr {
     transform: scale(0.95);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -434,6 +439,7 @@ hr {
 
 /* ===== PRINT STYLES ===== */
 @media print {
+
   *,
   *::before,
   *::after {
@@ -522,12 +528,10 @@ hr {
 
 /* Skeleton loading */
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--color-surface-secondary) 25%,
-    var(--color-surface-tertiary) 50%,
-    var(--color-surface-secondary) 75%
-  );
+  background: linear-gradient(90deg,
+      var(--color-surface-secondary) 25%,
+      var(--color-surface-tertiary) 50%,
+      var(--color-surface-secondary) 75%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
 }
@@ -536,6 +540,7 @@ hr {
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
@@ -577,27 +582,21 @@ hr {
 
 /* Gradient utilities */
 .gradient-primary {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary-500),
-    var(--color-primary-700)
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary-500),
+      var(--color-primary-700));
 }
 
 .gradient-secondary {
-  background: linear-gradient(
-    135deg,
-    var(--color-secondary-500),
-    var(--color-secondary-700)
-  );
+  background: linear-gradient(135deg,
+      var(--color-secondary-500),
+      var(--color-secondary-700));
 }
 
 .gradient-text {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary-500),
-    var(--color-secondary-500)
-  );
+  background: linear-gradient(135deg,
+      var(--color-primary-500),
+      var(--color-secondary-500));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -606,15 +605,15 @@ hr {
 /* ===== COMPONENT INTEGRATION HELPERS ===== */
 
 /* Ensure components work well together */
-.component-spacing > * + * {
+.component-spacing>*+* {
   margin-top: var(--spacing-4);
 }
 
-.component-spacing-sm > * + * {
+.component-spacing-sm>*+* {
   margin-top: var(--spacing-2);
 }
 
-.component-spacing-lg > * + * {
+.component-spacing-lg>*+* {
   margin-top: var(--spacing-6);
 }
 
@@ -676,6 +675,7 @@ hr {
     gap: var(--spacing-2);
   }
 }
+
 /* ===== GLOBAL SECTION PADDING SYSTEM ===== */
 /* CONSOLIDATED - Removed 3 duplicate definitions */
 
@@ -785,6 +785,7 @@ hr {
 /* All @media queries for same breakpoints merged */
 
 @media (max-width: 768px) {
+
   /* Body padding */
   body {
     padding-top: 55px !important;
@@ -797,8 +798,8 @@ hr {
   input[type="reset"],
   .btn,
   .touch-target {
-    min-height: 35px;
-    min-width: 35px;
+    min-height: 39px;
+    min-width: 39px;
   }
 
   /* Form inputs */

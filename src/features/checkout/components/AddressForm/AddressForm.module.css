@@ -6,7 +6,8 @@
   max-width: 1140px;
   margin: 0 auto;
   padding: 15px 10px;
-  padding-bottom: 100px; /* Space for sticky bottom */
+  padding-bottom: 100px;
+  /* Space for sticky bottom */
 }
 
 .formGroup {
@@ -25,13 +26,13 @@
 .inputContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 5px;
+  margin-bottom: 15px;
 }
 
 .topLabel {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   color: #000;
   font-family: "IBM Plex Sans", sans-serif;
   margin: 0;
@@ -39,9 +40,9 @@
 
 .input {
   width: 100% !important;
-  padding: 12px !important;
+  padding: 10px !important;
   border: 0.3px solid #e1e1e1 !important;
-  border-radius: 10px !important;
+  border-radius: 8px !important;
   font-size: 16px !important;
   font-family: "IBM Plex Sans", sans-serif !important;
   transition: border-color 0.2s !important;

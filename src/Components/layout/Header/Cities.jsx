@@ -224,7 +224,7 @@ const Cities = () => {
           <div className={styles.modal}>
             <div className={styles.modalHeader}>
               <h2>Choose Location</h2>
-              <button onClick={toggleModal}>
+              <button onClick={toggleModal} className="closebutton">
                 <img src={crossicon} alt="close" className="nav-icons" />
               </button>
             </div>
@@ -239,14 +239,14 @@ const Cities = () => {
                 <div className={styles.modalInputWrapper}>
                   <input
                     type="text"
-                    placeholder="Search your city or enter pincode"
+                    placeholder="Search your city"
                     value={searchTerm}
                     onChange={handleSearchChange}
                   />
-                  <img src={searchicon} alt="search" height={"20px"} />
+                  <img src={searchicon} alt="search" className="nav-icons" />
                 </div>
                 <div className={styles.locationDetectButton}>
-                  <img src={locationdot} alt="detect" height={"20px"} />
+                  <img src={locationdot} alt="detect" className="nav-icons" />
                   Detect My Location
                 </div>
               </div>
@@ -261,12 +261,11 @@ const Cities = () => {
                   <button
                     key={city._id}
                     onClick={() => handleCitySelect(city, "popular")}
-                    className={`${styles.popularCityButton} ${
-                      selectedCity?._id === city._id &&
+                    className={`${styles.popularCityButton} ${selectedCity?._id === city._id &&
                       selectedSource === "popular"
-                        ? styles.selectedPopularCity
-                        : ""
-                    }`}
+                      ? styles.selectedPopularCity
+                      : ""
+                      }`}
                   >
                     <img
                       src={city?.cityImage || locationIcon}
@@ -287,7 +286,7 @@ const Cities = () => {
                 ))
               ) : (
                 <div className={styles.noCitiesText}>
-                  No popular cities found
+                  <p>No popular cities found</p>
                 </div>
               )}
             </div>
@@ -301,11 +300,10 @@ const Cities = () => {
                   <button
                     key={city._id}
                     onClick={() => handleCitySelect(city, "all")}
-                    className={`${styles.otherCityPill} ${
-                      selectedCity?._id === city._id && selectedSource === "all"
-                        ? styles.selectedCityPill
-                        : ""
-                    }`}
+                    className={`${styles.otherCityPill} ${selectedCity?._id === city._id && selectedSource === "all"
+                      ? styles.selectedCityPill
+                      : ""
+                      }`}
                   >
                     <span className={styles.otherCityText}>
                       {city?.cityName}

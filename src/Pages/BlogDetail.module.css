@@ -1,6 +1,5 @@
 .blogDetailContainer {
   margin: 0 auto;
-  background-color: #fff;
   padding: 15px;
   min-height: 100vh;
 }
@@ -9,12 +8,19 @@
   margin-bottom: 20px;
 }
 
+.blogImage {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
 .blogTitle {
   font-size: 20px;
   font-weight: 500;
   color: #111827;
   line-height: 1.4;
   margin: 0;
+  margin-bottom: 20px;
 }
 
 .blogContent {
@@ -36,10 +42,8 @@
 .contentText {
   font-size: 14px;
   font-weight: normal;
-  color: #333;
   margin: 0;
   margin-bottom: 10px;
-  line-height: 1.6;
 }
 
 .loadingContainer,

@@ -19,7 +19,7 @@
 /* FAQ List */
 .faqList {
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 /* FAQ Item */
@@ -99,6 +99,7 @@
   .faqItem {
     padding: 2px 0;
   }
+
   .faqQuestion {
     padding: 5px 0px;
   }

@@ -20,7 +20,7 @@
 }
 
 .mobilePtSection {
-  padding: 10px 8px 0 8px;
+  padding: 20px 8px 0 8px;
 }
 
 .headingFlex .sectionHeading {
@@ -40,22 +40,27 @@ section.default-padding-section {
   flex-direction: row;
   gap: 12px;
   overflow-x: auto;
-  overflow-y: hidden; /* Prevent vertical scroll */
+  overflow-y: hidden;
+  /* Prevent vertical scroll */
   scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scroll on iOS */
   padding: 0;
-  scrollbar-width: none; /* Firefox hide scrollbar */
+  scrollbar-width: none;
+  /* Firefox hide scrollbar */
 }
 
 .seriesList::-webkit-scrollbar {
-  display: none; /* Hide scrollbar iOS/Chrome */
+  display: none;
+  /* Hide scrollbar iOS/Chrome */
 }
+
 .seriesItem {
   font-size: 14px;
-  padding: 10px;
+  padding: 12px;
   background-color: #ffffff;
   border: 1px solid #e1e1e175;
-  border-radius: 5px;
+  border-radius: 10px;
   min-width: fit-content;
   width: fit-content;
   font-weight: 450;
@@ -140,8 +145,7 @@ section.default-padding-section {
   display: grid;
 }
 
-@media (max-width: 990px) {
-}
+@media (max-width: 990px) {}
 
 @media (max-width: 800px) {
   .brandSingleBox {

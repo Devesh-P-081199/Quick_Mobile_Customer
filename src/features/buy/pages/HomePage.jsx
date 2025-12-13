@@ -4,7 +4,7 @@ import UsedvsBrand from "../../../BuyComponent/UsedvsBrand/UsedvsBrand";
 import Newsletter from "../../../BuyComponent/NewsLetter/NewsLetter";
 import Download from "../../../BuyComponent/Download/Download";
 import LearnTemplate from "../../../BuyComponent/LearnTemplate/LearnTemplate";
-import Blogs from "../../../BuyComponent/Cards/Blogs";
+import HomeBlogSlider from "../../../BuyComponent/Cards/HomeBlogSlider";
 import Testimonials from "../../../BuyComponent/Cards/Testimonials";
 import Allcategoryhome from "../../../Components/AllCategory/AllCategoryHome";
 import FooterContent from "../../../Components/layout/Footer/FooterContent.jsx";
@@ -35,7 +35,7 @@ const HomePage = () => {
         {/*<BuyDevices/>*/}
 
         <div className="page-content-wrapper">
-          <Blogs />
+          <HomeBlogSlider />
         </div>
 
         <div className="page-content-wrapper">

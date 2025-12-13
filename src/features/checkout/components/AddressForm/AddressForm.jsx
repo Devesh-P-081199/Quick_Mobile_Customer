@@ -167,7 +167,7 @@ const AddressForm = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="name"
+                placeholder="Enter you Full name"
                 className={styles.input}
                 value={formData.name}
                 onChange={handleInputChange}
@@ -180,7 +180,7 @@ const AddressForm = () => {
               <input
                 type="text"
                 name="email"
-                placeholder="email"
+                placeholder="Enter your email"
                 className={styles.input}
                 value={formData.email}
                 onChange={handleInputChange}
@@ -193,7 +193,7 @@ const AddressForm = () => {
               <input
                 type="text"
                 name="houseNumber"
-                placeholder="Flat no/House no"
+                placeholder="Enter Flat no / House no"
                 className={styles.input}
                 value={formData.houseNumber}
                 onChange={handleInputChange}
@@ -206,7 +206,7 @@ const AddressForm = () => {
               <input
                 type="text"
                 name="street"
-                placeholder="Area/Street/Locality"
+                placeholder="Enter Area / Street / Locality"
                 className={styles.input}
                 value={formData.street}
                 onChange={handleInputChange}
@@ -219,7 +219,7 @@ const AddressForm = () => {
               <input
                 type="text"
                 name="landmark"
-                placeholder="near..."
+                placeholder="Enter landmark (optional)"
                 className={styles.input}
                 value={formData.landmark}
                 onChange={handleInputChange}
@@ -228,7 +228,7 @@ const AddressForm = () => {
 
             {/* Zip Code */}
             <div className={styles.inputContainer}>
-              <label className={styles.topLabel}>Zip Code</label>
+              <label className={styles.topLabel}>Pincode</label>
               <input
                 type="text"
                 name="zipCode"
@@ -242,7 +242,7 @@ const AddressForm = () => {
                     }));
                   }
                 }}
-                placeholder="Zip Code"
+                placeholder="Enter Pincode"
                 className={styles.input}
                 required
               />
@@ -284,6 +284,7 @@ const AddressForm = () => {
               <label className={styles.topLabel}>State</label>
               <select
                 name="state"
+                placeholder="Select the State"
                 value={formData.state}
                 onChange={handleInputChange}
                 className={`${styles.input} ${!formData.state ? styles.placeholderSelect : ""
@@ -307,7 +308,7 @@ const AddressForm = () => {
                 pattern="[0-9]*"
                 maxLength="10"
                 name="alternatePhone"
-                placeholder="Alternate Phone Number"
+                placeholder="Enter an Alternate Phone Number"
                 className={styles.input}
                 value={formData.alternatePhone}
                 onChange={handleInputChange}

@@ -391,7 +391,6 @@
 
 .modalDescription {
   font-size: 14px;
-  color: #666;
   margin-bottom: 16px;
 }
 
@@ -416,13 +415,6 @@
   /* 16px prevents mobile zoom on focus */
 }
 
-.modalInputWrapper input::placeholder {
-  font-size: 16px;
-  /* 16px prevents mobile zoom on focus */
-  color: #999;
-  /* Light gray color for placeholder */
-}
-
 .inputContainer {
   display: flex;
   gap: 12px;
@@ -444,7 +436,6 @@
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  height: 45px;
   /* Match input height */
   white-space: nowrap;
   transition: background-color 0.2s ease;
@@ -2997,26 +2988,6 @@
   }
 }
 
-@media (max-width: 768px) {
-  .container .logo {
-    margin-left: 5%;
-  }
-
-  .modal {
-    width: 90vw;
-  }
-
-  .cityGrid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-    margin-top: 16px;
-  }
-
-  .modalInputWrapper {
-    width: 60;
-  }
-}
 
 .MobileLogo {
   display: none;
@@ -3055,15 +3026,6 @@
     margin-top: 16px;
   }
 
-  .locationDetectButton {
-    width: 100%;
-    font-size: 12px;
-  }
-
-  .modalInputWrapper {
-    width: 100%;
-  }
-
   /* .closebtn {
     display: none;
   }
@@ -3077,10 +3039,6 @@
   .MobileLogo {
     display: block;
     height: 30px;
-  }
-
-  .modalHeader h2 {
-    font-size: 20px;
   }
 
   .mobileContainer {
@@ -3177,16 +3135,6 @@
     margin-top: 16px;
   }
 
-  .modalInputWrapper {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 10px 10px;
-    border-radius: 6px;
-    height: 47px;
-    width: 100%;
-  }
-
   .locationDetectButton {
     width: 100%;
     font-size: 14px;
@@ -3195,7 +3143,6 @@
     justify-content: start;
     gap: 5px;
     padding-left: 10px;
-    height: 47px;
   }
 
   .inputContainer {
@@ -3528,17 +3475,6 @@
   position: sticky;
   top: 0%;
   /* top: 0; */
-}
-
-.modalInputWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 6px 10px;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
 @media screen and (max-width: 350px) {
@@ -3905,4 +3841,49 @@
 
 .navItemNoDropdown span {
   pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .container .logo {
+    margin-left: 5%;
+  }
+
+  .modal {
+    width: 100%;
+  }
+
+  .cityGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .modalInputWrapper {
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #e1e1e1;
+  }
+
+  .modalInputWrapper:focus-within {
+    border-color: #1968b3;
+  }
+
+  .modalHeader h2 {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .locationDetectButton {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    height: 45px;
+    justify-content: flex-start;
+  }
+
+  .modalCityHeading {
+    margin: 15px 0;
+  }
 }

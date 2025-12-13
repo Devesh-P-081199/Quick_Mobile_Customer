@@ -18,7 +18,7 @@
   /* padding-right: 30px; */
 }
 
-.leftImgBox > img {
+.leftImgBox>img {
   height: 367px;
   padding: 20px;
 }
@@ -162,6 +162,7 @@
     width: 100%;
   }
 }
+
 .verient {
   font-size: 22px;
 }
@@ -176,6 +177,7 @@
     flex-direction: column;
     gap: 15px;
   }
+
   .leftContent {
     width: 100%;
     height: 210px;
@@ -188,13 +190,14 @@
     border: 0.3px solid #e1e1e1;
     border-radius: 20px;
   }
+
   .leftImgBox {
     height: 100%;
     width: 100%;
     padding: 20px 0px;
   }
 
-  .leftImgBox > img {
+  .leftImgBox>img {
     height: 100%;
     width: 100%;
     object-fit: contain;
@@ -206,14 +209,17 @@
     padding-bottom: 10px;
     font-size: 22px;
   }
+
   .selectBox p {
     font-size: 12px;
   }
+
   .rightContent {
     gap: 17px;
     width: 100%;
     padding-left: 0px;
   }
+
   .productTitle {
     font-size: 20px;
     text-align: start;
@@ -236,6 +242,7 @@
   .extraInfo br {
     display: none;
   }
+
   .backArrowImg {
     display: none;
   }
@@ -256,16 +263,20 @@
   flex-wrap: wrap;
   padding-bottom: 20px; */
   }
+
   .radioLabel span {
     font-size: 12px;
   }
-  .leftImgBox > img {
+
+  .leftImgBox>img {
     padding: 0px;
   }
+
   .verient {
     font-size: 16px;
     font-weight: 600;
   }
+
   .extraInfo p {
     font-size: 20px;
     font-weight: 500;
@@ -274,6 +285,7 @@
     align-items: center;
     gap: 5px;
   }
+
   .extraInfo p span {
     font-size: 22px;
   }
@@ -292,6 +304,7 @@
     /* padding: ; */
     border-radius: 13px;
   }
+
   .buttonBottomBox {
     position: fixed;
     bottom: 0vh;

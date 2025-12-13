@@ -86,8 +86,8 @@ button.laptopviewall {
   width: fit-content !important;
   background-color: #1968b3 !important;
   color: #ffffff !important;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   text-transform: capitalize;
   margin: auto;
   margin-bottom: 10px;
@@ -233,6 +233,7 @@ button.laptopviewall {
   .imgCard {
     min-width: 120px;
   }
+
   .brandImageBg {
     height: 80px;
     width: 80px;
@@ -287,6 +288,7 @@ button.laptopviewall {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
+
   .brandImageBg {
     width: 100%;
     aspect-ratio: 1;
@@ -314,6 +316,7 @@ button.laptopviewall {
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
 @media screen and (max-width: 950px) {
   .bannerHeading h2 {
     font-size: 28px;
@@ -327,12 +330,15 @@ button.laptopviewall {
     padding: 10px 0px;
     overflow: scroll;
   }
+
   .bannerHeading h2 {
     font-size: 24px;
   }
+
   .rightContent {
     gap: 10px;
   }
+
   .bannerHeading {
     padding: 0px;
   }
@@ -387,11 +393,13 @@ button.laptopviewall {
 }
 
 .arrowLeft {
-  left: -5px; /* Adjust as needed */
+  left: -5px;
+  /* Adjust as needed */
 }
 
 .arrowRight {
-  right: -8px; /* Adjust as needed */
+  right: -8px;
+  /* Adjust as needed */
 }
 
 .searchContainer {
@@ -462,6 +470,7 @@ button.laptopviewall {
   font-size: 14px;
   color: #333;
 }
+
 .dropdownStyled {
   background: white;
   /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
@@ -552,6 +561,7 @@ button.laptopviewall {
   width: 124px;
   margin-top: 10px;
 }
+
 .viewAllCard:hover {
   /* box-shadow: 0 2px 8px rgba(115, 171, 255, 0.12); */
   /* background: #e6f0ff; */
@@ -588,7 +598,8 @@ span.dotButton {
 
 .dotsContainer {
   display: flex;
-  gap: 4px; /* space between dots */
+  gap: 4px;
+  /* space between dots */
 }
 
 .dotsContainer.vertical {
@@ -648,6 +659,7 @@ span.dotButton {
   .brandImageBg img {
     /* height: 40px; */
   }
+
   .imgSlider img {
     height: 100%;
     object-fit: contain;
@@ -662,7 +674,7 @@ span.dotButton {
   }
 }
 
-.bannerHeading > h2 {
+.bannerHeading>h2 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
