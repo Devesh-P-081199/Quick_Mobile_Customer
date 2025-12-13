@@ -1,7 +1,7 @@
 .selectBrandWrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   margin-bottom: 5px;
 }
 
@@ -23,12 +23,14 @@
   /* padding: 2px; */
   overflow: hidden;
 }
+
 .imgIndividual img {
   /* height: 60px; */
   object-fit: contain;
   height: 100%;
   width: 100%;
 }
+
 .sectionHeading {
   font-family: "IBM Plex Sans";
   font-weight: 500;
@@ -83,25 +85,15 @@
 
 /* Extra large desktops */
 
-@media (min-width: 1600px) {
-}
+@media (min-width: 1600px) {}
 
 /* Standard desktops and laptops */
 
-@media (max-width: 1440px) {
-}
-@media screen and (max-width: 1280px) {
-}
-@media (max-width: 1024px) {
-}
+@media (max-width: 1440px) {}
 
-/* Tablets */
+@media screen and (max-width: 1280px) {}
 
-@media (max-width: 768px) {
-  .headingFlex {
-    align-items: center;
-  }
-}
+@media (max-width: 1024px) {}
 
 /* Phones */
 
@@ -109,6 +101,7 @@
   .searchBox {
     width: 44%;
   }
+
   .searchBox input {
     background-color: #ffffff;
     padding: 8px 10px;
@@ -118,6 +111,7 @@
     width: 100%;
     font-size: 12px;
   }
+
   .searchIcon {
     position: absolute;
     right: 5%;
@@ -143,6 +137,7 @@
     flex-wrap: wrap;
     gap: 10px;
   }
+
   .brandSingleBox {
     gap: 0px;
   }
@@ -181,29 +176,12 @@
     padding: 2px;
   }
 }
-@media screen and (min-width: 768px) {
-  .brandImageBox {
-    display: grid !important;
-    grid-template-columns: repeat(6, 1fr);
-    row-gap: 30px;
-    column-gap: 10px;
-  }
-  .imgIndividual {
-    height: 176px;
-    width: 100%;
-  }
-  .imgIndividual img {
-    /* height: 60px; */
-    object-fit: contain;
-    height: 139px;
-    width: 139px;
-    /* padding: 10px; */
-  }
-}
+
 @media screen and (min-width: 768px) and (max-width: 1200px) {
   .brandImageBox span {
     font-size: 14px;
   }
+
   .brandImageBox {
     display: grid !important;
     grid-template-columns: repeat(6, 1fr);
@@ -224,6 +202,7 @@
     height: 100%;
     width: 100%;
   }
+
   .imgIndividual img {
     /* height: 60px; */
     object-fit: contain;
@@ -237,7 +216,6 @@
   .brandImageBox {
     display: grid !important;
     grid-template-columns: repeat(4, 1fr);
-    grid-row-gap: 20px;
     grid-column-gap: 10px;
   }
 
@@ -245,6 +223,7 @@
     height: 100%;
     width: 100%;
   }
+
   .imgIndividual img {
     /* height: 60px; */
     object-fit: contain;
@@ -253,17 +232,19 @@
     padding: 10px;
   }
 }
+
 @media screen and (min-width: 200px) and (max-width: 489px) {
   .brandImageBox {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 20px;
     column-gap: 10px;
   }
+
   .imgIndividual {
     height: 100%;
     width: 100%;
   }
+
   .imgIndividual img {
     /* height: 60px; */
     object-fit: contain;
@@ -288,4 +269,10 @@
 
 .viewAllCircle span {
   font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .selectBrandWrapper {
+    gap: 15px;
+  }
 }

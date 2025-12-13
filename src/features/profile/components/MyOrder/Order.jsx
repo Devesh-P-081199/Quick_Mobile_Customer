@@ -76,8 +76,7 @@ const OrderCard = () => {
                     </span>
                   </div>
                   <div className={styles.imei}>
-                    Order ID: <br></br>
-                    {ord._id}
+                    Order ID : {ord.orderId}
                   </div>
                   <div className={styles.pickup}>
                     Expected pickup by :{" "}

@@ -42,7 +42,7 @@ const OrderCard = () => {
                   </span>
                 </div>
                 <div className={styles.imei}>
-                  Order ID: {ord._id}
+                  Order ID: {ord.orderId}
                 </div>
                 <div className={styles.pickup}>
                   Expected pickup by - {new Date(ord.createdAt).toDateString()} • Free

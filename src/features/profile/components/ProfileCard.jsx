@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./ProfileCard.module.css";
 // import user  from "../../../assets/icons/user.png"
 import {
@@ -20,16 +20,20 @@ const ProfileCard = () => {
   const navigate = useNavigate();
   const { setUser, user } = useContext(UserContext);
 
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+
   // console.log("User",user)
   const handleLogOut = () => {
-    let res = confirm("Are you sure want to logout");
-    if (res) {
-      Cookies.remove("userSelection");
-      Cookies.remove("user");
-      Cookies.remove("auth-token");
-      setUser({});
-      navigate("/");
-    }
+    setShowLogoutModal(true);
+  };
+
+  const confirmLogout = () => {
+    Cookies.remove("userSelection");
+    Cookies.remove("user");
+    Cookies.remove("auth-token");
+    setUser({});
+    navigate("/");
+    setShowLogoutModal(false);
   };
 
   // Get user initials from name
@@ -86,7 +90,7 @@ const ProfileCard = () => {
           <div className={styles.optionRow}>
             <FaCreditCard />
             <span onClick={() => navigate("/my-profile-payments")}>
-              Payments Options <img src={rightangle} alt="" />
+              Saved Payments <img src={rightangle} alt="" />
             </span>
           </div>
           <div className={styles.optionRow}>
@@ -112,6 +116,26 @@ const ProfileCard = () => {
           </div>
         </div>
       </div>
+
+      {showLogoutModal && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <h3>Are you sure you want to logout?</h3>
+            <p>Hope to see you back soon!!</p>
+            <div className={styles.modalActions}>
+              <button
+                className={styles.cancelBtn}
+                onClick={() => setShowLogoutModal(false)}
+              >
+                Cancel
+              </button>
+              <button className={styles.logoutBtn} onClick={confirmLogout}>
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

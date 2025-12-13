@@ -86,10 +86,10 @@ function HomeSlider() {
               }}
             >
               <div className="slider-content">
+                <img src={slide.image} alt="iPhone" className="slider-image" />
                 <h2 className="slider-title">{slide.title}</h2>
                 <p className="slider-description">{slide.description}</p>
                 <button className="slider-button">Sell Now</button>
-                <img src={slide.image} alt="iPhone" className="slider-image" />
               </div>
             </div>
           ))}

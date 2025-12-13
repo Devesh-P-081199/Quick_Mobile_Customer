@@ -1873,7 +1873,7 @@
 
 .resultTag {
   /* background: #ffffff; */
-  color: #007bff;
+  color: #1968b3;
   padding: 2px 0px;
   border-radius: 4px;
   font-size: 12px;
@@ -2562,7 +2562,7 @@
   width: 92vw;
   background-color: white;
   /* margin: 16px; */
-  margin: 16px;
+  margin: 20px 10px;
 }
 
 .mobileSearchHeader img {
@@ -2618,7 +2618,7 @@
 }
 
 .resultTag {
-  color: #007bff;
+  color: #1968b3;
   font-size: 12px;
   font-weight: 400;
 }
@@ -3382,13 +3382,6 @@
 }
 
 @media screen and (max-width: 550px) {
-  .contextBlock {
-    padding: 16px;
-    /* margin-top: 60px; */
-    height: 64vh;
-    overflow: scroll;
-    padding-top: 0px;
-  }
 
   .resultItem:hover {
     background: none !important;
@@ -3472,6 +3465,7 @@
   justify-content: center;
   position: sticky;
   top: 0%;
+  z-index: 99;
   /* top: 0; */
 }
 
@@ -3965,5 +3959,17 @@
 
   .MobileInnerBox .rightBrandBox .mobileModalUl :global(img.brandimage) {
     border-radius: 10px;
+  }
+
+  .contextBlock {
+    padding: 16px;
+    /* margin-top: 60px; */
+    height: auto;
+    overflow: scroll;
+    padding-top: 0px;
+  }
+
+  .mobileSearchHeader {
+    margin: 20px 10px 10px;
   }
 }

@@ -116,7 +116,7 @@
 
 .imei {
   font-size: 12px;
-  color: #888;
+  color: #374151;
   /* Softer text for ID */
   margin-bottom: 4px;
 }
@@ -302,13 +302,13 @@
   margin: 0 auto;
   position: relative;
   z-index: 3;
-  border: 1px solid #757575;
+  border: 1px solid #1968b3;
   transition: all 0.3s ease;
 }
 
 .active .circle {
-  background: #000;
-  border-color: #000;
+  background: #1968b3;
+  border-color: #1968b3;
 }
 
 .step:not(.active) span {
@@ -376,6 +376,7 @@
 
 .priceDiff {
   padding: 10px;
+  margin-bottom: 15px;
   border-radius: 15px;
   border: 0.3px solid #e1e1e1;
   display: flex;
@@ -386,7 +387,6 @@
 
 .transactionDetail {
   padding: 10px;
-  margin-top: 10px;
   background: #fff;
   border-radius: 15px;
   border: 0.3px solid #e1e1e1;
@@ -397,7 +397,7 @@
 
 .transactionRow {
   display: flex;
-  font-size: 12px;
+  font-size: 14px;
   justify-content: space-between;
 }
 
@@ -412,8 +412,6 @@
 }
 
 .reviewForm {
-  margin-top: 10px;
-  margin-bottom: 10px;
   padding: 10px;
   border-radius: 15px;
   border: 0.3px solid #e1e1e1;
@@ -453,11 +451,12 @@
   color: #fff;
   border: none;
   border-radius: 8px;
-  padding: 8px 16px;
-  font-size: 14px;
+  padding: 10px 16px;
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   width: 100%;
+  height: 45px;
 }
 
 
@@ -521,7 +520,7 @@
   font-weight: 500;
   border-radius: 10px;
   border: 0.3px solid #e1e1e1;
-  margin-top: 10px;
+  margin-bottom: 15px;
   cursor: pointer;
   transition: all 0.2s ease;
   align-items: start;
@@ -673,126 +672,7 @@
 
 .modalOrderId {
   font-size: 12px;
-  color: #888;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-
-  .cardBody {
-    flex-direction: row;
-    gap: 12px;
-  }
-
-  .deviceImage {
-    width: 90px;
-    min-height: 100px;
-    max-height: 100px;
-    align-self: flex-start;
-  }
-
-  .infoBlock {
-    min-height: 100px;
-    justify-content: space-between;
-  }
-
-  .imei {
-    margin-bottom: 5px;
-  }
-
-  .actionRow {
-    flex-direction: row;
-    align-self: flex-end;
-    margin-top: 10px;
-  }
-
-  .blackButton,
-  .greyButton {
-    padding: 8px 5px;
-    font-size: 16px;
-    min-width: 70px;
-  }
-
-  .timelineWrapper {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px;
-  }
-
-  .timelineWrapper::before {
-    display: none;
-  }
-
-  .step {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    position: relative;
-    padding-left: 30px;
-  }
-
-  .step::before {
-    content: "";
-    position: absolute;
-    left: 8px;
-    top: 24px;
-    bottom: -30px;
-    width: 2px;
-    background: #e0e0e0;
-  }
-
-  .step:last-child::before {
-    display: none;
-  }
-
-  .active::before {
-    background: #000;
-  }
-
-  .circle {
-    position: absolute;
-    left: 0;
-    margin: 0;
-  }
-
-  .step span {
-    margin-top: 0;
-    margin-left: 0;
-  }
-
-  .step small {
-    margin-top: 0;
-  }
-
-  .conditionBtns {
-    flex-direction: row;
-    padding: 10px;
-    justify-content: space-between;
-    margin-top: 10px;
-    margin-bottom: 0;
-    border-bottom: none;
-    border-radius: 15px 15px 0 0;
-  }
-
-  .qaSection {
-    border-top: 0;
-    border-radius: 0 0 15px 15px;
-  }
-}
-
-/* Tablet Responsive */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .timelineWrapper {
-    padding: 15px;
-  }
-
-  .step span {
-    font-size: 11px;
-  }
-
-  .step small {
-    font-size: 10px;
-  }
+  color: #374151;
 }
 
 /* Summary Card Styles for Payment Integration */
@@ -801,7 +681,7 @@
   border: 0.3px solid #e1e1e1;
   border-radius: 15px;
   padding: 10px;
-  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .summaryHeader {
@@ -838,24 +718,16 @@
 
 .paymentType {
   display: block;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 5px;
-  color: #333;
 }
 
 .paymentText {
   font-size: 14px;
-  color: #666;
   margin: 3px 0;
 }
 
-.paymentValue {
-  color: #000;
-  font-weight: 500;
-}
-
 .notSelected {
-  color: #666;
   font-size: 14px;
   text-align: left;
   margin: 0px;
@@ -877,4 +749,157 @@
 
 .updatePaymentBtn:hover {
   background: #333;
+}
+
+@media (max-width: 768px) {
+  .orderContainer {
+    gap: 15px;
+  }
+
+  .container {
+    padding: 20px 10px;
+    gap: 15px;
+  }
+
+  .cardBody {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .deviceImage {
+    width: 90px;
+    min-height: 100px;
+    max-height: 100px;
+    align-self: flex-start;
+  }
+
+  .infoBlock {
+    min-height: 100px;
+    justify-content: space-between;
+  }
+
+  .imei {
+    margin-bottom: 5px;
+  }
+
+  .actionRow {
+    flex-direction: row;
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+
+  .blackButton,
+  .greyButton {
+    padding: 10px 5px;
+    font-size: 16px;
+    min-width: 70px;
+    height: 45px;
+  }
+
+  .timelineWrapper {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    margin: 0 0 15px 0;
+  }
+
+  .timelineWrapper::before {
+    display: none;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    position: relative;
+    padding-left: 30px;
+  }
+
+  .step::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 24px;
+    bottom: -30px;
+    width: 2px;
+    background: #e0e0e0;
+  }
+
+  .step:last-child::before {
+    display: none;
+  }
+
+  .active::before {
+    background: #1968b3;
+  }
+
+  .circle {
+    position: absolute;
+    left: 0;
+    margin: 0;
+  }
+
+  .step span {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .step small {
+    margin-top: 0;
+  }
+
+  .conditionBtns {
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-between;
+    margin-bottom: 0;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .qaSection {
+    border-top: 0;
+    border-radius: 0 0 15px 15px;
+    margin-bottom: 15px;
+  }
+
+  .modalOrderId {
+    margin: 5px 0;
+  }
+
+  .partnerBox {
+    margin-bottom: 15px;
+  }
+
+  .paymentType {
+    font-size: 14px;
+  }
+
+  .summaryCard {
+    margin-bottom: 15px;
+  }
+
+  .priceDiff {
+    margin-bottom: 15px;
+  }
+
+  .transactionDetail {
+    margin-bottom: 15px;
+  }
+
+  .invoiceBtn {
+    margin-bottom: 15px;
+  }
+
+  .submitButton {
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    height: 45px;
+  }
+
+  .transactionRow {
+    font-size: 14px;
+  }
 }

@@ -20,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 5px 0 15px 0;
+  margin: 0 0 15px 0;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -61,7 +61,6 @@
 }
 
 .ordersList {
-  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -70,9 +69,9 @@
 .emptyState {
   text-align: center;
   padding: 40px 20px;
-  background: #fdfdfd;
-  border: 1px dashed #ddd;
-  border-radius: 12px;
+  background: #fff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 15px;
 }
 
 .emptyState h3 {
@@ -84,17 +83,16 @@
 
 .emptyState p {
   font-size: 14px;
-  color: #666;
   margin-bottom: 16px;
 }
 
 .shopBtn {
-  background: #007bff;
+  background: #1968b3;
   color: #fff;
-  padding: 10px 18px;
+  padding: 10px 20px;
   font-size: 14px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   transition: 0.3s ease;
 }
@@ -103,19 +101,27 @@
   background: #0056b3;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .panelWrapper {
-    flex-direction: column;
-  }
-
-  .right {
-    min-width: 100%;
-  }
-}
-
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 768px) {
   .right {
     display: none;
+  }
+
+  .panelWrapper {
+    flex-direction: column;
+    padding-bottom: 0;
+  }
+
+  .left {
+    padding: 20px 10px;
+  }
+
+  .emptyState {
+    background: #fff;
+    border: 0.3px solid #e1e1e1;
+    border-radius: 15px;
+  }
+
+  .shopBtn {
+    height: 45px;
   }
 }

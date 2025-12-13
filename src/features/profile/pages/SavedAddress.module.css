@@ -4,7 +4,6 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  height: 90vh;
 }
 
 .left {
@@ -218,7 +217,7 @@
 
 .addressType {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: #000;
   font-family: "IBM Plex Sans", sans-serif;
 }
@@ -244,14 +243,14 @@
 
 .addressPhone {
   font-size: 14px;
-  color: #666;
+  color: #374151;
   margin-bottom: 5px;
   font-family: "IBM Plex Sans", sans-serif;
 }
 
 .addressText {
   font-size: 14px;
-  color: #666;
+  color: #374151;
   line-height: 1.5;
   font-family: "IBM Plex Sans", sans-serif;
 }
@@ -319,11 +318,15 @@
 @media (max-width: 768px) {
   .panelWrapper {
     flex-direction: column;
-    padding: 10px;
+    padding: 20px 10px;
   }
 
   .right {
     display: none;
+  }
+
+  .left {
+    gap: 15px;
   }
 
   .header {
@@ -337,7 +340,7 @@
 
   .addBtn {
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .formRow {
@@ -346,16 +349,10 @@
 
   .addressCard {
     flex-direction: column;
+    padding: 10px;
   }
 
   .addressActions {
-    width: 100%;
-    justify-content: flex-start;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .addBtn {
     width: 100%;
     justify-content: flex-start;
   }

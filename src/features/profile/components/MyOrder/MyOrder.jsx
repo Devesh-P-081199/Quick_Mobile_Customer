@@ -13,6 +13,15 @@ const MyOrder = () => {
     Repair: [],
   };
 
+  const getDisplayedOrders = () => {
+    if (activeTab === "All Orders") {
+      return [...orders.Buy, ...orders.Sell, ...orders.Repair];
+    }
+    return orders[activeTab] || [];
+  };
+
+  const displayedOrders = getDisplayedOrders();
+
   return (
     <>
       <MobileCommonHeaderthree title="My Orders" />
@@ -37,8 +46,8 @@ const MyOrder = () => {
 
             {/* Orders or Empty State */}
             <div className={styles.ordersList}>
-              {orders[activeTab]?.length > 0 ? (
-                orders[activeTab].map((order) => (
+              {displayedOrders.length > 0 ? (
+                displayedOrders.map((order) => (
                   <OrderCard key={order.id} order={order} />
                 ))
               ) : (

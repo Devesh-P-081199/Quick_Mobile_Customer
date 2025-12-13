@@ -158,7 +158,7 @@
 .paymentsList {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .paymentCard {
@@ -207,13 +207,11 @@
 
 .cardNumber {
   font-size: 14px;
-  font-weight: 500;
   color: #000;
 }
 
 .cardHolder {
   font-size: 14px;
-  font-weight: 500;
   color: #000;
 }
 
@@ -330,46 +328,6 @@
   object-fit: contain;
 }
 
-@media (max-width: 768px) {
-  .panelWrapper {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .right {
-    display: none;
-  }
-
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .header h2 {
-    font-size: 20px;
-  }
-
-  .addBtn {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .formRow {
-    grid-template-columns: 1fr;
-  }
-
-  .paymentCard {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .cardActions {
-    width: 100%;
-    justify-content: flex-start;
-  }
-}
-
 /* Tab Container */
 .tabContainer {
   display: flex;
@@ -402,4 +360,61 @@
   border-color: #1968b3 !important;
   background-color: #ddefff !important;
   color: #1968b3 !important;
+}
+
+@media (max-width: 768px) {
+  .panelWrapper {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+
+  .right {
+    display: none;
+  }
+
+  .left {
+    gap: 15px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header h2 {
+    font-size: 20px;
+  }
+
+  .addBtn {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .paymentCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cardActions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .tabButton {
+    padding: 11px 20px;
+    height: 45px;
+  }
+
+  .paymentsList {
+    gap: 15px;
+  }
+
+  .cardType {
+    margin-bottom: 8px;
+  }
 }

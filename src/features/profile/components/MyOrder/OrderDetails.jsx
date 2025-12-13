@@ -181,7 +181,7 @@ const OrderDetails = () => {
                                 : ""}
                         </div>
                         <div className={styles.modalOrderId}>
-                            Order ID: {order._id}
+                            Order ID: {order.orderId}
                         </div>
                         <div className={styles.modalDevicePrice}>
                             ₹
@@ -249,7 +249,7 @@ const OrderDetails = () => {
                             <div className={styles.summaryContent}>
                                 {displayPayment.type === "upi" ? (
                                     <>
-                                        <span className={styles.paymentType}>UPI Payment</span>
+                                        <span className={styles.paymentType}>UPI</span>
                                         <p className={styles.paymentText}>
                                             UPI ID:{" "}
                                             <span className={styles.paymentValue}>
