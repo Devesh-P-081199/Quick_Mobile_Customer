@@ -103,7 +103,7 @@ const Allcategoryhome = forwardRef((props, ref) => {
             )}
           </div>
 
-          {brands?.length > 0 && (
+          {/* {brands?.length > 0 && (
             <h2 className={styles.sectionHeading}>All Brands</h2>
           )}
           <div className={`${styles.brandImageBox} scrollbar-hidden`}>
@@ -119,7 +119,7 @@ const Allcategoryhome = forwardRef((props, ref) => {
                 <span>{brand?.brandName}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

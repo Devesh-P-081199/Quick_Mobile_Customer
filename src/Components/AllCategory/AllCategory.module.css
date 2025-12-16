@@ -138,10 +138,6 @@
     gap: 10px;
   }
 
-  .brandSingleBox {
-    gap: 0px;
-  }
-
   .brandImageBox span {
     font-size: 12px;
   }
@@ -274,5 +270,11 @@
 @media screen and (max-width: 768px) {
   .selectBrandWrapper {
     gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .brandSingleBox {
+    gap: 0px;
+    padding: 0 0 10px 0;
   }
 }

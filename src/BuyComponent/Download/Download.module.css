@@ -8,6 +8,7 @@
     width: 100%;
     padding: 0 10px;
   }
+
   .container {
     padding-left: 24px;
     padding-right: 24px;
@@ -28,13 +29,13 @@
 .downloadBox {
   background-color: #007fee;
   width: 100%;
-  border-radius: 0.75rem;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
-  padding: 24px;
+  gap: 15px;
+  padding: 25px;
 }
 
 @media (min-width: 768px) {
@@ -42,6 +43,7 @@
     width: 100%;
     padding: 0 10px;
   }
+
   .downloadBox {
     flex-direction: row;
     padding: 40px;
@@ -61,6 +63,7 @@
     width: 100%;
     padding: 0 10px;
   }
+
   .mobileImage {
     width: 192px;
   }
@@ -71,6 +74,7 @@
     width: 100%;
     padding: 0 10px;
   }
+
   .mobileImage {
     width: 224px;
   }
@@ -92,15 +96,15 @@
     width: 100%;
     padding: 0 10px;
   }
+
   .textSection {
     text-align: left;
   }
 }
 
 .heading {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-size: 18px;
+  margin-bottom: 15px;
 }
 
 @media (min-width: 640px) {
@@ -108,6 +112,7 @@
     width: 100%;
     padding: 0 10px;
   }
+
   .heading {
     font-size: 24px;
   }
@@ -123,6 +128,7 @@
     width: 100%;
     padding: 0 10px;
   }
+
   .description {
     font-size: 16px;
   }
@@ -134,18 +140,43 @@
   gap: 12px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .storeButtons {
     justify-content: flex-start;
   }
-}
 
-.storeImage {
-  height: 40px;
+  .textSection {
+    width: 100%;
+  }
+
+  .heading {
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .description {
+    font-size: 14px;
+    color: #ffffffab;
+    font-weight: 400;
+  }
+
+  .storeButtons {
+    justify-content: space-between;
+  }
+
+  .storeImage {
+    height: 40px;
+  }
 }
 
 @media (min-width: 640px) {
   .storeImage {
     height: 48px;
+  }
+
+  .heading {
+    font-size: 18px;
+    font-weight: 500;
   }
 }

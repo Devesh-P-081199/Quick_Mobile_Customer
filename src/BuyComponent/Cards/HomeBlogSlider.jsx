@@ -35,11 +35,11 @@ const HomeBlogSlider = () => {
     };
 
     return (
-        <section className={styles.section}>
-            <div className={styles.wrapper}>
-                <div className={styles.header}>
-                    <h2 className={styles.title}>Our Blogs</h2>
-                    <div className={styles.navigation}>
+        <section className={styles.blogsection}>
+            <div className={styles.blogwrapper}>
+                <div className={styles.blogheader}>
+                    <h2 className={styles.blogtitle}>Our Blogs</h2>
+                    <div className={styles.blognavigation}>
                         <button
                             onClick={() => scroll("left")}
                             className={styles.arrowLeft}

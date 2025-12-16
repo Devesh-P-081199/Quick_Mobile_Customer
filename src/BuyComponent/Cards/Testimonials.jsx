@@ -115,7 +115,7 @@ const Testimonials = () => {
                   <h3 className={styles.name}>{item.name}</h3>
                   <p className={styles.date}>{item.date}</p>
                   <p className={styles.rating}>
-                    {"☆".repeat(5)}
+                    {"✦".repeat(5)}
                     <span className={styles.ratingValue}>{item.rating}</span>
                   </p>
                 </div>

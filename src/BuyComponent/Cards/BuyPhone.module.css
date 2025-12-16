@@ -24,7 +24,8 @@
   .navButtons {
     display: flex;
   }
-  .heading{
+
+  .heading {
     font-size: 1.5rem;
   }
 }
@@ -131,7 +132,7 @@
 .priceRow {
   display: flex;
   align-items: center;
-  gap:6px;
+  gap: 6px;
   margin-bottom: 0.25rem;
 }
 
