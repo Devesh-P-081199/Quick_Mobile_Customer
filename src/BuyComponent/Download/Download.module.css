@@ -166,17 +166,7 @@
   }
 
   .storeImage {
-    height: 40px;
-  }
-}
-
-@media (min-width: 640px) {
-  .storeImage {
-    height: 48px;
-  }
-
-  .heading {
-    font-size: 18px;
-    font-weight: 500;
+    height: 50px;
+    width: 50%;
   }
 }
