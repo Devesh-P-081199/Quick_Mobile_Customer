@@ -798,8 +798,8 @@ hr {
   input[type="reset"],
   .btn,
   .touch-target {
-    min-height: 39px;
-    min-width: 39px;
+    min-height: 25px;
+    min-width: 25px;
   }
 
   /* Form inputs */

@@ -3117,6 +3117,7 @@
     z-index: 1000;
     display: flex;
     flex-direction: column;
+    scrollbar-width: none;
   }
 
   .modalHeader {
@@ -3967,6 +3968,7 @@
     height: auto;
     overflow: scroll;
     padding-top: 0px;
+    scrollbar-width: none;
   }
 
   .mobileSearchHeader {

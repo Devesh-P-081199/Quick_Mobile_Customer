@@ -411,8 +411,8 @@ function SellHomeBanner({ onViewAllClick }) {
                           )
                         }
                         className={`${styles.imgCard} ${selectedCategoryId === cat._id
-                            ? styles.selectedCategory
-                            : ""
+                          ? styles.selectedCategory
+                          : ""
                           }`}
                       >
                         <div className={styles.imageBg}>

@@ -54,7 +54,6 @@ const MobileSearchModal = ({
             onChange={onChange}
             placeholder="Search brands, products..."
           />
-          <img src={Search} alt="Search" title="search" />
         </div>
       </div>
 

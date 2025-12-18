@@ -21,17 +21,22 @@
   width: 92vw;
   background-color: white;
   /* margin: 16px; */
-  margin: 16px;
+  margin: 20px 17px 0;
 }
 
 .backBtn {
   background: none;
   border: none;
   font-size: 22px;
-  margin-right: 10px;
+  margin-left: 7px;
   position: absolute;
-  left: 5px;
+  /* left: 5px; */
   z-index: 99;
+}
+
+.backBtn img {
+  width: 25px;
+  height: 25px;
 }
 
 .searchBox {
@@ -39,9 +44,9 @@
   flex: 1;
   align-items: center;
   position: relative;
-  border: 1px solid #ddd;
-  padding: 6px 30px;
-  border-radius: 6px;
+  border: 1px solid #e1e1e1;
+  padding: 10px 36px;
+  border-radius: 10px;
   height: 47px;
   padding-right: 6px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -49,7 +54,8 @@
 
 /* When input inside is focused */
 .searchBox:focus-within {
-  border-color: #1968b3; /* dark blue border */
+  border-color: #1968b3;
+  /* dark blue border */
   /* box-shadow: 0 0 0 2px rgba(0, 22, 66, 0.3);  */
   border: 1px solid #1968b3;
 }
@@ -94,6 +100,7 @@
   color: #888;
   font-size: 12px;
 }
+
 .searchInput {
   border: none;
   outline: none;
