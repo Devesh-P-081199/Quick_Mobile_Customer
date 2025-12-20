@@ -95,9 +95,8 @@ const CollapsibleDropdown = ({
               </div>
 
               <span
-                className={`${styles.expandArrow} ${
-                  expandedBrands.has(brand._id) ? styles.expanded : ""
-                }`}
+                className={`${styles.expandArrow} ${expandedBrands.has(brand._id) ? styles.expanded : ""
+                  }`}
               >
                 <img src={RightArrow} alt="" />
               </span>
@@ -721,11 +720,10 @@ const Header = () => {
                         {category?.map((cat) => (
                           <div
                             key={cat._id}
-                            className={`${styles.categoryItem} ${
-                              activeCategory === cat.categoryName
-                                ? styles.active
-                                : ""
-                            }`}
+                            className={`${styles.categoryItem} ${activeCategory === cat.categoryName
+                              ? styles.active
+                              : ""
+                              }`}
                             onMouseEnter={() => handleCategoryHover(cat)}
                           >
                             <img src={cat?.categoryPic} alt="" />

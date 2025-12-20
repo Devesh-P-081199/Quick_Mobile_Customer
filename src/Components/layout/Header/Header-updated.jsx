@@ -623,8 +623,8 @@ const Header = () => {
                           <div
                             key={cat._id}
                             className={`${styles.categoryItem} ${activeCategory === cat.categoryName
-                                ? styles.active
-                                : ""
+                              ? styles.active
+                              : ""
                               }`}
                             onMouseEnter={() => handleCategoryHover(cat)}
                           >

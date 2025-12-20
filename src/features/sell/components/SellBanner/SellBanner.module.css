@@ -408,7 +408,6 @@ button.laptopviewall {
 }
 
 .searchContainer input {
-  box-shadow: 0 0 10px 1px #00000012;
   border-radius: 10px;
 }
 
@@ -540,7 +539,7 @@ button.laptopviewall {
 }
 
 .searchInput {
-  color: black;
+  /* color: black; */
   padding: 10px;
   border-radius: 4px;
 
