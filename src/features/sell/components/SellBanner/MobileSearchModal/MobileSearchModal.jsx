@@ -75,7 +75,7 @@ const MobileSearchModal = ({
           <>
             {/* Brands */}
             {results?.ActiveBrands?.length > 0 && (
-              <div className={styles.sectionGroup}>
+              <div className={`${styles.sectionGroup} ${styles.brandsSection}`}>
                 {results.ActiveBrands.map((brand) => (
                   <div
                     key={brand._id}
@@ -83,7 +83,7 @@ const MobileSearchModal = ({
                     onClick={() => onBrandClick(brand)} // pass full object
                   >
                     <span className={styles.name}>{brand.brandName}</span>
-                    <span className={styles.tag}>in Brand</span>
+                    <span className={styles.tag}>Brand</span>
                   </div>
                 ))}
               </div>
@@ -91,7 +91,7 @@ const MobileSearchModal = ({
 
             {/* Products */}
             {results?.ActiveProducts?.length > 0 && (
-              <div className={styles.sectionGroup}>
+              <div className={`${styles.sectionGroup} ${styles.productsSection}`}>
                 {results.ActiveProducts.map((product) => (
                   <div
                     key={product._id}
@@ -99,7 +99,7 @@ const MobileSearchModal = ({
                     onClick={() => onProductClick(product)} // pass full object
                   >
                     <span className={styles.name}>{product.deviceName}</span>
-                    <span className={styles.tag}>in Product</span>
+                    <span className={styles.tag}>Product</span>
                   </div>
                 ))}
               </div>

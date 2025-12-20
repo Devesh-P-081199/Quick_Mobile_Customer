@@ -104,27 +104,33 @@
   -webkit-overflow-scrolling: touch;
   /* Momentum scrolling for iOS */
   padding: 0 16px 20px;
+  height: 100%;
   /* Bottom safe area */
 }
 
 .sectionGroup {
-  margin-bottom: 15px;
+  margin: 5px 0 10px 0;
 }
 
 .suggestionRow {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   padding: 8px;
   cursor: pointer;
 }
 
+.brandsSection {
+  border-radius: 10px;
+  background-color: #f2f2f2;
+}
+
 .name {
   font-size: 14px;
-  color: #222;
 }
 
 .tag {
-  color: #888;
+  color: #1968b3;
   font-size: 12px;
 }
 
