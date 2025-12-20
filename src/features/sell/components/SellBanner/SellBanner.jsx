@@ -367,7 +367,14 @@ function SellHomeBanner({ onViewAllClick }) {
                 <MobileSearchModal
                   searchTerm={searchTerm}
                   onChange={(e) => handleMainSearchChange(e, true)} // mobile = true
-                  onClose={() => setIsMobileSearchOpen(false)}
+                  onClose={() => {
+                    setIsMobileSearchOpen(false);
+                    setSearchTerm("");
+                    setMobileResults({
+                      ActiveBrands: { buy: [], repair: [], sell: [] },
+                      ActiveProducts: { buy: [], repair: [], sell: [] },
+                    });
+                  }}
                   results={mobileResults} // important!
                   onBrandClick={handleBrandClick}
                   onProductClick={handleProductClick}
