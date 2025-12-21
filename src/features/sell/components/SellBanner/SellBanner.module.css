@@ -544,8 +544,8 @@ button.laptopviewall {
   border-radius: 4px;
 
   &::placeholder {
-    color: rgb(52, 52, 52);
-    opacity: 1;
+    color: var(--color-text-muted);
+    /* opacity: 1; */
   }
 }
 
