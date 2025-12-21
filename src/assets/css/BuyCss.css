@@ -269,7 +269,7 @@ body {
 .slider-dots {
   display: flex;
   justify-content: center;
-  padding: 20px 0px;
+  padding: 20px 0px 5px;
   gap: 5px;
 }
 

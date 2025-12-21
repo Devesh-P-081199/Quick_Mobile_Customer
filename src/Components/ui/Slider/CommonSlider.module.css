@@ -3,18 +3,20 @@
 .sliderWrapper {
   position: relative;
   width: 100%;
-  overflow: hidden; /* Prevent wrapper overflow */
+  overflow: hidden;
+  /* Prevent wrapper overflow */
   border-radius: var(--radius-lg);
 }
 
 .sliderTrack {
   display: flex;
   overflow-x: auto;
-  overflow-y: hidden; /* Prevent vertical overflow */
-  gap: 16px;
+  overflow-y: hidden;
+  /* Prevent vertical overflow */
+  gap: 10px;
   scroll-behavior: smooth;
   justify-content: flex-start;
-  padding: var(--space-2) 0; /* Add padding to prevent content cutoff */
+  /* Add padding to prevent content cutoff */
 
   /* Enhanced scrollbar styling */
   scrollbar-width: thin;
@@ -49,7 +51,8 @@
   margin-top: var(--space-3);
   position: relative;
   z-index: 2;
-  padding-right: var(--space-2); /* Ensure buttons stay within container */
+  padding-right: var(--space-2);
+  /* Ensure buttons stay within container */
   max-width: 100%;
   overflow: hidden;
 }
@@ -82,9 +85,12 @@
 /* Slider Items - Prevent overflow */
 .sliderItem {
   flex-shrink: 0;
-  min-width: 0; /* Allow items to shrink if needed */
-  max-width: 100%; /* Prevent items from exceeding container */
-  overflow: hidden; /* Prevent content overflow */
+  min-width: 0;
+  /* Allow items to shrink if needed */
+  max-width: 100%;
+  /* Prevent items from exceeding container */
+  overflow: hidden;
+  /* Prevent content overflow */
 }
 
 /* Enhanced slider with fade edges */
@@ -111,13 +117,10 @@
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-  .sliderTrack {
-    gap: var(--space-3);
-    padding: var(--space-1) 0;
-  }
 
   .navButtons {
-    display: none; /* Hide navigation buttons on mobile */
+    display: none;
+    /* Hide navigation buttons on mobile */
   }
 
   .navBtn {
@@ -128,23 +131,6 @@
   .sliderWrapper::before,
   .sliderWrapper::after {
     width: 15px;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .sliderTrack {
-    gap: var(--space-2);
-  }
-
-  .navBtn {
-    width: 30px;
-    height: 30px;
-  }
-
-  .navBtn svg,
-  .navBtn img {
-    width: 14px;
-    height: 14px;
   }
 }
 
@@ -209,6 +195,7 @@
   0% {
     transform: translate(-50%, -50%) rotate(0deg);
   }
+
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }

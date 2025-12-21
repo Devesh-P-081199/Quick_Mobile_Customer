@@ -4,7 +4,7 @@
 
 .heading h2 {
   font-size: 18px;
-  margin: 35px 0 0 0;
+  margin: 25px 0 0 0;
   font-family: "IBM Plex Sans";
   font-weight: 500;
 }
@@ -12,7 +12,7 @@
 .heading {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
   margin-bottom: 25px;
 }
@@ -176,7 +176,7 @@
 
 .contentBox h3 {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 5px;
 }
 
@@ -223,7 +223,7 @@
   .timelineItems {
     flex-direction: column;
     width: 100%;
-    gap: 20px;
+    gap: 15px;
   }
 
   .timelineItem {
@@ -272,7 +272,7 @@
   }
 }
 
-@media (max-width: 550px) {
+@media screen and (max-width: 768px) {
   .heading h2 {
     font-size: 18px;
   }
@@ -309,4 +309,6 @@
     left: calc(20px + 10px - 2px);
     /* Mobile Padding + Half Icon 20px - Half Line 2px */
   }
+
+
 }

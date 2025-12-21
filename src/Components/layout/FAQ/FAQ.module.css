@@ -19,7 +19,7 @@
 /* FAQ List */
 .faqList {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 /* FAQ Item */
@@ -82,14 +82,18 @@
   transform: rotate(180deg);
 }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
+
+  .faqSection {
+    gap: 10px;
+  }
+
   .faqTitle {
     font-family: "IBM Plex Sans", sans-serif;
     font-size: 18px;
     font-weight: 500;
     /* text-align: center; */
     color: #000;
-    padding: 0px 2px;
   }
 
   .faqQuestion span {
@@ -107,9 +111,7 @@
   .faqAnswer {
     font-size: 14px;
   }
-}
 
-@media (max-width: 768px) {
   .faqItem {
     padding: 5px 0px;
   }

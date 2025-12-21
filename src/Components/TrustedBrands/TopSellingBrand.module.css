@@ -65,6 +65,7 @@
   align-items: start;
   justify-content: space-between;
 }
+
 .imgIndividual img {
   /* 
      width: 146px;
@@ -83,9 +84,13 @@
   gap: 15px !important;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
   .brandImageBox span {
     font-size: 12px;
+  }
+
+  .sectionHeading {
+    margin-bottom: 15px;
   }
 
   .brandSingleBox span {
@@ -97,12 +102,14 @@
     height: 95px;
     width: 95px;
   }
+
   .topSellingWrapper {
     display: flex;
     flex-direction: column;
     padding-bottom: 25px;
-    gap: 10px;
+    gap: 0px;
   }
+
   .absoluteButtons {
     display: none;
   }

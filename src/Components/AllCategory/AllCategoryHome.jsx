@@ -66,7 +66,7 @@ const Allcategoryhome = forwardRef((props, ref) => {
   };
 
   return (
-    <section ref={ref} className="default-padding-section scrollbar-hidden">
+    <section ref={ref} className="page-content-wrapper scrollbar-hidden">
       <div className="wrapper">
         <div className={styles.selectBrandWrapper}>
           <div className={styles.headingFlex}>

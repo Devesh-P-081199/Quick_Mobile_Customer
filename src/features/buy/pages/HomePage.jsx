@@ -22,7 +22,7 @@ const HomePage = () => {
         {/* <OurServices/> */}
         {/* <AllCategory/> */}
 
-        <div className="page-content-wrapper">
+        <div>
           <Allcategoryhome />
         </div>
 

@@ -20,10 +20,14 @@
 }
 
 .mobilePtSection {
-  padding: 20px 8px 0 8px;
+  padding: 20px 0px 20px;
 }
 
 .headingFlex .sectionHeading {
+  font-size: 18px;
+}
+
+.headingFlex .sectionHeading01 {
   font-size: 18px;
 }
 
@@ -38,7 +42,7 @@ section.default-padding-section {
 .seriesList {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 10px;
   overflow-x: auto;
   overflow-y: hidden;
   /* Prevent vertical scroll */
@@ -47,6 +51,7 @@ section.default-padding-section {
   /* Smooth scroll on iOS */
   padding: 0;
   scrollbar-width: none;
+  margin-bottom: 0;
   /* Firefox hide scrollbar */
 }
 
@@ -109,6 +114,13 @@ section.default-padding-section {
   /* adjust if needed */
 }
 
+.sectionHeading01 {
+  font-weight: 500;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: #000;
+  /* adjust if needed */
+}
+
 .imgIndividual img {
   /* width: 146px; */
   height: 160px;
@@ -160,6 +172,15 @@ section.default-padding-section {
 }
 
 @media screen and (max-width: 768px) {
+
+  .headingFlex .sectionHeading {
+    margin-top: 25px;
+  }
+
+  .headingFlex .sectionHeading01 {
+    margin-top: 0px;
+  }
+
   .mobilePtSection section.default-padding-section {
     padding: 0;
   }
@@ -167,9 +188,7 @@ section.default-padding-section {
   section {
     padding: 0px 0;
   }
-}
 
-@media (max-width: 550px) {
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -191,7 +210,8 @@ section.default-padding-section {
     justify-content: flex-start;
     flex-wrap: wrap;
     overflow: auto;
-    gap: 12px;
+    gap: 10px;
+    margin-bottom: 25px;
   }
 
   .brandSingleBox {
@@ -199,11 +219,5 @@ section.default-padding-section {
     font-weight: 500;
     text-align: center;
     width: 31%;
-  }
-}
-
-@media (max-width: 370px) {
-  .brandSingleBox {
-    font-size: 14px;
   }
 }

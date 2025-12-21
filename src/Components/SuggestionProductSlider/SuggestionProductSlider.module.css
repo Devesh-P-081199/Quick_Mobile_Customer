@@ -138,8 +138,13 @@
   background: #1968b3;
 }
 
-@media screen and (min-width: 550px) {
-  .sliderContainer {
-    display: none;
+@media screen and (max-width: 768px) {
+  .sellBtn {
+    padding: 7px 25px !important;
+    width: fit-content !important;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 10px;
+    height: 40px;
   }
 }

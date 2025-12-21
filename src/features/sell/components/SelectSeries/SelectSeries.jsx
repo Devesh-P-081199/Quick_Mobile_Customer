@@ -76,11 +76,11 @@ function SelectSeries() {
 
       <div className={styles.mobilePtSection}>
         {displayedSeries.length > 0 && (
-          <section className="default-padding-section">
+          <section className="page-content-wrapper">
             <div className="wrapper">
               <div className={styles.wrapper}>
                 <div className={styles.headingFlex}>
-                  <h2 className={styles.sectionHeading}>Select Series</h2>
+                  <h2 className={styles.sectionHeading01}>Select Series</h2>
                 </div>
                 <ul className={styles.seriesList}>
                   {displayedSeries.map((item) => (
@@ -115,7 +115,7 @@ function SelectSeries() {
         )}
 
         {/* Models List */}
-        <section className="default-padding-section">
+        <section className="page-content-wrapper">
           <div className="wrapper">
             {console.log(
               "Rendering models section, count:",
