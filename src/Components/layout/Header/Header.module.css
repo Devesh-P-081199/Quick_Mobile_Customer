@@ -1238,7 +1238,7 @@
     height: -webkit-fill-available;
     background-color: #fff;
     z-index: 1000;
-    box-shadow: -2px 0 12px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
     padding: 20px;
     /* transition: right 0.3s ease-in-out; */
     overflow-y: auto;
