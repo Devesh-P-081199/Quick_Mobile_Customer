@@ -46,26 +46,22 @@
   font-size: 18px;
   font-weight: 500;
   color: #000;
-  margin-left: 12px;
-  margin-bottom: 0;
+  margin: 0 auto 0 12px;
   padding-left: 0;
-  width: -webkit-fill-available;
 }
 
 .recalculateButton {
   padding: 0px 15px;
-  border-radius: 6px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.2s ease-in-out;
-  width: 270px;
-}
-
-.recalculateButton:hover {
-  color: #2f39ee;
+  color: #1968b3;
+  border: 0.3px solid #1968b3;
+  min-height: 30px;
 }
 
 .calcIcon {
@@ -76,21 +72,25 @@
 .answersWrapper {
   flex: 1;
   overflow-y: auto;
-  padding: 15px 10px;
+  padding: 20px 10px;
   /* background: #fafafa; */
 }
 
 .packageBlock h4 {
   font-size: 16px;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: #000;
+}
+
+.packageBlock:last-child .questionList {
+  margin-bottom: 15px;
 }
 
 /* Questions */
 .questionList {
   padding-left: 0px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   list-style: none;
 }
 
@@ -127,11 +127,29 @@
 /* Answer styles */
 .yes {
   color: #f26921;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .no {
   color: #f26921;
-  font-size: 12px;
+  font-size: 14px;
 
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  padding: 0;
+  cursor: pointer;
+  color: #000;
+  display: flex;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+}
+
+.iconButton img {
+  width: 28px;
+  height: 28px;
 }

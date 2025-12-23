@@ -254,7 +254,7 @@
   display: flex;
   justify-content: space-between;
   width: 364px;
-  margin: 15px 0;
+  margin: 10px 0;
 }
 
 .totalLabel,
@@ -373,347 +373,13 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .wrapper {
-    flex-direction: column;
-    gap: 0px;
-  }
-
-  .DeviceImg {
-    /* flex-direction: column; */
-  }
-
-  .DeviceDetails h2 {
-    font-family: IBM Plex Sans;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 100%;
-    letter-spacing: 0%;
-  }
-
-  .DeviceDetails .name {
-    margin-bottom: 10px;
-    font-size: 20px;
-  }
-
-  .row {
-    /* flex-direction: column; */
-    /* width: 290px; */
-  }
-
-  .LeftBox {
-    width: auto;
-  }
-
-  .RightBox {
-    width: 100%;
-    height: auto;
-  }
-
-  .FreePickupImg {
-    /* display: none; */
-  }
-
-  .DeviceDetails {
-    /* width: 394px; */
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    justify-content: space-between;
-    gap: 20px;
-  }
-
-  .totalRow {
-    /* flex-direction: column; */
-  }
-
-  .sellNow {
-    width: 100%;
-  }
-}
-
-@media (max-width: 880px) {
-  .wrapper {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .LeftBox {
-    width: 100%;
-  }
-
-  .RightBox {
-    width: 100%;
-  }
-
-  .row {
-    width: 100%;
-  }
-
-  .details {
-    width: 100%;
-  }
-
-  /* a {
-    width: 100%;
-  } */
-  .sellNow {
-    width: 100%;
-  }
-
-  .totalRow {
-    width: 100%;
-  }
-}
-
 .deviceDetailsBtn {
   display: none;
-}
-
-@media (min-width: 881px) and (max-width: 1300px) {
-  .DeviceImg {
-    display: flex;
-    gap: 30px;
-    flex-direction: column;
-  }
-
-  .DeviceDetails {
-    width: 100%;
-  }
-
-  .mobileImg {
-    border-width: 1px;
-    padding-right: 30px;
-    padding-left: 30px;
-    gap: 10px;
-    border-radius: 10px;
-    border: 1px solid #0000001a;
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0px;
-  }
-
-  .mobileImg img {
-    width: auto;
-    height: 100%;
-  }
-
-  .wrapper {
-    gap: 15px;
-  }
 }
 
 .FreePickupImgMobile {
   display: none;
 }
-
-@media (max-width: 550px) {
-  .LeftBox {
-    padding: 10px;
-  }
-
-  .DeviceDetails .name {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 0;
-    line-height: 1.3;
-  }
-
-  .DeviceDetails .price {
-    font-size: 12px;
-    font-weight: 500;
-    margin-bottom: 5px;
-  }
-
-  .DeviceDetails .price span {
-    font-weight: 500;
-  }
-
-  .wrapper {
-    gap: 0px;
-    margin: -10px 0px;
-    padding-bottom: 90px;
-  }
-
-  .recalculateImg {
-    display: none;
-  }
-
-  .FreePickupImgMobile {
-    display: block;
-  }
-
-  .FreePickupImg {
-    display: none;
-  }
-
-  .BottomPara {
-    display: none;
-  }
-
-  .mobileImg {
-    border-width: 1px;
-    padding-right: 0px;
-    padding-left: 0px;
-    gap: 10px;
-    border-radius: 15px;
-    border: none;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    padding: 0px 0px;
-    padding: 12px;
-    border: 0.3px solid #e1e1e1;
-    width: 100px;
-    height: 100px;
-  }
-
-  .mobileImg img {
-    width: auto;
-    height: 100%;
-  }
-
-  .DeviceImg {
-    display: flex;
-    gap: 15px;
-    align-items: flex-start;
-    border-bottom: 0.3px solid #e1e1e1;
-    padding-bottom: 10px;
-    flex-direction: row;
-    margin-bottom: 10px;
-  }
-
-  .DeviceDetails {
-    justify-content: center;
-    align-items: start;
-    gap: 10px;
-    width: calc(100% - 100px);
-  }
-
-  .detailsDown {
-    background-color: #ffffff;
-    padding: 8px;
-    border: 0.3px solid #e1e1e1;
-    gap: 0px;
-    border-radius: 15px;
-    margin-bottom: 10px;
-  }
-
-  .infoLine {
-    display: none;
-  }
-
-  .RightBox {
-    background: none;
-    border: none;
-    padding: 0px;
-    padding-bottom: 80px;
-    gap: 16px;
-  }
-
-  .summary {
-    font-size: 16px;
-    font-weight: 500;
-  }
-
-  .label,
-  .value {
-    font-size: 16px;
-  }
-
-  .sellNowContainer {
-    position: fixed;
-    bottom: 0vh;
-    left: 0vh;
-    height: 71px;
-    border-radius: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 11px;
-    background-color: #ffffff;
-    width: 100%;
-    border: none;
-    z-index: 99;
-  }
-
-  .sellNow {
-    border-radius: 0px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* padding: 25px 11px; */
-    width: 100%;
-    border-radius: 13px;
-  }
-
-  .deviceDetailsBtn {
-    display: block;
-  }
-
-  .bottonTitle {
-    width: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .bottonTitle .featureOption {
-    width: 40px;
-    height: 40px;
-    padding: 8px;
-    background: none;
-    border: none;
-  }
-
-  .bottonTitle p {
-    color: #000;
-    margin: 0 0 0 5px;
-    font-weight: 500;
-  }
-
-  .deviceDetailsBtn button {
-    display: block;
-    border-radius: 8px;
-    padding: 5px 0 5px 0px;
-    width: 100%;
-    text-align: start;
-    font-size: 16px;
-    font-weight: 400;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 0;
-  }
-
-  .applyCoupon button {
-    display: block;
-    border-radius: 8px;
-    padding: 5px 0 5px 0px;
-    width: 100%;
-    text-align: start;
-    font-size: 16px;
-    font-weight: 400;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 0;
-  }
-
-  .deviceDetailsBtn img {
-    width: 22px;
-  }
-
-  .applyCoupon img {
-    width: 22px;
-  }
-}
-
-@media (min-width: 881px) and (max-width: 1300px) {}
 
 .DeviceDetails .price {
   font-weight: 400 !important;
@@ -866,15 +532,15 @@
   color: #000000;
 }
 
+/* 
 .summaryContent {
-  padding: 5px 0 5px 42px;
-}
+  padding: 0px 0 0px 42px;
+} */
 
 .addressTag {
   display: inline-block;
-  color: #1968b3;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .addressText {
@@ -882,38 +548,28 @@
   font-size: 13px;
   font-weight: 400;
   color: #000000;
-  margin: 4px 0;
+  margin: 0;
   line-height: 1.4;
 }
 
 .paymentType {
   display: inline-block;
-  color: #1968b3;
-  font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .paymentText {
   font-family: IBM Plex Sans;
-  font-size: 13px;
-  font-weight: 400;
   color: #000000;
-  margin: 4px 0;
+  margin: 0;
   line-height: 1.4;
-}
-
-.paymentValue {
-  font-weight: 500;
-  color: #1968b3;
 }
 
 .notSelected {
   font-family: IBM Plex Sans;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   color: #999999;
-  font-style: italic;
-  margin: 5px 0;
+  margin: 0;
 }
 
 .changeBtn {
@@ -944,7 +600,274 @@
   margin-top: 8px;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .DeviceDetails h2 {
+    font-family: IBM Plex Sans;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+
+  .DeviceDetails .name {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  .RightBox {
+    width: 100%;
+    height: auto;
+  }
+
+  .DeviceDetails {
+    /* width: 394px; */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .sellNow {
+    width: 100%;
+  }
+
+  .wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .RightBox {
+    width: 100%;
+  }
+
+  .row {
+    width: 100%;
+  }
+
+  .details {
+    width: 100%;
+  }
+
+  .sellNow {
+    width: 100%;
+  }
+
+  .totalRow {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+
+  .LeftBox {
+    padding: 10px;
+    width: 100%;
+    margin: 20px 0 15px;
+  }
+
+  .DeviceDetails .name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
+    line-height: 1.3;
+  }
+
+  .DeviceDetails .price {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .DeviceDetails .price span {
+    font-weight: 500;
+  }
+
+  .wrapper {
+    gap: 0px;
+    margin: -10px 0px;
+    padding-bottom: 90px;
+  }
+
+  .recalculateImg {
+    display: none;
+  }
+
+  .FreePickupImgMobile {
+    display: block;
+  }
+
+  .FreePickupImg {
+    display: none;
+  }
+
+  .BottomPara {
+    display: none;
+  }
+
+  .mobileImg {
+    border-width: 1px;
+    padding-right: 0px;
+    padding-left: 0px;
+    gap: 10px;
+    border-radius: 15px;
+    border: none;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding: 0px 0px;
+    padding: 12px;
+    border: 0.3px solid #e1e1e1;
+    width: 100px;
+    height: 100px;
+  }
+
+  .mobileImg img {
+    width: auto;
+    height: 100%;
+  }
+
+  .DeviceImg {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    border-bottom: 0.3px solid #e1e1e1;
+    padding-bottom: 10px;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+
+  .DeviceDetails {
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+    width: calc(100% - 100px);
+  }
+
+  .detailsDown {
+    background-color: #ffffff;
+    padding: 10px;
+    border: 0.3px solid #e1e1e1;
+    gap: 0px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+
+  .infoLine {
+    display: none;
+  }
+
+  .RightBox {
+    background: none;
+    border: none;
+    padding: 0px;
+    padding-bottom: 90px;
+    gap: 15px;
+  }
+
+  .summary {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0px 0px 10px 0px;
+  }
+
+  .label,
+  .value {
+    font-size: 16px;
+  }
+
+  .sellNowContainer {
+    position: fixed;
+    bottom: 0vh;
+    left: 0vh;
+    height: 71px;
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 11px;
+    background-color: #ffffff;
+    width: 100%;
+    border: none;
+    z-index: 99;
+  }
+
+  .sellNow {
+    border-radius: 0px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 25px 11px; */
+    width: 100%;
+    border-radius: 13px;
+  }
+
+  .deviceDetailsBtn {
+    display: block;
+  }
+
+  .bottonTitle {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bottonTitle .featureOption {
+    width: 34px;
+    height: 34px;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .bottonTitle p {
+    color: #000;
+    margin: 0 0 0 6px;
+    font-weight: 500;
+  }
+
+  .deviceDetailsBtn button {
+    display: block;
+    border-radius: 8px;
+    padding: 0px;
+    width: 100%;
+    text-align: start;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0;
+  }
+
+  .applyCoupon button {
+    display: block;
+    border-radius: 8px;
+    padding: 0px;
+    width: 100%;
+    text-align: start;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0;
+  }
+
+  .deviceDetailsBtn img {
+    width: 22px;
+  }
+
+  .applyCoupon img {
+    width: 22px;
+  }
+
   .checkoutSummary {
     padding: 12px;
     margin-bottom: 10px;
@@ -957,7 +880,8 @@
 
   .summaryCard {
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    border-radius: 15px;
   }
 
   .summaryIcon {
@@ -972,7 +896,7 @@
 
   .addressText,
   .paymentText {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .addressTag,
@@ -986,5 +910,9 @@
 
   .orderWarning {
     font-size: 11px;
+  }
+
+  .summaryHeader {
+    padding: 0 0 10px;
   }
 }

@@ -105,7 +105,7 @@ const Answers = ({ onBack, onRecalculate }) => {
       {/* Header */}
       <div className={styles.header}>
         <button className={styles.iconButton} onClick={onBack}>
-          <img src={backArrow} alt="Back" style={{ width: '28px', height: '28px' }} />
+          <img src={backArrow} alt="Back" style={{ width: '28px', height: '28px' }} onClick={onBack} />
         </button>
         <h2 className={styles.title}>Device Details</h2>
         <button
@@ -147,7 +147,6 @@ const Answers = ({ onBack, onRecalculate }) => {
             onRecalculate();
           }}
         >
-          <FaCalculator className={styles.calcIcon} />
           Recalculate
         </button>
       </div>

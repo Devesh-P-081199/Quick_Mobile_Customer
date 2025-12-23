@@ -236,6 +236,11 @@ const OrderDetails = () => {
                     <div className={styles.summaryCard}>
                         <div className={styles.summaryHeader}>
                             <div className={styles.summaryHeaderLeft}>
+                                <img
+                                    src={secureShield}
+                                    alt=""
+                                    className={styles.featureOption}
+                                ></img>
                                 <span className={styles.summaryLabel}>Payment Method</span>
                             </div>
                             <button
@@ -249,7 +254,7 @@ const OrderDetails = () => {
                             <div className={styles.summaryContent}>
                                 {displayPayment.type === "upi" ? (
                                     <>
-                                        <span className={styles.paymentType}>UPI</span>
+                                        <span className={styles.paymentType}>UPI Payment</span>
                                         <p className={styles.paymentText}>
                                             UPI ID:{" "}
                                             <span className={styles.paymentValue}>

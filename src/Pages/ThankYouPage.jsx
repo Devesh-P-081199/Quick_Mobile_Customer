@@ -194,6 +194,28 @@ const ThankYouPage = () => {
 
           </div>
 
+          {/* Buttons */}
+          <div className={styles.btnBox}>
+            <button
+              className={styles.homeBtn}
+              onClick={() => navigate("/")}
+            >
+              Home
+            </button>
+            <button
+              className={styles.orderBtn}
+              onClick={() => {
+                if (orderId) {
+                  navigate(`/profile/order-details/${orderId}`);
+                } else {
+                  navigate('/my-profile-orders');
+                }
+              }}
+            >
+              View My Order
+            </button>
+          </div>
+
           {/* Info Grid */}
           <div className={styles.infoGrid}>
             <div className={styles.infoCard}>
@@ -358,28 +380,6 @@ const ThankYouPage = () => {
               </button>
             </div>
           )}
-
-          {/* Buttons */}
-          <div className={styles.btnBox}>
-            <button
-              className={styles.homeBtn}
-              onClick={() => navigate("/")}
-            >
-              Home
-            </button>
-            <button
-              className={styles.orderBtn}
-              onClick={() => {
-                if (orderId) {
-                  navigate(`/profile/order-details/${orderId}`);
-                } else {
-                  navigate('/my-profile-orders');
-                }
-              }}
-            >
-              View My Order
-            </button>
-          </div>
         </div>
       </div >
     </>

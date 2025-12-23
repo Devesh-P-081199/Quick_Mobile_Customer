@@ -369,7 +369,7 @@
 
   .form-right h2 {
     padding: 5px 0px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     margin: 10px 0 0px 0;
   }
@@ -384,6 +384,7 @@
   /* Mobile Progress Bar Styles */
   .package-progress {
     padding: 0;
+    margin-bottom: 10px;
   }
 
   .progress-text {
@@ -425,8 +426,9 @@
   }
 
   .form-content {
-    margin-top: 26px;
-    gap: 26px;
+    margin-top: 25px;
+    gap: 20px;
+    padding-bottom: 90px;
   }
 
   .button-box button {
@@ -486,48 +488,7 @@
   .label-inside-icon span {
     padding: 0px;
   }
-}
 
-.select-box:hover {
-  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    background-color: #dfdfdf; */
-}
-
-.select-box.selected {
-  background-color: #fff;
-  transform: scale(1);
-}
-
-@media (min-width: 769px) {
-  .form-content {
-    padding: 0px 25px;
-    padding-bottom: 30px;
-  }
-
-  .form-box .options label {
-    /* height: 52px; */
-    width: 100%;
-    max-width: 330px;
-  }
-
-  .question-explaination-text {
-    font-size: 14px;
-    color: grey;
-    font-weight: 400;
-  }
-
-  .form-left .device-name h2 {
-    font-size: 20px;
-  }
-
-  .form-left .package-answers {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-@media (max-width: 550px) {
   .form-box .options label {
     justify-content: start;
     gap: 5px;
@@ -646,10 +607,6 @@
     padding: 0;
     margin-left: -10px;
     margin-right: -10px;
-  }
-
-  .form-content {
-    padding-bottom: 90px;
   }
 
   .bottom-fixed-btn button {
@@ -849,10 +806,6 @@
     margin-right: -10px;
   }
 
-  .form-content {
-    padding-bottom: 90px;
-  }
-
   .bottom-fixed-btn button {
     border-radius: 0px;
     height: 50px;
@@ -883,7 +836,7 @@
 
   .fixed-btn button {
     border-radius: 0px;
-    min-height: 50px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;

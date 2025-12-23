@@ -390,7 +390,7 @@ function Step6() {
                   alt=""
                   className={styles.featureOption}
                 ></img>
-                <span className={styles.summaryLabel}>Delivery Address</span>
+                <span className={styles.summaryLabel}>Pickup Address</span>
               </div>
               <button
                 className={styles.changeBtn}
@@ -408,8 +408,8 @@ function Step6() {
                   {selectedAddress?.houseNumber}, {selectedAddress?.street}
                   {selectedAddress?.landmark &&
                     `, ${selectedAddress?.landmark}`}
-                </p>
-                <p className={styles.addressText}>
+                  {/* </p>
+                <p className={styles.addressText}> */}
                   {selectedAddress?.cityName}, {selectedAddress?.state} -{" "}
                   {selectedAddress?.zipCode}
                 </p>

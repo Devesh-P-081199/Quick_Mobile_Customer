@@ -75,7 +75,7 @@
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 .radioLabel {
@@ -323,6 +323,7 @@
   height: 100%;
   /* width: 100%; */
   gap: 16px;
+  margin-bottom: 0;
   white-space: nowrap;
 }
 
