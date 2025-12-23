@@ -37,7 +37,7 @@ function SelectVarient() {
         onBack={handleBack}
       />
 
-      <div className="page-content-wrapper">
+      <div className="page-content">
         <SellDeviceVarient />
         <TopSellingBrand />
         <TopSellingModel />

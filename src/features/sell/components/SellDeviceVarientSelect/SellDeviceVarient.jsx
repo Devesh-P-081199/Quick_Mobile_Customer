@@ -212,7 +212,7 @@ function SellDeviceVarient() {
   const isPhoneNameLoading = !phoneName;
 
   return (
-    <div className="default-padding-section mobile-pt-section">
+    <div className="page-content-wrapper mobile-pt-section">
       <div className="wrapper">
         <div className={`${styles.wrapper}`}>
           <div className={styles.leftContent}>

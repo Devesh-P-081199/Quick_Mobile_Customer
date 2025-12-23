@@ -224,8 +224,8 @@ const GetUpto = () => {
           }
         }}
       />
-      <div className="page-content-wrapper">
-        <section className={styles.getuptosection}>
+      <div className="page-content">
+        <div className="page-content-wrapper">
           <div className="wrapper mobile-pt-section">
             <div className={styles.wrapper}>
               {/* Left Section: Product Image */}
@@ -374,7 +374,7 @@ const GetUpto = () => {
               </div>
             </div>
           </div>
-        </section>
+        </div>
         <TopSellingBrand />
 
         <TopSellingModel />
