@@ -6,6 +6,7 @@
   border-radius: 15px 12px;
   display: flex;
   flex-wrap: nowrap;
+  flex-direction: row-reverse;
   gap: 20px;
 }
 
