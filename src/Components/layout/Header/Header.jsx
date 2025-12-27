@@ -18,6 +18,7 @@ import React, {
   useMemo,
   useRef,
   Suspense,
+  useLayoutEffect,
 } from "react";
 import styles from "./Header.module.css";
 
@@ -566,7 +567,7 @@ const Header = () => {
    * Effect: Dynamic padding for bottomNavContainer based on header container height
    * Also syncs display property (if header container is hidden, hide bottom nav)
    */
-  useEffect(() => {
+  useLayoutEffect(() => {
     const updateHeaderStyle = () => {
       if (headerContainerRef.current && bottomNavContainerRef.current) {
         const headerHeight = headerContainerRef.current.offsetHeight;
@@ -1375,6 +1376,12 @@ const Header = () => {
                   }
                   onMouseEnter={() => {
                     // Only set hover state for items with dropdowns
+                    if (item === "Sell Phone" || item === "Sell Gadget") {
+                      setHoveredItem(item);
+                    }
+                  }}
+                  onClick={() => {
+                    // Click support: Explicitly open this dropdown
                     if (item === "Sell Phone" || item === "Sell Gadget") {
                       setHoveredItem(item);
                     }

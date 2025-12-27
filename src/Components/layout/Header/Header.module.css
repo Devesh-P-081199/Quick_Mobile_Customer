@@ -711,11 +711,23 @@
 .bottomNavContainer {
   background-color: var(--color-surface);
   padding: 5px 155px;
+  padding-top: 72px;
+  /* Prevent CLS: Matches computed header height */
   font-size: 14px;
   position: relative;
   /* Ensure proper positioning context for dropdowns */
   z-index: 1001;
   /* Slightly higher than header container */
+  transition: none !important;
+  /* Prevent layout animations */
+}
+
+@media (max-width: 768px) {
+  .bottomNavContainer {
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 
 .bottomNav {
@@ -739,7 +751,7 @@
 }
 
 /* Specific styling for navigation dropdowns - positioned directly below trigger */
-.dropdownTrigger .dropdownMenu {
+.dropdownTrigger .dropdownMenu:not(.collapsibleDropdownMenu) {
   position: absolute;
   top: 100%;
   left: 0;
@@ -770,7 +782,7 @@
 }
 
 /* This rule is for the bottom navigation dropdowns - positioned directly below trigger */
-.bottomNav .dropdownMenu {
+.bottomNav .dropdownMenu:not(.collapsibleDropdownMenu) {
   position: absolute;
   left: 0;
   /* Position at the left edge of the trigger - NO TRANSFORM */
@@ -3549,7 +3561,7 @@
   overflow: hidden;
   /* Hide overflow for clean edges */
   z-index: var(--z-index-dropdown);
-  animation: fadeInDown 0.2s ease-out;
+  /* animation: fadeInDown 0.2s ease-out; Remove animation to prevent shift */
   display: flex;
   /* Two-section layout */
   margin-top: 0;
