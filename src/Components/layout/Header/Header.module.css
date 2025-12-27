@@ -1196,7 +1196,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 12px 20px;
+    padding: 7px 20px;
   }
 }
 
@@ -2470,7 +2470,7 @@
 }
 
 .MobileLogo {
-  height: 45px;
+  height: 35px;
   /* Increased by 5px from 40px */
   width: auto;
   max-width: 120px;
@@ -2492,12 +2492,6 @@
   align-items: center;
   cursor: pointer;
   padding: 8px;
-}
-
-@media (min-width: 670px) and (max-width: 768px) {
-  .mobilerow {
-    width: 95%;
-  }
 }
 
 @media (max-width: 550px) {
@@ -2983,11 +2977,6 @@
     /* Standardized icon size */
     width: 20px;
   }
-}
-
-
-.MobileLogo {
-  display: none;
 }
 
 .citydropdown {

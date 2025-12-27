@@ -115,6 +115,8 @@ const Header = () => {
   const dropdownRef = useRef(null); // Dropdown container reference
   const searchInputRef = useRef(null); // Mobile search input reference
   const lastSearchRef = useRef(""); // Track latest search to avoid race conditions
+  const headerContainerRef = useRef(null);
+  const bottomNavContainerRef = useRef(null);
 
   // Context data from UserContext
   const {
@@ -560,11 +562,57 @@ const Header = () => {
     }
   }, [isMobileSearchDrop]);
 
+  /**
+   * Effect: Dynamic padding for bottomNavContainer based on header container height
+   * Also syncs display property (if header container is hidden, hide bottom nav)
+   */
+  useEffect(() => {
+    const updateHeaderStyle = () => {
+      if (headerContainerRef.current && bottomNavContainerRef.current) {
+        const headerHeight = headerContainerRef.current.offsetHeight;
+        const headerDisplay = window.getComputedStyle(headerContainerRef.current).display;
+
+        // Apply dynamic padding
+        bottomNavContainerRef.current.style.paddingTop = `${headerHeight}px`;
+
+        // Sync display property
+        if (headerDisplay === 'none') {
+          bottomNavContainerRef.current.style.display = 'none';
+        } else {
+          bottomNavContainerRef.current.style.display = '';
+        }
+      }
+    };
+
+    // Initial calculation
+    updateHeaderStyle();
+
+    // Observers to react to changes
+    const resizeObserver = new ResizeObserver(updateHeaderStyle);
+    const mutationObserver = new MutationObserver(updateHeaderStyle);
+
+    if (headerContainerRef.current) {
+      resizeObserver.observe(headerContainerRef.current);
+      mutationObserver.observe(headerContainerRef.current, {
+        attributes: true,
+        attributeFilter: ['style', 'class']
+      });
+    }
+
+    window.addEventListener('resize', updateHeaderStyle);
+
+    return () => {
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
+      window.removeEventListener('resize', updateHeaderStyle);
+    };
+  }, []);
+
   return (
     <>
       {/* Main Header Container */}
       <header className={styles.header}>
-        <div className={styles.container}>
+        <div className={styles.container} ref={headerContainerRef}>
           {/* Left Group: Logo + City Selector */}
           <div className={styles.leftGroup}>
             {/* Company Logo */}
@@ -1303,7 +1351,7 @@ const Header = () => {
           </Suspense>
         )}
         {/* Bottom Navigation Bar */}
-        <div className={styles.bottomNavContainer}>
+        <div className={styles.bottomNavContainer} ref={bottomNavContainerRef}>
           {isVisible && (
             <div
               className={`${styles.bottomNav} ${!isVisible ? styles.hide : ""}`}
