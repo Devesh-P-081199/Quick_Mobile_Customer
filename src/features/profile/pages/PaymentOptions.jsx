@@ -125,17 +125,15 @@ const PaymentOptions = () => {
             {/* Tabs for UPI and Bank */}
             <div className={styles.tabContainer}>
               <button
-                className={`${styles.tabButton} ${
-                  selectedMethod === 0 ? styles.activeTab : ""
-                }`}
+                className={`${styles.tabButton} ${selectedMethod === 0 ? styles.activeTab : ""
+                  }`}
                 onClick={() => setSelectedMethod(0)}
               >
                 UPI
               </button>
               <button
-                className={`${styles.tabButton} ${
-                  selectedMethod === 1 ? styles.activeTab : ""
-                }`}
+                className={`${styles.tabButton} ${selectedMethod === 1 ? styles.activeTab : ""
+                  }`}
                 onClick={() => setSelectedMethod(1)}
               >
                 Bank Transfer
