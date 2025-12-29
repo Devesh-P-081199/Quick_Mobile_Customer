@@ -781,44 +781,30 @@
   /* Always interactive when rendered */
 }
 
-/* This rule is for the bottom navigation dropdowns - positioned directly below trigger */
 .bottomNav .dropdownMenu:not(.collapsibleDropdownMenu) {
   position: absolute;
-  left: 0;
-  /* Position at the left edge of the trigger - NO TRANSFORM */
-  width: auto;
-  /* Auto width instead of 100% */
+  top: 100%;
+  left: 9vw;
+  transform: translateX(-50%);
+  width: max-content;
+  min-width: 400px;
+  max-width: 90vw;
   background: transparent;
-  /* Remove white background */
   box-shadow: none;
-  /* Remove shadow */
   border: none;
-  /* Remove border */
   border-radius: 8px;
   padding: 24px;
   padding-top: 20px;
-  /* Extra padding at top to create hover bridge */
   display: flex;
   justify-content: flex-start;
-  /* Align content to the left */
-  z-index: 10000;
-  /* Very high z-index to ensure visibility */
-  top: 100%;
-  /* Ensure proper positioning */
-  margin-top: 0px;
-  /* Remove margin to close gap */
   align-items: flex-start;
-  /* Align items to top */
+  z-index: 10000;
+  margin-top: 0;
   opacity: 1;
-  /* Always visible when rendered */
   visibility: visible;
-  /* Always visible when rendered */
   pointer-events: auto;
-  /* Always interactive when rendered */
-  min-width: 600px;
-  /* Fixed minimum width to prevent shifting */
-  width: max-content;
-  /* Allow content to determine width */
+  animation: none;
+  /* Disable any animation to prevent positioning shifts */
 }
 
 .dropdownGrid {
