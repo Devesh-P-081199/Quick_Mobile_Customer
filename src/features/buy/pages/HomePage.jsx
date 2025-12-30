@@ -18,9 +18,6 @@ const HomePage = () => {
 
         <BlackBanner />
         <HomeSlider />
-        {/* <SellingService/> */}
-        {/* <OurServices/> */}
-        {/* <AllCategory/> */}
 
         <div>
           <Allcategoryhome />

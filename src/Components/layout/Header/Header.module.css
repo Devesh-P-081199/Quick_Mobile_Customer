@@ -5,6 +5,15 @@
   /* Subtle border on header */
 }
 
+.headerContainer {
+  width: 100%;
+  max-width: 1184px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* Global input focus styling - remove borders on all inputs when focused */
 :global(input:focus) {
   /* border: none !important; */
@@ -64,12 +73,10 @@
   z-index: 1002;
   /* High z-index to ensure header stays on top */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: var(--spacing-2) 12.5%;
   margin: 0 auto;
   font-size: var(--font-size-base);
-  max-width: none;
   /* Remove max-width constraint */
   min-height: 60px;
   /* Ensure consistent header height */
@@ -109,6 +116,7 @@
   align-items: center;
   gap: var(--spacing-4);
   flex-shrink: 0;
+  padding: 10px 0;
 }
 
 .logo {
@@ -927,7 +935,7 @@
 .becomePartner {
   font-size: var(--font-size-sm);
   /* Keep standardized font size */
-  padding: var(--spacing-3);
+  padding: var(--spacing-2);
 }
 
 /* Start responsive changes at 950px */
@@ -1374,7 +1382,6 @@
   /* Force consistent color */
   transition: color var(--transition-fast),
     background-color var(--transition-fast);
-  padding: var(--spacing-2);
   padding-right: 0;
   border-radius: var(--border-radius-md);
   white-space: nowrap;
@@ -1691,11 +1698,11 @@
 .header_searchBar {
   flex: 1;
   /* Fill available space */
-  margin: 0 25px;
+  margin: 0 20px;
   /* 25px margins on either side */
   min-width: 200px;
   /* Minimum width to prevent collapse */
-  max-width: 650px;
+  max-width: 540px;
   /* Remove max-width to allow full expansion */
 }
 
@@ -1784,10 +1791,11 @@
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  padding: 10px;
+  padding: 0;
   /* Changed from 16px to 10px */
   max-height: 450px;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .dropdown h6 {
@@ -1857,9 +1865,6 @@
   font-size: 14px;
   cursor: pointer;
   padding: 10px;
-  /* Changed from 9px 8px to 10px */
-  /* background: #f9f9f9; */
-  border-radius: 6px;
   transition: all 0.2s ease;
   align-items: center;
   /* gap: 10px; - Removed gap as requested */
@@ -2599,7 +2604,7 @@
 .resultItem {
   display: flex;
   gap: 12px;
-  padding: 8px 0;
+  padding: 8px 10px;
   /* border-bottom: 1px solid #eee; */
 }
 

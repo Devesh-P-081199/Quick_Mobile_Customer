@@ -216,7 +216,9 @@ body {
   gap: 20px;
   flex-direction: column;
   align-items: flex-start;
-  padding: 20px 12.5%;
+  max-width: 1184px;
+  padding: 0 2rem;
+  margin: auto;
   /* Match header padding exactly */
   width: 100%;
   position: relative;
@@ -258,7 +260,7 @@ body {
 /* Image */
 .slider-image {
   position: absolute;
-  right: -22px;
+  right: 0px;
   top: 50%;
   transform: translateY(-50%);
   width: 362px;
@@ -344,21 +346,6 @@ body {
   right: 10px;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .slider-content {
-    padding: 20px 40px;
-  }
-
-  .slider-description {
-    font-size: 24px;
-    line-height: 32px;
-  }
-
-  .slider-image {
-    width: 300px;
-  }
-}
 
 @media (max-width: 550px) {
   .slider-nav {

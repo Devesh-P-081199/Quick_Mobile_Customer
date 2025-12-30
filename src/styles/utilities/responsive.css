@@ -867,10 +867,9 @@
 /* Wraps each component separately for granular control */
 
 .page-content-wrapper {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 0;
-  padding-bottom: 0;
+  max-width: 1184px;
+  margin: 20px auto;
+  padding: 0 2rem;
   box-sizing: border-box;
 }
 
@@ -888,13 +887,6 @@
   .page-content-wrapper {
     padding-left: 10px;
     padding-right: 10px;
-  }
-}
-
-/* Small mobile optimization (≤550px) */
-@media (max-width: 550px) {
-  .page-content-wrapper {
-    padding-left: 10px;
-    padding-right: 10px;
+    margin: 0px auto;
   }
 }

@@ -612,252 +612,254 @@ const Header = () => {
   return (
     <>
       {/* Main Header Container */}
-      <header className={styles.header}>
+      <div className={styles.header}>
         <div className={styles.container} ref={headerContainerRef}>
-          {/* Left Group: Logo + City Selector */}
-          <div className={styles.leftGroup}>
-            {/* Company Logo */}
-            <img
-              src={HeaderLogo}
-              alt="Logo"
-              className={styles.logo}
-              onClick={handlehomeButton}
-            />
-
-            {/* City Selection */}
-            <div className={styles.citySelector} onClick={toggleModal}>
+          <div className={styles.headerContainer}>
+            {/* Left Group: Logo + City Selector */}
+            <div className={styles.leftGroup}>
+              {/* Company Logo */}
               <img
-                src={NewLocationIcon}
-                alt="Location"
-                className={[styles.locationicon, "nav-icons"].join(" ")}
+                src={HeaderLogo}
+                alt="Logo"
+                className={styles.logo}
+                onClick={handlehomeButton}
               />
-              <div className={styles.cityNameContainer}>
-                <span>{userSelection?.cityName || "Select City"}</span>
+
+              {/* City Selection */}
+              <div className={styles.citySelector} onClick={toggleModal}>
+                <img
+                  src={NewLocationIcon}
+                  alt="Location"
+                  className={[styles.locationicon, "nav-icons"].join(" ")}
+                />
+                <div className={styles.cityNameContainer}>
+                  <span>{userSelection?.cityName || "Select City"}</span>
+                </div>
+                <img
+                  src={dropdownIcon}
+                  alt=""
+                  className={[styles.arrowImg, "nav-icons"].join(" ")}
+                />
               </div>
-              <img
-                src={dropdownIcon}
-                alt=""
-                className={[styles.arrowImg, "nav-icons"].join(" ")}
-              />
             </div>
-          </div>
 
-          {/* Search Bar with Dropdown Results */}
-          <div className={styles.header_searchBar}>
-            <div className={styles.searchContainer} ref={searchRef}>
-              <input
-                type="text"
-                placeholder="What are you looking for..."
-                className={styles.searchInput}
-                value={searchTerm}
-                onChange={handleMainSearchChange}
-                aria-label="Search"
-              />
-              <img
-                src={NewSearchIcon}
-                alt=""
-                className={[styles.headerSearchIcon, "nav-icons"].join(" ")}
-              />
+            {/* Search Bar with Dropdown Results */}
+            <div className={styles.header_searchBar}>
+              <div className={styles.searchContainer} ref={searchRef}>
+                <input
+                  type="text"
+                  placeholder="What are you looking for..."
+                  className={styles.searchInput}
+                  value={searchTerm}
+                  onChange={handleMainSearchChange}
+                  aria-label="Search"
+                />
+                <img
+                  src={NewSearchIcon}
+                  alt=""
+                  className={[styles.headerSearchIcon, "nav-icons"].join(" ")}
+                />
 
-              {/* Search Results Dropdown */}
-              {showDropdown && (
-                <div className={styles.dropdown} ref={dropdownRef}>
-                  {["sell", "buy", "recycle"].map((contextType) => {
-                    const hasBrands =
-                      results.ActiveBrands?.[contextType]?.length > 0;
-                    const hasProducts =
-                      results.ActiveProducts?.[contextType]?.length > 0;
-                    const hasCategories =
-                      results.ActiveCategories?.[contextType]?.length > 0;
+                {/* Search Results Dropdown */}
+                {showDropdown && (
+                  <div className={styles.dropdown} ref={dropdownRef}>
+                    {["sell", "buy", "recycle"].map((contextType) => {
+                      const hasBrands =
+                        results.ActiveBrands?.[contextType]?.length > 0;
+                      const hasProducts =
+                        results.ActiveProducts?.[contextType]?.length > 0;
+                      const hasCategories =
+                        results.ActiveCategories?.[contextType]?.length > 0;
 
-                    if (!hasBrands && !hasProducts && !hasCategories)
-                      return null;
+                      if (!hasBrands && !hasProducts && !hasCategories)
+                        return null;
 
-                    return (
-                      <div key={contextType} className={styles.contextBlock}>
-                        {/* Categories */}
-                        {hasCategories && (
-                          <div className={styles.resultGroup}>
-                            {results.ActiveCategories[contextType].map(
-                              (cat) => (
+                      return (
+                        <div key={contextType} className={styles.contextBlock}>
+                          {/* Categories */}
+                          {hasCategories && (
+                            <div className={styles.resultGroup}>
+                              {results.ActiveCategories[contextType].map(
+                                (cat) => (
+                                  <div
+                                    key={cat._id}
+                                    className={styles.resultItem}
+                                    onClick={() => handleCategoryClick(cat)}
+                                  >
+                                    {cat.categoryName}
+                                    <span className={styles.resultTag}>
+                                      in {contextType}
+                                    </span>
+                                  </div>
+                                )
+                              )}
+                            </div>
+                          )}
+
+                          {/* Brands */}
+                          {hasBrands && (
+                            <div>
+                              {results.ActiveBrands[contextType].map((brand) => (
                                 <div
-                                  key={cat._id}
-                                  className={styles.resultItem}
-                                  onClick={() => handleCategoryClick(cat)}
-                                >
-                                  {cat.categoryName}
-                                  <span className={styles.resultTag}>
-                                    in {contextType}
-                                  </span>
-                                </div>
-                              )
-                            )}
-                          </div>
-                        )}
-
-                        {/* Brands */}
-                        {hasBrands && (
-                          <div>
-                            {results.ActiveBrands[contextType].map((brand) => (
-                              <div
-                                key={brand._id}
-                                className={styles.resultItem}
-                                onClick={() =>
-                                  handleBrandClick(brand._id, brand)
-                                }
-                              >
-                                <div>
-                                  <img
-                                    height={15}
-                                    width={15}
-                                    src={brand?.brandLogo}
-                                    alt={brand?.brandName}
-                                  />
-                                </div>
-                                <div className={styles.searchNames}>
-                                  {brand?.brandName}
-                                  <span className={styles.resultTag}>
-                                    in {contextType}{" "}
-                                    {brand?.categoryData?.categoryName}
-                                  </span>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-
-                        {/* Products */}
-                        {hasProducts && (
-                          <div className={styles.resultGroup}>
-                            {results.ActiveProducts[contextType].map(
-                              (product) => (
-                                <div
-                                  key={product._id}
+                                  key={brand._id}
                                   className={styles.resultItem}
                                   onClick={() =>
-                                    handleProductClick(product._id, product)
+                                    handleBrandClick(brand._id, brand)
                                   }
                                 >
-                                  <div className={styles.productImage}>
+                                  <div>
                                     <img
-                                      src={product?.devicePic}
-                                      alt={product?.deviceName}
-                                      height={20}
-                                      width={20}
+                                      height={15}
+                                      width={15}
+                                      src={brand?.brandLogo}
+                                      alt={brand?.brandName}
                                     />
                                   </div>
                                   <div className={styles.searchNames}>
-                                    {product?.deviceName}
+                                    {brand?.brandName}
                                     <span className={styles.resultTag}>
                                       in {contextType}{" "}
-                                      {product?.categoryData?.categoryName}
+                                      {brand?.categoryData?.categoryName}
                                     </span>
                                   </div>
                                 </div>
-                              )
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Products */}
+                          {hasProducts && (
+                            <div className={styles.resultGroup}>
+                              {results.ActiveProducts[contextType].map(
+                                (product) => (
+                                  <div
+                                    key={product._id}
+                                    className={styles.resultItem}
+                                    onClick={() =>
+                                      handleProductClick(product._id, product)
+                                    }
+                                  >
+                                    <div className={styles.productImage}>
+                                      <img
+                                        src={product?.devicePic}
+                                        alt={product?.deviceName}
+                                        height={20}
+                                        width={20}
+                                      />
+                                    </div>
+                                    <div className={styles.searchNames}>
+                                      {product?.deviceName}
+                                      <span className={styles.resultTag}>
+                                        in {contextType}{" "}
+                                        {product?.categoryData?.categoryName}
+                                      </span>
+                                    </div>
+                                  </div>
+                                )
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* Right Group: Become Partner + Login/User */}
-          <div className={styles.rightGroup}>
-            {/* Become Partner */}
-            <Link to="/become-partner" className={styles.becomePartner}>
-              {/* <img src={recycleIcon} alt="" className="nav-icons" /> */}
-              <span>Become Partner</span>
-            </Link>
+            {/* Right Group: Become Partner + Login/User */}
+            <div className={styles.rightGroup}>
+              {/* Become Partner */}
+              <Link to="/become-partner" className={styles.becomePartner}>
+                {/* <img src={recycleIcon} alt="" className="nav-icons" /> */}
+                <span>Become Partner</span>
+              </Link>
 
-            {/* Vertical Divider */}
-            <div className={styles.verticalDivider}></div>
+              {/* Vertical Divider */}
+              <div className={styles.verticalDivider}></div>
 
-            {/* User Authentication Section */}
-            <div className={styles.user}>
-              {user?.phone ? (
-                <div className={styles.dropdownContainer}>
-                  <span className={styles.loginUserHover}>
-                    <div className={styles.userInitials}>
-                      {getUserInitials(user.name || user.phone)}
-                    </div>
-                    <img
-                      src={dropdownIcon}
-                      alt="dropdown"
-                      className={[styles.dropdownArrow, "nav-icons"].join(" ")}
-                    />
-                  </span>
-                  <div className={styles.profiledropdownMenu}>
-                    <div
-                      onClick={() => navigate("/my-profile-orders")}
-                      className={styles.dropdownItem}
-                    >
-                      <FaUserCircle className={styles.icon} />
-                      My Profile
-                    </div>
-                    <div
-                      onClick={() => navigate("/my-orders")}
-                      className={styles.dropdownItem}
-                    >
-                      <FaShoppingBag className={styles.icon} />
-                      My Orders
-                    </div>
-                    <div
-                      onClick={() => navigate("/offers")}
-                      className={styles.dropdownItem}
-                    >
-                      <FaTags className={styles.icon} />
-                      Offers
-                    </div>
-                    <div className={styles.dropdownItem}>
-                      <FaSignOutAlt className={styles.icon} />
-                      Logout
+              {/* User Authentication Section */}
+              <div className={styles.user}>
+                {user?.phone ? (
+                  <div className={styles.dropdownContainer}>
+                    <span className={styles.loginUserHover}>
+                      <div className={styles.userInitials}>
+                        {getUserInitials(user.name || user.phone)}
+                      </div>
+                      <img
+                        src={dropdownIcon}
+                        alt="dropdown"
+                        className={[styles.dropdownArrow, "nav-icons"].join(" ")}
+                      />
+                    </span>
+                    <div className={styles.profiledropdownMenu}>
+                      <div
+                        onClick={() => navigate("/my-profile-orders")}
+                        className={styles.dropdownItem}
+                      >
+                        <FaUserCircle className={styles.icon} />
+                        My Profile
+                      </div>
+                      <div
+                        onClick={() => navigate("/my-orders")}
+                        className={styles.dropdownItem}
+                      >
+                        <FaShoppingBag className={styles.icon} />
+                        My Orders
+                      </div>
+                      <div
+                        onClick={() => navigate("/offers")}
+                        className={styles.dropdownItem}
+                      >
+                        <FaTags className={styles.icon} />
+                        Offers
+                      </div>
+                      <div className={styles.dropdownItem}>
+                        <FaSignOutAlt className={styles.icon} />
+                        Logout
+                      </div>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <div onClick={handleLoginClick} className={styles.loginButton}>
-                  <img
-                    src={usericon}
-                    alt=""
-                    className={[styles.usericon, "nav-icons"].join(" ")}
-                  />
-                  <span>Login</span>
-                  <img
-                    src={dropdownIcon}
-                    alt=""
-                    className={[styles.arrowImg, "nav-icons"].join(" ")}
-                  />
+                ) : (
+                  <div onClick={handleLoginClick} className={styles.loginButton}>
+                    <img
+                      src={usericon}
+                      alt=""
+                      className={[styles.usericon, "nav-icons"].join(" ")}
+                    />
+                    <span>Login</span>
+                    <img
+                      src={dropdownIcon}
+                      alt=""
+                      className={[styles.arrowImg, "nav-icons"].join(" ")}
+                    />
+                  </div>
+                )}
+              </div>
+
+              {isProfileDropDown && user?.phone && (
+                <div className={styles.dropdownMenu}>
+                  <div
+                    onClick={() => navigate("/my-profile")}
+                    className={styles.dropdownItem}
+                  >
+                    Profile
+                  </div>
+                  <div
+                    onClick={() => navigate("/my-profile-orders")}
+                    className={styles.dropdownItem}
+                  >
+                    My Orders
+                  </div>
+                  <div
+                    onClick={() => navigate("/")}
+                    className={styles.dropdownItem}
+                  >
+                    Logout
+                  </div>
                 </div>
               )}
             </div>
-
-            {isProfileDropDown && user?.phone && (
-              <div className={styles.dropdownMenu}>
-                <div
-                  onClick={() => navigate("/my-profile")}
-                  className={styles.dropdownItem}
-                >
-                  Profile
-                </div>
-                <div
-                  onClick={() => navigate("/my-profile-orders")}
-                  className={styles.dropdownItem}
-                >
-                  My Orders
-                </div>
-                <div
-                  onClick={() => navigate("/")}
-                  className={styles.dropdownItem}
-                >
-                  Logout
-                </div>
-              </div>
-            )}
           </div>
         </div>
         {/* Login/Signup Modal */}
@@ -1836,7 +1838,7 @@ const Header = () => {
             </div>
           )}
         </div>
-      </header>
+      </div>
     </>
   );
 };
