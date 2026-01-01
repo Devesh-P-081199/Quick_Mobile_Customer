@@ -1405,7 +1405,7 @@ const Header = () => {
                     <img
                       src={dropdownIcon}
                       alt="Dropdown"
-                      className="nav-icons"
+                      className={`nav-icons ${hoveredItem === item ? styles.arrowRotated : ''}`}
                     />
                   )}
 
