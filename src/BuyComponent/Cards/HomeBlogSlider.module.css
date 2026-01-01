@@ -43,8 +43,20 @@
     transition: background-color 0.2s;
 }
 
+.blognavigation {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.blogheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .arrowLeft {
     background-color: #e5e7eb;
+    margin-right: 10px;
 }
 
 .arrowLeft:hover {
@@ -140,7 +152,11 @@
     text-overflow: ellipsis;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+    .blogsection {
+        padding: 0;
+    }
+
     .section {
         padding: 10px 0;
     }
@@ -155,12 +171,6 @@
 
     .navigation {
         display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .blogsection {
-        padding: 0;
     }
 
     .blognavigation {

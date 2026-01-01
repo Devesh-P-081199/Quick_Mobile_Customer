@@ -35,7 +35,7 @@ const HomeBlogSlider = () => {
     };
 
     return (
-        <section className={styles.blogsection}>
+        <div className={styles.blogsection}>
             <div className={styles.blogwrapper}>
                 <div className={styles.blogheader}>
                     <h2 className={styles.blogtitle}>Our Blogs</h2>
@@ -82,7 +82,7 @@ const HomeBlogSlider = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 

@@ -213,5 +213,125 @@
                 ]
             }
         ]
+    },
+    {
+        "_id": "4",
+        "title": "How To Clear App Data and Cache on Android?",
+        "description": "We use a smartphone daily for work as well as for personal and entertainment services. We have multiple applications on a mobile phone and also, we keep on browsing the internet. However, while performing such activities and also running some other activities in the background, your mobile fine phone might gather some cache. The cache can slow down your mobile phone if not dismissed on time.",
+        "date": "14th June 2022",
+        "img": "Blog04.jpg",
+        "content-details": [
+            {
+                "content": [
+                    "We use a smartphone daily for work as well as for personal and entertainment services. We have multiple applications on a mobile phone and also, we keep on browsing the internet. However, while performing such activities and also running some other activities in the background, your mobile fine phone might gather some cache. The cache can slow down your mobile phone if not dismissed on time."
+                ]
+            },
+            {
+                "header": "What is Cache?",
+                "content": [
+                    "A cache is a hardware or software component that stores data. This does not mean that it is of use part of your data. It can be understood as a minor part of data that is stored for retrieving it and speeding up the process of what you are looking for it or using it.  This data can be served in the future with proper speed are also be safe for the user to view at any time see store temporary files. This is a small chunk of memory present on our mobile phones or computers processor. You can also call it a reserve storage location that collects data from websites, browsers and applications loaded faster whether it is your smartphone or your laptop there will always be some see that you collect from a web browser or other applications."
+                ]
+            },
+            {
+                "header": "Also Read: Pros & Cons of Modern Era Mobile Technology"
+            },
+            {
+                "header": "Why should you clear the Cache?",
+                "content": [
+                    "The cache must be cleared regularly. Clearing the cache simply clears temporary files that I no longer need it. You do not have to worry about anything using the data part as it won’t erase any of your important files. Clearing of cache can also free up some of the memory on your mobile phone. Android mobile phones are filled with cache daily because of their usage. Therefore, cleaning the cache can free up some valuable space and helps you maintain the phone's battery, speed and security. Android mobile phones cache or store small pieces of memory of information that your applications and web browsers used to speed up their performance. However, if this case is filed and filed love it will get corrupted because of the overload and cost performance issues. The cache does not need to be cleared daily but at least within a few days."
+                ]
+            },
+            {
+                "header": "How can you clear the cache on the android smartphone?",
+                "content": [
+                    "All android smartphones gather cache in them. Cleaning them is an easy process. Many applications are specifically made for clearing the cache in an android mobile phone. These applications can be downloaded from the play store.",
+                    "For cleaning the cache without downloading any application follow the below-mentioned steps: -",
+                    "• Open the settings menu on your mobile phone.",
+                    "• Click on storage in the android settings of your mobile phone.",
+                    "• Tap on internal storage.",
+                    "• Tap on cashed data.",
+                    "However, if you are looking forward to cleaning the cache from a specific application you can do the following steps.",
+                    "On an Android mobile phone, you can also do this through the Google Chrome app.",
+                    "• Open Google Chrome and in the right top corner tap on the three dots that appear together.",
+                    "• Tap on history.",
+                    "• Tap on clear browsing data.",
+                    "•  You can also choose a time range should delete everything according to your convenience.",
+                    "This clears the cache from your Google Chrome application."
+                ]
+            },
+            {
+                "header": "Also Read: How to Find and Delete Old Online Accounts"
+            },
+            {
+                "header": "How to clear cache from third-party applications?",
+                "content": [
+                    "This is another easier way that you can use to clear the mobile phone cache. The application cache is similar to the browser cache. As it is also the small pieces of memory or information that you are applications or web browser has gathered. There may be times when an application suddenly shut down or stops responding while you are using it. These problems may arise because the cache data on your mobile phone has been piling up for a long time. Clearing cache is a quick and easy way to get some more space on your mobile phone which is occupied by unnecessary files. That is why some of the applications on the play store will help you to get rid of this unnecessary data."
+                ]
+            },
+            {
+                "header": "Can you lose any data will you clear the cache on your android smartphone?",
+                "content": [
+                    "Many people fear that they can lose data while they are clear of the cache on their mobile phones. This is completely a myth. The cache is not any of your important data. It does not include any of your saved login credentials or passwords or even other images and documents. This is the unnecessary remains of the operation or functionalities that the applications on my mobile phone and browser have created by you are using them. Therefore, you will never lose any of your data while you clear the cache of your android smartphone. The cache can be understood as the remains of these data on your smartphone to speed up the process and not the whole data that can be lost while you clear it."
+                ]
+            }
+        ]
+    },
+    {
+        "_id": "5",
+        "title": "Tips And Tricks to Make Your Android Run Faster",
+        "description": "It's no big deal when Android users complain about their Android smartphones running very slowly. There might be several reasons why the Android smartphone doesn't run smooth. This could come because of little problems that have long been deciding on your phone and you have ignorant signs of it. However, there is no specific reason for this to happen.",
+        "date": "02nd April 2022",
+        "img": "Blog05.jpg",
+        "content-details": [
+            {
+                "content": [
+                    "It's no big deal when Android users complain about their Android smartphones running very slowly. There might be several reasons why the Android smartphone doesn't run smooth. This could come because of little problems that have long been deciding on your phone and you have ignorant signs of it. However, there is no specific reason for this to happen and some of the common issues have been listed along with their possible solutions:"
+                ]
+            },
+            {
+                "header": "1. Empty your storage space",
+                "content": [
+                    "Many Android users have complained about their Android smartphones running very slowly. This is because of the storage space that has been filled up with unnecessary files."
+                ]
+            },
+            {
+                "header": "2. Keep your phone updated",
+                "content": [
+                    "Every smartphone receives a software update quite a bit of time. This update is sent by the server to resolve issues or issues or add new features to the smartphone. Hence, it is important for you to keep your smartphone up to date to keep your Android smartphone running smoothly. Your phone will always inform you when a new software update occurs. You can also check the most recent software update by going to the settings menu followed by the device option that will lead you to software updates."
+                ]
+            },
+            {
+                "header": "3. Uninstall unnecessary Apps",
+                "content": [
+                    "There are multiple applications on a smartphone. With the availability of various apps for different uses, from buying online to playing games, it has become a lot for a smartphone to manage. Users tend to download apps onto their smartphones that occupy a lot of space and haven't even been used for a long time. Hence, it is important for the user to uninstall useless apps from their smartphone for better operation. You can check your app's storage availability from the Settings menu and uninstall the application you are not using."
+                ]
+            },
+            {
+                "header": "4. Clean up your home screen",
+                "content": [
+                    "The home screen is the area where you will surely find yourself whenever you unlock your Android smartphone. This area could be filled with the number of apps you have on your smartphone and also fancy wallpapers that could be raised in storage. You must minimise the number of applications on the home screen of your smartphone and just keep the application that you use regularly for the full smooth functioning of your smartphone.",
+                    "If you keep your Android device's home screen clean, you're eventually pushing fewer colours to the SoC, which reduces the time needed to make part of your home screen."
+                ]
+            },
+            {
+                "header": "5. Download applications from verified sources",
+                "content": [
+                    "Unlike iOS users, Android users are able to download what they want even from the browser. However, that is not always an advantage. Millions of apps on the Play Store are just a few clicks away, but out of these unlimited apps and games, not all apps are designed by developers with good intentions.",
+                    "Downloading from verified sources is always suggested because you can download some type of virus along with the application or file you have downloaded from your browsers. This is why it is suggested that you download anything from the play store or any verified source to avoid such incidents."
+                ]
+            },
+            {
+                "header": "6. Regularly clear app cache",
+                "content": [
+                    "The App cache is generated automatically when you use or leave apps. hence, while you have been carrying out various activities such as online shopping or any other activity. Playing video games on your smartphone and downloading other applications can create a cache on your smartphone. This must be erased for improved operation of your mobile phone."
+                ]
+            },
+            {
+                "header": "7. Restart/Reset your device",
+                "content": [
+                    "Whenever our smartphone gets stuck it hangs out a lot the simplest solution we get to your mind is to restart it. It definitely works a lot of times turn off the smartphone and try to reboot it to cool it down and calm it down. Secondly, if there are a lot of problems and nothing seems to work with your smartphone, Then you can factory reset it completely so that any kind of virus or anything that is making the phone lag will be formatted from earphones. It is very important to have a backup of all files and data on your device before rebooting your smartphone."
+                ]
+            }
+        ]
     }
 ]

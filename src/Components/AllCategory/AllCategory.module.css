@@ -277,7 +277,7 @@
     gap: 0px;
     padding: 10px 0;
     width: auto;
-    overflow: scroll;
+    overflow: none;
     border: 0.3px solid #e1e1e1;
     box-shadow: none;
   }
