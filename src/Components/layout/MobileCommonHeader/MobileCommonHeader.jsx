@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./MobileCommonHeader.module.css";
 import { useNavigate } from "react-router-dom";
 import newSearchIcon from "../../../assets/QuickSellNewIcons/Search.svg";

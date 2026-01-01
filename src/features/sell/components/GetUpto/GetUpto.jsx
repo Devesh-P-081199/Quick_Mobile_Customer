@@ -8,8 +8,6 @@ import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
 import MobileCommonHeaderthree from "../../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
-import SelectBrand from "../SelectBrand/SelectBrand";
-import SelectModel from "../SelectModel/SelectModel";
 import TopSellingBrand from "../../../../Components/TrustedBrands/TopSellingBrand";
 import TopSellingModel from "../../../../Components/TopSellingModel/TopSellingModel";
 

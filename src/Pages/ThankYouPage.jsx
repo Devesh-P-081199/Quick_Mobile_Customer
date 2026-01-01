@@ -1,18 +1,13 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./ThankYou.module.css";
 import orderStyles from "../features/profile/components/MyOrder/Order.module.css"; // Reuse OrderDetails styles
-import { RiBattery2ChargeLine } from "react-icons/ri";
-import { BsPersonVcard } from "react-icons/bs";
-import { PiBankBold } from "react-icons/pi";
-import { FaHeadphones, FaPlus, FaTimes } from "react-icons/fa";
+import { FaPlus, FaTimes } from "react-icons/fa";
 import completeImg from "../assets/flaticons/approved.png";
 import batteryImg from "../assets/flaticons/battery-with-a-bolt-symbol.png";
 import playImg from "../assets/flaticons/play.png";
 import documentImg from "../assets/flaticons/document.png";
 import bankImg from "../assets/flaticons/bank-account.png";
-import tyimg from "../assets/QuickSellNewIcons/ty-mobile.png";
-import secureShield from "../assets/flaticons/secure-basecolor.png";
 import MobileCommonHeaderthree from "../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 import { toast } from "react-toastify";
 import { UserContext } from "../Context/contextAPI";

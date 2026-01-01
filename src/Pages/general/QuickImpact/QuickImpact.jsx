@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./QuickImpact.module.css";
 import { PiLeafBold, PiTreeLight } from "react-icons/pi";
 import { TbDroplet } from "react-icons/tb";

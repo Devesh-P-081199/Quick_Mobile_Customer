@@ -1,7 +1,6 @@
 
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { MdClose, MdPhoneAndroid } from "react-icons/md";
-import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../Context/contextAPI";

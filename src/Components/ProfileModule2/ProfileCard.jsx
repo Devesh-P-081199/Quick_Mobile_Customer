@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import styles from './ProfileCard.module.css';
 import { FaSignOutAlt, FaMapMarkerAlt, FaCreditCard, FaBoxOpen } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import Cookies from "js-cookie";
 import { UserContext } from '../../Context/contextAPI';
 

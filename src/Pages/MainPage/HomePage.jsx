@@ -2,7 +2,6 @@ import StaticBanner from "../../Components/SellYourOldDevice/StaticBanner";
 import HomeSlider from "../../BuyComponents/HomeSlider/HomeSlider";
 
 import OurService from "../../BuyComponents/OurService/OurService";
-import SellingProductCard from "../../BuyComponents/TopSellingProducts/SellingProductCard";
 import HomeTwoSlider from "../../BuyComponents/HomeTwoSlider/HomeTwoSlider";
 import SellingAccessories from "../../BuyComponents/SellingAccessories/SellingAccessories";
 import UsedVsBrand from "../../BuyComponents/UsedVsBrands/UsedVsBrands";
@@ -11,8 +10,6 @@ import Blogs from "../../BuyComponents/Blogs/Blogs";
 import TopSellingProducts from "../../BuyComponents/TopSellingProducts/TopSellingProducts.jsx";
 
 import FAQ from "../../Components/layout/FAQ/FAQ";
-import Testimonials from "../../BuyComponent/Cards/Testimonials";
-import TestPartyComponent from "../../Components/TestPartyComponent/TestPartyComponent";
 export default function Home() {
   return (
     <div>

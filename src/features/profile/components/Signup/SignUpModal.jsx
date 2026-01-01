@@ -1,11 +1,5 @@
-import React, { Suspense, useContext, useState } from "react";
-import { MdClose, MdPhoneAndroid } from "react-icons/md";
-import axios from "axios";
-import Cookies from "js-cookie";
-import { toast } from "react-toastify";
+import { Suspense } from "react";
 
-import { UserContext } from "../../../../Context/contextAPI";
-import api from "../../../../Utils/api";
 import Login from "../Login/Login";
 import styles from "../../../../Components/layout/Header/Header.module.css";
 import NewCloseIcon from "../../../../assets/QuickSellNewIcons/Cross.svg";

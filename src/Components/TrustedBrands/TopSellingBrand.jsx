@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./TopSellingBrand.module.css";
 import leftCircleIcon from "../../assets/icons/Frame 32.svg";
 import rightCircleIcon from "../../assets/icons/Frame 42.svg";

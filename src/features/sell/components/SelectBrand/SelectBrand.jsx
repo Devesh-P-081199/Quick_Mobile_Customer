@@ -1,6 +1,5 @@
-import React, { forwardRef, useContext, useEffect, useState } from "react";
+import { forwardRef, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { BiSearch } from "react-icons/bi";
 import styles from "./SelectBrand.module.css";
 import debounce from "lodash.debounce";
 import api from "../../../../Utils/api";

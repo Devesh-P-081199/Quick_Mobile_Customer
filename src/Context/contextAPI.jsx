@@ -1,5 +1,5 @@
 // src/context/UserContext.js
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import api from "../Utils/api";
 

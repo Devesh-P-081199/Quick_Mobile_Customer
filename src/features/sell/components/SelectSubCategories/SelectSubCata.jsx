@@ -4,10 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import styles from "./SelectSubCata.module.css";
 import api from "../../../../Utils/api";
 import BrowsePicks from "../../../../Components/BrowsePicks/BrowsePicks";
-import TopSellingProducts from "../../../../BuyComponents/TopSellingProducts/TopSellingProducts";
 import closeicon from "../../../../assets/flaticons/close.png";
 import FAQ from "../../../../components/layout/FAQ/FAQ";
-import BreadCrumb from "../../../../components/layout/BreadCrumb/BreadCrumb";
 import TopSellingModel from "../../../../Components/TopSellingModel/TopSellingModel";
 
 function SelectSubCata() {

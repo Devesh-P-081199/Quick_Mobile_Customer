@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo, useContext } from "react";
+import { useEffect, useRef, useState, useMemo, useContext } from "react";
 import BannerImage from "../../../../assets/images/static/banner-img.png";
 import styles from "../SellBanner/SellBanner.module.css";
 import MobileIcon from "../../../../assets/images/Products/mobile.png";
@@ -6,7 +6,6 @@ import debounce from "lodash.debounce";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import api from "../../../../Utils/api";
 import { UserContext } from "../../../../Context/contextAPI";
-import { BiSearch } from "react-icons/bi";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import NewSearchIcon from "../../../../assets/QuickSellNewIcons/Search.svg";

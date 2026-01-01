@@ -1,4 +1,3 @@
-import { FaMobileAlt, FaRupeeSign, FaCloud } from "react-icons/fa";
 import styles from "./SellingPhoneIsSimple.module.css";
 import phone from "../../../../assets/QuickSellNewIcons/BannerPhone.svg";
 import bag from "../../../../assets/QuickSellNewIcons/BannerRupee.svg";

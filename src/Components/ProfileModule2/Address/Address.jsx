@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../Address/Address.module.css';
 import ProfileCard from '../ProfileCard';
 import { toast } from 'react-toastify';

@@ -1,13 +1,9 @@
-import React from "react";
 import TestimonialCards from "./TestimonialCards";
 
 import leftCircleIcon from "../../assets/icons/frame 32.svg";
 import rightCircleIcon from "../../assets/icons/Frame 42.svg";
 
 import iPhoneFirstImage from "../../assets/icons/Frame 148.svg";
-import iPhoneSecondImage from "../../assets/icons/Frame 148 (1).svg";
-import iPhoneThirdImage from "../../assets/icons/Frame 148 (2).svg";
-import iPhoneFourImage from "../../assets/icons/Frame 148 (3).svg";
 import photoLogo from "../../assets/icons/Ellipse 3.svg";
 import ratings from "../../assets/icons/Frame 30.svg";
 import CommonSlider from "../../Shared/Slider/CommonSlider";

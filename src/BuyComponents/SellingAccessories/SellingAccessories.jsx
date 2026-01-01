@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import saleLogo from "../../assets/icons/Frame 27.svg";
 
 import headPhone from "../../assets/icons/Headphone-2-673x1024 1 (1).svg";

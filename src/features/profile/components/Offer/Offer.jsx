@@ -1,4 +1,3 @@
-import React from "react";
 import { FaTicketAlt } from "react-icons/fa";
 import styles from "./offer.module.css";
 // Import ProfileCard

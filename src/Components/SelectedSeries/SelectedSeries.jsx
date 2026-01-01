@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import styles from "./SelectedSeries.module.css";

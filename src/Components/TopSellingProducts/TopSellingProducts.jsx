@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./TopSellingProduct.module.css";
 import starIcon from "../../assets/icons/star.png"; // Replace with actual star icon path
 import productImage from "../../assets/images/Products/mobile.png";

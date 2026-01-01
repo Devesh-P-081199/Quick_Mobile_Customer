@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Order.module.css';
 import phoneImg from '../../../assets/images/Products/mobile.png'; // Update with actual image path
 import api from '../../../Utils/api';

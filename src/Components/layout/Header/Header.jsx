@@ -28,12 +28,9 @@ import dropdownIcon from "../../../assets/QuickSellNewIcons/BackArrowwithouttail
 import usericon from "../../../assets/images/icons/user.png";
 import RightArrow from "../../../assets/icons/RightArrow.svg";
 import NewSearchIcon from "../../../assets/QuickSellNewIcons/Search.svg";
-import NewCartIcon from "../../../assets/QuickSellNewIcons/Cart.svg";
 import NewMenuBar from "../../../assets/QuickSellNewIcons/MenuBar.svg";
 import NewCloseIcon from "../../../assets/QuickSellNewIcons/Cross.svg";
 import NewLocationIcon from "../../../assets/QuickSellNewIcons/Location.svg";
-import NewOrderIcon from "../../../assets/QuickSellNewIcons/OrderBox.svg";
-import NewProfileIcon from "../../../assets/QuickSellNewIcons/Profile.svg";
 import NewBackArrow from "../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 
 // External Dependencies

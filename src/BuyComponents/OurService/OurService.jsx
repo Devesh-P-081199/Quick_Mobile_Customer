@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./OurServices.module.css";
 
 import sellPhone from "../../assets/icons/frame 35.svg";

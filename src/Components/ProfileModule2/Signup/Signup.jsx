@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { MdEmail } from "react-icons/md";
 import styles from "./SignUp.module.css";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";

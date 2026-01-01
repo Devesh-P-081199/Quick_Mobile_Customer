@@ -9,7 +9,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Import Pages - Updated to use feature-based structure
-import SellHome from "./features/sell/pages/SellHome";
 const SeriesSelection = React.lazy(() =>
   import("./features/sell/pages/SeriesSelection")
 );
@@ -80,7 +79,6 @@ import { Suspense } from "react";
 
 // testing for loader
 import Loader from "./components/layout/Loader/Loader";
-import CategoryRouter from "./features/sell/pages/CategoryRouter";
 import DynamicRouteHandler from "./pages/DynamicRouteHandler";
 import NotFoundPage from "./pages/NotFoundPage";
 const BlogDetail = React.lazy(() => import("./pages/BlogDetail"));

@@ -1,5 +1,5 @@
 // components/CommonSlider/CommonSlider.js
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./CommonSlider.module.css";
 
 const CommonSlider = ({

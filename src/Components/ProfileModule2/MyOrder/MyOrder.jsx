@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./MyOrder.module.css";
 import OrderCard from "./Order";
 import ProfileCard from "../ProfileCard";

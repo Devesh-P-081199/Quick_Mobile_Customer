@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./ErrorPage.module.css";
 import illustration from "../assets/QuickSellNewIcons/illustration.png";
 

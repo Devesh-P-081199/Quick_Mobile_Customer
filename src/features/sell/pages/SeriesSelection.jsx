@@ -1,4 +1,3 @@
-import React from "react";
 import SelectSeries from "../components/SelectSeries/SelectSeries";
 import BrowsePicks from "../../../Components/BrowsePicks/BrowsePicks";
 import BreadCrumb from "../../../components/layout/BreadCrumb/BreadCrumb";

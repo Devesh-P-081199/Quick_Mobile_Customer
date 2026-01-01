@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./answers.module.css";
-import { FaArrowLeft, FaCalculator } from "react-icons/fa";
 import { UserContext } from "../../../Context/contextAPI";
 import backArrow from "../../../assets/QuickSellNewIcons/backArrow.svg";
 import { useLocation } from "react-router-dom";

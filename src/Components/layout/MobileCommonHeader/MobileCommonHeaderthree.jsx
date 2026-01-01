@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./MobileCommonHeader.module.css";
 import { useNavigate } from "react-router-dom";
 import newBackIcon from "../../../assets/QuickSellNewIcons/BackArrow.svg";

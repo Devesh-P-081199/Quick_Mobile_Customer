@@ -3,7 +3,6 @@ import styles from "../Address/Address.module.css";
 import ProfileCard from "../ProfileCard";
 import { toast } from "react-toastify";
 
-import axios from "axios";
 import api from "../../../../Utils/api";
 import MobileCommonHeaderthree from "../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 

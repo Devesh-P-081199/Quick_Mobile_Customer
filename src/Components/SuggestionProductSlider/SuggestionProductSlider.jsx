@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import styles from "./SuggestionProductSlider.module.css";
 import mobileimg from "../../assets/images/Products/mobile.png";
 

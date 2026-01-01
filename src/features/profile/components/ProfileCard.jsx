@@ -1,15 +1,12 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./ProfileCard.module.css";
 import {
   FaSignOutAlt,
   FaMapMarkerAlt,
   FaCreditCard,
   FaBoxOpen,
-  FaEdit,
-  FaPen,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { UserContext } from "../../../Context/contextAPI";
 import MobileCommonHeaderthree from "../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";

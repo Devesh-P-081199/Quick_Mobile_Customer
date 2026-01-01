@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./SetupProfile.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
 import api from "../../../../Utils/api";
 import { UserContext } from "../../../../Context/contextAPI";
 

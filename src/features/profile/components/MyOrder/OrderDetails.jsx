@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import api from "../../../../Utils/api";
 import MobileCommonHeaderthree from "../../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
@@ -7,11 +7,9 @@ import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import secureShield from "../../../../assets/flaticons/secure-basecolor.png";
 import phoneImg from "../../../../assets/images/Products/mobile.png";
-import { MdCall, MdClose } from "react-icons/md";
-import { IoMdChatboxes } from "react-icons/io";
+import { MdCall } from "react-icons/md";
 import account from "../../../../assets/flaticons/account.png";
 import downloadIcon from "../../../../assets/flaticons/download.png";
-import submitIcon from "../../../../assets/flaticons/upload.png";
 
 const OrderDetails = () => {
     const { orderId } = useParams();

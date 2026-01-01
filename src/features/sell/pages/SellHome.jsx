@@ -1,20 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SellBanner from "../components/SellBanner/SellBanner";
 import StaticBanner from "../../../Components/SellYourOldDevice/StaticBanner";
-import WhySell from "../components/WhySellYourPhone/WhySellYourPhone";
 import SelectBrand from "../components/SelectBrand/SelectBrand";
-import WhyShell from "../components/WhySellYourPhone/WhySellYourPhone";
 import SellingPhoneIsSimple from "../components/SellingPhoneIsSimple/SellingPhoneIsSimple";
 import TopSellingModel from "../../../Components/TopSellingModel/TopSellingModel";
 import FAQ from "../../../Components/layout/FAQ/FAQ";
 
-import TopSellingProducts from "../../../BuyComponents/TopSellingProducts/TopSellingProducts";
-import BreadCrumb from "../../../components/layout/BreadCrumb/BreadCrumb";
-import SellBannerSkeleton from "../components/SellBanner/SellBannerSkeleton";
 import BrowsePicks from "../../../Components/BrowsePicks/BrowsePicks";
 
 import SuggestionProductSlider from "../../../Components/SuggestionProductSlider/SuggestionProductSlider";
-import api from "../../../Utils/api";
 import { useParams } from "react-router-dom";
 import Testimonials from "../../../BuyComponent/Cards/Testimonials";
 

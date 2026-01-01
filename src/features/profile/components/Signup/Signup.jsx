@@ -1,7 +1,7 @@
-import React, { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef } from "react";
 import { MdEmail } from "react-icons/md";
 import styles from "./SignUp.module.css";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 

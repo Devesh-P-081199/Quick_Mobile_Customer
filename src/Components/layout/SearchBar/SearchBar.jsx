@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./SearchModal.module.css";
 import newBackIcon from "../../../assets/QuickSellNewIcons/BackArrow.svg";
 import newSearchIcon from "../../../assets/QuickSellNewIcons/Search.svg";
