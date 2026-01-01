@@ -1,4 +1,4 @@
-import HomeSlider from "../../../BuyComponents/HomeSlider/HomeSlider";
+import HomeSlider from "../../../BuyComponent/HomeSlider/HomeSlider";
 import PressRelease from "../../../BuyComponent/PressRelease/PressRelease";
 import UsedvsBrand from "../../../BuyComponent/UsedvsBrand/UsedvsBrand";
 import Newsletter from "../../../BuyComponent/NewsLetter/NewsLetter";
