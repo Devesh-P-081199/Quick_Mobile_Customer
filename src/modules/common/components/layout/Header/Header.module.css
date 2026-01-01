@@ -807,7 +807,7 @@
   border: none;
   border-radius: 8px;
   padding: 24px;
-  padding-top: 5px;
+  padding-top: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -1448,41 +1448,7 @@
   pointer-events: auto;
 }
 
-.profiledropdownMenu {
-  position: absolute;
-  top: 100%;
-  /* Remove gap - dropdown starts right at the bottom of trigger */
-  right: 0;
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  /* Normal border instead of red test border */
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  z-index: 99999 !important;
-  /* Extremely high z-index */
-  min-width: 180px;
-  padding: 8px 0;
-  opacity: 0;
-  /* Start hidden */
-  visibility: hidden;
-  /* Start hidden */
-  transform: translateY(-10px);
-  /* Start slightly above */
-  transition: all 0.2s ease-in-out;
-  pointer-events: none;
-  /* Disable interactions when hidden */
-  margin-top: -2px;
-  /* Slight overlap to create seamless hover area */
-}
 
-.dropdownContainer:hover .profiledropdownMenu,
-.profiledropdownMenu:hover {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-  /* Enable interactions when visible */
-}
 
 .profiledropdownMenu .dropdownItem {
   display: flex;
@@ -1597,10 +1563,6 @@
   display: flex;
   align-items: center;
   font-weight: 500;
-}
-
-.navItem img {
-  /* margin-right: 5px; */
 }
 
 .active {
@@ -2655,29 +2617,42 @@
 
 .dropdownContainer {
   position: relative;
-  padding-bottom: 20px;
   display: flex;
-  margin-bottom: -20px;
 }
+
+
 
 .profiledropdownMenu {
   position: absolute;
   top: 100%;
-  left: -8px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  transform: translateX(-50%) translateY(-5px);
+  margin-top: 15px; /* Added space */
   background-color: #fff;
   border: 1px solid #ddd;
-  /* box-shadow: 0 8px 16px rgba(0,0,0,0.15); */
   border-radius: 5px;
   padding: 10px 8px;
   min-width: 170px;
   z-index: 1000;
-  display: none;
+  
+  display: flex;
   flex-direction: column;
-  animation: fadeIn 0.3s ease;
+  
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
 }
 
-.dropdownContainer:hover .profiledropdownMenu {
-  display: flex;
+.dropdownContainer:hover .profiledropdownMenu,
+.profiledropdownMenu:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  transition-delay: 0s;
 }
 
 .profiledropdownMenu .dropdownItem {

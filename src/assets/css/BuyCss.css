@@ -907,10 +907,6 @@ body {
 
 .scroll-container {
   overflow-x: auto;
-  padding-bottom: 20px;
-  /* Creates space for hover */
-  margin-bottom: -20px;
-  /* Prevents unwanted gaps */
 }
 
 .innercontainer {
