@@ -36,7 +36,6 @@ const Address = () => {
           `/sell-module/user/update-address/680248846f15af3e95132c80/${editingAddressId}`,
           formData
         );
-        // console.log(response.data);
 
         toast.success('Address updated successfully')
       } else {
@@ -45,7 +44,6 @@ const Address = () => {
           '/sell-module/user/address/680373ce230e17862c4ba104',
           formData
         );
-        // console.log(response.data);
 
         toast.success('Address submitted successfully')
       }
@@ -87,7 +85,6 @@ const Address = () => {
 
   const handleEdit = (index) => {
     const addressToEdit = addressBoxes[index];
-    // console.log("Owais : ", addressToEdit);  
     setFormData({
       zipCode: addressToEdit.zipCode || '',
       houseNumber: addressToEdit.houseNumber || '',
@@ -105,12 +102,10 @@ const Address = () => {
   };
 
   const handleDelete = async (addressId) => {
-   // console.log(addressId)
     try {
       const response = await api.delete(
         `/sell-module/user/address/680248846f15af3e95132c80/${addressId}`
       );
-      // console.log(response.data);
 
       toast.success('Address deleted successfully')
       getSavedAddresses();
@@ -125,7 +120,6 @@ const Address = () => {
 
     try {
       const resp = await api.get('/sell-module/user/address');
-      // console.log(resp.data);
 
       setAddressBoxes(resp.data?.addresses || []);
     } catch (error) {
@@ -136,9 +130,6 @@ const Address = () => {
   useEffect(() => {
     getSavedAddresses();
   }, []);
-
-  // console.log('Address Boxes:', addressBoxes);
-
 
   return (
     <div className={`${styles.addressContainer} scrollbar-hidden`}>

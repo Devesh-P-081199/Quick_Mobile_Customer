@@ -7,7 +7,6 @@ import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import styles from "./SellDeviceVarient.module.css";
 import backarrow from "../../../../assets/images/icons/back.png";
-// import { Helmet } from "react-helmet";
 
 function SellDeviceVarient() {
   const { slug1, slug2 } = useParams();
@@ -52,8 +51,6 @@ function SellDeviceVarient() {
     fetchVariantsByProductId(slug2).then((data) => {
       if (!data) return;
 
-      console.log("Fetched Variants Data special in select variant:", data);
-
       setSeoData(data.seo);
       setPhoneName(data.productId?.deviceName);
       setIsLoading(false);
@@ -88,24 +85,11 @@ function SellDeviceVarient() {
       }
 
       // ✅ If only one variant → auto-navigate
-      // if (variantsArr.length === 1) {
-      //   const variant = variantsArr[0];
 
-      //   setUserSelection((prev) => ({
       //     ...prev,
-      //     wholeVariantId: variant.wholeVariantId,
-      //     variantId: variant._id,
-      //     variantSlug: variant.slug,
-      //   }));
-
-      //   navigate(`/${slug1}/${variant.slug}`);
-      // }
 
       if (variantsArr.length === 1) {
-        console.log(
-          "Only one variant found, auto-navigating...",
-          variantsArr[0]
-        );
+        
         const variant = variantsArr[0];
 
         const newSelection = {
@@ -132,7 +116,6 @@ function SellDeviceVarient() {
         navigate(`/${slug1}/${variant.slug}`, { replace: true });
       }
 
-      // else → wait for user to select
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug2, slug1]);
@@ -200,7 +183,6 @@ function SellDeviceVarient() {
       return;
     }
     if (selectedMemory?.wholeVariantId) {
-      //  navigate(`/get-price-upto`);
       navigate(`/${slug1}/${userSelection.variantSlug}`, { replace: true });
     } else {
       toast.warning("Please select a variant to continue.");
@@ -310,14 +292,6 @@ function SellDeviceVarient() {
             </form>
           </div>
 
-          {/* <hr
-            style={{
-              border: "none",
-              margin: "-10px 0px 10px",
-              maxHeight: "1px",
-              height: "1px",
-            }}
-          /> */}
         </div>
       </div>
     </div>

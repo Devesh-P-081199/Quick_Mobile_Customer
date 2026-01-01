@@ -15,9 +15,6 @@ import MobileSearchModal from "./MobileSearchModal/MobileSearchModal";
 function SellHomeBanner({ onViewAllClick }) {
   const navigate = useNavigate();
   const texts = ["Highest Price", "Hassle Free Pickup", "Instant Payment"];
-  //const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  //const [displayedText, setDisplayedText] = useState("");
-  // const [charIndex, setCharIndex] = useState(0);
   const [category, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -50,8 +47,6 @@ function SellHomeBanner({ onViewAllClick }) {
   const [isLoadingBrands, setIsLoadingBrands] = useState(true);
 
   const { slug1 } = useParams();
-
-  // console.log("slug1 in sellBannaer",slug1);
 
   const scrollToBrands = () => {
     if (brandSectionRef.current) {
@@ -111,7 +106,7 @@ function SellHomeBanner({ onViewAllClick }) {
         await GotoSearchBrands(selectedCat._id);
       }
     } catch (error) {
-      console.log("Error fetching Categories ", error);
+      
     } finally {
       setIsLoadingCategories(false);
     }
@@ -126,41 +121,11 @@ function SellHomeBanner({ onViewAllClick }) {
 
       setBrands(brandResp.data?.data);
     } catch (innerError) {
-      console.log("Error fetching brands:", innerError);
+      
     } finally {
       setIsLoadingBrands(false);
     }
   };
-
-  // const handleMainSearch = async (search = "") => {
-
-  //   const catId = categoryRef.current;
-  //   if (!catId) return;
-
-  //   try {
-  //     const resp = await api.get(
-  //       `/sell-module/user/main-Search?search=${search}&catId=${catId}`
-  //     );
-  //     const data = resp.data?.[0];
-
-  //     if (!data) {
-  //       setShowDropdown(false);
-  //       return;
-  //     }
-  //     //  console.log("vvvvvvv",data)
-  //     setResults(data);
-  //     const allMatchingBrands = [
-  //       ...(data?.ActiveBrands?.buy || []),
-  //       ...(data?.ActiveBrands?.repair || []),
-  //       ...(data?.ActiveBrands?.sell || []),
-  //     ];
-
-  //     setBrands(allMatchingBrands);
-  //     setShowDropdown(true);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const handleMainSearch = async (search = "", isMobile = false) => {
     const catId = categoryRef.current;
@@ -195,11 +160,9 @@ function SellHomeBanner({ onViewAllClick }) {
         setShowDropdown(true);
       }
     } catch (error) {
-      console.log(error);
+      
     }
   };
-
-  // console.log("After setup vivek",results);
 
   const debouncedSearchMain = useMemo(
     () =>
@@ -252,7 +215,6 @@ function SellHomeBanner({ onViewAllClick }) {
   };
 
   const handleProductClick = (prod) => {
-    //console.log("Product clicked:", prod);
     if (prod?.subCategorySlug) {
       navigate(`/${prod?.subCategorySlug}/${prod.slugSell}`, { replace: true });
     } else {
@@ -296,35 +258,7 @@ function SellHomeBanner({ onViewAllClick }) {
   const currentTextIndexRef = useRef(0);
   const timeoutRef = useRef(null); // To store timeout reference
 
-  // useEffect(() => {
-  //   const fullText = texts[currentTextIndexRef.current];
-
-  //   const animate = () => {
-  //     if (charIndexRef.current < fullText.length) {
-  //       textRef.current += fullText[charIndexRef.current];
-  //       setDisplayedText(textRef.current);
-  //       charIndexRef.current += 1;
-
-  //       timeoutRef.current = setTimeout(animate, 100);
-  //     } else {
-  //       timeoutRef.current = setTimeout(() => {
-  //         textRef.current = "";
-  //         charIndexRef.current = 0;
   //         currentTextIndexRef.current =
-  //           (currentTextIndexRef.current + 1) % texts.length;
-  //         animate();
-  //       }, 2000);
-  //     }
-  //   };
-
-  //   animate();
-
-  //   return () => {
-  //     if (timeoutRef.current) {
-  //       clearTimeout(timeoutRef.current);
-  //     }
-  //   };
-  // }, []);
 
   useEffect(() => {
     fetchCategories();
@@ -408,7 +342,6 @@ function SellHomeBanner({ onViewAllClick }) {
                     })
                     .map((cat, index) => (
                       <div
-                        // className={styles.imgCard}
                         key={index}
                         onClick={() =>
                           handleNavigate(
@@ -487,7 +420,6 @@ function SellHomeBanner({ onViewAllClick }) {
                   }}
                 />
                 <div className={styles.searchIcon}>
-                  {/* <BiSearch fontSize={21}></BiSearch> */}
                   <img src={NewSearchIcon} alt="icon" title="icon" />
                 </div>
 
@@ -558,7 +490,6 @@ function SellHomeBanner({ onViewAllClick }) {
                         title={icon?.brandName}
                       />
                     </div>
-                    {/* <span className={styles.cardName}>{icon?.brandName}</span> */}
                   </div>
                 ))}
               {/* {!isLoadingBrands && brands.length > 4 && (

@@ -10,9 +10,7 @@ const OrderCard = () => {
     try {
       const resp = await api.get('sell-module/user/order-by-Id');
       setOrders(resp.data);
-      //console.log("ALL orders of user",resp.data)
     } catch (error) {
-      // console.log("Error in fetching orders");
 
     }
   };

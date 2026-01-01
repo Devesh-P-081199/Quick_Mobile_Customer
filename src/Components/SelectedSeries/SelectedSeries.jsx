@@ -9,7 +9,6 @@ const SelectedSeries = () => {
   const location = useLocation();
   const { seriesName } = location.state || {};
 
-  
   return (
     <section className={styles.section}>
       <div className={styles.container}>

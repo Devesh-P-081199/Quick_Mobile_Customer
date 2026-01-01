@@ -23,13 +23,9 @@ const HomePage = () => {
           <Allcategoryhome />
         </div>
 
-        {/*<BuyPhone/>*/}
-
         <div className="page-content-wrapper">
           <LearnTemplate />
         </div>
-
-        {/*<BuyDevices/>*/}
 
         <div className="page-content-wrapper">
           <HomeBlogSlider />
@@ -50,8 +46,6 @@ const HomePage = () => {
         <div className="page-content-wrapper">
           <Newsletter />
         </div>
-
-        {/* <GuidePrivacyPolicy/> */}
 
         <div className="page-content-wrapper">
           <Download />

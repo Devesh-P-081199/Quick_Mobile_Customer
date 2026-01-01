@@ -11,14 +11,10 @@ function SeriesSelection() {
     <>
       <BreadCrumb items={["Home", "Sell Your Phone"]} />
       <SelectSeries />
-      {/* <SelectModel/> */}
       <BrowsePicks />
       <TopSellingModel />
       <TopSellingBrand />
 
-      {/* <TopSellingModel/> */}
-
-      {/* <TopSellingProducts/> */}
       <FAQ />
     </>
   );

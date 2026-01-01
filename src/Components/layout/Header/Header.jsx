@@ -94,11 +94,6 @@ const Header = () => {
   // Navigation and Category State
   const [category, setCategories] = useState([]); // Available categories
   const [brandsWithProducts, setBrandsWithProducts] = useState([]); // Brands with their products
-  // const [slugs, setSlugs] = useState({
-  //   sell: "",
-  //   buy: "",
-  //   recycle: "",
-  // }); // URL slugs for different sections (commented out since not used)
 
   // Dropdown and Hover State
   const [hoveredItem, setHoveredItem] = useState(null); // Currently hovered navigation item
@@ -297,7 +292,6 @@ const Header = () => {
     return firstInitial + lastInitial;
   };
 
-  // Legacy home navigation effect (can be simplified)
   useEffect(() => {
     if (home) {
       navigate("/");
@@ -332,7 +326,6 @@ const Header = () => {
         `/sell-module/user/SearchUniversal?search=${search}`
       );
 
-      // Guard: If this result doesn't match the latest search term, ignore it
       if (search !== lastSearchRef.current) return;
 
       if (resp.data == null) {
@@ -504,38 +497,12 @@ const Header = () => {
    * Effect: Fetch URL slugs for different sections (sell, buy, recycle)
    * Used to build navigation links dynamically (commented out since not used)
    */
-  // useEffect(() => {
-  //   const fetchFirstCategory = async () => {
-  //     try {
-  //       const res = await api.get("/common-module/first-category");
-  //       if (res.data?.success) {
-  //         setSlugs(res.data.slugs);
-  //       }
-  //     } catch (err) {
-  //       console.error("Error fetching first category:", err);
-  //     }
-  //   };
-
-  //   fetchFirstCategory();
-  // }, []);
 
   /**
    * Navigation Configuration
    */
 
   // Currently commenting out recycle navigation item
-  // const navDisplayNames = {
-  //   recycle: "Recycle Device",
-  // };
-
-  // Build navigation items from display names and slugs (commented out)
-  // const navItems = Object.keys(navDisplayNames).map((type) => ({
-  //   icon: recycleIcon,
-  //   text: navDisplayNames[type],
-  //   path: `/${slugs[type]}`,
-  // }));
-
-  // const navItems = []; // Empty array since recycle device is commented out
 
   // Routes where the bottom navigation should be hidden
   const hiddenRoutes = [
@@ -771,7 +738,6 @@ const Header = () => {
             <div className={styles.rightGroup}>
               {/* Become Partner */}
               <Link to="/become-partner" className={styles.becomePartner}>
-                {/* <img src={recycleIcon} alt="" className="nav-icons" /> */}
                 <span>Become Partner</span>
               </Link>
 
@@ -1202,7 +1168,6 @@ const Header = () => {
             }}
           >
             <div className={styles.MobileInnerBox}>
-              {/* Left: Categories */}
               <div className={styles.leftBrandBox}>
                 <ul className={styles.mobileModalUl}>
                   {category.map((cat) => (
@@ -1224,7 +1189,6 @@ const Header = () => {
                 </ul>
               </div>
 
-              {/* Right: Brands of selected category */}
               <div className={styles.rightBrandBox}>
                 <h2>Popular Brands</h2>
                 {openMobileCategory && (
@@ -1281,7 +1245,6 @@ const Header = () => {
             }}
           >
             <div className={styles.MobileInnerBox}>
-              {/* Left: Brands list */}
               <div className={styles.leftBrandBox}>
                 <ul className={styles.mobileModalUl}>
                   {brandsWithProducts.map((brand) => (
@@ -1303,7 +1266,6 @@ const Header = () => {
                 </ul>
               </div>
 
-              {/* Right: Phone models of selected brand */}
               {openMobileCategory && (
                 <div className={styles.rightBrandBox}>
                   <h2>Popular Model</h2>

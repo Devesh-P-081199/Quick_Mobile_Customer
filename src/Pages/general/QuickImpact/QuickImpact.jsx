@@ -216,7 +216,6 @@ const QuickImpact = () => {
         </div>
         {/*Table div */}
         <div className={styles.tableSection}>
-          {/* Desktop/Tablet Table*/}
           <div className={styles.desktopTable}>
             <h2>Quick Mobile’s Environmental Impact in Numbers</h2>
             <table className={styles.impactTable}>

@@ -20,9 +20,9 @@ const PaymentOptions = () => {
   const getSavedPaymentBank = async () => {
     try {
       const res = await api.get(`/sell-module/user/payment-bank`);
-      console.log("Bank Payment Response:", res.data);
+      
       setPaymentBank(res.data?.bankMethods || []);
-      console.log("Bank Methods Set:", res.data?.bankMethods || []);
+      
     } catch (error) {
       console.error("Failed to fetch bank methods:", error);
       toast.error("Failed to fetch bank methods");
@@ -33,9 +33,9 @@ const PaymentOptions = () => {
   const getSavedPaymentUpi = async () => {
     try {
       const res = await api.get(`/sell-module/user/payment-upi`);
-      console.log("UPI Payment Response:", res.data);
+      
       setPaymentUpi(res.data?.upiMethods || []);
-      console.log("UPI Methods Set:", res.data?.upiMethods || []);
+      
     } catch (error) {
       console.error("Failed to fetch UPI methods:", error);
       toast.error("Failed to fetch UPI methods");
@@ -43,20 +43,17 @@ const PaymentOptions = () => {
   };
 
   useEffect(() => {
-    console.log(
-      "PaymentOptions Component Mounted - Fetching payment methods..."
-    );
+    
     getSavedPaymentBank();
     getSavedPaymentUpi();
   }, []);
 
-  // Debug: Log state changes
   useEffect(() => {
-    console.log("Payment Bank State Updated:", paymentBank);
+    
   }, [paymentBank]);
 
   useEffect(() => {
-    console.log("Payment UPI State Updated:", paymentUpi);
+    
   }, [paymentUpi]);
 
   // Handle Add New - Navigate to PaymentForm

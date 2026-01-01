@@ -16,37 +16,15 @@ const Allcategoryhome = forwardRef((props, ref) => {
       );
       setCategories(response?.data?.categories);
     } catch (error) {
-      console.log("Error fetching Categories ", error);
+      
     }
   };
 
   const handleNavigate = async (selectedCategory) => {
-    // console.log('Selected Category:', selectedCategory);
 
     navigate(`/${selectedCategory?.slug?.sell}`);
 
-    // try {
-    //   const resp = await api.get(`/common-module/CheckHavesubcategory/${selectedCategory._id}`);
-    //   if (resp.data.data) {
-    //     navigate(`/${selectedCategory?.slug?.sell}`);
-    //   } else {
-    //     GotoSearchBrands(selectedCategory);
-    //   }
-    // } catch (error) {
-    //   console.log("Error fetching sub category", error);
-    // }
   };
-
-  // const GotoSearchBrands = async (id) => {
-  //   try {
-  //     const brandResp = await api.get(
-  //       `/common-module/FetchbrandByCatSelection?option=Sell&categoryId=${id}`
-  //     );
-  //     setBrands(brandResp.data?.data);
-  //   } catch (innerError) {
-  //     console.log("Error fetching brands:", innerError);
-  //   }
-  // };
 
   useEffect(() => {
     fetchCategories();
@@ -103,23 +81,6 @@ const Allcategoryhome = forwardRef((props, ref) => {
             )}
           </div>
 
-          {/* {brands?.length > 0 && (
-            <h2 className={styles.sectionHeading}>All Brands</h2>
-          )}
-          <div className={`${styles.brandImageBox} scrollbar-hidden`}>
-            {brands?.map((brand, index) => (
-              <div
-                key={index}
-                className={`${styles.brandSingleBox} cursor-pointer`}
-                onClick={() => handleBrandClick(brand._id)}
-              >
-                <div className={styles.imgIndividual}>
-                  <img src={brand?.brandLogo} alt={brand?.brandName} />
-                </div>
-                <span>{brand?.brandName}</span>
-              </div>
-            ))}
-          </div> */}
         </div>
       </div>
     </section>

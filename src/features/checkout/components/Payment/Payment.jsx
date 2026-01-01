@@ -70,8 +70,6 @@ function PaymentComponent() {
 
   useEffect(() => {
     const loadPaymentMethods = async () => {
-      console.log("Payment component mounted");
-      console.log("Location state:", location.state);
 
       let upiMethods = [];
       let bankMethods = [];
@@ -79,14 +77,12 @@ function PaymentComponent() {
       // Check if payment methods were passed from Step6 via navigation state
       if (location.state?.paymentMethods) {
         const { upi, bank } = location.state.paymentMethods;
-        console.log("Received UPI methods:", upi);
-        console.log("Received Bank methods:", bank);
+
         upiMethods = upi || [];
         bankMethods = bank || [];
-        console.log("Payment methods set from Step6");
+        
       } else {
-        // Fallback: fetch payment methods if not passed
-        console.log("Fetching payment methods from API");
+        
         [upiMethods, bankMethods] = await Promise.all([
           getSavedPaymentUpi(),
           getSavedPaymentBank(),
@@ -129,7 +125,6 @@ function PaymentComponent() {
           setSelectedMethod(0);
         }
       } else {
-        // selectedPaymentMethod exists (e.g. from context navigation)
         // Ensure UI matches context
         if (selectedPaymentMethod.type === "upi") {
           const idx = sortedUpi.findIndex(u => (u._id || u.id) === (selectedPaymentMethod._id || selectedPaymentMethod.id));
@@ -137,7 +132,6 @@ function PaymentComponent() {
             setSelectedMethod(0);
             setSelectedUpiIndex(idx);
           } else if (sortedUpi.length > 0) {
-            // Fallback if ID not found (e.g. deleted)
             setSelectedMethod(0);
             setSelectedUpiIndex(0);
             setSelectedPaymentMethod({ type: "upi", ...sortedUpi[0] });
@@ -486,33 +480,6 @@ function PaymentComponent() {
               ))}
             </div>
 
-            {/* <div className={styles.DetailsSection}>
-              <h3 className={styles.SubTitle}>Details (Non-mandatory)</h3>
-              <div className={styles.IMEITitle}>Enter IMEI Number</div>
-              <div className={styles.IMEIInfo}>
-                <p>
-                  To find your IMEI number, dial *#06# or check under About
-                  Phone. You can also check on the box or behind the battery.
-                </p>
-              </div>
-
-              <div className={styles.InputGroup}>
-                <label>IMEI Number</label>
-                <input type="text" placeholder="Enter IMEI" />
-              </div>
-
-              <div className={styles.UploadBill}>
-                <img src={uploadimg} alt="Upload" />
-                <span>Upload Bill Image</span>
-              </div>
-            </div>
-
-            <div className={styles.ActionButtons}>
-              <button className={styles.SkipButton}>Skip</button>
-              <NavLink to="/sellhome" className={styles.SaveNav}>
-                Save
-              </NavLink>
-            </div> */}
           </div>
 
           {/* Continue and Back Buttons */}

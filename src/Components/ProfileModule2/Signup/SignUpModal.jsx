@@ -42,8 +42,6 @@ const SignUpModal = ({ isOpen, onClose }) => {
         }
       );
 
-      // console.log(response.data);
-
       if (response.data) {
         alert(`${response?.data?.message}`);
         const token = response.data.token;
@@ -56,7 +54,6 @@ const SignUpModal = ({ isOpen, onClose }) => {
       toast.success("Signed up successfully");
       onClose();
     } catch (err) {
-      // console.log("Error Occured",err);
 
       toast.error("Error verifying OTP");
     }

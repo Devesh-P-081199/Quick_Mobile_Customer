@@ -1,7 +1,5 @@
 import React from "react";
-// import CommonSlider from "../CommonSlider/CommonSlider";
 import styles from "./TopSellingBrand.module.css";
-// import GoogleIcon from "../../assets/TopSellingBrands";
 import leftCircleIcon from "../../assets/icons/Frame 32.svg";
 import rightCircleIcon from "../../assets/icons/Frame 42.svg";
 import CommonSlider from "../ui/Slider/CommonSlider";
@@ -53,14 +51,6 @@ function TopSellingBrand() {
             rightIcon={rightCircleIcon}
           />
 
-          {/* <hr
-            style={{
-              border: "none",
-              margin: "10px 0px",
-              maxHeight: "1px",
-              height: "1px",
-            }}
-          /> */}
         </div>
       </div>
     </section>

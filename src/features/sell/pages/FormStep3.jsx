@@ -6,7 +6,6 @@ import BreadCrumb from "../../../components/layout/BreadCrumb/BreadCrumb";
 function FormStep3() {
   return (
     <>
-      {/* <BreadCrumb items={["Home", "Sell Your Phone"]} /> */}
       <Step3 />
     </>
   );

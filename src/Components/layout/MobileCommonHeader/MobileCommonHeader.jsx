@@ -41,12 +41,7 @@ const MobileCommonHeader = ({ title, onBack }) => {
             <img src={newBackIcon} alt="Back" />
           </button>
           <h2 className={styles.title}>{title}</h2>
-          {/* <button
-            className={styles.iconButton}
-            onClick={() => setIsSearchOpen(true)}
-          >
-            <img src={newSearchIcon} alt="Search" />
-          </button> */}
+          
         </>
       )}
     </div>

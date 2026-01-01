@@ -31,7 +31,6 @@ const ThankYouPage = () => {
   const [images, setImages] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
-  // Payment State (Duplicated from OrderDetails)
   const [hasSavedPayments, setHasSavedPayments] = useState(false);
   const [currentOrderPayment, setCurrentOrderPayment] = useState(null);
 
@@ -39,7 +38,6 @@ const ThankYouPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Fetch Saved Payments (Duplicated from OrderDetails)
   useEffect(() => {
     const checkSavedPayments = async () => {
       try {
@@ -67,7 +65,6 @@ const ThankYouPage = () => {
 
   const displayPayment = selectedPaymentMethod || currentOrderPayment;
 
-  // handleUpdatePayment (Duplicated logic from OrderDetails)
   const handleUpdatePayment = async () => {
     if (!selectedPaymentMethod) {
       // Only warn if called manually, but auto-trigger checks existence
@@ -98,15 +95,12 @@ const ThankYouPage = () => {
     }
   };
 
-  // Auto-trigger payment update (Duplicated from OrderDetails)
   useEffect(() => {
     if (selectedPaymentMethod) {
       handleUpdatePayment();
     }
   }, [selectedPaymentMethod]);
 
-
-  // handleChangePayment (Duplicated from OrderDetails, adapted for navigation)
   const handleChangePayment = () => {
     // Pre-fill context with current order payment if available
     if (currentOrderPayment) {
@@ -157,7 +151,7 @@ const ThankYouPage = () => {
       toast.error("Please provide either IMEI or upload an image");
       return;
     }
-    console.log("Submitting:", { imei, images });
+    
     setSubmitted(true);
     toast.success("Details submitted successfully!");
   };
@@ -269,8 +263,6 @@ const ThankYouPage = () => {
             </div>
           </div>
 
-
-          {/* Payment Summary Card (Duplicated from OrderDetails) */}
           <div className={orderStyles.summaryCard}>
             <div className={orderStyles.summaryHeader}>
               <div className={orderStyles.summaryHeaderLeft}>

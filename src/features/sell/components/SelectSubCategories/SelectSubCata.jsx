@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./SelectSubCata.module.css";
 import api from "../../../../Utils/api";
-// import { Helmet } from "react-helmet-async";
 import BrowsePicks from "../../../../Components/BrowsePicks/BrowsePicks";
 import TopSellingProducts from "../../../../BuyComponents/TopSellingProducts/TopSellingProducts";
 import closeicon from "../../../../assets/flaticons/close.png";
@@ -51,11 +50,10 @@ function SelectSubCata() {
           `/sell-module/user/filteredAllCat?catSlug=${categorySlug}`
         );
         setSubCata(res.data.allSubCategories || []);
-        console.log("API Called for Brands and the SubCat🎗️🎗️🎗️🎗️🎗️", res.data);
+        
         setAllBrands(res.data.allBrands || []);
         setSeoData(res.data?.seo);
-        //setCurrentCat(res.data?.category);
-        console.log("SEO DATA", res.data.seo);
+        
       } catch (error) {
         console.error("Failed to fetch category data:", error);
       }
@@ -88,7 +86,6 @@ function SelectSubCata() {
 
   return (
     <>
-      {/* <BreadCrumb items={["Home", "Sell Your Phone"]} /> */}
 
       {subCata.length > 0 && (
         <section className="default-padding-section">

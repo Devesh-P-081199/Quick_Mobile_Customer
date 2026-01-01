@@ -24,7 +24,6 @@ export default function NewsLetter() {
                 <img src={mail} className={styles.icon} alt="mail icon" />
               </span>
             </div>
-            {/* <button className={styles.submitButton}>Submit</button> */}
           </div>
         </div>
       </div>

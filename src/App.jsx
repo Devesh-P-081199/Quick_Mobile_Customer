@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import './App.css';
 
 // Import Pages - Updated to use feature-based structure
 import SellHome from "./features/sell/pages/SellHome";
@@ -37,14 +36,11 @@ const PaymentComponent = React.lazy(() =>
 const PaymentForm = React.lazy(() =>
   import("./features/checkout/components/PaymentForm/PaymentForm")
 );
-// import ThankYouPage from "./Pages/ThankYouPage";
 const ThankYouPage = React.lazy(() => import("./pages/ThankYouPage"));
-// import SelectSubCata from "./Components/SelectSubCategories/SelectSubCata";
 const SelectSubCata = React.lazy(() =>
   import("./features/sell/components/SelectSubCategories/SelectSubCata")
 );
 
-// import ViewAllCata from "./Pages/SellModule/ViewAllCata";
 const ViewAllCata = React.lazy(() =>
   import("./features/sell/pages/ViewAllCata")
 );
@@ -115,7 +111,6 @@ const ScrollToTop = () => {
 };
 
 const AppContent = () => {
-  // const location = useLocation();
   const location = useLocation();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
 
@@ -194,7 +189,6 @@ const AppContent = () => {
 
   return (
     <>
-      {/* {loading && <Loader />} */}
       <ScrollToTop />
       <Header />
       <Routes>

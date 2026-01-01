@@ -101,7 +101,7 @@ function StorePage() {
       toast.error("Please select a rating");
       return;
     }
-    console.log("Review submitted:", { rating, reviewMessage });
+    
     toast.success(`Review submitted with ${rating} stars and message: ${reviewMessage}`);
     setRating(0);
     setReviewMessage("");

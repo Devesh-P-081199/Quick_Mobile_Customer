@@ -69,17 +69,14 @@ function CheckOut() {
     navigate(targetUrl, { replace: true });
   };
 
-
   useEffect(() => {
     // Check if addresses were passed from Step6 via navigation state
     if (location.state?.addresses && location.state.addresses.length > 0) {
-      console.log("Received addresses from Step6:", location.state.addresses);
-      console.log("Current selectedAddress:", selectedAddress);
+
       const sortedAddresses = sortAddressesBySelected(location.state.addresses);
       setAddress(sortedAddresses);
-      console.log("Sorted addresses:", sortedAddresses);
+      
     } else {
-      // Fallback: fetch addresses if not passed
       fetchAddress();
     }
     // Don't clear selectedAddress - keep the one from Step6
@@ -89,12 +86,11 @@ function CheckOut() {
   // Sort addresses to show selected one on top
   const sortAddressesBySelected = (addresses) => {
     if (!selectedAddress) {
-      console.log("No selectedAddress, returning original order");
+      
       return addresses;
     }
 
     const selectedId = selectedAddress._id || selectedAddress.id;
-    console.log("Sorting addresses, selectedId:", selectedId);
 
     const sorted = [...addresses].sort((a, b) => {
       const aId = a._id || a.id;
@@ -107,9 +103,8 @@ function CheckOut() {
     return sorted;
   };
 
-  // Debug: Log selectedAddress changes
   useEffect(() => {
-    console.log("selectedAddress changed:", selectedAddress);
+    
   }, [selectedAddress]);
 
   return (
@@ -133,10 +128,7 @@ function CheckOut() {
                       selectedAddress !== null && itemId === selectedId;
 
                     if (index === 0) {
-                      console.log("First address item:", item);
-                      console.log("Item ID:", itemId);
-                      console.log("Selected ID:", selectedId);
-                      console.log("Is selected:", isSelected);
+
                     }
 
                     return (
@@ -151,7 +143,7 @@ function CheckOut() {
                             name="address"
                             className={styles.radioInput}
                             onChange={() => {
-                              console.log("Address selected:", item);
+                              
                               setSelectedAddress(item);
                             }}
                             checked={isSelected}

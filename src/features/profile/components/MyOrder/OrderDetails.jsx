@@ -136,11 +136,8 @@ const OrderDetails = () => {
             await api.patch("/sell-module/user/orders", payload);
             toast.success("Payment method updated successfully");
 
-            // Refresh order details to show new state (and clear context?)
-            // setOrder(prev => ({ ...prev, paymentDetail: selectedPaymentMethod }));
             // Or re-fetch:
             // window.location.reload(); // Simple but effective, or trigger refetch
-            // Better: update local state
             setOrder(prev => ({ ...prev, paymentDetail: selectedPaymentMethod }));
             setSelectedPaymentMethod(null); // Clear context after update
         } catch (error) {
@@ -295,9 +292,6 @@ const OrderDetails = () => {
                         )}
                     </div>
 
-                    {/* Update Payment Button (Only visible if a new method is selected via context) */}
-
-
                     {/* Condition buttons */}
                     <div className={styles.conditionBtns}>
                         <button
@@ -391,7 +385,6 @@ const OrderDetails = () => {
                             <span className={styles.transactionValue}>{order?.date ? new Date(order.date).toLocaleString() : defaultTransaction.date}</span>
                         </div>
                     </div>
-
 
                     <button className={styles.invoiceBtn} onClick={handleDownloadInvoice}>
                         <img src={downloadIcon} alt="Download Invoice" />Download Invoice

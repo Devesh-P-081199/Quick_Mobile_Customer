@@ -41,51 +41,11 @@ const cardData = [
     ratingNumbers: 4.2,
   },
 
-  // {
-  //   title: "Card 2",
-  //   image: iPhoneSecondImage,
   //   photoLogo,
-  //   rating: ratings,
-  //   imageTitle: "Willian Vangence",
-  //   imageDescription: "Purchased on October 14, 2024",
-  //   ratingNumbers: 4.2,
-  // },
-  // {
-  //   title: "Card 3",
-  //   image: iPhoneThirdImage,
   //   photoLogo,
-  //   rating: ratings,
-  //   imageTitle: "Willian Vangence",
-  //   imageDescription: "Purchased on October 14, 2024",
-  //   ratingNumbers: 4.2,
-  // },
-  // {
-  //   title: "Card 4",
-  //   image: iPhoneFourImage,
   //   photoLogo,
-  //   rating: ratings,
-  //   imageTitle: "Willian Vangence",
-  //   imageDescription: "Purchased on October 14, 2024",
-  //   ratingNumbers: 4.2,
-  // },
-  // {
-  //   title: "Card 5",
-  //   image: iPhoneFourImage,
   //   photoLogo,
-  //   rating: ratings,
-  //   imageTitle: "Willian Vangence",
-  //   imageDescription: "Purchased on October 14, 2024",
-  //   ratingNumbers: 4.2,
-  // },
-  // {
-  //   title: "Card 6",
-  //   image: iPhoneFourImage,
   //   photoLogo,
-  //   rating: ratings,
-  //   imageTitle: "Willian Vangence",
-  //   imageDescription: "Purchased on October 14, 2024",
-  //   ratingNumbers: 4.2,
-  // },
 ];
 
 const Testimonials = () => {

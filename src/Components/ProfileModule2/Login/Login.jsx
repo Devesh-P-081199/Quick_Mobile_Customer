@@ -33,7 +33,6 @@ const Login = () => {
         </div>
         <div className={styles.leftButtons}>
           <button className={styles.primaryBtn}>1. Login your account</button>
-          {/* <button className={styles.secondaryBtn}>Sell Now</button> */}
         </div>
       </div>
 

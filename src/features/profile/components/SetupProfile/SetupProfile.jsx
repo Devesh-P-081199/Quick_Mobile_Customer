@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./SetupProfile.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-// import api from "../../../Utils/api";
-// import { UserContext } from "../../../Context/contextAPI";
 import axios from "axios";
 import api from "../../../../Utils/api";
 import { UserContext } from "../../../../Context/contextAPI";
@@ -19,16 +17,13 @@ const SetupProfile = () => {
   const [profilePicUrl, setProfilePicUrl] = useState(""); // Fetched image URL state
 
   const navigate = useNavigate();
-  // const location = useLocation();
   const fromPage = location.state?.from || "/";
 
-  // Fetching existing data (including profile picture URL)
   const fetchExisitngData = async () => {
     try {
       const existingUser = await api.get(
         "/sell-module/user/fetch-one-customer"
       );
-      // console.log("Existing user", existingUser.data);
 
       if (existingUser.data) {
         setName(existingUser?.data?.user?.name);
@@ -56,7 +51,6 @@ const SetupProfile = () => {
       const res = await api.post("/file/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      // console.log('Image URL:', res.data);
 
       return res.data.location; // Return the uploaded image URL
     } catch (error) {
@@ -97,8 +91,6 @@ const SetupProfile = () => {
         profilePic: finalProfilePicUrl, // Send the profile picture URL
       });
 
-      // console.log("Profile setup success", response.data);
-
       setUser(response?.data?.payload);
       toast.success("Profile setup successfully");
       navigate(fromPage);
@@ -111,21 +103,6 @@ const SetupProfile = () => {
   return (
     <div>
       <div className={styles.signUpWrapper}>
-        {/* <div className={styles.leftPanel}>
-        <div className={styles.leftHeader}>
-          <h1 className={styles.brand}>
-            Quick <span className="color-orange">Mobile </span>{" "}
-          </h1>
-          <h2 className={styles.tagline}>Setup Your Profile</h2>
-          <p className={styles.subtext}>
-            Complete these easy steps to set up your profile.
-          </p>
-        </div>
-        <div className={styles.leftButtons}>
-          <button className={styles.secondaryBtn}>1. Signup your account </button>
-          <button className={styles.primaryBtn}>Setup your profile</button>
-        </div>
-      </div> */}
 
         <div className={styles.formCard}>
           <div className={styles.formContainer}>
@@ -175,42 +152,8 @@ const SetupProfile = () => {
             </div>
 
             {/* Password Input */}
-            {/* <div className={styles.inputGroup}>
-            <div className={styles.inputRow}>
-              <div className={styles.inputContent}>
-                <label htmlFor="password" className={styles.label}>
-                  Enter Password
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className={styles.inputField}
-                  placeholder="Enter your password"
-                />
-              </div>
-            </div>
-          </div> */}
 
             {/* Confirm Password Input */}
-            {/* <div className={styles.inputGroup}>
-            <div className={styles.inputRow}>
-              <div className={styles.inputContent}>
-                <label htmlFor="confirmPassword" className={styles.label}>
-                  Confirm Password
-                </label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  className={styles.inputField}
-                  placeholder="Confirm your password"
-                />
-              </div>
-            </div>
-          </div> */}
 
             {/* Profile Picture Input */}
             <div className={styles.inputGroup}>

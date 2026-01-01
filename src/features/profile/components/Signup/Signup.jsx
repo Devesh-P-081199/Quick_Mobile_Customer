@@ -65,7 +65,6 @@ const SignUp = ({ onSwitchToLogin, onSuccessSignup }) => {
         setUser(data.user);
         toast.success("Signup Successful!");
 
-        // navigate("/setup-profile"); ❌ remove this
         onSuccessSignup(); // ✅ open SetupProfile inside modal
       }
     } catch (err) {

@@ -23,7 +23,6 @@ const LearnTemplate = () => {
         <div className={styles.leftSection}>
           <h2 className={styles.heading}>What is Verifies Refurbished?</h2>
           <p className={styles.subheading}>How we ensure quality for you.</p>
-          {/* <button className={styles.learnMoreButton}>Learn more</button> */}
         </div>
 
         <div className={styles.rightSection}>

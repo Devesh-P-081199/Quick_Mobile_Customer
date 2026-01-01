@@ -7,7 +7,6 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
-// import { Helmet } from "react-helmet-async";
 import MobileCommonHeaderthree from "../../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 import SelectBrand from "../SelectBrand/SelectBrand";
 import SelectModel from "../SelectModel/SelectModel";
@@ -45,7 +44,6 @@ const GetUpto = () => {
     const thumb1Percentage = ((rangeMin - minPrice) / fullRange) * 100;
     const thumb2Percentage = ((rangeMax - minPrice) / fullRange) * 100;
 
-    // Adjust for track: starts at 20px, width is calc(100% - 40px)
     // Convert percentage to decimal for calc multiplication
     const thumb1Decimal = thumb1Percentage / 100;
     const thumb2Decimal = thumb2Percentage / 100;
@@ -76,8 +74,6 @@ const GetUpto = () => {
 
   const sliderPositions = calculateSliderPositions();
 
-  console.log("userSelection:", userSelection);
-
   useEffect(() => {
     if (!userSelection.variantSlug || !userSelection.catSubcatSlug) {
       setUserSelection((prev) => ({
@@ -96,26 +92,19 @@ const GetUpto = () => {
 
   const FetchPriceAndPackages = useCallback(async () => {
     if (!userSelection?.cityId) {
-      console.log("City ID missing in userSelection");
+      
       toast.error("Please select city first");
       navigate("/");
       return;
     }
 
-    console.log("Final slugs being used in fetch:", slug1, slug2);
-
     if (userSelection?.cityId) {
       try {
-        console.log("Using slugs:", slug1, slug2);
-        console.log("Using variantId:", userSelection.variantId);
-        console.log("Using cityId:", userSelection.cityId);
 
         const apiUrl = `/sell-module/user/packages-price/${slug2}/${userSelection.cityId}`;
-        console.log("🔥 Full API URL:", apiUrl);
 
         const response = await api.get(apiUrl);
 
-        console.log("API response PACKAGE AND PRICE:", response);
         setPackages(response?.data?.packages || []);
         setFinalPrice(response?.data?.finalPrice || 0);
         setDeviceInfo(response?.data?.deviceInfo || {});
@@ -151,7 +140,7 @@ const GetUpto = () => {
       userSelection?.variantId &&
       lastFetchedVariantId.current !== userSelection.variantId
     ) {
-      console.log("Fetching packages for variantId:", userSelection.variantId);
+      
       lastFetchedVariantId.current = userSelection.variantId;
 
       // Clear old product data
@@ -162,7 +151,7 @@ const GetUpto = () => {
 
       FetchPriceAndPackages();
     } else if (!userSelection?.cityId && !cityModalShown.current) {
-      console.log("City ID missing - showing modal");
+      
       cityModalShown.current = true;
       toggleModal();
     }
@@ -186,7 +175,6 @@ const GetUpto = () => {
     } = deviceInfo;
     const price = finalPrice || 0;
 
-    // Set flag to indicate fresh entry from Get Price (form should reset)
     const freshEntryKey = `freshEntry_${productId}`;
     sessionStorage.setItem(freshEntryKey, "true");
 
@@ -209,8 +197,6 @@ const GetUpto = () => {
       <MobileCommonHeaderthree
         title="Get Price"
         onBack={() => {
-          // Linear navigation: Go back to SelectVarient (product page)
-          // Use productSlug from userSelection (stored when navigating here from SelectVarient)
           const productSlug = userSelection?.productSlug;
           const catSlug = userSelection?.catSubcatSlug || slug1;
 
@@ -263,15 +249,11 @@ const GetUpto = () => {
                   )}{" "}
                   {deviceInfo?.variantDetail && `(${deviceInfo.variantDetail})`}
                 </h2>
-                {/* <span className={styles.verient}>
-                  {deviceInfo?.variantDetail && `(${deviceInfo.variantDetail})`}
-                </span> */}
 
                 {/* Price Info */}
                 <div className={styles.priceInfo}>
                   <div className={styles.priceLabel}>
                     <span>Average price user gets!</span>
-                    {/* <span className={styles.infoIcon}>ℹ️</span> */}
                   </div>
                   <div className={styles.priceBox}>
                     {priceRange && sliderPositions ? (

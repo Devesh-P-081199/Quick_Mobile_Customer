@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import styles from './ProfileCard.module.css';
-// import user  from "../../../assets/icons/user.png"
 import { FaSignOutAlt, FaMapMarkerAlt, FaCreditCard, FaBoxOpen } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -26,7 +25,6 @@ const ProfileCard = () => {
       <div className={styles.profile}>
         <div className={styles.profileImage}>
 
-            {/* <img src={user} alt="" /> */}
         </div>
         <div className={styles.profileDetails}>
           <div className={styles.profileName}>{user?.name || "Name: N/A"}</div>

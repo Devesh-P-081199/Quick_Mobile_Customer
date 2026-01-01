@@ -5,9 +5,7 @@ import styles from "./loader.module.css";
 const Loader = () => {
   return (
     <div>
-      {/* <div className={styles.loaderContainer}>
-            <img src={LoaderIcon} alt="Loading..." className={styles.loaderImg} />
-        </div> */}
+      
     </div>
   );
 };

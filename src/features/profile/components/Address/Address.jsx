@@ -71,7 +71,6 @@ const Address = () => {
           `/sell-module/user/update-address/${editingAddressId}`,
           formData
         );
-        // console.log("After Update",response.data);
 
         toast.success("Address updated successfully");
       } else {
@@ -118,7 +117,6 @@ const Address = () => {
 
   const handleEdit = (index) => {
     const addressToEdit = addressBoxes[index];
-    // console.log("Owais : ", addressToEdit);
     setFormData({
       zipCode: addressToEdit.zipCode || "",
       houseNumber: addressToEdit.houseNumber || "",
@@ -175,7 +173,7 @@ const Address = () => {
         `/sell-module/user/getZipDetails/${zipcode}`
       );
       const cityFromZip = response?.data[0]?.PostOffice[0]?.Block || "";
-      console.log("City data form Zip : ", response?.data[0]?.PostOffice);
+      
       setCityName(cityFromZip);
       setFormData((prev) => ({ ...prev, cityName: cityFromZip })); // <- ✅ Set into formData
     } catch (error) {
@@ -355,7 +353,6 @@ const Address = () => {
 
                       {/* City & Zip Code */}
 
-                      {/* City (auto-filled and read-only after valid pincode) */}
                       <div className={styles.inputContainer}>
                         {cityName ? (
                           <input
