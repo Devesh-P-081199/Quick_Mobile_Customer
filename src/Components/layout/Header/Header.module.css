@@ -319,6 +319,11 @@
 
 .arrowImg {
   transform: rotate(270deg);
+  transition: transform 0.2s ease;
+}
+
+.arrowRotated {
+  transform: rotate(90deg) !important;
 }
 
 .bagIcon {
@@ -772,8 +777,8 @@
   box-shadow: none;
   /* Remove shadow */
   padding: 24px;
-  padding-top: 20px;
-  /* Extra padding at top to create hover bridge */
+  padding-top: 0px;
+  /* Removed extra padding for tight alignment with header */
   z-index: 10001;
   /* Even higher z-index */
   min-width: 600px;
@@ -802,7 +807,7 @@
   border: none;
   border-radius: 8px;
   padding: 24px;
-  padding-top: 20px;
+  padding-top: 5px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;

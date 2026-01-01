@@ -171,8 +171,8 @@ const Address = () => {
 
   const fetchZipDetails = async (zipcode) => {
     try {
-      const response = await axios.get(
-        `http://65.0.92.40:8080/api/sell-module/user/getZipDetails/${zipcode}`
+      const response = await api.get(
+        `/sell-module/user/getZipDetails/${zipcode}`
       );
       const cityFromZip = response?.data[0]?.PostOffice[0]?.Block || "";
       console.log("City data form Zip : ", response?.data[0]?.PostOffice);
