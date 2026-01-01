@@ -10,92 +10,92 @@ import "react-toastify/dist/ReactToastify.css";
 
 // Import Pages - Updated to use feature-based structure
 const SeriesSelection = React.lazy(() =>
-  import("./features/sell/pages/SeriesSelection")
+  import("./modules/sell/pages/SeriesSelection")
 );
 const ModelSelection = React.lazy(() =>
-  import("./features/sell/pages/ModelSelection")
+  import("./modules/sell/pages/ModelSelection")
 );
 const SelectVarient = React.lazy(() =>
-  import("./features/sell/pages/SelectVarient")
+  import("./modules/sell/pages/SelectVarient")
 );
 const GetPriceUpto = React.lazy(() =>
-  import("./features/sell/pages/GetPriceUpto")
+  import("./modules/sell/pages/GetPriceUpto")
 );
-const FormStep3 = React.lazy(() => import("./features/sell/pages/FormStep3"));
-const FormStep6 = React.lazy(() => import("./features/sell/pages/FormStep6"));
+const FormStep3 = React.lazy(() => import("./modules/sell/pages/FormStep3"));
+const FormStep6 = React.lazy(() => import("./modules/sell/pages/FormStep6"));
 const CheckOut = React.lazy(() =>
-  import("./features/checkout/components/CheckOut/CheckOut")
+  import("./modules/checkout/components/CheckOut/CheckOut")
 );
 const AddressForm = React.lazy(() =>
-  import("./features/checkout/components/AddressForm/AddressForm")
+  import("./modules/checkout/components/AddressForm/AddressForm")
 );
 const PaymentComponent = React.lazy(() =>
-  import("./features/checkout/components/Payment/Payment")
+  import("./modules/checkout/components/Payment/Payment")
 );
 const PaymentForm = React.lazy(() =>
-  import("./features/checkout/components/PaymentForm/PaymentForm")
+  import("./modules/checkout/components/PaymentForm/PaymentForm")
 );
-const ThankYouPage = React.lazy(() => import("./pages/ThankYouPage"));
+const ThankYouPage = React.lazy(() => import("./modules/common/pages/ThankYouPage"));
 const SelectSubCata = React.lazy(() =>
-  import("./features/sell/components/SelectSubCategories/SelectSubCata")
+  import("./modules/sell/components/SelectSubCategories/SelectSubCata")
 );
 
 const ViewAllCata = React.lazy(() =>
-  import("./features/sell/pages/ViewAllCata")
+  import("./modules/sell/pages/ViewAllCata")
 );
-import FAQPage from "./features/sell/pages/FAQPage";
-import Header from "./components/layout/Header/Header";
-import Footer from "./components/layout/Footer/Footer";
+import FAQPage from "./modules/sell/pages/FAQPage";
+import Header from "./modules/common/components/layout/Header/Header";
+import Footer from "./modules/common/components/layout/Footer/Footer";
 // Updated imports to use new feature-based structure
 const Login = React.lazy(() =>
-  import("./features/profile/components/Login/Login")
+  import("./modules/profile/components/Login/Login")
 );
 const SignUp = React.lazy(() =>
-  import("./features/profile/components/Signup/Signup")
+  import("./modules/profile/components/Signup/Signup")
 );
 const Address = React.lazy(() =>
-  import("./features/profile/pages/SavedAddress")
+  import("./modules/profile/pages/SavedAddress")
 );
 const PaymentOptions = React.lazy(() =>
-  import("./features/checkout/components/Payment/Payment")
+  import("./modules/checkout/components/Payment/Payment")
 );
 const ProfilePayments = React.lazy(() =>
-  import("./features/profile/pages/PaymentOptions")
+  import("./modules/profile/pages/PaymentOptions")
 );
 
 const SetupProfile = React.lazy(() =>
-  import("./features/profile/components/SetupProfile/SetupProfile")
+  import("./modules/profile/components/SetupProfile/SetupProfile")
 );
 const MyOrder = React.lazy(() =>
-  import("./features/profile/components/MyOrder/MyOrder")
+  import("./modules/profile/components/MyOrder/MyOrder")
 );
 const EditProfile = React.lazy(() =>
-  import("./features/profile/components/SetupProfile/EditProfile")
+  import("./modules/profile/components/SetupProfile/EditProfile")
 );
 const OrderDetails = React.lazy(() =>
-  import("./features/profile/components/MyOrder/OrderDetails")
+  import("./modules/profile/components/MyOrder/OrderDetails")
 );
 import { Suspense } from "react";
 
 // testing for loader
-import Loader from "./components/layout/Loader/Loader";
-import DynamicRouteHandler from "./pages/DynamicRouteHandler";
-import NotFoundPage from "./pages/NotFoundPage";
-const BlogDetail = React.lazy(() => import("./pages/BlogDetail"));
-const BlogsPage = React.lazy(() => import("./pages/BlogsPage"));
-const StorePage = React.lazy(() => import("./pages/StorePage"));
-const StoresListPage = React.lazy(() => import("./pages/StoresListPage"));
-import HomePage from "./features/buy/pages/HomePage";
-import AboutUs from "./pages/general/AboutUs/AboutUs";
-import Cookies from "./pages/general/Cookies/Cookies";
-import TermsOfService from "./pages/general/Terms/Terms";
-import RefundPolicy from "./pages/general/RefundPolicy/RefundPolicy";
-import ContactUs from "./pages/general/ContactUs/ContactUs";
-import QuickImpact from "./pages/general/QuickImpact/QuickImpact";
-import SearchBar from "./components/layout/SearchBar/SearchBar";
-import GuidePrivacyPolicy from "./pages/general/Privacy/Privacy";
-import ProfileCard from "./features/profile/components/ProfileCard";
-import NoOffer from "./features/profile/components/Offer/Offer";
+import Loader from "./modules/common/components/layout/Loader/Loader";
+import DynamicRouteHandler from "./modules/common/pages/DynamicRouteHandler";
+import NotFoundPage from "./modules/common/pages/NotFoundPage";
+const BlogDetail = React.lazy(() => import("./modules/common/pages/BlogDetail"));
+const BlogsPage = React.lazy(() => import("./modules/common/pages/BlogsPage"));
+const StorePage = React.lazy(() => import("./modules/common/pages/StorePage"));
+const StoresListPage = React.lazy(() => import("./modules/common/pages/StoresListPage"));
+import HomePage from "./modules/buy/pages/HomePage";
+import AboutUs from "./modules/common/pages/general/AboutUs/AboutUs";
+import Cookies from "./modules/common/pages/general/Cookies/Cookies";
+import TermsOfService from "./modules/common/pages/general/Terms/Terms";
+import RefundPolicy from "./modules/common/pages/general/RefundPolicy/RefundPolicy";
+import ContactUs from "./modules/common/pages/general/ContactUs/ContactUs";
+import QuickImpact from "./modules/common/pages/general/QuickImpact/QuickImpact";
+import SearchBar from "./modules/common/components/layout/SearchBar/SearchBar";
+import GuidePrivacyPolicy from "./modules/common/pages/general/Privacy/Privacy";
+import ProfileCard from "./modules/profile/components/ProfileCard";
+import NoOffer from "./modules/profile/components/Offer/Offer";
 
 const ScrollToTop = () => {
   const { pathname, search } = useLocation();
