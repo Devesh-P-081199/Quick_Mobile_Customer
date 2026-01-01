@@ -20,9 +20,8 @@ const PaymentOptions = () => {
   const getSavedPaymentBank = async () => {
     try {
       const res = await api.get(`/sell-module/user/payment-bank`);
-      
+
       setPaymentBank(res.data?.bankMethods || []);
-      
     } catch (error) {
       console.error("Failed to fetch bank methods:", error);
       toast.error("Failed to fetch bank methods");
@@ -33,9 +32,8 @@ const PaymentOptions = () => {
   const getSavedPaymentUpi = async () => {
     try {
       const res = await api.get(`/sell-module/user/payment-upi`);
-      
+
       setPaymentUpi(res.data?.upiMethods || []);
-      
     } catch (error) {
       console.error("Failed to fetch UPI methods:", error);
       toast.error("Failed to fetch UPI methods");
@@ -43,18 +41,13 @@ const PaymentOptions = () => {
   };
 
   useEffect(() => {
-    
     getSavedPaymentBank();
     getSavedPaymentUpi();
   }, []);
 
-  useEffect(() => {
-    
-  }, [paymentBank]);
+  useEffect(() => {}, [paymentBank]);
 
-  useEffect(() => {
-    
-  }, [paymentUpi]);
+  useEffect(() => {}, [paymentUpi]);
 
   // Handle Add New - Navigate to PaymentForm
   const handleAddNew = () => {
@@ -122,15 +115,17 @@ const PaymentOptions = () => {
             {/* Tabs for UPI and Bank */}
             <div className={styles.tabContainer}>
               <button
-                className={`${styles.tabButton} ${selectedMethod === 0 ? styles.activeTab : ""
-                  }`}
+                className={`${styles.tabButton} ${
+                  selectedMethod === 0 ? styles.activeTab : ""
+                }`}
                 onClick={() => setSelectedMethod(0)}
               >
                 UPI
               </button>
               <button
-                className={`${styles.tabButton} ${selectedMethod === 1 ? styles.activeTab : ""
-                  }`}
+                className={`${styles.tabButton} ${
+                  selectedMethod === 1 ? styles.activeTab : ""
+                }`}
                 onClick={() => setSelectedMethod(1)}
               >
                 Bank Transfer

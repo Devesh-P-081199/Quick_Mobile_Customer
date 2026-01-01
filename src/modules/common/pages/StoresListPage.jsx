@@ -11,11 +11,10 @@ const STORES_DATA = [
     id: "store-1",
     name: "Quick Mobile - Thane",
     time: "9:00 AM - 6:00 PM",
-    address: "Shop no. 09, St. John Baptist School Building, Opp. Jyoti Stores, Charai, Thane West - 400601",
-    images: [
-      storeImg,
-    ],
-  }
+    address:
+      "Shop no. 09, St. John Baptist School Building, Opp. Jyoti Stores, Charai, Thane West - 400601",
+    images: [storeImg],
+  },
 ];
 
 function StoresListPage() {

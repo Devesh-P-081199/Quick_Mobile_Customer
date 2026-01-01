@@ -38,12 +38,10 @@ const EditProfile = () => {
         {
           expires: 2,
           sameSite: "strict",
-        }
+        },
       );
       alert("Profile updated successfully");
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
 
   const handleChange = (e) => {

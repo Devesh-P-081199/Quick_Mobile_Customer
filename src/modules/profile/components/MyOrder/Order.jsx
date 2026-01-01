@@ -75,9 +75,7 @@ const OrderCard = () => {
                         "0.00"}
                     </span>
                   </div>
-                  <div className={styles.imei}>
-                    Order ID : {ord.orderId}
-                  </div>
+                  <div className={styles.imei}>Order ID : {ord.orderId}</div>
                   <div className={styles.pickup}>
                     Expected pickup by :{" "}
                     {new Date(ord.createdAt).toLocaleDateString("en-GB")}

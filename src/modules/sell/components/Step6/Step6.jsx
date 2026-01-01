@@ -49,7 +49,7 @@ function Step6() {
     setLoading(true);
     try {
       const finalPriceResp = await api.get("/sell-module/user/view-finalprice");
-      
+
       setCurrentEvaluationId(finalPriceResp?.data[0]);
     } catch (error) {
       console.error("Error fetching final price:", error);
@@ -64,21 +64,19 @@ function Step6() {
     try {
       const resp = await api.get("/sell-module/user/address");
       const fetchedAddresses = resp?.data.data?.addresses || [];
-      
+
       setAddresses(fetchedAddresses);
 
       // Auto-select address with isActive: true, or first address if none have isActive
       if (fetchedAddresses.length > 0 && !selectedAddress) {
         const activeAddress = fetchedAddresses.find(
-          (addr) => addr.isActive === true
+          (addr) => addr.isActive === true,
         );
-        
+
         const defaultAddress = activeAddress || fetchedAddresses[0];
-        
+
         setSelectedAddress(defaultAddress);
-        
       } else {
-        
       }
     } catch (error) {
       console.error("Error fetching addresses:", error);
@@ -105,27 +103,25 @@ function Step6() {
         const activeUpi = upiMethods.find((method) => method.isActive === true);
         if (activeUpi) {
           setSelectedPaymentMethod({ type: "upi", ...activeUpi });
-          
+
           return;
         }
 
         // Check Bank methods
         const activeBank = bankMethods.find(
-          (method) => method.isActive === true
+          (method) => method.isActive === true,
         );
         if (activeBank) {
           setSelectedPaymentMethod({ type: "bank", ...activeBank });
-          
+
           return;
         }
 
         // If no active method, select first available
         if (upiMethods.length > 0) {
           setSelectedPaymentMethod({ type: "upi", ...upiMethods[0] });
-          
         } else if (bankMethods.length > 0) {
           setSelectedPaymentMethod({ type: "bank", ...bankMethods[0] });
-          
         }
       }
     } catch (error) {
@@ -141,13 +137,9 @@ function Step6() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    
-  }, [selectedAddress]);
+  useEffect(() => {}, [selectedAddress]);
 
-  useEffect(() => {
-    
-  }, [selectedPaymentMethod]);
+  useEffect(() => {}, [selectedPaymentMethod]);
 
   const handlePlaceOrder = async () => {
     if (!selectedAddress) {
@@ -164,13 +156,13 @@ function Step6() {
 
       const placeOrder = await api.post(
         "/sell-module/user/orders",
-        orderPayload
+        orderPayload,
       );
 
       toast.success("Order placed successfully!");
       navigate("/thank-you", {
         replace: true,
-        state: { orderData: placeOrder.data }
+        state: { orderData: placeOrder.data },
       });
     } catch (error) {
       console.error("Error placing order:", error);
@@ -181,12 +173,12 @@ function Step6() {
   const handleChangeAddress = () => {
     // Preserve query params for back navigation
     const queryString = queryParams.toString();
-    const urlSuffix = queryString ? `?${queryString}` : '';
+    const urlSuffix = queryString ? `?${queryString}` : "";
 
     // If no addresses exist, go directly to add-address page
     if (addresses.length === 0) {
       navigate(`/${slug}/check-out/add-address${urlSuffix}`, {
-        state: { returnPath: location.pathname + location.search }
+        state: { returnPath: location.pathname + location.search },
       });
     } else {
       // Pass addresses to CheckOut component via navigation state
@@ -197,12 +189,12 @@ function Step6() {
   const handleChangePayment = () => {
     // Preserve query params for back navigation
     const queryString = queryParams.toString();
-    const urlSuffix = queryString ? `?${queryString}` : '';
+    const urlSuffix = queryString ? `?${queryString}` : "";
 
     // If no payment methods exist, go directly to add-payment page
     if (paymentMethods.upi.length === 0 && paymentMethods.bank.length === 0) {
       navigate(`/${slug}/payment/add-payment${urlSuffix}`, {
-        state: { returnPath: location.pathname + location.search }
+        state: { returnPath: location.pathname + location.search },
       });
     } else {
       // Pass payment methods to Payment component via navigation state
@@ -279,8 +271,9 @@ function Step6() {
                           sessionStorage.removeItem(packageDetailsKey);
 
                           // Clear step3 form data
-                          const storageKey = `step3PackageData_${productId}_${variantId || "unknown"
-                            }`;
+                          const storageKey = `step3PackageData_${productId}_${
+                            variantId || "unknown"
+                          }`;
                           sessionStorage.removeItem(storageKey);
 
                           // Clear current package index
@@ -298,7 +291,6 @@ function Step6() {
                           // Set recalculate flag to force Step3 to load fresh
                           const recalculateKey = `recalculate_${productId}`;
                           sessionStorage.setItem(recalculateKey, "true");
-
                         }
                       }}
                     >
@@ -368,11 +360,7 @@ function Step6() {
           <div className={styles.summaryCard}>
             <div className={styles.summaryHeader}>
               <div className={styles.summaryHeaderLeft}>
-                <img
-                  src={van}
-                  alt=""
-                  className={styles.featureOption}
-                ></img>
+                <img src={van} alt="" className={styles.featureOption}></img>
                 <span className={styles.summaryLabel}>Pickup Address</span>
               </div>
               <button
@@ -391,7 +379,6 @@ function Step6() {
                   {selectedAddress?.houseNumber}, {selectedAddress?.street}
                   {selectedAddress?.landmark &&
                     `, ${selectedAddress?.landmark}`}
-                  
                   {selectedAddress?.cityName}, {selectedAddress?.state} -{" "}
                   {selectedAddress?.zipCode}
                 </p>
@@ -475,8 +462,8 @@ function Step6() {
               </p>
             ) : (
               <p className={styles.notSelected}>
-                No payment method selected. Click "Add" button above to select
-                a payment method.
+                No payment method selected. Click "Add" button above to select a
+                payment method.
               </p>
             )}
           </div>
@@ -504,7 +491,9 @@ function Step6() {
                 <Answers
                   onBack={() => setShowAnswersModal(false)}
                   onRecalculate={() =>
-                    navigate(`/${slug}/final-price-calculator${location.search}`)
+                    navigate(
+                      `/${slug}/final-price-calculator${location.search}`,
+                    )
                   }
                 />
               </div>
@@ -587,7 +576,9 @@ function Step6() {
             <div className={styles.sellNowContainer}>
               <button
                 className={styles.sellNow}
-                onClick={selectedAddress ? handlePlaceOrder : handleChangeAddress}
+                onClick={
+                  selectedAddress ? handlePlaceOrder : handleChangeAddress
+                }
                 disabled={loading}
               >
                 {selectedAddress ? "Place Order" : "Add Address to Continue"}

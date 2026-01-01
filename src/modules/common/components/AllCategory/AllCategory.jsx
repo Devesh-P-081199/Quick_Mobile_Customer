@@ -20,18 +20,14 @@ const AllCategory = forwardRef((props, ref) => {
   const fetchCategories = async () => {
     try {
       const response = await api.get(
-        "/common-module/category?option=Sell&all=true"
+        "/common-module/category?option=Sell&all=true",
       );
       setCategories(response?.data?.categories);
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
 
   const handleNavigate = async (selectedCategory) => {
-
     navigate(`/${selectedCategory?.slug?.sell}`);
-
   };
 
   useEffect(() => {

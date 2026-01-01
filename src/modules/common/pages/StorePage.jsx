@@ -15,23 +15,19 @@ import support from "../../../assets/flaticons/support.png";
 const STORES_DATABASE = {
   "store-1": {
     name: "Quick Mobile - Thane",
-    address: "Shop no. 09, St. John Baptist School Building, Opp. Jyoti Stores, Charai, Thane West - 400601",
+    address:
+      "Shop no. 09, St. John Baptist School Building, Opp. Jyoti Stores, Charai, Thane West - 400601",
     time: "9:00 AM - 6:00 PM",
     phone: "+91 7208548807",
     location: { lat: 19.19591355760504, lng: 72.9749617390098 },
-    images: [
-      storeImg,
-      storeImg,
-      storeImg,
-      storeImg,
-    ],
+    images: [storeImg, storeImg, storeImg, storeImg],
     services: [
       { name: "Sell Phone", icon: smartphone },
       { name: "Repair Phone", icon: support },
       { name: "Buy Phone", icon: onlineShopping },
-      { name: "Accessories", icon: headphone }
+      { name: "Accessories", icon: headphone },
     ],
-  }
+  },
 };
 
 function StorePage() {
@@ -49,11 +45,15 @@ function StorePage() {
   };
 
   const nextSlide = () => {
-    setCurrentImageIndex((prev) => (prev === STORE_IMAGES.length - 1 ? 0 : prev + 1));
+    setCurrentImageIndex((prev) =>
+      prev === STORE_IMAGES.length - 1 ? 0 : prev + 1,
+    );
   };
 
   const prevSlide = () => {
-    setCurrentImageIndex((prev) => (prev === 0 ? STORE_IMAGES.length - 1 : prev - 1));
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? STORE_IMAGES.length - 1 : prev - 1,
+    );
   };
 
   // Touch handling
@@ -88,7 +88,7 @@ function StorePage() {
     const { lat, lng } = STORE_DATA.location;
     window.open(
       `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`,
-      "_blank"
+      "_blank",
     );
   };
 
@@ -101,8 +101,10 @@ function StorePage() {
       toast.error("Please select a rating");
       return;
     }
-    
-    toast.success(`Review submitted with ${rating} stars and message: ${reviewMessage}`);
+
+    toast.success(
+      `Review submitted with ${rating} stars and message: ${reviewMessage}`,
+    );
     setRating(0);
     setReviewMessage("");
   };
@@ -118,12 +120,17 @@ function StorePage() {
           {/* Banner Slider */}
           <div className={styles.bannerSection}>
             <div className={styles.mainImage}>
-              <button className={`${styles.sliderBtn} ${styles.prevBtn}`} onClick={prevSlide}>
+              <button
+                className={`${styles.sliderBtn} ${styles.prevBtn}`}
+                onClick={prevSlide}
+              >
                 ❮
               </button>
               <div
                 className={styles.imageSlider}
-                style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+                style={{
+                  transform: `translateX(-${currentImageIndex * 100}%)`,
+                }}
                 onTouchStart={onTouchStart}
                 onTouchMove={onTouchMove}
                 onTouchEnd={onTouchEnd}
@@ -137,15 +144,19 @@ function StorePage() {
                   />
                 ))}
               </div>
-              <button className={`${styles.sliderBtn} ${styles.nextBtn}`} onClick={nextSlide}>
+              <button
+                className={`${styles.sliderBtn} ${styles.nextBtn}`}
+                onClick={nextSlide}
+              >
                 ❯
               </button>
               <div className={styles.dotsContainer}>
                 {STORE_IMAGES.map((_, index) => (
                   <span
                     key={index}
-                    className={`${styles.dot} ${index === currentImageIndex ? styles.activeDot : ""
-                      }`}
+                    className={`${styles.dot} ${
+                      index === currentImageIndex ? styles.activeDot : ""
+                    }`}
                     onClick={() => handleImageClick(index)}
                   ></span>
                 ))}
@@ -213,7 +224,10 @@ function StorePage() {
               onChange={(e) => setReviewMessage(e.target.value)}
               rows={3}
             />
-            <button className={styles.submitButton} onClick={handleReviewSubmit}>
+            <button
+              className={styles.submitButton}
+              onClick={handleReviewSubmit}
+            >
               Submit Review
             </button>
           </div>

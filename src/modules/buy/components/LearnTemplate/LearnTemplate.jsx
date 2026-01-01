@@ -5,7 +5,7 @@ import {
   FaCreditCard,
   FaCalendarAlt,
 } from "react-icons/fa";
-import styles from "./LearnTemplate.module.css"
+import styles from "./LearnTemplate.module.css";
 
 const features = [
   { icon: <FaSearch />, text: "20-point professional inspection" },

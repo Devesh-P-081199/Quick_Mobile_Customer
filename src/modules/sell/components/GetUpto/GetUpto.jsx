@@ -90,7 +90,6 @@ const GetUpto = () => {
 
   const FetchPriceAndPackages = useCallback(async () => {
     if (!userSelection?.cityId) {
-      
       toast.error("Please select city first");
       navigate("/");
       return;
@@ -98,7 +97,6 @@ const GetUpto = () => {
 
     if (userSelection?.cityId) {
       try {
-
         const apiUrl = `/sell-module/user/packages-price/${slug2}/${userSelection.cityId}`;
 
         const response = await api.get(apiUrl);
@@ -138,7 +136,6 @@ const GetUpto = () => {
       userSelection?.variantId &&
       lastFetchedVariantId.current !== userSelection.variantId
     ) {
-      
       lastFetchedVariantId.current = userSelection.variantId;
 
       // Clear old product data
@@ -149,7 +146,6 @@ const GetUpto = () => {
 
       FetchPriceAndPackages();
     } else if (!userSelection?.cityId && !cityModalShown.current) {
-      
       cityModalShown.current = true;
       toggleModal();
     }
@@ -178,15 +174,15 @@ const GetUpto = () => {
 
     navigate(
       `/${slug1}/final-price-calculator?pid=${encodeURIComponent(
-        productId
+        productId,
       )}&ct=${encodeURIComponent(categoryName)}&pn=${encodeURIComponent(
-        deviceName
+        deviceName,
       )}&bn=${encodeURIComponent(brandName)}&bbmp=${encodeURIComponent(
-        price
+        price,
       )}&vid=${encodeURIComponent(variantDetail)}&pin=${encodeURIComponent(
-        devicePic
+        devicePic,
       )}`,
-      { replace: true }
+      { replace: true },
     );
   };
 
@@ -204,7 +200,7 @@ const GetUpto = () => {
             // Fallback to category page if no product slug
             navigate(`/${catSlug}`, { replace: true });
           } else {
-            navigate('/', { replace: true });
+            navigate("/", { replace: true });
           }
         }}
       />
@@ -264,10 +260,11 @@ const GetUpto = () => {
                         </div>
 
                         <span
-                          className={`${styles.currentPrice} ${sliderPositions.isNarrowRange
-                            ? styles.currentPriceMinNarrow
-                            : styles.currentPriceMin
-                            }`}
+                          className={`${styles.currentPrice} ${
+                            sliderPositions.isNarrowRange
+                              ? styles.currentPriceMinNarrow
+                              : styles.currentPriceMin
+                          }`}
                           style={{
                             left: sliderPositions.thumb1Position,
                           }}
@@ -276,10 +273,11 @@ const GetUpto = () => {
                         </span>
 
                         <span
-                          className={`${styles.currentPrice} ${sliderPositions.isNarrowRange
-                            ? styles.currentPriceMaxNarrow
-                            : styles.currentPriceMax
-                            }`}
+                          className={`${styles.currentPrice} ${
+                            sliderPositions.isNarrowRange
+                              ? styles.currentPriceMaxNarrow
+                              : styles.currentPriceMax
+                          }`}
                           style={{
                             left: sliderPositions.thumb2Position,
                           }}

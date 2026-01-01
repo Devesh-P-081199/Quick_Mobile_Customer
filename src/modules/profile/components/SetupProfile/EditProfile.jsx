@@ -63,7 +63,6 @@ const EditProfile = () => {
     } catch (error) {
       // Error
       setVerificationStatus("error");
-      
     } finally {
       setIsVerifying(false);
     }
@@ -103,7 +102,6 @@ const EditProfile = () => {
 
       alert("Profile updated successfully");
     } catch (error) {
-      
       alert("Failed to update profile. Please try again.");
     }
   };
@@ -138,7 +136,7 @@ const EditProfile = () => {
             headers: {
               "Content-Type": "multipart/form-data",
             },
-          }
+          },
         );
 
         if (response.data && response.data.profilePicUrl) {
@@ -161,7 +159,7 @@ const EditProfile = () => {
             {
               expires: 2,
               sameSite: "strict",
-            }
+            },
           );
 
           alert("Profile picture updated successfully");

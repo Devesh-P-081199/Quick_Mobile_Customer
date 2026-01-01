@@ -189,7 +189,6 @@ const Footer = () => {
             ownership or endorsement.
           </p>
           <p>&copy; 2025 Quick Mobile</p>
-          
         </div>
       </footer>
 
@@ -258,7 +257,6 @@ const Footer = () => {
           <div className={styles.mobileFooterColumn}>
             <div className={styles.topContent}>
               <div className={styles.logoContainer}>
-                
                 <p>Follow us at</p>
               </div>
 
@@ -315,7 +313,6 @@ const Footer = () => {
             </p>
 
             <p>&copy; 2025 Quick Mobile All Right Reserved</p>
-            
           </div>
         </div>
       </footer>

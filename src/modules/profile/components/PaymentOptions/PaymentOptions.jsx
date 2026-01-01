@@ -172,7 +172,7 @@ const PaymentOptions = () => {
         if (editingBankId) {
           await api.put(
             `/sell-module/user/payment-bank/${editingBankId}`,
-            bankDetails
+            bankDetails,
           );
           toast.success("Bank details updated");
         } else {

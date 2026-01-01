@@ -85,7 +85,7 @@ const AddressModal = ({ isOpen, onClose, editingAddress, onSuccess }) => {
   const fetchZipDetails = async (zipcode) => {
     try {
       const response = await api.get(
-        `/sell-module/user/getZipDetails/${zipcode}`
+        `/sell-module/user/getZipDetails/${zipcode}`,
       );
       let cityFromZip = response.data[0]?.PostOffice[0].Block || "";
       setCityName(cityFromZip);
@@ -123,7 +123,7 @@ const AddressModal = ({ isOpen, onClose, editingAddress, onSuccess }) => {
       if (addressId) {
         await api.put(
           `/sell-module/user/update-address/${addressId}`,
-          formData
+          formData,
         );
         toast.success("Address updated successfully");
       } else {

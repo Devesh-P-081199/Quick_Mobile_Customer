@@ -86,9 +86,12 @@ const PaymentForm = () => {
 
         if (editPaymentId) {
           // Update existing UPI
-          response = await api.put(`/sell-module/user/payment-upi/${editPaymentId}`, {
-            upiId: formData.upiId,
-          });
+          response = await api.put(
+            `/sell-module/user/payment-upi/${editPaymentId}`,
+            {
+              upiId: formData.upiId,
+            },
+          );
           toast.success("UPI updated successfully");
         } else {
           // Add new UPI
@@ -101,9 +104,8 @@ const PaymentForm = () => {
         newPaymentData = {
           type: "upi",
           upiId: formData.upiId,
-          ...response.data
+          ...response.data,
         };
-
       } else {
         if (
           !formData.accountNumber ||
@@ -135,7 +137,7 @@ const PaymentForm = () => {
           // Update existing Bank
           response = await api.put(
             `/sell-module/user/payment-bank/${editPaymentId}`,
-            bankData
+            bankData,
           );
           toast.success("Bank details updated successfully");
         } else {
@@ -147,7 +149,7 @@ const PaymentForm = () => {
         newPaymentData = {
           type: "bank",
           bankDetails: bankData,
-          ...response.data
+          ...response.data,
         };
       }
 
@@ -161,8 +163,8 @@ const PaymentForm = () => {
         navigate(location.state.returnPath, {
           state: {
             returnPath: location.state.prevReturnPath,
-            orderData: location.state?.orderData
-          }
+            orderData: location.state?.orderData,
+          },
         });
       } else if (window.location.pathname.includes("/profile/")) {
         navigate("/my-profile-payments");
@@ -189,10 +191,11 @@ const PaymentForm = () => {
               <span className={styles.paymentTypeLabel}>Payment Type:</span>
               <div className={styles.radioButtonGroup}>
                 <label
-                  className={`${styles.radioButton} ${formData.paymentType === "UPI"
-                    ? styles.radioButtonSelected
-                    : ""
-                    }`}
+                  className={`${styles.radioButton} ${
+                    formData.paymentType === "UPI"
+                      ? styles.radioButtonSelected
+                      : ""
+                  }`}
                 >
                   <input
                     type="radio"
@@ -205,10 +208,11 @@ const PaymentForm = () => {
                   UPI
                 </label>
                 <label
-                  className={`${styles.radioButton} ${formData.paymentType === "Bank"
-                    ? styles.radioButtonSelected
-                    : ""
-                    }`}
+                  className={`${styles.radioButton} ${
+                    formData.paymentType === "Bank"
+                      ? styles.radioButtonSelected
+                      : ""
+                  }`}
                 >
                   <input
                     type="radio"

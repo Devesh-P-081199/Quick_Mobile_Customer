@@ -49,7 +49,11 @@ const BlogDetail = () => {
         {/* Blog Header */}
         <div className={styles.blogHeader}>
           <h1 className={styles.blogTitle}>{blog.title}</h1>
-          <img src={getImageUrl(blog.img)} alt={blog.title} className={styles.blogImage} />
+          <img
+            src={getImageUrl(blog.img)}
+            alt={blog.title}
+            className={styles.blogImage}
+          />
         </div>
 
         {/* Blog Content */}
@@ -58,26 +62,28 @@ const BlogDetail = () => {
             blog["content-details"].map((item, index) => (
               <div key={index} className={styles.contentItem}>
                 {/* Render Headers */}
-                {item.header && (
-                  Array.isArray(item.header) ? (
+                {item.header &&
+                  (Array.isArray(item.header) ? (
                     item.header.map((h, i) => (
-                      <h4 key={`h-${i}`} className={styles.contentHeader}>{h}</h4>
+                      <h4 key={`h-${i}`} className={styles.contentHeader}>
+                        {h}
+                      </h4>
                     ))
                   ) : (
                     <h4 className={styles.contentHeader}>{item.header}</h4>
-                  )
-                )}
+                  ))}
 
                 {/* Render Content Paragraphs */}
-                {item.content && (
-                  Array.isArray(item.content) ? (
+                {item.content &&
+                  (Array.isArray(item.content) ? (
                     item.content.map((c, i) => (
-                      <p key={`c-${i}`} className={styles.contentText}>{c}</p>
+                      <p key={`c-${i}`} className={styles.contentText}>
+                        {c}
+                      </p>
                     ))
                   ) : (
                     <p className={styles.contentText}>{item.content}</p>
-                  )
-                )}
+                  ))}
               </div>
             ))}
         </div>

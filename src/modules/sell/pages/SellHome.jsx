@@ -27,7 +27,6 @@ function SellHome() {
 
   return (
     <>
-
       <SellBanner
         onViewAllClick={() => {
           if (brandRef.current) {

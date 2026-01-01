@@ -165,10 +165,10 @@ function Step3() {
   // Scroll to top on component mount
   useEffect(() => {
     // Immediate scroll
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     // Also scroll after a short delay to handle async rendering
     requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     });
   }, []);
 
@@ -192,14 +192,14 @@ function Step3() {
   const currentConditionsPage = conditionsPagination.currentPage;
   const conditionsQuestionsPerPage = conditionsPagination.questionsPerPage;
   const totalConditionsPages = Math.ceil(
-    currentQuestions.length / conditionsQuestionsPerPage
+    currentQuestions.length / conditionsQuestionsPerPage,
   );
 
   const getPaginatedQuestions = () => {
     if (!conditionsPaginationEnabled) return currentQuestions;
     return currentQuestions.slice(
       currentConditionsPage * conditionsQuestionsPerPage,
-      (currentConditionsPage + 1) * conditionsQuestionsPerPage
+      (currentConditionsPage + 1) * conditionsQuestionsPerPage,
     );
   };
 
@@ -235,7 +235,7 @@ function Step3() {
   useEffect(() => {
     const adjustIconOptions = () => {
       const iconContainers = document.querySelectorAll(
-        ".icon-option-container"
+        ".icon-option-container",
       );
 
       iconContainers.forEach((container) => {
@@ -244,7 +244,7 @@ function Step3() {
 
         optionTexts.forEach((textElement) => {
           const lineHeight = parseFloat(
-            getComputedStyle(textElement).lineHeight
+            getComputedStyle(textElement).lineHeight,
           );
           const height = textElement.offsetHeight;
           const lines = Math.round(height / lineHeight);
@@ -312,7 +312,7 @@ function Step3() {
         (q.type === "radio" ||
           q.type === "icon-radio" ||
           q.type === "dropdown") &&
-        currentPackageData.answers[q.id] === undefined
+        currentPackageData.answers[q.id] === undefined,
     );
 
     if (unansweredRequired.length > 0) {
@@ -353,7 +353,7 @@ function Step3() {
         (q.type === "radio" ||
           q.type === "icon-radio" ||
           q.type === "dropdown") &&
-        currentPackage.answers[q.id] === undefined
+        currentPackage.answers[q.id] === undefined,
     );
 
     if (unansweredRequired.length > 0) {
@@ -400,7 +400,6 @@ function Step3() {
         sessionStorage.removeItem(`currentPackageIndex_${storageKey}`);
         sessionStorage.removeItem(`packages_${productId}`);
         sessionStorage.removeItem(`formSubmitted_${productId}`);
-
       }
 
       const savedData = sessionStorage.getItem(storageKey);
@@ -490,7 +489,7 @@ function Step3() {
       sessionStorage.setItem(storageKey, JSON.stringify(transformed));
       sessionStorage.setItem(
         `packages_${productId}`,
-        JSON.stringify(assignedPackages)
+        JSON.stringify(assignedPackages),
       );
 
       setIsLoading(false);
@@ -543,7 +542,7 @@ function Step3() {
       setTimeout(() => {
         const paginatedQuestions = getPaginatedQuestions();
         const currentQuestionIndex = paginatedQuestions.findIndex(
-          (q) => q.id === questionId
+          (q) => q.id === questionId,
         );
 
         // If there's a next question, check if it's visible and scroll if needed
@@ -556,7 +555,7 @@ function Step3() {
 
           if (nextQuestionRef) {
             const optionsContainer = nextQuestionRef.querySelector(
-              ".options, .dropdown-select"
+              ".options, .dropdown-select",
             );
             const viewportHeight = window.innerHeight * 0.8;
 
@@ -620,16 +619,17 @@ function Step3() {
 
     return (
       <div
-        className={`options ${showIcons
-          ? "box-grid icon-option-container"
-          : q.options.some(
-            (opt) =>
-              (opt.label?.length || 0) > 40 ||
-              (opt.description?.length || 0) > 60
-          )
-            ? "long-text"
-            : "short-text"
-          }`}
+        className={`options ${
+          showIcons
+            ? "box-grid icon-option-container"
+            : q.options.some(
+                  (opt) =>
+                    (opt.label?.length || 0) > 40 ||
+                    (opt.description?.length || 0) > 60,
+                )
+              ? "long-text"
+              : "short-text"
+        }`}
       >
         {q.options.map((opt) => {
           const isSelected = isMulti
@@ -672,8 +672,9 @@ function Step3() {
           ) : (
             <label
               key={opt.id}
-              className={`option ${isSelected ? "selected" : ""
-                } option-with-des-box`}
+              className={`option ${
+                isSelected ? "selected" : ""
+              } option-with-des-box`}
               onClick={() => handleOptionChange(q.id, opt.value, isMulti)}
             >
               <input
@@ -707,7 +708,7 @@ function Step3() {
 
       if (Array.isArray(answerValue)) {
         transformed[questionId] = answerValue.map((val) =>
-          isNaN(val) ? val : Number(val)
+          isNaN(val) ? val : Number(val),
         );
       } else {
         transformed[questionId] = isNaN(answerValue)
@@ -762,7 +763,9 @@ function Step3() {
       // Don't clear session storage - keep data so user can come back and edit
       // Data will only be cleared when user goes back to Get Price page
 
-      navigate(`/${slug}/price-summary?${urlParams.toString()}`, { replace: true });
+      navigate(`/${slug}/price-summary?${urlParams.toString()}`, {
+        replace: true,
+      });
     } catch (error) {
       console.error("Error fetching final price:", error);
     }
@@ -877,8 +880,9 @@ function Step3() {
       return (
         <div key={packageData.packageId} className="package-answers">
           <h3 className="answer-heading">
-            {`${index + 1}. ${packageData?.packageType || packageData?.packageName
-              }`}
+            {`${index + 1}. ${
+              packageData?.packageType || packageData?.packageName
+            }`}
           </h3>
           {Object.entries(packageData.answers).map(([qid, ans], ansIndex) => {
             const q = packageData.questions.find((q) => q.id === qid);
@@ -992,8 +996,9 @@ function Step3() {
                 <div
                   className="progress-bar-fill"
                   style={{
-                    width: `${((currentPackageIndex + 1) / allPackageData.length) * 100
-                      }%`,
+                    width: `${
+                      ((currentPackageIndex + 1) / allPackageData.length) * 100
+                    }%`,
                   }}
                 />
               </div>
@@ -1019,8 +1024,8 @@ function Step3() {
                       {(q.type === "radio" ||
                         q.type === "icon-radio" ||
                         q.type === "dropdown") && (
-                          <sup className="required-asterisk">*</sup>
-                        )}
+                        <sup className="required-asterisk">*</sup>
+                      )}
                     </p>
                     <p className="question-explaination-text">
                       {q?.questionExplanation}

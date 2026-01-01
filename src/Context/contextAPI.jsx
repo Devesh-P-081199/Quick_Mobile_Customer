@@ -32,7 +32,7 @@ const ContextAPI = (props) => {
     variantSlug: null,
     catSubcatSlug: null,
     productSlug: null, // For back navigation from GetUpto to SelectVarient
-    brandSlug: null,   // For back navigation from SelectVarient to SelectSeries
+    brandSlug: null, // For back navigation from SelectVarient to SelectSeries
   });
   const [currentEvaluationId, setCurrentEvaluationId] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState(null);
@@ -96,12 +96,11 @@ const ContextAPI = (props) => {
 
   const fetchVariantsByProductId = async (finalSlug) => {
     try {
-
       // Always refresh, but still track last slug
       setLastFetchedProductSlug(finalSlug);
 
       const response = await api.get(
-        `/sell-module/user/active-product-variants/${finalSlug}`
+        `/sell-module/user/active-product-variants/${finalSlug}`,
       );
       setVariants(response.data);
 

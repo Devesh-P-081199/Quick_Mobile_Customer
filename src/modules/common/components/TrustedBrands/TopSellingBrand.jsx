@@ -49,7 +49,6 @@ function TopSellingBrand() {
             leftIcon={leftCircleIcon}
             rightIcon={rightCircleIcon}
           />
-
         </div>
       </div>
     </section>

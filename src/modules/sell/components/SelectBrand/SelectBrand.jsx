@@ -24,9 +24,9 @@ const SelectBrand = forwardRef((props, ref) => {
         `/common-module/FetchbrandByCatSelection?option=Sell&categoryId=${selectedCategory}`,
         {
           params: { search },
-        }
+        },
       );
-      
+
       setBrands(response?.data?.data);
     } catch (error) {
       console.error("Error in fetching brands: ", error);

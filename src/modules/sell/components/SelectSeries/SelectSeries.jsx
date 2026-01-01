@@ -23,9 +23,9 @@ function SelectSeries() {
     const fetchSeriesModels = async () => {
       try {
         const resp = await api.get(
-          `/sell-module/user/fetchSeriesModels?option=Sell&brandSlug=${finalSlug}`
+          `/sell-module/user/fetchSeriesModels?option=Sell&brandSlug=${finalSlug}`,
         );
-        
+
         setSeries(resp.data?.series || []);
         setAllModels(resp.data?.models || []);
         setSeoData(resp.data?.seo || {});
@@ -43,13 +43,11 @@ function SelectSeries() {
   // Filter models based on selected series
   const filteredModels = seriesId
     ? allModels.filter(
-      (model) => model.deviceSeries?.toString() === seriesId?.toString()
-    )
+        (model) => model.deviceSeries?.toString() === seriesId?.toString(),
+      )
     : allModels;
 
-  useEffect(() => {
-
-  }, [filteredModels, allModels, seriesId]);
+  useEffect(() => {}, [filteredModels, allModels, seriesId]);
 
   return (
     <>
@@ -60,7 +58,7 @@ function SelectSeries() {
           if (slug1) {
             navigate(`/${slug1}`, { replace: true });
           } else {
-            navigate('/', { replace: true });
+            navigate("/", { replace: true });
           }
         }}
         onSearch
@@ -80,11 +78,12 @@ function SelectSeries() {
                       key={item._id}
                       onClick={() =>
                         setSeriesId((prev) =>
-                          prev === item._id ? null : item._id
+                          prev === item._id ? null : item._id,
                         )
                       }
-                      className={`${styles.seriesItem} ${seriesId === item._id ? styles.active : ""
-                        }`}
+                      className={`${styles.seriesItem} ${
+                        seriesId === item._id ? styles.active : ""
+                      }`}
                     >
                       {item.seriesName}
                       {seriesId === item._id && (
@@ -120,7 +119,6 @@ function SelectSeries() {
                     <li
                       key={modelItem._id}
                       onClick={() => {
-
                         // Store brandSlug (current page's brand) for back navigation from SelectVarient
                         setUserSelection((prev) => ({
                           ...prev,
@@ -133,11 +131,14 @@ function SelectSeries() {
                           const variantPath =
                             modelItem?.variantSlug || modelItem?.variantId;
 
-                          navigate(`/${slug1}/${variantPath}`, { replace: true });
+                          navigate(`/${slug1}/${variantPath}`, {
+                            replace: true,
+                          });
                           return;
                         } else {
-                          
-                          navigate(`/${slug1}/${modelItem.slugSell}`, { replace: true });
+                          navigate(`/${slug1}/${modelItem.slugSell}`, {
+                            replace: true,
+                          });
                           return;
                         }
                       }}
@@ -154,7 +155,6 @@ function SelectSeries() {
                           alt={modelItem?.deviceName || "Device"}
                           title={modelItem?.deviceName || "Device"}
                           onError={(e) => {
-                            
                             e.target.src =
                               "https://via.placeholder.com/160x160?text=No+Image";
                           }}

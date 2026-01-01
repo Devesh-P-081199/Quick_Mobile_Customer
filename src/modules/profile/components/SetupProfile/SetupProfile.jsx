@@ -21,7 +21,7 @@ const SetupProfile = () => {
   const fetchExisitngData = async () => {
     try {
       const existingUser = await api.get(
-        "/sell-module/user/fetch-one-customer"
+        "/sell-module/user/fetch-one-customer",
       );
 
       if (existingUser.data) {
@@ -102,7 +102,6 @@ const SetupProfile = () => {
   return (
     <div>
       <div className={styles.signUpWrapper}>
-
         <div className={styles.formCard}>
           <div className={styles.formContainer}>
             <div className={styles.formHeader}>

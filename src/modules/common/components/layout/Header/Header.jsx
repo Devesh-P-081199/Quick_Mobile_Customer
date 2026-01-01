@@ -50,14 +50,15 @@ import Loader from "../Loader/Loader";
 import MobileFullScreenModal from "./FullScreenModal";
 
 // Lazy-loaded components for better performance
-const SignUp = React.lazy(() =>
-  import("../../../../../modules/profile/components/Signup/Signup")
+const SignUp = React.lazy(
+  () => import("../../../../../modules/profile/components/Signup/Signup"),
 );
-const Login = React.lazy(() =>
-  import("../../../../../modules/profile/components/Login/Login")
+const Login = React.lazy(
+  () => import("../../../../../modules/profile/components/Login/Login"),
 );
-const SetupProfile = React.lazy(() =>
-  import("../../../../../modules/profile/components/SetupProfile/SetupProfile")
+const SetupProfile = React.lazy(
+  () =>
+    import("../../../../../modules/profile/components/SetupProfile/SetupProfile"),
 );
 const Cities = React.lazy(() => import("./Cities"));
 
@@ -219,7 +220,7 @@ const Header = () => {
       document.body.style.setProperty(
         "padding-top",
         isMobile ? "0px" : "70px",
-        "important"
+        "important",
       );
     };
 
@@ -313,14 +314,14 @@ const Header = () => {
       debounce((value) => {
         handleMainSearch(value);
       }, 300),
-    []
+    [],
   );
 
   // Main search API call handler
   const handleMainSearch = async (search = "") => {
     try {
       const resp = await api.get(
-        `/sell-module/user/SearchUniversal?search=${search}`
+        `/sell-module/user/SearchUniversal?search=${search}`,
       );
 
       if (search !== lastSearchRef.current) return;
@@ -535,16 +536,18 @@ const Header = () => {
     const updateHeaderStyle = () => {
       if (headerContainerRef.current && bottomNavContainerRef.current) {
         const headerHeight = headerContainerRef.current.offsetHeight;
-        const headerDisplay = window.getComputedStyle(headerContainerRef.current).display;
+        const headerDisplay = window.getComputedStyle(
+          headerContainerRef.current,
+        ).display;
 
         // Apply dynamic padding
         bottomNavContainerRef.current.style.paddingTop = `${headerHeight}px`;
 
         // Sync display property
-        if (headerDisplay === 'none') {
-          bottomNavContainerRef.current.style.display = 'none';
+        if (headerDisplay === "none") {
+          bottomNavContainerRef.current.style.display = "none";
         } else {
-          bottomNavContainerRef.current.style.display = '';
+          bottomNavContainerRef.current.style.display = "";
         }
       }
     };
@@ -560,16 +563,16 @@ const Header = () => {
       resizeObserver.observe(headerContainerRef.current);
       mutationObserver.observe(headerContainerRef.current, {
         attributes: true,
-        attributeFilter: ['style', 'class']
+        attributeFilter: ["style", "class"],
       });
     }
 
-    window.addEventListener('resize', updateHeaderStyle);
+    window.addEventListener("resize", updateHeaderStyle);
 
     return () => {
       resizeObserver.disconnect();
       mutationObserver.disconnect();
-      window.removeEventListener('resize', updateHeaderStyle);
+      window.removeEventListener("resize", updateHeaderStyle);
     };
   }, []);
 
@@ -655,7 +658,7 @@ const Header = () => {
                                       in {contextType}
                                     </span>
                                   </div>
-                                )
+                                ),
                               )}
                             </div>
                           )}
@@ -663,31 +666,33 @@ const Header = () => {
                           {/* Brands */}
                           {hasBrands && (
                             <div>
-                              {results.ActiveBrands[contextType].map((brand) => (
-                                <div
-                                  key={brand._id}
-                                  className={styles.resultItem}
-                                  onClick={() =>
-                                    handleBrandClick(brand._id, brand)
-                                  }
-                                >
-                                  <div>
-                                    <img
-                                      height={15}
-                                      width={15}
-                                      src={brand?.brandLogo}
-                                      alt={brand?.brandName}
-                                    />
+                              {results.ActiveBrands[contextType].map(
+                                (brand) => (
+                                  <div
+                                    key={brand._id}
+                                    className={styles.resultItem}
+                                    onClick={() =>
+                                      handleBrandClick(brand._id, brand)
+                                    }
+                                  >
+                                    <div>
+                                      <img
+                                        height={15}
+                                        width={15}
+                                        src={brand?.brandLogo}
+                                        alt={brand?.brandName}
+                                      />
+                                    </div>
+                                    <div className={styles.searchNames}>
+                                      {brand?.brandName}
+                                      <span className={styles.resultTag}>
+                                        in {contextType}{" "}
+                                        {brand?.categoryData?.categoryName}
+                                      </span>
+                                    </div>
                                   </div>
-                                  <div className={styles.searchNames}>
-                                    {brand?.brandName}
-                                    <span className={styles.resultTag}>
-                                      in {contextType}{" "}
-                                      {brand?.categoryData?.categoryName}
-                                    </span>
-                                  </div>
-                                </div>
-                              ))}
+                                ),
+                              )}
                             </div>
                           )}
 
@@ -719,7 +724,7 @@ const Header = () => {
                                       </span>
                                     </div>
                                   </div>
-                                )
+                                ),
                               )}
                             </div>
                           )}
@@ -752,7 +757,9 @@ const Header = () => {
                       <img
                         src={dropdownIcon}
                         alt="dropdown"
-                        className={[styles.dropdownArrow, "nav-icons"].join(" ")}
+                        className={[styles.dropdownArrow, "nav-icons"].join(
+                          " ",
+                        )}
                       />
                     </span>
                     <div className={styles.profiledropdownMenu}>
@@ -784,7 +791,10 @@ const Header = () => {
                     </div>
                   </div>
                 ) : (
-                  <div onClick={handleLoginClick} className={styles.loginButton}>
+                  <div
+                    onClick={handleLoginClick}
+                    className={styles.loginButton}
+                  >
                     <img
                       src={usericon}
                       alt=""
@@ -960,7 +970,7 @@ const Header = () => {
                                     </span>
                                   </div>
                                 </div>
-                              )
+                              ),
                             )}
                           </div>
                         );
@@ -1071,7 +1081,7 @@ const Header = () => {
                         <div
                           onClick={() =>
                             setOpenMobileCategory(
-                              openMobileCategory === cat._id ? null : cat._id
+                              openMobileCategory === cat._id ? null : cat._id,
                             )
                           }
                           className={styles.menuItemWithArrow}
@@ -1172,7 +1182,7 @@ const Header = () => {
                       key={cat._id}
                       onClick={() =>
                         setOpenMobileCategory(
-                          openMobileCategory === cat._id ? null : cat._id
+                          openMobileCategory === cat._id ? null : cat._id,
                         )
                       }
                       className={
@@ -1249,7 +1259,7 @@ const Header = () => {
                       key={brand._id}
                       onClick={() =>
                         setOpenMobileCategory(
-                          openMobileCategory === brand._id ? null : brand._id
+                          openMobileCategory === brand._id ? null : brand._id,
                         )
                       }
                       className={
@@ -1269,7 +1279,7 @@ const Header = () => {
                   <ul className={styles.mobileModalUl}>
                     {(
                       brandsWithProducts.find(
-                        (b) => b._id === openMobileCategory
+                        (b) => b._id === openMobileCategory,
                       )?.products || []
                     ).length > 0 ? (
                       brandsWithProducts
@@ -1364,7 +1374,7 @@ const Header = () => {
                     <img
                       src={dropdownIcon}
                       alt="Dropdown"
-                      className={`nav-icons ${hoveredItem === item ? styles.arrowRotated : ''}`}
+                      className={`nav-icons ${hoveredItem === item ? styles.arrowRotated : ""}`}
                     />
                   )}
 
@@ -1382,10 +1392,11 @@ const Header = () => {
                         {category?.map((cat) => (
                           <div
                             key={cat._id}
-                            className={`${styles.categoryItem} ${activeCategory === cat.categoryName
-                              ? styles.active
-                              : ""
-                              }`}
+                            className={`${styles.categoryItem} ${
+                              activeCategory === cat.categoryName
+                                ? styles.active
+                                : ""
+                            }`}
                             onMouseEnter={() => handleCategoryHover(cat)}
                           >
                             <img
@@ -1423,7 +1434,7 @@ const Header = () => {
                                           onClick={() =>
                                             handleBrandClick(
                                               brandTwo._id,
-                                              brandTwo
+                                              brandTwo,
                                             )
                                           }
                                         >
@@ -1437,7 +1448,7 @@ const Header = () => {
                                       </button>
                                     )}
                                   </div>
-                                )
+                                ),
                             )}
                           </div>
                         </div>
@@ -1462,10 +1473,11 @@ const Header = () => {
                           <div
                             key={brand._id}
                             className={`${styles.categoryItem} 
-                            ${activeBrand === brand.brandName
+                            ${
+                              activeBrand === brand.brandName
                                 ? styles.active
                                 : ""
-                              }
+                            }
                             `}
                             onMouseEnter={() => handleBrandHover(brand)}
                           >
@@ -1539,10 +1551,11 @@ const Header = () => {
                         {brandsWithProducts?.slice(0, 3)?.map((brand) => (
                           <div
                             key={brand._id}
-                            className={`${styles.categoryItem} ${activeBrand === brand.brandName
-                              ? styles.active
-                              : ""
-                              }`}
+                            className={`${styles.categoryItem} ${
+                              activeBrand === brand.brandName
+                                ? styles.active
+                                : ""
+                            }`}
                             onMouseEnter={() => handleBrandHover(brand)}
                           >
                             <img src={brand?.brandLogo} alt="" />

@@ -35,8 +35,9 @@ const MyOrder = () => {
                   <button
                     key={label}
                     onClick={() => setActiveTab(label)}
-                    className={`${styles.filterBtn} ${activeTab === label ? styles.activeBtn : ""
-                      }`}
+                    className={`${styles.filterBtn} ${
+                      activeTab === label ? styles.activeBtn : ""
+                    }`}
                   >
                     {label}
                   </button>

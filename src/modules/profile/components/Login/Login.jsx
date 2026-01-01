@@ -129,7 +129,8 @@ const Login = ({ setShowLoginModal }) => {
               <>
                 <h3 className={styles.heading}>Login/Signup</h3>
                 <p className={styles.mobileLoginTagLine}>
-                  For the best experience and customized offer Login or Signup with Quick Mobile.
+                  For the best experience and customized offer Login or Signup
+                  with Quick Mobile.
                 </p>
                 <label className={styles.label}>Enter Your Mobile Number</label>
 
@@ -225,10 +226,10 @@ const Login = ({ setShowLoginModal }) => {
               style={
                 !otpSent && !isTermsChecked
                   ? {
-                    backgroundColor: "#e0e0e0",
-                    color: "#aaa",
-                    cursor: "not-allowed",
-                  }
+                      backgroundColor: "#e0e0e0",
+                      color: "#aaa",
+                      cursor: "not-allowed",
+                    }
                   : {}
               }
             >
