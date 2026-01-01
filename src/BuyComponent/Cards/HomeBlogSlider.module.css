@@ -25,6 +25,12 @@
     text-align: left;
 }
 
+.blogwrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 /* Reuse navigation styles from Blogs.module.css */
 .navigation {
     display: flex;
@@ -133,6 +139,14 @@
     overflow: hidden;
 }
 
+
+
+.blogtitle {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
 .blogMeta {
     font-size: 14px;
     color: #1968b3;
@@ -184,6 +198,7 @@
     }
 
     .blogwrapper {
+        gap: 0;
         margin: 25px 0 0px 0;
     }
 

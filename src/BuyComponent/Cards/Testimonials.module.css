@@ -7,7 +7,6 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 40px auto;
 }
 
 .headerSection {
@@ -17,7 +16,7 @@
 }
 
 .heading {
-  font-size: 18px;
+  font-size: 24px;
   margin: 0;
   font-family: "IBM Plex Sans";
   font-weight: 500;
@@ -40,6 +39,10 @@
   .heading {
     font-size: 18px;
     margin: 25px 0 0 0;
+  }
+
+  .testimonialWrapper {
+    padding: 0;
   }
 }
 

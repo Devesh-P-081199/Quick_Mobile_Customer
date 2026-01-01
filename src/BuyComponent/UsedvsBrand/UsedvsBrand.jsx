@@ -33,13 +33,15 @@ const benefits = [
 
 export default function UsedVsBrandNew() {
   return (
-    <section className={styles.section}>
+    <div className={styles.section}>
       <div className={styles.container}>
-        <h3 className={styles.heading}>Used vs. Brand New</h3>
-        <p className={styles.description}>
-          Here’s what you help prevent on average by choosing a reborn
-          smartphone over a brand new one.
-        </p>
+        <div>
+          <h3 className={styles.heading}>Used vs. Brand New</h3>
+          <p className={styles.description}>
+            Here’s what you help prevent on average by choosing a reborn
+            smartphone over a brand new one.
+          </p>
+        </div>
         <div className={styles.benefitsGrid}>
           {benefits.map(({ id, title, description, borderColor }) => (
             <div
@@ -52,6 +54,6 @@ export default function UsedVsBrandNew() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
