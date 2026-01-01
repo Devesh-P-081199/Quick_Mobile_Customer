@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { MdEmail } from "react-icons/md";
 import styles from "./SignUp.module.css";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
@@ -33,7 +33,6 @@ const SignUp = () => {
     }
   };
 
-
   const formSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -44,8 +43,6 @@ const SignUp = () => {
           verifyOtp: otp.join(""),
         }
       );
-
-      // console.log(response.data);
 
       if (response.data) {
         alert(`${response?.data?.message}`);
@@ -59,13 +56,10 @@ const SignUp = () => {
       toast.success("Signed up successfully");
       navigate(fromPage)
     } catch (err) {
-      // console.log("Error Occured",err);
 
       toast.error("Error verifying OTP");
     }
   };
-  // console.log("Number : ", mobile);
-  // console.log("OTP : ", otp.join(''));
   return (
     <div className={styles.signUpWrapper}>
       <div className={styles.leftPanel}>
@@ -114,7 +108,6 @@ const SignUp = () => {
             </div>
           </div>
 
-          {/* OTP Input (only visible when otpSent is true) */}
           {otpSent && (
             <div className={styles.otpBoxContainer}>
               {otp.map((digit, index) => (

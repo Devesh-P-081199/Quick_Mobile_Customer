@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./answers.module.css";
-import { FaArrowLeft, FaCalculator } from "react-icons/fa";
 import { UserContext } from "../../../Context/contextAPI";
 import backArrow from "../../../assets/QuickSellNewIcons/backArrow.svg";
 import { useLocation } from "react-router-dom";
@@ -22,24 +21,14 @@ const Answers = ({ onBack, onRecalculate }) => {
       if (storedPackageDetails) {
         try {
           const parsedDetails = JSON.parse(storedPackageDetails);
-          console.log("📦 Stored Package Details:", parsedDetails);
 
           // Transform the stored data to match the expected format
           const transformedData = parsedDetails.map((pkg) => {
-            console.log(
-              "🔍 Processing package:",
-              pkg.pageTitle || pkg.packageType
-            );
-            console.log("  Questions:", pkg.questions?.length);
-            console.log("  Answers:", pkg.answers);
 
             const questionsWithAnswers =
               pkg.questions?.map((q) => {
                 // Get the selected answer value from answers object
                 const selectedValue = pkg.answers?.[q.id];
-                console.log(`    Q: "${q.question}" (ID: ${q.id})`);
-                console.log(`    Selected Value:`, selectedValue);
-                console.log(`    Options:`, q.options);
 
                 // Find the matching option to get the label
                 let selectedLabels = [];
@@ -63,8 +52,6 @@ const Answers = ({ onBack, onRecalculate }) => {
                   }
                 }
 
-                console.log(`    Final Selected Labels:`, selectedLabels);
-
                 return {
                   question: q.question,
                   explanation: q.questionExplanation,
@@ -73,11 +60,6 @@ const Answers = ({ onBack, onRecalculate }) => {
                 };
               }) || [];
 
-            console.log(
-              "✅ Transformed questions:",
-              questionsWithAnswers.length
-            );
-
             return {
               packageName: pkg.packageName,
               packageType: pkg.pageTitle || pkg.packageType,
@@ -85,7 +67,6 @@ const Answers = ({ onBack, onRecalculate }) => {
             };
           });
 
-          console.log("🎯 Final Transformed Data:", transformedData);
           setDisplayAnswers(transformedData);
           return;
         } catch (error) {
@@ -130,8 +111,6 @@ const Answers = ({ onBack, onRecalculate }) => {
               sessionStorage.removeItem(currentIndexKey);
 
               // Clear packages data
-              // const packagesKey = `packages_${productId}`;
-              // sessionStorage.removeItem(packagesKey);
 
               // Clear form submitted flag
               const formSubmittedKey = `formSubmitted_${productId}`;
@@ -141,7 +120,6 @@ const Answers = ({ onBack, onRecalculate }) => {
               const recalculateKey = `recalculate_${productId}`;
               sessionStorage.setItem(recalculateKey, "true");
 
-              console.log("🗑️ Cleared ALL data for recalculation");
             }
 
             onRecalculate();

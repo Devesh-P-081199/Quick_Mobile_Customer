@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./MyOrder.module.css";
 import OrderCard from "./Order";
 import ProfileCard from "../ProfileCard";
@@ -7,7 +6,6 @@ const MyOrder = () => {
   return (
     <section>
       <div className={styles.panelWrapper}>
-        {/* <h1>Hello</h1> */}
         {/* Header */}
         <div className={styles.left}>
           <div className={styles.header}>
@@ -25,7 +23,6 @@ const MyOrder = () => {
             </div>
           </div>
 
-          {/* Orders List (placeholder) */}
           <div className={styles.ordersList}>
             {/* You can map your orders here later */}
             <OrderCard />

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import styles from "./StorePage.module.css";
 import MobileCommonHeaderthree from "../Components/layout/MobileCommonHeader/MobileCommonHeaderthree";
@@ -101,7 +101,7 @@ function StorePage() {
       toast.error("Please select a rating");
       return;
     }
-    console.log("Review submitted:", { rating, reviewMessage });
+    
     toast.success(`Review submitted with ${rating} stars and message: ${reviewMessage}`);
     setRating(0);
     setReviewMessage("");

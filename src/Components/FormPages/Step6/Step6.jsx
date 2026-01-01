@@ -44,13 +44,12 @@ function Step6() {
   // Extract query params
   const queryParams = new URLSearchParams(location.search);
   const { slug } = useParams();
-  //console.log("Mobile Slug in Step6: ", mobileSlug);
 
   const FetchPriceDetails = async () => {
     setLoading(true);
     try {
       const finalPriceResp = await api.get("/sell-module/user/view-finalprice");
-      console.log("Final Price Response:", finalPriceResp);
+      
       setCurrentEvaluationId(finalPriceResp?.data[0]);
     } catch (error) {
       console.error("Error fetching final price:", error);
@@ -65,7 +64,7 @@ function Step6() {
     try {
       const resp = await api.get("/sell-module/user/address");
       const fetchedAddresses = resp?.data.data?.addresses || [];
-      console.log("Fetched addresses from API:", fetchedAddresses);
+      
       setAddresses(fetchedAddresses);
 
       // Auto-select address with isActive: true, or first address if none have isActive
@@ -73,21 +72,13 @@ function Step6() {
         const activeAddress = fetchedAddresses.find(
           (addr) => addr.isActive === true
         );
-        console.log("Active address found:", activeAddress);
+        
         const defaultAddress = activeAddress || fetchedAddresses[0];
-        console.log("Default address to select:", defaultAddress);
+        
         setSelectedAddress(defaultAddress);
-        console.log(
-          "Auto-selected address with ID:",
-          defaultAddress._id || defaultAddress.id
-        );
+        
       } else {
-        console.log(
-          "Skipping auto-select. Addresses length:",
-          fetchedAddresses.length,
-          "Current selectedAddress:",
-          selectedAddress
-        );
+        
       }
     } catch (error) {
       console.error("Error fetching addresses:", error);
@@ -114,7 +105,7 @@ function Step6() {
         const activeUpi = upiMethods.find((method) => method.isActive === true);
         if (activeUpi) {
           setSelectedPaymentMethod({ type: "upi", ...activeUpi });
-          console.log("Auto-selected UPI payment:", activeUpi);
+          
           return;
         }
 
@@ -124,17 +115,17 @@ function Step6() {
         );
         if (activeBank) {
           setSelectedPaymentMethod({ type: "bank", ...activeBank });
-          console.log("Auto-selected Bank payment:", activeBank);
+          
           return;
         }
 
         // If no active method, select first available
         if (upiMethods.length > 0) {
           setSelectedPaymentMethod({ type: "upi", ...upiMethods[0] });
-          console.log("Auto-selected first UPI payment:", upiMethods[0]);
+          
         } else if (bankMethods.length > 0) {
           setSelectedPaymentMethod({ type: "bank", ...bankMethods[0] });
-          console.log("Auto-selected first Bank payment:", bankMethods[0]);
+          
         }
       }
     } catch (error) {
@@ -150,16 +141,12 @@ function Step6() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Debug: Log when selectedAddress or selectedPaymentMethod changes
   useEffect(() => {
-    console.log("Step6 - selectedAddress updated:", selectedAddress);
+    
   }, [selectedAddress]);
 
   useEffect(() => {
-    console.log(
-      "Step6 - selectedPaymentMethod updated:",
-      selectedPaymentMethod
-    );
+    
   }, [selectedPaymentMethod]);
 
   const handlePlaceOrder = async () => {
@@ -180,7 +167,6 @@ function Step6() {
         orderPayload
       );
 
-      console.log("Order response", placeOrder.data);
       toast.success("Order placed successfully!");
       navigate("/thank-you", {
         replace: true,
@@ -225,7 +211,6 @@ function Step6() {
   };
 
   const handleBack = () => {
-    // Navigate back to Step3 (final price calculator)
     navigate(`/${slug}/final-price-calculator?${queryParams.toString()}`);
   };
 
@@ -237,7 +222,6 @@ function Step6() {
 
       <section className={`${styles.StepSix} mobile-pt-section `}>
         <div className="page-content-wrapper">
-          {/* <div className={styles.wrapper}> */}
           {/* Left Section */}
           <div className={styles.LeftBox}>
             <div className={styles.DeviceImg}>
@@ -315,7 +299,6 @@ function Step6() {
                           const recalculateKey = `recalculate_${productId}`;
                           sessionStorage.setItem(recalculateKey, "true");
 
-                          console.log("🗑️ Cleared ALL data for recalculation");
                         }
                       }}
                     >
@@ -408,8 +391,7 @@ function Step6() {
                   {selectedAddress?.houseNumber}, {selectedAddress?.street}
                   {selectedAddress?.landmark &&
                     `, ${selectedAddress?.landmark}`}
-                  {/* </p>
-                <p className={styles.addressText}> */}
+                  
                   {selectedAddress?.cityName}, {selectedAddress?.state} -{" "}
                   {selectedAddress?.zipCode}
                 </p>

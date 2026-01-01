@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MdPhoneAndroid, MdLock } from "react-icons/md";
 import styles from "./Login.module.css"; // Reusing the same CSS module
 import { NavLink } from "react-router-dom";
-import Cookies from "js-cookie";
 
 const Login = () => {
   const [mobile, setMobile] = useState("");
@@ -33,7 +32,6 @@ const Login = () => {
         </div>
         <div className={styles.leftButtons}>
           <button className={styles.primaryBtn}>1. Login your account</button>
-          {/* <button className={styles.secondaryBtn}>Sell Now</button> */}
         </div>
       </div>
 

@@ -23,7 +23,7 @@ const SelectVarient = lazy(() =>
 
 const DynamicRouteHandler = () => {
   const [seoData, setSeoData] = useState(null);
-  console.log("SEO DATA : ", seoData);
+  
   const { slug1, slug2 } = useParams();
   const navigate = useNavigate();
 
@@ -34,8 +34,6 @@ const DynamicRouteHandler = () => {
   const [breadcrumbItems, setBreadcrumbItems] = useState(["Home"]); // 👈 breadcrumb state
 
   const resolvedSlugCache = useRef({});
-
-  //console.log("Current slug seo data", seoData);
 
   const resolveRouting = async () => {
     setLoading(true);
@@ -52,7 +50,6 @@ const DynamicRouteHandler = () => {
         slug1Type = slug1Res.data?.type;
         categoryHasSub = slug1Res.data?.hasSubcategories;
         setSeoData(slug1Res.data?.seoData?.Sell);
-        console.log("slug 1 result : ", slug1Res);
 
         if (!slug2) {
           resolvedSlugCache.current[slug1] = { slug1Type, categoryHasSub };
@@ -78,7 +75,7 @@ const DynamicRouteHandler = () => {
             `/sell-module/user/resolve-brand-or-product/${slug2}`
           );
           const type2 = res2.data?.type;
-          console.log("SUBCATEGORY Flow 1-> Resolved:", res2.data);
+          
           setSeoData(res2.data?.seoData?.Sell);
 
           if (type2 === "brand") {
@@ -126,7 +123,6 @@ const DynamicRouteHandler = () => {
         );
         const type2 = res2.data?.type;
         setSeoData(res2?.data?.seoData?.Sell);
-        console.log("SUBCATEGORY Flow -> Resolved:", res2.data);
 
         if (type2 === "brand") {
           setBreadcrumbItems(["Home", slug1, res2.data?.name || slug2]);
@@ -140,26 +136,11 @@ const DynamicRouteHandler = () => {
         }
         if (type2 === "variant") {
           setBreadcrumbItems(["Home", slug1, res2.data?.name || slug2]);
-          // if (res2.data?.singleVariant) {
-          //   const variant = res2.data;
-          //   const newSelection = {
-          //     cityName: userSelection.cityName,
-          //     cityId: userSelection.cityId,
-          //     wholeVariantId: variant.wholeVariantId,
-          //     variantId: variant.variantId,
-          //     variantSlug: variant.variantSlug,
-          //     catSubcatSlug: userSelection.catSubcatSlug,
-          //   };
 
           //   // Update cookie immediately so GetUpto sees complete data
           //   Cookies.set("userSelection", JSON.stringify(newSelection), {
-          //     expires: 7,
-          //     sameSite: "strict",
-          //   });
 
           //   // Update context
-          //   setUserSelection(newSelection);
-          // }
 
           if (res2.data?.singleVariant) {
             const variant = res2.data;

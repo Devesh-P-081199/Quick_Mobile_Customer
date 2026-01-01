@@ -1,18 +1,13 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./ThankYou.module.css";
 import orderStyles from "../features/profile/components/MyOrder/Order.module.css"; // Reuse OrderDetails styles
-import { RiBattery2ChargeLine } from "react-icons/ri";
-import { BsPersonVcard } from "react-icons/bs";
-import { PiBankBold } from "react-icons/pi";
-import { FaHeadphones, FaPlus, FaTimes } from "react-icons/fa";
+import { FaPlus, FaTimes } from "react-icons/fa";
 import completeImg from "../assets/flaticons/approved.png";
 import batteryImg from "../assets/flaticons/battery-with-a-bolt-symbol.png";
 import playImg from "../assets/flaticons/play.png";
 import documentImg from "../assets/flaticons/document.png";
 import bankImg from "../assets/flaticons/bank-account.png";
-import tyimg from "../assets/QuickSellNewIcons/ty-mobile.png";
-import secureShield from "../assets/flaticons/secure-basecolor.png";
 import MobileCommonHeaderthree from "../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 import { toast } from "react-toastify";
 import { UserContext } from "../Context/contextAPI";
@@ -31,7 +26,6 @@ const ThankYouPage = () => {
   const [images, setImages] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
-  // Payment State (Duplicated from OrderDetails)
   const [hasSavedPayments, setHasSavedPayments] = useState(false);
   const [currentOrderPayment, setCurrentOrderPayment] = useState(null);
 
@@ -39,7 +33,6 @@ const ThankYouPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Fetch Saved Payments (Duplicated from OrderDetails)
   useEffect(() => {
     const checkSavedPayments = async () => {
       try {
@@ -67,7 +60,6 @@ const ThankYouPage = () => {
 
   const displayPayment = selectedPaymentMethod || currentOrderPayment;
 
-  // handleUpdatePayment (Duplicated logic from OrderDetails)
   const handleUpdatePayment = async () => {
     if (!selectedPaymentMethod) {
       // Only warn if called manually, but auto-trigger checks existence
@@ -98,15 +90,12 @@ const ThankYouPage = () => {
     }
   };
 
-  // Auto-trigger payment update (Duplicated from OrderDetails)
   useEffect(() => {
     if (selectedPaymentMethod) {
       handleUpdatePayment();
     }
   }, [selectedPaymentMethod]);
 
-
-  // handleChangePayment (Duplicated from OrderDetails, adapted for navigation)
   const handleChangePayment = () => {
     // Pre-fill context with current order payment if available
     if (currentOrderPayment) {
@@ -157,7 +146,7 @@ const ThankYouPage = () => {
       toast.error("Please provide either IMEI or upload an image");
       return;
     }
-    console.log("Submitting:", { imei, images });
+    
     setSubmitted(true);
     toast.success("Details submitted successfully!");
   };
@@ -269,8 +258,6 @@ const ThankYouPage = () => {
             </div>
           </div>
 
-
-          {/* Payment Summary Card (Duplicated from OrderDetails) */}
           <div className={orderStyles.summaryCard}>
             <div className={orderStyles.summaryHeader}>
               <div className={orderStyles.summaryHeaderLeft}>

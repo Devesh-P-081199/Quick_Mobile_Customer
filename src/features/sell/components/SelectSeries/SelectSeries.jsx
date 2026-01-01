@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./SelectSeries.module.css";
 import api from "../../../../Utils/api";
-// import { Helmet } from "react-helmet";
 import closeicon from "../../../../assets/QuickSellNewIcons/Cross.svg";
 import MobileCommonHeader from "../../../../components/layout/MobileCommonHeader/MobileCommonHeader";
 import TopSellingModel from "../../../../Components/TopSellingModel/TopSellingModel";
@@ -20,14 +19,13 @@ function SelectSeries() {
   const { slug1, slug2 } = useParams();
   const finalSlug = slug2 || slug1;
 
-
   useEffect(() => {
     const fetchSeriesModels = async () => {
       try {
         const resp = await api.get(
           `/sell-module/user/fetchSeriesModels?option=Sell&brandSlug=${finalSlug}`
         );
-        console.log("RESPONCE in series page", resp.data);
+        
         setSeries(resp.data?.series || []);
         setAllModels(resp.data?.models || []);
         setSeoData(resp.data?.seo || {});
@@ -49,11 +47,8 @@ function SelectSeries() {
     )
     : allModels;
 
-  // Debug: Log filtered models
   useEffect(() => {
-    console.log("Filtered Models:", filteredModels);
-    console.log("All Models:", allModels);
-    console.log("Selected Series ID:", seriesId);
+
   }, [filteredModels, allModels, seriesId]);
 
   return (
@@ -61,7 +56,6 @@ function SelectSeries() {
       <MobileCommonHeader
         title="Sell {Brand} {Category}"
         onBack={() => {
-          // Linear navigation: Go back to SellHome (category page)
           // Use replace: true to avoid adding history entries that cause back loops
           if (slug1) {
             navigate(`/${slug1}`, { replace: true });
@@ -71,8 +65,6 @@ function SelectSeries() {
         }}
         onSearch
       />
-
-
 
       <div className={styles.mobilePtSection}>
         {displayedSeries.length > 0 && (
@@ -117,10 +109,7 @@ function SelectSeries() {
         {/* Models List */}
         <section className="page-content-wrapper">
           <div className="wrapper">
-            {console.log(
-              "Rendering models section, count:",
-              filteredModels.length
-            )}
+            {}
             {filteredModels.length > 0 ? (
               <div className={styles.wrapper}>
                 <div className={styles.headingFlex}>
@@ -131,16 +120,6 @@ function SelectSeries() {
                     <li
                       key={modelItem._id}
                       onClick={() => {
-                        console.log("=== Model Click Debug ===");
-                        console.log(
-                          "Full modelItem:",
-                          JSON.stringify(modelItem, null, 2)
-                        );
-                        console.log("singleVariant:", modelItem?.singleVariant);
-                        console.log("variantSlug:", modelItem?.variantSlug);
-                        console.log("slugSell:", modelItem?.slugSell);
-                        console.log("variantId:", modelItem?.variantId);
-                        console.log("_id:", modelItem?._id);
 
                         // Store brandSlug (current page's brand) for back navigation from SelectVarient
                         setUserSelection((prev) => ({
@@ -153,18 +132,11 @@ function SelectSeries() {
                           // Use variantSlug preferably, fallback to variantId
                           const variantPath =
                             modelItem?.variantSlug || modelItem?.variantId;
-                          console.log(
-                            "Navigating to single variant:",
-                            `/${slug1}/${variantPath}`
-                          );
-                          console.log("variantPath chosen:", variantPath);
+
                           navigate(`/${slug1}/${variantPath}`, { replace: true });
                           return;
                         } else {
-                          console.log(
-                            "Navigating to model:",
-                            `/${slug1}/${modelItem.slugSell}`
-                          );
+                          
                           navigate(`/${slug1}/${modelItem.slugSell}`, { replace: true });
                           return;
                         }
@@ -182,7 +154,7 @@ function SelectSeries() {
                           alt={modelItem?.deviceName || "Device"}
                           title={modelItem?.deviceName || "Device"}
                           onError={(e) => {
-                            console.log("Image failed to load:", modelItem);
+                            
                             e.target.src =
                               "https://via.placeholder.com/160x160?text=No+Image";
                           }}

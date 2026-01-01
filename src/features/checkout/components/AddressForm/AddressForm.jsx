@@ -315,7 +315,6 @@ const AddressForm = () => {
               />
             </div>
 
-            {/* Save as (Radio Buttons as Buttons) */}
             <div className={styles.saveAsContainer}>
               <span className={styles.saveAsLabel}>Save as:</span>
               <div className={styles.radioButtonGroup}>
@@ -368,7 +367,6 @@ const AddressForm = () => {
               </div>
             </div>
 
-            {/* Custom Address Type Input (shown when "Other" is selected) */}
             {formData.saveAs === "Other" && (
               <div className={styles.inputContainer}>
                 <label className={styles.topLabel}>Specify Address Type</label>

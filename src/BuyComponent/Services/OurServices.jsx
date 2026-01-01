@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./OurServices.module.css";
 
 import headphone from "../../assets/icons/Headphone-2-673x1024 1.svg";

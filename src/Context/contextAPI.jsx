@@ -1,12 +1,11 @@
 // src/context/UserContext.js
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import api from "../Utils/api";
 
 export const UserContext = createContext();
 
 const ContextAPI = (props) => {
-  // const navigate = useNavigate();
   const [packages, setPackages] = useState([]);
   const [variants, setVariants] = useState([]);
   const [phoneName, setPhoneName] = useState("");
@@ -97,7 +96,6 @@ const ContextAPI = (props) => {
 
   const fetchVariantsByProductId = async (finalSlug) => {
     try {
-      //console.log("Fetching variants for slug:", finalSlug);
 
       // Always refresh, but still track last slug
       setLastFetchedProductSlug(finalSlug);
@@ -105,7 +103,6 @@ const ContextAPI = (props) => {
       const response = await api.get(
         `/sell-module/user/active-product-variants/${finalSlug}`
       );
-      //console.log("Data in context of variants : ", response.data);
       setVariants(response.data);
 
       return response.data;

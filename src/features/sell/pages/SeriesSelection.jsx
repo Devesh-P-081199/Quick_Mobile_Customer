@@ -1,4 +1,3 @@
-import React from "react";
 import SelectSeries from "../components/SelectSeries/SelectSeries";
 import BrowsePicks from "../../../Components/BrowsePicks/BrowsePicks";
 import BreadCrumb from "../../../components/layout/BreadCrumb/BreadCrumb";
@@ -11,14 +10,10 @@ function SeriesSelection() {
     <>
       <BreadCrumb items={["Home", "Sell Your Phone"]} />
       <SelectSeries />
-      {/* <SelectModel/> */}
       <BrowsePicks />
       <TopSellingModel />
       <TopSellingBrand />
 
-      {/* <TopSellingModel/> */}
-
-      {/* <TopSellingProducts/> */}
       <FAQ />
     </>
   );

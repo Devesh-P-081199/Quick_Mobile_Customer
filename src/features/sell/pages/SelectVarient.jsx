@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import SellDeviceVarient from "../components/SellDeviceVarientSelect/SellDeviceVarient";
-import BreadCrumb from "../../../Components/layout/BreadCrumb/BreadCrumb";
 import TopSellingBrand from "../../../Components/TrustedBrands/TopSellingBrand";
 import TopSellingModel from "../../../Components/TopSellingModel/TopSellingModel";
 import MobileCommonHeaderthree from "../../../Components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../Context/contextAPI";
-// import MobileCommonHeadertow from "../../Common/MobileCommonHeader/MobileCommonHeadertow";
 
 function SelectVarient() {
   const navigate = useNavigate();
@@ -14,8 +12,6 @@ function SelectVarient() {
   const { userSelection } = useContext(UserContext);
 
   const handleBack = () => {
-    // Linear navigation: Go back to SelectSeries (brand page)
-    // Use brandSlug from userSelection (stored when navigating from SelectSeries)
     const brandSlug = userSelection?.brandSlug;
     const catSlug = userSelection?.catSubcatSlug || slug1;
 
@@ -31,7 +27,6 @@ function SelectVarient() {
 
   return (
     <>
-      {/* <BreadCrumb items={["Home", "Sell Your Phone"]} /> */}
       <MobileCommonHeaderthree
         title="Your Device"
         onBack={handleBack}

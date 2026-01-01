@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Order.module.css';
 import phoneImg from '../../../assets/images/Products/mobile.png'; // Update with actual image path
 import api from '../../../Utils/api';
@@ -10,9 +10,7 @@ const OrderCard = () => {
     try {
       const resp = await api.get('sell-module/user/order-by-Id');
       setOrders(resp.data);
-      //console.log("ALL orders of user",resp.data)
     } catch (error) {
-      // console.log("Error in fetching orders");
 
     }
   };

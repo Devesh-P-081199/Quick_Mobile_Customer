@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import styles from "./Footer.module.css";
 
-// import footerstore1 from "../../assets/images/icons/playstore.png";
-// import footerstore2 from "../../assets/images/icons/appstore.png";
 import facebookIcon from "../../../assets/images/icons/facebook-b&w.png";
 import instagramIcon from "../../../assets/images/icons/instagram-b&w.png";
 import xIcon from "../../../assets/images/icons/twitter-b&w.png";
@@ -191,10 +189,7 @@ const Footer = () => {
             ownership or endorsement.
           </p>
           <p>&copy; 2025 Quick Mobile</p>
-          {/* <div className={styles.footerRightBox}>
-            <a href="#"><img src={footerstore1} alt="Play Store" /></a>
-            <a href="#"><img src={footerstore2} alt="App Store" /></a>
-          </div> */}
+          
         </div>
       </footer>
 
@@ -263,9 +258,7 @@ const Footer = () => {
           <div className={styles.mobileFooterColumn}>
             <div className={styles.topContent}>
               <div className={styles.logoContainer}>
-                {/* <a href="#">
-                  <img src={logo} alt="Logo" className={styles.logo} />
-                </a> */}
+                
                 <p>Follow us at</p>
               </div>
 
@@ -322,10 +315,7 @@ const Footer = () => {
             </p>
 
             <p>&copy; 2025 Quick Mobile All Right Reserved</p>
-            {/* <div className={styles.footerRightBox}>
-              <a href="#"><img src={footerstore1} alt="Play Store" /></a>
-              <a href="#"><img src={footerstore2} alt="App Store" /></a>
-            </div> */}
+            
           </div>
         </div>
       </footer>

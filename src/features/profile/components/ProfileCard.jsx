@@ -1,16 +1,12 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./ProfileCard.module.css";
-// import user  from "../../../assets/icons/user.png"
 import {
   FaSignOutAlt,
   FaMapMarkerAlt,
   FaCreditCard,
   FaBoxOpen,
-  FaEdit,
-  FaPen,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { UserContext } from "../../../Context/contextAPI";
 import MobileCommonHeaderthree from "../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
@@ -22,7 +18,6 @@ const ProfileCard = () => {
 
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  // console.log("User",user)
   const handleLogOut = () => {
     setShowLogoutModal(true);
   };
@@ -69,7 +64,6 @@ const ProfileCard = () => {
             </div>
             <div className={styles.profilePhone}>{user?.phone}</div>
           </div>
-          {/* <button className={styles.editIcon} onClick={() => navigate("/setup-profile")} ><FaPen /></button> */}
         </div>
         <div className={styles.options}>
           <div className={styles.optionRow}>

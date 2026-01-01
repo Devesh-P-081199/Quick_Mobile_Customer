@@ -3,7 +3,6 @@ import "./Step3.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import DeviceImg from "../../../assets/images/Products/mobile.png";
 import { UserContext } from "../../../Context/contextAPI";
-// import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import api from "../../../Utils/api";
 import MobileCommonHeaderthree from "../../layout/MobileCommonHeader/MobileCommonHeaderthree";
@@ -240,7 +239,6 @@ function Step3() {
       );
 
       iconContainers.forEach((container) => {
-        // Check for long text (more than 3 lines)
         const optionTexts = container.querySelectorAll(".option-text");
         let hasLongText = false;
 
@@ -332,7 +330,6 @@ function Step3() {
 
       // toast.error(
       //   `Please answer ${unansweredRequired.length} required question(s) before continuing`
-      // );
       return false;
     }
 
@@ -371,7 +368,6 @@ function Step3() {
         });
       }
 
-      // toast.error("Please answer all required questions before continuing");
       return false;
     }
 
@@ -405,12 +401,10 @@ function Step3() {
         sessionStorage.removeItem(`packages_${productId}`);
         sessionStorage.removeItem(`formSubmitted_${productId}`);
 
-        console.log("🔄 Loading fresh Step3 form (recalculate mode)");
       }
 
       const savedData = sessionStorage.getItem(storageKey);
 
-      // If we have saved data, use it (only if not fresh entry)
       if (savedData && !isFreshEntry) {
         try {
           const parsedData = JSON.parse(savedData);
@@ -426,7 +420,6 @@ function Step3() {
               setCurrentPackageIndex(index);
             }
           }
-          // If no saved index, keep it at 0 (don't search for unanswered questions)
 
           setIsLoading(false);
           return;
@@ -442,8 +435,6 @@ function Step3() {
         const productId = urlParams.get("pid");
 
         if (!productId) {
-          // toast.error("Invalid URL. Please start over.");
-          // Redirect to product selection page instead of using navigate(-1)
           navigate(`/${slug}`);
           return;
         }
@@ -475,12 +466,10 @@ function Step3() {
         }
 
         // If we can't restore packages, redirect to variant selection
-        // toast.error("Session expired. Please select device variant again.");
         navigate(`/${slug}`);
         return;
       }
 
-      // Initialize new package data from context (fresh entry from Get Price)
       const transformed = assignedPackages.map((pkg) => ({
         packageId: pkg.packageId._id,
         packageName: pkg.packageId.packageName,
@@ -493,7 +482,6 @@ function Step3() {
 
       setAllPackageData(transformed);
 
-      // Clear the form submitted flag (fresh entry from Get Price)
       // productId already declared at top of function
       const formSubmittedKey = `formSubmitted_${productId}`;
       sessionStorage.removeItem(formSubmittedKey);
@@ -543,7 +531,6 @@ function Step3() {
       const storageKey = getStorageKey();
       sessionStorage.setItem(storageKey, JSON.stringify(updatedData));
 
-      // Also save current package index when changing options (for paginated conditions)
       const currentIndexKey = `currentPackageIndex_${getStorageKey()}`;
       sessionStorage.setItem(currentIndexKey, currentPackageIndex.toString());
 
@@ -552,7 +539,6 @@ function Step3() {
 
     setMissingQuestions((prev) => prev.filter((id) => id !== questionId));
 
-    // Auto-scroll to next question after selection (only for single-select types)
     if (!isMulti) {
       setTimeout(() => {
         const paginatedQuestions = getPaginatedQuestions();
@@ -569,7 +555,6 @@ function Step3() {
           const nextQuestionRef = questionRefs.current[nextQuestion.id];
 
           if (nextQuestionRef) {
-            // Check if the options of next question are visible in viewport (using 80% of screen)
             const optionsContainer = nextQuestionRef.querySelector(
               ".options, .dropdown-select"
             );
@@ -588,7 +573,6 @@ function Step3() {
                 });
               }
             } else {
-              // Fallback: if no options container found, check the whole question
               const rect = nextQuestionRef.getBoundingClientRect();
               const isVisible = rect.top >= 0 && rect.bottom <= viewportHeight;
 
@@ -748,7 +732,6 @@ function Step3() {
         deviceInfo.deviceName || urlParams.get("pn") || "Unknown Device";
 
       if (!userSelection?.cityId || !userSelection?.cityName) {
-        // toast.error("Please select city first");
         return;
       }
 
@@ -756,11 +739,6 @@ function Step3() {
         ...pkg,
         answers: transformAnswersForBackend(pkg.answers || {}, pkg.questions),
       }));
-
-      console.log(
-        "Transformed Package Data for Backend 🤔🤔🤔:",
-        transformedPackageData
-      );
 
       await api.post("/sell-module/user/price-estimation", {
         packagesAnswer: transformedPackageData,
@@ -778,12 +756,6 @@ function Step3() {
       // Store the original allPackageData which has questions, options, and answers
       sessionStorage.setItem(packageDetailsKey, JSON.stringify(allPackageData));
 
-      console.log(
-        "💾 Stored packageDetails in sessionStorage:",
-        allPackageData
-      );
-
-      // Set flag that form was submitted (so data persists if user comes back)
       const formSubmittedKey = `formSubmitted_${productId}`;
       sessionStorage.setItem(formSubmittedKey, "true");
 
@@ -793,7 +765,6 @@ function Step3() {
       navigate(`/${slug}/price-summary?${urlParams.toString()}`, { replace: true });
     } catch (error) {
       console.error("Error fetching final price:", error);
-      // toast.error("Error fetching final price");
     }
   };
 
@@ -808,7 +779,6 @@ function Step3() {
       }
     }
 
-    // Move to next package sequentially (one at a time)
     if (currentPackageIndex < allPackageData.length - 1) {
       const nextIndex = currentPackageIndex + 1;
       setCurrentPackageIndex(nextIndex);
@@ -856,11 +826,9 @@ function Step3() {
     const productId = urlParams.get("pid");
     const packagesKey = `packages_${productId}`;
 
-    // Check if form was submitted (user went to Order Summary)
     const formSubmittedKey = `formSubmitted_${productId}`;
     const wasFormSubmitted = sessionStorage.getItem(formSubmittedKey);
 
-    // Only clear data if coming from Get Price (not from Order Summary)
     if (!wasFormSubmitted) {
       // Remove all form-related data when going back to Get Price
       sessionStorage.removeItem(storageKey);
@@ -869,7 +837,6 @@ function Step3() {
     }
     // If coming from Order Summary, keep the data so user can edit
 
-    // ALWAYS clear the flag when exiting form (so next fresh entry is clean)
     sessionStorage.removeItem(formSubmittedKey);
 
     // Navigate to GetUpto component with the respective model
@@ -878,14 +845,12 @@ function Step3() {
     const variantSlug = userSelection?.variantSlug;
 
     if (variantSlug) {
-      // Navigate to the variant page (GetUpto component)
       navigate(`/${catSubcatSlug}/${variantSlug}`, { replace: true });
     } else {
       // Fallback to category/subcategory page
       navigate(`/${catSubcatSlug}`, { replace: true });
     }
   };
-
 
   const getButtonText = () => {
     if (conditionsPaginationEnabled) {

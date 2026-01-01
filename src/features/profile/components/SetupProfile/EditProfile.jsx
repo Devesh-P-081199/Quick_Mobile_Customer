@@ -50,7 +50,6 @@ const EditProfile = () => {
       // Simulate API call - replace with actual API endpoint
       await new Promise((resolve, reject) => {
         setTimeout(() => {
-          // Mock: Accept "123456" as valid OTP
           if (emailOtp === "123456") {
             resolve({ success: true });
           } else {
@@ -64,7 +63,7 @@ const EditProfile = () => {
     } catch (error) {
       // Error
       setVerificationStatus("error");
-      console.log("OTP verification failed", error);
+      
     } finally {
       setIsVerifying(false);
     }
@@ -104,7 +103,7 @@ const EditProfile = () => {
 
       alert("Profile updated successfully");
     } catch (error) {
-      console.log("Error in updating profile", error);
+      
       alert("Failed to update profile. Please try again.");
     }
   };
@@ -192,7 +191,6 @@ const EditProfile = () => {
 
   const handleEmailVerify = () => {
     setShowEmailOtp(true);
-    // TODO: Send OTP to email
   };
 
   return (

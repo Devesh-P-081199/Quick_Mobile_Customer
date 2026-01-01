@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./QuickImpact.module.css";
 import { PiLeafBold, PiTreeLight } from "react-icons/pi";
 import { TbDroplet } from "react-icons/tb";
@@ -216,7 +215,6 @@ const QuickImpact = () => {
         </div>
         {/*Table div */}
         <div className={styles.tableSection}>
-          {/* Desktop/Tablet Table*/}
           <div className={styles.desktopTable}>
             <h2>Quick Mobile’s Environmental Impact in Numbers</h2>
             <table className={styles.impactTable}>

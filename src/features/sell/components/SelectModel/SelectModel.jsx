@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./SelectModel.module.css";
 import { NavLink, useParams } from "react-router-dom";
 import api from "../../../../Utils/api";

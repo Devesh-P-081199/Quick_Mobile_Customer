@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./ContactUs.module.css";
 import bannerImg from "../../../assets/banner_img.png";
 import { FaWhatsapp } from "react-icons/fa";

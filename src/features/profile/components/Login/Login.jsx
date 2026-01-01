@@ -1,7 +1,6 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
-import { MdEmail } from "react-icons/md";
+import { useContext, useState, useRef, useEffect } from "react";
 import styles from "./Login.module.css";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { UserContext } from "../../../../Context/contextAPI";

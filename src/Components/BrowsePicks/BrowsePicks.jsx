@@ -1,8 +1,4 @@
-import React from "react";
-import laptop from "../../assets/images/Products/laptop.png";
 import iPhone from "../../assets/images/Products/iphone.png";
-import iPad from "../../assets/images/Products/ipad.png";
-import gameCover from "../../assets/images/Products/gaming.png";
 import styles from "./BrowsePicks.module.css";
 
 const serviceData = [

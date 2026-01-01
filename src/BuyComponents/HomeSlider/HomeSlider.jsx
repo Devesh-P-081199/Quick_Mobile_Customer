@@ -51,7 +51,6 @@ function HomeSlider() {
   useEffect(() => {
     setProgress(0); // Reset progress when slide changes
 
-    // Progress bar animation (updates every 50ms for smooth animation)
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {

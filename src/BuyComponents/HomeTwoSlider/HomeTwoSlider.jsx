@@ -3,7 +3,6 @@ import search from "../../assets/kicons/v-search.png";
 import award from "../../assets/kicons/v-award.png";
 import security from "../../assets/kicons/v-security.png";
 import wallet from "../../assets/kicons/v-wallet.png";
-import bag from "../../assets/kicons/v-bag.png";
 
 const slides = [
   {

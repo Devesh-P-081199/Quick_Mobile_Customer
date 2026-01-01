@@ -1,7 +1,5 @@
-// SelectBrand.js
-import React, { forwardRef, useContext, useEffect, useState } from "react";
+import { forwardRef, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { BiSearch } from "react-icons/bi";
 import styles from "./SelectBrand.module.css";
 import debounce from "lodash.debounce";
 import api from "../../../../Utils/api";
@@ -28,7 +26,7 @@ const SelectBrand = forwardRef((props, ref) => {
           params: { search },
         }
       );
-      console.log(response, "response");
+      
       setBrands(response?.data?.data);
     } catch (error) {
       console.error("Error in fetching brands: ", error);

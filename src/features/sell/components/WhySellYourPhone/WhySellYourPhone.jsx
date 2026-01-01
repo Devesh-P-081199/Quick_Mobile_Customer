@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./WhySell.module.css";
 
 import whyicon1 from "../../../../assets/images/static/time.png";

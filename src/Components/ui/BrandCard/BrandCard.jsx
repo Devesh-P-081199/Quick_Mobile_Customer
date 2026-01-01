@@ -1,5 +1,3 @@
-// BrandCard.js
-import React from "react";
 import styles from "./BrandCard.module.css"; // or use a separate module if preferred
 
 const BrandCard = ({ brand, onClick }) => {

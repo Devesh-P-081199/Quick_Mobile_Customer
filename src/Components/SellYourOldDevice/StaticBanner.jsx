@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import style from "./StaticBanner.module.css";
 import {
   FaRegCalendarCheck,
@@ -60,7 +60,6 @@ function StaticBanner() {
       if (markers.length >= 2) {
         const first = markers[0].getBoundingClientRect();
         const last = markers[markers.length - 1].getBoundingClientRect();
-        // Distance center to center = (last top + last height/2) - (first top + first height/2)
         // Since markers are same size, it's just last.top - first.top
         const height = last.top - first.top;
         setMobileLineHeight(`${height}px`);
@@ -100,7 +99,6 @@ function StaticBanner() {
       if (percent < 0) percent = 0;
       if (percent > 100) percent = 100;
 
-      // "when scrolling back up the content should stay visible" -> Monotonic increase only
       setFillPercent(prev => Math.max(prev, percent));
     };
 
@@ -153,7 +151,6 @@ function StaticBanner() {
               {steps.map((step, index) => {
                 // Calculate if this step is "active" based on fill percent
                 // Assume equal spacing: 0%, 25%, 50%, 75%, 100% logic?
-                // Or: 5 items. Spacing is 0, 25, 50, 75, 100.
                 // Step 0 active at >0%?
                 // Let's say triggers are at (index / (steps.length - 1)) * 100
                 const threshold = (index / (steps.length - 1)) * 100;

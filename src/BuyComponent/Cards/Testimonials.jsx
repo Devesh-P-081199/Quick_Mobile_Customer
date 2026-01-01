@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import profile from "../../assets/images/icons/user.png";
 import styles from "./Testimonials.module.css";
 
 const Testimonials = () => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import api from "../../../../Utils/api";
 import MobileCommonHeaderthree from "../../../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
@@ -7,11 +7,9 @@ import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import secureShield from "../../../../assets/flaticons/secure-basecolor.png";
 import phoneImg from "../../../../assets/images/Products/mobile.png";
-import { MdCall, MdClose } from "react-icons/md";
-import { IoMdChatboxes } from "react-icons/io";
+import { MdCall } from "react-icons/md";
 import account from "../../../../assets/flaticons/account.png";
 import downloadIcon from "../../../../assets/flaticons/download.png";
-import submitIcon from "../../../../assets/flaticons/upload.png";
 
 const OrderDetails = () => {
     const { orderId } = useParams();
@@ -136,11 +134,8 @@ const OrderDetails = () => {
             await api.patch("/sell-module/user/orders", payload);
             toast.success("Payment method updated successfully");
 
-            // Refresh order details to show new state (and clear context?)
-            // setOrder(prev => ({ ...prev, paymentDetail: selectedPaymentMethod }));
             // Or re-fetch:
             // window.location.reload(); // Simple but effective, or trigger refetch
-            // Better: update local state
             setOrder(prev => ({ ...prev, paymentDetail: selectedPaymentMethod }));
             setSelectedPaymentMethod(null); // Clear context after update
         } catch (error) {
@@ -295,9 +290,6 @@ const OrderDetails = () => {
                         )}
                     </div>
 
-                    {/* Update Payment Button (Only visible if a new method is selected via context) */}
-
-
                     {/* Condition buttons */}
                     <div className={styles.conditionBtns}>
                         <button
@@ -391,7 +383,6 @@ const OrderDetails = () => {
                             <span className={styles.transactionValue}>{order?.date ? new Date(order.date).toLocaleString() : defaultTransaction.date}</span>
                         </div>
                     </div>
-
 
                     <button className={styles.invoiceBtn} onClick={handleDownloadInvoice}>
                         <img src={downloadIcon} alt="Download Invoice" />Download Invoice

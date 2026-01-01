@@ -124,17 +124,12 @@ const Cities = () => {
 
     // Update state after modal is closed to prevent visual conflicts
     setTimeout(() => {
-      console.log("🔥 Selected City Object:", city);
-      console.log("🔥 City ID being saved:", city._id);
-      console.log("🔥 City Name being saved:", city.cityName);
 
       const updatedSelection = {
         ...userSelection,
         cityName: city.cityName,
         cityId: city._id,
       };
-
-      console.log("🔥 Updated Selection Object:", updatedSelection);
 
       setSelectedCity(city);
       setSelectedSource(source);
@@ -146,7 +141,6 @@ const Cities = () => {
         sameSite: "strict",
       });
 
-      console.log("🔥 Cookie saved with cityId:", city._id);
     }, 0);
   };
 
@@ -171,9 +165,7 @@ const Cities = () => {
         params,
       });
 
-      console.log("🔥 Cities API Response:", response.data);
       const citiesData = response.data?.data || [];
-      console.log("🔥 Cities Data Array:", citiesData);
 
       // Separate popular and other cities based on isPopular flag
       const popular = citiesData
@@ -191,9 +183,6 @@ const Cities = () => {
           cityName: city.cityName,
           cityImage: cityImageMap[city.cityName] || locationIcon,
         }));
-
-      console.log("🔥 Popular Cities:", popular);
-      console.log("🔥 Other Cities:", others);
 
       setPopularCities(popular);
       setOtherCities(others);

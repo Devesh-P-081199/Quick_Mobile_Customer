@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import styles from "./SelectedSeries.module.css";
@@ -9,7 +8,6 @@ const SelectedSeries = () => {
   const location = useLocation();
   const { seriesName } = location.state || {};
 
-  
   return (
     <section className={styles.section}>
       <div className={styles.container}>

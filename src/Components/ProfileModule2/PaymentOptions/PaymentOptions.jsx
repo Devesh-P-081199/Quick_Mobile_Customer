@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './PaymentOptions.module.css';
 import { toast } from 'react-toastify';
 import api from '../../../Utils/api';
@@ -24,8 +24,6 @@ const PaymentOptions = () => {
   });
 
   const [upiId, setUpiId] = useState('');
-
-  // const userId = '680248846f15af3e95132c80';
 
   const handleBankChange = (e) => {
     setBankDetails({ ...bankDetails, [e.target.name]: e.target.value });
@@ -73,7 +71,6 @@ const PaymentOptions = () => {
         toast.warning('Account numbers do not match');
         return;
       }
-
 
       try {
         if (editingBankId) {

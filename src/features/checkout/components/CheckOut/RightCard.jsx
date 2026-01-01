@@ -14,14 +14,12 @@ function RightCard() {
   const location = useLocation();
   const [data, setData] = useState({});
   const { slug } = useParams();
-  // console.log("Sleetced payment method",selectedPaymentMethod)
 
   const FetchPriceDetails = async (evaluationId) => {
     try {
       const finalPriceResp = await api.get(
         `/sell-module/user/view-finalprice-byId/${evaluationId?._id}`
       );
-      // console.log("finalPriceResp", finalPriceResp.data);
 
       setData(finalPriceResp.data);
     } catch (error) {
@@ -34,17 +32,12 @@ function RightCard() {
     if (currentEvaluationId) {
       FetchPriceDetails(currentEvaluationId);
     } else {
-      // console.log("No evaluation ID found");
 
-      // navigate("/step6");
       navigate(`/${slug}/price-summary`);
     }
   }, [currentEvaluationId, navigate, slug]);
 
-  // console.log("selectedAddress", selectedAddress);
-
   const handlePlaceOrder = async () => {
-    // console.log("Clicked continue", location.pathname);
 
     if (location.pathname === `/${slug}/check-out`) {
       if (!selectedAddress) {
@@ -78,17 +71,11 @@ function RightCard() {
           return;
         }
 
-        // console.log("Selected Address", selectedAddress);
-
-        // console.log("Selected Payment Method", selectedPaymentMethod);
-
         const orderPayload = {
           deviceEvaluationId: currentEvaluationId?._id,
           address: selectedAddress,
           paymentDetail: selectedPaymentMethod,
         };
-
-        // console.log("Order response", placeOrder.data);
 
         toast.success("Order placed successfully!");
         navigate("/thank-you", { replace: true }); // Redirect to success page
@@ -98,8 +85,6 @@ function RightCard() {
       }
     }
   };
-
-  //console.log("Sleectedrd PAYMEnt===>>>>>",selectedPaymentMethod)
 
   return (
     <>

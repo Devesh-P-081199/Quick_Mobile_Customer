@@ -1,4 +1,3 @@
-import React from "react";
 
 const TestimonialCards = ({
   image,
@@ -11,9 +10,7 @@ const TestimonialCards = ({
 }) => {
   return (
     <div className="bg-white rounded-lg overflow-hidden testimonial-card transform transition ">
-      {/* <div className="flex pb-8 justify-center testimonial-img">
-        <img src={image} className="items-center" />
-      </div> */}
+      
       <div className="flex justify-between">
         <div>
           <img src={photoLogo} />

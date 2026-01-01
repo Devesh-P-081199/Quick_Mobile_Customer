@@ -9,16 +9,13 @@ const EditProfile = () => {
     email: "",
   });
   const { setUser, user } = useContext(UserContext);
-  // console.log("User",user)
   const id = user.userId;
-  // console.log()
 
   const handleUpdateProfile = async () => {
     try {
       const resp = await api.put(`/sell-module/user/update-profile/${id}`, {
         ProfileUpdate,
       });
-      //console.log("Response in update profile",resp.data)
       // clear fields
       setProfileUpdate({
         name: "",
@@ -45,7 +42,7 @@ const EditProfile = () => {
       );
       alert("Profile updated successfully");
     } catch (error) {
-      console.log("Error in updating profile", error);
+      
     }
   };
 
@@ -53,7 +50,6 @@ const EditProfile = () => {
     const { name, value } = e.target;
     setProfileUpdate((prev) => ({ ...prev, [name]: value }));
   };
-  //console.log("ProfileUpdate",ProfileUpdate)
   return (
     <>
       <MobileCommonHeaderthree title="Edit Profile" />
@@ -89,7 +85,6 @@ const EditProfile = () => {
                   />
                 </div>
 
-                {/* <button >Save Changes</button> */}
                 <button onClick={handleUpdateProfile}>Update Profile</button>
               </div>
             </div>

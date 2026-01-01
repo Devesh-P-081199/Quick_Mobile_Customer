@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Header.module.css";
 import RightArrow from "../../assets/icons/RightArrow.svg";
 

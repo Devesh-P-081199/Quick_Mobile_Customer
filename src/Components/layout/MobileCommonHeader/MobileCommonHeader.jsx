@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./MobileCommonHeader.module.css";
 import { useNavigate } from "react-router-dom";
 import newSearchIcon from "../../../assets/QuickSellNewIcons/Search.svg";
@@ -41,12 +41,7 @@ const MobileCommonHeader = ({ title, onBack }) => {
             <img src={newBackIcon} alt="Back" />
           </button>
           <h2 className={styles.title}>{title}</h2>
-          {/* <button
-            className={styles.iconButton}
-            onClick={() => setIsSearchOpen(true)}
-          >
-            <img src={newSearchIcon} alt="Search" />
-          </button> */}
+          
         </>
       )}
     </div>

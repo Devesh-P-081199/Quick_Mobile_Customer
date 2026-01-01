@@ -1,7 +1,5 @@
-import React from "react";
 import styles from "./FullScreenModal.module.css";
-import { FaAngleLeft } from "react-icons/fa";
-import { IoClose } from "react-icons/io5"; // Using a modern close icon from react-icons
+// Using a modern close icon from react-icons
 import backarrow from "../../../assets/QuickSellNewIcons/BackArrow.svg";
 import closeIcon from "../../../assets/QuickSellNewIcons/Cross.svg";
 

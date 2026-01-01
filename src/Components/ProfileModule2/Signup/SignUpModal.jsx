@@ -1,7 +1,6 @@
 
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { MdClose, MdPhoneAndroid } from "react-icons/md";
-import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../Context/contextAPI";
@@ -42,8 +41,6 @@ const SignUpModal = ({ isOpen, onClose }) => {
         }
       );
 
-      // console.log(response.data);
-
       if (response.data) {
         alert(`${response?.data?.message}`);
         const token = response.data.token;
@@ -56,7 +53,6 @@ const SignUpModal = ({ isOpen, onClose }) => {
       toast.success("Signed up successfully");
       onClose();
     } catch (err) {
-      // console.log("Error Occured",err);
 
       toast.error("Error verifying OTP");
     }
