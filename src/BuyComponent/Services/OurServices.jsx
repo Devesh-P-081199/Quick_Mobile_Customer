@@ -5,7 +5,7 @@ import repair from "../../assets/images/icons/repair.svg";
 import exchange from "../../assets/images/Products/iphone.png";
 import recycle from "../../assets/QuickSellNewIcons/recycle.png";
 import iphone from "../../assets/images/Products/iphone.png";
-import laptop from "../../assets1/images/Products/laptop.png";
+import laptop from "../../assets/images/Products/laptop.png";
 
 const OurServices = () => {
   const ourServices = [

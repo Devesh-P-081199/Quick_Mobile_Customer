@@ -4,8 +4,8 @@ import "react-loading-skeleton/dist/skeleton.css"; // import skeleton CSS
 import styles from "./Step6.module.css";
 import MobileImg from "../../../assets/images/Products/mobile.png";
 import "../../../assets/images/icons/rightarrow.png";
-import Recalculate from "../../../assets1/kimages/t1.png";
-import FreePickup from "../../../assets1/kimages/t2.png";
+import Recalculate from "../../../assets/images/recalculate_icon.png";
+import FreePickup from "../../../assets/images/free_pickup_icon.png";
 import clock from "../../.../../../assets/flaticons/clock-basecolor.png";
 import van from "../../.../../../assets/flaticons/delivery-van-basecolor.png";
 import secureShield from "../../.../../../assets/flaticons/secure-basecolor.png";
