@@ -9,18 +9,17 @@
   display: flex;
   gap: 19px;
   flex-wrap: wrap;
-  overflow: scroll;
-  /* justify-content: center; */
+  overflow: visible;
+  justify-content: space-between;
 }
 
 .imgIndividual {
-  width: 146px;
-  height: 150px;
+  width: 120px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  /* padding: 2px; */
   overflow: hidden;
 }
 
@@ -50,8 +49,10 @@
   gap: 6px;
   background-color: #ffffff;
   border-radius: 15px;
-  border: 0.3px solid #e1e1e1;
+  border: none;
+  box-shadow: 0px 0px 4px 1px #00000006;
   padding: 10px 0;
+  width: calc(100% / 6.6);
 }
 
 .searchBox input {
@@ -275,5 +276,9 @@
   .brandSingleBox {
     gap: 0px;
     padding: 10px 0;
+    width: auto;
+    overflow: scroll;
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
   }
 }
