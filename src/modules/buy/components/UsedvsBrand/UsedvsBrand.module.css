@@ -1,15 +1,17 @@
 .container {
-  padding: 10px;
+  padding: 20px;
   max-width: 1140px;
   margin: auto;
   margin-top: 25px;
   border: 0.3px solid #e1e1e1;
   border-radius: 15px;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
 }
 
 .heading {
-  font-size: 18px;
+  font-size: 24px;
   margin: 25px 0 0 0;
   font-family: "IBM Plex Sans";
   font-weight: 500;
@@ -18,11 +20,6 @@
   width: fit-content;
 }
 
-@media (min-width: 640px) {
-  .heading {
-    font-size: 1.5rem;
-  }
-}
 
 @media (max-width: 768px) {
   .heading {
@@ -32,6 +29,7 @@
 
   .container {
     padding: 25px 10px;
+    flex-direction: column;
   }
 
   .description {

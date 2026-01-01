@@ -74,7 +74,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section>
+    <div>
       <div className={(styles.container, styles.testimonialWrapper)}>
         <div className={styles.headerSection}>
           <h2 className={styles.heading}>Testimonials</h2>
@@ -124,7 +124,7 @@ const Testimonials = () => {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

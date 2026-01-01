@@ -16,20 +16,20 @@
 }
 
 .heading {
-  font-size: 18px;
-  margin: 25px 0 0 0;
+  font-size: 24px;
+  margin: 0;
   font-family: "IBM Plex Sans";
   font-weight: 500;
 }
 
 .navButtons {
-  display: none;
+  display: flex;
+  gap: 10px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .navButtons {
-    display: flex;
-    gap: 0.5rem;
+    display: none;
   }
 
   .navButtons button {
@@ -37,7 +37,12 @@
   }
 
   .heading {
-    font-size: 1.5rem;
+    font-size: 18px;
+    margin: 25px 0 0 0;
+  }
+
+  .testimonialWrapper {
+    padding: 0;
   }
 }
 
