@@ -56,7 +56,7 @@ function CheckOut() {
   // Handle add new address
   const handleAddNew = () => {
     navigate(`/${slug}/check-out/add-address`, {
-      state: { returnPath: location.pathname }
+      state: { returnPath: location.pathname },
     });
   };
 
@@ -72,10 +72,8 @@ function CheckOut() {
   useEffect(() => {
     // Check if addresses were passed from Step6 via navigation state
     if (location.state?.addresses && location.state.addresses.length > 0) {
-
       const sortedAddresses = sortAddressesBySelected(location.state.addresses);
       setAddress(sortedAddresses);
-      
     } else {
       fetchAddress();
     }
@@ -86,7 +84,6 @@ function CheckOut() {
   // Sort addresses to show selected one on top
   const sortAddressesBySelected = (addresses) => {
     if (!selectedAddress) {
-      
       return addresses;
     }
 
@@ -103,9 +100,7 @@ function CheckOut() {
     return sorted;
   };
 
-  useEffect(() => {
-    
-  }, [selectedAddress]);
+  useEffect(() => {}, [selectedAddress]);
 
   return (
     <>
@@ -128,14 +123,14 @@ function CheckOut() {
                       selectedAddress !== null && itemId === selectedId;
 
                     if (index === 0) {
-
                     }
 
                     return (
                       <div
                         key={itemId || index}
-                        className={`${styles.addressCard} ${isSelected ? styles.selectedCard : ""
-                          }`}
+                        className={`${styles.addressCard} ${
+                          isSelected ? styles.selectedCard : ""
+                        }`}
                       >
                         <label className={styles.addressLabel}>
                           <input
@@ -143,7 +138,6 @@ function CheckOut() {
                             name="address"
                             className={styles.radioInput}
                             onChange={() => {
-                              
                               setSelectedAddress(item);
                             }}
                             checked={isSelected}

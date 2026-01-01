@@ -89,7 +89,9 @@ const MobileSearchModal = ({
 
             {/* Products */}
             {results?.ActiveProducts?.length > 0 && (
-              <div className={`${styles.sectionGroup} ${styles.productsSection}`}>
+              <div
+                className={`${styles.sectionGroup} ${styles.productsSection}`}
+              >
                 {results.ActiveProducts.map((product) => (
                   <div
                     key={product._id}

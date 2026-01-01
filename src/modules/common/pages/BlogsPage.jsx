@@ -57,9 +57,7 @@ const BlogsPage = () => {
                 <p className={styles.blogMeta}>
                   By Quick Mobile • {blogItem.date}
                 </p>
-                <p className={styles.blogDescription}>
-                  {blogItem.description}
-                </p>
+                <p className={styles.blogDescription}>{blogItem.description}</p>
               </div>
             </div>
           ))}

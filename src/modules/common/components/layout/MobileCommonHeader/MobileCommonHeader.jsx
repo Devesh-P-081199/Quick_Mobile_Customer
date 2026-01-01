@@ -41,7 +41,6 @@ const MobileCommonHeader = ({ title, onBack }) => {
             <img src={newBackIcon} alt="Back" />
           </button>
           <h2 className={styles.title}>{title}</h2>
-          
         </>
       )}
     </div>

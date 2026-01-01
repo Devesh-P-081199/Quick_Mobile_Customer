@@ -26,19 +26,17 @@ const guideData = [
 export default function GuidePrivacyPolicy() {
   return (
     <section>
-    <div className={styles.container}>
-      <h2 className={styles.heading}>
-        Explore Our Guide and Privacy Policy
-      </h2>
-      <div className={styles.contentWrapper}>
-        {guideData.map((section, index) => (
-          <div key={index} className={styles.section}>
-            <h3 className={styles.subheading}>{section.title}</h3>
-            <p className={styles.description}>{section.description}</p>
-          </div>
-        ))}
+      <div className={styles.container}>
+        <h2 className={styles.heading}>Explore Our Guide and Privacy Policy</h2>
+        <div className={styles.contentWrapper}>
+          {guideData.map((section, index) => (
+            <div key={index} className={styles.section}>
+              <h3 className={styles.subheading}>{section.title}</h3>
+              <p className={styles.description}>{section.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
     </section>
   );
 }

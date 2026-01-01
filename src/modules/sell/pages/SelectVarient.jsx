@@ -21,16 +21,13 @@ function SelectVarient() {
       // Fallback to category page if no brand slug
       navigate(`/${catSlug}`, { replace: true });
     } else {
-      navigate('/', { replace: true });
+      navigate("/", { replace: true });
     }
   };
 
   return (
     <>
-      <MobileCommonHeaderthree
-        title="Your Device"
-        onBack={handleBack}
-      />
+      <MobileCommonHeaderthree title="Your Device" onBack={handleBack} />
 
       <div className="page-content">
         <SellDeviceVarient />

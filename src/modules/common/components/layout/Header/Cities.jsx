@@ -79,7 +79,7 @@ const Cities = () => {
 
         // Determine if city is in popular cities or other cities
         const isPopularCity = popularCities.some(
-          (popCity) => popCity.cityName === parsed.cityName
+          (popCity) => popCity.cityName === parsed.cityName,
         );
         setSelectedSource(isPopularCity ? "popular" : "all");
 
@@ -100,14 +100,14 @@ const Cities = () => {
   const filteredPopularCities = useMemo(() => {
     if (!searchTerm) return popularCities;
     return popularCities.filter((city) =>
-      city.cityName.toLowerCase().includes(searchTerm.toLowerCase())
+      city.cityName.toLowerCase().includes(searchTerm.toLowerCase()),
     );
   }, [searchTerm, popularCities]);
 
   const filteredOtherCities = useMemo(() => {
     if (!searchTerm) return otherCities;
     return otherCities.filter((city) =>
-      city.cityName.toLowerCase().includes(searchTerm.toLowerCase())
+      city.cityName.toLowerCase().includes(searchTerm.toLowerCase()),
     );
   }, [searchTerm, otherCities]);
 
@@ -124,7 +124,6 @@ const Cities = () => {
 
     // Update state after modal is closed to prevent visual conflicts
     setTimeout(() => {
-
       const updatedSelection = {
         ...userSelection,
         cityName: city.cityName,
@@ -140,7 +139,6 @@ const Cities = () => {
         expires: 2,
         sameSite: "strict",
       });
-
     }, 0);
   };
 
@@ -250,11 +248,12 @@ const Cities = () => {
                   <button
                     key={city._id}
                     onClick={() => handleCitySelect(city, "popular")}
-                    className={`${styles.popularCityButton} ${selectedCity?._id === city._id &&
+                    className={`${styles.popularCityButton} ${
+                      selectedCity?._id === city._id &&
                       selectedSource === "popular"
-                      ? styles.selectedPopularCity
-                      : ""
-                      }`}
+                        ? styles.selectedPopularCity
+                        : ""
+                    }`}
                   >
                     <img
                       src={city?.cityImage || locationIcon}
@@ -289,10 +288,11 @@ const Cities = () => {
                   <button
                     key={city._id}
                     onClick={() => handleCitySelect(city, "all")}
-                    className={`${styles.otherCityPill} ${selectedCity?._id === city._id && selectedSource === "all"
-                      ? styles.selectedCityPill
-                      : ""
-                      }`}
+                    className={`${styles.otherCityPill} ${
+                      selectedCity?._id === city._id && selectedSource === "all"
+                        ? styles.selectedCityPill
+                        : ""
+                    }`}
                   >
                     <span className={styles.otherCityText}>
                       {city?.cityName}

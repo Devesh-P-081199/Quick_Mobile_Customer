@@ -9,71 +9,73 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Import Pages - Updated to use feature-based structure
-const SeriesSelection = React.lazy(() =>
-  import("./modules/sell/pages/SeriesSelection")
+const SeriesSelection = React.lazy(
+  () => import("./modules/sell/pages/SeriesSelection"),
 );
-const ModelSelection = React.lazy(() =>
-  import("./modules/sell/pages/ModelSelection")
+const ModelSelection = React.lazy(
+  () => import("./modules/sell/pages/ModelSelection"),
 );
-const SelectVarient = React.lazy(() =>
-  import("./modules/sell/pages/SelectVarient")
+const SelectVarient = React.lazy(
+  () => import("./modules/sell/pages/SelectVarient"),
 );
-const GetPriceUpto = React.lazy(() =>
-  import("./modules/sell/pages/GetPriceUpto")
+const GetPriceUpto = React.lazy(
+  () => import("./modules/sell/pages/GetPriceUpto"),
 );
 const FormStep3 = React.lazy(() => import("./modules/sell/pages/FormStep3"));
 const FormStep6 = React.lazy(() => import("./modules/sell/pages/FormStep6"));
-const CheckOut = React.lazy(() =>
-  import("./modules/checkout/components/CheckOut/CheckOut")
+const CheckOut = React.lazy(
+  () => import("./modules/checkout/components/CheckOut/CheckOut"),
 );
-const AddressForm = React.lazy(() =>
-  import("./modules/checkout/components/AddressForm/AddressForm")
+const AddressForm = React.lazy(
+  () => import("./modules/checkout/components/AddressForm/AddressForm"),
 );
-const PaymentComponent = React.lazy(() =>
-  import("./modules/checkout/components/Payment/Payment")
+const PaymentComponent = React.lazy(
+  () => import("./modules/checkout/components/Payment/Payment"),
 );
-const PaymentForm = React.lazy(() =>
-  import("./modules/checkout/components/PaymentForm/PaymentForm")
+const PaymentForm = React.lazy(
+  () => import("./modules/checkout/components/PaymentForm/PaymentForm"),
 );
-const ThankYouPage = React.lazy(() => import("./modules/common/pages/ThankYouPage"));
-const SelectSubCata = React.lazy(() =>
-  import("./modules/sell/components/SelectSubCategories/SelectSubCata")
+const ThankYouPage = React.lazy(
+  () => import("./modules/common/pages/ThankYouPage"),
+);
+const SelectSubCata = React.lazy(
+  () => import("./modules/sell/components/SelectSubCategories/SelectSubCata"),
 );
 
-const ViewAllCata = React.lazy(() =>
-  import("./modules/sell/pages/ViewAllCata")
+const ViewAllCata = React.lazy(
+  () => import("./modules/sell/pages/ViewAllCata"),
 );
 import FAQPage from "./modules/sell/pages/FAQPage";
 import Header from "./modules/common/components/layout/Header/Header";
 import Footer from "./modules/common/components/layout/Footer/Footer";
 // Updated imports to use new feature-based structure
-const Login = React.lazy(() =>
-  import("./modules/profile/components/Login/Login")
+const Login = React.lazy(
+  () => import("./modules/profile/components/Login/Login"),
 );
-const SignUp = React.lazy(() =>
-  import("./modules/profile/components/Signup/Signup")
+const SignUp = React.lazy(
+  () => import("./modules/profile/components/Signup/Signup"),
 );
-const Address = React.lazy(() =>
-  import("./modules/profile/pages/SavedAddress")
+const Address = React.lazy(
+  () => import("./modules/profile/pages/SavedAddress"),
 );
-const PaymentOptions = React.lazy(() =>
-  import("./modules/checkout/components/Payment/Payment")
+const PaymentOptions = React.lazy(
+  () => import("./modules/checkout/components/Payment/Payment"),
 );
-const ProfilePayments = React.lazy(() =>
-  import("./modules/profile/pages/PaymentOptions")
+const ProfilePayments = React.lazy(
+  () => import("./modules/profile/pages/PaymentOptions"),
 );
 
-const SetupProfile = React.lazy(() =>
-  import("./modules/profile/components/SetupProfile/SetupProfile")
+const SetupProfile = React.lazy(
+  () => import("./modules/profile/components/SetupProfile/SetupProfile"),
 );
-const MyOrder = React.lazy(() =>
-  import("./modules/profile/components/MyOrder/MyOrder")
+const MyOrder = React.lazy(
+  () => import("./modules/profile/components/MyOrder/MyOrder"),
 );
-const EditProfile = React.lazy(() =>
-  import("./modules/profile/components/SetupProfile/EditProfile")
+const EditProfile = React.lazy(
+  () => import("./modules/profile/components/SetupProfile/EditProfile"),
 );
-const OrderDetails = React.lazy(() =>
-  import("./modules/profile/components/MyOrder/OrderDetails")
+const OrderDetails = React.lazy(
+  () => import("./modules/profile/components/MyOrder/OrderDetails"),
 );
 import { Suspense } from "react";
 
@@ -81,10 +83,14 @@ import { Suspense } from "react";
 import Loader from "./modules/common/components/layout/Loader/Loader";
 import DynamicRouteHandler from "./modules/common/pages/DynamicRouteHandler";
 import NotFoundPage from "./modules/common/pages/NotFoundPage";
-const BlogDetail = React.lazy(() => import("./modules/common/pages/BlogDetail"));
+const BlogDetail = React.lazy(
+  () => import("./modules/common/pages/BlogDetail"),
+);
 const BlogsPage = React.lazy(() => import("./modules/common/pages/BlogsPage"));
 const StorePage = React.lazy(() => import("./modules/common/pages/StorePage"));
-const StoresListPage = React.lazy(() => import("./modules/common/pages/StoresListPage"));
+const StoresListPage = React.lazy(
+  () => import("./modules/common/pages/StoresListPage"),
+);
 import HomePage from "./modules/buy/pages/HomePage";
 import AboutUs from "./modules/common/pages/general/AboutUs/AboutUs";
 import Cookies from "./modules/common/pages/general/Cookies/Cookies";
@@ -102,7 +108,7 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     // Scroll to top immediately on any route change
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [pathname, search]);
 
   return null;
@@ -127,7 +133,7 @@ const AppContent = () => {
 
       isApplying = true;
       const currentPaddingTop = window.getComputedStyle(
-        document.body
+        document.body,
       ).paddingTop;
       const expectedPadding = window.innerWidth <= 768 ? "55px" : "0px";
 
@@ -135,7 +141,7 @@ const AppContent = () => {
         document.body.style.setProperty(
           "padding-top",
           expectedPadding,
-          "important"
+          "important",
         );
       }
 

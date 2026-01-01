@@ -30,7 +30,7 @@ const SavedAddress = () => {
 
   const handleAddNew = () => {
     navigate("/profile/saved-address/add-address", {
-      state: { returnPath: location.pathname }
+      state: { returnPath: location.pathname },
     });
   };
 

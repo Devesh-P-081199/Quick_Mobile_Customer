@@ -1,4 +1,3 @@
-
 import BreadCrumb from "../../common/components/layout/BreadCrumb/BreadCrumb";
 import FAQFullPage from "../../common/components/FAQ/FAQFullPage";
 

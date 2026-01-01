@@ -24,7 +24,6 @@ const Answers = ({ onBack, onRecalculate }) => {
 
           // Transform the stored data to match the expected format
           const transformedData = parsedDetails.map((pkg) => {
-
             const questionsWithAnswers =
               pkg.questions?.map((q) => {
                 // Get the selected answer value from answers object
@@ -37,14 +36,14 @@ const Answers = ({ onBack, onRecalculate }) => {
                     // Multiple select
                     selectedLabels = selectedValue.map((val) => {
                       const option = q.options?.find(
-                        (opt) => String(opt.value) === String(val)
+                        (opt) => String(opt.value) === String(val),
                       );
                       return option?.label || String(val);
                     });
                   } else {
                     // Single select - compare as strings
                     const option = q.options?.find(
-                      (opt) => String(opt.value) === String(selectedValue)
+                      (opt) => String(opt.value) === String(selectedValue),
                     );
                     selectedLabels = option
                       ? [option.label]
@@ -86,7 +85,12 @@ const Answers = ({ onBack, onRecalculate }) => {
       {/* Header */}
       <div className={styles.header}>
         <button className={styles.iconButton} onClick={onBack}>
-          <img src={backArrow} alt="Back" style={{ width: '28px', height: '28px' }} onClick={onBack} />
+          <img
+            src={backArrow}
+            alt="Back"
+            style={{ width: "28px", height: "28px" }}
+            onClick={onBack}
+          />
         </button>
         <h2 className={styles.title}>Device Details</h2>
         <button
@@ -102,8 +106,9 @@ const Answers = ({ onBack, onRecalculate }) => {
               sessionStorage.removeItem(packageDetailsKey);
 
               // Clear step3 form data
-              const storageKey = `step3PackageData_${productId}_${queryParams.get("vid") || "unknown"
-                }`;
+              const storageKey = `step3PackageData_${productId}_${
+                queryParams.get("vid") || "unknown"
+              }`;
               sessionStorage.removeItem(storageKey);
 
               // Clear current package index
@@ -119,7 +124,6 @@ const Answers = ({ onBack, onRecalculate }) => {
               // Set recalculate flag to force Step3 to load fresh
               const recalculateKey = `recalculate_${productId}`;
               sessionStorage.setItem(recalculateKey, "true");
-
             }
 
             onRecalculate();
@@ -160,8 +164,8 @@ const Answers = ({ onBack, onRecalculate }) => {
             </ol>
           </div>
         ))}
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 

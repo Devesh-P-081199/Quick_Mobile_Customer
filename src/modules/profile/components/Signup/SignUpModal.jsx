@@ -6,7 +6,6 @@ import NewCloseIcon from "../../../../assets/QuickSellNewIcons/Cross.svg";
 import Loader from "../../../common/components/layout/Loader/Loader";
 
 const SignUpModal = ({ isOpen, onClose }) => {
-
   //     // Focus next input
 
   //       Cookies.set("auth-token", JSON.stringify(token), {
@@ -31,9 +30,7 @@ const SignUpModal = ({ isOpen, onClose }) => {
           />
         </button>
         <Suspense fallback={<Loader />}>
-
           <Login onSwitchToSignup={handleSignupClick} />
-
         </Suspense>
       </div>
     </div>

@@ -4,7 +4,7 @@ import styles from "./SelectedSeries.module.css";
 import { useLocation } from "react-router-dom";
 
 const SelectedSeries = () => {
-  const {seriesId} = useParams()
+  const { seriesId } = useParams();
   const location = useLocation();
   const { seriesName } = location.state || {};
 

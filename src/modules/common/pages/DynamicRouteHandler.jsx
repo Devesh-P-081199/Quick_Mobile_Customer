@@ -11,19 +11,17 @@ import { UserContext } from "../../../Context/contextAPI";
 import { useContext } from "react";
 
 const SellHome = lazy(() => import("../../sell/pages/SellHome"));
-const SelectSubCata = lazy(() =>
-  import("../../sell/components/SelectSubCategories/SelectSubCata")
+const SelectSubCata = lazy(
+  () => import("../../sell/components/SelectSubCategories/SelectSubCata"),
 );
-const SelectSeries = lazy(() =>
-  import("../../sell/components/SelectSeries/SelectSeries")
+const SelectSeries = lazy(
+  () => import("../../sell/components/SelectSeries/SelectSeries"),
 );
-const SelectVarient = lazy(() =>
-  import("../../sell/pages/SelectVarient")
-);
+const SelectVarient = lazy(() => import("../../sell/pages/SelectVarient"));
 
 const DynamicRouteHandler = () => {
   const [seoData, setSeoData] = useState(null);
-  
+
   const { slug1, slug2 } = useParams();
   const navigate = useNavigate();
 
@@ -45,7 +43,7 @@ const DynamicRouteHandler = () => {
         ({ slug1Type, categoryHasSub } = resolvedSlugCache.current[slug1]);
       } else {
         const slug1Res = await api.get(
-          `/sell-module/user/resolve-category-or-subcategory/${slug1}`
+          `/sell-module/user/resolve-category-or-subcategory/${slug1}`,
         );
         slug1Type = slug1Res.data?.type;
         categoryHasSub = slug1Res.data?.hasSubcategories;
@@ -72,10 +70,10 @@ const DynamicRouteHandler = () => {
 
         if (slug2) {
           const res2 = await api.get(
-            `/sell-module/user/resolve-brand-or-product/${slug2}`
+            `/sell-module/user/resolve-brand-or-product/${slug2}`,
           );
           const type2 = res2.data?.type;
-          
+
           setSeoData(res2.data?.seoData?.Sell);
 
           if (type2 === "brand") {
@@ -119,7 +117,7 @@ const DynamicRouteHandler = () => {
         }
 
         const res2 = await api.get(
-          `/sell-module/user/resolve-brand-or-product/${slug2}`
+          `/sell-module/user/resolve-brand-or-product/${slug2}`,
         );
         const type2 = res2.data?.type;
         setSeoData(res2?.data?.seoData?.Sell);

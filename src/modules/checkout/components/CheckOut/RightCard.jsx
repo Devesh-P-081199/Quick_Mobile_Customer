@@ -18,7 +18,7 @@ function RightCard() {
   const FetchPriceDetails = async (evaluationId) => {
     try {
       const finalPriceResp = await api.get(
-        `/sell-module/user/view-finalprice-byId/${evaluationId?._id}`
+        `/sell-module/user/view-finalprice-byId/${evaluationId?._id}`,
       );
 
       setData(finalPriceResp.data);
@@ -32,13 +32,11 @@ function RightCard() {
     if (currentEvaluationId) {
       FetchPriceDetails(currentEvaluationId);
     } else {
-
       navigate(`/${slug}/price-summary`);
     }
   }, [currentEvaluationId, navigate, slug]);
 
   const handlePlaceOrder = async () => {
-
     if (location.pathname === `/${slug}/check-out`) {
       if (!selectedAddress) {
         alert("Please select address");

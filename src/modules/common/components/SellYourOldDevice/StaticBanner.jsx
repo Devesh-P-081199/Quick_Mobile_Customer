@@ -50,13 +50,15 @@ const steps = [
 function StaticBanner() {
   const [loading, setLoading] = useState(false);
   const [fillPercent, setFillPercent] = useState(0);
-  const [mobileLineHeight, setMobileLineHeight] = useState('100%');
+  const [mobileLineHeight, setMobileLineHeight] = useState("100%");
   const timelineRef = useRef(null);
 
   useEffect(() => {
     const calculateHeight = () => {
       if (!timelineRef.current) return;
-      const markers = timelineRef.current.querySelectorAll('[data-marker="true"]');
+      const markers = timelineRef.current.querySelectorAll(
+        '[data-marker="true"]',
+      );
       if (markers.length >= 2) {
         const first = markers[0].getBoundingClientRect();
         const last = markers[markers.length - 1].getBoundingClientRect();
@@ -68,8 +70,8 @@ function StaticBanner() {
 
     // Run initially and on resize
     calculateHeight();
-    window.addEventListener('resize', calculateHeight);
-    return () => window.removeEventListener('resize', calculateHeight);
+    window.addEventListener("resize", calculateHeight);
+    return () => window.removeEventListener("resize", calculateHeight);
   }, [loading]); // Re-run when loading finishes and real content appears
 
   useEffect(() => {
@@ -99,7 +101,7 @@ function StaticBanner() {
       if (percent < 0) percent = 0;
       if (percent > 100) percent = 100;
 
-      setFillPercent(prev => Math.max(prev, percent));
+      setFillPercent((prev) => Math.max(prev, percent));
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -124,27 +126,41 @@ function StaticBanner() {
             {/* Skeleton structure reused roughly */}
             <div className={style.timeline}>
               <div className={style.icons}>
-                {[1, 2, 3, 4, 5].map(i => (
-                  <div key={i} className={style.iconWrapper} style={{ marginBottom: i < 5 ? '60px' : 0 }}>
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div
+                    key={i}
+                    className={style.iconWrapper}
+                    style={{ marginBottom: i < 5 ? "60px" : 0 }}
+                  >
                     <Skeleton circle width={40} height={40} />
                   </div>
                 ))}
               </div>
             </div>
             <div className={style.stepsContent}>
-              {[1, 2, 3, 4, 5].map(i => (
+              {[1, 2, 3, 4, 5].map((i) => (
                 <div key={i} className={style.stepText}>
-                  <h4><Skeleton width={150} /></h4>
-                  <p><Skeleton count={1} /></p>
+                  <h4>
+                    <Skeleton width={150} />
+                  </h4>
+                  <p>
+                    <Skeleton count={1} />
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         ) : (
           <div className={style.customTimelineContainer} ref={timelineRef}>
-            <div className={style.progressBarContainer} style={{ '--mobile-line-height': mobileLineHeight }}>
+            <div
+              className={style.progressBarContainer}
+              style={{ "--mobile-line-height": mobileLineHeight }}
+            >
               <div className={style.progressBarTrack}></div>
-              <div className={style.progressBarFill} style={{ '--fill-percent': `${fillPercent}%` }}></div>
+              <div
+                className={style.progressBarFill}
+                style={{ "--fill-percent": `${fillPercent}%` }}
+              ></div>
             </div>
 
             <div className={style.timelineItems}>
@@ -157,15 +173,23 @@ function StaticBanner() {
                 const active = fillPercent >= threshold; // Or slightly before?
 
                 return (
-                  <div key={index} className={`${style.timelineItem} ${active ? style.active : ''}`}>
+                  <div
+                    key={index}
+                    className={`${style.timelineItem} ${active ? style.active : ""}`}
+                  >
                     <div className={style.markerContainer} data-marker="true">
-                      <div className={style.marker} style={active ? step.iconStyle : {}}>
+                      <div
+                        className={style.marker}
+                        style={active ? step.iconStyle : {}}
+                      >
                         {step.icon}
                       </div>
                     </div>
                     <div className={style.contentBox}>
                       <h3>{step.title}</h3>
-                      {step.subtitle && <h4 style={step.subtitleStyle}>{step.subtitle}</h4>}
+                      {step.subtitle && (
+                        <h4 style={step.subtitleStyle}>{step.subtitle}</h4>
+                      )}
                       {step.description && <p>{step.description}</p>}
                     </div>
                   </div>

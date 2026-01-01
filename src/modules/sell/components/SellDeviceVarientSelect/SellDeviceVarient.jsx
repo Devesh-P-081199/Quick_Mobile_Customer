@@ -89,7 +89,6 @@ function SellDeviceVarient() {
       //     ...prev,
 
       if (variantsArr.length === 1) {
-        
         const variant = variantsArr[0];
 
         const newSelection = {
@@ -115,7 +114,6 @@ function SellDeviceVarient() {
         // Safe to navigate
         navigate(`/${slug1}/${variant.slug}`, { replace: true });
       }
-
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug2, slug1]);
@@ -128,7 +126,7 @@ function SellDeviceVarient() {
     const timer = setTimeout(() => {
       const formElement = document.querySelector('[class*="form"]');
       const labels = formElement?.querySelectorAll(
-        'label[class*="radioLabel"]'
+        'label[class*="radioLabel"]',
       );
 
       if (!labels || labels.length === 0) return;
@@ -238,39 +236,40 @@ function SellDeviceVarient() {
               <div className={styles.form}>
                 {isVariantsLoading
                   ? Array(3)
-                    .fill()
-                    .map((_, i) => (
-                      <Skeleton
-                        key={i}
-                        height={20}
-                        width={150}
-                        style={{ marginBottom: 12 }}
-                      />
-                    ))
+                      .fill()
+                      .map((_, i) => (
+                        <Skeleton
+                          key={i}
+                          height={20}
+                          width={150}
+                          style={{ marginBottom: 12 }}
+                        />
+                      ))
                   : variants.variants.map((option) => (
-                    <label
-                      key={option._id}
-                      className={`${styles.radioLabel} ${selectedMemory?.variantId === option._id
-                        ? styles.active
-                        : ""
+                      <label
+                        key={option._id}
+                        className={`${styles.radioLabel} ${
+                          selectedMemory?.variantId === option._id
+                            ? styles.active
+                            : ""
                         }`}
-                    >
-                      <input
-                        type="radio"
-                        name="memory"
-                        checked={selectedMemory?.variantId === option._id}
-                        className="custom-radio"
-                        onChange={() =>
-                          handleChange(
-                            option.wholeVariantId,
-                            option._id,
-                            option.slug
-                          )
-                        }
-                      />
-                      <span>{option.variantDetail}</span>
-                    </label>
-                  ))}
+                      >
+                        <input
+                          type="radio"
+                          name="memory"
+                          checked={selectedMemory?.variantId === option._id}
+                          className="custom-radio"
+                          onChange={() =>
+                            handleChange(
+                              option.wholeVariantId,
+                              option._id,
+                              option.slug,
+                            )
+                          }
+                        />
+                        <span>{option.variantDetail}</span>
+                      </label>
+                    ))}
               </div>
               <div className={styles.buttonBottomBox}>
                 <button
@@ -291,7 +290,6 @@ function SellDeviceVarient() {
               </div>
             </form>
           </div>
-
         </div>
       </div>
     </div>

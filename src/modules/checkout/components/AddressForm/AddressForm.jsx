@@ -81,7 +81,7 @@ const AddressForm = () => {
   const fetchZipDetails = useCallback(async (zipcode) => {
     try {
       const response = await api.get(
-        `/sell-module/user/getZipDetails/${zipcode}`
+        `/sell-module/user/getZipDetails/${zipcode}`,
       );
       let cityFromZip = response.data[0]?.PostOffice[0].Block || "";
       setCityName(cityFromZip);
@@ -130,7 +130,7 @@ const AddressForm = () => {
       if (editAddressId) {
         await api.put(
           `/sell-module/user/update-address/${editAddressId}`,
-          dataToSend
+          dataToSend,
         );
         toast.success("Address updated successfully");
       } else {
@@ -287,8 +287,9 @@ const AddressForm = () => {
                 placeholder="Select the State"
                 value={formData.state}
                 onChange={handleInputChange}
-                className={`${styles.input} ${!formData.state ? styles.placeholderSelect : ""
-                  }`}
+                className={`${styles.input} ${
+                  !formData.state ? styles.placeholderSelect : ""
+                }`}
               >
                 <option value="">Select State</option>
                 {statesAddress.map((state) => (
@@ -319,8 +320,9 @@ const AddressForm = () => {
               <span className={styles.saveAsLabel}>Save as:</span>
               <div className={styles.radioButtonGroup}>
                 <label
-                  className={`${styles.radioButton} ${formData.saveAs === "Home" ? styles.radioButtonSelected : ""
-                    }`}
+                  className={`${styles.radioButton} ${
+                    formData.saveAs === "Home" ? styles.radioButtonSelected : ""
+                  }`}
                 >
                   <input
                     type="radio"
@@ -333,10 +335,11 @@ const AddressForm = () => {
                   Home
                 </label>
                 <label
-                  className={`${styles.radioButton} ${formData.saveAs === "Office"
-                    ? styles.radioButtonSelected
-                    : ""
-                    }`}
+                  className={`${styles.radioButton} ${
+                    formData.saveAs === "Office"
+                      ? styles.radioButtonSelected
+                      : ""
+                  }`}
                 >
                   <input
                     type="radio"
@@ -349,10 +352,11 @@ const AddressForm = () => {
                   Office
                 </label>
                 <label
-                  className={`${styles.radioButton} ${formData.saveAs === "Other"
-                    ? styles.radioButtonSelected
-                    : ""
-                    }`}
+                  className={`${styles.radioButton} ${
+                    formData.saveAs === "Other"
+                      ? styles.radioButtonSelected
+                      : ""
+                  }`}
                 >
                   <input
                     type="radio"

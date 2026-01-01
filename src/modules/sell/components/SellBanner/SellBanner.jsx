@@ -83,7 +83,7 @@ function SellHomeBanner({ onViewAllClick }) {
     setIsLoadingCategories(true);
     try {
       const response = await api.get(
-        "/common-module/category?option=Sell&all=true"
+        "/common-module/category?option=Sell&all=true",
       );
       const allCategories = response?.data?.categories || [];
       setCategories(allCategories);
@@ -105,7 +105,6 @@ function SellHomeBanner({ onViewAllClick }) {
         await GotoSearchBrands(selectedCat._id);
       }
     } catch (error) {
-      
     } finally {
       setIsLoadingCategories(false);
     }
@@ -115,12 +114,11 @@ function SellHomeBanner({ onViewAllClick }) {
     setIsLoadingBrands(true);
     try {
       const brandResp = await api.get(
-        `/common-module/FetchbrandByCatSelection?option=Sell&categoryId=${id}`
+        `/common-module/FetchbrandByCatSelection?option=Sell&categoryId=${id}`,
       );
 
       setBrands(brandResp.data?.data);
     } catch (innerError) {
-      
     } finally {
       setIsLoadingBrands(false);
     }
@@ -132,7 +130,7 @@ function SellHomeBanner({ onViewAllClick }) {
 
     try {
       const resp = await api.get(
-        `/sell-module/user/main-Search?search=${search}&catId=${catId}`
+        `/sell-module/user/main-Search?search=${search}&catId=${catId}`,
       );
       const data = resp.data?.[0];
 
@@ -158,9 +156,7 @@ function SellHomeBanner({ onViewAllClick }) {
         setResults(data); // ✅ desktop results
         setShowDropdown(true);
       }
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
 
   const debouncedSearchMain = useMemo(
@@ -168,7 +164,7 @@ function SellHomeBanner({ onViewAllClick }) {
       debounce((value, isMobile) => {
         handleMainSearch(value, isMobile);
       }, 300),
-    []
+    [],
   );
 
   const handleMainSearchChange = (e, isMobile = false) => {
@@ -205,7 +201,9 @@ function SellHomeBanner({ onViewAllClick }) {
 
   const handleBrandClick = (brand) => {
     if (brand?.subCategorySlug) {
-      navigate(`/${brand?.subCategorySlug}/${brand.slugSell}`, { replace: true });
+      navigate(`/${brand?.subCategorySlug}/${brand.slugSell}`, {
+        replace: true,
+      });
     } else {
       navigate(`/${brand.categorySlug}/${brand.slugSell}`, { replace: true });
     }
@@ -320,52 +318,53 @@ function SellHomeBanner({ onViewAllClick }) {
               >
                 {isLoadingCategories
                   ? Array(5)
-                    .fill()
-                    .map((_, index) => (
-                      <div className={styles.imgCard} key={index}>
-                        <div className={styles.imageBg}>
-                          <Skeleton circle height={50} width={50} />
-                        </div>
-                        <Skeleton
-                          width={70}
-                          height={10}
-                          style={{ marginTop: "5px" }}
-                        />
-                      </div>
-                    ))
-                  : [...category]
-                    .sort((a, b) => {
-                      if (a._id === selectedCategoryId) return -1;
-                      if (b._id === selectedCategoryId) return 1;
-                      return 0;
-                    })
-                    .map((cat, index) => (
-                      <div
-                        key={index}
-                        onClick={() =>
-                          handleNavigate(
-                            cat._id,
-                            cat.categoryName,
-                            cat?.slug?.sell
-                          )
-                        }
-                        className={`${styles.imgCard} ${selectedCategoryId === cat._id
-                          ? styles.selectedCategory
-                          : ""
-                          }`}
-                      >
-                        <div className={styles.imageBg}>
-                          <img
-                            src={cat?.categoryImageUrl || MobileIcon}
-                            alt={cat?.categoryName}
-                            title={cat?.categoryName}
+                      .fill()
+                      .map((_, index) => (
+                        <div className={styles.imgCard} key={index}>
+                          <div className={styles.imageBg}>
+                            <Skeleton circle height={50} width={50} />
+                          </div>
+                          <Skeleton
+                            width={70}
+                            height={10}
+                            style={{ marginTop: "5px" }}
                           />
-                          <span className={styles.cardName}>
-                            {cat.categoryName}
-                          </span>
                         </div>
-                      </div>
-                    ))}
+                      ))
+                  : [...category]
+                      .sort((a, b) => {
+                        if (a._id === selectedCategoryId) return -1;
+                        if (b._id === selectedCategoryId) return 1;
+                        return 0;
+                      })
+                      .map((cat, index) => (
+                        <div
+                          key={index}
+                          onClick={() =>
+                            handleNavigate(
+                              cat._id,
+                              cat.categoryName,
+                              cat?.slug?.sell,
+                            )
+                          }
+                          className={`${styles.imgCard} ${
+                            selectedCategoryId === cat._id
+                              ? styles.selectedCategory
+                              : ""
+                          }`}
+                        >
+                          <div className={styles.imageBg}>
+                            <img
+                              src={cat?.categoryImageUrl || MobileIcon}
+                              alt={cat?.categoryName}
+                              title={cat?.categoryName}
+                            />
+                            <span className={styles.cardName}>
+                              {cat.categoryName}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
 
                 <div
                   className={`${styles.imgCard} ${styles.viewAllCard}`}
@@ -464,33 +463,35 @@ function SellHomeBanner({ onViewAllClick }) {
             <div className={styles.suggestionBrandBox}>
               {isLoadingBrands
                 ? Array(4)
-                  .fill()
-                  .map((_, i) => (
-                    <div key={i} className={styles.brands}>
-                      <div className={styles.brandImageBg}>
-                        <Skeleton circle width={50} height={50} />
+                    .fill()
+                    .map((_, i) => (
+                      <div key={i} className={styles.brands}>
+                        <div className={styles.brandImageBg}>
+                          <Skeleton circle width={50} height={50} />
+                        </div>
+                        <Skeleton
+                          width={60}
+                          height={9}
+                          style={{ marginTop: 5 }}
+                        />
                       </div>
-                      <Skeleton
-                        width={60}
-                        height={9}
-                        style={{ marginTop: 5 }}
-                      />
-                    </div>
-                  ))
+                    ))
                 : brands.slice(0, 4).map((icon, index) => (
-                  <div key={index}>
-                    <div
-                      className={styles.brandImageBg}
-                      onClick={() => navigate(`${icon.slugSell}`, { replace: true })}
-                    >
-                      <img
-                        src={icon?.brandLogo}
-                        alt={icon?.brandName}
-                        title={icon?.brandName}
-                      />
+                    <div key={index}>
+                      <div
+                        className={styles.brandImageBg}
+                        onClick={() =>
+                          navigate(`${icon.slugSell}`, { replace: true })
+                        }
+                      >
+                        <img
+                          src={icon?.brandLogo}
+                          alt={icon?.brandName}
+                          title={icon?.brandName}
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               {/* {!isLoadingBrands && brands.length > 4 && (
               )} */}
             </div>

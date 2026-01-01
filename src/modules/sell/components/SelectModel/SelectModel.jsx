@@ -13,7 +13,7 @@ function SelectModel() {
   const fetchProducts = async () => {
     try {
       const response = await api.get(
-        `/sell-module/user/model-by-series-id/${seriesId}?option=Sell`
+        `/sell-module/user/model-by-series-id/${seriesId}?option=Sell`,
       );
       setProducts(response.data?.products || []);
     } catch (error) {

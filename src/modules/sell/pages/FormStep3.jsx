@@ -1,4 +1,3 @@
-
 import Step3 from "../components/Step3/Step3";
 
 function FormStep3() {

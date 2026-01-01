@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet";
 
 const staticSEO = {
@@ -27,19 +26,19 @@ const SEO = ({ seoData = {} }) => {
   //   ...staticSEO,
 
   const mergedSEO = {
-  ...staticSEO,     // base constants
-  ...fallbackSEO,   // fallback if backend is empty
-  ...seoData,       
-};
+    ...staticSEO, // base constants
+    ...fallbackSEO, // fallback if backend is empty
+    ...seoData,
+  };
 
   return (
     <Helmet>
       {/* ---------- BASIC SEO ---------- */}
       <title>{mergedSEO.title}</title>
-<meta
-  name="description"
-  content={mergedSEO.description || fallbackSEO.description}
-/>
+      <meta
+        name="description"
+        content={mergedSEO.description || fallbackSEO.description}
+      />
 
       {/* ---------- CANONICAL & ROBOTS ---------- */}
       <link rel="canonical" href={mergedSEO.canonical} />
@@ -80,7 +79,10 @@ const SEO = ({ seoData = {} }) => {
       </script>
 
       {/* ---------- GOOGLE ANALYTICS ---------- */}
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+      ></script>
       <script>
         {`
           window.dataLayer = window.dataLayer || [];

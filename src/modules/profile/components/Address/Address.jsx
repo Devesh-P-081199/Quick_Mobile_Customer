@@ -68,7 +68,7 @@ const Address = () => {
       if (isEditing) {
         const response = await api.put(
           `/sell-module/user/update-address/${editingAddressId}`,
-          formData
+          formData,
         );
 
         toast.success("Address updated successfully");
@@ -135,7 +135,7 @@ const Address = () => {
   const handleDelete = async (addressId) => {
     try {
       const response = await api.delete(
-        `/sell-module/user/address/${addressId}`
+        `/sell-module/user/address/${addressId}`,
       );
 
       toast.success("Address deleted successfully");
@@ -169,10 +169,10 @@ const Address = () => {
   const fetchZipDetails = async (zipcode) => {
     try {
       const response = await api.get(
-        `/sell-module/user/getZipDetails/${zipcode}`
+        `/sell-module/user/getZipDetails/${zipcode}`,
       );
       const cityFromZip = response?.data[0]?.PostOffice[0]?.Block || "";
-      
+
       setCityName(cityFromZip);
       setFormData((prev) => ({ ...prev, cityName: cityFromZip })); // <- ✅ Set into formData
     } catch (error) {

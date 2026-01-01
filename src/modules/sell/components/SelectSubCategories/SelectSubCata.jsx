@@ -22,7 +22,7 @@ function SelectSubCata() {
     const fetchMetaInfo = async () => {
       try {
         const res = await api.get(
-          `/sell-module/user/resolve-category-or-subcategory/${slug1}`
+          `/sell-module/user/resolve-category-or-subcategory/${slug1}`,
         );
         if (res.data?.type === "category") {
           setCategorySlug(res.data.categorySlug);
@@ -45,13 +45,12 @@ function SelectSubCata() {
 
       try {
         const res = await api.get(
-          `/sell-module/user/filteredAllCat?catSlug=${categorySlug}`
+          `/sell-module/user/filteredAllCat?catSlug=${categorySlug}`,
         );
         setSubCata(res.data.allSubCategories || []);
-        
+
         setAllBrands(res.data.allBrands || []);
         setSeoData(res.data?.seo);
-        
       } catch (error) {
         console.error("Failed to fetch category data:", error);
       }
@@ -77,14 +76,13 @@ function SelectSubCata() {
 
   const filteredBrands = selectedSubCategoryId
     ? allBrands.filter(
-      (b) =>
-        b.subCategoryId?._id?.toString() === selectedSubCategoryId.toString()
-    )
+        (b) =>
+          b.subCategoryId?._id?.toString() === selectedSubCategoryId.toString(),
+      )
     : allBrands;
 
   return (
     <>
-
       {subCata.length > 0 && (
         <section className="default-padding-section">
           <div className={styles.wrapper}>
@@ -96,8 +94,9 @@ function SelectSubCata() {
                 <li
                   key={index}
                   onClick={() => handleSubCategoryClick(subcata)}
-                  className={`${styles.seriesItem} ${selectedSubCategoryId === subcata._id ? styles.active : ""
-                    }`}
+                  className={`${styles.seriesItem} ${
+                    selectedSubCategoryId === subcata._id ? styles.active : ""
+                  }`}
                 >
                   {subcata.subCategoryName}
                   {selectedSubCategoryId === subcata._id && (
@@ -135,7 +134,7 @@ function SelectSubCata() {
                           brand?.subCategoryId?.slugSell
                         ) {
                           navigate(
-                            `/${brand?.subCategoryId?.slugSell}/${brand.slugSell}`
+                            `/${brand?.subCategoryId?.slugSell}/${brand.slugSell}`,
                           );
                         } else {
                           navigate(`/${slug1}/${brand.slugSell}`);

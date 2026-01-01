@@ -70,7 +70,6 @@ function PaymentComponent() {
 
   useEffect(() => {
     const loadPaymentMethods = async () => {
-
       let upiMethods = [];
       let bankMethods = [];
 
@@ -80,9 +79,7 @@ function PaymentComponent() {
 
         upiMethods = upi || [];
         bankMethods = bank || [];
-        
       } else {
-        
         [upiMethods, bankMethods] = await Promise.all([
           getSavedPaymentUpi(),
           getSavedPaymentBank(),
@@ -103,11 +100,19 @@ function PaymentComponent() {
         // Just ensure indices and tabs are correct
         if (selectedPaymentMethod.type === "upi") {
           setSelectedMethod(0);
-          const idx = sortedUpi.findIndex(u => (u._id || u.id) === (selectedPaymentMethod._id || selectedPaymentMethod.id));
+          const idx = sortedUpi.findIndex(
+            (u) =>
+              (u._id || u.id) ===
+              (selectedPaymentMethod._id || selectedPaymentMethod.id),
+          );
           if (idx !== -1) setSelectedUpiIndex(idx);
         } else if (selectedPaymentMethod.type === "bank") {
           setSelectedMethod(1);
-          const idx = sortedBank.findIndex(b => (b._id || b.id) === (selectedPaymentMethod._id || selectedPaymentMethod.id));
+          const idx = sortedBank.findIndex(
+            (b) =>
+              (b._id || b.id) ===
+              (selectedPaymentMethod._id || selectedPaymentMethod.id),
+          );
           if (idx !== -1) setSelectedBankIndex(idx);
         }
       } else if (!selectedPaymentMethod) {
@@ -127,7 +132,11 @@ function PaymentComponent() {
       } else {
         // Ensure UI matches context
         if (selectedPaymentMethod.type === "upi") {
-          const idx = sortedUpi.findIndex(u => (u._id || u.id) === (selectedPaymentMethod._id || selectedPaymentMethod.id));
+          const idx = sortedUpi.findIndex(
+            (u) =>
+              (u._id || u.id) ===
+              (selectedPaymentMethod._id || selectedPaymentMethod.id),
+          );
           if (idx !== -1) {
             setSelectedMethod(0);
             setSelectedUpiIndex(idx);
@@ -137,7 +146,11 @@ function PaymentComponent() {
             setSelectedPaymentMethod({ type: "upi", ...sortedUpi[0] });
           }
         } else if (selectedPaymentMethod.type === "bank") {
-          const idx = sortedBank.findIndex(b => (b._id || b.id) === (selectedPaymentMethod._id || selectedPaymentMethod.id));
+          const idx = sortedBank.findIndex(
+            (b) =>
+              (b._id || b.id) ===
+              (selectedPaymentMethod._id || selectedPaymentMethod.id),
+          );
           if (idx !== -1) {
             setSelectedMethod(1);
             setSelectedBankIndex(idx);
@@ -166,7 +179,12 @@ function PaymentComponent() {
   const handleEditUpi = (upiData) => {
     const upiId = upiData._id || upiData.id;
     navigate(`/${slug}/payment/edit-payment/${upiId}`, {
-      state: { paymentData: upiData, paymentType: "UPI", returnPath: location.pathname, prevReturnPath: location.state?.returnPath },
+      state: {
+        paymentData: upiData,
+        paymentType: "UPI",
+        returnPath: location.pathname,
+        prevReturnPath: location.state?.returnPath,
+      },
     });
   };
 
@@ -174,7 +192,12 @@ function PaymentComponent() {
   const handleEditBank = (bankData) => {
     const bankId = bankData._id || bankData.id;
     navigate(`/${slug}/payment/edit-payment/${bankId}`, {
-      state: { paymentData: bankData, paymentType: "Bank", returnPath: location.pathname, prevReturnPath: location.state?.returnPath },
+      state: {
+        paymentData: bankData,
+        paymentType: "Bank",
+        returnPath: location.pathname,
+        prevReturnPath: location.state?.returnPath,
+      },
     });
   };
 
@@ -241,8 +264,8 @@ function PaymentComponent() {
         replace: true,
         state: {
           paymentUpdated: true,
-          orderData: location.state?.orderData
-        }
+          orderData: location.state?.orderData,
+        },
       });
       return;
     }
@@ -267,8 +290,8 @@ function PaymentComponent() {
         replace: true,
         state: {
           paymentUpdated: true,
-          orderData: location.state?.orderData
-        }
+          orderData: location.state?.orderData,
+        },
       });
       return;
     }
@@ -294,13 +317,15 @@ function PaymentComponent() {
             {/* Add New Payment Method Button */}
             <button
               className={styles.addBtn}
-              onClick={() => navigate(`/${slug}/payment/add-payment`, {
-                state: {
-                  returnPath: location.pathname,
-                  prevReturnPath: location.state?.returnPath,
-                  orderData: location.state?.orderData
-                }
-              })}
+              onClick={() =>
+                navigate(`/${slug}/payment/add-payment`, {
+                  state: {
+                    returnPath: location.pathname,
+                    prevReturnPath: location.state?.returnPath,
+                    orderData: location.state?.orderData,
+                  },
+                })
+              }
             >
               <FaPlus /> Add Payment Method
             </button>
@@ -308,8 +333,9 @@ function PaymentComponent() {
             {/* Tabs for UPI and Bank */}
             <div className={styles.tabContainer}>
               <button
-                className={`${styles.tabButton} ${selectedMethod === 0 ? styles.activeTab : ""
-                  }`}
+                className={`${styles.tabButton} ${
+                  selectedMethod === 0 ? styles.activeTab : ""
+                }`}
                 onClick={() => {
                   setSelectedMethod(0);
                   setSelectedBankIndex(null);
@@ -320,8 +346,9 @@ function PaymentComponent() {
                 UPI
               </button>
               <button
-                className={`${styles.tabButton} ${selectedMethod === 1 ? styles.activeTab : ""
-                  }`}
+                className={`${styles.tabButton} ${
+                  selectedMethod === 1 ? styles.activeTab : ""
+                }`}
                 onClick={() => {
                   setSelectedMethod(1);
                   setSelectedBankIndex(null);
@@ -353,8 +380,9 @@ function PaymentComponent() {
                           paymentUpi.map((upi, i) => (
                             <label
                               key={i}
-                              className={`${styles.paymentCard} ${selectedUpiIndex === i ? styles.selected : ""
-                                }`}
+                              className={`${styles.paymentCard} ${
+                                selectedUpiIndex === i ? styles.selected : ""
+                              }`}
                             >
                               <input
                                 type="radio"
@@ -416,8 +444,9 @@ function PaymentComponent() {
                           paymentBank.map((bank, i) => (
                             <label
                               key={i}
-                              className={`${styles.paymentCard} ${selectedBankIndex === i ? styles.selected : ""
-                                }`}
+                              className={`${styles.paymentCard} ${
+                                selectedBankIndex === i ? styles.selected : ""
+                              }`}
                             >
                               <input
                                 type="radio"
@@ -479,7 +508,6 @@ function PaymentComponent() {
                 </div>
               ))}
             </div>
-
           </div>
 
           {/* Continue and Back Buttons */}

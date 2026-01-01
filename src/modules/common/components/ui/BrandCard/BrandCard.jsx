@@ -7,7 +7,11 @@ const BrandCard = ({ brand, onClick }) => {
       onClick={() => onClick(brand._id)}
     >
       <div className={styles.imgIndividual}>
-        <img src={brand?.brandLogo} alt={brand?.brandName} title={brand?.brandName} />
+        <img
+          src={brand?.brandLogo}
+          alt={brand?.brandName}
+          title={brand?.brandName}
+        />
       </div>
       <span>{brand?.brandName}</span>
     </div>
