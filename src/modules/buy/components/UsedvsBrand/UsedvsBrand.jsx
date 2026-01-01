@@ -35,7 +35,7 @@ export default function UsedVsBrandNew() {
   return (
     <div className={styles.section}>
       <div className={styles.container}>
-        <div>
+        <div className={styles.headingContainer}>
           <h3 className={styles.heading}>Used vs. Brand New</h3>
           <p className={styles.description}>
             Here’s what you help prevent on average by choosing a reborn
