@@ -10,7 +10,7 @@ const BlogDetail = () => {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const getImageUrl = (name) => {
-    return new URL(`../assets/images/blog/${name}`, import.meta.url).href;
+    return new URL(`../../../assets/images/blog/${name}`, import.meta.url).href;
   };
 
   useEffect(() => {

@@ -10,15 +10,15 @@
 }
 
 .heading {
-  font-size: 18px;
-  margin: 25px 0 0 0;
+  font-size: 24px;
+  margin: 0;
   font-family: "IBM Plex Sans";
   font-weight: 500;
 }
 
 .grid {
   display: flex;
-  gap: 16px;
+  gap: 15px;
   overflow-x: auto;
   scrollbar-width: none;
   /* Firefox */
@@ -31,11 +31,16 @@
   /* Chrome, Safari, Opera */
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+
+  .heading {
+    font-size: 18px;
+    margin: 25px 0 0 0;
+  }
+
   .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    display: flex;
+    gap: 15px;
   }
 }
 

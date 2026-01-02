@@ -20,6 +20,12 @@ const pressReleases = [
     title: "Are refurbished phones tested before being sold?",
     date: "25 June 2025",
   },
+  {
+    id: 4,
+    logo: press,
+    title: "Are refurbished phones tested before being sold?",
+    date: "25 June 2025",
+  },
 ];
 
 export function PressReleaseCard({ logo, title, date }) {

@@ -16,7 +16,7 @@ const Download = () => {
           <div className={styles.textSection}>
             <h2 className={styles.heading}>Download Our App</h2>
             <p className={styles.description}>
-              For exciting offer on, buy sell repair
+              Curabitur imperdiet nunc eget ligula finibus porta. Aliquam rutrum magna purus. Sed eget fringilla quam, ac dictum orci. Mauris vestibulum rutrum ante.
             </p>
             <div className={styles.storeButtons}>
               <img

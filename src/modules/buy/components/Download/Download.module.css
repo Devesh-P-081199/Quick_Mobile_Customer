@@ -1,29 +1,9 @@
-/* Download.module.css */
 .container {
   margin: auto;
 }
 
-@media (min-width: 640px) {
-  .downloadContainer {
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .container {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    padding: var(--spacing-2) 12.5%;
-  }
-}
-
 .downloadContainer {
   width: 100%;
-  padding: 25px 0px 0px 0px;
 }
 
 .downloadBox {
@@ -31,23 +11,15 @@
   width: 100%;
   border-radius: 15px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 15px;
-  padding: 25px;
+  flex-direction: row;
+  padding: 40px;
 }
 
-@media (min-width: 768px) {
-  .downloadContainer {
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .downloadBox {
-    flex-direction: row;
-    padding: 40px;
-  }
+.storeImage {
+  height: 60px;
 }
 
 .imageWrapper {
@@ -55,109 +27,45 @@
 }
 
 .mobileImage {
-  width: 160px;
-}
-
-@media (min-width: 640px) {
-  .downloadContainer {
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .mobileImage {
-    width: 192px;
-  }
-}
-
-@media (min-width: 768px) {
-  .downloadContainer {
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .mobileImage {
-    width: 224px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .mobileImage {
-    width: 256px;
-  }
+  height: 350px;
 }
 
 .textSection {
-  text-align: center;
-  color: white;
-}
-
-@media (min-width: 768px) {
-  .downloadContainer {
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .textSection {
-    text-align: left;
-  }
+  margin-left: 45px;
+  text-align: left;
+  width: 50%;
 }
 
 .heading {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-@media (min-width: 640px) {
-  .downloadContainer {
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .heading {
-    font-size: 24px;
-  }
+  font-size: 45px;
+  color: #fff;
+  font-weight: 500;
 }
 
 .description {
   font-size: 14px;
   margin-bottom: 16px;
-}
-
-@media (min-width: 640px) {
-  .downloadContainer {
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .description {
-    font-size: 16px;
-  }
+  color: #ffffff;
 }
 
 .storeButtons {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 12px;
 }
 
 @media (max-width: 768px) {
-  .storeButtons {
-    justify-content: flex-start;
-  }
-
-  .textSection {
-    width: 100%;
+  .downloadContainer {
+    margin-top: 25px;
   }
 
   .heading {
     font-size: 18px;
     font-weight: 500;
-    color: #fff;
   }
 
   .description {
     font-size: 14px;
-    color: #ffffffab;
     font-weight: 400;
   }
 
@@ -168,5 +76,20 @@
   .storeImage {
     height: 50px;
     width: 50%;
+  }
+
+  .downloadBox {
+    flex-direction: column;
+    padding: 25px;
+  }
+
+  .mobileImage {
+    height: 200px;
+  }
+
+  .textSection {
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
   }
 }

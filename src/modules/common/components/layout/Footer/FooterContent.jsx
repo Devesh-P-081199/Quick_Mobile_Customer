@@ -2,7 +2,7 @@ import Style from "./FooterContent.module.css";
 
 function FooterContent() {
   return (
-    <section className={`default-padding-section ${Style.footerSection}`}>
+    <div className={`page-content-wrapper ${Style.footerSection}`}>
       <div className={Style.footerContentContainer}>
         <div className={Style.sectionBlock}>
           <p className={Style.description}>
@@ -179,7 +179,7 @@ function FooterContent() {
           </p>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

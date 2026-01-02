@@ -3,7 +3,7 @@ import styles from "./NewsLetter.module.css";
 
 export default function NewsLetter() {
   return (
-    <section>
+    <div>
       <div className={(styles.container, styles.newsletterwrapper)}>
         <div className={styles.wrapper}>
           <div className={styles.textSection}>
@@ -27,6 +27,6 @@ export default function NewsLetter() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

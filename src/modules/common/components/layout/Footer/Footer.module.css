@@ -2,16 +2,20 @@
   width: 100%;
   background: #ffffff;
   border-top: 1px solid #e1e1e1;
-  padding: 30px 12.5%; /* Match header container padding exactly */
+  margin: 40px auto 0;
+  box-sizing: border-box;
 }
 
 .footerContent {
   margin: 0 auto;
-  padding-bottom: 20px;
+  max-width: 1184px;
+  padding: 36px 32px 20px 32px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-wrap: wrap; /* Enable wrapping for responsive design */
-  gap: 20px; /* Reduced gap from 30px to 20px */
+  flex-wrap: wrap;
+  /* Enable wrapping for responsive design */
+  gap: 20px;
+  /* Reduced gap from 30px to 20px */
   justify-content: space-between;
   font-size: 14px;
   font-weight: 500;
@@ -20,22 +24,25 @@
 .footerColumn {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Reduced gap from 22px to 12px */
+  gap: 12px;
+  /* Reduced gap from 22px to 12px */
 }
 
 .footerHeading {
   font-family: "IBM Plex Sans", sans-serif;
-  font-weight: 500;
+  font-weight: 450;
   font-size: 20px;
   line-height: 26px;
   color: black;
-  margin-bottom: 8px; /* Added margin bottom for better spacing */
+  margin-bottom: 8px;
+  /* Added margin bottom for better spacing */
 }
 
 .footerLinks {
   display: flex;
   flex-direction: column;
-  gap: 6px; /* Reduced gap from 10px to 6px */
+  gap: 6px;
+  /* Reduced gap from 10px to 6px */
 }
 
 .footerLink {
@@ -59,11 +66,27 @@
   /* width: 109px; */
 }
 
+.footerContent {
+  margin: 0 auto;
+  max-width: 1184px;
+  padding: 36px 32px 20px 32px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  /* Enable wrapping for responsive design */
+  gap: 20px;
+  /* Reduced gap from 30px to 20px */
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
 .footerBottom {
   /* width: 1060px; */
-  margin: 30px auto;
-  margin-bottom: 0px;
-  padding-bottom: 30px;
+  margin: 30px auto 0;
+  max-width: 1184px;
+  padding: 0 32px 30px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,6 +152,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+
   .footerHeading {
     font-size: 18px;
   }
@@ -142,9 +166,11 @@
     text-decoration: none;
     transition: color 0.3s ease-in-out;
   }
+
   .footerColumn {
     width: auto;
   }
+
   .footerContainer {
     padding: 0px 10px !important;
   }
@@ -174,12 +200,12 @@
 .footerLinks {
   display: flex;
   flex-direction: column;
-  /* padding: 10px 0 0 10px; */
   gap: 8px;
 }
 
 .footerLinks a {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 400;
   color: #000;
   text-decoration: none;
 }
@@ -209,7 +235,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  text-align: center; /* Center align for better mobile experience */
+  text-align: left;
+  /* Center align for better mobile experience */
   font-size: 14px;
   margin: 0 auto;
 }
@@ -226,12 +253,15 @@
     padding: 0px 0 0 0px;
     gap: 8px;
   }
+
   .footerHeading {
     font-size: 18px;
   }
+
   .footerContainer {
     padding: 30px 80px;
   }
+
   .footerContent {
     gap: 2px;
   }
@@ -250,9 +280,11 @@
     padding: 0px 0 0 0px;
     gap: 8px;
   }
+
   .footerHeading {
     font-size: 18px;
   }
+
   .footerContent {
     gap: 30px;
   }
@@ -269,7 +301,6 @@
   text-decoration: underline;
   text-decoration-color: transparent;
   text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
   transition: text-decoration-color 0.3s ease, color 0.3s ease;
 }
 
@@ -284,13 +315,16 @@
     margin: 0 !important;
     width: 100% !important;
   }
+
   .mobileFooterContent {
     padding: 0 10px;
   }
+
   .footerLinks a:hover {
     color: black;
     text-decoration: none;
   }
+
   .footerLinks {
     display: flex;
     flex-direction: column;
@@ -379,9 +413,11 @@
   width: 100%;
   font-size: 20px;
 }
+
 .chatbox h5 {
   font-size: 16px;
 }
+
 .chatbox img {
   height: 38px;
 }
@@ -402,12 +438,15 @@
     width: 100%;
     cursor: pointer;
   }
+
   .chatbox h5 {
     font-size: 10px;
   }
+
   .chatbox img {
     height: 22px;
   }
+
   .chatbox p {
     font-size: 8px;
   }
@@ -445,9 +484,12 @@
 /* Logo Styling - Match Header Logo */
 .logo {
   height: 50px;
-  width: auto; /* Maintains aspect ratio */
-  max-width: 120px; /* Match header logo max-width */
-  object-fit: contain; /* Ensures the image fits within the dimensions */
+  width: auto;
+  /* Maintains aspect ratio */
+  max-width: 120px;
+  /* Match header logo max-width */
+  object-fit: contain;
+  /* Ensures the image fits within the dimensions */
   cursor: pointer;
 }
 
@@ -476,7 +518,8 @@
 }
 
 .getAnswersButton .chatbox:hover {
-  background-color: #155a9a; /* Slightly darker blue on hover */
+  background-color: #155a9a;
+  /* Slightly darker blue on hover */
 }
 
 /* Responsive Footer Display Classes */
@@ -548,7 +591,8 @@
   padding: 15px;
   text-align: center;
   color: white;
-  border-radius: 12px; /* Rounded borders */
+  border-radius: 12px;
+  /* Rounded borders */
 }
 
 .helpCenterContent {
@@ -561,7 +605,7 @@
 
 .helpCenterTitle {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 8px;
 }
 
@@ -576,7 +620,8 @@
   background: #3b82f6;
   color: white;
   padding: 8px 10px;
-  border-radius: 20px; /* Rounded button */
+  border-radius: 20px;
+  /* Rounded button */
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
@@ -804,7 +849,7 @@
 @media (max-width: 768px) {
   .footerBottom {
     text-align: center;
-    padding-top: 15px;
+    padding: 15px 0px;
   }
 
   .footerBottom p {
@@ -816,9 +861,11 @@
 /* Logo Responsive - Match Header Logo */
 @media (max-width: 550px) {
   .logo {
-    height: 40px; /* Match header mobile logo height */
+    height: 40px;
+    /* Match header mobile logo height */
     width: auto;
-    max-height: 65px; /* Prevents logo from being too tall on mobile */
+    max-height: 65px;
+    /* Prevents logo from being too tall on mobile */
   }
 }
 
@@ -829,6 +876,7 @@
     width: 25px;
   }
 }
+
 /* Help Center Text and Action Sections */
 .helpCenterText {
   flex: 1;
@@ -912,6 +960,7 @@
     padding: 10px 2%;
   }
 }
+
 /* Footer Responsive Padding - MATCHES HEADER EXACTLY */
 
 /* Tablet Large (992px-1199px) - Matches header exactly */
@@ -939,6 +988,7 @@
     margin: 0;
     padding: 20px 0px;
   }
+
   .mobileFooterContent {
     padding: 0 10px;
   }
