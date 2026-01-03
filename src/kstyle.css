@@ -93,3 +93,12 @@ section {
   width: var(--space-8);
   border-radius: var(--radius-base);
 }
+
+/* Profile page content scroll - Desktop only */
+/* Apply this class to profile content containers for consistent scrollable behavior */
+@media screen and (min-width: 769px) {
+  .profile-content-scroll {
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+  }
+}

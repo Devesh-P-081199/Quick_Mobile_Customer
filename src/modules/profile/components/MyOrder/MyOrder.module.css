@@ -2,19 +2,17 @@
   display: flex;
   gap: 20px;
   padding-bottom: 20px;
-  flex-direction: row-reverse;
 }
 
-.left {
-  flex: 2;
-  /* background: #fff; */
-  padding: 10px;
-  border-radius: 12px;
-}
-
-.right {
+.profileSection {
   flex: 1;
   min-width: 280px;
+}
+
+.ordersSection {
+  flex: 2;
+  padding: 10px;
+  border-radius: 12px;
 }
 
 .header {
@@ -22,7 +20,6 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 0 15px 0;
-  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -34,15 +31,22 @@
 
 .filterButtons {
   display: flex;
-  /* background-color: #fff;
-  border: 0.3px solid #e1e1e1; */
   border-radius: 15px;
   gap: 10px;
   width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.filterButtons::-webkit-scrollbar {
+  display: none;
 }
 
 .filterBtn {
   flex: 1;
+  flex-shrink: 0;
+  min-width: 90px;
   padding: 10px 5px;
   height: 45px;
   color: #000000;
@@ -103,7 +107,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .right {
+  .profileSection {
     display: none;
   }
 
@@ -112,14 +116,8 @@
     padding-bottom: 0;
   }
 
-  .left {
+  .ordersSection {
     padding: 20px 10px;
-  }
-
-  .emptyState {
-    background: #fff;
-    border: 0.3px solid #e1e1e1;
-    border-radius: 15px;
   }
 
   .shopBtn {
