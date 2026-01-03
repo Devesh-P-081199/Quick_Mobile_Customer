@@ -97,7 +97,8 @@ const DynamicRouteHandler = () => {
                 wholeVariantId: variant.wholeVariantId,
                 variantId: variant.variantId,
                 variantSlug: variant.variantSlug,
-                // Keep existing cityName, cityId, catSubcatSlug from prev
+                productSlug: variant.productSlug,
+                catSubcatSlug: slug1,
               }));
             }
 
@@ -148,7 +149,8 @@ const DynamicRouteHandler = () => {
               wholeVariantId: variant.wholeVariantId,
               variantId: variant.variantId,
               variantSlug: variant.variantSlug,
-              // Keep existing cityName, cityId, catSubcatSlug from prev
+              productSlug: variant.productSlug,
+              catSubcatSlug: slug1,
             }));
           }
 

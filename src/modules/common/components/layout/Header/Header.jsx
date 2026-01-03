@@ -80,6 +80,9 @@ const Header = () => {
   const [isBrandModalOpen, setBrandModalOpen] = useState(false); // Brand modal state
   const [isProfileDropDown] = useState(false); // Profile dropdown state (unused)
   const [home, setHome] = useState(false); // Home navigation trigger
+  const [isLoaded, setIsLoaded] = useState(() => {
+    return typeof window !== 'undefined' && window.innerWidth > 768;
+  });
 
   // Search Functionality State
   const [searchTerm, setSearchTerm] = useState(""); // Current search input
@@ -93,6 +96,7 @@ const Header = () => {
   // Navigation and Category State
   const [category, setCategories] = useState([]); // Available categories
   const [brandsWithProducts, setBrandsWithProducts] = useState([]); // Brands with their products
+  const [mobileCategory, setMobileCategory] = useState(null); // Explicit state for Mobile category
 
   // Dropdown and Hover State
   const [hoveredItem, setHoveredItem] = useState(null); // Currently hovered navigation item
@@ -146,16 +150,33 @@ const Header = () => {
    * Used for navigation dropdowns and mobile category selection
    */
   useEffect(() => {
-    const fetchCategories = async () => {
+    if (window.innerWidth <= 768) {
+      document.fonts.ready.then(() => {
+        requestAnimationFrame(() => setIsLoaded(true));
+      });
+    }
+    
+    const fetchHeaderData = async () => {
       try {
-        const res = await api.get("/common-module/categoryHasActiveBrands");
-        setCategories(res.data?.data || []);
+        // Fetch Categories
+        const catRes = await api.get("/common-module/category?option=Sell&all=true");
+        const categories = catRes.data?.categories || [];
+        setCategories(categories);
+
+        // Fetch Brands with Products
+        const brandRes = await api.get("/common-module/getBrandsAndProducts");
+        setBrandsWithProducts(brandRes.data?.BrandsWithProducts || []);
+
+        // Set Mobile Category ID for filtering
+        const mobileCat = categories.find(c => c.categoryName === "Mobile");
+        setMobileCategory(mobileCat || null);
+
       } catch (err) {
-        console.error("Error fetching categories:", err);
+        console.error("Error fetching header data:", err);
       }
     };
 
-    fetchCategories();
+    fetchHeaderData();
   }, []);
 
   /**
@@ -478,18 +499,7 @@ const Header = () => {
    * Effect: Fetch brands with their products for mobile phone navigation
    * Used in mobile modals for brand and product selection
    */
-  useEffect(() => {
-    const fetchBrandsAndProducts = async () => {
-      try {
-        const response = await api.get("/common-module/getBrandsAndProducts");
-        setBrandsWithProducts(response.data?.BrandsWithProducts || []);
-      } catch (error) {
-        console.error("Error fetching brands and products:", error);
-      }
-    };
-
-    fetchBrandsAndProducts();
-  }, []);
+    // Fetched in the main useEffect above
 
   /**
    * Effect: Manage body scroll when mobile sidebar is open
@@ -595,7 +605,10 @@ const Header = () => {
   return (
     <>
       {/* Main Header Container */}
-      <div className={styles.header}>
+      <div
+        className={styles.header}
+        style={{ opacity: isLoaded ? 1 : 0, transition: "opacity 0.2s ease-in" }}
+      >
         <div className={styles.container} ref={headerContainerRef}>
           <div className={styles.headerContainer}>
             {/* Left Group: Logo + City Selector */}
@@ -887,6 +900,8 @@ const Header = () => {
                     onClick={toggleSidebar}
                     alt="Menu"
                     className="nav-icons"
+                    width="25"
+                    height="25"
                   />
                 </div>
 
@@ -896,6 +911,8 @@ const Header = () => {
                   alt="Logo"
                   className={styles.MobileLogo}
                   onClick={handlehomeButton}
+                  width="120"
+                  height="45"
                 />
               </div>
 
@@ -905,7 +922,7 @@ const Header = () => {
                   className={styles.mobileSearchIcon}
                   onClick={() => setIsMobileSearchDrop(true)}
                 >
-                  <img src={NewSearchIcon} alt="Search" className="nav-icons" />
+                  <img src={NewSearchIcon} alt="Search" className="nav-icons" width="25" height="25" />
                 </div>
                 {isMobileSearchDrop && (
                   <div
@@ -1126,8 +1143,11 @@ const Header = () => {
                         {/* Show brands if this category is open */}
                         {openMobileCategory === cat._id && (
                           <ul className={styles.subMenu}>
-                            {cat.brands && cat.brands.length > 0 ? (
-                              cat.brands.slice(0, 10).map((brand) => (
+                            {brandsWithProducts.filter(b => b.categoryId === cat._id).length > 0 ? (
+                              brandsWithProducts
+                                .filter(b => b.categoryId === cat._id)
+                                .slice(0, 10)
+                                .map((brand) => (
                                 <li
                                   key={brand._id}
                                   className={styles.brandName}
@@ -1219,13 +1239,12 @@ const Header = () => {
                 <h2>Popular Brands</h2>
                 {openMobileCategory && (
                   <ul className={styles.mobileModalUl}>
-                    {(
-                      category.find((cat) => cat._id === openMobileCategory)
-                        ?.brands || []
-                    ).length > 0 ? (
-                      category
-                        .find((cat) => cat._id === openMobileCategory)
-                        ?.brands.slice(0, 10)
+                    {brandsWithProducts
+                      .filter((b) => b.categoryId === openMobileCategory)
+                      .length > 0 ? (
+                      brandsWithProducts
+                        .filter((b) => b.categoryId === openMobileCategory)
+                        .slice(0, 10)
                         .map((brand) => (
                           <li
                             key={brand._id}
@@ -1273,7 +1292,9 @@ const Header = () => {
             <div className={styles.MobileInnerBox}>
               <div className={styles.leftBrandBox}>
                 <ul className={styles.mobileModalUl}>
-                  {brandsWithProducts.map((brand) => (
+                  {brandsWithProducts
+                    .filter((b) => b.categoryId === mobileCategory?._id)
+                    .map((brand) => (
                     <li
                       key={brand._id}
                       onClick={() =>
@@ -1408,7 +1429,7 @@ const Header = () => {
                       }}
                     >
                       <div className={styles.categories}>
-                        {category?.map((cat) => (
+                        {category?.slice(0, 5).map((cat) => (
                           <div
                             key={cat._id}
                             className={`${styles.categoryItem} ${activeCategory === cat.categoryName
@@ -1427,47 +1448,49 @@ const Header = () => {
                             </span>
                           </div>
                         ))}
+                        {category?.length > 5 && (
+                          <div
+                            className={styles.categoryItem}
+                            onClick={() => {
+                              navigate("/view-all-category");
+                              setHoveredItem(null);
+                            }}
+                          >
+                             <span style={{ fontWeight: 600 }}>View More</span>
+                             <span className={styles.arrow}>
+                              <img src={RightArrow} alt="" />
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       {activeCategory && (
                         <div className={styles.subMenu}>
                           <h4>Brands</h4>
                           <div className={styles.brandList}>
-                            {category.map(
-                              (brand) =>
-                                activeCategory === brand.categoryName && (
-                                  <div
-                                    key={brand._id}
-                                    className={styles.brandItems}
-                                  >
-                                    {brand?.brands
-                                      ?.slice(0, 10)
-                                      .map((brandTwo) => (
-                                        <span
-                                          key={brandTwo._id}
-                                          className={styles.brandName}
-                                          onMouseEnter={() =>
-                                            setHoveredBrand(brandTwo)
-                                          }
-                                          onClick={() =>
-                                            handleBrandClick(
-                                              brandTwo._id,
-                                              brandTwo,
-                                            )
-                                          }
-                                        >
-                                          {brandTwo?.brandName}
-                                          <br />
-                                        </span>
-                                      ))}
-                                    {brand?.brands?.length > 4 && (
-                                      <button className={styles.viewMoreButton}>
-                                        View More
-                                      </button>
-                                    )}
-                                  </div>
-                                ),
-                            )}
+                            {brandsWithProducts
+                              .filter((b) => {
+                                const activeCatId = category.find(
+                                  (c) => c.categoryName === activeCategory
+                                )?._id;
+                                return b.categoryId === activeCatId;
+                              })
+                              .slice(0, 10)
+                              .map((brandTwo) => (
+                                <span
+                                  key={brandTwo._id}
+                                  className={styles.brandName}
+                                  onMouseEnter={() => setHoveredBrand(brandTwo)}
+                                  onClick={() =>
+                                    handleBrandClick(brandTwo._id, brandTwo)
+                                  }
+                                >
+                                  {brandTwo?.brandName}
+                                  <br />
+                                </span>
+                              ))}
+                            
+                            {/* View More logic if needed */}
                           </div>
                         </div>
                       )}
@@ -1487,7 +1510,10 @@ const Header = () => {
                       }}
                     >
                       <div className={styles.categories}>
-                        {brandsWithProducts?.slice(0, 3)?.map((brand) => (
+                        {brandsWithProducts
+                          ?.filter((b) => b.categoryId === mobileCategory?._id)
+                          ?.slice(0, 5)
+                          ?.map((brand) => (
                           <div
                             key={brand._id}
                             className={`${styles.categoryItem} 
