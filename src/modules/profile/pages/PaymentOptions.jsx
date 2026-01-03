@@ -45,10 +45,6 @@ const PaymentOptions = () => {
     getSavedPaymentUpi();
   }, []);
 
-  useEffect(() => {}, [paymentBank]);
-
-  useEffect(() => {}, [paymentUpi]);
-
   // Handle Add New - Navigate to PaymentForm
   const handleAddNew = () => {
     navigate("/profile/add-payment");

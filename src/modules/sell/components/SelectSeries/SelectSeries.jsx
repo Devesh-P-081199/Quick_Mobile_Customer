@@ -47,8 +47,6 @@ function SelectSeries() {
       )
     : allModels;
 
-  useEffect(() => {}, [filteredModels, allModels, seriesId]);
-
   return (
     <>
       <MobileCommonHeader

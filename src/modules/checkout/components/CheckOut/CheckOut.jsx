@@ -100,8 +100,6 @@ function CheckOut() {
     return sorted;
   };
 
-  useEffect(() => {}, [selectedAddress]);
-
   return (
     <>
       <BreadCrumb items={["Home", "Sell Your Phone"]} />
@@ -121,9 +119,6 @@ function CheckOut() {
                       selectedAddress?._id || selectedAddress?.id;
                     const isSelected =
                       selectedAddress !== null && itemId === selectedId;
-
-                    if (index === 0) {
-                    }
 
                     return (
                       <div

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css"; // import skeleton CSS
-import styles from "./Step6.module.css";
+import styles from "./OrderSummary.module.css";
 import MobileImg from "../../../../assets/images/Products/mobile.png";
 import "../../../../assets/images/icons/rightarrow.png";
 import Recalculate from "../../../../assets/images/recalculate_icon.png";
@@ -19,7 +19,7 @@ import MobileCommonHeaderthree from "../../../common/components/layout/MobileCom
 import arrow from "../../../../assets/QuickSellNewIcons/backarrowwithouttail.svg";
 import closeIcon from "../../../../assets/QuickSellNewIcons/cross.svg";
 
-function Step6() {
+function OrderSummary() {
   const {
     // allPackageData,
     currentEvaluationId,
@@ -76,7 +76,6 @@ function Step6() {
         const defaultAddress = activeAddress || fetchedAddresses[0];
 
         setSelectedAddress(defaultAddress);
-      } else {
       }
     } catch (error) {
       console.error("Error fetching addresses:", error);
@@ -136,10 +135,6 @@ function Step6() {
     fetchPaymentMethods();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {}, [selectedAddress]);
-
-  useEffect(() => {}, [selectedPaymentMethod]);
 
   const handlePlaceOrder = async () => {
     if (!selectedAddress) {
@@ -622,4 +617,4 @@ function Step6() {
   );
 }
 
-export default Step6;
+export default OrderSummary;
