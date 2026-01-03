@@ -80,7 +80,9 @@ const Header = () => {
   const [isBrandModalOpen, setBrandModalOpen] = useState(false); // Brand modal state
   const [isProfileDropDown] = useState(false); // Profile dropdown state (unused)
   const [home, setHome] = useState(false); // Home navigation trigger
-  const [isLoaded, setIsLoaded] = useState(false); // Track component mount for smooth fade-in
+  const [isLoaded, setIsLoaded] = useState(() => {
+    return typeof window !== 'undefined' && window.innerWidth > 768;
+  });
 
   // Search Functionality State
   const [searchTerm, setSearchTerm] = useState(""); // Current search input
@@ -148,7 +150,11 @@ const Header = () => {
    * Used for navigation dropdowns and mobile category selection
    */
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 500); // Delay fade-in to ensure layout stability
+    if (window.innerWidth <= 768) {
+      document.fonts.ready.then(() => {
+        requestAnimationFrame(() => setIsLoaded(true));
+      });
+    }
     
     const fetchHeaderData = async () => {
       try {
@@ -171,7 +177,6 @@ const Header = () => {
     };
 
     fetchHeaderData();
-    return () => clearTimeout(timer);
   }, []);
 
   /**
