@@ -214,15 +214,6 @@
   font-size: var(--font-size-sm);
 }
 
-.citySelector:hover .cityNameContainer span {
-  color: var(--color-interactive-primary);
-}
-
-.citySelector:hover .arrowImg {
-  transform: rotate(90deg);
-  color: #0a66c2 !important;
-}
-
 .user {
   display: flex;
   align-items: center;
@@ -759,7 +750,6 @@
 }
 
 .loginButton:active .arrowImg {
-  transform: rotate(90deg) !important;
   color: var(--color-interactive-primary) !important;
 }
 
@@ -913,7 +903,6 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: var(--z-index-overlay);
-  backdrop-filter: blur(2px);
   width: 100%;
 }
 
@@ -1599,70 +1588,83 @@
   transform: rotate(270deg);
 }
 
-/* Logout Modal Styles */
+/* Modal Styles */
 .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2000;
+  z-index: 1000;
 }
 
 .modalContent {
   background: white;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 24px;
+  border-radius: 12px;
   width: 90%;
-  max-width: 400px;
+  max-width: 320px;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .modalContent h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
+  font-family: "IBM Plex Sans";
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
   color: #333;
 }
 
 .modalContent p {
+  font-family: "IBM Plex Sans";
+  font-size: 14px;
+  margin-bottom: 24px;
   color: #666;
-  margin-bottom: 20px;
 }
 
 .modalActions {
   display: flex;
+  gap: 12px;
   justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
 }
 
 .cancelBtn {
-  padding: 8px 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: 1px solid #1968b3;
+  color: #1968b3;
   background: white;
-  cursor: pointer;
+  font-family: "IBM Plex Sans";
+  font-size: 14px;
   font-weight: 500;
-  color: #333;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .logoutBtn {
-  padding: 8px 20px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
   background: #1968b3;
   color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  font-family: "IBM Plex Sans";
+  font-size: 14px;
   font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelBtn:hover {
+  background: #f9fafb;
 }
 
 .logoutBtn:hover {
-  background: #155a9a;
+  background: #dc2626;
 }
 
 @keyframes fadeIn {
@@ -2381,6 +2383,35 @@
 
   .mobileProfileBoxesIcons {
     font-size: 18px;
+  }
+
+  /* Mobile Logout Modal Styles */
+  .modalContent {
+    width: 100%;
+    max-width: 100%;
+    margin: auto 20px;
+    padding: 20px;
+  }
+
+  .modalContent h3 {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  .modalContent p {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .modalActions {
+    gap: 10px;
+  }
+
+  .cancelBtn,
+  .logoutBtn {
+    width: 50%;
+    padding: 10px 20px;
+    height: 45px;
   }
 
 }

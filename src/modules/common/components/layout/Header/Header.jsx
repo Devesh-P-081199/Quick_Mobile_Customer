@@ -1411,11 +1411,10 @@ const Header = () => {
                         {category?.map((cat) => (
                           <div
                             key={cat._id}
-                            className={`${styles.categoryItem} ${
-                              activeCategory === cat.categoryName
+                            className={`${styles.categoryItem} ${activeCategory === cat.categoryName
                                 ? styles.active
                                 : ""
-                            }`}
+                              }`}
                             onMouseEnter={() => handleCategoryHover(cat)}
                           >
                             <img
@@ -1492,11 +1491,10 @@ const Header = () => {
                           <div
                             key={brand._id}
                             className={`${styles.categoryItem} 
-                            ${
-                              activeBrand === brand.brandName
+                            ${activeBrand === brand.brandName
                                 ? styles.active
                                 : ""
-                            }
+                              }
                             `}
                             onMouseEnter={() => handleBrandHover(brand)}
                           >
@@ -1570,11 +1568,10 @@ const Header = () => {
                         {brandsWithProducts?.slice(0, 3)?.map((brand) => (
                           <div
                             key={brand._id}
-                            className={`${styles.categoryItem} ${
-                              activeBrand === brand.brandName
+                            className={`${styles.categoryItem} ${activeBrand === brand.brandName
                                 ? styles.active
                                 : ""
-                            }`}
+                              }`}
                             onMouseEnter={() => handleBrandHover(brand)}
                           >
                             <img src={brand?.brandLogo} alt="" />
