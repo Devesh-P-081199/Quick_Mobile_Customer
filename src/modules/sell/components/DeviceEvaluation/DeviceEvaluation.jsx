@@ -139,6 +139,7 @@ function DeviceEvaluation() {
     deviceInfo,
     userSelection,
     setIsLoginModalOpen,
+    isLoginModalOpen,
     setanswersforMobile,
   } = useContext(UserContext);
 
@@ -161,6 +162,7 @@ function DeviceEvaluation() {
   const [lastInteractedQuestionId, setLastInteractedQuestionId] =
     useState(null);
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+  const [pendingPriceCalculation, setPendingPriceCalculation] = useState(false);
   const navigate = useNavigate();
 
   // Check if we have valid packages data
@@ -249,6 +251,22 @@ function DeviceEvaluation() {
       formContentRef.current.scrollTo({ top: 0, behavior: "instant" });
     }
   }, [currentPackageIndex]);
+
+  // Watch for login completion if we have a pending calculation
+  useEffect(() => {
+    if (!isLoginModalOpen && pendingPriceCalculation) {
+      const savedToken = Cookies.get("auth-token");
+      if (savedToken) {
+        setPendingPriceCalculation(false);
+        setanswersforMobile(extractAnsweredQuestions(allPackageData));
+        priceCalculationAndSave();
+      } else {
+        // User closed modal without logging in
+        setPendingPriceCalculation(false);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoginModalOpen, pendingPriceCalculation]);
 
   // ===== Adjust icon option containers for long text and equalize label heights =====
   useEffect(() => {
@@ -833,6 +851,7 @@ function DeviceEvaluation() {
 
     const savedToken = Cookies.get("auth-token");
     if (!savedToken) {
+      setPendingPriceCalculation(true);
       setIsLoginModalOpen(true);
       return;
     }
