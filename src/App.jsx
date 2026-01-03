@@ -21,8 +21,8 @@ const SelectVarient = React.lazy(
 const GetPriceUpto = React.lazy(
   () => import("./modules/sell/pages/GetPriceUpto"),
 );
-const FormStep3 = React.lazy(() => import("./modules/sell/pages/FormStep3"));
-const FormStep6 = React.lazy(() => import("./modules/sell/pages/FormStep6"));
+const DeviceEvaluationPage = React.lazy(() => import("./modules/sell/pages/DeviceEvaluationPage"));
+const OrderSummaryPage = React.lazy(() => import("./modules/sell/pages/OrderSummaryPage"));
 const CheckOut = React.lazy(
   () => import("./modules/checkout/components/CheckOut/CheckOut"),
 );
@@ -202,7 +202,7 @@ const AppContent = () => {
           path="/:slug/final-price-calculator/*"
           element={
             <Suspense fallback={<Loader />}>
-              <FormStep3 />
+              <DeviceEvaluationPage />
             </Suspense>
           }
         />
@@ -211,7 +211,7 @@ const AppContent = () => {
           path="/:slug/price-summary/*"
           element={
             <Suspense fallback={<Loader />}>
-              <FormStep6 />
+              <OrderSummaryPage />
             </Suspense>
           }
         />

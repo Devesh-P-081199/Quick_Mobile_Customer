@@ -195,6 +195,9 @@ const EditProfile = () => {
     <>
       <MobileCommonHeaderthree title="Edit Profile" />
       <section className={styles.container}>
+        <div className={styles.right}>
+          <ProfileCard />
+        </div>
         <div className={styles.left}>
           <div className={styles.avatarWrapper}>
             <div className={styles.profile}>
@@ -379,9 +382,6 @@ const EditProfile = () => {
           <button className={styles.saveButton} onClick={handleUpdateProfile}>
             Save
           </button>
-        </div>
-        <div className={styles.right}>
-          <ProfileCard />
         </div>
       </section>
     </>

@@ -45,10 +45,6 @@ const PaymentOptions = () => {
     getSavedPaymentUpi();
   }, []);
 
-  useEffect(() => {}, [paymentBank]);
-
-  useEffect(() => {}, [paymentUpi]);
-
   // Handle Add New - Navigate to PaymentForm
   const handleAddNew = () => {
     navigate("/profile/add-payment");
@@ -105,6 +101,9 @@ const PaymentOptions = () => {
       <MobileCommonHeaderthree title="Payment Options" />
       <section className="zero-padding-section">
         <div className={styles.panelWrapper}>
+          <div className={styles.right}>
+            <ProfileCard />
+          </div>
           <div className={styles.left}>
             <div className={styles.header}>
               <button className={styles.addBtn} onClick={handleAddNew}>
@@ -132,7 +131,7 @@ const PaymentOptions = () => {
               </button>
             </div>
 
-            <div className={styles.paymentsList}>
+            <div className={`${styles.paymentsList} profile-content-scroll`}>
               {/* UPI Tab Content */}
               {selectedMethod === 0 && (
                 <>
@@ -226,10 +225,6 @@ const PaymentOptions = () => {
                 </>
               )}
             </div>
-          </div>
-
-          <div className={styles.right}>
-            <ProfileCard />
           </div>
         </div>
       </section>

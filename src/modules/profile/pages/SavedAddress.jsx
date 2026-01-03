@@ -72,6 +72,9 @@ const SavedAddress = () => {
       <MobileCommonHeaderthree title="Saved Addresses" />
       <section className="zero-padding-section">
         <div className={styles.panelWrapper}>
+          <div className={styles.right}>
+            <ProfileCard />
+          </div>
           <div className={styles.left}>
             <div className={styles.header}>
               <button className={styles.addBtn} onClick={handleAddNew}>
@@ -79,7 +82,7 @@ const SavedAddress = () => {
               </button>
             </div>
 
-            <div className={styles.addressList}>
+            <div className={`${styles.addressList} profile-content-scroll`}>
               {addresses.length > 0 ? (
                 addresses.map((address, index) => (
                   <div
@@ -129,10 +132,6 @@ const SavedAddress = () => {
                 </div>
               )}
             </div>
-          </div>
-
-          <div className={styles.right}>
-            <ProfileCard />
           </div>
         </div>
       </section>

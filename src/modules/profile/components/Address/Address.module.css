@@ -71,7 +71,6 @@
   flex-direction: column;
   /* justify-content: flex-end; */
   gap: 30px;
-  overflow-y: auto;
 }
 
 .title {

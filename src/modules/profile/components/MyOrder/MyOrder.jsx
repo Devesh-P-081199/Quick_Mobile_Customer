@@ -4,6 +4,8 @@ import OrderCard from "./Order";
 import ProfileCard from "../ProfileCard";
 import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
 
+const ORDER_TABS = ["All Orders", "Buy", "Sell", "Repair"];
+
 const MyOrder = () => {
   const [activeTab, setActiveTab] = useState("Sell");
 
@@ -27,11 +29,16 @@ const MyOrder = () => {
       <MobileCommonHeaderthree title="My Orders" />
       <section className="zero-padding-section">
         <div className={styles.panelWrapper}>
-          {/* Left side */}
-          <div className={styles.left}>
+          {/* Profile sidebar */}
+          <div className={styles.profileSection}>
+            <ProfileCard />
+          </div>
+
+          {/* Orders content */}
+          <div className={styles.ordersSection}>
             <div className={styles.header}>
               <div className={styles.filterButtons}>
-                {["All Orders", "Buy", "Sell", "Repair"].map((label) => (
+                {ORDER_TABS.map((label) => (
                   <button
                     key={label}
                     onClick={() => setActiveTab(label)}
@@ -45,25 +52,19 @@ const MyOrder = () => {
               </div>
             </div>
 
-            {/* Orders or Empty State */}
-            <div className={styles.ordersList}>
+            <div className={`${styles.ordersList} profile-content-scroll`}>
               {displayedOrders.length > 0 ? (
                 displayedOrders.map((order) => (
                   <OrderCard key={order.id} order={order} />
                 ))
               ) : (
                 <div className={styles.emptyState}>
-                  <h3>You Haven’t Placed Any Orders Yet!</h3>
+                  <h3>You Haven't Placed Any Orders Yet!</h3>
                   <p>Start exploring and place your first order.</p>
                   <button className={styles.shopBtn}>Go to Shop</button>
                 </div>
               )}
             </div>
-          </div>
-
-          {/* Right side */}
-          <div className={styles.right}>
-            <ProfileCard />
           </div>
         </div>
       </section>

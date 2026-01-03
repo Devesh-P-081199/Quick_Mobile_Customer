@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import "./Step3.css";
+import "./DeviceEvaluation.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import DeviceImg from "../../../../assets/images/Products/mobile.png";
 import { UserContext } from "../../../../Context/contextAPI";
@@ -128,7 +128,7 @@ const extractAnsweredQuestions = (packageDataArray) => {
   return results;
 };
 
-function Step3() {
+function DeviceEvaluation() {
   let { slug } = useParams();
   const location = useLocation();
   const {
@@ -1069,4 +1069,4 @@ function Step3() {
   );
 }
 
-export default Step3;
+export default DeviceEvaluation;
