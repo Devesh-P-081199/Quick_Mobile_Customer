@@ -187,10 +187,8 @@
 
 .closeBtn {
   position: absolute;
-  top: 0;
-  /* No top spacing */
-  right: 0;
-  /* No right spacing */
+  top: 10px;
+  right: 10px;
   background: none;
   border: none;
   font-size: 50px;
@@ -438,9 +436,6 @@
 
   .closeBtn {
     @apply text-4xl absolute;
-    top: unset;
-    /* Remove top property */
-    right: unset;
     /* Remove right property */
   }
 
