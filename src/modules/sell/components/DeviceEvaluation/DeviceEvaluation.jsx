@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import "./DeviceEvaluation.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import DeviceImg from "../../../../assets/images/Products/mobile.png";
@@ -157,6 +158,9 @@ function DeviceEvaluation() {
   const assignedPackages = packages || [];
   const [currentPackageIndex, setCurrentPackageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [lastInteractedQuestionId, setLastInteractedQuestionId] =
+    useState(null);
+  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const navigate = useNavigate();
 
   // Check if we have valid packages data
@@ -209,6 +213,10 @@ function DeviceEvaluation() {
       ...prev,
       currentPage: prev.currentPage + 1,
     }));
+    // Scroll internal container to top
+    if (formContentRef.current) {
+      formContentRef.current.scrollTo({ top: 0, behavior: "instant" });
+    }
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   };
 
@@ -217,6 +225,10 @@ function DeviceEvaluation() {
       ...prev,
       currentPage: prev.currentPage - 1,
     }));
+    // Scroll internal container to top
+    if (formContentRef.current) {
+      formContentRef.current.scrollTo({ top: 0, behavior: "instant" });
+    }
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   };
 
@@ -229,6 +241,13 @@ function DeviceEvaluation() {
 
   useEffect(() => {
     resetConditionsPagination();
+    // Default the current package section to be expanded
+    setActiveSectionIndex(currentPackageIndex);
+
+    // Scroll internal container to top on package change
+    if (formContentRef.current) {
+      formContentRef.current.scrollTo({ top: 0, behavior: "instant" });
+    }
   }, [currentPackageIndex]);
 
   // ===== Adjust icon option containers for long text and equalize label heights =====
@@ -301,7 +320,19 @@ function DeviceEvaluation() {
 
   // ===== Refs + error tracking =====
   const questionRefs = useRef({});
+  const sidebarAnswerRefs = useRef({}); // Ref for sidebar items
+  const formContentRef = useRef(null); // Ref for scrolling form content
   const [missingQuestions, setMissingQuestions] = useState([]);
+
+  // Auto-scroll sidebar to active item
+  useEffect(() => {
+    if (lastInteractedQuestionId && sidebarAnswerRefs.current[lastInteractedQuestionId]) {
+      sidebarAnswerRefs.current[lastInteractedQuestionId].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [lastInteractedQuestionId, activeSectionIndex]); // Depend on activeSectionIndex too in case it opens
 
   // ===== Validation =====
   const validateCurrentConditionPage = () => {
@@ -501,6 +532,8 @@ function DeviceEvaluation() {
 
   // ===== Handle option change =====
   const handleOptionChange = (questionId, optionValue, isMulti) => {
+    setLastInteractedQuestionId(questionId);
+    setActiveSectionIndex(currentPackageIndex); // Ensure accordion opens
     setAllPackageData((prev) => {
       const updatedData = prev.map((pkg, index) => {
         if (index !== currentPackageIndex) return pkg;
@@ -785,6 +818,10 @@ function DeviceEvaluation() {
     if (currentPackageIndex < allPackageData.length - 1) {
       const nextIndex = currentPackageIndex + 1;
       setCurrentPackageIndex(nextIndex);
+      
+      if (formContentRef.current) {
+        formContentRef.current.scrollTo({ top: 0, behavior: "instant" });
+      }
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 
       // Save the current package index to session storage
@@ -877,46 +914,75 @@ function DeviceEvaluation() {
 
       if (!hasAnswers) return null;
 
+      const toggleSection = () => {
+        setActiveSectionIndex((prev) => (prev === index ? null : index));
+      };
+
+      const isExpanded = activeSectionIndex === index;
+
       return (
         <div key={packageData.packageId} className="package-answers">
-          <h3 className="answer-heading">
-            {`${index + 1}. ${
-              packageData?.packageType || packageData?.packageName
-            }`}
-          </h3>
-          {Object.entries(packageData.answers).map(([qid, ans], ansIndex) => {
-            const q = packageData.questions.find((q) => q.id === qid);
-            if (!q) return null;
+          <div
+            className="answer-heading-container"
+            onClick={toggleSection}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+          >
+            <h3 className="answer-heading">
+              {`${index + 1}. ${
+                packageData?.packageType || packageData?.packageName
+              }`}
+            </h3>
+            {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+          </div>
 
-            let displayValue;
-            if (Array.isArray(ans)) {
-              displayValue = ans
-                .map((value) => {
-                  const opt = q.options.find((o) => o.value === value);
-                  return opt?.label || value;
-                })
-                .filter(Boolean)
-                .join(", ");
-            } else {
-              const opt = q.options.find((o) => o.value === ans);
-              displayValue = opt?.label || ans;
-            }
+          {isExpanded && (
+            <div className="answers-list">
+              {Object.entries(packageData.answers).map(([qid, ans], ansIndex) => {
+                const q = packageData.questions.find((q) => q.id === qid);
+                if (!q) return null;
 
-            if (!displayValue) return null;
+                let displayValue;
+                if (Array.isArray(ans)) {
+                  displayValue = ans
+                    .map((value) => {
+                      const opt = q.options.find((o) => o.value === value);
+                      return opt?.label || value;
+                    })
+                    .filter(Boolean)
+                    .join(", ");
+                } else {
+                  const opt = q.options.find((o) => o.value === ans);
+                  displayValue = opt?.label || ans;
+                }
 
-            return (
-              <div key={qid} className="answer-item">
-                <p className="question-text">
-                  {`${ansIndex + 1}. ${q?.question}`}
-                </p>
-                <ul className="answer-text">
-                  {displayValue.split(",").map((item, i) => (
-                    <li key={i}>• {item.trim()}</li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
+                if (!displayValue) return null;
+
+                return (
+                  <div
+                    key={qid}
+                    ref={(el) => (sidebarAnswerRefs.current[qid] = el)}
+                    className={`answer-item ${
+                      lastInteractedQuestionId === qid ? "active-answer-item" : ""
+                    }`}
+                  >
+                    <p className="question-text">
+                      {`${ansIndex + 1}. ${q?.question}`}
+                    </p>
+                    <ul className="answer-text">
+                      {displayValue.split(",").map((item, i) => (
+                        <li key={i}>{item.trim()}</li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       );
     });
@@ -1011,7 +1077,10 @@ function DeviceEvaluation() {
 
             <h3>{allPackageData[currentPackageIndex]?.titleExplanation}</h3>
 
-            <form className="form-content scrollbar-hidden">
+            <form
+              className="form-content scrollbar-hidden"
+              ref={formContentRef}
+            >
               {getPaginatedQuestions().map((q, index) => (
                 <div
                   className="form-box"
