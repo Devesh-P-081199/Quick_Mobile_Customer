@@ -183,10 +183,10 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className={styles.footerBottom}>
           <p>
-            Registered company Quickmobile LLP. ROC Mumbai, Maharashtra. CIN : 12345678912345678912 | GST no. : 123456789123. For complaint or greviences email : grevience@quickmobile.in<br />
+            Quickmobile LLP. ROC Mumbai, Maharashtra, CIN :<b> 12345678912345678912</b> | GST no :<b> 123456789123</b>. For complaint or greviences email :<b> grevience@quickmobile.in</b><br />
             ** All trademarks, logos, and brand names are the property of their respective owners. All the company, brand or logos use here on website is for identification purpose only and does not imply ownership or endorsement.
           </p>
-          <p>&copy; 2025 Quick Mobile</p>
+          <p>&copy; 2025 Quick Mobile All Right Reserved</p>
         </div>
       </footer>
 
