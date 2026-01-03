@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./MyOrder.module.css";
 import OrderCard from "./Order";
 import ProfileCard from "../ProfileCard";
-import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 
 const ORDER_TABS = ["All Orders", "Buy", "Sell", "Repair"];
 
@@ -26,7 +26,7 @@ const MyOrder = () => {
 
   return (
     <>
-      <MobileCommonHeaderthree title="My Orders" />
+      <MobileBackHeader title="My Orders" />
       <section className="zero-padding-section">
         <div className={styles.panelWrapper}>
           {/* Profile sidebar */}

@@ -6,7 +6,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
-import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import { FaPlus } from "react-icons/fa";
 import trash from "../../../../assets/flaticons/trash-basecolor.png";
 import edit from "../../../../assets/flaticons/pen-basecolor.png";
@@ -306,7 +306,7 @@ function PaymentComponent() {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Payment" onBack={handleBack} />
+      <MobileBackHeader title="Payment" onBack={handleBack} />
 
       <section className={styles.CheckOutSection}>
         <div className={styles.Wrapper}>

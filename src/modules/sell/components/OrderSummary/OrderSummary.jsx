@@ -15,7 +15,7 @@ import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
 import Answers from "../AnswerList/Answers";
-import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import arrow from "../../../../assets/QuickSellNewIcons/backarrowwithouttail.svg";
 import closeIcon from "../../../../assets/QuickSellNewIcons/cross.svg";
 
@@ -205,7 +205,7 @@ function OrderSummary() {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Order Summery" onBack={handleBack} />
+      <MobileBackHeader title="Order Summery" onBack={handleBack} />
 
       <section className={`${styles.StepSix} mobile-pt-section `}>
         <div className="page-content-wrapper">

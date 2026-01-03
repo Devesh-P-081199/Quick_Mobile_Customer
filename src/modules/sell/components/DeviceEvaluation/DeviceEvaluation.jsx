@@ -5,7 +5,7 @@ import DeviceImg from "../../../../assets/images/Products/mobile.png";
 import { UserContext } from "../../../../Context/contextAPI";
 import Cookies from "js-cookie";
 import api from "../../../../Utils/api";
-import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 
 // Import flaticons for broken items
 import cameraIcon from "../../../../assets/flaticons/camera.png";
@@ -926,7 +926,7 @@ function DeviceEvaluation() {
   if (isLoading) {
     return (
       <>
-        <MobileCommonHeaderthree title="Calculation" />
+        <MobileBackHeader title="Calculation" />
         <section className="form-section mobile-pt-section">
           <div className="wrapper">
             <div className="loading-container">
@@ -941,7 +941,7 @@ function DeviceEvaluation() {
   if (!allPackageData || allPackageData.length === 0) {
     return (
       <>
-        <MobileCommonHeaderthree title="Calculation" />
+        <MobileBackHeader title="Calculation" />
         <section className="form-section mobile-pt-section">
           <div className="wrapper">
             <div className="error-container">
@@ -963,7 +963,7 @@ function DeviceEvaluation() {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Calculation" onBack={handlePrevious} />
+      <MobileBackHeader title="Calculation" onBack={handlePrevious} />
       <section className="form-section mobile-pt-section">
         <div className="wrapper">
           {/* Left Side */}

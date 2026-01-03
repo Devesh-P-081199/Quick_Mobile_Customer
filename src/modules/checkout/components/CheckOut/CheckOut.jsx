@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { UserContext } from "../../../../Context/contextAPI";
 import api from "../../../../Utils/api";
 import BreadCrumb from "../../../common/components/layout/BreadCrumb/BreadCrumb";
-import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import { FaPlus } from "react-icons/fa";
 import trash from "../../../../assets/flaticons/trash-basecolor.png";
 import edit from "../../../../assets/flaticons/pen-basecolor.png";
@@ -103,7 +103,7 @@ function CheckOut() {
   return (
     <>
       <BreadCrumb items={["Home", "Sell Your Phone"]} />
-      <MobileCommonHeaderthree title="Address" onBack={handleBack} />
+      <MobileBackHeader title="Address" onBack={handleBack} />
       <section className={`${styles.CheckOutSection} mobile-pt-section `}>
         <div className={styles.Wrapper}>
           <div className={styles.LeftContainer}>

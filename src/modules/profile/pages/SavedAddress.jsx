@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SavedAddress.module.css";
 import ProfileCard from "../components/ProfileCard";
-import MobileCommonHeaderthree from "../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import { FaMapMarkerAlt, FaPlus, FaHome, FaBriefcase } from "react-icons/fa";
 import api from "../../../Utils/api";
 import { toast } from "react-toastify";
@@ -69,7 +69,7 @@ const SavedAddress = () => {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Saved Addresses" />
+      <MobileBackHeader title="Saved Addresses" />
       <section className="zero-padding-section">
         <div className={styles.panelWrapper}>
           <div className={styles.right}>

@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import api from "../../../../Utils/api";
-import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import styles from "./Order.module.css";
 import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
@@ -168,7 +168,7 @@ const OrderDetails = () => {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Order Details" />
+      <MobileBackHeader title="Order Details" />
       <div className={styles.container}>
         {/* Device Info Header */}
         <div className={styles.modalDeviceInfo}>

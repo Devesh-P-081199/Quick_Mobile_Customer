@@ -2,7 +2,7 @@ import styles from "./MobileCommonHeader.module.css";
 import { useNavigate } from "react-router-dom";
 import newBackIcon from "../../../../../assets/QuickSellNewIcons/BackArrow.svg";
 
-const MobileCommonHeaderthree = ({ title, onSearch, onBack }) => {
+const MobileBackHeader = ({ title, onSearch, onBack }) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -26,4 +26,4 @@ const MobileCommonHeaderthree = ({ title, onSearch, onBack }) => {
   );
 };
 
-export default MobileCommonHeaderthree;
+export default MobileBackHeader;

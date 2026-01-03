@@ -9,7 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { UserContext } from "../../../Context/contextAPI";
-import MobileCommonHeaderthree from "../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import rightangle from "../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 
 const ProfileCard = () => {
@@ -43,7 +43,7 @@ const ProfileCard = () => {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Profile" />
+      <MobileBackHeader title="Profile" />
       <div className={styles.cardContainer}>
         <div className={styles.profile}>
           <div className={styles.profileImage}>

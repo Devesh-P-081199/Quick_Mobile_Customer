@@ -3,7 +3,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import styles from "./AddressForm.module.css";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
-import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import BreadCrumb from "../../../common/components/layout/BreadCrumb/BreadCrumb";
 
 const AddressForm = () => {
@@ -155,7 +155,7 @@ const AddressForm = () => {
   return (
     <>
       <BreadCrumb items={["Home", "Sell Your Phone"]} />
-      <MobileCommonHeaderthree
+      <MobileBackHeader
         title={editingAddress ? "Edit Address" : "Add Address"}
       />
       <section className={`${styles.addressFormSection} mobile-pt-section`}>

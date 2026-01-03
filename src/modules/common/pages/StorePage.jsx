@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import styles from "./StorePage.module.css";
-import MobileCommonHeaderthree from "../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
 import storeImg from "../../../assets/images/store_img.jpg";
 import location from "../../../assets/flaticons/location.png";
 import time from "../../../assets/flaticons/clock.png";
@@ -111,7 +111,7 @@ function StorePage() {
 
   return (
     <>
-      <MobileCommonHeaderthree
+      <MobileBackHeader
         title="Our Store"
         onBack={() => window.history.back()}
       />

@@ -2,12 +2,12 @@ import { FaTicketAlt } from "react-icons/fa";
 import styles from "./offer.module.css";
 // Import ProfileCard
 import ProfileCard from "../ProfileCard";
-import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 
 const NoOffer = () => {
   return (
     <>
-      <MobileCommonHeaderthree title="Offer" />
+      <MobileBackHeader title="Offer" />
       <section className="zero-padding-section">
         <div className={styles.panelWrapper}>
           <div className={styles.right}>

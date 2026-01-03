@@ -3,7 +3,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import styles from "./PaymentForm.module.css";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
-import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import BreadCrumb from "../../../common/components/layout/BreadCrumb/BreadCrumb";
 import { UserContext } from "../../../../Context/contextAPI";
 
@@ -180,7 +180,7 @@ const PaymentForm = () => {
   return (
     <>
       <BreadCrumb items={["Home", "Sell Your Phone"]} />
-      <MobileCommonHeaderthree
+      <MobileBackHeader
         title={editingPayment ? "Edit Payment Method" : "Add Payment Method"}
       />
       <section className={`${styles.paymentFormSection} mobile-pt-section`}>

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./StoresListPage.module.css";
-import MobileCommonHeaderthree from "../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
 import location from "../../../assets/flaticons/location.png";
 import time from "../../../assets/flaticons/clock.png";
 import storeImg from "../../../assets/images/store_img.jpg";
@@ -26,7 +26,7 @@ function StoresListPage() {
 
   return (
     <>
-      <MobileCommonHeaderthree
+      <MobileBackHeader
         title="Our Stores"
         onBack={() => window.history.back()}
       />

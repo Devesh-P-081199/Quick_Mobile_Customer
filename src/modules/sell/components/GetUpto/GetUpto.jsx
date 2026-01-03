@@ -1,13 +1,11 @@
 import { useContext, useEffect, useRef, useState, useCallback } from "react";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import styles from "./GetUpto.module.css";
 import backarrow from "../../../../assets/images/icons/back.png";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
-import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import TopSellingBrand from "../../../common/components/TrustedBrands/TopSellingBrand";
 import TopSellingModel from "../../../common/components/TopSellingModel/TopSellingModel";
 
@@ -188,7 +186,7 @@ const GetUpto = () => {
 
   return (
     <>
-      <MobileCommonHeaderthree
+      <MobileBackHeader
         title="Get Price"
         onBack={() => {
           const productSlug = userSelection?.productSlug;
@@ -211,14 +209,12 @@ const GetUpto = () => {
               {/* Left Section: Product Image */}
               <div className={styles.leftContent}>
                 <div className={styles.leftImgBox}>
-                  {deviceInfo?.devicePic ? (
+                  {deviceInfo?.devicePic && (
                     <img
                       src={deviceInfo.devicePic}
                       alt={deviceInfo.deviceName}
                       title={deviceInfo.deviceName}
                     />
-                  ) : (
-                    <Skeleton height={300} width={200} />
                   )}
 
                   <NavLink to="/select-varient">
@@ -235,13 +231,14 @@ const GetUpto = () => {
               {/* Right Section: Product Details */}
               <div className={styles.productDetails}>
                 <h2 className={styles.productTitle}>
-                  Sell Old{" "}
                   {deviceInfo?.deviceName ? (
-                    deviceInfo.deviceName
+                    <>
+                      Sell Old {deviceInfo.deviceName}{" "}
+                      {deviceInfo?.variantDetail && `(${deviceInfo.variantDetail})`}
+                    </>
                   ) : (
-                    <Skeleton width={150} />
-                  )}{" "}
-                  {deviceInfo?.variantDetail && `(${deviceInfo.variantDetail})`}
+                    "\u00A0"
+                  )}
                 </h2>
 
                 {/* Price Info */}
@@ -312,9 +309,7 @@ const GetUpto = () => {
                           }}
                         ></div>
                       </div>
-                    ) : (
-                      <Skeleton height={80} width={390} />
-                    )}
+                    ) : null}
                   </div>
 
                   <p className={styles.userData}>
@@ -326,11 +321,9 @@ const GetUpto = () => {
                 <div className={styles.extraInfo}>
                   <p>
                     Get up to <br />
-                    {finalPrice !== null ? (
-                      <span className={styles.redText}>₹{finalPrice}</span>
-                    ) : (
-                      <Skeleton width={100} />
-                    )}
+                      <span className={styles.redText}>
+                        {finalPrice !== null ? `₹${finalPrice}` : "\u00A0"}
+                      </span>
                   </p>
 
                   <div className={styles.highlightBox}>

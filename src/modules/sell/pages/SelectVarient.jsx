@@ -2,7 +2,7 @@ import { useContext } from "react";
 import SellDeviceVarient from "../components/SellDeviceVarientSelect/SellDeviceVarient";
 import TopSellingBrand from "../../common/components/TrustedBrands/TopSellingBrand";
 import TopSellingModel from "../../common/components/TopSellingModel/TopSellingModel";
-import MobileCommonHeaderthree from "../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../Context/contextAPI";
 
@@ -27,7 +27,7 @@ function SelectVarient() {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Your Device" onBack={handleBack} />
+      <MobileBackHeader title="Your Device" onBack={handleBack} />
 
       <div className="page-content">
         <SellDeviceVarient />

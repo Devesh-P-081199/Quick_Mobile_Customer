@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { FaCheckCircle, FaTimes } from "react-icons/fa";
 import { FiEdit2 } from "react-icons/fi";
 import styles from "./EditProfile.module.css";
-import MobileCommonHeaderthree from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import ProfileCard from "../ProfileCard";
 import newCloseBtn from "../../../../assets/QuickSellNewIcons/Cross.svg";
 import cameraIcon from "../../../../assets/images/icons/camera-new.png";
@@ -193,7 +193,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Edit Profile" />
+      <MobileBackHeader title="Edit Profile" />
       <section className={styles.container}>
         <div className={styles.right}>
           <ProfileCard />

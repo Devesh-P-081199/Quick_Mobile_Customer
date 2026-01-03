@@ -4,7 +4,7 @@ import ProfileCard from "../ProfileCard";
 import { toast } from "react-toastify";
 
 import api from "../../../../Utils/api";
-import MobileCommonHeaderthree from "../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 
 const Address = () => {
   const [isAddressOpen, setIsAddressOpen] = useState(false);
@@ -185,7 +185,7 @@ const Address = () => {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Address" />
+      <MobileBackHeader title="Address" />
       <section>
         <div className={`${styles.addressContainer} scrollbar-hidden`}>
           <div className={styles.left}>

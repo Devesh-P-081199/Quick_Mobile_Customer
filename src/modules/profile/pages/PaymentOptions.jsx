@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PaymentOptions.module.css";
 import ProfileCard from "../components/ProfileCard";
-import MobileCommonHeaderthree from "../../common/components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import { FaCreditCard, FaPlus } from "react-icons/fa";
 import api from "../../../Utils/api";
 import { toast } from "react-toastify";
@@ -98,7 +98,7 @@ const PaymentOptions = () => {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Payment Options" />
+      <MobileBackHeader title="Payment Options" />
       <section className="zero-padding-section">
         <div className={styles.panelWrapper}>
           <div className={styles.right}>

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ProfileCard from "./ProfileCard";
 import { UserContext } from "../../../Context/contextAPI";
 import api from "../../../Utils/api";
-import MobileCommonHeaderthree from "../../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
 const EditProfile = () => {
   const [ProfileUpdate, setProfileUpdate] = React.useState({
     name: "",
@@ -50,7 +50,7 @@ const EditProfile = () => {
   };
   return (
     <>
-      <MobileCommonHeaderthree title="Edit Profile" />
+      <MobileBackHeader title="Edit Profile" />
       <section>
         <div className="flex flex-col md:flex-row justify-between items-start gap-4 p-4">
           <div>

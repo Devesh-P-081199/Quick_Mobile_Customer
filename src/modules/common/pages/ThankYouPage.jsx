@@ -8,7 +8,7 @@ import batteryImg from "../../../assets/flaticons/battery-with-a-bolt-symbol.png
 import playImg from "../../../assets/flaticons/play.png";
 import documentImg from "../../../assets/flaticons/document.png";
 import bankImg from "../../../assets/flaticons/bank-account.png";
-import MobileCommonHeaderthree from "../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../Context/contextAPI";
 import api from "../../../Utils/api";
@@ -164,7 +164,7 @@ const ThankYouPage = () => {
 
   return (
     <>
-      <MobileCommonHeaderthree
+      <MobileBackHeader
         title="Order Confirmation"
         onBack={() => navigate("/")}
       />

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./BlogsPage.module.css";
-import MobileCommonHeaderthree from "../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
 import blogsData from "./block-content.json";
 
 const BlogsPage = () => {
@@ -31,7 +31,7 @@ const BlogsPage = () => {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Blogs" />
+      <MobileBackHeader title="Blogs" />
 
       <div className={styles.blogsPageContainer}>
         {/* Header Section */}

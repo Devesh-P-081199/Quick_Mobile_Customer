@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./BlogDetail.module.css";
-import MobileCommonHeaderthree from "../components/layout/MobileCommonHeader/MobileCommonHeaderthree";
+import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
 import blogsData from "./block-content.json";
 
 const BlogDetail = () => {
@@ -32,7 +32,7 @@ const BlogDetail = () => {
   if (!blog) {
     return (
       <>
-        <MobileCommonHeaderthree title="Blog" />
+        <MobileBackHeader title="Blog" />
         <div className={styles.errorContainer}>
           <h2>Blog not found</h2>
           <p>The blog you're looking for doesn't exist.</p>
@@ -43,7 +43,7 @@ const BlogDetail = () => {
 
   return (
     <>
-      <MobileCommonHeaderthree title="Blog" />
+      <MobileBackHeader title="Blog" />
 
       <div className={styles.blogDetailContainer}>
         {/* Blog Header */}

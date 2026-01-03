@@ -1,7 +1,5 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import Cookies from "js-cookie";
 import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
@@ -197,9 +195,7 @@ function SellDeviceVarient() {
         <div className={`${styles.wrapper}`}>
           <div className={styles.leftContent}>
             <div className={styles.leftImgBox}>
-              {isImageLoading ? (
-                <Skeleton height={300} width={200} />
-              ) : (
+              {!isImageLoading && (
                 <img
                   src={variants.productId.devicePic}
                   alt={variants.productId?.deviceName}
@@ -217,11 +213,7 @@ function SellDeviceVarient() {
 
           <div className={styles.rightContent}>
             <h2 className={styles.heading}>
-              {isPhoneNameLoading ? (
-                <Skeleton width={180} />
-              ) : (
-                `Sell Old ${phoneName}`
-              )}
+              {phoneName ? `Sell Old ${phoneName}` : "\u00A0"}
             </h2>
 
             <div className={styles.selectBox}>
@@ -234,18 +226,8 @@ function SellDeviceVarient() {
 
             <form onSubmit={handleContinue}>
               <div className={styles.form}>
-                {isVariantsLoading
-                  ? Array(3)
-                      .fill()
-                      .map((_, i) => (
-                        <Skeleton
-                          key={i}
-                          height={20}
-                          width={150}
-                          style={{ marginBottom: 12 }}
-                        />
-                      ))
-                  : variants.variants.map((option) => (
+                {!isVariantsLoading &&
+                  variants.variants.map((option) => (
                       <label
                         key={option._id}
                         className={`${styles.radioLabel} ${
