@@ -56,14 +56,6 @@
   /* Prevent content from being hidden behind fixed header */
 }
 
-/* Mobile body padding adjustment - Add padding for fixed header */
-@media (max-width: 768px) {
-  :global(body) {
-    padding-top: 56px !important;
-    /* Padding for fixed header on mobile */
-  }
-}
-
 .container {
   position: fixed;
   /* Fixed positioning to stay at top */
@@ -738,6 +730,14 @@
   /* Slightly higher than header container */
   transition: none !important;
   /* Prevent layout animations */
+}
+
+/* Mobile body padding adjustment - Add padding for fixed header */
+@media (max-width: 768px) {
+  :global(body) {
+    padding-top: 56px !important;
+    /* Padding for fixed header on mobile */
+  }
 }
 
 @media (max-width: 768px) {
