@@ -35,6 +35,7 @@ import NewBackArrow from "../../../../../assets/QuickSellNewIcons/BackArrowwitho
 
 // External Dependencies
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import { UserContext } from "../../../../../Context/contextAPI";
 import debounce from "lodash.debounce";
 import api from "../../../../../Utils/api";
@@ -103,6 +104,7 @@ const Header = () => {
 
   // Authentication State
   const [authType, setAuthType] = useState("login"); // Current auth modal type (login/signup)
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   // Refs for DOM manipulation
   const searchRef = useRef(null); // Search container reference
@@ -116,6 +118,7 @@ const Header = () => {
   const {
     userSelection, // Selected city data
     user, // Current user data
+    setUser,
     toggleModal, // City selection modal toggle
     isLoginModalOpen, // Login modal state
     setIsLoginModalOpen, // Login modal state setter
@@ -188,6 +191,19 @@ const Header = () => {
     setAuthType("login");
     setIsLoginModalOpen(true);
     setIsOpen(false); // Close mobile sidebar
+  };
+
+  const handleLogOut = () => {
+    setShowLogoutModal(true);
+  };
+
+  const confirmLogout = () => {
+    Cookies.remove("userSelection");
+    Cookies.remove("user");
+    Cookies.remove("auth-token");
+    setUser({});
+    navigate("/");
+    setShowLogoutModal(false);
   };
 
   /**
@@ -784,7 +800,10 @@ const Header = () => {
                         <FaTags className={styles.icon} />
                         Offers
                       </div>
-                      <div className={styles.dropdownItem}>
+                      <div
+                        className={styles.dropdownItem}
+                        onClick={handleLogOut}
+                      >
                         <FaSignOutAlt className={styles.icon} />
                         Logout
                       </div>
@@ -1811,6 +1830,26 @@ const Header = () => {
           )}
         </div>
       </div>
+
+      {showLogoutModal && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <h3>Are you sure you want to logout?</h3>
+            <p>Hope to see you back soon!!</p>
+            <div className={styles.modalActions}>
+              <button
+                className={styles.cancelBtn}
+                onClick={() => setShowLogoutModal(false)}
+              >
+                Cancel
+              </button>
+              <button className={styles.logoutBtn} onClick={confirmLogout}>
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

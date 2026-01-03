@@ -1,6 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css"; // import skeleton CSS
 import styles from "./OrderSummary.module.css";
 import MobileImg from "../../../../assets/images/Products/mobile.png";
 import "../../../../assets/images/icons/rightarrow.png";
@@ -213,95 +211,77 @@ function OrderSummary() {
           <div className={styles.LeftBox}>
             <div className={styles.DeviceImg}>
               <div className={styles.mobileImg}>
-                {loading ? (
-                  <Skeleton height={200} width={150} />
-                ) : (
-                  <img
-                    src={currentEvaluationId?.devicePic || MobileImg}
-                    alt=""
-                  />
-                )}
+                <img
+                  src={currentEvaluationId?.devicePic || MobileImg}
+                  alt=""
+                />
               </div>
               <div className={styles.DeviceDetails}>
                 <h2 className={styles.name}>
-                  {loading ? (
-                    <Skeleton width={200} />
-                  ) : (
-                    <>
-                      {currentEvaluationId?.deviceName} (
-                      {currentEvaluationId?.deviceVariant})
-                    </>
-                  )}
+                  <>
+                    {currentEvaluationId?.deviceName} (
+                    {currentEvaluationId?.deviceVariant})
+                  </>
                 </h2>
                 <div className={styles.pricing}>
                   <h2 className={styles.price}>Selling Price</h2>
                   <span className="color-red">
-                    {loading ? (
-                      <Skeleton width={80} />
-                    ) : (
-                      `₹ ${(currentEvaluationId?.finalPrice || 0).toFixed(2)}`
-                    )}
+                    {`₹ ${(currentEvaluationId?.finalPrice || 0).toFixed(2)}`}
                   </span>
                 </div>
                 <span className={styles.infoLine}>
-                  {loading ? (
-                    <Skeleton width={150} />
-                  ) : (
-                    "5,933+ Sold on QuickMobile"
-                  )}
+                  "5,933+ Sold on QuickMobile"
                 </span>
-                {!loading && (
-                  <>
-                    <NavLink
-                      to={`/${slug}/final-price-calculator?${queryParams.toString()}`}
-                      className={styles.recalculate}
-                      onClick={() => {
-                        // Clear all Step3 form data when recalculating
-                        const productId = queryParams.get("pid");
-                        const variantId = queryParams.get("vid");
+                <>
+                  <NavLink
+                    to={`/${slug}/final-price-calculator?${queryParams.toString()}`}
+                    className={styles.recalculate}
+                    onClick={() => {
+                      // Clear all Step3 form data when recalculating
+                      const productId = queryParams.get("pid");
+                      const variantId = queryParams.get("vid");
 
-                        if (productId) {
-                          // Clear packageDetails so old selections don't show in Device Details
-                          const packageDetailsKey = `packageDetails_${productId}`;
-                          sessionStorage.removeItem(packageDetailsKey);
+                      if (productId) {
+                        // Clear packageDetails so old selections don't show in Device Details
+                        const packageDetailsKey = `packageDetails_${productId}`;
+                        sessionStorage.removeItem(packageDetailsKey);
 
-                          // Clear step3 form data
-                          const storageKey = `step3PackageData_${productId}_${
-                            variantId || "unknown"
-                          }`;
-                          sessionStorage.removeItem(storageKey);
+                        // Clear step3 form data
+                        const storageKey = `step3PackageData_${productId}_${
+                          variantId || "unknown"
+                        }`;
+                        sessionStorage.removeItem(storageKey);
 
-                          // Clear current package index
-                          const currentIndexKey = `currentPackageIndex_${storageKey}`;
-                          sessionStorage.removeItem(currentIndexKey);
+                        // Clear current package index
+                        const currentIndexKey = `currentPackageIndex_${storageKey}`;
+                        sessionStorage.removeItem(currentIndexKey);
 
-                          // Clear packages data
-                          const packagesKey = `packages_${productId}`;
-                          sessionStorage.removeItem(packagesKey);
+                        // Clear packages data
+                        const packagesKey = `packages_${productId}`;
+                        sessionStorage.removeItem(packagesKey);
 
-                          // Clear form submitted flag
-                          const formSubmittedKey = `formSubmitted_${productId}`;
-                          sessionStorage.removeItem(formSubmittedKey);
+                        // Clear form submitted flag
+                        const formSubmittedKey = `formSubmitted_${productId}`;
+                        sessionStorage.removeItem(formSubmittedKey);
 
-                          // Set recalculate flag to force Step3 to load fresh
-                          const recalculateKey = `recalculate_${productId}`;
-                          sessionStorage.setItem(recalculateKey, "true");
-                        }
-                      }}
-                    >
-                      <img
-                        src={Recalculate}
-                        alt="Recalculate"
-                        className={styles.recalculateImg}
-                      />
-                    </NavLink>
+                        // Set recalculate flag to force Step3 to load fresh
+                        const recalculateKey = `recalculate_${productId}`;
+                        sessionStorage.setItem(recalculateKey, "true");
+                      }
+                    }}
+                  >
                     <img
-                      src={FreePickup}
-                      alt=""
-                      className={styles.FreePickupImg}
+                      src={Recalculate}
+                      alt="Recalculate"
+                      className={styles.recalculateImg}
                     />
-                  </>
-                )}
+                  </NavLink>
+                  <img
+                    src={FreePickup}
+                    alt=""
+                    className={styles.FreePickupImg}
+                  />
+                </>
               </div>
             </div>
             <div className={styles.deliveryfeature}>
@@ -323,14 +303,10 @@ function OrderSummary() {
               </div>
             </div>
             <p className={styles.BottomPara}>
-              {loading ? (
-                <Skeleton count={3} />
-              ) : (
-                `Congratulations! Based on the details you provided, your device is
+              {`Congratulations! Based on the details you provided, your device is
               valued at ₹ ${currentEvaluationId?.finalPrice}. This is the best
               price we offer, reflecting the current market demand and the
-              condition of your device. Ready to move forward?`
-              )}
+              condition of your device. Ready to move forward?`}
             </p>
           </div>
 
@@ -495,76 +471,39 @@ function OrderSummary() {
             </div>
           )}
 
-          {/* Right Section */}
-          <div className={styles.RightBox}>
-            <div className={styles.details}>
-              <div className={styles.summary}>
-                {loading ? <Skeleton width={100} /> : "Summary"}
-              </div>
-              <div className={styles.row}>
-                <span className={styles.label}>
-                  {loading ? <Skeleton width={80} /> : "Phone Price"}
-                </span>
-                <span className={styles.value}>
-                  {loading ? (
-                    <Skeleton width={80} />
-                  ) : (
-                    `₹ ${currentEvaluationId?.finalPrice}`
-                  )}
-                </span>
-              </div>
-              <div className={styles.row}>
-                <span className={styles.label}>
-                  {loading ? <Skeleton width={100} /> : "Pickup Charges"}
-                </span>
-                <div className={styles.pickupCharges}>
-                  {loading ? (
-                    <>
-                      <Skeleton width={40} />
-                      <Skeleton
-                        width={40}
-                        style={{
-                          marginLeft: 10,
-                          textDecoration: "line-through",
-                        }}
-                      />
-                    </>
-                  ) : (
+            {/* Right Section */}
+            <div className={styles.RightBox}>
+              <div className={styles.details}>
+                <div className={styles.summary}>Summary</div>
+                <div className={styles.row}>
+                  <span className={styles.label}>Phone Price</span>
+                  <span className={styles.value}>
+                    {`₹ ${currentEvaluationId?.finalPrice}`}
+                  </span>
+                </div>
+                <div className={styles.row}>
+                  <span className={styles.label}>Pickup Charges</span>
+                  <div className={styles.pickupCharges}>
                     <>
                       <span className={styles.free}>Free</span>
                       <span className={styles.striked}>₹ 150</span>
                     </>
-                  )}
+                  </div>
                 </div>
-              </div>
-              <div className={styles.row}>
-                <span className={styles.label}>
-                  {loading ? <Skeleton width={80} /> : "Processing"}
-                </span>
-                <span className={styles.value}>
-                  {loading ? <Skeleton width={40} /> : "Free"}
-                </span>
-              </div>
-              <div className={styles.row}>
-                <span className={styles.label}>
-                  {loading ? <Skeleton width={100} /> : "Offer/Coupon"}
-                </span>
-                <span className={styles.value}>
-                  {loading ? <Skeleton width={40} /> : "₹10.00"}
-                </span>
-              </div>
-              <div className={styles.totalRow}>
-                <span className={styles.totalLabel}>
-                  {loading ? <Skeleton width={80} /> : "Total"}
-                </span>
-                <span className={styles.totalValue}>
-                  {loading ? (
-                    <Skeleton width={80} />
-                  ) : (
-                    `₹ ${currentEvaluationId?.finalPrice}`
-                  )}
-                </span>
-              </div>
+                <div className={styles.row}>
+                  <span className={styles.label}>Processing</span>
+                  <span className={styles.value}>Free</span>
+                </div>
+                <div className={styles.row}>
+                  <span className={styles.label}>Offer/Coupon</span>
+                  <span className={styles.value}>₹10.00</span>
+                </div>
+                <div className={styles.totalRow}>
+                  <span className={styles.totalLabel}>Total</span>
+                  <span className={styles.totalValue}>
+                    {`₹ ${currentEvaluationId?.finalPrice}`}
+                  </span>
+                </div>
             </div>
 
             {/* Place Order Button */}
