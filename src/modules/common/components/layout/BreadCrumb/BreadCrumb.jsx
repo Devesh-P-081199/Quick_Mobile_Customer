@@ -4,16 +4,18 @@ import { FaAngleRight } from "react-icons/fa";
 
 function BreadCrumb({ items = [] }) {
   return (
-    <section className={styles.breadcrumbsection}>
+    <div className={styles.breadcrumbsection}>
       <div className={styles.wrapper}>
         {items.map((item, index) => (
           <React.Fragment key={index}>
             <h2>{item}</h2>
-            {index < items.length - 1 && <FaAngleRight />}
+            &nbsp;&nbsp;
+            {index < items.length - 1 && '>'}
+            &nbsp;&nbsp;
           </React.Fragment>
         ))}
       </div>
-    </section>
+    </div>
   );
 }
 

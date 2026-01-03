@@ -6,8 +6,6 @@ import debounce from "lodash.debounce";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import api from "../../../../Utils/api";
 import { UserContext } from "../../../../Context/contextAPI";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import NewSearchIcon from "../../../../assets/QuickSellNewIcons/Search.svg";
 import MobileSearchModal from "./MobileSearchModal/MobileSearchModal";
 
@@ -156,7 +154,7 @@ function SellHomeBanner({ onViewAllClick }) {
         setResults(data); // ✅ desktop results
         setShowDropdown(true);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const debouncedSearchMain = useMemo(
@@ -281,8 +279,8 @@ function SellHomeBanner({ onViewAllClick }) {
   }, [category]);
 
   return (
-    <section className="default-padding-section sell-banner-only zero-padding-section">
-      <div className="common-container wrapper">
+    <div className={styles.sellbanneronly}>
+      <div className={styles.bannerContainer}>
         <div className={styles.sellerbanner}>
           <div className={styles.leftImg}>
             <img src={BannerImage} alt="Sell Banner" title="Sell Banner" />
@@ -318,53 +316,46 @@ function SellHomeBanner({ onViewAllClick }) {
               >
                 {isLoadingCategories
                   ? Array(5)
-                      .fill()
-                      .map((_, index) => (
-                        <div className={styles.imgCard} key={index}>
-                          <div className={styles.imageBg}>
-                            <Skeleton circle height={50} width={50} />
-                          </div>
-                          <Skeleton
-                            width={70}
-                            height={10}
-                            style={{ marginTop: "5px" }}
-                          />
+                    .fill()
+                    .map((_, index) => (
+                      <div className={styles.imgCard} key={index}>
+                        <div className={styles.imageBg}>
                         </div>
-                      ))
+                      </div>
+                    ))
                   : [...category]
-                      .sort((a, b) => {
-                        if (a._id === selectedCategoryId) return -1;
-                        if (b._id === selectedCategoryId) return 1;
-                        return 0;
-                      })
-                      .map((cat, index) => (
-                        <div
-                          key={index}
-                          onClick={() =>
-                            handleNavigate(
-                              cat._id,
-                              cat.categoryName,
-                              cat?.slug?.sell,
-                            )
-                          }
-                          className={`${styles.imgCard} ${
-                            selectedCategoryId === cat._id
-                              ? styles.selectedCategory
-                              : ""
+                    .sort((a, b) => {
+                      if (a._id === selectedCategoryId) return -1;
+                      if (b._id === selectedCategoryId) return 1;
+                      return 0;
+                    })
+                    .map((cat, index) => (
+                      <div
+                        key={index}
+                        onClick={() =>
+                          handleNavigate(
+                            cat._id,
+                            cat.categoryName,
+                            cat?.slug?.sell,
+                          )
+                        }
+                        className={`${styles.imgCard} ${selectedCategoryId === cat._id
+                          ? styles.selectedCategory
+                          : ""
                           }`}
-                        >
-                          <div className={styles.imageBg}>
-                            <img
-                              src={cat?.categoryImageUrl || MobileIcon}
-                              alt={cat?.categoryName}
-                              title={cat?.categoryName}
-                            />
-                            <span className={styles.cardName}>
-                              {cat.categoryName}
-                            </span>
-                          </div>
+                      >
+                        <div className={styles.imageBg}>
+                          <img
+                            src={cat?.categoryImageUrl || MobileIcon}
+                            alt={cat?.categoryName}
+                            title={cat?.categoryName}
+                          />
+                          <span className={styles.cardName}>
+                            {cat.categoryName}
+                          </span>
                         </div>
-                      ))}
+                      </div>
+                    ))}
 
                 <div
                   className={`${styles.imgCard} ${styles.viewAllCard}`}
@@ -463,37 +454,39 @@ function SellHomeBanner({ onViewAllClick }) {
             <div className={styles.suggestionBrandBox}>
               {isLoadingBrands
                 ? Array(4)
-                    .fill()
-                    .map((_, i) => (
-                      <div key={i} className={styles.brands}>
-                        <div className={styles.brandImageBg}>
-                          <Skeleton circle width={50} height={50} />
-                        </div>
-                        <Skeleton
-                          width={60}
-                          height={9}
-                          style={{ marginTop: 5 }}
-                        />
-                      </div>
-                    ))
-                : brands.slice(0, 4).map((icon, index) => (
-                    <div key={index}>
-                      <div
-                        className={styles.brandImageBg}
-                        onClick={() =>
-                          navigate(`${icon.slugSell}`, { replace: true })
-                        }
-                      >
-                        <img
-                          src={icon?.brandLogo}
-                          alt={icon?.brandName}
-                          title={icon?.brandName}
-                        />
+                  .fill()
+                  .map((_, i) => (
+                    <div key={i} className={styles.brands}>
+                      <div className={styles.brandImageBg}>
                       </div>
                     </div>
-                  ))}
-              {/* {!isLoadingBrands && brands.length > 4 && (
-              )} */}
+                  ))
+                : brands.slice(0, 4).map((icon, index) => (
+                  <div key={index}>
+                    <div
+                      className={styles.brandImageBg}
+                      onClick={() =>
+                        navigate(`${icon.slugSell}`, { replace: true })
+                      }
+                    >
+                      <img
+                        src={icon?.brandLogo}
+                        alt={icon?.brandName}
+                        title={icon?.brandName}
+                      />
+                    </div>
+                  </div>
+                ))}
+              <div className={styles.brandImageBg} onClick={onViewAllClick}>
+                <span className={styles.dotButton}>
+                  <div className={styles.dotsContainer}>
+                    <span className={styles.dot} />
+                    <span className={styles.dot} />
+                    <span className={styles.dot} />
+                  </div>
+                </span>
+                <span className={styles.morelink}>More</span>
+              </div>
             </div>
             <button className={styles.laptopviewall} onClick={onViewAllClick}>
               View all
@@ -501,7 +494,7 @@ function SellHomeBanner({ onViewAllClick }) {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

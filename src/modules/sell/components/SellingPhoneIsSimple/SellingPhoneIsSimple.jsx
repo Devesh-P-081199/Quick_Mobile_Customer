@@ -5,7 +5,7 @@ import cloud from "../../../../assets/QuickSellNewIcons/BannerCloud.svg";
 
 const SellingPhoneIsSimple = () => {
   return (
-    <div className={styles.container}>
+    <div className="page-content-wrapper">
       <div className={styles.bannerWrapper}>
         <h2>
           Trusted by <span className={styles.highlight}>600k+</span> customers,

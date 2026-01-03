@@ -3,8 +3,8 @@
 }
 
 .heading h2 {
-  font-size: 18px;
-  margin: 25px 0 0 0;
+  font-size: 24px;
+  margin: 0;
   font-family: "IBM Plex Sans";
   font-weight: 500;
 }
@@ -14,13 +14,13 @@
   flex-direction: column;
   gap: 15px;
   align-items: center;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
 }
 
 .heading p {
   font-family: IBM Plex Sans;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.4;
   text-align: center;
   color: #555;
@@ -32,7 +32,7 @@
   position: relative;
   width: 100%;
   /* Default Desktop: Horizontal */
-  padding: 40px 0;
+  padding: 30px 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +40,7 @@
 
 .progressBarContainer {
   position: absolute;
-  top: 60px;
+  top: 54px;
   /* Constrain line to be between the centers of first and last item */
   /* Items are 18% width. Center is at 9%. */
   left: 9%;
@@ -100,10 +100,25 @@
   /* Optional border to make it pop more? */
   border: 0.3px solid #e1e1e1;
   /* Mask the line behind it cleanly */
+  flex-shrink: 0;
+}
+
+.timelineItem:first-child .markerContainer {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 6px;
+}
+
+.timelineItem:last-child .markerContainer {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 6px;
 }
 
 .marker {
-  font-size: 30px;
+  font-size: 20px;
   color: #e1e1e1;
   transition: color 0.1s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -131,6 +146,7 @@
   min-height: 120px;
   border: 0.3px solid #e1e1e1;
   /* Ensure some uniformity in height */
+  flex-grow: 1;
 }
 
 .active .contentBox {
@@ -170,10 +186,6 @@
   /* Center horizontally */
 }
 
-
-
-
-
 .contentBox h3 {
   font-size: 16px;
   font-weight: 500;
@@ -194,8 +206,7 @@
   margin-bottom: 0px;
 }
 
-/* Responsive: Mobile / Vertical Layout */
-@media (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .customTimelineContainer {
     flex-direction: row;
     align-items: flex-start;
@@ -264,17 +275,21 @@
   .contentBox {
     width: 100%;
     min-height: auto;
+    height: auto;
   }
 
   .progressBarContainer {
     /* Recalculate left for mobile specific padding */
     left: calc(20px + 25px - 2px);
   }
-}
 
-@media screen and (max-width: 768px) {
+  .heading {
+    margin-bottom: 25px;
+  }
+
   .heading h2 {
     font-size: 18px;
+    margin: 25px 0 0 0;
   }
 
   .heading p {

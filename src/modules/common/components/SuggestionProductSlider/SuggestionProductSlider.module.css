@@ -1,5 +1,6 @@
 /* CardSlider.module.css */
 .sliderContainer {
+  display: none;
   width: 100%;
   max-width: 1024px;
   margin: auto;
@@ -139,6 +140,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .sliderContainer {
+    display: block;
+  }
+
   .sellBtn {
     padding: 7px 25px !important;
     width: fit-content !important;
