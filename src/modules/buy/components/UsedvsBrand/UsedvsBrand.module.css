@@ -3,7 +3,7 @@
   max-width: 1140px;
   margin: auto;
   margin-top: 25px;
-  border: 0.3px solid #e1e1e1;
+  box-shadow: 0px 0px 4px 1px #00000006;
   border-radius: 15px;
   background-color: #ffffff;
   display: flex;
@@ -89,6 +89,8 @@
   .container {
     padding: 25px 10px;
     flex-direction: column;
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .description {

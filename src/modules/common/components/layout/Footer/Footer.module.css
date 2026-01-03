@@ -6,20 +6,7 @@
   box-sizing: border-box;
 }
 
-.footerContent {
-  margin: 0 auto;
-  max-width: 1184px;
-  padding: 36px 32px 20px 32px;
-  border-bottom: 0.3px solid rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-wrap: wrap;
-  /* Enable wrapping for responsive design */
-  gap: 20px;
-  /* Reduced gap from 30px to 20px */
-  justify-content: space-between;
-  font-size: 14px;
-  font-weight: 500;
-}
+
 
 .footerColumn {
   display: flex;
@@ -38,12 +25,7 @@
   /* Added margin bottom for better spacing */
 }
 
-.footerLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  /* Reduced gap from 10px to 6px */
-}
+
 
 .footerLink {
   font-family: "IBM Plex Sans", sans-serif;
@@ -81,7 +63,6 @@
   font-weight: 500;
 }
 
-
 .footerBottom {
   /* width: 1060px; */
   margin: 30px auto 0;
@@ -109,14 +90,7 @@
   gap: 4px;
 }
 
-.footerRightBox img {
-  width: 125px;
-  height: 40px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .footerCopyright {
   font-family: "IBM Plex Sans", sans-serif;
@@ -147,21 +121,13 @@
   margin: 0;
 }
 
-.footerLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
 .footerLinks a {
   font-size: 14px;
   font-weight: 400;
-  color: #000;
-  text-decoration: none;
-}
-
-.footerLinks a:hover {
-  color: #555;
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .logoSection {
@@ -270,7 +236,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
-  border: 1px solid transparent;
+  border: 1px solid #1968b3;
 }
 
 .mobileFooterColumn .getAnswersBtn:hover {
@@ -445,7 +411,7 @@
 .helpCenterTitle {
   font-size: 18px;
   font-weight: 500;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 
 .helpCenterSubtitle {
@@ -471,9 +437,8 @@
 }
 
 .getAnswersBtn:hover {
-  background: transparent;
-  border-color: white;
-  color: white;
+  text-decoration: none;
+  color: #fff;
 }
 
 .helpCenterText {
@@ -534,6 +499,10 @@
     margin-top: 0px;
   }
 
+  .helpCenterTitle {
+    margin-bottom: 8px;
+  }
+
   .followUsTitle,
   .helpCenterTitle {
     font-size: 24px;
@@ -581,7 +550,7 @@
 
   .socialIconLink {
     width: 30px;
-    height: 30helpCenterTitlepx;
+    height: 30px;
   }
 
   .socialIconLink img {
@@ -607,10 +576,7 @@
     padding: 15px 0px;
   }
 
-  .footerBottom p {
-    font-size: 12px;
-    line-height: 1.4;
-  }
+
 
   .helpCenterContent {
     flex-direction: column;
@@ -634,6 +600,8 @@
   }
 
   .footerBottom p {
+    font-size: 12px;
+    ;
     padding: 0;
   }
 
@@ -646,6 +614,7 @@
   }
 
   .notice {
+
     border-bottom: none;
   }
 

@@ -85,6 +85,7 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     /* Add padding for shadow visibility */
+    padding: 5px;
 }
 
 .blogList::-webkit-scrollbar {
@@ -95,7 +96,7 @@
 .blogCard {
     background-color: #ffffff;
     border-radius: 15px;
-    border: 0.3px solid #e1e1e1;
+    box-shadow: 0px 0px 4px 1px #00000006;
     overflow: hidden;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -204,6 +205,8 @@
 
     .blogCard {
         width: 320px;
+        border: 0.3px solid #e1e1e1;
+        box-shadow: none;
     }
 
     .card {
