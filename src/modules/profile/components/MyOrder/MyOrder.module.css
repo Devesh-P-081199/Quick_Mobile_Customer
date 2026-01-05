@@ -1,0 +1,126 @@
+.panelWrapper {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.profileSection {
+  flex: 1;
+  min-width: 280px;
+}
+
+.ordersSection {
+  flex: 2;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 15px 0;
+  gap: 10px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+.filterButtons {
+  display: flex;
+  border-radius: 15px;
+  gap: 10px;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.filterButtons::-webkit-scrollbar {
+  display: none;
+}
+
+.filterBtn {
+  flex: 1;
+  flex-shrink: 0;
+  min-width: 90px;
+  padding: 10px 5px;
+  height: 45px;
+  color: #000000;
+  background-color: #fff;
+  border: 0.3px solid #e1e1e1;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border-radius: 15px;
+  font-weight: 500;
+}
+
+.activeBtn {
+  color: #1968b3;
+  background-color: #ddefff !important;
+  border: 1px solid #1968b3;
+}
+
+.ordersList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  background: #fff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 15px;
+}
+
+.emptyState h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.emptyState p {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.shopBtn {
+  background: #1968b3;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.shopBtn:hover {
+  background: #0056b3;
+}
+
+@media screen and (max-width: 768px) {
+  .profileSection {
+    display: none;
+  }
+
+  .panelWrapper {
+    flex-direction: column;
+    padding-bottom: 0;
+  }
+
+  .ordersSection {
+    padding: 20px 10px;
+  }
+
+  .shopBtn {
+    height: 45px;
+  }
+}

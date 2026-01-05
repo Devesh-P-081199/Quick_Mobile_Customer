@@ -1,8 +1,5 @@
+import { Helmet } from "react-helmet-async";
 
-import React from "react";
-import { Helmet } from "react-helmet";
-
-// 🔹 Static SEO (never comes from backend)
 const staticSEO = {
   canonical: "https://www.quickmobile.in/",
   robots: "index, follow",
@@ -24,30 +21,24 @@ const fallbackSEO = {
 };
 
 const SEO = ({ seoData = {} }) => {
-  // const mergedSEO = {
   //   ...fallbackSEO,
   //   ...seoData,
   //   ...staticSEO,
-  // };
 
   const mergedSEO = {
-  ...staticSEO,     // base constants
-  ...fallbackSEO,   // fallback if backend is empty
-  ...seoData,       
-};
-
-//console.log("Merged SEO inside <SEO />:", mergedSEO);
-
+    ...staticSEO, // base constants
+    ...fallbackSEO, // fallback if backend is empty
+    ...seoData,
+  };
 
   return (
     <Helmet>
       {/* ---------- BASIC SEO ---------- */}
       <title>{mergedSEO.title}</title>
-      {/* <meta name="description" content={mergedSEO.description} /> */}
-<meta
-  name="description"
-  content={mergedSEO.description || fallbackSEO.description}
-/>
+      <meta
+        name="description"
+        content={mergedSEO.description || fallbackSEO.description}
+      />
 
       {/* ---------- CANONICAL & ROBOTS ---------- */}
       <link rel="canonical" href={mergedSEO.canonical} />
@@ -88,7 +79,10 @@ const SEO = ({ seoData = {} }) => {
       </script>
 
       {/* ---------- GOOGLE ANALYTICS ---------- */}
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+      ></script>
       <script>
         {`
           window.dataLayer = window.dataLayer || [];

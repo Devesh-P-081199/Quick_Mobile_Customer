@@ -1,0 +1,329 @@
+.StaticSection {
+  font-family: IBM Plex Sans;
+}
+
+.heading h2 {
+  font-size: 24px;
+  margin: 0;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.heading p {
+  font-family: IBM Plex Sans;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+  color: #555;
+  margin-bottom: 0px;
+}
+
+/* Custom Timeline Container */
+.customTimelineContainer {
+  position: relative;
+  width: 100%;
+  /* Default Desktop: Horizontal */
+  padding: 30px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progressBarContainer {
+  position: absolute;
+  top: 54px;
+  /* Constrain line to be between the centers of first and last item */
+  /* Items are 18% width. Center is at 9%. */
+  left: 9%;
+  width: 82%;
+  height: 4px;
+  z-index: 0;
+}
+
+.progressBarTrack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e1e1e1;
+  border-radius: 2px;
+}
+
+.progressBarFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--fill-percent);
+  height: 100%;
+  background-color: #1968b3;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+  /* Reduced delay/lag */
+}
+
+.timelineItems {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.timelineItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 18%;
+  text-align: center;
+  position: relative;
+}
+
+.markerContainer {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  /* Optional border to make it pop more? */
+  border: 0.3px solid #e1e1e1;
+  /* Mask the line behind it cleanly */
+  flex-shrink: 0;
+}
+
+.timelineItem:first-child .markerContainer {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 6px;
+}
+
+.timelineItem:last-child .markerContainer {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-top: 6px;
+}
+
+.marker {
+  font-size: 20px;
+  color: #e1e1e1;
+  transition: color 0.1s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.active .marker {
+  transform: scale(1.1);
+  color: inherit;
+  /* Takes color from inline style */
+}
+
+/* Content Box Pop-out effect */
+/* Content Box Pop-out effect - Dramatic Increase */
+.contentBox {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  opacity: 0;
+  /* More dramatic start state: scaled down further, pushed down more */
+  transform: scale(0.5) translateY(50px);
+  /* Bouncy spring effect */
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  width: 100%;
+  /* Consistent width filling the item container */
+  min-height: 120px;
+  border: 0.3px solid #e1e1e1;
+  /* Ensure some uniformity in height */
+  flex-grow: 1;
+}
+
+.active .contentBox {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Notch / Arrow */
+.contentBox::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border: 0.3px solid #e1e1e1;
+  /* Rotate to form triangle */
+  transform: rotate(45deg);
+  /* Top-pointing arrow (Desktop horizontal content below): 
+     Need Top-Left corner of square to be the tip? 
+     No, rotated 45deg:
+     Top-Left corner becomes Top.
+     So border-top and border-left form the top point.
+     But for a box BELOW the marker, the arrow points UP.
+     The arrow connects to the top of the box.
+     So the bottom half of the diamond is inside the box.
+     The top half is sticking out.
+     So border-top and border-left should be visible.
+  */
+  border-right: none;
+  border-bottom: none;
+
+  /* Position centered on top edge */
+  top: -7px;
+  /* half of diagonal roughly to spill over? 14px * 1.414 = 20px diag. Half is 10px. -7px? */
+  left: 50%;
+  margin-left: -7px;
+  /* Center horizontally */
+}
+
+.contentBox h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.contentBox h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.contentBox p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .customTimelineContainer {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    /* Space at bottom */
+  }
+
+  /* Adjust line logic for vertical */
+  .progressBarContainer {
+    top: 25px;
+    /* Center of first marker approx */
+    left: 43px;
+    /* Align with marker center approx. 20px padding + 25px center - 2px line width */
+    width: 4px;
+    height: var(--mobile-line-height, 100%);
+    bottom: auto;
+  }
+
+  .progressBarFill {
+    width: 100%;
+    height: var(--fill-percent);
+    transition: height 0.1s linear;
+  }
+
+  .timelineItems {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+  }
+
+  .timelineItem {
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    align-items: flex-start;
+    /* Remove padding or margins that distort calculation */
+  }
+
+  .markerContainer {
+    margin-bottom: 0;
+    margin-top: 0px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Update Notch for Left Arrow */
+  .contentBox::before {
+    /* Reset transform */
+    transform: rotate(45deg);
+
+    /* Left-pointing arrow (Bottom-Left corner): */
+    border: 0.3px solid #e1e1e1;
+    border-top: none;
+    border-right: none;
+
+    /* Position on left edge */
+    top: 20px;
+    left: -7px;
+    margin-left: 0;
+  }
+
+  .contentBox {
+    width: 100%;
+    min-height: auto;
+    height: auto;
+  }
+
+  .progressBarContainer {
+    /* Recalculate left for mobile specific padding */
+    left: calc(20px + 25px - 2px);
+  }
+
+  .heading {
+    margin-bottom: 25px;
+  }
+
+  .heading h2 {
+    font-size: 18px;
+    margin: 25px 0 0 0;
+  }
+
+  .heading p {
+    font-size: 14px;
+  }
+
+  .markerContainer {
+    width: 55px;
+    height: 55px;
+    margin-left: 2px;
+  }
+
+  .timelineItem:first-child .markerContainer {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-top: 8px;
+  }
+
+  .timelineItem:last-child .markerContainer {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-top: 8px;
+  }
+
+  .marker {
+    font-size: 18px;
+  }
+
+  .progressBarContainer {
+    left: calc(20px + 10px - 2px);
+    /* Mobile Padding + Half Icon 20px - Half Line 2px */
+  }
+
+
+}

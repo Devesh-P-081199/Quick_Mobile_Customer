@@ -1,0 +1,178 @@
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import styles from "./SelectSeries.module.css";
+import api from "../../../../Utils/api";
+import closeicon from "../../../../assets/QuickSellNewIcons/Cross.svg";
+import MobileCommonHeader from "../../../common/components/layout/MobileCommonHeader/MobileCommonHeader";
+import TopSellingModel from "../../../common/components/TopSellingModel/TopSellingModel";
+import TopSellingBrand from "../../../common/components/TrustedBrands/TopSellingBrand";
+import { UserContext } from "../../../../Context/contextAPI";
+
+function SelectSeries() {
+  const [series, setSeries] = useState([]);
+  const [seriesId, setSeriesId] = useState(null);
+  const [allModels, setAllModels] = useState([]);
+  const [, setSeoData] = useState({});
+  const { setUserSelection } = useContext(UserContext);
+
+  const navigate = useNavigate();
+  const { slug1, slug2 } = useParams();
+  const finalSlug = slug2 || slug1;
+
+  useEffect(() => {
+    const fetchSeriesModels = async () => {
+      try {
+        const resp = await api.get(
+          `/sell-module/user/fetchSeriesModels?option=Sell&brandSlug=${finalSlug}`,
+        );
+
+        setSeries(resp.data?.series || []);
+        setAllModels(resp.data?.models || []);
+        setSeoData(resp.data?.seo || {});
+      } catch (error) {
+        console.error("Error fetching series/models:", error);
+      }
+    };
+    fetchSeriesModels();
+  }, [finalSlug]);
+
+  // Filter series based on selection
+  const displayedSeries =
+    seriesId !== null ? series.filter((item) => item._id === seriesId) : series;
+
+  // Filter models based on selected series
+  const filteredModels = seriesId
+    ? allModels.filter(
+        (model) => model.deviceSeries?.toString() === seriesId?.toString(),
+      )
+    : allModels;
+
+  return (
+    <>
+      <MobileCommonHeader
+        title="Sell {Brand} {Category}"
+        onBack={() => {
+          // Use replace: true to avoid adding history entries that cause back loops
+          if (slug1) {
+            navigate(`/${slug1}`, { replace: true });
+          } else {
+            navigate("/", { replace: true });
+          }
+        }}
+        onSearch
+      />
+
+      <div className={styles.mobilePtSection}>
+        {displayedSeries.length > 0 && (
+          <section className="page-content-wrapper">
+            <div className="wrapper">
+              <div className={styles.wrapper}>
+                <div className={styles.headingFlex}>
+                  <h2 className={styles.sectionHeading01}>Select Series</h2>
+                </div>
+                <ul className={styles.seriesList}>
+                  {displayedSeries.map((item) => (
+                    <li
+                      key={item._id}
+                      onClick={() =>
+                        setSeriesId((prev) =>
+                          prev === item._id ? null : item._id,
+                        )
+                      }
+                      className={`${styles.seriesItem} ${
+                        seriesId === item._id ? styles.active : ""
+                      }`}
+                    >
+                      {item.seriesName}
+                      {seriesId === item._id && (
+                        <span
+                          className={styles.crossIcon}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSeriesId(null);
+                          }}
+                        >
+                          <img src={closeicon} alt="close" title="close" />
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Models List */}
+        <section className="page-content-wrapper">
+          <div className="wrapper">
+            {}
+            {filteredModels.length > 0 ? (
+              <div className={styles.wrapper}>
+                <div className={styles.headingFlex}>
+                  <h2 className={styles.sectionHeading}>Select Model</h2>
+                </div>
+                <ul className={styles.modellist}>
+                  {filteredModels.map((modelItem) => (
+                    <li
+                      key={modelItem._id}
+                      onClick={() => {
+                        // Store brandSlug (current page's brand) for back navigation from SelectVarient
+                        setUserSelection((prev) => ({
+                          ...prev,
+                          catSubcatSlug: slug1,
+                          brandSlug: finalSlug, // Store brand slug for back navigation
+                        }));
+
+                        if (modelItem?.singleVariant) {
+                          // Use variantSlug preferably, fallback to variantId
+                          const variantPath =
+                            modelItem?.variantSlug || modelItem?.variantId;
+
+                          navigate(`/${slug1}/${variantPath}`, {
+                            replace: true,
+                          });
+                          return;
+                        } else {
+                          navigate(`/${slug1}/${modelItem.slugSell}`, {
+                            replace: true,
+                          });
+                          return;
+                        }
+                      }}
+                      className={styles.brandSingleBox}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <div className={styles.imgIndividual}>
+                        <img
+                          src={
+                            modelItem?.devicePic ||
+                            modelItem?.icon ||
+                            "https://via.placeholder.com/160x160?text=No+Image"
+                          }
+                          alt={modelItem?.deviceName || "Device"}
+                          title={modelItem?.deviceName || "Device"}
+                          onError={(e) => {
+                            e.target.src =
+                              "https://via.placeholder.com/160x160?text=No+Image";
+                          }}
+                        />
+                      </div>
+                      {modelItem?.deviceName || "Unknown Device"}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <p>No Models Found</p>
+            )}
+          </div>
+        </section>
+        <TopSellingBrand />
+        <TopSellingModel />
+      </div>
+    </>
+  );
+}
+
+export default SelectSeries;

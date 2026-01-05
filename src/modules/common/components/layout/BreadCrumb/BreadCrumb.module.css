@@ -1,0 +1,33 @@
+.breadcrumbsection {
+  max-width: 1184px;
+  margin: 20px auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  max-width: 1140px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 5px;
+}
+
+.wrapper h2 {
+  font-size: 14px;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .breadcrumbsection {
+    padding-bottom: 18px;
+    padding-top: 18px;
+    display: none;
+  }
+
+  .wrapper h2 {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,62 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  color: #444;
+}
+
+.iconWrapper {
+  background: #f1f1f1;
+  border-radius: 50%;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  font-size: 3rem;
+  color: #888;
+}
+
+.text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Layout Styles matching SavedAddress */
+.panelWrapper {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.right {
+  width: 350px;
+}
+
+@media (max-width: 768px) {
+  .panelWrapper {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+
+  .right {
+    display: none;
+  }
+
+  .left {
+    gap: 15px;
+  }
+}

@@ -1,0 +1,434 @@
+.wrapper {
+  /* background: #f9fafb; */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  /* padding: 2rem 1rem; */
+}
+
+.iconBox {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconBox img {
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+}
+
+.checkIcon {
+  font-size: 40px;
+  color: white;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+  color: #555;
+}
+
+.orderIdBox {
+  border-radius: 8px;
+  display: inline-block;
+  margin: 10px 0;
+  font-size: 12px;
+  color: #555;
+}
+
+.thankBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.orderIdBox p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+}
+
+.desc {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+  text-align: center;
+}
+
+/* Offer Box */
+.offerBox {
+  display: flex;
+  align-items: center;
+  background: #fff3e6;
+  padding: 1rem;
+  border-radius: 10px;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.offerImage {
+  width: 90px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.offerContent {
+  flex: 1;
+}
+
+.offerTitle {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 0.25rem;
+}
+
+.offerSubtext {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.buyBtn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Info Grid */
+.infoGrid {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #fff;
+  border: 0.3px solid #e1e1e1;
+  margin: 15px 0;
+}
+
+.infoCard {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  gap: 15px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 0.3px solid #00000023;
+}
+
+.infoCard:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.infoCard h4 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.infoCard p {
+  font-size: 14px;
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+
+.infoIcon {
+  background: #e6f4ff;
+  min-width: 45px;
+  min-height: 45px;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  padding: 7px;
+  margin-top: 2px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.infoIcon img {
+  margin: auto;
+}
+
+/* Buttons */
+.btnBox {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.homeBtn {
+  max-width: 250px;
+  border: 0.3px solid #e1e1e1;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.orderBtn {
+  max-width: 250px;
+  background: #1968b3;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 1540px) and (min-width: 900px) {
+  .offerContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  .offerTitle {
+    padding: 15px 80px;
+    font-size: 22px;
+  }
+
+  .buyBtn {
+    width: 20%;
+    font-size: 20px;
+  }
+}
+
+/* Buttons */
+.btnBox {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.homeBtn {
+  border: 0.3px solid #e1e1e1;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.orderBtn {
+  background: #1968b3;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  flex: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+
+  .offerBox {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .offerContent {
+    text-align: center;
+  }
+
+  .btnBox {
+    flex-direction: column;
+  }
+
+  .homeBtn,
+  .orderBtn {
+    width: 100%;
+  }
+
+  .offerBox {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .offerContent {
+    text-align: left;
+  }
+
+  /* Fix buttons at bottom */
+  .btnBox {
+    gap: 15px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+  }
+
+  .homeBtn,
+  .orderBtn {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .checkIcon {
+    font-size: 25px;
+  }
+
+  .title {
+    font-size: 20px;
+    width: 95%;
+    margin: auto;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .desc {
+    font-size: 14px;
+  }
+
+  .detailsForm {
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+}
+
+/* Additional Details Form Styles */
+.detailsForm {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  text-align: left;
+  border: 0.3px solid #e1e1e1;
+}
+
+.formTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.inputGroup label,
+.uploadGroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.inputField {
+  width: 100%;
+  padding: 10px;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.inputField:focus {
+  border-color: #007fee;
+}
+
+.uploadContainer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.imagePreview {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  position: relative;
+  border: 1px solid #ddd;
+  overflow: visible;
+}
+
+.imagePreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.removeBtn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #555;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 10px;
+  padding: 0;
+}
+
+.uploadBtn {
+  width: 80px;
+  height: 80px;
+  border: 2px dashed #1968b3;
+  /* Dashed border color from screenshot */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #1968b3;
+  font-size: 20px;
+  transition: background 0.2s;
+}
+
+.uploadBtn:hover {
+  background: #ddefff;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 10px;
+  background: #1968b3;
+  /* Similar red/pink color from screenshot */
+  color: white;
+  border: none;
+  border-radius: 12px;
+  /* Rounded pill shape from screenshot */
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submitBtn.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

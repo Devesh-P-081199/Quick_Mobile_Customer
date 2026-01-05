@@ -23,8 +23,10 @@ body {
 }
 
 .scrollbar-hidden {
-  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none;
+  /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none;
+  /* Hide scrollbar for Firefox */
 }
 
 .footer-container {
@@ -122,6 +124,7 @@ body {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+
   .footer-content,
   .footer-bottom {
     width: 90%;
@@ -155,6 +158,7 @@ body {
     max-width: 150px;
   }
 }
+
 .footer-container .iconbox {
   display: flex;
   flex-wrap: wrap;
@@ -212,7 +216,10 @@ body {
   gap: 20px;
   flex-direction: column;
   align-items: flex-start;
-  padding: 20px 12.5%; /* Match header padding exactly */
+  max-width: 1184px;
+  padding: 0 2rem;
+  margin: auto;
+  /* Match header padding exactly */
   width: 100%;
   position: relative;
 }
@@ -253,7 +260,7 @@ body {
 /* Image */
 .slider-image {
   position: absolute;
-  right: -22px;
+  right: 0px;
   top: 50%;
   transform: translateY(-50%);
   width: 362px;
@@ -264,14 +271,16 @@ body {
 .slider-dots {
   display: flex;
   justify-content: center;
-  padding: 20px 0px;
+  padding: 20px 0px 5px;
   gap: 5px;
 }
 
 .dot {
   width: 8px;
-  height: 8px; /* Perfect circle for inactive dots */
-  border-radius: 50%; /* Perfect circle */
+  height: 8px;
+  /* Perfect circle for inactive dots */
+  border-radius: 50%;
+  /* Perfect circle */
   border: 1px solid #ccc;
   background: #ccc;
   cursor: pointer;
@@ -280,10 +289,14 @@ body {
 }
 
 .dot.active {
-  width: 25px; /* Elongated width (3x wider) for progress bar */
-  height: 8px; /* Half height for log/oval shape */
-  border-radius: 10px; /* Oval/log shape for progress bar */
-  background: #ccc; /* White background for contrast */
+  width: 25px;
+  /* Elongated width (3x wider) for progress bar */
+  height: 8px;
+  /* Half height for log/oval shape */
+  border-radius: 10px;
+  /* Oval/log shape for progress bar */
+  background: #ccc;
+  /* White background for contrast */
   position: relative;
   overflow: hidden;
 }
@@ -300,8 +313,10 @@ body {
     #4a90e2
   ); */
   background: #1968b3;
-  border-radius: 10px; /* Match the oval shape */
-  transition: width 0.05s linear; /* Smooth animation */
+  border-radius: 10px;
+  /* Match the oval shape */
+  transition: width 0.05s linear;
+  /* Smooth animation */
   z-index: 1;
 }
 
@@ -331,77 +346,49 @@ body {
   right: 10px;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .slider-content {
-    padding: 20px 40px;
-  }
-  .slider-description {
-    font-size: 24px;
-    line-height: 32px;
-  }
-  .slider-image {
-    width: 300px;
-  }
-}
 
-@media (max-width: 768px) {
-  .slider-content {
-    padding: 15px 20px;
-  }
-  .slider-title {
-    font-size: 18px;
-  }
-  .slider-description {
-    font-size: 20px;
-    line-height: 28px;
-  }
-  .slider-button {
-    font-size: 14px;
-    padding: 10px 25px;
-  }
-  .slider-image {
-    width: 250px;
-  }
-}
-
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .slider-nav {
     display: none;
   }
+
   .slider-container {
     height: 350px;
   }
+
   .slider-content {
     gap: 13px;
   }
+
   .slider-content {
     padding: 10px;
   }
+
   .slider-title {
     font-size: 14px;
   }
+
   .slider-description {
     font-size: 16px;
     line-height: 24px;
   }
+
   .slider-button {
     font-size: 12px;
     padding: 12px 20px;
     width: 50%;
   }
-  .slider-image {
-    width: 200px;
-    display: none;
-  }
+
   .slider-nav {
     width: 30px;
     height: 30px;
   }
+
   .dot {
     width: 8px;
     height: 8px;
   }
+
   .home-two-slider {
     display: none;
   }
@@ -745,6 +732,7 @@ body {
 .home-second-slider {
   height: 474px;
 }
+
 .home-two-slider .slider-container {
   display: flex;
   justify-content: space-between;
@@ -919,8 +907,6 @@ body {
 
 .scroll-container {
   overflow-x: auto;
-  padding-bottom: 20px; /* Creates space for hover */
-  margin-bottom: -20px; /* Prevents unwanted gaps */
 }
 
 .innercontainer {
@@ -977,12 +963,14 @@ body {
   max-width: 724px;
   width: 63%;
 }
+
 .sell-banner-wrapper .banner-heading {
   padding: 0px 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .sell-banner-wrapper .banner-heading h2 {
   font-size: 36px;
   font-family: "IBM Plex Sans";
@@ -992,6 +980,7 @@ body {
 .sell-banner-wrapper .animated-text {
   color: #f26921;
 }
+
 .sell-banner-wrapper .img-slider {
   display: flex;
   gap: 15px;
@@ -1032,6 +1021,7 @@ body {
   max-width: 595px;
   width: 100%;
 }
+
 .sell-banner-wrapper .search-box {
   margin-left: 10px;
   position: relative;
@@ -1084,6 +1074,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .why-sell-wrapper .why-card {
   display: flex;
   /* align-items: center; */
@@ -1098,6 +1089,7 @@ body {
   font-size: 22px;
   text-align: center;
 }
+
 .why-sell-wrapper .why-card .why-upper {
   background: #282a2b;
   display: flex;
@@ -1113,6 +1105,7 @@ body {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+
 .why-sell-wrapper .why-card .why-lower {
   background: #ebffcb;
   height: 110px;
@@ -1143,6 +1136,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .Select-Brand-wrapper .brand-image-box .img-individual {
   width: 146px;
   height: 150px;
@@ -1182,12 +1176,14 @@ body {
   max-width: 595px;
   width: 100%;
 }
+
 .Select-Brand-wrapper .search-box {
   margin-left: 10px;
   max-width: 367px;
   width: 100%;
   position: relative;
 }
+
 .search-box .search-icon {
   position: absolute;
   right: 3%;
@@ -1199,6 +1195,7 @@ body {
   top: 30%;
   right: 17%;
 }
+
 .Select-Brand-wrapper .heading-flex {
   display: flex;
   align-items: start;
@@ -1299,6 +1296,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .Top-Selling-wrapper .brand-image-box .img-individual {
   width: 146px;
   height: 169px;
@@ -1338,6 +1336,7 @@ body {
   max-width: 595px;
   width: 100%;
 }
+
 .Top-Selling-wrapper .search-box {
   margin-left: 10px;
   max-width: 367px;
@@ -1353,7 +1352,8 @@ body {
 .animated-text {
   position: relative;
   width: 100%;
-  height: 50px; /* Adjust based on your design */
+  height: 50px;
+  /* Adjust based on your design */
   overflow: hidden;
 }
 
@@ -1386,6 +1386,7 @@ body {
   max-width: 595px;
   width: 100%;
 }
+
 .Top-Selling-wrapper .search-box {
   margin-left: 10px;
   position: relative;
@@ -1421,6 +1422,7 @@ body {
 .Sell-OldPhone-Wrapper .left-imgbox img {
   height: 367px;
 }
+
 .Sell-OldPhone-Wrapper .right-content {
   display: flex;
   gap: 20px;
@@ -1428,14 +1430,14 @@ body {
   padding-left: 30px;
   width: 55%;
 }
+
 .Sell-OldPhone-Wrapper .right-content h2 {
   font-family: IBM Plex Sans;
   font-weight: 700;
   font-size: 26px;
 }
 
-.Sell-OldPhone-Wrapper .right-content .mobile-size {
-}
+.Sell-OldPhone-Wrapper .right-content .mobile-size {}
 
 .Sell-OldPhone-Wrapper .select-varient-box {
   display: flex;
@@ -1448,6 +1450,7 @@ body {
   font-weight: 500;
   font-size: 20px;
 }
+
 .Sell-OldPhone-Wrapper .select-varient-box p {
   padding: 10px;
   border-radius: 10px;
@@ -1457,6 +1460,7 @@ body {
   font-size: 12px;
   max-width: 570px;
 }
+
 .Sell-OldPhone-Wrapper .right-content form {
   display: flex;
   gap: 20px;
@@ -1530,8 +1534,10 @@ h1 {
 }
 
 .scrollbar-hidden {
-  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none;
+  /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none;
+  /* Hide scrollbar for Firefox */
 }
 
 .color-red {
@@ -1547,6 +1553,7 @@ h1 {
 .lg-none {
   display: none;
 }
+
 @media (max-width: 768px) {
   .bread-padding-section {
     padding: 0px 16px;
@@ -1555,6 +1562,7 @@ h1 {
   .sell-banner-wrapper .left-img {
     display: none;
   }
+
   .sell-banner-wrapper .img-slider .img-card .image-bg {
     height: 70px;
     width: 70px;
@@ -1565,15 +1573,19 @@ h1 {
     align-items: center;
     justify-content: center;
   }
+
   .sell-banner-wrapper .img-slider .img-card .image-bg img {
     height: 46px;
   }
+
   .sell-service-card {
     padding: 30px 16px;
   }
+
   .service-card-heading {
     font-size: 20px;
   }
+
   .service-card-sub-heading {
     font-size: 16px;
   }
@@ -1585,13 +1597,16 @@ h1 {
   .sell-banner-wrapper .right-content {
     overflow: hidden;
   }
+
   .sell-banner-wrapper .suggestion-brand-box .brand-image-bg {
     height: 50px;
     width: 50px;
   }
+
   .sell-banner-wrapper .suggestion-brand-box .brand-image-bg img {
     height: 30px;
   }
+
   .service-column {
     flex-direction: column;
   }
@@ -1599,9 +1614,11 @@ h1 {
   .why-sell-wrapper .cards-box {
     flex-direction: column;
   }
+
   .why-sell-wrapper .section-heading {
     font-size: 16px;
   }
+
   .why-sell-wrapper .why-card {
     display: flex;
     /* align-items: center; */
@@ -1609,6 +1626,7 @@ h1 {
     justify-content: center;
     width: 280px;
   }
+
   .why-sell-wrapper .why-card .why-upper {
     background: #282a2b;
     display: flex;
@@ -1629,15 +1647,19 @@ h1 {
     border-top-right-radius: 10px;
     padding: 15px 0px;
   }
+
   .why-sell-wrapper .why-card .why-upper br {
     display: none;
   }
+
   .why-sell-wrapper .why-card .why-upper h3 {
     font-size: 16px;
   }
+
   .why-sell-wrapper .why-card .why-upper img {
     height: 20px;
   }
+
   .why-sell-wrapper .why-card .why-lower {
     background: #ebffcb;
     /* height: 110px; */
@@ -1650,17 +1672,21 @@ h1 {
     border-bottom-right-radius: 10px;
     padding: 10px 0px;
   }
+
   .why-sell-wrapper .why-card .why-lower span {
     height: auto;
     width: auto;
   }
+
   .why-sell-wrapper .cards-box {
     gap: 15px;
   }
+
   .Select-Brand-wrapper .heading-flex {
     flex-direction: column;
     gap: 20px;
   }
+
   .section-heading {
     font-size: 20px;
   }
@@ -1672,80 +1698,103 @@ h1 {
   .Select-Brand-wrapper .search-box {
     display: none;
   }
+
   .Select-Brand-wrapper .brand-image-box .img-individual {
     height: 60px;
     width: 60px;
   }
+
   .Select-Brand-wrapper .brand-image-box {
     flex-wrap: wrap;
   }
+
   .Select-Brand-wrapper .brand-image-box span {
     font-size: 10px;
   }
+
   .Select-Brand-wrapper .brand-image-box .img-individual img {
     height: 30px;
   }
+
   .ad-banner-container {
     display: none;
   }
+
   .Top-Selling-wrapper .brand-image-box .img-individual {
     flex-wrap: wrap;
     height: 80px;
     width: 80px;
   }
+
   .Top-Selling-wrapper .brand-image-box .img-individual img {
     height: 46px;
   }
+
   .Top-Selling-wrapper .brand-image-box span {
     font-size: 10px;
   }
+
   .faq-title {
     font-size: 20px;
     padding: 0px 10px;
   }
+
   .faq-question {
     font-size: 13px;
   }
+
   .faq-item {
     padding: 0px;
   }
+
   .faq-title {
     margin-bottom: 16px;
   }
+
   .footer-column {
     align-items: start;
   }
+
   .footer-links {
     align-items: start;
   }
+
   .footer-bottom {
     flex-direction: row;
     justify-content: space-between;
   }
+
   .footer-bottom {
     margin: 16px 16px;
   }
+
   .Top-Selling-wrapper .search-box input {
     display: none;
   }
+
   .Top-Selling-wrapper .heading-flex {
     flex-direction: column;
   }
+
   .select-series-wrapper ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
+
   .Top-Selling-wrapper .brand-image-box {
     flex-wrap: wrap;
     justify-content: space-between;
   }
+
   .browse-popular-pics .catagery-image img {
     height: 90px;
   }
+
   .trusted-brand-img-box {
     height: 60px;
     width: 60px;
   }
+
   .trusted-brand-img-box img {
     /* height: 30px; */
   }
@@ -1753,23 +1802,29 @@ h1 {
   .brand-lists {
     justify-content: start;
   }
+
   .faq-icon img {
     height: 5px;
   }
+
   .mobile-common-heading {
     font-size: 20px;
   }
+
   .series-select-section {
     padding: 30px 16px;
     width: 100%;
   }
+
   .series-heading {
     font-size: 20px;
   }
+
   .Sell-OldPhone-Wrapper {
     flex-direction: column;
     padding: 10px;
   }
+
   .Sell-OldPhone-Wrapper .left-content {
     width: 100%;
     border: none;
@@ -1779,21 +1834,27 @@ h1 {
     width: 100%;
     padding-left: 0px;
   }
+
   .Sell-OldPhone-Wrapper .right-content h2 {
     font-size: 20px;
   }
+
   .Sell-OldPhone-Wrapper .select-varient-box span {
     font-size: 16px;
   }
+
   .Sell-OldPhone-Wrapper .left-content {
     height: 200px;
   }
+
   .Sell-OldPhone-Wrapper .left-imgbox img {
     height: 160px;
   }
+
   .slide-length {
     width: 93%;
   }
+
   .second-slide-price {
     left: 230px;
   }
@@ -1801,6 +1862,7 @@ h1 {
   .md-none {
     display: none !important;
   }
+
   .lg-none {
     display: block !important;
   }
@@ -1810,13 +1872,16 @@ h1 {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
+
   .Sell-OldPhone-Wrapper .right-content form label {
     width: 100%;
   }
+
   .Sell-OldPhone-Wrapper .right-content button {
     width: 100%;
   }
 }
+
 .md-none {
   display: block;
 }
@@ -1828,9 +1893,11 @@ h1 {
   font-weight: 500;
   font-size: 12px;
 }
+
 .bg-gray-200 {
   background-color: rgb(224, 224, 224);
 }
+
 .edit-shipping-address-btn {
   border: 1px solid black;
   padding: 10px;
@@ -1876,11 +1943,13 @@ h1 {
   background: #f0f0f0;
   color: black;
 }
+
 .i-agree-selection-box {
   display: flex;
   gap: 10px;
   align-items: center;
 }
+
 .verify-btn {
   border-radius: 10px;
   background: #1968b3;
@@ -1980,13 +2049,12 @@ h1 {
 
 /* Extra large desktops */
 
-@media (min-width: 1600px) {
-}
+@media (min-width: 1600px) {}
 
 /* Standard desktops and laptops */
 
-@media (max-width: 1440px) {
-}
+@media (max-width: 1440px) {}
+
 @media screen and (max-width: 1280px) {
   .sell-service-card {
     font-size: 16px !important;
@@ -2019,7 +2087,7 @@ h1 {
   width: 222px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .used-vs-brand .stats-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -2028,6 +2096,7 @@ h1 {
     /* width: 100%; */
     /* height: 183px; */
   }
+
   .blogs-container .blogs-grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -2035,6 +2104,7 @@ h1 {
 
     margin: auto;
   }
+
   .blogs-container .blog-card-overlay {
     background: #282a2b;
     top: 0;
@@ -2053,9 +2123,11 @@ h1 {
   .blogs-container .blog-overlay-text {
     font-size: 15px;
   }
+
   .blogs-container .blog-title {
     font-size: 15px;
   }
+
   .blogs-container .blog-content {
     display: flex;
     flex-direction: column;
@@ -2063,15 +2135,19 @@ h1 {
     padding: 23px 16px;
     gap: 12px;
   }
+
   .blogs-container .blog-description {
     font-size: 12px;
   }
+
   .blogs-container {
     padding: 30px 10px;
   }
+
   .blogs-container {
     gap: 0px;
   }
+
   .blogs-container .blogs-subtitle {
     font-size: 13px;
   }
@@ -2088,13 +2164,15 @@ h1 {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .used-vs-brand {
     padding: 30px 5px;
   }
+
   .used-vs-brand .content h2 {
     font-size: 24px;
   }
+
   .used-vs-brand .content {
     gap: 6px;
   }
@@ -2111,9 +2189,11 @@ h1 {
   .used-vs-brand .stat-content h3 {
     font-size: 15px;
   }
+
   .blogs-section {
     margin: 25px 0px;
   }
+
   .use-brand-section {
     margin: 25px 0px;
   }
@@ -2121,4 +2201,47 @@ h1 {
 
 .testimonials-title {
   margin-bottom: 17px;
+}
+
+@media (max-width: 768px) {
+  .slider-content {
+    padding: 15px 20px;
+    align-items: center;
+    gap: 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .slider-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  .slider-description {
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .slider-button {
+    font-size: 14px;
+    padding: 12px 35px;
+    margin: 0;
+    width: auto;
+  }
+
+  .slider-image {
+    position: relative;
+    display: flex;
+    margin: 0;
+    transform: none;
+    height: 160px;
+    aspect-ratio: 1;
+    border-radius: 15px;
+    top: 0;
+    right: auto;
+  }
 }

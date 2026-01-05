@@ -10,7 +10,8 @@
 
 /* Target scrollbar */
 ::-webkit-scrollbar {
-  width: 6px; /* Adjust the thickness */
+  width: 6px;
+  /* Adjust the thickness */
 }
 
 /* Track */
@@ -65,6 +66,7 @@ section {
   section {
     padding: 30px 50px;
   }
+
   h1 {
     font-size: 28px !important;
   }
@@ -80,18 +82,21 @@ section {
   section {
     padding: 30px 20px;
   }
+
   .md-none {
     display: none;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   section {
     padding: 20px 10px;
   }
+
   h1 {
     font-size: 22px !important;
   }
+
   .get-line {
     width: 291px;
   }
@@ -107,6 +112,7 @@ section {
     font-size: 16px !important;
   }
 }
+
 /* Wrapper for consistent width & centering */
 .wrapper {
   max-width: 1140px;
@@ -130,13 +136,17 @@ img {
 
 /* Completely hide scrollbars for all browsers */
 .scrollbar-hidden {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  overflow: hidden; /* Prevent scrolling if needed */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  overflow: hidden;
+  /* Prevent scrolling if needed */
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
+  /* Chrome, Safari and Opera */
 }
 
 /* Default: mobile-viewall is visible, laptop-viewall is hidden */
@@ -153,6 +163,7 @@ img {
   padding: 5px 20px;
   border-radius: 5px;
 }
+
 .laptop-viewall {
   display: none;
 }
@@ -166,9 +177,6 @@ img {
   .laptop-viewall {
     display: block;
   }
-  /* .sell-banner-only{
-    padding: 20px 0px;
-  } */
 }
 
 .custom-radio label {
@@ -180,6 +188,7 @@ img {
   background-color: #fafdff;
   border: 7px solid #1968b3;
 }
+
 .custom-radio {
   appearance: none;
   -webkit-appearance: none;
@@ -243,16 +252,19 @@ img {
     transform: scale(0.9);
   }
 }
+
 .mt-4 {
   margin-top: 4px;
 }
+
 .px-2 {
   padding: 2px 4px;
 }
+
 /* .Toastify {
   display: none;
 } */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .ty-bg {
     background-image: none;
     height: 100%;
@@ -344,7 +356,8 @@ body {
 
 /* Chrome, Edge, Safari */
 body::-webkit-scrollbar {
-  width: 2px; /* 👈 ultra thin */
+  width: 2px;
+  /* 👈 ultra thin */
   height: 2px;
 }
 
@@ -353,7 +366,8 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2); /* 👈 subtle dark */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* 👈 subtle dark */
   border-radius: 10px;
 }
 
@@ -374,9 +388,11 @@ body::-webkit-scrollbar-thumb {
 .md-none {
   display: block;
 }
+
 .md-block {
   display: none;
 }
+
 .question-text {
   font-size: 16px;
 }
@@ -392,13 +408,16 @@ body::-webkit-scrollbar-thumb {
     border-radius: 5px;
   }
 }
-@media screen and (max-width: 480px) {
+
+@media screen and (max-width: 550px) {
   .md-block {
     display: block;
   }
+
   .md-none {
     display: none;
   }
+
   .custom-radio:checked {
     background-color: #fafdff;
     border: 5px solid #1968b3;
@@ -407,6 +426,7 @@ body::-webkit-scrollbar-thumb {
   .testimonials-title {
     font-size: 18px;
   }
+
   h2 {
     font-weight: 600 !important;
   }
@@ -421,6 +441,7 @@ body::-webkit-scrollbar-thumb {
     border-radius: 5px;
     font-size: 12px;
   }
+
   .question-explaination-text {
     font-size: 12px;
     color: #00000080;
@@ -437,6 +458,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     text-align: center;
   }
+
   .small-input {
     display: flex;
     flex-direction: column;
@@ -445,6 +467,7 @@ body::-webkit-scrollbar-thumb {
   .address-box {
     background-color: rgb(230, 230, 230);
   }
+
   .laptop-sell-title {
     display: none;
   }
@@ -477,8 +500,10 @@ body::-webkit-scrollbar-thumb {
   height: 30px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
   .mobile-pt-section {
+    padding-top: 60px !important;
+    /* Account for fixed MobileCommonHeader (55px height + 5px buffer) */
     margin-top: 0px !important;
   }
 }

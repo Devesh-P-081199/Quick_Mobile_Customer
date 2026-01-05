@@ -1,0 +1,121 @@
+/* BrowserPopularPick.module.css */
+.browserPick {
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+  /* Equivalent to my-10 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "IBM Plex Sans", sans-serif;
+  margin: 25px 0 0 0;
+}
+
+.cardContainer {
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  gap: 16px;
+  /* Equivalent to gap-12 */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.imageWrapper img {
+  display: flex;
+  gap: 16px;
+  height: 210px;
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.cardText {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: left;
+  margin: 0;
+  color: #000000;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  overflow-x: auto;
+  /* Or scroll if you’re using horizontal scroll */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+}
+
+.cardContainer::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Edge */
+}
+
+@media (max-width: 768px) {
+  .imageWrapper img {
+    height: 120px;
+  }
+
+  .cardText {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 550px) {
+  .cardText {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .heading {
+    font-size: 18px;
+  }
+
+  .heading {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+
+  .imageWrapper {
+    display: flex;
+    gap: 16px;
+    width: 95px;
+  }
+
+  .imageWrapper {
+    display: flex;
+    gap: 16px;
+    /* height: 95px; */
+    width: 140px;
+  }
+
+  .cardContainer {
+    display: flex;
+    gap: 10px;
+  }
+}

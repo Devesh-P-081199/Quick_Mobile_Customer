@@ -1,0 +1,915 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+}
+
+.orderContainer {
+  padding: 0;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card */
+.card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 10px 15px;
+  /* More horizontal padding */
+  position: relative;
+  border: 0.3px solid #e1e1e1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:active {
+  transform: translateY(0);
+}
+
+.cardBody {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  /* Center align vertically */
+  width: 100%;
+}
+
+/* Device */
+.deviceImage {
+  width: 80px;
+  /* Balanced size */
+  height: 100px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  justify-content: center;
+  position: relative;
+}
+
+.infoBlock::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 5px;
+  transform: translateY(-50%);
+  width: 10px;
+  /* Width of the indicator bar */
+  height: 10px;
+  /* Height relative to content */
+  background-color: var(--status-color, #fbbc05);
+  /* Default to yellow if variable missing */
+  border-radius: 10px;
+}
+
+.viewIcon {
+  position: absolute;
+  right: -5px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5px;
+  opacity: 1;
+  position: absolute;
+  right: 3px;
+}
+
+.chevron img {
+  transform: rotate(180deg);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 500;
+  color: #e51b1b;
+}
+
+.imei {
+  font-size: 12px;
+  color: #374151;
+  /* Softer text for ID */
+  margin-bottom: 4px;
+}
+
+.pickup {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #1968b3;
+}
+
+/* Buttons top-right */
+.actionRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.blackButton,
+.greenButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.blackButton {
+  background: #1968b3;
+  color: #fff;
+}
+
+.blackButton:hover,
+.blackButton:focus,
+.blackButton:active {
+  background: #1968b3;
+  outline: none;
+}
+
+.greenButton {
+  background: #34a853;
+  color: #fff;
+  gap: 4px;
+}
+
+.greenButton:hover {
+  background: #2d8f47;
+}
+
+/* View more */
+.viewMoreContainer {
+  text-align: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.viewMore {
+  font-size: 14px;
+  font-weight: 500;
+  color: #007fee;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.viewMore:hover {
+  background-color: #f0f8ff;
+}
+
+/* Expanded section */
+.details {
+  margin-top: 0px;
+  border-radius: 8px;
+  padding: 0px;
+}
+
+/* Partner */
+.partnerBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
+  position: relative;
+}
+
+.account {
+  width: 65px;
+  height: 65px;
+  border-radius: 24%;
+  object-fit: cover;
+}
+
+.partnerName {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.rating {
+  font-size: 12px;
+  color: #666;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2px 6px;
+  transform: translateX(-50%);
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.rating svg {
+  width: 12px;
+  height: 12px;
+  color: #fff;
+}
+
+.partnerAchivement {
+  font-size: 12px;
+  color: #666;
+}
+
+.partnerIcons {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  color: #1968b3;
+}
+
+.partnerIcons>* {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+  background-color: #ddefff !important
+}
+
+/* Timeline */
+.timelineWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
+}
+
+.line {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 39px;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.circle {
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+  border: 1px solid #1968b3;
+  transition: all 0.3s ease;
+}
+
+.active .circle {
+  background: #1968b3;
+  border-color: #1968b3;
+}
+
+.step:not(.active) span {
+  opacity: 0.5;
+}
+
+.step span {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 8px;
+  color: #333;
+}
+
+.step small {
+  font-size: 12px;
+  color: #555;
+  margin-top: 2px;
+  display: block;
+}
+
+.active span {
+  color: #000;
+  font-weight: 600;
+}
+
+/* Conditions */
+.conditionBtns {
+  display: flex;
+  margin-bottom: 20px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
+  width: 100%;
+}
+
+.conditionBtns button {
+  min-width: 49% !important;
+}
+
+
+
+.greyButton {
+  background: #ffffff;
+  color: #000;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* QA */
+.qaSection {
+  font-size: 14px;
+  margin-bottom: 10px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
+  display: none;
+}
+
+.priceDiff {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+.transactionDetail {
+  padding: 10px;
+  background: #fff;
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.transactionRow {
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+}
+
+.transactionLabel {
+  font-weight: 500;
+  color: #000;
+}
+
+.transactionValue {
+  font-weight: 400;
+  color: #555;
+}
+
+.reviewForm {
+  padding: 10px;
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  position: relative;
+}
+
+.reviewForm h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.starRating {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 24px;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.starFilled {
+  color: #fbbc05;
+}
+
+.submitButton {
+  background: #1968b3;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  height: 45px;
+}
+
+
+.reviewTextArea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.reviewTextArea:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.priceDiffText {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.priceDiffSubText {
+  font-size: 12px;
+  font-weight: 400;
+  color: #555;
+}
+
+.statusPill {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.statusPending {
+  background-color: #fbbc05;
+}
+
+.statusCompleted {
+  background-color: #34a853;
+}
+
+.priceDiffValue {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.invoiceBtn {
+  width: 100%;
+  padding: 12px;
+  background-color: #fff;
+  color: #1968b3;
+  font-weight: 500;
+  border-radius: 10px;
+  border: 0.3px solid #e1e1e1;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-items: start;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.invoiceBtn img {
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+}
+
+.oldValue {
+  opacity: 0.6;
+  text-decoration: line-through;
+  margin-right: 8px;
+}
+
+.newValue {
+  opacity: 1;
+  font-weight: 500;
+}
+
+.qaSection h4 {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a73e8;
+  border-bottom: 2px solid #1a73e8;
+  padding-bottom: 4px;
+}
+
+.qaSection h4:first-child {
+  margin-top: 0;
+}
+
+.qaSection p {
+  margin: 8px 0;
+  padding: 4px 0;
+  line-height: 1.5;
+}
+
+.answer {
+  color: #f28c28;
+  font-weight: 600;
+  background: #fff8f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+}
+
+.modalContent {
+  background: #fff;
+  width: 100%;
+  height: 95vh;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.closeButton:hover {
+  background: #f5f5f5;
+}
+
+.modalBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.modalDeviceInfo {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  background: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 15px;
+}
+
+.modalDeviceImage {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.modalDeviceTitle {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modalDevicePrice {
+  font-size: 18px;
+  font-weight: 500;
+  color: #e51b1b;
+}
+
+.modalOrderId {
+  font-size: 12px;
+  color: #374151;
+}
+
+/* Summary Card Styles for Payment Integration */
+.summaryCard {
+  background: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.summaryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.summaryHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summaryLabel {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+
+.featureOption {
+  width: 34px;
+  height: 34px;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.changeBtn {
+  background: none;
+  border: none;
+  color: #1968b3;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0px 12px;
+  line-height: 0.9;
+  min-height: 30px;
+  border: 0.3px solid #1968b3;
+}
+
+.paymentType {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.paymentText {
+  font-size: 14px;
+  margin: 0;
+}
+
+.notSelected {
+  font-family: IBM Plex Sans;
+  font-size: 12px;
+  font-weight: 400;
+  color: #999999;
+  margin: 0;
+}
+
+.updatePaymentBtn {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.updatePaymentBtn:hover {
+  background: #333;
+}
+
+@media (max-width: 768px) {
+  .orderContainer {
+    gap: 15px;
+  }
+
+  .container {
+    padding: 20px 10px;
+    gap: 15px;
+  }
+
+  .cardBody {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .deviceImage {
+    width: 90px;
+    min-height: 100px;
+    max-height: 100px;
+    align-self: flex-start;
+  }
+
+  .infoBlock {
+    min-height: 100px;
+    justify-content: space-between;
+  }
+
+  .imei {
+    margin-bottom: 5px;
+  }
+
+  .actionRow {
+    flex-direction: row;
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+
+  .blackButton,
+  .greyButton {
+    padding: 10px 5px;
+    font-size: 16px;
+    min-width: 70px;
+    height: 45px;
+  }
+
+  .timelineWrapper {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    margin: 0 0 15px 0;
+  }
+
+  .timelineWrapper::before {
+    display: none;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    position: relative;
+    padding-left: 30px;
+  }
+
+  .step::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 24px;
+    bottom: -30px;
+    width: 2px;
+    background: #e0e0e0;
+  }
+
+  .step:last-child::before {
+    display: none;
+  }
+
+  .active::before {
+    background: #1968b3;
+  }
+
+  .circle {
+    position: absolute;
+    left: 0;
+    margin: 0;
+  }
+
+  .step span {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .step small {
+    margin-top: 0;
+  }
+
+  .conditionBtns {
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-between;
+    margin-bottom: 0;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .qaSection {
+    border-top: 0;
+    border-radius: 0 0 15px 15px;
+    margin-bottom: 15px;
+  }
+
+  .modalOrderId {
+    margin: 5px 0;
+  }
+
+  .partnerBox {
+    margin-bottom: 15px;
+  }
+
+  .paymentType {
+    font-size: 14px;
+  }
+
+  .summaryCard {
+    margin-bottom: 15px;
+  }
+
+  .priceDiff {
+    margin-bottom: 15px;
+  }
+
+  .transactionDetail {
+    margin-bottom: 15px;
+  }
+
+  .invoiceBtn {
+    margin-bottom: 15px;
+  }
+
+  .submitButton {
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    height: 45px;
+  }
+
+  .transactionRow {
+    font-size: 14px;
+  }
+}

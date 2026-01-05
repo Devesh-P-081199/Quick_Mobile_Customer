@@ -1,0 +1,155 @@
+.modalWrapper {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  /* Handle mobile address bars better */
+  background-color: #ffffff;
+  /* Ensure opaque background */
+  z-index: 2000;
+  /* Increase Z-index to be sure */
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: relative;
+  width: 92vw;
+  background-color: #ffffff;
+  /* Explicit background */
+  z-index: 2001;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 0 auto;
+  padding-top: max(20px, env(safe-area-inset-top));
+  /* Safe area */
+  padding-bottom: 10px;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 99;
+  left: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backBtn img {
+  width: 25px;
+  height: 25px;
+}
+
+.searchBox {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  position: relative;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  height: 47px;
+  padding: var(--spacing-2);
+  padding-right: var(--spacing-9);
+  padding-left: var(--spacing-9);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* When input inside is focused */
+.searchBox:focus-within {
+  border-color: #1968b3;
+  /* dark blue border */
+  /* box-shadow: 0 0 0 2px rgba(0, 22, 66, 0.3);  */
+  border: 1px solid #1968b3;
+}
+
+.searchBox img {
+
+  /* height: 21px; */
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+.searchIcon {
+  color: #666;
+  margin-left: 8px;
+}
+
+.clearBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: absolute;
+  right: 7px;
+}
+
+.clearBtn img {
+  width: 20px;
+  height: 20px;
+}
+
+.content {
+  overflow-y: auto;
+  flex: 1;
+  /* Take remaining height */
+  -webkit-overflow-scrolling: touch;
+  /* Momentum scrolling for iOS */
+  padding: 0 16px 20px;
+  height: 100%;
+  /* Bottom safe area */
+}
+
+.sectionGroup {
+  margin: 5px 0 10px 0;
+}
+
+.suggestionRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.brandsSection {
+  border-radius: 10px;
+  background-color: #f2f2f2;
+}
+
+.name {
+  font-size: 14px;
+}
+
+.tag {
+  color: #1968b3;
+  font-size: 12px;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+}
+
+/* Custom focus outline */
+/* .searchInput:focus {
+  outline: 2px solid #0044cc;
+  border-radius: 4px;
+} */

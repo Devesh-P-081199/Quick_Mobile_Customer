@@ -1,0 +1,413 @@
+[
+    {
+        "packageId": "68c40731cf59544832fa076f",
+        "packageName": "Tellus Mobile",
+        "packageType": "Tellus",
+        "pageTitle": "Tell us more about your device?",
+        "titleExplanation": "The better condition your device is in, we will pay you more",
+        "questions": [
+            {
+                "id": "68c40731cf59544832fa0770",
+                "question": "Are you able to make and receive calls?",
+                "questionExplanation": "Check your device for cellular network connectivity issues.",
+                "type": "radio",
+                "options": [
+                    {
+                        "id": "68c7090fcf59544832fb5469",
+                        "label": "Yes",
+                        "value": "0",
+                        "img": null,
+                        "description": ""
+                    },
+                    {
+                        "id": "68c7090fcf59544832fb546a",
+                        "label": "No",
+                        "value": "1",
+                        "img": null,
+                        "description": ""
+                    },
+                    {
+                        "id": "68c7090fcf59544832fb546b",
+                        "label": "Don't Know",
+                        "value": "2",
+                        "img": null,
+                        "description": ""
+                    }
+                ]
+            },
+            {
+                "id": "68c40731cf59544832fa0771",
+                "question": "Is your device's touch screen working properly?",
+                "questionExplanation": "Check the touch screen functionality of your phone.",
+                "type": "radio",
+                "options": [
+                    {
+                        "id": "68c7090fcf59544832fb546c",
+                        "label": "Yes",
+                        "value": "0",
+                        "img": null,
+                        "description": ""
+                    },
+                    {
+                        "id": "68c7090fcf59544832fb546d",
+                        "label": "No",
+                        "value": "1",
+                        "img": null,
+                        "description": ""
+                    }
+                ]
+            },
+            {
+                "id": "68c40731cf59544832fa0772",
+                "question": "Is your phone's screen original?",
+                "questionExplanation": "Pick \"Yes\" if screen was never changed or was changed by Authorized Service Center. Pick \"No\" if screen was changed at local shop.",
+                "type": "radio",
+                "options": [
+                    {
+                        "id": "68c7090fcf59544832fb546e",
+                        "label": "Yes",
+                        "value": "0",
+                        "img": null,
+                        "description": ""
+                    },
+                    {
+                        "id": "68c7090fcf59544832fb546f",
+                        "label": "No",
+                        "value": "1",
+                        "img": null,
+                        "description": ""
+                    }
+                ]
+            },
+            {
+                "id": "68c40731cf59544832fa0773",
+                "question": "Is your device under manufacturer warranty?",
+                "questionExplanation": "You can get a better price for your device if it's under manufacturer warranty with a GST valid bill.",
+                "type": "radio",
+                "options": [
+                    {
+                        "id": "68c7090fcf59544832fb5470",
+                        "label": "Yes",
+                        "value": "0",
+                        "img": null,
+                        "description": ""
+                    },
+                    {
+                        "id": "68c7090fcf59544832fb5471",
+                        "label": "No",
+                        "value": "1",
+                        "img": null,
+                        "description": ""
+                    }
+                ]
+            },
+            {
+                "id": "68c40731cf59544832fa0774",
+                "question": "Do you have GST valid bill with the same IMEI?",
+                "questionExplanation": "Make sure your bill has device IMEI mentioned on it.",
+                "type": "radio",
+                "options": [
+                    {
+                        "id": "68c7090fcf59544832fb5472",
+                        "label": "Yes",
+                        "value": "0",
+                        "img": null,
+                        "description": ""
+                    },
+                    {
+                        "id": "68c7090fcf59544832fb5473",
+                        "label": "No",
+                        "value": "1",
+                        "img": null,
+                        "description": ""
+                    }
+                ]
+            },
+            {
+                "id": "68c40731cf59544832fa0775",
+                "question": "How many eSIMs does your device support?",
+                "questionExplanation": "Please select \"Dual eSIM\" if your device supports dual eSIMs. Otherwise, select \"Single eSIM\".",
+                "type": "radio",
+                "options": [
+                    {
+                        "id": "68c7090fcf59544832fb5474",
+                        "label": "Single eSIM",
+                        "value": "0",
+                        "img": null,
+                        "description": ""
+                    },
+                    {
+                        "id": "68c7090fcf59544832fb5475",
+                        "label": "Dual eSIM",
+                        "value": "1",
+                        "img": null,
+                        "description": ""
+                    }
+                ]
+            }
+        ],
+        "answers": {
+            "68c40731cf59544832fa0770": "1",
+            "68c40731cf59544832fa0771": "1",
+            "68c40731cf59544832fa0772": "0",
+            "68c40731cf59544832fa0773": "1",
+            "68c40731cf59544832fa0774": "0",
+            "68c40731cf59544832fa0775": "1"
+        }
+    },
+    {
+        "packageId": "68c408d0cf59544832fa07cf",
+        "packageName": "Condition for mobile",
+        "packageType": "Conditions",
+        "pageTitle": "Condition for screen and phone body",
+        "titleExplanation": "select condition",
+        "questions": [
+            {
+                "id": "68c408d0cf59544832fa07d0",
+                "question": "How does the screen look?",
+                "questionExplanation": "",
+                "type": "radio",
+                "options": [
+                    {
+                        "id": "68c40a06cf59544832fa0857",
+                        "label": "Cracked",
+                        "value": "0",
+                        "img": null,
+                        "description": "Has one or more cracks and may or may not be 100% functional."
+                    },
+                    {
+                        "id": "68c40a06cf59544832fa0858",
+                        "label": "Used",
+                        "value": "1",
+                        "img": null,
+                        "description": "Visible signs of wear, including deep scratches and/or dents on the outside of the device, which do not affect its functionality. No cracks. Screen has no defective pixels (e.g. ghost touch, screen burn-in, dead pixels) and the touchscreen works."
+                    },
+                    {
+                        "id": "68c40a06cf59544832fa0859",
+                        "label": "Good",
+                        "value": "2",
+                        "img": null,
+                        "description": "A few faint signs of wear, not noticeable from 8 inches away. No cracks or dents. Screen has no defective pixels (e.g. ghost touch, screen burn-in, dead pixels) and the touchscreen works."
+                    },
+                    {
+                        "id": "68c40a06cf59544832fa085a",
+                        "label": "Flawless",
+                        "value": "3",
+                        "img": null,
+                        "description": "Flawless appearance with no visible scratches. Screen has no defective pixels (e.g. ghost touch, screen burn-in, dead pixels), and the touchscreen works."
+                    }
+                ]
+            },
+            {
+                "id": "68c408d0cf59544832fa07d1",
+                "question": "How do the sides and back look?",
+                "questionExplanation": "",
+                "type": "radio",
+                "options": [
+                    {
+                        "id": "68c40a06cf59544832fa085b",
+                        "label": "Cracked",
+                        "value": "0",
+                        "img": null,
+                        "description": "Shows visible signs of wear, including deep scratches, cracks and/or dents on the outside of the item."
+                    },
+                    {
+                        "id": "68c40a06cf59544832fa085c",
+                        "label": "Used",
+                        "value": "1",
+                        "img": null,
+                        "description": "Visible signs of wear, including deep scratches and/or dents on the outside of the device, which do not affect its functionality. No cracks."
+                    },
+                    {
+                        "id": "68c40a06cf59544832fa085d",
+                        "label": "Good",
+                        "value": "2",
+                        "img": null,
+                        "description": "A few faint signs of wear, not noticeable from 8 inches away. No cracks or dents."
+                    },
+                    {
+                        "id": "68c40a06cf59544832fa085e",
+                        "label": "Flawless",
+                        "value": "3",
+                        "img": null,
+                        "description": "Flawless appearance with no visible scratches."
+                    }
+                ]
+            }
+        ],
+        "answers": {}
+    },
+    {
+        "packageId": "68c40bedcf59544832fa090a",
+        "packageName": "Issue mobile",
+        "packageType": "Issues",
+        "pageTitle": "Functional or Physical Problems",
+        "titleExplanation": "",
+        "questions": [
+            {
+                "id": "68c40bedcf59544832fa090b",
+                "question": "Please choose appropriate condition to get accurate quote",
+                "questionExplanation": "",
+                "type": "icon-checkbox",
+                "options": [
+                    {
+                        "id": "68c40d4ccf59544832fa0961",
+                        "label": "Front Camera not working",
+                        "value": "0",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757678924719-issue%20front%20camera.avif",
+                        "description": ""
+                    },
+                    {
+                        "id": "68c40d4ccf59544832fa0962",
+                        "label": "Back Camera not working",
+                        "value": "1",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757678924730-issue%20camera.avif",
+                        "description": ""
+                    },
+                    {
+                        "id": "68c40d4ccf59544832fa0963",
+                        "label": "WiFi not working",
+                        "value": "2",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757678924734-wifi.avif",
+                        "description": ""
+                    },
+                    {
+                        "id": "68c40d4ccf59544832fa0964",
+                        "label": "Bluetooth not working",
+                        "value": "3",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757678924742-bluetooth.avif",
+                        "description": ""
+                    },
+                    {
+                        "id": "68c40d4ccf59544832fa0965",
+                        "label": "Audio Receiver not working",
+                        "value": "4",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757678924726-speaker.avif",
+                        "description": ""
+                    },
+                    {
+                        "id": "68c40d4ccf59544832fa0966",
+                        "label": "Charging Port not working",
+                        "value": "5",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757678924723-charging%20port.avif",
+                        "description": ""
+                    },
+                    {
+                        "id": "68c40d4ccf59544832fa0967",
+                        "label": "speaker not working",
+                        "value": "6",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757678924814-speaker.avif",
+                        "description": ""
+                    }
+                ]
+            }
+        ],
+        "answers": {}
+    },
+    {
+        "packageId": "68c40dd0cf59544832fa0994",
+        "packageName": "Accesories mobile",
+        "packageType": "Accessories",
+        "pageTitle": "Do you have the following?",
+        "titleExplanation": "",
+        "questions": [
+            {
+                "id": "68c40dd0cf59544832fa0995",
+                "question": "Please select accessories which are available",
+                "questionExplanation": "",
+                "type": "icon-checkbox",
+                "options": [
+                    {
+                        "id": "68c40eb2cf59544832fa0a11",
+                        "label": "orignal Charger",
+                        "value": "0",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757679281905-box.avif",
+                        "description": ""
+                    },
+                    {
+                        "id": "68c40eb2cf59544832fa0a12",
+                        "label": "Original Box with same IMEI",
+                        "value": "1",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757679282015-box.avif",
+                        "description": ""
+                    },
+                    {
+                        "id": "68c40eb2cf59544832fa0a13",
+                        "label": "Original Bill with same IMEI",
+                        "value": "2",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757679282060-box.avif",
+                        "description": ""
+                    },
+                    {
+                        "id": "68c40eb2cf59544832fa0a14",
+                        "label": "Original Datacable",
+                        "value": "3",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757679282118-box.avif",
+                        "description": ""
+                    },
+                    {
+                        "id": "68c40eb2cf59544832fa0a15",
+                        "label": "Original Box 1",
+                        "value": "4",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757679282166-box.avif",
+                        "description": ""
+                    },
+                    {
+                        "id": "68c40eb2cf59544832fa0a16",
+                        "label": "Original Box 2",
+                        "value": "5",
+                        "img": "https://quickmobile-testing.s3.ap-south-1.amazonaws.com/uploads/1757679282214-box.avif",
+                        "description": ""
+                    }
+                ]
+            }
+        ],
+        "answers": {}
+    },
+    {
+        "packageId": "68c40f5acf59544832fa0a8c",
+        "packageName": "warrant mobile 1",
+        "packageType": "Warranty",
+        "pageTitle": "What is your mobile age?",
+        "titleExplanation": "",
+        "questions": [
+            {
+                "id": "68c40f5acf59544832fa0a8d",
+                "question": "(Because you chose your device is under brand's warranty)",
+                "questionExplanation": "",
+                "type": "radio",
+                "options": [
+                    {
+                        "id": "68c4101ccf59544832fa0aeb",
+                        "label": "Below 3 months",
+                        "value": "0",
+                        "img": null,
+                        "description": "Valid bill mandatory"
+                    },
+                    {
+                        "id": "68c4101ccf59544832fa0aec",
+                        "label": "3 months - 6 months",
+                        "value": "1",
+                        "img": null,
+                        "description": "Valid bill mandatory"
+                    },
+                    {
+                        "id": "68c4101ccf59544832fa0aed",
+                        "label": "6 months - 11 months",
+                        "value": "2",
+                        "img": null,
+                        "description": "Valid bill mandatory"
+                    },
+                    {
+                        "id": "68c4101ccf59544832fa0aee",
+                        "label": "Above 11 months",
+                        "value": "3",
+                        "img": null,
+                        "description": ""
+                    }
+                ]
+            }
+        ],
+        "answers": {}
+    }
+]

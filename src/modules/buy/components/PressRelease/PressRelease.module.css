@@ -1,0 +1,83 @@
+/* Removed wrapper - now using section-container class */
+.container {
+  overflow-x: hidden;
+}
+
+.presswrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heading {
+  font-size: 24px;
+  margin: 0;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+}
+
+.grid {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  padding: 5px;
+  /* IE 10+ */
+}
+
+.grid::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 10px;
+  min-width: 250px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0px 0px 4px 1px #00000006;
+}
+
+.logo {
+  height: 70px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 15px 0 10px 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.date {
+  margin: 0px;
+  color: #555555;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .presswrapper {
+    gap: 15px;
+  }
+
+  .heading {
+    font-size: 18px;
+    margin: 25px 0 0 0;
+  }
+
+  .grid {
+    display: flex;
+    gap: 15px;
+    padding: 0;
+  }
+
+  .card {
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
+  }
+}

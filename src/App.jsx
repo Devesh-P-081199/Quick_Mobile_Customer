@@ -7,111 +7,114 @@ import {
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import './App.css';
 
 // Import Pages - Updated to use feature-based structure
-import SellHome from "./features/sell/pages/SellHome";
-const SeriesSelection = React.lazy(() =>
-  import("./features/sell/pages/SeriesSelection")
+const SeriesSelection = React.lazy(
+  () => import("./modules/sell/pages/SeriesSelection"),
 );
-const ModelSelection = React.lazy(() =>
-  import("./features/sell/pages/ModelSelection")
+const ModelSelection = React.lazy(
+  () => import("./modules/sell/pages/ModelSelection"),
 );
-const SelectVarient = React.lazy(() =>
-  import("./features/sell/pages/SelectVarient")
+const SelectVarient = React.lazy(
+  () => import("./modules/sell/pages/SelectVarient"),
 );
-const GetPriceUpto = React.lazy(() =>
-  import("./features/sell/pages/GetPriceUpto")
+const GetPriceUpto = React.lazy(
+  () => import("./modules/sell/pages/GetPriceUpto"),
 );
-const FormStep3 = React.lazy(() => import("./features/sell/pages/FormStep3"));
-const FormStep6 = React.lazy(() => import("./features/sell/pages/FormStep6"));
-const CheckOut = React.lazy(() =>
-  import("./features/checkout/components/CheckOut/CheckOut")
+const DeviceEvaluationPage = React.lazy(() => import("./modules/sell/pages/DeviceEvaluationPage"));
+const OrderSummaryPage = React.lazy(() => import("./modules/sell/pages/OrderSummaryPage"));
+const CheckOut = React.lazy(
+  () => import("./modules/checkout/components/CheckOut/CheckOut"),
 );
-const AddressForm = React.lazy(() =>
-  import("./features/checkout/components/AddressForm/AddressForm")
+const AddressForm = React.lazy(
+  () => import("./modules/checkout/components/AddressForm/AddressForm"),
 );
-const PaymentComponent = React.lazy(() =>
-  import("./features/checkout/components/Payment/Payment")
+const PaymentComponent = React.lazy(
+  () => import("./modules/checkout/components/Payment/Payment"),
 );
-const PaymentForm = React.lazy(() =>
-  import("./features/checkout/components/PaymentForm/PaymentForm")
+const PaymentForm = React.lazy(
+  () => import("./modules/checkout/components/PaymentForm/PaymentForm"),
 );
-// import ThankYouPage from "./Pages/ThankYouPage";
-const ThankYouPage = React.lazy(() => import("./pages/ThankYouPage"));
-// import SelectSubCata from "./Components/SelectSubCategories/SelectSubCata";
-const SelectSubCata = React.lazy(() =>
-  import("./features/sell/components/SelectSubCategories/SelectSubCata")
+const ThankYouPage = React.lazy(
+  () => import("./modules/common/pages/ThankYouPage"),
+);
+const SelectSubCata = React.lazy(
+  () => import("./modules/sell/components/SelectSubCategories/SelectSubCata"),
 );
 
-// import ViewAllCata from "./Pages/SellModule/ViewAllCata";
-const ViewAllCata = React.lazy(() =>
-  import("./features/sell/pages/ViewAllCata")
+const ViewAllCata = React.lazy(
+  () => import("./modules/sell/pages/ViewAllCata"),
 );
-import FAQPage from "./features/sell/pages/FAQPage";
-import Header from "./components/layout/Header/Header";
-import Footer from "./components/layout/Footer/Footer";
+import FAQPage from "./modules/sell/pages/FAQPage";
+import Header from "./modules/common/components/layout/Header/Header";
+import Footer from "./modules/common/components/layout/Footer/Footer";
 // Updated imports to use new feature-based structure
-const Login = React.lazy(() =>
-  import("./features/profile/components/Login/Login")
+const Login = React.lazy(
+  () => import("./modules/profile/components/Login/Login"),
 );
-const SignUp = React.lazy(() =>
-  import("./features/profile/components/Signup/Signup")
+const SignUp = React.lazy(
+  () => import("./modules/profile/components/Signup/Signup"),
 );
-const Address = React.lazy(() =>
-  import("./features/profile/pages/SavedAddress")
+const Address = React.lazy(
+  () => import("./modules/profile/pages/SavedAddress"),
 );
-const PaymentOptions = React.lazy(() =>
-  import("./features/checkout/components/Payment/Payment")
+const PaymentOptions = React.lazy(
+  () => import("./modules/checkout/components/Payment/Payment"),
 );
-const ProfilePayments = React.lazy(() =>
-  import("./features/profile/pages/PaymentOptions")
+const ProfilePayments = React.lazy(
+  () => import("./modules/profile/pages/PaymentOptions"),
 );
 
-const SetupProfile = React.lazy(() =>
-  import("./features/profile/components/SetupProfile/SetupProfile")
+const SetupProfile = React.lazy(
+  () => import("./modules/profile/components/SetupProfile/SetupProfile"),
 );
-const MyOrder = React.lazy(() =>
-  import("./features/profile/components/MyOrder/MyOrder")
+const MyOrder = React.lazy(
+  () => import("./modules/profile/components/MyOrder/MyOrder"),
 );
-const EditProfile = React.lazy(() =>
-  import("./features/profile/components/SetupProfile/EditProfile")
+const EditProfile = React.lazy(
+  () => import("./modules/profile/components/SetupProfile/EditProfile"),
+);
+const OrderDetails = React.lazy(
+  () => import("./modules/profile/components/MyOrder/OrderDetails"),
 );
 import { Suspense } from "react";
 
 // testing for loader
-import Loader from "./components/layout/Loader/Loader";
-import CategoryRouter from "./features/sell/pages/CategoryRouter";
-import DynamicRouteHandler from "./pages/DynamicRouteHandler";
-import NotFoundPage from "./pages/NotFoundPage";
-const BlogDetail = React.lazy(() => import("./pages/BlogDetail"));
-const BlogsPage = React.lazy(() => import("./pages/BlogsPage"));
-const StorePage = React.lazy(() => import("./pages/StorePage"));
-const StoresListPage = React.lazy(() => import("./pages/StoresListPage"));
-import HomePage from "./features/buy/pages/HomePage";
-import AboutUs from "./pages/general/AboutUs/AboutUs";
-import Cookies from "./pages/general/Cookies/Cookies";
-import TermsOfService from "./pages/general/Terms/Terms";
-import RefundPolicy from "./pages/general/RefundPolicy/RefundPolicy";
-import ContactUs from "./pages/general/ContactUs/ContactUs";
-import QuickImpact from "./pages/general/QuickImpact/QuickImpact";
-import SearchBar from "./components/layout/SearchBar/SearchBar";
-import GuidePrivacyPolicy from "./pages/general/Privacy/Privacy";
-import ProfileCard from "./features/profile/components/ProfileCard";
-import NoOffer from "./features/profile/components/Offer/Offer";
+import Loader from "./modules/common/components/layout/Loader/Loader";
+import DynamicRouteHandler from "./modules/common/pages/DynamicRouteHandler";
+import NotFoundPage from "./modules/common/pages/NotFoundPage";
+const BlogDetail = React.lazy(
+  () => import("./modules/common/pages/BlogDetail"),
+);
+const BlogsPage = React.lazy(() => import("./modules/common/pages/BlogsPage"));
+const StorePage = React.lazy(() => import("./modules/common/pages/StorePage"));
+const StoresListPage = React.lazy(
+  () => import("./modules/common/pages/StoresListPage"),
+);
+import HomePage from "./modules/buy/pages/HomePage";
+import AboutUs from "./modules/common/pages/general/AboutUs/AboutUs";
+import Cookies from "./modules/common/pages/general/Cookies/Cookies";
+import TermsOfService from "./modules/common/pages/general/Terms/Terms";
+import RefundPolicy from "./modules/common/pages/general/RefundPolicy/RefundPolicy";
+import ContactUs from "./modules/common/pages/general/ContactUs/ContactUs";
+import QuickImpact from "./modules/common/pages/general/QuickImpact/QuickImpact";
+import SearchBar from "./modules/common/components/layout/SearchBar/SearchBar";
+import GuidePrivacyPolicy from "./modules/common/pages/general/Privacy/Privacy";
+import ProfileCard from "./modules/profile/components/ProfileCard";
+import NoOffer from "./modules/profile/components/Offer/Offer";
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // Scroll to top immediately on any route change
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname, search]);
 
   return null;
 };
 
 const AppContent = () => {
-  // const location = useLocation();
   const location = useLocation();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
 
@@ -130,7 +133,7 @@ const AppContent = () => {
 
       isApplying = true;
       const currentPaddingTop = window.getComputedStyle(
-        document.body
+        document.body,
       ).paddingTop;
       const expectedPadding = window.innerWidth <= 768 ? "55px" : "0px";
 
@@ -138,7 +141,7 @@ const AppContent = () => {
         document.body.style.setProperty(
           "padding-top",
           expectedPadding,
-          "important"
+          "important",
         );
       }
 
@@ -185,11 +188,11 @@ const AppContent = () => {
         location.pathname.includes("price-summary") ||
         location.pathname.includes("dfds"))) ||
     location.pathname.includes("check-out") ||
+    location.pathname.includes("/payment") ||
     location.pathname.includes("payment-mode-selection");
 
   return (
     <>
-      {/* {loading && <Loader />} */}
       <ScrollToTop />
       <Header />
       <Routes>
@@ -199,7 +202,7 @@ const AppContent = () => {
           path="/:slug/final-price-calculator/*"
           element={
             <Suspense fallback={<Loader />}>
-              <FormStep3 />
+              <DeviceEvaluationPage />
             </Suspense>
           }
         />
@@ -208,7 +211,7 @@ const AppContent = () => {
           path="/:slug/price-summary/*"
           element={
             <Suspense fallback={<Loader />}>
-              <FormStep6 />
+              <OrderSummaryPage />
             </Suspense>
           }
         />
@@ -250,7 +253,7 @@ const AppContent = () => {
         />
 
         <Route
-          path="/:slug/check-out/payment"
+          path="/:slug/payment"
           element={
             <Suspense fallback={<Loader />}>
               <PaymentComponent />
@@ -259,7 +262,7 @@ const AppContent = () => {
         />
 
         <Route
-          path="/:slug/check-out/add-payment"
+          path="/:slug/payment/add-payment"
           element={
             <Suspense fallback={<Loader />}>
               <PaymentForm />
@@ -268,7 +271,7 @@ const AppContent = () => {
         />
 
         <Route
-          path="/:slug/check-out/edit-payment/:paymentId"
+          path="/:slug/payment/edit-payment/:paymentId"
           element={
             <Suspense fallback={<Loader />}>
               <PaymentForm />
@@ -344,6 +347,24 @@ const AppContent = () => {
         />
 
         <Route
+          path="/profile/add-payment"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PaymentForm />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/profile/edit-payment/:paymentId"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PaymentForm />
+            </Suspense>
+          }
+        />
+
+        <Route
           path="/customer/user-profile"
           element={
             <Suspense fallback={<Loader />}>
@@ -383,6 +404,15 @@ const AppContent = () => {
           element={
             <Suspense fallback={<Loader />}>
               <SetupProfile />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/profile/order-details/:orderId"
+          element={
+            <Suspense fallback={<Loader />}>
+              <OrderDetails />
             </Suspense>
           }
         />
@@ -439,7 +469,7 @@ const AppContent = () => {
           }
         />
         <Route
-          path="/blog/:blogId"
+          path="/blog-details/:blogId"
           element={
             <Suspense fallback={<Loader />}>
               <BlogDetail />

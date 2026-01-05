@@ -1,0 +1,624 @@
+.footerContainer {
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid #e1e1e1;
+  margin: 40px auto 0;
+  box-sizing: border-box;
+}
+
+
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* Reduced gap from 22px to 12px */
+}
+
+.footerHeading {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 450;
+  font-size: 20px;
+  line-height: 26px;
+  color: black;
+  margin-bottom: 8px;
+  /* Added margin bottom for better spacing */
+}
+
+
+
+.footerLink {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.footerLink:hover {
+  color: gray;
+}
+
+.iconbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  /* width: 109px; */
+}
+
+.footerContent {
+  margin: 0 auto;
+  max-width: 1184px;
+  padding: 36px 32px 20px 32px;
+  border-bottom: 0.3px solid #ddd;
+  display: flex;
+  flex-wrap: wrap;
+  /* Enable wrapping for responsive design */
+  gap: 20px;
+  /* Reduced gap from 30px to 20px */
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footerBottom {
+  /* width: 1060px; */
+  margin: 30px auto 0;
+  max-width: 1184px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.footerBottom p {
+  padding: 0 32px 0px 32px;
+}
+
+.footerBottom p:last-child {
+  border-top: 0.3px solid #ddd;
+  padding: 15px 32px 32px;
+  text-align: center;
+  width: 100%;
+}
+
+.footerRightBox {
+  display: flex;
+  gap: 4px;
+}
+
+
+
+.footerCopyright {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: black;
+}
+
+/* Removed .socialIcons - replaced by .socialIconsLarge in new Follow Us section */
+
+.footerSection {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+.footerSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+
+.footerSectionHeader h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.footerLinks a {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.logoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 0;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 10px;
+}
+
+.mobileFooterContent {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.footerBottom {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+  /* Center align for better mobile experience */
+  font-size: 14px;
+  margin: 0 auto;
+}
+
+.footerRightBox img {
+  width: 120px;
+  height: 38px;
+}
+
+
+.footerLinks a {
+  color: #000000;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.3s ease, color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: black;
+  text-decoration-color: rgb(1, 1, 1);
+}
+
+
+/* Mobile Footer Column - Matches Desktop Last Column */
+.mobileFooterColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 0.3px solid #ddd;
+}
+
+.mobileFooterColumn .logoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.mobileFooterColumn .logoContainer p {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.mobileFooterColumn .followUsSection {
+  margin-top: 0px;
+}
+
+.mobileFooterColumn .helpCenterTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.mobileFooterColumn .helpCenterSubtitle {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  color: #666;
+}
+
+.mobileFooterColumn .helpCenterAction {
+  display: flex;
+  align-items: center;
+}
+
+.mobileFooterColumn .getAnswersBtn {
+  display: inline-block;
+  background: #1968b3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 1px solid #1968b3;
+}
+
+.mobileFooterColumn .getAnswersBtn:hover {
+  background: #155a9a;
+}
+
+.chatbox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #1968b3;
+  padding: 6px 15px;
+  color: white;
+  border-radius: 8px;
+  margin-top: 10px;
+  justify-content: center;
+  width: 100%;
+  font-size: 20px;
+}
+
+.chatbox h5 {
+  font-size: 16px;
+}
+
+.chatbox img {
+  height: 38px;
+}
+
+.chatbox p {
+  font-size: 12px;
+}
+
+.socialIcons img {
+  height: 30px;
+  width: 30px;
+  margin-top: 8px;
+}
+
+.uparrow {
+  transform: rotate(270deg);
+  height: 21px;
+}
+
+.downarrow {
+  height: 21px;
+  transform: rotate(90deg);
+}
+
+.notice {
+  padding-bottom: 20px;
+  border-bottom: 0.3px solid #ddd;
+  text-align: left;
+}
+
+/* Logo Container Styling */
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Logo Styling - Match Header Logo */
+.logo {
+  height: 50px;
+  width: auto;
+  /* Maintains aspect ratio */
+  max-width: 120px;
+  /* Match header logo max-width */
+  object-fit: contain;
+  /* Ensures the image fits within the dimensions */
+  cursor: pointer;
+}
+
+.followText {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+/* Get Answers Button Styling */
+.getAnswersButton {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+
+.getAnswersButton:hover {
+  text-decoration: none;
+}
+
+.getAnswersButton .chatbox {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.getAnswersButton .chatbox:hover {
+  background-color: #155a9a;
+  /* Slightly darker blue on hover */
+}
+
+/* Responsive Footer Display Classes */
+
+/* Desktop Footer - Show on screens larger than 770px */
+.footerContainer.mdNone {
+  display: block;
+}
+
+/* Mobile Footer - Show on screens 770px and smaller */
+.footerContainer.mdBlock {
+  display: none;
+}
+
+.followUsTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.followUsSection {
+  margin-top: 15 !important;
+}
+
+.socialIconsLarge {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  align-items: center;
+}
+
+.socialIconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.socialIconLink:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.socialIconLink img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* Help Center Section - Compact version for footer column */
+.helpCenterSection {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  padding: 15px;
+  text-align: center;
+  color: white;
+  border-radius: 12px;
+  /* Rounded borders */
+}
+
+.helpCenterContent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.helpCenterTitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.helpCenterSubtitle {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.getAnswersBtn {
+  display: inline-block;
+  background: #3b82f6;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 20px;
+  /* Rounded button */
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.getAnswersBtn:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.helpCenterText {
+  flex: 1;
+  text-align: left;
+}
+
+.helpCenterAction {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+
+
+/* Desktop footer responsive styles */
+@media (max-width: 768px) {
+  .footerContainer.md-none {
+    padding-top: 60px;
+  }
+
+  .footerContainer.md-none .footerContent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .footerContainer.md-none .footerBottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footerContainer.md-none .footerHeading {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 0;
+    color: black;
+  }
+
+  .footerContainer.mdNone {
+    display: none !important;
+  }
+
+  .footerContainer.mdBlock {
+    display: block !important;
+  }
+
+  .followUsSection,
+  .helpCenterSection {
+    width: 100%;
+    padding: 0px;
+    margin-top: 0px;
+  }
+
+  .mobileFooterColumn .followUsSection {
+    margin-top: 0px;
+  }
+
+  .helpCenterTitle {
+    margin-bottom: 8px;
+  }
+
+  .followUsTitle,
+  .helpCenterTitle {
+    font-size: 24px;
+  }
+
+  .mobileFooterColumn .helpCenterTitle {
+    margin-top: 0px;
+  }
+
+  .getHelpcenter p.helpCenterSubtitle {
+    margin: 0px;
+  }
+
+  .mobileFooterColumn .topContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  .getHelpcenter {
+    padding: 10px;
+    background-color: #0000000f;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .getHelpcenter .helpCenterAction .getAnswersBtn {
+    border-radius: 10px;
+  }
+
+  .helpCenterSubtitle {
+    font-size: 14px;
+  }
+
+  .socialIconsLarge {
+    margin-top: 15px;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .socialIconLink {
+    width: 30px;
+    height: 30px;
+  }
+
+  .socialIconLink img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .footerBottom .logoHeader {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  .getAnswersBtn {
+    padding: 10px 25px;
+    font-size: 11px;
+  }
+
+  .footerBottom {
+    text-align: center;
+    padding: 15px 0px;
+  }
+
+
+
+  .helpCenterContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .helpCenterText {
+    text-align: center;
+  }
+
+  .footerContainer {
+    margin-top: 0;
+    padding: 0px 10px !important;
+    /* padding: 20px 5%; */
+  }
+
+  .footerContent {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footerBottom p {
+    font-size: 12px;
+    ;
+    padding: 0;
+  }
+
+  .footerBottom p:last-child {
+    padding: 15px 0 15px 0;
+  }
+
+  .footerColumn {
+    width: 100%;
+  }
+
+  .notice {
+
+    border-bottom: none;
+  }
+
+  .footerLinks {
+    margin-top: 16px;
+  }
+}
