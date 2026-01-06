@@ -1,6 +1,7 @@
 // components/CommonSlider/CommonSlider.js
 import { useEffect, useRef, useState } from "react";
 import styles from "./CommonSlider.module.css";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const CommonSlider = ({
   items = [],
@@ -31,6 +32,38 @@ const CommonSlider = ({
 
   return (
     <div className={styles.sliderWrapper}>
+      {showNav && (
+        <div className={styles.navButtons}>
+          {/* <img
+            src={leftIcon}
+            className={styles.navBtn}
+            onClick={scrollLeft}
+            alt="←"
+            title="left-icon"
+          /> */}
+          <button
+            onClick={scrollLeft}
+            className={styles.arrowLeft}
+            aria-label="Scroll left"
+          >
+            <IoIosArrowBack size={20} />
+          </button>
+          {/* <img
+            src={rightIcon}
+            className={styles.navBtn}
+            onClick={scrollRight}
+            alt="→"
+            title="right-icon"
+          /> */}
+          <button
+            onClick={scrollRight}
+            className={styles.arrowRight}
+            aria-label="Scroll right"
+          >
+            <IoIosArrowForward size={20} />
+          </button>
+        </div>
+      )}
       <div className={`${styles.sliderTrack} scrollbar-hidden`} ref={scrollRef}>
         {items.map((item, index) => (
           <div
@@ -42,25 +75,6 @@ const CommonSlider = ({
           </div>
         ))}
       </div>
-
-      {showNav && (
-        <div className={styles.navButtons}>
-          <img
-            src={leftIcon}
-            className={styles.navBtn}
-            onClick={scrollLeft}
-            alt="←"
-            title="left-icon"
-          />
-          <img
-            src={rightIcon}
-            className={styles.navBtn}
-            onClick={scrollRight}
-            alt="→"
-            title="right-icon"
-          />
-        </div>
-      )}
     </div>
   );
 };

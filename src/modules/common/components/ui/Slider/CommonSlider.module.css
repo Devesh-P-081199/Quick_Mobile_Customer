@@ -4,8 +4,8 @@
   position: relative;
   width: 100%;
   overflow: hidden;
+  margin-top: -47px;
   /* Prevent wrapper overflow */
-  border-radius: var(--radius-lg);
 }
 
 .sliderTrack {
@@ -13,13 +13,13 @@
   overflow-x: auto;
   overflow-y: hidden;
   /* Prevent vertical overflow */
-  gap: 10px;
+  gap: 15px;
   scroll-behavior: smooth;
   justify-content: flex-start;
   /* Add padding to prevent content cutoff */
 
   /* Enhanced scrollbar styling */
-  scrollbar-width: thin;
+  scrollbar-width: none;
   scrollbar-color: var(--color-neutral-300) transparent;
 }
 
@@ -48,38 +48,42 @@
   display: flex;
   justify-content: flex-end;
   gap: var(--space-2);
-  margin-top: var(--space-3);
+  margin-bottom: 15px;
   position: relative;
   z-index: 2;
-  padding-right: var(--space-2);
   /* Ensure buttons stay within container */
   max-width: 100%;
   overflow: hidden;
 }
 
-.navBtn {
-  @apply flex items-center justify-center w-10 h-10 bg-white border border-gray-300 rounded-full cursor-pointer transition-all duration-200 hover:bg-gray-50 hover:border-gray-400 hover:shadow-md;
-
-  /* Ensure buttons stay within bounds */
-  flex-shrink: 0;
-  position: relative;
+.arrowLeft {
+  background-color: #e5e7eb;
+  margin-right: 10px;
 }
 
-.navBtn:disabled {
-  @apply opacity-50 cursor-not-allowed;
-  pointer-events: none;
+.arrowLeft:hover {
+  background-color: #d1d5db;
 }
 
-.navBtn svg,
-.navBtn img {
-  width: 16px;
-  height: 16px;
-  transition: transform var(--transition-fast);
+.arrowRight {
+  background-color: #000000;
+  color: #ffffff;
 }
 
-.navBtn:hover svg,
-.navBtn:hover img {
-  transform: scale(1.1);
+.arrowRight:hover {
+  background-color: #1f2937;
+}
+
+.arrowLeft,
+.arrowRight {
+  padding: 0.5rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
 }
 
 /* Slider Items - Prevent overflow */
@@ -118,14 +122,13 @@
 /* Responsive Design */
 @media screen and (max-width: 768px) {
 
+  .sliderWrapper {
+    margin-top: 0;
+  }
+
   .navButtons {
     display: none;
     /* Hide navigation buttons on mobile */
-  }
-
-  .navBtn {
-    width: 36px;
-    height: 36px;
   }
 
   .sliderWrapper::before,
@@ -145,12 +148,6 @@
   .sliderItem {
     scroll-snap-align: start;
   }
-}
-
-/* Accessibility improvements */
-.navBtn:focus {
-  outline: 2px solid var(--color-primary-500);
-  outline-offset: 2px;
 }
 
 .sliderTrack:focus {

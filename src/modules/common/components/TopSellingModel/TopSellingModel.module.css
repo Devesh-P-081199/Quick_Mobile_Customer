@@ -1,7 +1,7 @@
 .topSellingWrapper {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 15px;
 }
 
 .brandImageBox {
@@ -18,7 +18,7 @@
   width: 170px;
   height: 180px;
   border: 1px solid #e1e1e1;
-  border-radius: 5px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +26,7 @@
 }
 
 .sectionHeading {
-  font-size: 18px;
+  font-size: 24px;
   margin: 0;
   font-family: "IBM Plex Sans";
   font-weight: 500;
@@ -43,6 +43,12 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+
+.brandSingleBox span {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
 }
 
 .searchBox input {
@@ -71,13 +77,17 @@
      width: 146px;
     height: 169px; */
   object-fit: contain;
-  /* padding: 10px; */
-  padding: 15px;
+  padding: 10px;
   height: 100%;
   width: 100%;
 }
 
 @media (max-width: 768px) {
+
+  .sectionHeading {
+    font-size: 18px;
+  }
+
   .brandImageBox span {
     font-size: 12px;
   }

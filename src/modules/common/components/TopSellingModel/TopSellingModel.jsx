@@ -4,7 +4,7 @@ import rightCircleIcon from "../../../../assets/icons/Frame 42.svg";
 import CommonSlider from "../ui/Slider/CommonSlider";
 
 // Import phone icon as fallback for all models
-import phoneIcon from "../../../../assets/icons/iPhone.svg";
+import phoneIcon from "../../../../assets/images/static/1763650262064-Oppo F31 Pro 5G.avif";
 
 const brands = [
   { name: "Apple iPhone 12", icon: phoneIcon },
