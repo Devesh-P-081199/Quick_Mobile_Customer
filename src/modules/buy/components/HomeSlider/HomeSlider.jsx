@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import bannerleft from "../../../../assets/images/Products/iphone.png";
+import slide1 from "../../../../assets/images/banner_images/homepage_banner_slider_image_01.png";
 
 function HomeSlider() {
   const slides = [
@@ -7,25 +7,25 @@ function HomeSlider() {
       title: "Sell Your Old Phone in Seconds!",
       description:
         "Instant quotes, hassle-free pickup, and quick payment. Upgrade to the latest tech today!",
-      image: bannerleft,
+      image: slide1,
     },
     {
       title: "Sell Your Old Phone in Seconds!",
       description:
         "Instant quotes, hassle-free pickup, and quick payment. Upgrade to the latest tech today!",
-      image: bannerleft,
+      image: slide1,
     },
     {
       title: "Sell Your Old Phone in Seconds!",
       description:
         "Instant quotes, hassle-free pickup, and quick payment. Upgrade to the latest tech today!",
-      image: bannerleft,
+      image: slide1,
     },
     {
       title: "Sell Your Old Phone in Seconds!",
       description:
         "Instant quotes, hassle-free pickup, and quick payment. Upgrade to the latest tech today!",
-      image: bannerleft,
+      image: slide1,
     },
   ];
 
