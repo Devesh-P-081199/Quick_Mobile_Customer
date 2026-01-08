@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./BreadCrumb.module.css";
-import { FaAngleRight } from "react-icons/fa";
 
 function BreadCrumb({ items = [] }) {
   return (

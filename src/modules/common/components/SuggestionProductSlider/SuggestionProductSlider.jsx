@@ -2,6 +2,9 @@ import { useState, useRef } from "react";
 import styles from "./SuggestionProductSlider.module.css";
 import mobileimg from "../../../../assets/images/Products/mobile.png";
 
+// Minimum swipe distance (in pixels) to trigger a slide change
+const SWIPE_THRESHOLD_PX = 50;
+
 const SuggestionProductSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const startXRef = useRef(null);
@@ -31,37 +34,18 @@ const SuggestionProductSlider = () => {
     },
   ];
 
-  const handleTouchStart = (e) => {
-    startXRef.current = e.touches[0].clientX;
-    isDraggingRef.current = true;
-  };
-
-  const handleTouchMove = (e) => {
-    if (!isDraggingRef.current) return;
-    const currentX = e.touches[0].clientX;
-    const diff = startXRef.current - currentX;
-
-    if (Math.abs(diff) > 50) {
-      if (diff > 0 && currentIndex < sliderData.length - 1) {
-        setCurrentIndex((prev) => prev + 1);
-      } else if (diff < 0 && currentIndex > 0) {
-        setCurrentIndex((prev) => prev - 1);
-      }
-      isDraggingRef.current = false;
-    }
-  };
-
-  const handleMouseDown = (e) => {
+  // Consolidated pointer handler for both touch and mouse events
+  const handlePointerDown = (e) => {
     startXRef.current = e.clientX;
     isDraggingRef.current = true;
   };
 
-  const handleMouseMove = (e) => {
+  const handlePointerMove = (e) => {
     if (!isDraggingRef.current) return;
     const currentX = e.clientX;
     const diff = startXRef.current - currentX;
 
-    if (Math.abs(diff) > 50) {
+    if (Math.abs(diff) > SWIPE_THRESHOLD_PX) {
       if (diff > 0 && currentIndex < sliderData.length - 1) {
         setCurrentIndex((prev) => prev + 1);
       } else if (diff < 0 && currentIndex > 0) {
@@ -71,7 +55,7 @@ const SuggestionProductSlider = () => {
     }
   };
 
-  const handleMouseUp = () => {
+  const handlePointerUp = () => {
     isDraggingRef.current = false;
   };
 
@@ -81,12 +65,11 @@ const SuggestionProductSlider = () => {
         <div
           className={styles.slider}
           ref={sliderRef}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerLeave={handlePointerUp}
+          style={{ touchAction: "pan-y" }}
         >
           {sliderData.map((card, index) => (
             <div
