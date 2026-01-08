@@ -1,13 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hedvig+Letters+Serif:opsz@12..24&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap");
-/* Reset default margin, padding, and box sizing */
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
 
-/* Improve text rendering */
+/* -------------------------------------------------------------------------- */
+/*                                 Variables                                  */
+/* -------------------------------------------------------------------------- */
+:root {
+  --section-bg: #f5f6fa;
+  --btn-desable: #00000040;
+  --btn-enable: #1968b3;
+  --primary-font: "IBM Plex Sans";
+  --heading-font: "Hedvig Letters Serif", serif;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Global Resets                                */
+/* -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -15,8 +25,32 @@ html {
 }
 
 body {
-  background-color: #f7f9fc;
+  margin: 0;
+  padding: 0;
+  background-color: var(--section-bg);
+  font-family: var(--primary-font), sans-serif;
 }
+
+h1 {
+  font-size: 24px;
+  font-family: var(--primary-font);
+}
+
+.wrapper {
+  max-width: 1140px;
+  margin: auto;
+}
+
+.common-container {
+  max-width: 1140px;
+  height: auto;
+  margin: auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Unknown Utilities                            */
+/* (Preserving unique utilities found in the file)                            */
+/* -------------------------------------------------------------------------- */
 
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
@@ -29,6 +63,47 @@ body {
   /* Hide scrollbar for Firefox */
 }
 
+.color-red {
+  color: #f60000;
+}
+
+.section-heading {
+  font-size: 24px;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+}
+
+.bg-green {
+  background: #ebffcb;
+}
+
+.bg-purple {
+  background: #d2cbff;
+}
+
+.bg-orange {
+  background: #ffeacb;
+}
+
+.bg-blue {
+  background: #cbddff;
+}
+
+.bg-gray-200 {
+  background-color: rgb(224, 224, 224);
+}
+
+.lg-none {
+  display: none;
+}
+
+.md-none {
+  display: block;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Footer                                       */
+/* -------------------------------------------------------------------------- */
 .footer-container {
   width: 100%;
   background: #ffffff;
@@ -37,7 +112,9 @@ body {
 }
 
 .footer-content {
-  width: 1060px;
+  width: 100%;
+  max-width: 1060px;
+  /* Merged fluid width from 1024px query logic */
   margin: 0 auto;
   padding-bottom: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -82,9 +159,9 @@ body {
   color: gray;
 }
 
-/* Footer Bottom Section */
 .footer-bottom {
-  width: 1060px;
+  width: 100%;
+  max-width: 1060px;
   margin: 30px auto;
   margin-bottom: 0px;
   padding-bottom: 30px;
@@ -106,7 +183,6 @@ body {
   width: 125px;
   height: 40px;
   border-radius: 5px;
-  /* background: black; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,43 +198,6 @@ body {
   cursor: pointer;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-
-  .footer-content,
-  .footer-bottom {
-    width: 90%;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .footer-container {
-    padding-top: 60px;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-column {
-    width: 100%;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-right-box {
-    width: 100%;
-    max-width: 150px;
-  }
-}
-
 .footer-container .iconbox {
   display: flex;
   flex-wrap: wrap;
@@ -171,16 +210,17 @@ body {
   gap: 4px;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                               Home Slider                                  */
+/* -------------------------------------------------------------------------- */
 .home-slider-section .slider-box {
   height: 300px;
   background-color: #e0d0c3;
 }
 
-/* General Slider Styling */
 .slider-container {
   position: relative;
   width: 100%;
-  /* max-width: 1440px; */
   height: 300px;
   margin: auto;
   overflow: hidden;
@@ -192,7 +232,6 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Slider Wrapper (Holds All Slides) */
 .slider-wrapper {
   display: flex;
   width: 100%;
@@ -200,17 +239,14 @@ body {
   transition: transform 0.5s ease-in-out;
 }
 
-/* Individual Slide */
 .slider-container .slide {
   min-width: 100%;
   transition: transform 0.5s ease-in-out;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   gap: 15px;
 }
 
-/* Slide Content */
 .slider-content {
   display: flex;
   gap: 20px;
@@ -219,12 +255,10 @@ body {
   max-width: 1184px;
   padding: 0 2rem;
   margin: auto;
-  /* Match header padding exactly */
   width: 100%;
   position: relative;
 }
 
-/* Title */
 .slider-title {
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 20px;
@@ -232,7 +266,6 @@ body {
   color: #000;
 }
 
-/* Description */
 .slider-description {
   font-family: "IBM Plex Sans";
   font-size: 28px;
@@ -242,7 +275,6 @@ body {
   line-height: 36px;
 }
 
-/* Button */
 .slider-button {
   background: #1968b3;
   color: #fff;
@@ -257,7 +289,6 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Image */
 .slider-image {
   position: absolute;
   right: 0px;
@@ -267,7 +298,6 @@ body {
   height: auto;
 }
 
-/* Dots */
 .slider-dots {
   display: flex;
   justify-content: center;
@@ -278,9 +308,7 @@ body {
 .dot {
   width: 8px;
   height: 8px;
-  /* Perfect circle for inactive dots */
   border-radius: 50%;
-  /* Perfect circle */
   border: 1px solid #ccc;
   background: #ccc;
   cursor: pointer;
@@ -290,39 +318,24 @@ body {
 
 .dot.active {
   width: 25px;
-  /* Elongated width (3x wider) for progress bar */
   height: 8px;
-  /* Half height for log/oval shape */
   border-radius: 10px;
-  /* Oval/log shape for progress bar */
   background: #ccc;
-  /* White background for contrast */
   position: relative;
   overflow: hidden;
 }
 
-/* Progress bar for active dot */
 .dot-progress {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  /* background: linear-gradient(
-    90deg,
-    #1968b3,
-    #4a90e2
-  ); */
   background: #1968b3;
   border-radius: 10px;
-  /* Match the oval shape */
   transition: width 0.05s linear;
-  /* Smooth animation */
   z-index: 1;
 }
 
-/* Removed old keyframe animation - now using JavaScript-controlled progress */
-
-/* Navigation Buttons */
 .slider-nav {
   position: absolute;
   width: 51px;
@@ -346,55 +359,9 @@ body {
   right: 10px;
 }
 
-
-@media (max-width: 550px) {
-  .slider-nav {
-    display: none;
-  }
-
-  .slider-container {
-    height: 350px;
-  }
-
-  .slider-content {
-    gap: 13px;
-  }
-
-  .slider-content {
-    padding: 10px;
-  }
-
-  .slider-title {
-    font-size: 14px;
-  }
-
-  .slider-description {
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  .slider-button {
-    font-size: 12px;
-    padding: 12px 20px;
-    width: 50%;
-  }
-
-  .slider-nav {
-    width: 30px;
-    height: 30px;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-  }
-
-  .home-two-slider {
-    display: none;
-  }
-}
-
-/* Main container */
+/* -------------------------------------------------------------------------- */
+/*                               Used vs Brand (Stats)                        */
+/* -------------------------------------------------------------------------- */
 .used-vs-brand {
   box-sizing: border-box;
   display: flex;
@@ -403,7 +370,6 @@ body {
   padding: 30px 40px;
   gap: 10px;
   max-width: 1140px;
-  /* height: 380px; */
   background: #ffffff;
   border: 0.3px solid #e1e1e1;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.03);
@@ -412,19 +378,15 @@ body {
   width: 100%;
 }
 
-/* Inner container */
 .used-vs-brand .inner-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 52px;
-  /* width: 1060px; */
-  /* height: 320px; */
   margin: 0 auto;
   width: 100%;
 }
 
-/* Heading and subtext */
 .used-vs-brand .content {
   display: flex;
   flex-direction: column;
@@ -446,22 +408,17 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 500;
   font-size: 20px;
-  /* line-height: 26px; */
   text-align: center;
   color: #000000;
 }
 
-/* Stats Container */
 .used-vs-brand .stats-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
   gap: 12px;
-  /* width: 100%; */
-  /* height: 183px; */
 }
 
-/* Individual stat boxes */
 .used-vs-brand .stat-box {
   box-sizing: border-box;
   width: 100%;
@@ -475,7 +432,6 @@ body {
   flex-direction: column;
 }
 
-/* Colored borders */
 .used-vs-brand .stat-box.green {
   border: 2px solid #c9ea92;
 }
@@ -484,22 +440,20 @@ body {
   border: 2px solid #d2cbff;
 }
 
-.stat-box.yellow {
+.used-vs-brand .stat-box.yellow {
   border: 2px solid #ffe6a6;
 }
 
+/* Typo fix: added prefix */
 .used-vs-brand .stat-box.blue {
   border: 2px solid #cbddff;
 }
 
-/* Text inside stat boxes */
 .used-vs-brand .stat-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 12px;
-  /* width: 201px; */
-  /* height: 150px; */
 }
 
 .used-vs-brand .stat-content h3 {
@@ -516,13 +470,13 @@ body {
   font-weight: 400;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                               Blogs Section                                */
+/* -------------------------------------------------------------------------- */
 .blogs-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding: 30px 40px; */
-  /* height: 554px; */
-  /* background: #ffffff; */
 }
 
 .blogs-container {
@@ -531,7 +485,6 @@ body {
   align-items: flex-start;
   padding: 30px 40px;
   gap: 40px;
-
   background: #ffffff;
   border: 0.3px solid #e1e1e1;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.03);
@@ -568,7 +521,6 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-
   margin: auto;
 }
 
@@ -576,23 +528,6 @@ body {
   border-radius: 10px;
   position: relative;
   overflow: hidden;
-  /* height: 100%; */
-}
-
-.blogs-container .bg-green {
-  background: #ebffcb;
-}
-
-.blogs-container .bg-purple {
-  background: #d2cbff;
-}
-
-.blogs-container .bg-orange {
-  background: #ffeacb;
-}
-
-.blogs-container .bg-blue {
-  background: #cbddff;
 }
 
 .blogs-container .blog-card-overlay {
@@ -605,7 +540,6 @@ body {
   align-items: center;
   color: white;
   text-align: center;
-  padding: 10px;
   padding: 30px 20px;
   height: 39%;
 }
@@ -616,7 +550,6 @@ body {
   font-weight: 400;
   line-height: 27px;
   text-align: left;
-  /* max-width: 180px; */
 }
 
 .blogs-container .see-more {
@@ -627,8 +560,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* position: absolute; */
-
   left: 20px;
   color: #000;
 }
@@ -657,12 +588,17 @@ body {
   color: #000;
 }
 
-/* FAQ Section */
+.blog-card a {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               FAQ Section                                  */
+/* -------------------------------------------------------------------------- */
 .faq-section {
   padding: 30px 150px;
 }
 
-/* Title */
 .faq-title {
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 28px;
@@ -672,18 +608,14 @@ body {
   margin-bottom: 30px;
 }
 
-/* FAQ List */
 .faq-list {
   width: 100%;
 }
 
-/* FAQ Item */
 .faq-item {
-  /* border-bottom: 1px solid #ddd; */
   padding: 15px 0;
 }
 
-/* FAQ Question */
 .faq-question {
   display: flex;
   justify-content: space-between;
@@ -701,7 +633,6 @@ body {
   background: #f9f9f9;
 }
 
-/* FAQ Answer */
 .faq-answer {
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 14px;
@@ -715,7 +646,6 @@ body {
   display: block;
 }
 
-/* FAQ Icon */
 .faq-icon {
   font-size: 16px;
   transition: transform 0.3s ease;
@@ -725,8 +655,23 @@ body {
   transform: rotate(180deg);
 }
 
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 30px 0px;
+  width: 100%;
+  max-width: 1140px;
+  margin: auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Home Two Slider                              */
+/* -------------------------------------------------------------------------- */
 .home-two-slider {
   position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
 .home-second-slider {
@@ -739,7 +684,6 @@ body {
   align-items: center;
   max-width: 1140px;
   height: 383px;
-
   position: relative;
   background-color: #ffe7cb;
 }
@@ -752,9 +696,8 @@ body {
   gap: 25px;
   width: 100%;
   height: 383px;
-
-  /* height: 286px; */
   background-color: #ffe7cb;
+  transition: transform 0.5s ease-in-out;
 }
 
 .home-two-slider .text-container {
@@ -763,7 +706,6 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   gap: 45px;
-  /* width: 338px; */
 }
 
 .home-two-slider .slider-title {
@@ -856,30 +798,8 @@ body {
   right: 10px;
 }
 
-.home-two-slider {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.home-two-slider .slider-content {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  gap: 137px;
-  /* width: 300%; */
-}
-
 .home-two-slider .slide {
   width: 100%;
-}
-
-.home-two-slider .slider-navigation {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
 }
 
 .home-two-slider .slider-dots {
@@ -892,7 +812,6 @@ body {
   width: 8px;
   height: 8px;
   margin: 5px;
-
   border-radius: 50%;
   cursor: pointer;
 }
@@ -901,9 +820,9 @@ body {
   background: #1968b3;
 }
 
-.blog-card a {
-  text-decoration: underline;
-}
+/* -------------------------------------------------------------------------- */
+/*             Sell Banner / Search / Breadcrumb / General Structure          */
+/* -------------------------------------------------------------------------- */
 
 .scroll-container {
   overflow-x: auto;
@@ -914,20 +833,13 @@ body {
 }
 
 .certified-content-box {
-  width: 1140;
-  height: 547;
+  width: 1140px;
+  /* Fixed missing px unit */
+  height: 547px;
+  /* Fixed missing px unit */
   justify-content: space-between;
   border-radius: 30px;
   display: flex;
-  justify-content: space-between;
-}
-
-/* --------------------------structured  CSS--------------------------------- */
-
-.common-container {
-  max-width: 1140px;
-  height: auto;
-  margin: auto;
 }
 
 .breadcrumb-wrapper {
@@ -947,10 +859,8 @@ body {
 }
 
 .sell-banner-wrapper .left-img img {
-  /* width: 100%; */
   max-width: 416px;
   height: auto;
-  /* width: 100%; */
 }
 
 .sell-banner-wrapper .right-content {
@@ -1012,12 +922,13 @@ body {
   height: 32px;
 }
 
-.sell-banner-wrapper .search-box input {
+.sell-banner-wrapper .search-box input,
+.Select-Brand-wrapper .search-box input,
+.Top-Selling-wrapper .search-box input {
   background-color: #ffffff;
   padding: 15px 10px;
   border-radius: 8px;
   border: 0.3px solid #e1e1e1;
-
   max-width: 595px;
   width: 100%;
 }
@@ -1052,6 +963,19 @@ body {
   font-weight: 500;
 }
 
+.sell-banner-wrapper .search-box .search-icon {
+  position: absolute;
+  top: 30%;
+  right: 17%;
+}
+
+.sell-banner-wrapper .left-img {
+  width: 36%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Why Sell                                     */
+/* -------------------------------------------------------------------------- */
 .why-sell-wrapper {
   padding: 30px 25px;
   border: 0.3px solid #e1e1e1;
@@ -1073,11 +997,12 @@ body {
   gap: 30px;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  /* Merged from later duplicate */
 }
 
 .why-sell-wrapper .why-card {
   display: flex;
-  /* align-items: center; */
   flex-direction: column;
   justify-content: center;
   width: 341px;
@@ -1100,7 +1025,6 @@ body {
   align-items: center;
   justify-content: end;
   color: #ffffff;
-  /* width: 348px; */
   height: 160px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -1124,13 +1048,18 @@ body {
   font-family: "IBM Plex Sans";
 }
 
-.Select-Brand-wrapper {
+/* -------------------------------------------------------------------------- */
+/*                               Select Brand                                 */
+/* -------------------------------------------------------------------------- */
+.Select-Brand-wrapper,
+.Top-Selling-wrapper {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-.Select-Brand-wrapper .brand-image-box {
+.Select-Brand-wrapper .brand-image-box,
+.Top-Selling-wrapper .brand-image-box {
   display: flex;
   gap: 19px;
   flex-wrap: wrap;
@@ -1148,36 +1077,23 @@ body {
   background-color: #ffffff;
 }
 
-.section-heading {
-  font-size: 24px;
-  font-family: "IBM Plex Sans";
-  font-weight: 500;
-}
-
-.Select-Brand-wrapper .brand-image-box span {
+.Select-Brand-wrapper .brand-image-box span,
+.Top-Selling-wrapper .brand-image-box span {
   font-size: 16px;
   font-weight: 500;
   text-align: center;
 }
 
-.Select-Brand-wrapper .brand-single-box {
+.Select-Brand-wrapper .brand-single-box,
+.Top-Selling-wrapper .brand-single-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 11px;
 }
 
-.Select-Brand-wrapper .search-box input {
-  background-color: #ffffff;
-  padding: 15px 10px;
-  border-radius: 8px;
-  border: 0.3px solid #e1e1e1;
-
-  max-width: 595px;
-  width: 100%;
-}
-
-.Select-Brand-wrapper .search-box {
+.Select-Brand-wrapper .search-box,
+.Top-Selling-wrapper .search-box {
   margin-left: 10px;
   max-width: 367px;
   width: 100%;
@@ -1190,18 +1106,16 @@ body {
   top: 30%;
 }
 
-.sell-banner-wrapper .search-box .search-icon {
-  position: absolute;
-  top: 30%;
-  right: 17%;
-}
-
-.Select-Brand-wrapper .heading-flex {
+.Select-Brand-wrapper .heading-flex,
+.Top-Selling-wrapper .heading-flex {
   display: flex;
   align-items: start;
   justify-content: space-between;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                               Ad Banner                                    */
+/* -------------------------------------------------------------------------- */
 .ad-banner-container {
   display: flex;
   flex-direction: column;
@@ -1284,19 +1198,9 @@ body {
   color: white;
 }
 
-.Top-Selling-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.Top-Selling-wrapper .brand-image-box {
-  display: flex;
-  gap: 19px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
+/* -------------------------------------------------------------------------- */
+/*                               Top Selling                                  */
+/* -------------------------------------------------------------------------- */
 .Top-Selling-wrapper .brand-image-box .img-individual {
   width: 146px;
   height: 169px;
@@ -1308,53 +1212,20 @@ body {
   background-color: #ffffff;
 }
 
-.section-heading {
-  font-size: 24px;
-  font-family: "IBM Plex Sans";
-  font-weight: 500;
-}
-
-.Top-Selling-wrapper .brand-image-box span {
-  font-size: 16px;
-  font-weight: 500;
-  text-align: center;
-}
-
-.Top-Selling-wrapper .brand-single-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 11px;
-}
-
-.Top-Selling-wrapper .search-box input {
-  background-color: #ffffff;
-  padding: 15px 10px;
-  border-radius: 8px;
-  border: 0.3px solid #e1e1e1;
-
-  max-width: 595px;
-  width: 100%;
-}
-
-.Top-Selling-wrapper .search-box {
-  margin-left: 10px;
-  max-width: 367px;
-  width: 100%;
-}
-
-.Top-Selling-wrapper .heading-flex {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-}
-
 .animated-text {
   position: relative;
   width: 100%;
   height: 50px;
-  /* Adjust based on your design */
   overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Select Series                                */
+/* -------------------------------------------------------------------------- */
+.select-series-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .select-series-wrapper ul {
@@ -1362,7 +1233,6 @@ body {
   list-style: none;
   align-items: center;
   flex-wrap: wrap;
-  /* justify-content: center; */
   gap: 15px;
 }
 
@@ -1377,36 +1247,19 @@ body {
   font-family: "IBM Plex Sans";
 }
 
-.Top-Selling-wrapper .search-box input {
-  background-color: #ffffff;
-  padding: 15px 10px;
-  border-radius: 8px;
-  border: 0.3px solid #e1e1e1;
-
-  max-width: 595px;
-  width: 100%;
-}
-
-.Top-Selling-wrapper .search-box {
-  margin-left: 10px;
-  position: relative;
-}
-
-.select-series-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
 .font-hedving {
   font-family: "Hedvig Letters Serif";
 }
 
+/* -------------------------------------------------------------------------- */
+/*                               Sell Old Phone                               */
+/* -------------------------------------------------------------------------- */
 .Sell-OldPhone-Wrapper {
   background-color: #ffffff;
   border: 0.3px solid #e1e1e1;
   padding: 30px;
   display: flex;
+  position: relative;
 }
 
 .Sell-OldPhone-Wrapper .left-content {
@@ -1436,8 +1289,6 @@ body {
   font-weight: 700;
   font-size: 26px;
 }
-
-.Sell-OldPhone-Wrapper .right-content .mobile-size {}
 
 .Sell-OldPhone-Wrapper .select-varient-box {
   display: flex;
@@ -1488,402 +1339,19 @@ body {
 
 .Sell-OldPhone-Wrapper .right-content button {
   width: 200px;
-  padding-top: 11px;
-  padding-right: 35px;
-  padding-bottom: 11px;
-  padding-left: 35px;
+  padding: 11px 35px;
   border-radius: 10px;
   background-color: gray;
   color: #ffffff;
   height: 54px;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap");
-
-:root {
-  --section-bg: #f5f6fa;
-  --btn-desable: #00000040;
-  --btn-enable: #1968b3;
-  --primary-font: "IBM Plex Sans";
-  --heading-font: "Hedvig Letters Serif", serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f5f6fa;
-}
-
-h1 {
-  font-size: 24px;
-  font-family: "IBM Plex Sans";
-}
-
-.wrapper {
-  max-width: 1140px;
-  margin: auto;
-}
-
-.scrollbar-hidden::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollbar-hidden {
-  -ms-overflow-style: none;
-  /* Hide scrollbar for IE and Edge */
-  scrollbar-width: none;
-  /* Hide scrollbar for Firefox */
-}
-
-.color-red {
-  color: #f60000;
-}
-
+/* -------------------------------------------------------------------------- */
+/*                               Misc / Payment                               */
+/* -------------------------------------------------------------------------- */
 .payment-left {
   padding-top: 35px;
   padding-bottom: 35px;
-}
-
-/* ----------------------------------------Responsive Design-------------------------------- */
-.lg-none {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .bread-padding-section {
-    padding: 0px 16px;
-  }
-
-  .sell-banner-wrapper .left-img {
-    display: none;
-  }
-
-  .sell-banner-wrapper .img-slider .img-card .image-bg {
-    height: 70px;
-    width: 70px;
-    background-color: #ffffff;
-    border: 0.3px solid #e1e1e1;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .sell-banner-wrapper .img-slider .img-card .image-bg img {
-    height: 46px;
-  }
-
-  .sell-service-card {
-    padding: 30px 16px;
-  }
-
-  .service-card-heading {
-    font-size: 20px;
-  }
-
-  .service-card-sub-heading {
-    font-size: 16px;
-  }
-
-  .sell-banner-wrapper .banner-heading h2 {
-    font-size: 20px;
-  }
-
-  .sell-banner-wrapper .right-content {
-    overflow: hidden;
-  }
-
-  .sell-banner-wrapper .suggestion-brand-box .brand-image-bg {
-    height: 50px;
-    width: 50px;
-  }
-
-  .sell-banner-wrapper .suggestion-brand-box .brand-image-bg img {
-    height: 30px;
-  }
-
-  .service-column {
-    flex-direction: column;
-  }
-
-  .why-sell-wrapper .cards-box {
-    flex-direction: column;
-  }
-
-  .why-sell-wrapper .section-heading {
-    font-size: 16px;
-  }
-
-  .why-sell-wrapper .why-card {
-    display: flex;
-    /* align-items: center; */
-    flex-direction: column;
-    justify-content: center;
-    width: 280px;
-  }
-
-  .why-sell-wrapper .why-card .why-upper {
-    background: #282a2b;
-    display: flex;
-    /* flex-direction: row; */
-    /* font-size: 16px ; */
-    gap: 10px;
-    /* padding: 0px 80px; */
-    padding-bottom: 11px;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    /* width: 348px; */
-    /* height: 160px; */
-    height: auto;
-    width: auto;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding: 15px 0px;
-  }
-
-  .why-sell-wrapper .why-card .why-upper br {
-    display: none;
-  }
-
-  .why-sell-wrapper .why-card .why-upper h3 {
-    font-size: 16px;
-  }
-
-  .why-sell-wrapper .why-card .why-upper img {
-    height: 20px;
-  }
-
-  .why-sell-wrapper .why-card .why-lower {
-    background: #ebffcb;
-    /* height: 110px; */
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-emphasis: content;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 10px 0px;
-  }
-
-  .why-sell-wrapper .why-card .why-lower span {
-    height: auto;
-    width: auto;
-  }
-
-  .why-sell-wrapper .cards-box {
-    gap: 15px;
-  }
-
-  .Select-Brand-wrapper .heading-flex {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .section-heading {
-    font-size: 20px;
-  }
-
-  .animated-text {
-    height: 30px;
-  }
-
-  .Select-Brand-wrapper .search-box {
-    display: none;
-  }
-
-  .Select-Brand-wrapper .brand-image-box .img-individual {
-    height: 60px;
-    width: 60px;
-  }
-
-  .Select-Brand-wrapper .brand-image-box {
-    flex-wrap: wrap;
-  }
-
-  .Select-Brand-wrapper .brand-image-box span {
-    font-size: 10px;
-  }
-
-  .Select-Brand-wrapper .brand-image-box .img-individual img {
-    height: 30px;
-  }
-
-  .ad-banner-container {
-    display: none;
-  }
-
-  .Top-Selling-wrapper .brand-image-box .img-individual {
-    flex-wrap: wrap;
-    height: 80px;
-    width: 80px;
-  }
-
-  .Top-Selling-wrapper .brand-image-box .img-individual img {
-    height: 46px;
-  }
-
-  .Top-Selling-wrapper .brand-image-box span {
-    font-size: 10px;
-  }
-
-  .faq-title {
-    font-size: 20px;
-    padding: 0px 10px;
-  }
-
-  .faq-question {
-    font-size: 13px;
-  }
-
-  .faq-item {
-    padding: 0px;
-  }
-
-  .faq-title {
-    margin-bottom: 16px;
-  }
-
-  .footer-column {
-    align-items: start;
-  }
-
-  .footer-links {
-    align-items: start;
-  }
-
-  .footer-bottom {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .footer-bottom {
-    margin: 16px 16px;
-  }
-
-  .Top-Selling-wrapper .search-box input {
-    display: none;
-  }
-
-  .Top-Selling-wrapper .heading-flex {
-    flex-direction: column;
-  }
-
-  .select-series-wrapper ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .Top-Selling-wrapper .brand-image-box {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .browse-popular-pics .catagery-image img {
-    height: 90px;
-  }
-
-  .trusted-brand-img-box {
-    height: 60px;
-    width: 60px;
-  }
-
-  .trusted-brand-img-box img {
-    /* height: 30px; */
-  }
-
-  .brand-lists {
-    justify-content: start;
-  }
-
-  .faq-icon img {
-    height: 5px;
-  }
-
-  .mobile-common-heading {
-    font-size: 20px;
-  }
-
-  .series-select-section {
-    padding: 30px 16px;
-    width: 100%;
-  }
-
-  .series-heading {
-    font-size: 20px;
-  }
-
-  .Sell-OldPhone-Wrapper {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .Sell-OldPhone-Wrapper .left-content {
-    width: 100%;
-    border: none;
-  }
-
-  .Sell-OldPhone-Wrapper .right-content {
-    width: 100%;
-    padding-left: 0px;
-  }
-
-  .Sell-OldPhone-Wrapper .right-content h2 {
-    font-size: 20px;
-  }
-
-  .Sell-OldPhone-Wrapper .select-varient-box span {
-    font-size: 16px;
-  }
-
-  .Sell-OldPhone-Wrapper .left-content {
-    height: 200px;
-  }
-
-  .Sell-OldPhone-Wrapper .left-imgbox img {
-    height: 160px;
-  }
-
-  .slide-length {
-    width: 93%;
-  }
-
-  .second-slide-price {
-    left: 230px;
-  }
-
-  .md-none {
-    display: none !important;
-  }
-
-  .lg-none {
-    display: block !important;
-  }
-
-  .Sell-OldPhone-Wrapper .right-content form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .Sell-OldPhone-Wrapper .right-content form label {
-    width: 100%;
-  }
-
-  .Sell-OldPhone-Wrapper .right-content button {
-    width: 100%;
-  }
-}
-
-.md-none {
-  display: block;
 }
 
 .address-heading {
@@ -1894,19 +1362,11 @@ h1 {
   font-size: 12px;
 }
 
-.bg-gray-200 {
-  background-color: rgb(224, 224, 224);
-}
-
 .edit-shipping-address-btn {
   border: 1px solid black;
   padding: 10px;
   border-radius: 5px;
   display: none;
-}
-
-.Sell-OldPhone-Wrapper {
-  position: relative;
 }
 
 .back-arrow-img {
@@ -2000,30 +1460,8 @@ h1 {
   color: black;
 }
 
-.sell-banner-wrapper .left-img {
-  width: 36%;
-}
-
-.sell-service-card .service-column {
-  /* flex-wrap: wrap; */
-}
-
 .sell-service-card {
   padding: 30px 150px;
-}
-
-.why-sell-wrapper .cards-box {
-  flex-wrap: wrap;
-}
-
-.faq-container {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  padding: 30px 0px;
-  width: 100%;
-  max-width: 1140px;
-  margin: auto;
 }
 
 .browse-popular-pics {
@@ -2047,126 +1485,134 @@ h1 {
   gap: 30px;
 }
 
-/* Extra large desktops */
-
-@media (min-width: 1600px) {}
-
-/* Standard desktops and laptops */
-
-@media (max-width: 1440px) {}
-
-@media screen and (max-width: 1280px) {
-  .sell-service-card {
-    font-size: 16px !important;
-  }
-}
-
-@media (max-width: 1024px) {
-  .Sell-OldPhone-Wrapper .right-content form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Tablets */
-
-@media (max-width: 768px) {
-  .blogs-container .blogs-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-
-    margin: auto;
-  }
-}
-
-/* Phones */
-
 .rating-card {
   padding: 15px;
   width: 222px;
 }
 
-@media screen and (max-width: 550px) {
-  .used-vs-brand .stats-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    gap: 12px;
-    /* width: 100%; */
-    /* height: 183px; */
+.testimonials-title {
+  margin-bottom: 17px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                           Mobile Overrides (<= 768px)                      */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* Global / Utils */
+  .lg-none {
+    display: block !important;
   }
 
-  .blogs-container .blogs-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 12px;
-
-    margin: auto;
+  .md-none {
+    display: none !important;
   }
 
-  .blogs-container .blog-card-overlay {
-    background: #282a2b;
-    top: 0;
-    left: 0;
-    display: flex;
+  /* Footer */
+  .footer-container {
+    padding-top: 60px;
+  }
+
+  .footer-content {
     flex-direction: column;
-    justify-content: start;
     align-items: center;
-    color: white;
     text-align: center;
-    padding: 10px;
-    padding: 30px 20px;
-    height: 39%;
+    width: 90%;
+    /* Logic merged from 1024px */
   }
 
-  .blogs-container .blog-overlay-text {
-    font-size: 15px;
+  .footer-column {
+    width: 100%;
+    align-items: start;
   }
 
-  .blogs-container .blog-title {
-    font-size: 15px;
+  .footer-links {
+    align-items: start;
   }
 
-  .blogs-container .blog-content {
+  .footer-bottom {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    /* Fixed conflict (column vs row), defaulting to row as per line 1763 override */
     justify-content: space-between;
-    padding: 23px 16px;
-    gap: 12px;
+    text-align: center;
+    width: 90%;
+    margin: 16px 16px;
   }
 
-  .blogs-container .blog-description {
-    font-size: 12px;
+  .footer-right-box {
+    width: 100%;
+    max-width: 150px;
   }
 
-  .blogs-container {
-    padding: 30px 10px;
+  /* Slider */
+  .slider-container {
+    height: 350px;
   }
 
-  .blogs-container {
-    gap: 0px;
+  .slider-nav {
+    display: none;
+    width: 30px;
+    height: 30px;
   }
 
-  .blogs-container .blogs-subtitle {
-    font-size: 13px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .used-vs-brand .stats-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  .slider-content {
+    padding: 15px 20px;
     align-items: center;
-    gap: 12px;
-    /* width: 100%; */
-    /* height: 183px; */
+    gap: 15px;
+    height: 100%;
+    flex-direction: column;
   }
-}
 
-@media screen and (max-width: 550px) {
+  .slider-title {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+
+  .slider-description {
+    font-size: 14px;
+    text-align: center;
+    line-height: 24px;
+  }
+
+  .slider-button {
+    font-size: 14px;
+    padding: 12px 35px;
+    width: auto;
+    margin: 0;
+  }
+
+  .slider-image {
+    position: relative;
+    right: auto;
+    top: 0;
+    transform: none;
+    height: 160px;
+    width: auto;
+    aspect-ratio: 1;
+    border-radius: 15px;
+    margin: 0;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Home Two Slider */
+  .home-two-slider {
+    display: none;
+  }
+
+  /* Logic from 550px line 392 */
+
+  /* Used vs Brand */
   .used-vs-brand {
     padding: 30px 5px;
+  }
+
+  .used-vs-brand .stats-container {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .used-vs-brand .content h2 {
@@ -2190,58 +1636,315 @@ h1 {
     font-size: 15px;
   }
 
+  /* Blogs */
+  .blogs-container .blogs-grid {
+    grid-template-columns: repeat(1, 1fr);
+    /* Defaulting to 1 col for < 768px for safety/readability */
+  }
+
+  .blogs-container {
+    padding: 30px 10px;
+    gap: 0px;
+  }
+
   .blogs-section {
     margin: 25px 0px;
   }
 
-  .use-brand-section {
-    margin: 25px 0px;
+  .blogs-container .blog-card-overlay {
+    padding: 30px 20px;
+    height: 39%;
   }
-}
 
-.testimonials-title {
-  margin-bottom: 17px;
-}
+  .blogs-container .blog-overlay-text {
+    font-size: 15px;
+  }
 
-@media (max-width: 768px) {
-  .slider-content {
-    padding: 15px 20px;
-    align-items: center;
-    gap: 15px;
-    height: 100%;
-    display: flex;
+  .blogs-container .blog-title {
+    font-size: 15px;
+  }
+
+  .blogs-container .blog-content {
+    padding: 23px 16px;
+  }
+
+  .blogs-container .blog-description {
+    font-size: 12px;
+  }
+
+  .blogs-container .blogs-subtitle {
+    font-size: 13px;
+  }
+
+  /* FAQ */
+  .faq-section {
+    padding: 30px 16px;
+  }
+
+  /* Estimating from bread-padding-section */
+  .faq-title {
+    font-size: 20px;
+    padding: 0px 10px;
+    margin-bottom: 16px;
+  }
+
+  .faq-question {
+    font-size: 13px;
+  }
+
+  .faq-item {
+    padding: 0px;
+  }
+
+  .faq-icon img {
+    height: 5px;
+  }
+
+  /* Sell Banner / Select Brand / Top Selling */
+  .bread-padding-section {
+    padding: 0px 16px;
+  }
+
+  .sell-banner-wrapper .left-img {
+    display: none;
+  }
+
+  .sell-banner-wrapper .img-slider .img-card .image-bg {
+    height: 70px;
+    width: 70px;
+  }
+
+  .sell-banner-wrapper .img-slider .img-card .image-bg img {
+    height: 46px;
+  }
+
+  .sell-banner-wrapper .suggestion-brand-box {
+    padding: 0;
+  }
+
+  .sell-banner-wrapper .suggestion-brand-box .brand-image-bg {
+    height: 50px;
+    width: 50px;
+  }
+
+  .sell-banner-wrapper .suggestion-brand-box .brand-image-bg img {
+    height: 30px;
+  }
+
+  .sell-banner-wrapper .banner-heading h2 {
+    font-size: 20px;
+  }
+
+  .sell-banner-wrapper .right-content {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .sell-service-card {
+    padding: 30px 16px;
+    font-size: 16px !important;
+  }
+
+  .service-column {
     flex-direction: column;
-    position: relative;
   }
 
-  .slider-title {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 0;
+  .service-card-heading {
+    font-size: 20px;
   }
 
-  .slider-description {
-    font-size: 14px;
-    font-weight: 400;
-    text-align: center;
+  .service-card-sub-heading {
+    font-size: 16px;
   }
 
-  .slider-button {
-    font-size: 14px;
-    padding: 12px 35px;
-    margin: 0;
+  .why-sell-wrapper .cards-box {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .why-sell-wrapper .section-heading {
+    font-size: 16px;
+  }
+
+  .why-sell-wrapper .why-card {
+    width: 280px;
+  }
+
+  .why-sell-wrapper .why-card .why-upper {
+    height: auto;
+    width: auto;
+    padding: 15px 0px;
+  }
+
+  .why-sell-wrapper .why-card .why-upper br {
+    display: none;
+  }
+
+  .why-sell-wrapper .why-card .why-upper h3 {
+    font-size: 16px;
+  }
+
+  .why-sell-wrapper .why-card .why-upper img {
+    height: 20px;
+  }
+
+  .why-sell-wrapper .why-card .why-lower {
+    height: auto;
+    padding: 10px 0px;
+  }
+
+  .why-sell-wrapper .why-card .why-lower span {
+    height: auto;
     width: auto;
   }
 
-  .slider-image {
-    position: relative;
-    display: flex;
-    margin: 0;
-    transform: none;
+  .Select-Brand-wrapper .heading-flex {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .section-heading {
+    font-size: 20px;
+  }
+
+  .animated-text {
+    height: 30px;
+  }
+
+  .Select-Brand-wrapper .search-box {
+    display: none;
+  }
+
+  .Select-Brand-wrapper .brand-image-box {
+    flex-wrap: wrap;
+  }
+
+  .Select-Brand-wrapper .brand-image-box .img-individual {
+    height: 60px;
+    width: 60px;
+  }
+
+  .Select-Brand-wrapper .brand-image-box .img-individual img {
+    height: 30px;
+  }
+
+  .Select-Brand-wrapper .brand-image-box span {
+    font-size: 10px;
+  }
+
+  .ad-banner-container {
+    display: none;
+  }
+
+  .Top-Selling-wrapper .brand-image-box .img-individual {
+    flex-wrap: wrap;
+    height: 80px;
+    width: 80px;
+  }
+
+  .Top-Selling-wrapper .brand-image-box .img-individual img {
+    height: 46px;
+  }
+
+  .Top-Selling-wrapper .brand-image-box span {
+    font-size: 10px;
+  }
+
+  .Top-Selling-wrapper .search-box input {
+    display: none;
+  }
+
+  .Top-Selling-wrapper .heading-flex {
+    flex-direction: column;
+  }
+
+  .Top-Selling-wrapper .brand-image-box {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .browse-popular-pics .catagery-image img {
+    height: 90px;
+  }
+
+  .trusted-brand-img-box {
+    height: 60px;
+    width: 60px;
+  }
+
+  .brand-lists {
+    justify-content: start;
+  }
+
+  .mobile-common-heading {
+    font-size: 20px;
+  }
+
+  .series-select-section {
+    padding: 30px 16px;
+    width: 100%;
+  }
+
+  .series-heading {
+    font-size: 20px;
+  }
+
+  .select-series-wrapper ul {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+  }
+
+  .Sell-OldPhone-Wrapper {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .Sell-OldPhone-Wrapper .left-content {
+    width: 100%;
+    border: none;
+    height: 200px;
+  }
+
+  .Sell-OldPhone-Wrapper .left-imgbox img {
     height: 160px;
-    aspect-ratio: 1;
-    border-radius: 15px;
-    top: 0;
-    right: auto;
+  }
+
+  .Sell-OldPhone-Wrapper .right-content {
+    width: 100%;
+    padding-left: 0px;
+  }
+
+  .Sell-OldPhone-Wrapper .right-content h2 {
+    font-size: 20px;
+  }
+
+  .Sell-OldPhone-Wrapper .select-varient-box span {
+    font-size: 16px;
+  }
+
+  .Sell-OldPhone-Wrapper .right-content form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .Sell-OldPhone-Wrapper .right-content form label {
+    width: 100%;
+  }
+
+  .Sell-OldPhone-Wrapper .right-content button {
+    width: 100%;
+  }
+
+  .slide-length {
+    width: 93%;
+  }
+
+  .second-slide-price {
+    left: 230px;
+  }
+
+  .use-brand-section {
+    margin: 25px 0px;
   }
 }
