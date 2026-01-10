@@ -333,7 +333,7 @@ button.laptopviewall {
 
 .selectedCategory .imageBg {
   box-shadow: 0px 0px 5px 1px #0e61af94;
-  /* border: 1px solid #1968b3; */
+  border: none;
 }
 
 .selectedCategory .imageBg .cardName {
@@ -488,6 +488,7 @@ span.dotButton {
 
   .selectedCategory .imageBg {
     border: 1px solid #1968b3;
+    box-shadow: none;
   }
 
   .selectedCategory .imageBg .cardName {

@@ -4,7 +4,9 @@ import Cookies from "js-cookie";
 import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import styles from "./SellDeviceVarient.module.css";
-import backarrow from "../../../../assets/images/icons/back.png";
+import backarrow from "../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
+import info from "../../../../assets/QuickSellNewIcons/info.png";
+
 
 function SellDeviceVarient() {
   const { slug1, slug2 } = useParams();
@@ -218,9 +220,8 @@ function SellDeviceVarient() {
 
             <div className={styles.selectBox}>
               <span>Select Variant</span>
-              <p>
-                Check storage in iPhone: Settings {">"} General {">"} iPhone
-                Storage
+              <p><img src={info} alt="info" title="info" />
+                Check your device storage from Settings → Storage
               </p>
             </div>
 
@@ -228,30 +229,29 @@ function SellDeviceVarient() {
               <div className={styles.form}>
                 {!isVariantsLoading &&
                   variants.variants.map((option) => (
-                      <label
-                        key={option._id}
-                        className={`${styles.radioLabel} ${
-                          selectedMemory?.variantId === option._id
-                            ? styles.active
-                            : ""
+                    <label
+                      key={option._id}
+                      className={`${styles.radioLabel} ${selectedMemory?.variantId === option._id
+                        ? styles.active
+                        : ""
                         }`}
-                      >
-                        <input
-                          type="radio"
-                          name="memory"
-                          checked={selectedMemory?.variantId === option._id}
-                          className="custom-radio"
-                          onChange={() =>
-                            handleChange(
-                              option.wholeVariantId,
-                              option._id,
-                              option.slug,
-                            )
-                          }
-                        />
-                        <span>{option.variantDetail}</span>
-                      </label>
-                    ))}
+                    >
+                      <input
+                        type="radio"
+                        name="memory"
+                        checked={selectedMemory?.variantId === option._id}
+                        className="custom-radio"
+                        onChange={() =>
+                          handleChange(
+                            option.wholeVariantId,
+                            option._id,
+                            option.slug,
+                          )
+                        }
+                      />
+                      <span>{option.variantDetail}</span>
+                    </label>
+                  ))}
               </div>
               <div className={styles.buttonBottomBox}>
                 <button

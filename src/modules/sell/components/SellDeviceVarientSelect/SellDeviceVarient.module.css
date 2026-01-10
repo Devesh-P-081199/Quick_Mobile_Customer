@@ -1,7 +1,7 @@
 .wrapper {
   background-color: #ffffff;
   border: 0.3px solid #e1e1e1;
-  padding: 30px;
+  padding: 20px;
   display: flex;
   position: relative;
   border-radius: 10px;
@@ -9,7 +9,6 @@
 
 .leftContent {
   width: 38%;
-  height: 388px;
   border-right: 0.5px solid #0a0a0a;
   display: flex;
   align-items: center;
@@ -18,8 +17,8 @@
 }
 
 .leftImgBox>img {
-  height: 367px;
-  padding: 20px;
+  height: 100%;
+  width: 100%;
 }
 
 .backArrowImg {
@@ -35,38 +34,46 @@
 .rightContent {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 0px;
   padding-left: 30px;
-  width: 55%;
+  width: 62%;
 }
 
 .heading {
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-3xl);
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .selectBox {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .selectBox span {
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-xl);
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .selectBox p {
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
   border-radius: 10px;
   background-color: rgba(255, 224, 202, 0.56);
-  font-family: var(--font-family-primary);
   font-weight: 400;
-  font-size: 12px;
-  max-width: 570px;
+  font-size: 14px;
   margin-bottom: 0;
+}
+
+.selectBox p img {
+  width: 16px;
+  height: 16px;
 }
 
 .form {
@@ -78,18 +85,6 @@
   padding-bottom: 5px;
 }
 
-.radioLabel {
-  background: #ffffff;
-  border: 1px solid #dddddd;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  border-radius: 10px;
-  gap: 16px;
-  white-space: nowrap;
-  width: 100%;
-}
 
 /* .radioLabel:hover {
   border: 0.5px solid #007fee;
@@ -149,7 +144,75 @@
   background-color: #a3a3a3;
 }
 
-@media (max-width: 550px) {
+.buttonContainer {
+  background-color: #ffffff;
+  padding: 12px;
+  position: fixed;
+  bottom: 0vh;
+  position: fixed;
+  bottom: 0vh;
+  left: 0vh;
+  border-radius: 0px;
+  /* height: 42px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  border-top: 0.3px solid #dfdfdf;
+}
+
+.backButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.radioLabel {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-radius: 10px;
+  gap: 16px;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.radioLabel {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-radius: 5px;
+  min-height: 50px;
+  height: 100%;
+  /* width: 100%; */
+  gap: 16px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.radioLabel.active {
+  border: 1px solid #1968b3 !important;
+  background: #ddefff !important;
+}
+
+@media (max-width: 768px) {
   .form {
     flex-direction: row;
     flex-wrap: wrap;
@@ -163,7 +226,7 @@
   }
 
   /* If text is too long, take full width */
-  .radioLabel:has(span) {
+  .radioLabel:has(span.option-text-des) {
     flex-basis: auto;
   }
 
@@ -217,12 +280,17 @@
     margin-bottom: 0;
   }
 
+  .selectBox {
+    margin-bottom: 0px;
+  }
+
   .selectBox p {
     font-size: 12px;
+    padding: 10px;
   }
 
   .rightContent {
-    gap: 19px;
+    gap: 15px;
     width: 100%;
     padding-left: 0px;
   }
@@ -286,59 +354,4 @@
     border: none;
     z-index: 99;
   }
-}
-
-.buttonContainer {
-  background-color: #ffffff;
-  padding: 12px;
-  position: fixed;
-  bottom: 0vh;
-  position: fixed;
-  bottom: 0vh;
-  left: 0vh;
-  border-radius: 0px;
-  /* height: 42px; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  border-top: 0.3px solid #dfdfdf;
-}
-
-.backButton {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-.radioLabel {
-  background: #ffffff;
-  border: 1px solid #dddddd;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  border-radius: 5px;
-  min-height: 50px;
-  height: 100%;
-  /* width: 100%; */
-  gap: 16px;
-  margin-bottom: 0;
-  white-space: nowrap;
-}
-
-.radioLabel {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border: 0.3px solid #e1e1e1;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.radioLabel.active {
-  border: 1px solid #1968b3 !important;
-  background: #ddefff !important;
 }
