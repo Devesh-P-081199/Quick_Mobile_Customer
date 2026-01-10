@@ -88,10 +88,10 @@
 }
 
 .brandSingleBox {
-  font-size: 16px;
+  font-size: 14px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   align-items: center;
   font-family: IBM Plex Sans;
   font-weight: 500;
@@ -100,17 +100,19 @@
 
 .imgIndividual {
   width: 100%;
-  border: 0.3px solid #e1e1e1;
-  border-radius: 10px;
+  aspect-ratio: 173/180;
+  border: none;
+  box-shadow: 0px 0px 4px 1px #00000006;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  padding: 10px;
+  padding: 20px;
 }
 
 .imgIndividual img {
-  height: 160px;
+  height: 140px;
   object-fit: contain;
   padding: 0px;
 }
@@ -163,6 +165,8 @@
   }
 
   .imgIndividual {
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
     border-radius: 15px;
     padding: 15px;
   }

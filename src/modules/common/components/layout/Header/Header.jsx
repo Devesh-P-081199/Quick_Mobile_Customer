@@ -25,12 +25,12 @@ import styles from "./Header.module.css";
 // Assets - Logo and Icons
 import HeaderLogo from "../../../../../assets/QuickSellNewIcons/New_icon_18-10-25.jpg";
 import dropdownIcon from "../../../../../assets/QuickSellNewIcons/arrow_down.png";
-import usericon from "../../../../../assets/images/icons/user.png";
+import usericon from "../../../../../assets/QuickSellNewIcons/user.png";
 import RightArrow from "../../../../../assets/icons/RightArrow.svg";
 import NewSearchIcon from "../../../../../assets/QuickSellNewIcons/Search.svg";
 import NewMenuBar from "../../../../../assets/QuickSellNewIcons/MenuBar.svg";
 import NewCloseIcon from "../../../../../assets/QuickSellNewIcons/Cross.svg";
-import NewLocationIcon from "../../../../../assets/QuickSellNewIcons/Location.svg";
+import NewLocationIcon from "../../../../../assets/QuickSellNewIcons/Location_new.png";
 import NewBackArrow from "../../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 
 // External Dependencies

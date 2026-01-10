@@ -121,6 +121,9 @@
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
+  .sliderTrack {
+    gap: 10px;
+  }
 
   .sliderWrapper {
     margin-top: 0;
