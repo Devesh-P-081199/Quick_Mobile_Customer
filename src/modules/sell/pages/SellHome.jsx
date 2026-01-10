@@ -32,7 +32,7 @@ function SellHome() {
           if (brandRef.current) {
             const offsetTop =
               brandRef.current.getBoundingClientRect().top + window.pageYOffset;
-            const offset = 50; // scroll 20px above
+            const offset = 90; // increased offset to ensure header is visible
             window.scrollTo({
               top: offsetTop - offset,
               behavior: "smooth",

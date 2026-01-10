@@ -8,9 +8,9 @@
   gap: 15px;
 }
 
-/* .mobilePtSection {
-  padding: 20px 0px 20px;
-} */
+.mobilePtSection {
+  padding: 0px;
+}
 
 .headingFlex {
   display: flex;
@@ -22,16 +22,9 @@
   margin: 0px 0 0 0;
 }
 
-.headingFlex .sectionHeading {
-  font-size: 18px;
-}
-
-.headingFlex .sectionHeading01 {
-  font-size: 18px;
-}
-
 .sectionHeading,
 .sectionHeading01 {
+  font-size: 24px;
   font-weight: 500;
   font-family: "IBM Plex Sans", sans-serif;
   color: #000;
@@ -41,13 +34,9 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
   padding: 0;
-  scrollbar-width: none;
   margin-bottom: 0;
+  flex-wrap: wrap;
 }
 
 .seriesList::-webkit-scrollbar {
@@ -93,12 +82,16 @@
 .modellist {
   overflow: auto;
   display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-bottom: 0;
 }
 
 .brandSingleBox {
+  font-size: 16px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 15px;
   align-items: center;
   font-family: IBM Plex Sans;
   font-weight: 500;
@@ -129,11 +122,26 @@
     gap: 10px;
   }
 
+  .mobilePtSection {
+    padding: 20px 0px 20px;
+  }
+
+  .seriesList {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
   .headingFlex .sectionHeading {
+    font-size: 18px;
     margin-top: 25px;
   }
 
   .headingFlex .sectionHeading01 {
+    font-size: 18px;
     margin-top: 0px;
   }
 

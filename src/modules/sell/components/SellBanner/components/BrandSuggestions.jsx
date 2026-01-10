@@ -40,7 +40,7 @@ const BrandSuggestions = forwardRef(function BrandSuggestions(
           </div>
         </div>
       ))}
-      
+
       {/* More button */}
       <div className={styles.brandImageBg} onClick={onViewAllClick}>
         <span className={styles.dotButton}>
