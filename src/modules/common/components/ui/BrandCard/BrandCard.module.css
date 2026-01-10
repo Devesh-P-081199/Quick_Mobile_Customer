@@ -1,11 +1,17 @@
-/* Modernized BrandCard with Tailwind Integration */
+/* Modernized BrandCard - Vanilla CSS */
 
 .selectBrandWrapper {
-  @apply flex flex-col;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Default Desktop Styles (> 768px) */
 .brandImageBox {
-  @apply flex gap-5 flex-wrap overflow-auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 1rem;
+  row-gap: 1.25rem;
+  overflow: auto;
   /* Enhanced scrollbar styling */
   scrollbar-width: thin;
   scrollbar-color: var(--color-neutral-300) transparent;
@@ -16,238 +22,109 @@
 }
 
 .brandImageBox::-webkit-scrollbar-track {
-  @apply bg-gray-100 rounded-full;
+  background-color: #f3f4f6;
+  border-radius: 9999px;
 }
 
 .brandImageBox::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded-full hover:bg-gray-400;
+  background-color: #d1d5db;
+  border-radius: 9999px;
+}
+
+.brandImageBox::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
 }
 
 .imgIndividual {
-  @apply w-36 h-36 border border-gray-200 flex items-center justify-center bg-white overflow-hidden cursor-pointer transition-all duration-200;
+  width: 100%;
+  height: 10rem;
+  /* 40 * 0.25rem = 10rem */
   border: 0.3px solid #e1e1e1;
+  /* Maintained explicit border override */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 200ms ease;
   border-radius: 15px;
 }
 
 .imgIndividual img {
-  @apply object-contain h-full w-full;
+  object-fit: contain;
+  height: 9rem;
+  /* 36 * 0.25rem = 9rem */
+  width: 100%;
+  padding: 1rem;
 }
 
 .sectionHeading {
-  @apply text-2xl font-primary font-medium text-gray-900;
+  font-size: 1.5rem;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  color: #111827;
 }
 
 .brandImageBox span {
-  @apply text-base font-medium text-center text-gray-700;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  color: #374151;
 }
 
 .brandSingleBox {
-  @apply flex flex-col items-center gap-3;
-}
-
-.searchBox input {
-  @apply bg-white py-4 px-3 rounded-lg border border-gray-200 w-full max-w-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-100 focus:outline-none transition-all duration-200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .searchBox {
-  @apply ml-3 max-w-sm w-full relative;
+  margin-left: 0.75rem;
+  max-width: 24rem;
+  width: 100%;
+  position: relative;
+}
+
+.searchBox input {
+  background-color: white;
+  padding: 1rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  width: 100%;
+  max-width: 32rem;
+  transition: all 200ms ease;
+  outline: none;
+}
+
+.searchBox input:focus {
+  border-color: #1968b3;
+  /* Using brand color seen in StaticBanner */
+  box-shadow: 0 0 0 2px #d1e9ff;
+  /* Approximate ring-primary-100 */
 }
 
 .searchIcon {
-  @apply absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500;
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
 }
 
 .headingFlex {
-  @apply flex items-center justify-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* Extra large desktops */
-
-@media (min-width: 1600px) {}
-
-/* Standard desktops and laptops */
-
-@media (max-width: 1440px) {}
-
-@media screen and (max-width: 1280px) {}
-
-@media (max-width: 1024px) {}
-
-/* Tablets */
-
+/* Mobile Styles (< 768px) */
 @media (max-width: 768px) {
-  .headingFlex {
-    align-items: center;
-  }
-}
-
-/* Phones */
-
-@media (max-width: 550px) {
-  .searchBox {
-    width: 44%;
-  }
-
-  .searchBox input {
-    background-color: #ffffff;
-    padding: 8px 10px;
-    border-radius: 8px;
-    border: 0.3px solid #e1e1e1;
-    max-width: 595px;
-    width: 100%;
-    font-size: 12px;
-  }
-
-  .searchIcon {
-    position: absolute;
-    right: 5%;
-    top: 30%;
-    width: 20%;
-    background: white;
-    padding-left: 10px;
-  }
-
-  .sectionHeading {
-    font-size: 18px;
-    font-family: "IBM Plex Sans";
-    font-weight: 500;
-    padding: 0px 2px;
-  }
-
-  .imgIndividual {
-    height: 88px;
-    width: 88px;
-  }
-
   .brandImageBox {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .brandSingleBox {
-    gap: 6px;
-  }
-
-  .brandImageBox span {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 402px) {
-  .imgIndividual {
-    height: 85px;
-    width: 85px;
-  }
-}
-
-@media (max-width: 387px) {
-  .imgIndividual {
-    height: 80px;
-    width: 80px;
-  }
-}
-
-@media (max-width: 364px) {
-  .imgIndividual {
-    height: 70px;
-    width: 70px;
-    padding: 2px;
-  }
-}
-
-@media (max-width: 327px) {
-  .imgIndividual {
-    height: 60px;
-    width: 60px;
-    padding: 2px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .brandImageBox {
-    display: grid !important;
-    grid-template-columns: repeat(6, 1fr);
-    row-gap: 20px;
-    column-gap: 16px;
-  }
-
-  .imgIndividual {
-    /* height: 160px; */
-    width: 100%;
-  }
-
-  .imgIndividual img {
-    /* height: 60px; */
-    object-fit: contain;
-    height: 139px;
-    /* width: 139px; */
-    padding: 16px;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1200px) {
-  .brandImageBox span {
-    font-size: 14px;
-  }
-
-  .brandImageBox {
-    display: grid !important;
-    grid-template-columns: repeat(6, 1fr);
-    row-gap: 20px;
-    column-gap: 16px;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 993px) {
-  .brandImageBox {
-    display: grid !important;
-    grid-template-columns: repeat(5, 1fr);
-    grid-row-gap: 30px;
-    grid-column-gap: 10px;
-  }
-
-  .imgIndividual {
-    height: 160px;
-    width: 100%;
-  }
-
-  .imgIndividual img {
-    /* height: 60px; */
-    object-fit: contain;
-    height: 130px;
-    width: 100px;
-    padding: 10px;
-  }
-}
-
-@media screen and (min-width: 380px) and (max-width: 767px) {
-  .brandImageBox {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr);
-    grid-row-gap: 20px;
-    grid-column-gap: 10px;
-  }
-
-  .imgIndividual {
-    height: 160px;
-    width: 100%;
-  }
-
-  .imgIndividual img {
-    /* height: 60px; */
-    object-fit: contain;
-    height: 80px;
-    width: 80px;
-    padding: 10px;
-  }
-}
-
-@media screen and (min-width: 200px) and (max-width: 550px) {
-  .brandImageBox {
-    display: grid !important;
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 20px;
-    column-gap: 10px;
+    gap: 0.75rem;
+    /* gap-3 */
   }
 
   .imgIndividual {
@@ -256,107 +133,53 @@
   }
 
   .imgIndividual img {
-    /* height: 60px; */
     object-fit: contain;
-    height: 95px;
+    height: 6rem;
+    /* h-24 */
     width: 100%;
-    /* padding: 16px; */
+    padding: 1rem;
+    /* p-4 restored from recent user edit */
     mix-blend-mode: darken;
-  }
-
-  .imgIndividual {
-    /* background: none; */
-  }
-}
-
-/* Responsive Design with Tailwind */
-
-@media (max-width: 768px) {
-  .headingFlex {
-    @apply items-center;
-  }
-
-  .brandImageBox {
-    @apply grid grid-cols-6 gap-4;
-  }
-
-  .imgIndividual {
-    @apply w-full;
-  }
-
-  .imgIndividual img {
-    @apply object-contain p-4;
-    height: 139px;
-  }
-}
-
-@media (max-width: 550px) {
-  .searchBox {
-    @apply w-2/5;
-  }
-
-  .searchBox input {
-    @apply bg-white py-2 px-3 rounded-lg border border-gray-200 w-full text-xs;
-  }
-
-  .searchIcon {
-    @apply absolute right-2 top-1/2 transform -translate-y-1/2 bg-white pl-3;
-    width: 20%;
   }
 
   .sectionHeading {
-    @apply text-lg font-primary font-medium px-1;
-  }
-
-  .brandImageBox {
-    @apply grid grid-cols-3 gap-3;
-  }
-
-  .imgIndividual {
-    @apply h-full w-full;
-  }
-
-  .imgIndividual img {
-    @apply object-contain h-24 w-full;
-    mix-blend-mode: darken;
-  }
-
-  .brandSingleBox {
-    @apply gap-2;
+    font-size: 1.125rem;
+    /* text-lg */
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 500;
+    padding: 0 0.25rem;
   }
 
   .brandImageBox span {
-    @apply text-xs;
-  }
-}
-
-/* Grid layouts for different screen sizes */
-@media screen and (min-width: 768px) and (max-width: 993px) {
-  .brandImageBox {
-    @apply grid grid-cols-5 gap-3;
+    font-size: 0.75rem;
+    /* text-xs */
   }
 
-  .imgIndividual {
-    @apply h-40 w-full;
+  .brandSingleBox {
+    gap: 0.5rem;
+    /* gap-2 */
   }
 
-  .imgIndividual img {
-    @apply object-contain p-3;
-    height: 130px;
-    width: 100px;
-  }
-}
-
-@media screen and (min-width: 380px) and (max-width: 767px) {
-  .brandImageBox {
-    @apply grid grid-cols-4 gap-3;
+  /* Search Box Adjustments for Mobile */
+  .searchBox {
+    width: 40%;
   }
 
-  /* .imgIndividual {
-    @apply h-40 w-full;
+  .searchBox input {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    /* text-xs */
   }
 
-  .imgIndividual img {
-    @apply object-contain p-3 h-20 w-20;
-  } */
+  .searchIcon {
+    right: 0.5rem;
+    background-color: white;
+    padding-left: 0.75rem;
+    /* pl-3 */
+    width: 20%;
+  }
+
+  .headingFlex {
+    align-items: center;
+  }
 }

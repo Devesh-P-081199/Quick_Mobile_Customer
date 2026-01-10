@@ -144,7 +144,8 @@
   width: 100%;
   /* Consistent width filling the item container */
   min-height: 120px;
-  border: 0.3px solid #e1e1e1;
+  border: none;
+  box-shadow: 0px 0px 4px 1px #00000006;
   /* Ensure some uniformity in height */
   flex-grow: 1;
 }
@@ -161,8 +162,7 @@
   width: 14px;
   height: 14px;
   background: white;
-  border: 0.3px solid #e1e1e1;
-  /* Rotate to form triangle */
+  border: 0.3px solid #e8e8e86b;
   transform: rotate(45deg);
   /* Top-pointing arrow (Desktop horizontal content below): 
      Need Top-Left corner of square to be the tip? 
@@ -263,6 +263,7 @@
 
     /* Left-pointing arrow (Bottom-Left corner): */
     border: 0.3px solid #e1e1e1;
+    box-shadow: none;
     border-top: none;
     border-right: none;
 
@@ -276,6 +277,8 @@
     width: 100%;
     min-height: auto;
     height: auto;
+    box-shadow: none;
+    border: 0.3px solid #e1e1e1;
   }
 
   .progressBarContainer {

@@ -4,27 +4,27 @@ import slide1 from "../../../../assets/images/banner_images/homepage_banner_slid
 function HomeSlider() {
   const slides = [
     {
-      title: "Sell Your Old Phone in Seconds!",
+      title: "Sell Your Old Phone in Minutes!",
       description:
-        "Instant quotes, hassle-free pickup, and quick payment. Upgrade to the latest tech today!",
+        "Highest Price | Doorstep Pickups | Instant Payment",
       image: slide1,
     },
     {
-      title: "Sell Your Old Phone in Seconds!",
+      title: "Sell Your Old Phone in Minutes!",
       description:
-        "Instant quotes, hassle-free pickup, and quick payment. Upgrade to the latest tech today!",
+        "Highest Price | Doorstep Pickups | Instant Payment",
       image: slide1,
     },
     {
-      title: "Sell Your Old Phone in Seconds!",
+      title: "Sell Your Old Phone in Minutes!",
       description:
-        "Instant quotes, hassle-free pickup, and quick payment. Upgrade to the latest tech today!",
+        "Highest Price | Doorstep Pickups | Instant Payment",
       image: slide1,
     },
     {
-      title: "Sell Your Old Phone in Seconds!",
+      title: "Sell Your Old Phone in Minutes!",
       description:
-        "Instant quotes, hassle-free pickup, and quick payment. Upgrade to the latest tech today!",
+        "Highest Price | Doorstep Pickups | Instant Payment",
       image: slide1,
     },
   ];

@@ -221,7 +221,7 @@ h1 {
 .slider-container {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 320px;
   margin: auto;
   overflow: hidden;
   background-image: url('../../assets/images/banner_images/homepage_banner_image_desktop.png');
@@ -258,19 +258,20 @@ h1 {
   padding: 0 2rem;
   margin: auto;
   width: 100%;
-  position: relative;
+  /* position: relative; */
 }
 
 .slider-title {
   font-family: "IBM Plex Sans", sans-serif;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 32px;
+  margin-bottom: 0;
+  font-weight: 600;
   color: #000;
 }
 
 .slider-description {
   font-family: "IBM Plex Sans";
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 500;
   color: #000;
   max-width: 742px;
@@ -293,10 +294,10 @@ h1 {
 
 .slider-image {
   position: absolute;
-  right: 0px;
+  right: 12.5%;
   top: 50%;
   transform: translateY(-50%);
-  width: 362px;
+  width: 255px;
   height: auto;
 }
 
@@ -1549,7 +1550,7 @@ h1 {
 
   /* Slider */
   .slider-container {
-    height: 350px;
+    height: 380px;
     background-image: url('../../assets/images/banner_images/homepage_banner_image_phone.png');
     background-size: cover;
     background-position: center;
@@ -1562,15 +1563,17 @@ h1 {
   }
 
   .slider-content {
-    padding: 15px 20px;
+    padding: 15px 20px 20px;
     align-items: center;
-    gap: 15px;
+    gap: 13px;
     height: 100%;
     flex-direction: column;
+    justify-content: center;
   }
 
   .slider-title {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 600;
     margin-bottom: 0;
   }
 
@@ -1585,6 +1588,7 @@ h1 {
     padding: 12px 35px;
     width: auto;
     margin: 0;
+    height: 40px;
   }
 
   .slider-image {
@@ -1592,12 +1596,10 @@ h1 {
     right: auto;
     top: 0;
     transform: none;
-    height: 160px;
+    height: 190px;
     width: auto;
     aspect-ratio: 1;
     border-radius: 15px;
-    margin: -50px;
-    ;
   }
 
   .dot {
