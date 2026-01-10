@@ -43,8 +43,8 @@ function SelectSeries() {
   // Filter models based on selected series
   const filteredModels = seriesId
     ? allModels.filter(
-        (model) => model.deviceSeries?.toString() === seriesId?.toString(),
-      )
+      (model) => model.deviceSeries?.toString() === seriesId?.toString(),
+    )
     : allModels;
 
   return (
@@ -79,9 +79,8 @@ function SelectSeries() {
                           prev === item._id ? null : item._id,
                         )
                       }
-                      className={`${styles.seriesItem} ${
-                        seriesId === item._id ? styles.active : ""
-                      }`}
+                      className={`${styles.seriesItem} ${seriesId === item._id ? styles.active : ""
+                        }`}
                     >
                       {item.seriesName}
                       {seriesId === item._id && (
@@ -106,7 +105,7 @@ function SelectSeries() {
         {/* Models List */}
         <section className="page-content-wrapper">
           <div className="wrapper">
-            {}
+            { }
             {filteredModels.length > 0 ? (
               <div className={styles.wrapper}>
                 <div className={styles.headingFlex}>

@@ -1,26 +1,25 @@
 /* SelectSeries.module.css */
+
+/* --- Default Styles (Desktop > 768px) --- */
+
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 15px;
 }
 
-.SellOldSection {
-  color: #000000;
-  font-size: 30px;
-}
-
-.header {
-  padding: 8px;
-}
-
-.header .iconButton img {
-  width: 25px;
-  height: 25px;
-}
-
-.mobilePtSection {
+/* .mobilePtSection {
   padding: 20px 0px 20px;
+} */
+
+.headingFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headingFlex h2 {
+  margin: 0px 0 0 0;
 }
 
 .headingFlex .sectionHeading {
@@ -31,12 +30,11 @@
   font-size: 18px;
 }
 
-.mobilePtSection .default-padding-section {
-  padding: 0;
-}
-
-section.default-padding-section {
-  padding: 10px 8px !important;
+.sectionHeading,
+.sectionHeading01 {
+  font-weight: 500;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: #000;
 }
 
 .seriesList {
@@ -45,19 +43,15 @@ section.default-padding-section {
   gap: 10px;
   overflow-x: auto;
   overflow-y: hidden;
-  /* Prevent vertical scroll */
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  /* Smooth scroll on iOS */
   padding: 0;
   scrollbar-width: none;
   margin-bottom: 0;
-  /* Firefox hide scrollbar */
 }
 
 .seriesList::-webkit-scrollbar {
   display: none;
-  /* Hide scrollbar iOS/Chrome */
 }
 
 .seriesItem {
@@ -73,7 +67,6 @@ section.default-padding-section {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  /* gap: 50%; */
   align-items: center;
 }
 
@@ -97,47 +90,9 @@ section.default-padding-section {
   height: 20px;
 }
 
-.headingFlex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.headingFlex h2 {
-  margin: 0px 0 0 0;
-}
-
-.sectionHeading {
-  font-weight: 500;
-  font-family: "IBM Plex Sans", sans-serif;
-  color: #000;
-  /* adjust if needed */
-}
-
-.sectionHeading01 {
-  font-weight: 500;
-  font-family: "IBM Plex Sans", sans-serif;
-  color: #000;
-  /* adjust if needed */
-}
-
-.imgIndividual img {
-  /* width: 146px; */
-  height: 160px;
-  object-fit: contain;
-  padding: 0px;
-}
-
-.imgIndividual {
-  width: 100%;
-  /* height: 100%; */
-  border: 0.3px solid #e1e1e1;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  padding: 10px;
+.modellist {
+  overflow: auto;
+  display: grid;
 }
 
 .brandSingleBox {
@@ -147,31 +102,32 @@ section.default-padding-section {
   align-items: center;
   font-family: IBM Plex Sans;
   font-weight: 500;
-  /* width: fit-content; */
   text-align: center;
 }
 
-.modellist {
+.imgIndividual {
+  width: 100%;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 10px;
   display: flex;
-  overflow: auto;
-  display: grid;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 10px;
 }
 
-@media (max-width: 990px) {}
-
-@media (max-width: 800px) {
-  .brandSingleBox {
-    font-size: 14px;
-  }
+.imgIndividual img {
+  height: 160px;
+  object-fit: contain;
+  padding: 0px;
 }
 
-@media (max-width: 600px) {
-  .brandSingleBox {
-    font-size: 14px;
-  }
-}
+/* --- Mobile Styles (<= 768px) --- */
 
 @media screen and (max-width: 768px) {
+  .wrapper {
+    gap: 10px;
+  }
 
   .headingFlex .sectionHeading {
     margin-top: 25px;
@@ -181,43 +137,29 @@ section.default-padding-section {
     margin-top: 0px;
   }
 
-  .mobilePtSection section.default-padding-section {
-    padding: 0;
-  }
-
   section {
     padding: 0px 0;
-  }
-
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .imgIndividual {
-    /* background: none; */
-    border-radius: 15px;
-    padding: 15px;
-  }
-
-  .imgIndividual img {
-    height: 95px;
   }
 
   .modellist {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    overflow: auto;
     gap: 10px;
     margin-bottom: 25px;
   }
 
   .brandSingleBox {
     font-size: 12px;
-    font-weight: 500;
-    text-align: center;
     width: 31%;
+  }
+
+  .imgIndividual {
+    border-radius: 15px;
+    padding: 15px;
+  }
+
+  .imgIndividual img {
+    height: 95px;
   }
 }
