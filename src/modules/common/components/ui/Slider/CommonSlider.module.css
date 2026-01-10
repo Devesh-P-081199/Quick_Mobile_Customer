@@ -13,7 +13,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   /* Prevent vertical overflow */
-  gap: 15px;
+  gap: 16px;
   scroll-behavior: smooth;
   justify-content: flex-start;
   /* Add padding to prevent content cutoff */

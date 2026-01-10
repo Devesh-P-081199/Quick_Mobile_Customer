@@ -1,4 +1,4 @@
-import iPhone from "../../../../assets/images/Products/iphone.png";
+import iPhone from "../../../../assets/images/Products/mobile.png";
 import styles from "./BrowsePicks.module.css";
 
 const serviceData = [
@@ -21,6 +21,16 @@ const serviceData = [
     title: "service4",
     img: iPhone,
     text: "Gaming Consoles",
+  },
+  {
+    title: "service5",
+    img: iPhone,
+    text: "Android",
+  },
+  {
+    title: "service6",
+    img: iPhone,
+    text: "Smart Watch",
   },
 ];
 

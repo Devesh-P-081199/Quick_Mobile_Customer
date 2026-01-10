@@ -24,7 +24,7 @@ import styles from "./Header.module.css";
 
 // Assets - Logo and Icons
 import HeaderLogo from "../../../../../assets/QuickSellNewIcons/New_icon_18-10-25.jpg";
-import dropdownIcon from "../../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
+import dropdownIcon from "../../../../../assets/QuickSellNewIcons/arrow_down.png";
 import usericon from "../../../../../assets/images/icons/user.png";
 import RightArrow from "../../../../../assets/icons/RightArrow.svg";
 import NewSearchIcon from "../../../../../assets/QuickSellNewIcons/Search.svg";
@@ -155,7 +155,7 @@ const Header = () => {
         requestAnimationFrame(() => setIsLoaded(true));
       });
     }
-    
+
     const fetchHeaderData = async () => {
       try {
         // Fetch Categories
@@ -499,7 +499,7 @@ const Header = () => {
    * Effect: Fetch brands with their products for mobile phone navigation
    * Used in mobile modals for brand and product selection
    */
-    // Fetched in the main useEffect above
+  // Fetched in the main useEffect above
 
   /**
    * Effect: Manage body scroll when mobile sidebar is open
@@ -1148,29 +1148,29 @@ const Header = () => {
                                 .filter(b => b.categoryId === cat._id)
                                 .slice(0, 10)
                                 .map((brand) => (
-                                <li
-                                  key={brand._id}
-                                  className={styles.brandName}
-                                  onClick={() => {
-                                    setIsOpen(false);
-                                    setOpenMobileInnerDropdown(null);
-                                    setOpenMobileCategory(null);
-                                    handleBrandClick(brand._id, brand);
-                                  }}
-                                >
-                                  <img
-                                    src={brand.brandLogo}
-                                    alt={cat.categoryName}
-                                    className={styles.mobileCategoryIcon}
-                                    style={{
-                                      width: 20,
-                                      height: 20,
-                                      marginRight: 8,
+                                  <li
+                                    key={brand._id}
+                                    className={styles.brandName}
+                                    onClick={() => {
+                                      setIsOpen(false);
+                                      setOpenMobileInnerDropdown(null);
+                                      setOpenMobileCategory(null);
+                                      handleBrandClick(brand._id, brand);
                                     }}
-                                  />
-                                  {brand.brandName}
-                                </li>
-                              ))
+                                  >
+                                    <img
+                                      src={brand.brandLogo}
+                                      alt={cat.categoryName}
+                                      className={styles.mobileCategoryIcon}
+                                      style={{
+                                        width: 20,
+                                        height: 20,
+                                        marginRight: 8,
+                                      }}
+                                    />
+                                    {brand.brandName}
+                                  </li>
+                                ))
                             ) : (
                               <li style={{ color: "#888" }}>No brands</li>
                             )}
@@ -1295,21 +1295,21 @@ const Header = () => {
                   {brandsWithProducts
                     .filter((b) => b.categoryId === mobileCategory?._id)
                     .map((brand) => (
-                    <li
-                      key={brand._id}
-                      onClick={() =>
-                        setOpenMobileCategory(
-                          openMobileCategory === brand._id ? null : brand._id,
-                        )
-                      }
-                      className={
-                        openMobileCategory === brand._id ? styles.selected : ""
-                      }
-                    >
-                      <img src={brand.brandLogo} alt={brand.brandName} />
-                      {brand.brandName}
-                    </li>
-                  ))}
+                      <li
+                        key={brand._id}
+                        onClick={() =>
+                          setOpenMobileCategory(
+                            openMobileCategory === brand._id ? null : brand._id,
+                          )
+                        }
+                        className={
+                          openMobileCategory === brand._id ? styles.selected : ""
+                        }
+                      >
+                        <img src={brand.brandLogo} alt={brand.brandName} />
+                        {brand.brandName}
+                      </li>
+                    ))}
                 </ul>
               </div>
 
@@ -1433,8 +1433,8 @@ const Header = () => {
                           <div
                             key={cat._id}
                             className={`${styles.categoryItem} ${activeCategory === cat.categoryName
-                                ? styles.active
-                                : ""
+                              ? styles.active
+                              : ""
                               }`}
                             onMouseEnter={() => handleCategoryHover(cat)}
                           >
@@ -1456,8 +1456,8 @@ const Header = () => {
                               setHoveredItem(null);
                             }}
                           >
-                             <span style={{ fontWeight: 600 }}>View More</span>
-                             <span className={styles.arrow}>
+                            <span style={{ fontWeight: 600 }}>View More</span>
+                            <span className={styles.arrow}>
                               <img src={RightArrow} alt="" />
                             </span>
                           </div>
@@ -1489,7 +1489,7 @@ const Header = () => {
                                   <br />
                                 </span>
                               ))}
-                            
+
                             {/* View More logic if needed */}
                           </div>
                         </div>
@@ -1514,23 +1514,23 @@ const Header = () => {
                           ?.filter((b) => b.categoryId === mobileCategory?._id)
                           ?.slice(0, 5)
                           ?.map((brand) => (
-                          <div
-                            key={brand._id}
-                            className={`${styles.categoryItem} 
+                            <div
+                              key={brand._id}
+                              className={`${styles.categoryItem} 
                             ${activeBrand === brand.brandName
-                                ? styles.active
-                                : ""
-                              }
+                                  ? styles.active
+                                  : ""
+                                }
                             `}
-                            onMouseEnter={() => handleBrandHover(brand)}
-                          >
-                            <img src={brand?.brandLogo} alt="" />
-                            {brand?.brandName}
-                            <span className={styles.arrow}>
-                              <img src={RightArrow} alt="" />
-                            </span>
-                          </div>
-                        ))}
+                              onMouseEnter={() => handleBrandHover(brand)}
+                            >
+                              <img src={brand?.brandLogo} alt="" />
+                              {brand?.brandName}
+                              <span className={styles.arrow}>
+                                <img src={RightArrow} alt="" />
+                              </span>
+                            </div>
+                          ))}
                       </div>
                       {hoveredBrand && (
                         <div className={styles.subMenu}>
@@ -1595,8 +1595,8 @@ const Header = () => {
                           <div
                             key={brand._id}
                             className={`${styles.categoryItem} ${activeBrand === brand.brandName
-                                ? styles.active
-                                : ""
+                              ? styles.active
+                              : ""
                               }`}
                             onMouseEnter={() => handleBrandHover(brand)}
                           >

@@ -236,12 +236,12 @@
 }
 
 .arrowImg {
-  transform: rotate(270deg);
+  /* transform: rotate(270deg); */
   transition: transform 0.2s ease;
 }
 
 .arrowRotated {
-  transform: rotate(90deg) !important;
+  transform: rotate(180deg) !important;
   color: #0a66c2;
 }
 
@@ -1251,12 +1251,12 @@
   height: 16px;
   width: 16px;
   transition: transform var(--transition-fast);
-  transform: rotate(270deg);
+  /* transform: rotate(-90deg); */
   flex-shrink: 0;
 }
 
 .dropdownContainer:hover .dropdownArrow {
-  transform: rotate(90deg);
+  transform: rotate(180deg);
 }
 
 .cityNameContainer {
@@ -1578,14 +1578,14 @@
 }
 
 .dropDownArrow {
-  transform: rotate(270deg);
+  /* transform: rotate(270deg); */
   margin-top: 16px;
   height: 20px;
   margin-left: -5px;
 }
 
 .bottomNav .dropdownTrigger img {
-  transform: rotate(270deg);
+  /* transform: rotate(270deg); */
 }
 
 /* Modal Styles */

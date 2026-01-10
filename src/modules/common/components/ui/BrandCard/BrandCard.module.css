@@ -37,10 +37,9 @@
 
 .imgIndividual {
   width: 100%;
-  height: 10rem;
+  aspect-ratio: 173.33 / 144;
   /* 40 * 0.25rem = 10rem */
-  border: 0.3px solid #e1e1e1;
-  /* Maintained explicit border override */
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,12 +48,12 @@
   cursor: pointer;
   transition: all 200ms ease;
   border-radius: 15px;
+  box-shadow: 0px 0px 4px 1px #00000006;
 }
 
 .imgIndividual img {
   object-fit: contain;
-  height: 9rem;
-  /* 36 * 0.25rem = 9rem */
+  height: 100%;
   width: 100%;
   padding: 1rem;
 }
@@ -128,17 +127,13 @@
   }
 
   .imgIndividual {
-    height: 100%;
-    width: 100%;
+    box-shadow: none;
+    border: 0.3px solid #e1e1e1;
   }
 
   .imgIndividual img {
     object-fit: contain;
-    height: 6rem;
-    /* h-24 */
-    width: 100%;
     padding: 1rem;
-    /* p-4 restored from recent user edit */
     mix-blend-mode: darken;
   }
 

@@ -36,14 +36,26 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  flex: 1;
+  gap: 10px;
+}
+
+.imageWrapper {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 4px 1px #00000006;
+  border-radius: 15px;
+  border: none;
+  aspect-ratio: 173.34/150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .imageWrapper img {
   display: flex;
   gap: 16px;
-  height: 210px;
-  width: 100%;
+  height: 130px;
   border-radius: 15px;
   overflow: hidden;
 }
@@ -52,14 +64,13 @@
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 500;
   font-size: 16px;
-  text-align: left;
+  text-align: center;
   margin: 0;
   color: #000000;
 }
 
 .cardContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 16px;
   overflow-x: auto;
   /* Or scroll if you’re using horizontal scroll */
@@ -99,6 +110,8 @@
   .imageWrapper {
     display: flex;
     gap: 16px;
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
     /* height: 95px; */
     width: 140px;
   }
