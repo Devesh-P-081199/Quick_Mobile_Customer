@@ -1,11 +1,13 @@
 .wrapper {
   background-color: #ffffff;
-  border: 0.3px solid #e1e1e1;
-  padding: 30px;
+  box-shadow: 0px 0px 4px 1px #00000006;
+  border: none;
+  padding: 20px;
   display: flex;
   position: relative;
-  /* justify-content: center; */
   border-radius: 10px;
+  height: 400px;
+  align-items: center;
 }
 
 .page-wrapper {
@@ -14,48 +16,46 @@
 
 .leftContent {
   width: 38%;
-  height: 388px;
-  border-right: 0.5px solid #0a0a0a;
+  height: 100%;
+  border-right: 0.5px solid #0a0a0a4a;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
-  /* padding-right: 30px; */
+  padding: 25px;
 }
 
 .leftImgBox>img {
-  height: 367px;
-  padding: 20px;
+  height: 100%;
 }
 
-.backArrowImg {
+.backButton {
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 20px;
-  cursor: pointer;
-  height: 43px;
-  width: 43px;
+  padding: 5px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 7px 1px #0000000f;
+  background-color: #00000002;
 }
 
 .productDetails {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
-  padding: 0px 30px;
-  gap: 15px;
-  width: 55%;
+  padding: 0px 10px 0 30px;
+  gap: 0px;
+  width: 62%;
   /* height: 448px; */
 }
 
 .productTitle {
-  font-family: "IBM Plex Sans", sans-serif;
-  font-size: 26px;
-  font-weight: 600;
-  color: #000;
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .priceInfo {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 5px;
 }
@@ -94,11 +94,11 @@
 .extraInfo {
   display: flex;
   flex-direction: column;
-  gap: 19px;
+  gap: 0px;
 }
 
 .extraInfo p {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 500;
   color: #000;
   margin-bottom: 0;
@@ -106,10 +106,18 @@
 
 .highlightBox {
   background: rgba(255, 224, 202, 0.56);
+  display: flex;
+  gap: 5px;
   padding: 10px;
   border-radius: 10px;
-  font-size: 12px;
+  font-size: 14px;
+  margin: 0 0 15px 0;
   color: rgba(0, 0, 0, 0.7);
+}
+
+.highlightBox img {
+  width: 16px;
+  height: 16px;
 }
 
 .sellButton {
@@ -135,6 +143,7 @@
 
 .redText {
   color: #f70d1a;
+  font-size: 30px;
   font-weight: 600;
   font-family: "IBM Plex Sans", sans-serif;
 }
@@ -143,6 +152,11 @@
 @media (max-width: 768px) {
   .browsePopular {
     flex-direction: column;
+  }
+
+  .highlightBox {
+    font-size: 12px;
+    margin: 0;
   }
 
   .productTitle {
@@ -170,11 +184,6 @@
     font-size: 22px;
   }
 
-  .wrapper {
-    padding: 20px 0px 25px;
-    flex-direction: column;
-    gap: 15px;
-  }
 
   .leftContent {
     width: 100%;
@@ -183,7 +192,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 0px;
+    padding: 0px;
     background-color: #ffffff;
     border: 0.3px solid #e1e1e1;
     border-radius: 20px;
@@ -235,7 +244,6 @@
   }
 
   .extraInfo {
-    padding-bottom: 5px;
     gap: 15px;
   }
 
@@ -243,14 +251,18 @@
     display: none;
   }
 
-  .backArrowImg {
+  .backButton {
     display: none;
   }
 
   .wrapper {
+    padding: 20px 0px 25px;
+    flex-direction: column;
+    gap: 15px;
+    height: auto;
+    box-shadow: none;
     background: none;
     border: none;
-    /* padding: 30px; */
     display: flex;
     position: relative;
   }
@@ -278,16 +290,16 @@
   }
 
   .extraInfo p {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     color: #000;
     display: flex;
-    align-items: center;
-    gap: 5px;
+    flex-direction: column;
+    gap: 0px;
   }
 
   .extraInfo p span {
-    font-size: 22px;
+    font-size: 26px;
   }
 
   .sellButton {

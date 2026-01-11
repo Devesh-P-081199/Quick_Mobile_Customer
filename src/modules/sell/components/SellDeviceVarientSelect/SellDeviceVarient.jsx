@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { UserContext } from "../../../../Context/contextAPI";
@@ -7,10 +7,10 @@ import styles from "./SellDeviceVarient.module.css";
 import backarrow from "../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 import info from "../../../../assets/QuickSellNewIcons/info.png";
 
-
 function SellDeviceVarient() {
   const { slug1, slug2 } = useParams();
   const navigate = useNavigate();
+  const formRef = useRef(null);
 
   const [selectedMemory, setSelectedMemory] = useState({});
   const [, setSeoData] = useState({});
@@ -118,46 +118,83 @@ function SellDeviceVarient() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug2, slug1]);
 
-  // Dynamic width calculation - runs once after variants load
+  // Dynamic width calculation
   useEffect(() => {
-    if (window.innerWidth > 480) return; // Only on mobile
-    if (!variants?.variants || isLoading) return;
-
-    const timer = setTimeout(() => {
-      const formElement = document.querySelector('[class*="form"]');
-      const labels = formElement?.querySelectorAll(
-        'label[class*="radioLabel"]',
-      );
-
+    const calculateWidths = () => {
+      if (!formRef.current) return;
+      const labels = formRef.current.querySelectorAll(`.${styles.radioLabel}`);
       if (!labels || labels.length === 0) return;
 
-      const containerWidth = formElement.offsetWidth;
-      const halfWidth = containerWidth * 0.5;
-
-      // Calculate all label widths
-      const labelWidths = Array.from(labels).map((label) => {
-        const span = label.querySelector("span");
-        return span ? span.scrollWidth + 60 : 0; // +60 for padding and radio
+      // Reset styles to measure correctly
+      labels.forEach((label) => {
+        label.style.width = "";
+        label.style.flex = "";
+        label.style.maxWidth = "";
       });
 
-      // Check if ANY label exceeds 50%
-      const hasLongLabel = labelWidths.some((width) => width > halfWidth);
+      // If mobile, don't apply desktop logic (let CSS handle it)
+      if (window.innerWidth <= 768) return;
 
-      // Apply classes based on rule
+      const containerWidth = formRef.current.offsetWidth;
+      // Define buckets in pixels based on container width and gaps
+      // Gap is 10px.
+      // 3 items: (W - 20) / 3
+      // 2 items: (W - 10) / 2
+      // 1 item: W
+
+      const width33 = (containerWidth - 20) / 3;
+      const width50 = (containerWidth - 10) / 2;
+
+      let maxBucket = 33; // Start assuming 33%
+
+      // Measure each label
       labels.forEach((label) => {
-        if (hasLongLabel) {
-          // If ANY > 50%, ALL become 100%
-          label.style.flex = "1 1 100%";
-          label.style.maxWidth = "100%";
-        } else {
-          // If ALL < 50%, ALL become 50%
-          label.style.flex = "1 1 calc(50% - 5px)";
-          label.style.maxWidth = "calc(50% - 5px)";
+        // We want the natural width. Since we reset styles, it should be auto.
+        // However, existing CSS might have width: 100%. We need to handle that.
+        // We temporarily set inline width to auto to measure.
+        const originalWidth = label.style.width;
+        label.style.width = "auto";
+        label.style.display = "inline-flex"; // ensure it shrinks to content
+
+        const contentWidth = label.offsetWidth;
+
+        // Restore
+        label.style.width = originalWidth;
+        label.style.display = ""; // revert to flex (from CSS)
+
+        if (contentWidth > width50) {
+          maxBucket = 100;
+        } else if (contentWidth > width33 && maxBucket < 50) {
+          maxBucket = 50;
         }
       });
-    }, 100);
 
-    return () => clearTimeout(timer);
+      // Apply widths
+      labels.forEach((label) => {
+        if (maxBucket === 100) {
+          label.style.width = "100%";
+        } else if (maxBucket === 50) {
+          label.style.width = "calc(50% - 5px)";
+        } else {
+          label.style.width = "calc(33.33% - 6.66px)";
+        }
+      });
+    };
+
+    // Run on load and variants change
+    if (!isLoading && variants?.variants?.length > 0) {
+      // Small timeout to allow render
+      setTimeout(calculateWidths, 100);
+    }
+
+    // Run on resize
+    const handleResize = () => {
+      calculateWidths();
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+
   }, [variants, isLoading]);
 
   const handleChange = (wholeVariantId, variantId, variantSlug) => {
@@ -226,7 +263,7 @@ function SellDeviceVarient() {
             </div>
 
             <form onSubmit={handleContinue}>
-              <div className={styles.form}>
+              <div ref={formRef} className={styles.form}>
                 {!isVariantsLoading &&
                   variants.variants.map((option) => (
                     <label

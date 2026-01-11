@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState, useCallback } from "react";
 import styles from "./GetUpto.module.css";
-import backarrow from "../../../../assets/images/icons/back.png";
+import backarrow from "../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
@@ -8,6 +8,7 @@ import api from "../../../../Utils/api";
 import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import TopSellingBrand from "../../../common/components/TrustedBrands/TopSellingBrand";
 import TopSellingModel from "../../../common/components/TopSellingModel/TopSellingModel";
+import info from "../../../../assets/QuickSellNewIcons/info.png";
 
 const GetUpto = () => {
   const {
@@ -216,15 +217,12 @@ const GetUpto = () => {
                       title={deviceInfo.deviceName}
                     />
                   )}
-
-                  <NavLink to="/select-varient">
-                    <img
-                      src={backarrow}
-                      alt="back-arrow"
-                      title="back-arrow"
-                      className={styles.backArrowImg}
-                    />
-                  </NavLink>
+                  <button
+                    onClick={() => navigate("/select-varient")}
+                    className={styles.backButton}
+                  >
+                    <img src={backarrow} alt="back-arrow" title="back-arrow" />
+                  </button>
                 </div>
               </div>
 
@@ -257,11 +255,10 @@ const GetUpto = () => {
                         </div>
 
                         <span
-                          className={`${styles.currentPrice} ${
-                            sliderPositions.isNarrowRange
-                              ? styles.currentPriceMinNarrow
-                              : styles.currentPriceMin
-                          }`}
+                          className={`${styles.currentPrice} ${sliderPositions.isNarrowRange
+                            ? styles.currentPriceMinNarrow
+                            : styles.currentPriceMin
+                            }`}
                           style={{
                             left: sliderPositions.thumb1Position,
                           }}
@@ -270,11 +267,10 @@ const GetUpto = () => {
                         </span>
 
                         <span
-                          className={`${styles.currentPrice} ${
-                            sliderPositions.isNarrowRange
-                              ? styles.currentPriceMaxNarrow
-                              : styles.currentPriceMax
-                          }`}
+                          className={`${styles.currentPrice} ${sliderPositions.isNarrowRange
+                            ? styles.currentPriceMaxNarrow
+                            : styles.currentPriceMax
+                            }`}
                           style={{
                             left: sliderPositions.thumb2Position,
                           }}
@@ -321,15 +317,15 @@ const GetUpto = () => {
                 <div className={styles.extraInfo}>
                   <p>
                     Get up to <br />
-                      <span className={styles.redText}>
-                        {finalPrice !== null ? `₹${finalPrice}` : "\u00A0"}
-                      </span>
+                    <span className={styles.redText}>
+                      {finalPrice !== null ? `₹${finalPrice}` : "\u00A0"}
+                    </span>
                   </p>
 
                   <div className={styles.highlightBox}>
-                    Apple: Go to “Settings” {">"} “General” {">"} “iPhone
-                    Storage”. You will see a breakdown of your used and
-                    available storage, along with app-wise storage usage.
+                    <img src={info} alt="info" title="info" />
+                    The displayed price is the maximum estimate.<br />
+                    Final value may vary after selection of the device’s actual condition.
                   </div>
                 </div>
 
@@ -339,7 +335,7 @@ const GetUpto = () => {
                     onClick={handleNavigate}
                     className={styles.sellButton}
                   >
-                    Sell Now
+                    Get Exact Value
                   </button>
                 </div>
               </div>

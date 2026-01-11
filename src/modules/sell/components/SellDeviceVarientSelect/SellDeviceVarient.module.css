@@ -1,19 +1,30 @@
 .wrapper {
   background-color: #ffffff;
-  border: 0.3px solid #e1e1e1;
+  box-shadow: 0px 0px 4px 1px #00000006;
+  border: none;
   padding: 20px;
   display: flex;
   position: relative;
   border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 400px;
 }
 
 .leftContent {
   width: 38%;
-  border-right: 0.5px solid #0a0a0a;
+  border-right: 0.5px solid #0a0a0a4a;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 25px;
   /* padding-right: 30px; */
+  height: 100%;
+}
+
+.leftImgBox {
+  height: 100%;
 }
 
 .leftImgBox>img {
@@ -35,7 +46,7 @@
   display: flex;
   flex-direction: column;
   gap: 0px;
-  padding-left: 30px;
+  padding: 0 10px 0 30px;
   width: 62%;
 }
 
@@ -82,7 +93,7 @@
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 }
 
 
@@ -165,6 +176,10 @@
   position: absolute;
   top: 20px;
   left: 20px;
+  padding: 5px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 7px 1px #0000000f;
+  background-color: #00000002;
 }
 
 .radioLabel {
@@ -177,7 +192,7 @@
   border-radius: 10px;
   gap: 16px;
   white-space: nowrap;
-  width: 100%;
+  /* width: 100%; handled in JS now */
 }
 
 .radioLabel {
@@ -234,6 +249,7 @@
     padding: 20px 0px;
     flex-direction: column;
     gap: 15px;
+    box-shadow: none;
   }
 
   .button {
@@ -256,6 +272,7 @@
     background-color: #ffffff;
     border: 0.3px solid #e1e1e1;
     border-radius: 20px;
+    padding: 0;
   }
 
   .leftImgBox {
@@ -292,7 +309,7 @@
   .rightContent {
     gap: 15px;
     width: 100%;
-    padding-left: 0px;
+    padding: 0px;
   }
 
   .backArrowImg {
@@ -306,6 +323,7 @@
     display: flex;
     position: relative;
     border-radius: 10px;
+    height: auto;
   }
 
   .radioLabel span {
