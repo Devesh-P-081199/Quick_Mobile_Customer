@@ -132,40 +132,56 @@ function SellDeviceVarient() {
         label.style.maxWidth = "";
       });
 
-      // If mobile, don't apply desktop logic (let CSS handle it)
-      if (window.innerWidth <= 768) return;
-
       const containerWidth = formRef.current.offsetWidth;
+      const isMobile = window.innerWidth <= 768;
+
       // Define buckets in pixels based on container width and gaps
-      // Gap is 10px.
-      // 3 items: (W - 20) / 3
-      // 2 items: (W - 10) / 2
-      // 1 item: W
+      let width33, width50;
 
-      const width33 = (containerWidth - 20) / 3;
-      const width50 = (containerWidth - 10) / 2;
+      if (isMobile) {
+        // Mobile: 2 items: (W - 10) / 2
+        width50 = (containerWidth - 10) / 2;
+      } else {
+        // Desktop: 
+        // 3 items: (W - 20) / 3
+        // 2 items: (W - 10) / 2
+        width33 = (containerWidth - 20) / 3;
+        width50 = (containerWidth - 10) / 2;
+      }
 
-      let maxBucket = 33; // Start assuming 33%
+      let maxBucket = isMobile ? 50 : 33; // Start assuming smallest bucket (50% for mobile, 33% for desktop)
 
-      // Measure each label
+      // Measure each label using a clone to get true content width without layout interference
       labels.forEach((label) => {
-        // We want the natural width. Since we reset styles, it should be auto.
-        // However, existing CSS might have width: 100%. We need to handle that.
-        // We temporarily set inline width to auto to measure.
-        const originalWidth = label.style.width;
-        label.style.width = "auto";
-        label.style.display = "inline-flex"; // ensure it shrinks to content
+        const clone = label.cloneNode(true);
 
-        const contentWidth = label.offsetWidth;
+        // Reset styles on clone to measure natural width
+        clone.style.width = "auto";
+        clone.style.minWidth = "0";
+        clone.style.maxWidth = "none";
+        clone.style.position = "absolute";
+        clone.style.visibility = "hidden";
+        clone.style.flex = "none";
+        clone.style.display = "inline-flex";
 
-        // Restore
-        label.style.width = originalWidth;
-        label.style.display = ""; // revert to flex (from CSS)
+        // Append to the same container to ensure it inherits fonts and other relevant styles
+        formRef.current.appendChild(clone);
 
-        if (contentWidth > width50) {
-          maxBucket = 100;
-        } else if (contentWidth > width33 && maxBucket < 50) {
-          maxBucket = 50;
+        const contentWidth = clone.offsetWidth;
+
+        // Cleanup
+        formRef.current.removeChild(clone);
+
+        if (isMobile) {
+          if (contentWidth > width50) {
+            maxBucket = 100;
+          }
+        } else {
+          if (contentWidth > width50) {
+            maxBucket = 100;
+          } else if (contentWidth > width33 && maxBucket < 50) {
+            maxBucket = 50;
+          }
         }
       });
 
@@ -173,8 +189,10 @@ function SellDeviceVarient() {
       labels.forEach((label) => {
         if (maxBucket === 100) {
           label.style.width = "100%";
+          if (isMobile) label.style.flex = "0 0 100%";
         } else if (maxBucket === 50) {
           label.style.width = "calc(50% - 5px)";
+          if (isMobile) label.style.flex = "0 0 calc(50% - 5px)";
         } else {
           label.style.width = "calc(33.33% - 6.66px)";
         }
