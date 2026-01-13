@@ -60,14 +60,6 @@ function CheckOut() {
     });
   };
 
-  // Handle back navigation - preserve query params for Step6
-  const handleBack = () => {
-    const queryParams = new URLSearchParams(location.search).toString();
-    const targetUrl = queryParams
-      ? `/${slug}/price-summary?${queryParams}`
-      : `/${slug}/price-summary`;
-    navigate(targetUrl, { replace: true });
-  };
 
   useEffect(() => {
     // Check if addresses were passed from Step6 via navigation state
@@ -103,7 +95,7 @@ function CheckOut() {
   return (
     <>
       <BreadCrumb items={["Home", "Sell Your Phone"]} />
-      <MobileBackHeader title="Address" onBack={handleBack} />
+      <MobileBackHeader title="Address" />
       <section className={`${styles.CheckOutSection} mobile-pt-section `}>
         <div className={styles.Wrapper}>
           <div className={styles.LeftContainer}>

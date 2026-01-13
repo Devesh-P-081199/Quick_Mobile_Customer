@@ -261,7 +261,6 @@ function PaymentComponent() {
     // Check for custom return path in state
     if (location.state?.returnPath) {
       navigate(location.state.returnPath, {
-        replace: true,
         state: {
           paymentUpdated: true,
           orderData: location.state?.orderData,
@@ -275,7 +274,7 @@ function PaymentComponent() {
     const targetUrl = queryString
       ? `/${slug}/price-summary?${queryString}`
       : `/${slug}/price-summary`;
-    navigate(targetUrl, { replace: true });
+    navigate(targetUrl);
   };
 
   const handleContinue = () => {
@@ -287,7 +286,6 @@ function PaymentComponent() {
     // Check for custom return path in state
     if (location.state?.returnPath) {
       navigate(location.state.returnPath, {
-        replace: true,
         state: {
           paymentUpdated: true,
           orderData: location.state?.orderData,
@@ -301,12 +299,12 @@ function PaymentComponent() {
     const targetUrl = queryString
       ? `/${slug}/price-summary?${queryString}`
       : `/${slug}/price-summary`;
-    navigate(targetUrl, { replace: true });
+    navigate(targetUrl);
   };
 
   return (
     <>
-      <MobileBackHeader title="Payment" onBack={handleBack} />
+      <MobileBackHeader title="Payment" />
 
       <section className={styles.CheckOutSection}>
         <div className={styles.Wrapper}>

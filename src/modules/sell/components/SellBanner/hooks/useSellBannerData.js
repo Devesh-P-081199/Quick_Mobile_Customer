@@ -28,6 +28,7 @@ export function useSellBannerData(slug1) {
   const [error, setError] = useState(null);
 
   const categoryRef = useRef(null);
+  const lastSearchRef = useRef(""); // Track latest search to prevent race conditions
   const { setSelectedCategory } = useContext(UserContext);
 
   /**
@@ -95,6 +96,10 @@ export function useSellBannerData(slug1) {
       const resp = await api.get(
         `/sell-module/user/main-Search?search=${search}&catId=${catId}`
       );
+      
+      // Prevent race condition: only update if this is still the latest search
+      if (search !== lastSearchRef.current) return;
+      
       const data = resp.data?.[0];
 
       if (!data) {
@@ -102,7 +107,8 @@ export function useSellBannerData(slug1) {
           setMobileResults(EMPTY_RESULTS);
         } else {
           setResults(EMPTY_RESULTS);
-          setShowDropdown(false);
+          // Keep dropdown open to show "No data found" message
+          setShowDropdown(true);
         }
         return;
       }
@@ -125,6 +131,7 @@ export function useSellBannerData(slug1) {
   const debouncedSearch = useMemo(
     () =>
       debounce((value, isMobile) => {
+        lastSearchRef.current = value; // Update tracker before search
         handleMainSearch(value, isMobile);
       }, 300),
     [handleMainSearch]
@@ -150,12 +157,16 @@ export function useSellBannerData(slug1) {
    * Clear search results
    */
   const clearResults = useCallback((isMobile = false) => {
+    // Cancel any pending debounced searches
+    debouncedSearch.cancel();
+    lastSearchRef.current = ""; // Reset tracker
     if (isMobile) {
       setMobileResults(EMPTY_RESULTS);
     } else {
+      setResults(EMPTY_RESULTS);
       setShowDropdown(false);
     }
-  }, []);
+  }, [debouncedSearch]);
 
   /**
    * Close dropdown

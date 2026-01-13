@@ -1,20 +1,20 @@
 import { useState } from "react";
 import styles from "./MobileCommonHeader.module.css";
-import { useNavigate } from "react-router-dom";
 import newSearchIcon from "../../../../../assets/QuickSellNewIcons/Search.svg";
 import newBackIcon from "../../../../../assets/QuickSellNewIcons/BackArrow.svg";
+import useBack from "../../../../../Utils/useBack";
 
 const MobileCommonHeader = ({ title, onBack }) => {
-  const navigate = useNavigate();
+  const goBack = useBack();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const handleBack = () => {
     if (isSearchOpen) {
-      setIsSearchOpen(false); // close search instead of navigating
+      setIsSearchOpen(false);
     } else if (onBack) {
       onBack();
     } else {
-      navigate(-1);
+      goBack();
     }
   };
 

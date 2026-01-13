@@ -39,6 +39,7 @@ import Cookies from "js-cookie";
 import { UserContext } from "../../../../../Context/contextAPI";
 import debounce from "lodash.debounce";
 import api from "../../../../../Utils/api";
+import { createPortal } from "react-dom";
 import {
   FaShoppingBag,
   FaSignOutAlt,
@@ -117,6 +118,14 @@ const Header = () => {
   const lastSearchRef = useRef(""); // Track latest search to avoid race conditions
   const headerContainerRef = useRef(null);
   const bottomNavContainerRef = useRef(null);
+  const profileTriggerRef = useRef(null);
+
+  // Profile dropdown state for portal positioning
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const [profileDropdownPos, setProfileDropdownPos] = useState({ top: 0, left: 0 });
+
+  // Search dropdown position state for portal
+  const [searchDropdownPos, setSearchDropdownPos] = useState({ top: 0, left: 0, width: 0 });
 
   // Context data from UserContext
   const {
@@ -523,6 +532,33 @@ const Header = () => {
    */
 
   /**
+   * Update profile dropdown position when hover state changes
+   */
+  useEffect(() => {
+    if (isProfileDropdownOpen && profileTriggerRef.current) {
+      const rect = profileTriggerRef.current.getBoundingClientRect();
+      setProfileDropdownPos({
+        top: rect.bottom + 10,
+        left: rect.left + rect.width / 2,
+      });
+    }
+  }, [isProfileDropdownOpen]);
+
+  /**
+   * Update search dropdown position when dropdown becomes visible
+   */
+  useEffect(() => {
+    if (showDropdown && searchRef.current) {
+      const rect = searchRef.current.getBoundingClientRect();
+      setSearchDropdownPos({
+        top: rect.bottom + 5,
+        left: rect.left,
+        width: rect.width,
+      });
+    }
+  }, [showDropdown]);
+
+  /**
    * Navigation Configuration
    */
 
@@ -656,9 +692,39 @@ const Header = () => {
                   className={[styles.headerSearchIcon, "nav-icons"].join(" ")}
                 />
 
-                {/* Search Results Dropdown */}
-                {showDropdown && (
-                  <div className={styles.dropdown} ref={dropdownRef}>
+                {/* Search Results Dropdown - Portal for escaping paint containment */}
+                {showDropdown && createPortal(
+                  <div 
+                    className={styles.searchDropdownPortal} 
+                    ref={dropdownRef}
+                    style={{
+                      position: 'fixed',
+                      top: searchDropdownPos.top,
+                      left: searchDropdownPos.left,
+                      width: searchDropdownPos.width,
+                      zIndex: 10000,
+                    }}
+                  >
+                    {/* Check if there are any results at all */}
+                    {(() => {
+                      const hasAnyResults = ["sell", "buy", "recycle"].some((contextType) => {
+                        return (
+                          results.ActiveBrands?.[contextType]?.length > 0 ||
+                          results.ActiveProducts?.[contextType]?.length > 0 ||
+                          results.ActiveCategories?.[contextType]?.length > 0
+                        );
+                      });
+                      
+                      if (!hasAnyResults) {
+                        return (
+                          <div className={styles.noDataFound}>
+                            No data found
+                          </div>
+                        );
+                      }
+                      
+                      return null;
+                    })()}
                     {["sell", "buy", "recycle"].map((contextType) => {
                       const hasBrands =
                         results.ActiveBrands?.[contextType]?.length > 0;
@@ -760,7 +826,8 @@ const Header = () => {
                         </div>
                       );
                     })}
-                  </div>
+                  </div>,
+                  document.body
                 )}
               </div>
             </div>
@@ -778,50 +845,72 @@ const Header = () => {
               {/* User Authentication Section */}
               <div className={styles.user}>
                 {user?.phone ? (
-                  <div className={styles.dropdownContainer}>
-                    <span className={styles.loginUserHover}>
-                      <div className={styles.userInitials}>
-                        {getUserInitials(user.name || user.phone)}
-                      </div>
-                      <img
-                        src={dropdownIcon}
-                        alt="dropdown"
-                        className={[styles.dropdownArrow, "nav-icons"].join(
-                          " ",
-                        )}
-                      />
-                    </span>
-                    <div className={styles.profiledropdownMenu}>
-                      <div
-                        onClick={() => navigate("/my-profile-orders")}
-                        className={styles.dropdownItem}
-                      >
-                        <FaUserCircle className={styles.icon} />
-                        My Profile
-                      </div>
-                      <div
-                        onClick={() => navigate("/my-orders")}
-                        className={styles.dropdownItem}
-                      >
-                        <FaShoppingBag className={styles.icon} />
-                        My Orders
-                      </div>
-                      <div
-                        onClick={() => navigate("/offers")}
-                        className={styles.dropdownItem}
-                      >
-                        <FaTags className={styles.icon} />
-                        Offers
-                      </div>
-                      <div
-                        className={styles.dropdownItem}
-                        onClick={handleLogOut}
-                      >
-                        <FaSignOutAlt className={styles.icon} />
-                        Logout
-                      </div>
+                  <>
+                    <div 
+                      className={styles.dropdownContainer}
+                      ref={profileTriggerRef}
+                      onMouseEnter={() => setIsProfileDropdownOpen(true)}
+                      onMouseLeave={() => setIsProfileDropdownOpen(false)}
+                    >
+                      <span className={styles.loginUserHover}>
+                        <div className={styles.userInitials}>
+                          {getUserInitials(user.name || user.phone)}
+                        </div>
+                        <img
+                          src={dropdownIcon}
+                          alt="dropdown"
+                          className={[styles.dropdownArrow, isProfileDropdownOpen ? styles.arrowRotated : "", "nav-icons"].join(
+                            " ",
+                          )}
+                        />
+                      </span>
                     </div>
-                  </div>
+                    {/* Profile Dropdown Portal - renders at body level to escape paint containment */}
+                    {isProfileDropdownOpen && createPortal(
+                      <div 
+                        className={styles.profileDropdownPortal}
+                        style={{
+                          position: 'fixed',
+                          top: profileDropdownPos.top,
+                          left: profileDropdownPos.left,
+                          transform: 'translateX(-50%)',
+                          zIndex: 10000,
+                        }}
+                        onMouseEnter={() => setIsProfileDropdownOpen(true)}
+                        onMouseLeave={() => setIsProfileDropdownOpen(false)}
+                      >
+                        <div
+                          onClick={() => navigate("/my-profile-orders")}
+                          className={styles.dropdownItem}
+                        >
+                          <FaUserCircle className={styles.icon} />
+                          My Profile
+                        </div>
+                        <div
+                          onClick={() => navigate("/my-orders")}
+                          className={styles.dropdownItem}
+                        >
+                          <FaShoppingBag className={styles.icon} />
+                          My Orders
+                        </div>
+                        <div
+                          onClick={() => navigate("/offers")}
+                          className={styles.dropdownItem}
+                        >
+                          <FaTags className={styles.icon} />
+                          Offers
+                        </div>
+                        <div
+                          className={styles.dropdownItem}
+                          onClick={handleLogOut}
+                        >
+                          <FaSignOutAlt className={styles.icon} />
+                          Logout
+                        </div>
+                      </div>,
+                      document.body
+                    )}
+                  </>
                 ) : (
                   <div
                     onClick={handleLoginClick}

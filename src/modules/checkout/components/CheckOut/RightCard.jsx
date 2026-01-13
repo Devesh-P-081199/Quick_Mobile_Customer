@@ -48,7 +48,7 @@ function RightCard() {
       const targetUrl = queryString
         ? `/${slug}/price-summary?${queryString}`
         : `/${slug}/price-summary`;
-      navigate(targetUrl, { replace: true });
+      navigate(targetUrl);
     } else if (location.pathname === `/${slug}/payment`) {
       if (!selectedPaymentMethod) {
         toast.error("Please select a payment method");
@@ -60,7 +60,7 @@ function RightCard() {
       const targetUrl = queryString
         ? `/${slug}/price-summary?${queryString}`
         : `/${slug}/price-summary`;
-      navigate(targetUrl, { replace: true });
+      navigate(targetUrl);
     } else if (location.pathname === `/${slug}/payment-mode-selection`) {
       // This is the actual order placing step
       try {

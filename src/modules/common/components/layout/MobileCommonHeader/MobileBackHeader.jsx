@@ -1,15 +1,15 @@
 import styles from "./MobileCommonHeader.module.css";
-import { useNavigate } from "react-router-dom";
 import newBackIcon from "../../../../../assets/QuickSellNewIcons/BackArrow.svg";
+import useBack from "../../../../../Utils/useBack";
 
 const MobileBackHeader = ({ title, onSearch, onBack }) => {
-  const navigate = useNavigate();
+  const goBack = useBack();
 
   const handleBack = () => {
     if (onBack) {
-      onBack(); // Use custom back handler if provided
+      onBack();
     } else {
-      navigate(-1); // Default: go back one page
+      goBack();
     }
   };
 

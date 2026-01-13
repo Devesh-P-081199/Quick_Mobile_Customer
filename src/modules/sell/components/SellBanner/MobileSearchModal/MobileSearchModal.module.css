@@ -68,11 +68,6 @@
   border: 1px solid #1968b3;
 }
 
-.searchBox img {
-
-  /* height: 21px; */
-}
-
 .searchInput {
   border: none;
   outline: none;
@@ -117,6 +112,13 @@
 
 .sectionGroup {
   margin: 5px 0 10px 0;
+}
+
+.noDataFound {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
 }
 
 .suggestionRow {

@@ -113,7 +113,6 @@ function StorePage() {
     <>
       <MobileBackHeader
         title="Our Store"
-        onBack={() => window.history.back()}
       />
       <div className={styles.storePage}>
         <div className="wrapper page-content-wrapper">

@@ -28,7 +28,6 @@ function StoresListPage() {
     <>
       <MobileBackHeader
         title="Our Stores"
-        onBack={() => window.history.back()}
       />
       <div className={styles.storesListPage}>
         <div className="wrapper page-content-wrapper">

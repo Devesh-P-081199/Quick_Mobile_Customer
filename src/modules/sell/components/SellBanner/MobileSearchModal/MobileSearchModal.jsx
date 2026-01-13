@@ -71,6 +71,13 @@ const MobileSearchModal = ({
         {/* Only show results if search term exists */}
         {searchTerm && (
           <>
+            {/* No data found message */}
+            {(!results?.ActiveBrands?.length && !results?.ActiveProducts?.length) && (
+              <div className={styles.noDataFound}>
+                No data found
+              </div>
+            )}
+
             {/* Brands */}
             {results?.ActiveBrands?.length > 0 && (
               <div className={`${styles.sectionGroup} ${styles.brandsSection}`}>

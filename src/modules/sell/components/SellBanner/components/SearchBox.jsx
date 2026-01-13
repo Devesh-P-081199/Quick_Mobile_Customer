@@ -114,33 +114,42 @@ function SearchBox({
           {/* Desktop Dropdown */}
           {showDropdown && !isMobileSearchOpen && (
             <div className={styles.dropdownStyled}>
-              {results.ActiveBrands?.length > 0 && (
-                <div className={styles.sectionGroup}>
-                  {results.ActiveBrands.map((brand) => (
-                    <div
-                      key={brand._id}
-                      className={styles.suggestionRow}
-                      onClick={() => onBrandClick(brand)}
-                    >
-                      <span className={styles.name}>{brand.brandName}</span>
-                      <span className={styles.tag}>in Brand</span>
-                    </div>
-                  ))}
+              {/* Check for no results */}
+              {(!results.ActiveBrands?.length && !results.ActiveProducts?.length) ? (
+                <div className={styles.noDataFound}>
+                  No data found
                 </div>
-              )}
-              {results.ActiveProducts?.length > 0 && (
-                <div className={styles.sectionGroup}>
-                  {results.ActiveProducts.map((product) => (
-                    <div
-                      key={product._id}
-                      className={styles.suggestionRow}
-                      onClick={() => onProductClick(product)}
-                    >
-                      <span className={styles.name}>{product.deviceName}</span>
-                      <span className={styles.tag}>in Product</span>
+              ) : (
+                <>
+                  {results.ActiveBrands?.length > 0 && (
+                    <div className={styles.sectionGroup}>
+                      {results.ActiveBrands.map((brand) => (
+                        <div
+                          key={brand._id}
+                          className={styles.suggestionRow}
+                          onClick={() => onBrandClick(brand)}
+                        >
+                          <span className={styles.name}>{brand.brandName}</span>
+                          <span className={styles.tag}>in Brand</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  )}
+                  {results.ActiveProducts?.length > 0 && (
+                    <div className={styles.sectionGroup}>
+                      {results.ActiveProducts.map((product) => (
+                        <div
+                          key={product._id}
+                          className={styles.suggestionRow}
+                          onClick={() => onProductClick(product)}
+                        >
+                          <span className={styles.name}>{product.deviceName}</span>
+                          <span className={styles.tag}>in Product</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </>
               )}
             </div>
           )}

@@ -51,14 +51,6 @@ function SelectSeries() {
     <>
       <MobileCommonHeader
         title="Sell {Brand} {Category}"
-        onBack={() => {
-          // Use replace: true to avoid adding history entries that cause back loops
-          if (slug1) {
-            navigate(`/${slug1}`, { replace: true });
-          } else {
-            navigate("/", { replace: true });
-          }
-        }}
         onSearch
       />
 
@@ -128,14 +120,10 @@ function SelectSeries() {
                           const variantPath =
                             modelItem?.variantSlug || modelItem?.variantId;
 
-                          navigate(`/${slug1}/${variantPath}`, {
-                            replace: true,
-                          });
+                          navigate(`/${slug1}/${variantPath}`);
                           return;
                         } else {
-                          navigate(`/${slug1}/${modelItem.slugSell}`, {
-                            replace: true,
-                          });
+                          navigate(`/${slug1}/${modelItem.slugSell}`);
                           return;
                         }
                       }}

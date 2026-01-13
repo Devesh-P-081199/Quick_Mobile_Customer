@@ -171,37 +171,23 @@ const GetUpto = () => {
     const freshEntryKey = `freshEntry_${productId}`;
     sessionStorage.setItem(freshEntryKey, "true");
 
-    navigate(
-      `/${slug1}/final-price-calculator?pid=${encodeURIComponent(
-        productId,
-      )}&ct=${encodeURIComponent(categoryName)}&pn=${encodeURIComponent(
-        deviceName,
-      )}&bn=${encodeURIComponent(brandName)}&bbmp=${encodeURIComponent(
-        price,
-      )}&vid=${encodeURIComponent(variantDetail)}&pin=${encodeURIComponent(
-        devicePic,
-      )}`,
-      { replace: true },
-    );
+      navigate(
+        `/${slug1}/final-price-calculator?pid=${encodeURIComponent(
+          productId,
+        )}&ct=${encodeURIComponent(categoryName)}&pn=${encodeURIComponent(
+          deviceName,
+        )}&bn=${encodeURIComponent(brandName)}&bbmp=${encodeURIComponent(
+          price,
+        )}&vid=${encodeURIComponent(variantDetail)}&pin=${encodeURIComponent(
+          devicePic,
+        )}`,
+      );
   };
 
   return (
     <>
       <MobileBackHeader
         title="Get Price"
-        onBack={() => {
-          const productSlug = userSelection?.productSlug;
-          const catSlug = userSelection?.catSubcatSlug || slug1;
-
-          if (productSlug && catSlug) {
-            navigate(`/${catSlug}/${productSlug}`, { replace: true });
-          } else if (catSlug) {
-            // Fallback to category page if no product slug
-            navigate(`/${catSlug}`, { replace: true });
-          } else {
-            navigate("/", { replace: true });
-          }
-        }}
       />
       <div className="page-content">
         <div className="page-content-wrapper">

@@ -44,14 +44,9 @@
   min-height: 60px;
   width: 100%;
   background-color: var(--color-surface);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  will-change: transform;
-  isolation: isolate;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-  contain: layout style;
+  /* contain: paint prevents GPU compositing artifacts that show thin strips */
+  /* of background content. Dropdown uses React Portal to escape containment */
+  contain: layout style paint;
 }
 
 .container.sticky {
@@ -964,6 +959,25 @@
   scrollbar-width: thin;
 }
 
+/* Portal-based search dropdown - rendered at document.body level */
+.searchDropdownPortal {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  max-height: 450px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.noDataFound {
+  padding: 16px 20px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
 .dropdown h6 {
   font-size: 14px;
   font-weight: bold;
@@ -1208,7 +1222,7 @@
   border-radius: 5px;
   padding: 10px 8px;
   min-width: 170px;
-  z-index: 1000;
+  z-index: 10000;
   display: flex;
   flex-direction: column;
   opacity: 0;
@@ -1224,6 +1238,39 @@
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
   transition-delay: 0s;
+}
+
+/* Portal-based dropdown menu - rendered at document.body level */
+.profileDropdownPortal {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 8px;
+  min-width: 170px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profileDropdownPortal .dropdownItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 8px;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  flex-direction: row;
+  border-radius: 5px;
+}
+
+.profileDropdownPortal .dropdownItem:hover {
+  background-color: #f3f8ff;
+}
+
+.profileDropdownPortal .icon {
+  color: #555;
 }
 
 .profiledropdownMenu .dropdownItem {

@@ -15,7 +15,7 @@ const SelectBrand = forwardRef((props, ref) => {
   const { slug1 } = useParams();
 
   const handleBrandClick = (slugSell) => {
-    navigate(`${slugSell}`, { replace: true });
+    navigate(`${slugSell}`);
   };
 
   const fetchBrands = async (search = "") => {

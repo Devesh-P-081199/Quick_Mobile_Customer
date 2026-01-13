@@ -814,9 +814,7 @@ function DeviceEvaluation() {
       // Don't clear session storage - keep data so user can come back and edit
       // Data will only be cleared when user goes back to Get Price page
 
-      navigate(`/${slug}/price-summary?${urlParams.toString()}`, {
-        replace: true,
-      });
+      navigate(`/${slug}/price-summary?${urlParams.toString()}`);
     } catch (error) {
       console.error("Error fetching final price:", error);
     }
@@ -904,10 +902,10 @@ function DeviceEvaluation() {
     const variantSlug = userSelection?.variantSlug;
 
     if (variantSlug) {
-      navigate(`/${catSubcatSlug}/${variantSlug}`, { replace: true });
+      navigate(`/${catSubcatSlug}/${variantSlug}`);
     } else {
       // Fallback to category/subcategory page
-      navigate(`/${catSubcatSlug}`, { replace: true });
+      navigate(`/${catSubcatSlug}`);
     }
   };
 

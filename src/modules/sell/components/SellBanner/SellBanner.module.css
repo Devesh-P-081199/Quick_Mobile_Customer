@@ -242,7 +242,10 @@ button.laptopviewall {
 
 .dropdownStyled {
   background: white;
-  border-radius: 0px 0px 8px 8px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   padding: 12px;
   max-height: 300px;
   overflow-y: auto;
@@ -250,6 +253,13 @@ button.laptopviewall {
   z-index: 10;
   width: 100%;
   margin-top: 0px;
+}
+
+.noDataFound {
+  padding: 16px 20px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
 }
 
 .sectionGroup {

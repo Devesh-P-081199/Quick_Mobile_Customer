@@ -64,11 +64,11 @@ function SelectSubCata() {
 
     if (isSelected) {
       // ✅ Allow unselect only if user is already on the subcategory
-      navigate(`/${categorySlug}`, { replace: true });
+      navigate(`/${categorySlug}`);
       setSelectedSubCategoryId(null);
     } else {
       if (slug1 !== subcata.slugSell) {
-        navigate(`/${subcata.slugSell}`, { replace: true });
+        navigate(`/${subcata.slugSell}`);
         setSelectedSubCategoryId(subcata._id);
       }
     }

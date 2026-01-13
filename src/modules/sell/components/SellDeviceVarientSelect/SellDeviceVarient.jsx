@@ -112,7 +112,7 @@ function SellDeviceVarient() {
         setUserSelection(newSelection);
 
         // Safe to navigate
-        navigate(`/${slug1}/${variant.slug}`, { replace: true });
+        navigate(`/${slug1}/${variant.slug}`);
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -236,7 +236,7 @@ function SellDeviceVarient() {
       return;
     }
     if (selectedMemory?.wholeVariantId) {
-      navigate(`/${slug1}/${userSelection.variantSlug}`, { replace: true });
+      navigate(`/${slug1}/${userSelection.variantSlug}`);
     } else {
       toast.warning("Please select a variant to continue.");
     }

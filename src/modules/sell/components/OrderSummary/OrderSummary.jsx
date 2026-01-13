@@ -195,15 +195,11 @@ function OrderSummary() {
     }
   };
 
-  const handleBack = () => {
-    navigate(`/${slug}/final-price-calculator?${queryParams.toString()}`);
-  };
-
   const isOrderReady = !!selectedAddress;
 
   return (
     <>
-      <MobileBackHeader title="Order Summery" onBack={handleBack} />
+      <MobileBackHeader title="Order Summery" />
 
       <section className={`${styles.StepSix} mobile-pt-section `}>
         <div className="page-content-wrapper">

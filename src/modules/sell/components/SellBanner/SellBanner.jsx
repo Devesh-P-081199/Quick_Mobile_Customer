@@ -78,7 +78,7 @@ function SellHomeBanner({ onViewAllClick }) {
       await selectCategory(id, categoryName);
 
       if (slug1 !== slug) {
-        navigate(`/${slug}`, { replace: true });
+        navigate(`/${slug}`);
       }
     },
     [selectCategory, slug1, navigate]
@@ -94,7 +94,7 @@ function SellHomeBanner({ onViewAllClick }) {
         ? `/${item.subCategorySlug}/${item.slugSell}`
         : `/${item.categorySlug}/${item.slugSell}`;
       
-      navigate(path, { replace: true });
+      navigate(path);
       closeDropdown();
       setSearchTerm("");
     },
@@ -106,7 +106,7 @@ function SellHomeBanner({ onViewAllClick }) {
    */
   const handleBrandSuggestionClick = useCallback(
     (brand) => {
-      navigate(`${brand.slugSell}`, { replace: true });
+      navigate(`${brand.slugSell}`);
     },
     [navigate]
   );
