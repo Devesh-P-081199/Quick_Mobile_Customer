@@ -188,7 +188,7 @@ const AppContent = () => {
   const hideFooter =
     (isMobile &&
       (location.pathname.includes("final-price-calculator") ||
-        location.pathname === "/404" ||
+        location.pathname === "/not-found" ||
         location.pathname.includes("price-summary") ||
         location.pathname.includes("dfds"))) ||
     location.pathname.includes("check-out") ||
@@ -439,7 +439,7 @@ const AppContent = () => {
         />
 
         <Route path="/FAQPage" element={<FAQPage />} />
-        <Route path="/404" element={<NotFoundPage />} />
+        <Route path="/not-found" element={<NotFoundPage />} />
         <Route path="/Cookies" element={<Cookies />} />
         <Route path="/About-us" element={<AboutUs />} />
         <Route path="/Terms" element={<TermsOfService />} />
