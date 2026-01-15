@@ -125,7 +125,7 @@ function SellDeviceVarient() {
       const labels = formRef.current.querySelectorAll(`.${styles.radioLabel}`);
       if (!labels || labels.length === 0) return;
 
-      // Reset styles to measure correctly
+      // Reset individual label styles as we will control layout via the grid container
       labels.forEach((label) => {
         label.style.width = "";
         label.style.flex = "";
@@ -135,25 +135,26 @@ function SellDeviceVarient() {
       const containerWidth = formRef.current.offsetWidth;
       const isMobile = window.innerWidth <= 768;
 
-      // Define buckets in pixels based on container width and gaps
-      let width33, width50;
+      // Define max width thresholds for columns
+      // We subtract a bit of buffer for gaps/padding (approx 20px total gap)
+      const gap = 10;
+      // 3 columns: (W - 2*gap) / 3
+      const widthThreshold3Col = (containerWidth - 2 * gap) / 3;
+      // 2 columns: (W - gap) / 2
+      const widthThreshold2Col = (containerWidth - gap) / 2;
 
-      if (isMobile) {
-        // Mobile: 2 items: (W - 10) / 2
-        width50 = (containerWidth - 10) / 2;
-      } else {
-        // Desktop: 
-        // 3 items: (W - 20) / 3
-        // 2 items: (W - 10) / 2
-        width33 = (containerWidth - 20) / 3;
-        width50 = (containerWidth - 10) / 2;
-      }
+      let maxLabelWidth = 0;
 
-      let maxBucket = isMobile ? 50 : 33; // Start assuming smallest bucket (50% for mobile, 33% for desktop)
-
-      // Measure each label using a clone to get true content width without layout interference
+      // Measure each label using a clone
       labels.forEach((label) => {
         const clone = label.cloneNode(true);
+
+        // CRITICAL FIX: Remove name attribute from cloned inputs to prevent
+        // stealing the "checked" state from the real visible inputs.
+        const cloneInputs = clone.querySelectorAll("input");
+        cloneInputs.forEach((input) => {
+          input.removeAttribute("name");
+        });
 
         // Reset styles on clone to measure natural width
         clone.style.width = "auto";
@@ -164,52 +165,54 @@ function SellDeviceVarient() {
         clone.style.flex = "none";
         clone.style.display = "inline-flex";
 
-        // Append to the same container to ensure it inherits fonts and other relevant styles
         formRef.current.appendChild(clone);
-
         const contentWidth = clone.offsetWidth;
-
-        // Cleanup
         formRef.current.removeChild(clone);
 
-        if (isMobile) {
-          if (contentWidth > width50) {
-            maxBucket = 100;
-          }
-        } else {
-          if (contentWidth > width50) {
-            maxBucket = 100;
-          } else if (contentWidth > width33 && maxBucket < 50) {
-            maxBucket = 50;
-          }
+        if (contentWidth > maxLabelWidth) {
+          maxLabelWidth = contentWidth;
         }
       });
 
-      // Apply widths
-      labels.forEach((label) => {
-        if (maxBucket === 100) {
-          label.style.width = "100%";
-          if (isMobile) label.style.flex = "0 0 100%";
-        } else if (maxBucket === 50) {
-          label.style.width = "calc(50% - 5px)";
-          if (isMobile) label.style.flex = "0 0 calc(50% - 5px)";
+      // Determine columns based on the widest label
+      let columns = 3; // Default to 3 columns
+
+      if (isMobile) {
+        // Mobile: 1 or 2 columns
+        if (maxLabelWidth > widthThreshold2Col) {
+          columns = 1;
         } else {
-          label.style.width = "calc(33.33% - 6.66px)";
+          columns = 2;
         }
-      });
+      } else {
+        // Desktop: 1, 2, or 3 columns
+        if (maxLabelWidth > widthThreshold2Col) {
+          columns = 1; // Needs full width
+        } else if (maxLabelWidth > widthThreshold3Col) {
+          columns = 2; // Needs half width
+        } else {
+          columns = 3; // Fits in third width
+        }
+      }
+
+      // Apply Grid Layout to the container
+      formRef.current.style.display = "grid";
+      formRef.current.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+      formRef.current.style.gap = `${gap}px`;
+
+      // Ensure flex direction is removed/overridden if it was set elsewhere
+      if (isMobile) {
+        // Mobile CSS might set generic styles, ensure grid takes precedence if needed
+        // specific gap logic is already handled above
+      }
     };
 
     // Run on load and variants change
     if (!isLoading && variants?.variants?.length > 0) {
-      // Small timeout to allow render
       setTimeout(calculateWidths, 100);
     }
 
-    // Run on resize
-    const handleResize = () => {
-      calculateWidths();
-    };
-
+    const handleResize = () => calculateWidths();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
 
