@@ -83,7 +83,7 @@ const Login = ({ setShowLoginModal }) => {
         setIsLoginModalOpen(false);
         setShowLoginModal(false);
       }
-    } catch (err) {
+    } catch {
       // OTP verification failed - no toast notification
     }
   };

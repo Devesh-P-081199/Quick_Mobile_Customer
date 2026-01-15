@@ -1,7 +1,7 @@
 import { useContext, useState, useRef } from "react";
 import { MdEmail } from "react-icons/md";
 import styles from "./SignUp.module.css";
-import { useNavigate, useLocation } from "react-router-dom";
+// import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 
@@ -14,9 +14,9 @@ const SignUp = ({ onSwitchToLogin, onSuccessSignup }) => {
   const [otp, setOtp] = useState(Array(6).fill(""));
   const otpRefs = useRef([]);
   const { setUser } = useContext(UserContext);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const fromPage = location.state?.from || "/";
+  // const navigate = useNavigate();
+  // const location = useLocation();
+  // const fromPage = location.state?.from || "/";
 
   const handleSendOtp = (e) => {
     e.preventDefault(); // ← this is crucial

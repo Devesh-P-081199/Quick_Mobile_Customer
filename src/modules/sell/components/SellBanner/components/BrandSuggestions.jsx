@@ -7,7 +7,7 @@ import styles from "../SellBanner.module.css";
  */
 const BrandSuggestions = forwardRef(function BrandSuggestions(
   { brands, isLoading, onBrandClick, onViewAllClick },
-  ref
+  ref,
 ) {
   // Skeleton loading state
   if (isLoading) {

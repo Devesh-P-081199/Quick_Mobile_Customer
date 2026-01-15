@@ -69,12 +69,6 @@ function RightCard() {
           return;
         }
 
-        const orderPayload = {
-          deviceEvaluationId: currentEvaluationId?._id,
-          address: selectedAddress,
-          paymentDetail: selectedPaymentMethod,
-        };
-
         toast.success("Order placed successfully!");
         navigate("/thank-you", { replace: true }); // Redirect to success page
       } catch (error) {

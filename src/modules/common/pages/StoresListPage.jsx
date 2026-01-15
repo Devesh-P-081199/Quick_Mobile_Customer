@@ -26,9 +26,7 @@ function StoresListPage() {
 
   return (
     <>
-      <MobileBackHeader
-        title="Our Stores"
-      />
+      <MobileBackHeader title="Our Stores" />
       <div className={styles.storesListPage}>
         <div className="wrapper page-content-wrapper">
           <h1 className={styles.pageTitle}>Our Store</h1>
@@ -53,12 +51,12 @@ function StoresListPage() {
 }
 
 function StoreCard({ store, onClick }) {
-  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  // const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
 
-  const handleThumbnailClick = (e, index) => {
-    e.stopPropagation(); // Prevent card click
-    setCurrentImageIndex(index);
-  };
+  // const handleThumbnailClick = (e, index) => {
+  //   e.stopPropagation(); // Prevent card click
+  //   setCurrentImageIndex(index);
+  // };
 
   return (
     <div className={styles.storeCard} onClick={onClick}>
@@ -84,7 +82,5 @@ function StoreCard({ store, onClick }) {
   );
 }
 
-// Add React import for useState
-import React from "react";
 
 export default StoresListPage;

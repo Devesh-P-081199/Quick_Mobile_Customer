@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import styles from "./OrderSummary.module.css";
 import MobileImg from "../../../../assets/images/Products/mobile.png";
 import "../../../../assets/images/icons/rightarrow.png";
@@ -43,7 +43,7 @@ function OrderSummary() {
   const queryParams = new URLSearchParams(location.search);
   const { slug } = useParams();
 
-  const FetchPriceDetails = async () => {
+  const FetchPriceDetails = useCallback(async () => {
     setLoading(true);
     try {
       const finalPriceResp = await api.get("/sell-module/user/view-finalprice");
@@ -55,10 +55,10 @@ function OrderSummary() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [setCurrentEvaluationId]);
 
   // Fetch addresses and auto-select default
-  const fetchAddresses = async () => {
+  const fetchAddresses = useCallback(async () => {
     try {
       const resp = await api.get("/sell-module/user/address");
       const fetchedAddresses = resp?.data.data?.addresses || [];
@@ -79,10 +79,10 @@ function OrderSummary() {
       console.error("Error fetching addresses:", error);
       toast.error("Error fetching addresses");
     }
-  };
+  }, [selectedAddress, setSelectedAddress]);
 
   // Fetch payment methods and auto-select default
-  const fetchPaymentMethods = async () => {
+  const fetchPaymentMethods = useCallback(async () => {
     try {
       const [upiResp, bankResp] = await Promise.all([
         api.get("/sell-module/user/payment-upi"),
@@ -125,14 +125,13 @@ function OrderSummary() {
       console.error("Error fetching payment methods:", error);
       toast.error("Error fetching payment methods");
     }
-  };
+  }, [selectedPaymentMethod, setSelectedPaymentMethod]);
 
   useEffect(() => {
     FetchPriceDetails();
     fetchAddresses();
     fetchPaymentMethods();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [FetchPriceDetails, fetchAddresses, fetchPaymentMethods]);
 
   const handlePlaceOrder = async () => {
     if (!selectedAddress) {
@@ -195,7 +194,7 @@ function OrderSummary() {
     }
   };
 
-  const isOrderReady = !!selectedAddress;
+  // const isOrderReady = !!selectedAddress;
 
   return (
     <>
@@ -207,10 +206,7 @@ function OrderSummary() {
           <div className={styles.LeftBox}>
             <div className={styles.DeviceImg}>
               <div className={styles.mobileImg}>
-                <img
-                  src={currentEvaluationId?.devicePic || MobileImg}
-                  alt=""
-                />
+                <img src={currentEvaluationId?.devicePic || MobileImg} alt="" />
               </div>
               <div className={styles.DeviceDetails}>
                 <h2 className={styles.name}>
@@ -467,39 +463,39 @@ function OrderSummary() {
             </div>
           )}
 
-            {/* Right Section */}
-            <div className={styles.RightBox}>
-              <div className={styles.details}>
-                <div className={styles.summary}>Summary</div>
-                <div className={styles.row}>
-                  <span className={styles.label}>Phone Price</span>
-                  <span className={styles.value}>
-                    {`₹ ${currentEvaluationId?.finalPrice}`}
-                  </span>
+          {/* Right Section */}
+          <div className={styles.RightBox}>
+            <div className={styles.details}>
+              <div className={styles.summary}>Summary</div>
+              <div className={styles.row}>
+                <span className={styles.label}>Phone Price</span>
+                <span className={styles.value}>
+                  {`₹ ${currentEvaluationId?.finalPrice}`}
+                </span>
+              </div>
+              <div className={styles.row}>
+                <span className={styles.label}>Pickup Charges</span>
+                <div className={styles.pickupCharges}>
+                  <>
+                    <span className={styles.free}>Free</span>
+                    <span className={styles.striked}>₹ 150</span>
+                  </>
                 </div>
-                <div className={styles.row}>
-                  <span className={styles.label}>Pickup Charges</span>
-                  <div className={styles.pickupCharges}>
-                    <>
-                      <span className={styles.free}>Free</span>
-                      <span className={styles.striked}>₹ 150</span>
-                    </>
-                  </div>
-                </div>
-                <div className={styles.row}>
-                  <span className={styles.label}>Processing</span>
-                  <span className={styles.value}>Free</span>
-                </div>
-                <div className={styles.row}>
-                  <span className={styles.label}>Offer/Coupon</span>
-                  <span className={styles.value}>₹10.00</span>
-                </div>
-                <div className={styles.totalRow}>
-                  <span className={styles.totalLabel}>Total</span>
-                  <span className={styles.totalValue}>
-                    {`₹ ${currentEvaluationId?.finalPrice}`}
-                  </span>
-                </div>
+              </div>
+              <div className={styles.row}>
+                <span className={styles.label}>Processing</span>
+                <span className={styles.value}>Free</span>
+              </div>
+              <div className={styles.row}>
+                <span className={styles.label}>Offer/Coupon</span>
+                <span className={styles.value}>₹10.00</span>
+              </div>
+              <div className={styles.totalRow}>
+                <span className={styles.totalLabel}>Total</span>
+                <span className={styles.totalValue}>
+                  {`₹ ${currentEvaluationId?.finalPrice}`}
+                </span>
+              </div>
             </div>
 
             {/* Place Order Button */}

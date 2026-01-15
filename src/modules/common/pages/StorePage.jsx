@@ -111,9 +111,7 @@ function StorePage() {
 
   return (
     <>
-      <MobileBackHeader
-        title="Our Store"
-      />
+      <MobileBackHeader title="Our Store" />
       <div className={styles.storePage}>
         <div className="wrapper page-content-wrapper">
           {/* Banner Slider */}

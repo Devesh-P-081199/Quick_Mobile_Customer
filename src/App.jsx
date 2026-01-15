@@ -21,8 +21,12 @@ const SelectVarient = React.lazy(
 const GetPriceUpto = React.lazy(
   () => import("./modules/sell/pages/GetPriceUpto"),
 );
-const DeviceEvaluationPage = React.lazy(() => import("./modules/sell/pages/DeviceEvaluationPage"));
-const OrderSummaryPage = React.lazy(() => import("./modules/sell/pages/OrderSummaryPage"));
+const DeviceEvaluationPage = React.lazy(
+  () => import("./modules/sell/pages/DeviceEvaluationPage"),
+);
+const OrderSummaryPage = React.lazy(
+  () => import("./modules/sell/pages/OrderSummaryPage"),
+);
 const CheckOut = React.lazy(
   () => import("./modules/checkout/components/CheckOut/CheckOut"),
 );

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./BlogDetail.module.css";
 import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
 import blogsData from "./block-content.json";
 
 const BlogDetail = () => {
   const { blogId } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const getImageUrl = (name) => {

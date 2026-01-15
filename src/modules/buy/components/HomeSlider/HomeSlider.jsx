@@ -1,30 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import slide1 from "../../../../assets/images/banner_images/homepage_banner_slider_image_01.png";
 
 function HomeSlider() {
   const slides = [
     {
       title: "Sell Your Old Phone in Minutes!",
-      description:
-        "Highest Price | Doorstep Pickups | Instant Payment",
+      description: "Highest Price | Doorstep Pickups | Instant Payment",
       image: slide1,
     },
     {
       title: "Sell Your Old Phone in Minutes!",
-      description:
-        "Highest Price | Doorstep Pickups | Instant Payment",
+      description: "Highest Price | Doorstep Pickups | Instant Payment",
       image: slide1,
     },
     {
       title: "Sell Your Old Phone in Minutes!",
-      description:
-        "Highest Price | Doorstep Pickups | Instant Payment",
+      description: "Highest Price | Doorstep Pickups | Instant Payment",
       image: slide1,
     },
     {
       title: "Sell Your Old Phone in Minutes!",
-      description:
-        "Highest Price | Doorstep Pickups | Instant Payment",
+      description: "Highest Price | Doorstep Pickups | Instant Payment",
       image: slide1,
     },
   ];
@@ -32,10 +28,10 @@ function HomeSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
     setProgress(0); // Reset progress when manually changing slides
-  };
+  }, [slides.length]);
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -69,7 +65,7 @@ function HomeSlider() {
       clearInterval(progressInterval);
       clearTimeout(slideTimeout);
     };
-  }, [currentSlide]);
+  }, [currentSlide, nextSlide]);
 
   return (
     <>

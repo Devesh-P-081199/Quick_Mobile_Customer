@@ -1,5 +1,5 @@
 // src/context/UserContext.js
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 import Cookies from "js-cookie";
 import api from "../Utils/api";
 
@@ -10,7 +10,7 @@ const ContextAPI = (props) => {
   const [variants, setVariants] = useState([]);
   const [phoneName, setPhoneName] = useState("");
   const [allPackageData, setAllPackageData] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [products] = useState([]);
   const [deviceInfo, setDeviceInfo] = useState({});
   const [user, setUser] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,10 +19,10 @@ const ContextAPI = (props) => {
   const [haveSubCategory, setHaveSubCategory] = useState(false);
   const [answersforMobile, setanswersforMobile] = useState([]);
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-    if (!loadCities) setLoadCities(true); // only triggers once
-  };
+  const toggleModal = useCallback(() => {
+    setIsModalOpen((prev) => !prev);
+    setLoadCities(true);
+  }, []);
 
   const [userSelection, setUserSelection] = useState({
     cityName: "",
@@ -37,7 +37,7 @@ const ContextAPI = (props) => {
   const [currentEvaluationId, setCurrentEvaluationId] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
-  const [seoDataFromContext, setSeoData] = useState({});
+  const [seoDataFromContext] = useState({});
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [, setLastFetchedProductSlug] = useState(null);
 
@@ -94,7 +94,7 @@ const ContextAPI = (props) => {
     });
   }, [deviceInfo]);
 
-  const fetchVariantsByProductId = async (finalSlug) => {
+  const fetchVariantsByProductId = useCallback(async (finalSlug) => {
     try {
       // Always refresh, but still track last slug
       setLastFetchedProductSlug(finalSlug);
@@ -109,7 +109,7 @@ const ContextAPI = (props) => {
       console.error(err);
       return null;
     }
-  };
+  }, []);
 
   return (
     <UserContext.Provider

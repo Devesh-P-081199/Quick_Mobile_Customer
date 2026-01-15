@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import ProfileCard from "./ProfileCard";
 import { UserContext } from "../../../Context/contextAPI";
 import api from "../../../Utils/api";
+import Cookies from "js-cookie";
 import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
 const EditProfile = () => {
   const [ProfileUpdate, setProfileUpdate] = React.useState({
@@ -13,7 +14,7 @@ const EditProfile = () => {
 
   const handleUpdateProfile = async () => {
     try {
-      const resp = await api.put(`/sell-module/user/update-profile/${id}`, {
+      await api.put(`/sell-module/user/update-profile/${id}`, {
         ProfileUpdate,
       });
       // clear fields
@@ -41,7 +42,9 @@ const EditProfile = () => {
         },
       );
       alert("Profile updated successfully");
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
   };
 
   const handleChange = (e) => {

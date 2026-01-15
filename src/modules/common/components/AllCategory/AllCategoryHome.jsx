@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./AllCategory.module.css";
 import api from "../../../../Utils/api";
@@ -6,7 +6,7 @@ import api from "../../../../Utils/api";
 const Allcategoryhome = forwardRef((props, ref) => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-  const [brands, setBrands] = useState([]);
+  // const [brands, setBrands] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const fetchCategories = async () => {
@@ -15,12 +15,17 @@ const Allcategoryhome = forwardRef((props, ref) => {
         "/common-module/category?option=Sell&all=true",
       );
       setCategories(response?.data?.categories);
-    } catch (error) {}
+    } catch {
+      // ignore
+    }
   };
 
-  const handleNavigate = async (selectedCategory) => {
-    navigate(`/${selectedCategory?.slug?.sell}`);
-  };
+  const handleNavigate = useCallback(
+    (category) => {
+      navigate(`/${category?.slug?.sell}`);
+    },
+    [navigate],
+  );
 
   useEffect(() => {
     fetchCategories();
@@ -30,14 +35,14 @@ const Allcategoryhome = forwardRef((props, ref) => {
     if (selectedCategory) {
       handleNavigate(selectedCategory);
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, handleNavigate]);
 
   const handleCataClick = (category) => {
     setSelectedCategory(category);
   };
-  const handleBrandClick = (brandId) => {
-    navigate(`/select-series/${brandId}`);
-  };
+  // const handleBrandClick = (brandId) => {
+  //   navigate(`/select-series/${brandId}`);
+  // };
 
   return (
     <section ref={ref} className="page-content-wrapper scrollbar-hidden">

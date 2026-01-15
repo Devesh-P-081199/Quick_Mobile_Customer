@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef, useContext, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./ThankYou.module.css";
 import orderStyles from "../../profile/components/MyOrder/Order.module.css"; // Reuse OrderDetails styles
@@ -67,7 +67,7 @@ const ThankYouPage = () => {
 
   const displayPayment = selectedPaymentMethod || currentOrderPayment;
 
-  const handleUpdatePayment = async () => {
+  const handleUpdatePayment = useCallback(async () => {
     if (!selectedPaymentMethod) {
       // Only warn if called manually, but auto-trigger checks existence
       return;
@@ -99,13 +99,18 @@ const ThankYouPage = () => {
       console.error("Error updating payment:", error);
       toast.error("Failed to update payment method");
     }
-  };
+  }, [
+    selectedPaymentMethod,
+    currentOrderPayment,
+    orderData,
+    setSelectedPaymentMethod,
+  ]);
 
   useEffect(() => {
     if (selectedPaymentMethod) {
       handleUpdatePayment();
     }
-  }, [selectedPaymentMethod]);
+  }, [selectedPaymentMethod, handleUpdatePayment]);
 
   const handleChangePayment = () => {
     // Pre-fill context with current order payment if available

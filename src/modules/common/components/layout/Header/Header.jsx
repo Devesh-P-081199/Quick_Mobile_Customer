@@ -82,7 +82,7 @@ const Header = () => {
   const [isProfileDropDown] = useState(false); // Profile dropdown state (unused)
   const [home, setHome] = useState(false); // Home navigation trigger
   const [isLoaded, setIsLoaded] = useState(() => {
-    return typeof window !== 'undefined' && window.innerWidth > 768;
+    return typeof window !== "undefined" && window.innerWidth > 768;
   });
 
   // Search Functionality State
@@ -122,10 +122,17 @@ const Header = () => {
 
   // Profile dropdown state for portal positioning
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-  const [profileDropdownPos, setProfileDropdownPos] = useState({ top: 0, left: 0 });
+  const [profileDropdownPos, setProfileDropdownPos] = useState({
+    top: 0,
+    left: 0,
+  });
 
   // Search dropdown position state for portal
-  const [searchDropdownPos, setSearchDropdownPos] = useState({ top: 0, left: 0, width: 0 });
+  const [searchDropdownPos, setSearchDropdownPos] = useState({
+    top: 0,
+    left: 0,
+    width: 0,
+  });
 
   // Context data from UserContext
   const {
@@ -168,7 +175,9 @@ const Header = () => {
     const fetchHeaderData = async () => {
       try {
         // Fetch Categories
-        const catRes = await api.get("/common-module/category?option=Sell&all=true");
+        const catRes = await api.get(
+          "/common-module/category?option=Sell&all=true",
+        );
         const categories = catRes.data?.categories || [];
         setCategories(categories);
 
@@ -177,9 +186,8 @@ const Header = () => {
         setBrandsWithProducts(brandRes.data?.BrandsWithProducts || []);
 
         // Set Mobile Category ID for filtering
-        const mobileCat = categories.find(c => c.categoryName === "Mobile");
+        const mobileCat = categories.find((c) => c.categoryName === "Mobile");
         setMobileCategory(mobileCat || null);
-
       } catch (err) {
         console.error("Error fetching header data:", err);
       }
@@ -372,7 +380,7 @@ const Header = () => {
 
       if (search !== lastSearchRef.current) return;
 
-      if (resp.data == null) {
+      if (resp.data === null) {
         setShowDropdown(false);
         return;
       }
@@ -643,7 +651,10 @@ const Header = () => {
       {/* Main Header Container */}
       <div
         className={styles.header}
-        style={{ opacity: isLoaded ? 1 : 0, transition: "opacity 0.2s ease-in" }}
+        style={{
+          opacity: isLoaded ? 1 : 0,
+          transition: "opacity 0.2s ease-in",
+        }}
       >
         <div className={styles.container} ref={headerContainerRef}>
           <div className={styles.headerContainer}>
@@ -693,142 +704,150 @@ const Header = () => {
                 />
 
                 {/* Search Results Dropdown - Portal for escaping paint containment */}
-                {showDropdown && createPortal(
-                  <div 
-                    className={styles.searchDropdownPortal} 
-                    ref={dropdownRef}
-                    style={{
-                      position: 'fixed',
-                      top: searchDropdownPos.top,
-                      left: searchDropdownPos.left,
-                      width: searchDropdownPos.width,
-                      zIndex: 10000,
-                    }}
-                  >
-                    {/* Check if there are any results at all */}
-                    {(() => {
-                      const hasAnyResults = ["sell", "buy", "recycle"].some((contextType) => {
-                        return (
-                          results.ActiveBrands?.[contextType]?.length > 0 ||
-                          results.ActiveProducts?.[contextType]?.length > 0 ||
-                          results.ActiveCategories?.[contextType]?.length > 0
+                {showDropdown &&
+                  createPortal(
+                    <div
+                      className={styles.searchDropdownPortal}
+                      ref={dropdownRef}
+                      style={{
+                        position: "fixed",
+                        top: searchDropdownPos.top,
+                        left: searchDropdownPos.left,
+                        width: searchDropdownPos.width,
+                        zIndex: 10000,
+                      }}
+                    >
+                      {/* Check if there are any results at all */}
+                      {(() => {
+                        const hasAnyResults = ["sell", "buy", "recycle"].some(
+                          (contextType) => {
+                            return (
+                              results.ActiveBrands?.[contextType]?.length > 0 ||
+                              results.ActiveProducts?.[contextType]?.length >
+                                0 ||
+                              results.ActiveCategories?.[contextType]?.length >
+                                0
+                            );
+                          },
                         );
-                      });
-                      
-                      if (!hasAnyResults) {
+
+                        if (!hasAnyResults) {
+                          return (
+                            <div className={styles.noDataFound}>
+                              No data found
+                            </div>
+                          );
+                        }
+
+                        return null;
+                      })()}
+                      {["sell", "buy", "recycle"].map((contextType) => {
+                        const hasBrands =
+                          results.ActiveBrands?.[contextType]?.length > 0;
+                        const hasProducts =
+                          results.ActiveProducts?.[contextType]?.length > 0;
+                        const hasCategories =
+                          results.ActiveCategories?.[contextType]?.length > 0;
+
+                        if (!hasBrands && !hasProducts && !hasCategories)
+                          return null;
+
                         return (
-                          <div className={styles.noDataFound}>
-                            No data found
+                          <div
+                            key={contextType}
+                            className={styles.contextBlock}
+                          >
+                            {/* Categories */}
+                            {hasCategories && (
+                              <div className={styles.resultGroup}>
+                                {results.ActiveCategories[contextType].map(
+                                  (cat) => (
+                                    <div
+                                      key={cat._id}
+                                      className={styles.resultItem}
+                                      onClick={() => handleCategoryClick(cat)}
+                                    >
+                                      {cat.categoryName}
+                                      <span className={styles.resultTag}>
+                                        in {contextType}
+                                      </span>
+                                    </div>
+                                  ),
+                                )}
+                              </div>
+                            )}
+
+                            {/* Brands */}
+                            {hasBrands && (
+                              <div>
+                                {results.ActiveBrands[contextType].map(
+                                  (brand) => (
+                                    <div
+                                      key={brand._id}
+                                      className={styles.resultItem}
+                                      onClick={() =>
+                                        handleBrandClick(brand._id, brand)
+                                      }
+                                    >
+                                      <div>
+                                        <img
+                                          height={15}
+                                          width={15}
+                                          src={brand?.brandLogo}
+                                          alt={brand?.brandName}
+                                        />
+                                      </div>
+                                      <div className={styles.searchNames}>
+                                        {brand?.brandName}
+                                        <span className={styles.resultTag}>
+                                          in {contextType}{" "}
+                                          {brand?.categoryData?.categoryName}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  ),
+                                )}
+                              </div>
+                            )}
+
+                            {/* Products */}
+                            {hasProducts && (
+                              <div className={styles.resultGroup}>
+                                {results.ActiveProducts[contextType].map(
+                                  (product) => (
+                                    <div
+                                      key={product._id}
+                                      className={styles.resultItem}
+                                      onClick={() =>
+                                        handleProductClick(product._id, product)
+                                      }
+                                    >
+                                      <div className={styles.productImage}>
+                                        <img
+                                          src={product?.devicePic}
+                                          alt={product?.deviceName}
+                                          height={20}
+                                          width={20}
+                                        />
+                                      </div>
+                                      <div className={styles.searchNames}>
+                                        {product?.deviceName}
+                                        <span className={styles.resultTag}>
+                                          in {contextType}{" "}
+                                          {product?.categoryData?.categoryName}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  ),
+                                )}
+                              </div>
+                            )}
                           </div>
                         );
-                      }
-                      
-                      return null;
-                    })()}
-                    {["sell", "buy", "recycle"].map((contextType) => {
-                      const hasBrands =
-                        results.ActiveBrands?.[contextType]?.length > 0;
-                      const hasProducts =
-                        results.ActiveProducts?.[contextType]?.length > 0;
-                      const hasCategories =
-                        results.ActiveCategories?.[contextType]?.length > 0;
-
-                      if (!hasBrands && !hasProducts && !hasCategories)
-                        return null;
-
-                      return (
-                        <div key={contextType} className={styles.contextBlock}>
-                          {/* Categories */}
-                          {hasCategories && (
-                            <div className={styles.resultGroup}>
-                              {results.ActiveCategories[contextType].map(
-                                (cat) => (
-                                  <div
-                                    key={cat._id}
-                                    className={styles.resultItem}
-                                    onClick={() => handleCategoryClick(cat)}
-                                  >
-                                    {cat.categoryName}
-                                    <span className={styles.resultTag}>
-                                      in {contextType}
-                                    </span>
-                                  </div>
-                                ),
-                              )}
-                            </div>
-                          )}
-
-                          {/* Brands */}
-                          {hasBrands && (
-                            <div>
-                              {results.ActiveBrands[contextType].map(
-                                (brand) => (
-                                  <div
-                                    key={brand._id}
-                                    className={styles.resultItem}
-                                    onClick={() =>
-                                      handleBrandClick(brand._id, brand)
-                                    }
-                                  >
-                                    <div>
-                                      <img
-                                        height={15}
-                                        width={15}
-                                        src={brand?.brandLogo}
-                                        alt={brand?.brandName}
-                                      />
-                                    </div>
-                                    <div className={styles.searchNames}>
-                                      {brand?.brandName}
-                                      <span className={styles.resultTag}>
-                                        in {contextType}{" "}
-                                        {brand?.categoryData?.categoryName}
-                                      </span>
-                                    </div>
-                                  </div>
-                                ),
-                              )}
-                            </div>
-                          )}
-
-                          {/* Products */}
-                          {hasProducts && (
-                            <div className={styles.resultGroup}>
-                              {results.ActiveProducts[contextType].map(
-                                (product) => (
-                                  <div
-                                    key={product._id}
-                                    className={styles.resultItem}
-                                    onClick={() =>
-                                      handleProductClick(product._id, product)
-                                    }
-                                  >
-                                    <div className={styles.productImage}>
-                                      <img
-                                        src={product?.devicePic}
-                                        alt={product?.deviceName}
-                                        height={20}
-                                        width={20}
-                                      />
-                                    </div>
-                                    <div className={styles.searchNames}>
-                                      {product?.deviceName}
-                                      <span className={styles.resultTag}>
-                                        in {contextType}{" "}
-                                        {product?.categoryData?.categoryName}
-                                      </span>
-                                    </div>
-                                  </div>
-                                ),
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>,
-                  document.body
-                )}
+                      })}
+                    </div>,
+                    document.body,
+                  )}
               </div>
             </div>
 
@@ -846,7 +865,7 @@ const Header = () => {
               <div className={styles.user}>
                 {user?.phone ? (
                   <>
-                    <div 
+                    <div
                       className={styles.dropdownContainer}
                       ref={profileTriggerRef}
                       onMouseEnter={() => setIsProfileDropdownOpen(true)}
@@ -859,57 +878,60 @@ const Header = () => {
                         <img
                           src={dropdownIcon}
                           alt="dropdown"
-                          className={[styles.dropdownArrow, isProfileDropdownOpen ? styles.arrowRotated : "", "nav-icons"].join(
-                            " ",
-                          )}
+                          className={[
+                            styles.dropdownArrow,
+                            isProfileDropdownOpen ? styles.arrowRotated : "",
+                            "nav-icons",
+                          ].join(" ")}
                         />
                       </span>
                     </div>
                     {/* Profile Dropdown Portal - renders at body level to escape paint containment */}
-                    {isProfileDropdownOpen && createPortal(
-                      <div 
-                        className={styles.profileDropdownPortal}
-                        style={{
-                          position: 'fixed',
-                          top: profileDropdownPos.top,
-                          left: profileDropdownPos.left,
-                          transform: 'translateX(-50%)',
-                          zIndex: 10000,
-                        }}
-                        onMouseEnter={() => setIsProfileDropdownOpen(true)}
-                        onMouseLeave={() => setIsProfileDropdownOpen(false)}
-                      >
+                    {isProfileDropdownOpen &&
+                      createPortal(
                         <div
-                          onClick={() => navigate("/my-profile-orders")}
-                          className={styles.dropdownItem}
+                          className={styles.profileDropdownPortal}
+                          style={{
+                            position: "fixed",
+                            top: profileDropdownPos.top,
+                            left: profileDropdownPos.left,
+                            transform: "translateX(-50%)",
+                            zIndex: 10000,
+                          }}
+                          onMouseEnter={() => setIsProfileDropdownOpen(true)}
+                          onMouseLeave={() => setIsProfileDropdownOpen(false)}
                         >
-                          <FaUserCircle className={styles.icon} />
-                          My Profile
-                        </div>
-                        <div
-                          onClick={() => navigate("/my-orders")}
-                          className={styles.dropdownItem}
-                        >
-                          <FaShoppingBag className={styles.icon} />
-                          My Orders
-                        </div>
-                        <div
-                          onClick={() => navigate("/offers")}
-                          className={styles.dropdownItem}
-                        >
-                          <FaTags className={styles.icon} />
-                          Offers
-                        </div>
-                        <div
-                          className={styles.dropdownItem}
-                          onClick={handleLogOut}
-                        >
-                          <FaSignOutAlt className={styles.icon} />
-                          Logout
-                        </div>
-                      </div>,
-                      document.body
-                    )}
+                          <div
+                            onClick={() => navigate("/my-profile-orders")}
+                            className={styles.dropdownItem}
+                          >
+                            <FaUserCircle className={styles.icon} />
+                            My Profile
+                          </div>
+                          <div
+                            onClick={() => navigate("/my-orders")}
+                            className={styles.dropdownItem}
+                          >
+                            <FaShoppingBag className={styles.icon} />
+                            My Orders
+                          </div>
+                          <div
+                            onClick={() => navigate("/offers")}
+                            className={styles.dropdownItem}
+                          >
+                            <FaTags className={styles.icon} />
+                            Offers
+                          </div>
+                          <div
+                            className={styles.dropdownItem}
+                            onClick={handleLogOut}
+                          >
+                            <FaSignOutAlt className={styles.icon} />
+                            Logout
+                          </div>
+                        </div>,
+                        document.body,
+                      )}
                   </>
                 ) : (
                   <div
@@ -1011,7 +1033,13 @@ const Header = () => {
                   className={styles.mobileSearchIcon}
                   onClick={() => setIsMobileSearchDrop(true)}
                 >
-                  <img src={NewSearchIcon} alt="Search" className="nav-icons" width="25" height="25" />
+                  <img
+                    src={NewSearchIcon}
+                    alt="Search"
+                    className="nav-icons"
+                    width="25"
+                    height="25"
+                  />
                 </div>
                 {isMobileSearchDrop && (
                   <div
@@ -1232,9 +1260,11 @@ const Header = () => {
                         {/* Show brands if this category is open */}
                         {openMobileCategory === cat._id && (
                           <ul className={styles.subMenu}>
-                            {brandsWithProducts.filter(b => b.categoryId === cat._id).length > 0 ? (
+                            {brandsWithProducts.filter(
+                              (b) => b.categoryId === cat._id,
+                            ).length > 0 ? (
                               brandsWithProducts
-                                .filter(b => b.categoryId === cat._id)
+                                .filter((b) => b.categoryId === cat._id)
                                 .slice(0, 10)
                                 .map((brand) => (
                                   <li
@@ -1328,9 +1358,9 @@ const Header = () => {
                 <h2>Popular Brands</h2>
                 {openMobileCategory && (
                   <ul className={styles.mobileModalUl}>
-                    {brandsWithProducts
-                      .filter((b) => b.categoryId === openMobileCategory)
-                      .length > 0 ? (
+                    {brandsWithProducts.filter(
+                      (b) => b.categoryId === openMobileCategory,
+                    ).length > 0 ? (
                       brandsWithProducts
                         .filter((b) => b.categoryId === openMobileCategory)
                         .slice(0, 10)
@@ -1392,7 +1422,9 @@ const Header = () => {
                           )
                         }
                         className={
-                          openMobileCategory === brand._id ? styles.selected : ""
+                          openMobileCategory === brand._id
+                            ? styles.selected
+                            : ""
                         }
                       >
                         <img src={brand.brandLogo} alt={brand.brandName} />
@@ -1521,10 +1553,11 @@ const Header = () => {
                         {category?.slice(0, 5).map((cat) => (
                           <div
                             key={cat._id}
-                            className={`${styles.categoryItem} ${activeCategory === cat.categoryName
-                              ? styles.active
-                              : ""
-                              }`}
+                            className={`${styles.categoryItem} ${
+                              activeCategory === cat.categoryName
+                                ? styles.active
+                                : ""
+                            }`}
                             onMouseEnter={() => handleCategoryHover(cat)}
                           >
                             <img
@@ -1560,7 +1593,7 @@ const Header = () => {
                             {brandsWithProducts
                               .filter((b) => {
                                 const activeCatId = category.find(
-                                  (c) => c.categoryName === activeCategory
+                                  (c) => c.categoryName === activeCategory,
                                 )?._id;
                                 return b.categoryId === activeCatId;
                               })
@@ -1606,10 +1639,11 @@ const Header = () => {
                             <div
                               key={brand._id}
                               className={`${styles.categoryItem} 
-                            ${activeBrand === brand.brandName
-                                  ? styles.active
-                                  : ""
-                                }
+                            ${
+                              activeBrand === brand.brandName
+                                ? styles.active
+                                : ""
+                            }
                             `}
                               onMouseEnter={() => handleBrandHover(brand)}
                             >
@@ -1683,10 +1717,11 @@ const Header = () => {
                         {brandsWithProducts?.slice(0, 3)?.map((brand) => (
                           <div
                             key={brand._id}
-                            className={`${styles.categoryItem} ${activeBrand === brand.brandName
-                              ? styles.active
-                              : ""
-                              }`}
+                            className={`${styles.categoryItem} ${
+                              activeBrand === brand.brandName
+                                ? styles.active
+                                : ""
+                            }`}
                             onMouseEnter={() => handleBrandHover(brand)}
                           >
                             <img src={brand?.brandLogo} alt="" />

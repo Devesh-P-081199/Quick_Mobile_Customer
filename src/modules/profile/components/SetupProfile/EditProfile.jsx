@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useCallback } from "react";
 import { UserContext } from "../../../../Context/contextAPI";
 import Cookies from "js-cookie";
 import { FaCheckCircle, FaTimes } from "react-icons/fa";
@@ -42,7 +42,7 @@ const EditProfile = () => {
   const [showImageUploadModal, setShowImageUploadModal] = useState(false);
   const [isUploadingImage, setIsUploadingImage] = useState(false);
 
-  const handleAutoVerifyOtp = async () => {
+  const handleAutoVerifyOtp = useCallback(async () => {
     setIsVerifying(true);
     setVerificationStatus(null);
 
@@ -60,20 +60,19 @@ const EditProfile = () => {
 
       // Success - only show tick in OTP field, not email field yet
       setVerificationStatus("success");
-    } catch (error) {
+    } catch {
       // Error
       setVerificationStatus("error");
     } finally {
       setIsVerifying(false);
     }
-  };
+  }, [emailOtp]);
 
   useEffect(() => {
     if (emailOtp.length === 6 && showEmailOtp) {
       handleAutoVerifyOtp();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [emailOtp]);
+  }, [emailOtp, showEmailOtp, handleAutoVerifyOtp]);
 
   const handleUpdateProfile = async () => {
     try {
@@ -101,7 +100,7 @@ const EditProfile = () => {
       setVerificationStatus(null);
 
       alert("Profile updated successfully");
-    } catch (error) {
+    } catch {
       alert("Failed to update profile. Please try again.");
     }
   };

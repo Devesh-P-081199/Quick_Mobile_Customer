@@ -104,7 +104,7 @@ function StaticBanner() {
 
         setFillPercent((prev) => Math.max(prev, percent));
       }, 100),
-    []
+    [],
   );
 
   useEffect(() => {

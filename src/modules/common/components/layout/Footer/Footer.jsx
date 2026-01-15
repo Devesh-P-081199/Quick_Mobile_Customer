@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import styles from "./Footer.module.css";
 
 import facebookIcon from "../../../../../assets/images/icons/facebook-b&w.png";
@@ -42,27 +41,28 @@ const FooterSection = ({ title, links }) => {
 };
 
 const Footer = () => {
-  const location = useLocation();
+  // const location = useLocation();
 
   // Paths where footer should be hidden
-  const hiddenPaths = [
-    "/FAQPage",
-    "/404",
-    "/Cookies",
-    "/About-us",
-    "/terms",
-    "/Refund",
-    "/Contact-us",
-    "/Impact",
-    "/Search",
-    "/thank-you",
-    "/my-profile-orders",
-    "/Address",
-    "/my-profile",
-    "/edit-my-profile",
-    "/my-profile-payments",
-    "/offers",
-  ];
+  // Paths where footer should be hidden
+  // const hiddenPaths = [
+  //   "/FAQPage",
+  //   "/404",
+  //   "/Cookies",
+  //   "/About-us",
+  //   "/terms",
+  //   "/Refund",
+  //   "/Contact-us",
+  //   "/Impact",
+  //   "/Search",
+  //   "/thank-you",
+  //   "/my-profile-orders",
+  //   "/Address",
+  //   "/my-profile",
+  //   "/edit-my-profile",
+  //   "/my-profile-payments",
+  //   "/offers",
+  // ];
 
   // If current route is in hiddenPaths → don’t render footer
 
@@ -183,8 +183,14 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className={styles.footerBottom}>
           <p>
-            Quickmobile LLP. ROC Mumbai, Maharashtra, CIN :<b> 12345678912345678912</b> | GST no :<b> 123456789123</b>. For complaint or greviences email :<b> grevience@quickmobile.in</b><br />
-            ** All trademarks, logos, and brand names are the property of their respective owners. All the company, brand or logos use here on website is for identification purpose only and does not imply ownership or endorsement.
+            Quickmobile LLP. ROC Mumbai, Maharashtra, CIN :
+            <b> 12345678912345678912</b> | GST no :<b> 123456789123</b>. For
+            complaint or greviences email :<b> grevience@quickmobile.in</b>
+            <br />
+            ** All trademarks, logos, and brand names are the property of their
+            respective owners. All the company, brand or logos use here on
+            website is for identification purpose only and does not imply
+            ownership or endorsement.
           </p>
           <p>&copy; 2025 Quick Mobile All Right Reserved</p>
         </div>

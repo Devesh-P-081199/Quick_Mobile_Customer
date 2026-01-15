@@ -1,4 +1,11 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useMemo,
+} from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import "./DeviceEvaluation.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
@@ -144,7 +151,7 @@ function DeviceEvaluation() {
   } = useContext(UserContext);
 
   // Generate unique session storage key
-  const getStorageKey = () => {
+  const getStorageKey = useCallback(() => {
     // Always use URL parameters which are available even on refresh
     const urlParams = new URLSearchParams(location.search);
     const productId = urlParams.get("pid") || "unknown";
@@ -154,15 +161,16 @@ function DeviceEvaluation() {
     const variantId = userSelection?.variantId || variantFromUrl;
 
     return `step3PackageData_${productId}_${variantId}`;
-  };
+  }, [location.search, userSelection?.variantId]);
 
-  const assignedPackages = packages || [];
+  const assignedPackages = useMemo(() => packages || [], [packages]);
   const [currentPackageIndex, setCurrentPackageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [lastInteractedQuestionId, setLastInteractedQuestionId] =
     useState(null);
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const [pendingPriceCalculation, setPendingPriceCalculation] = useState(false);
+  const priceCalculationRef = useRef(null);
   const navigate = useNavigate();
 
   // Check if we have valid packages data
@@ -259,14 +267,20 @@ function DeviceEvaluation() {
       if (savedToken) {
         setPendingPriceCalculation(false);
         setanswersforMobile(extractAnsweredQuestions(allPackageData));
-        priceCalculationAndSave();
+        if (priceCalculationRef.current) {
+          priceCalculationRef.current();
+        }
       } else {
         // User closed modal without logging in
         setPendingPriceCalculation(false);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoginModalOpen, pendingPriceCalculation]);
+  }, [
+    isLoginModalOpen,
+    pendingPriceCalculation,
+    allPackageData,
+    setanswersforMobile,
+  ]);
 
   // ===== Adjust icon option containers for long text and equalize label heights =====
   useEffect(() => {
@@ -344,7 +358,10 @@ function DeviceEvaluation() {
 
   // Auto-scroll sidebar to active item
   useEffect(() => {
-    if (lastInteractedQuestionId && sidebarAnswerRefs.current[lastInteractedQuestionId]) {
+    if (
+      lastInteractedQuestionId &&
+      sidebarAnswerRefs.current[lastInteractedQuestionId]
+    ) {
       sidebarAnswerRefs.current[lastInteractedQuestionId].scrollIntoView({
         behavior: "smooth",
         block: "nearest",
@@ -545,8 +562,16 @@ function DeviceEvaluation() {
     };
 
     initializeData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [packages, location.search, slug]);
+  }, [
+    packages,
+    location.search,
+    slug,
+    hasValidPackages,
+    setAllPackageData,
+    navigate,
+    assignedPackages,
+    getStorageKey,
+  ]);
 
   // ===== Handle option change =====
   const handleOptionChange = (questionId, optionValue, isMulti) => {
@@ -771,7 +796,7 @@ function DeviceEvaluation() {
   };
 
   // ===== Save and price calculation =====
-  const priceCalculationAndSave = async () => {
+  const priceCalculationAndSave = useCallback(async () => {
     try {
       const token = JSON.parse(Cookies.get("auth-token"));
       if (!token) return;
@@ -818,7 +843,19 @@ function DeviceEvaluation() {
     } catch (error) {
       console.error("Error fetching final price:", error);
     }
-  };
+  }, [
+    deviceInfo,
+    location.search,
+    userSelection,
+    allPackageData,
+    navigate,
+    slug,
+  ]);
+
+  // Keep ref in sync with the latest priceCalculationAndSave
+  useEffect(() => {
+    priceCalculationRef.current = priceCalculationAndSave;
+  }, [priceCalculationAndSave]);
 
   // ===== Continue / Previous =====
   const handleContinue = async () => {
@@ -834,7 +871,7 @@ function DeviceEvaluation() {
     if (currentPackageIndex < allPackageData.length - 1) {
       const nextIndex = currentPackageIndex + 1;
       setCurrentPackageIndex(nextIndex);
-      
+
       if (formContentRef.current) {
         formContentRef.current.scrollTo({ top: 0, behavior: "instant" });
       }
@@ -959,45 +996,49 @@ function DeviceEvaluation() {
 
           {isExpanded && (
             <div className="answers-list">
-              {Object.entries(packageData.answers).map(([qid, ans], ansIndex) => {
-                const q = packageData.questions.find((q) => q.id === qid);
-                if (!q) return null;
+              {Object.entries(packageData.answers).map(
+                ([qid, ans], ansIndex) => {
+                  const q = packageData.questions.find((q) => q.id === qid);
+                  if (!q) return null;
 
-                let displayValue;
-                if (Array.isArray(ans)) {
-                  displayValue = ans
-                    .map((value) => {
-                      const opt = q.options.find((o) => o.value === value);
-                      return opt?.label || value;
-                    })
-                    .filter(Boolean)
-                    .join(", ");
-                } else {
-                  const opt = q.options.find((o) => o.value === ans);
-                  displayValue = opt?.label || ans;
-                }
+                  let displayValue;
+                  if (Array.isArray(ans)) {
+                    displayValue = ans
+                      .map((value) => {
+                        const opt = q.options.find((o) => o.value === value);
+                        return opt?.label || value;
+                      })
+                      .filter(Boolean)
+                      .join(", ");
+                  } else {
+                    const opt = q.options.find((o) => o.value === ans);
+                    displayValue = opt?.label || ans;
+                  }
 
-                if (!displayValue) return null;
+                  if (!displayValue) return null;
 
-                return (
-                  <div
-                    key={qid}
-                    ref={(el) => (sidebarAnswerRefs.current[qid] = el)}
-                    className={`answer-item ${
-                      lastInteractedQuestionId === qid ? "active-answer-item" : ""
-                    }`}
-                  >
-                    <p className="question-text">
-                      {`${ansIndex + 1}. ${q?.question}`}
-                    </p>
-                    <ul className="answer-text">
-                      {displayValue.split(",").map((item, i) => (
-                        <li key={i}>{item.trim()}</li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
+                  return (
+                    <div
+                      key={qid}
+                      ref={(el) => (sidebarAnswerRefs.current[qid] = el)}
+                      className={`answer-item ${
+                        lastInteractedQuestionId === qid
+                          ? "active-answer-item"
+                          : ""
+                      }`}
+                    >
+                      <p className="question-text">
+                        {`${ansIndex + 1}. ${q?.question}`}
+                      </p>
+                      <ul className="answer-text">
+                        {displayValue.split(",").map((item, i) => (
+                          <li key={i}>{item.trim()}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                },
+              )}
             </div>
           )}
         </div>

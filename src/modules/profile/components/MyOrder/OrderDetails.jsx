@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import api from "../../../../Utils/api";
 import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
@@ -122,7 +122,7 @@ const OrderDetails = () => {
     }
   };
 
-  const handleUpdatePayment = async () => {
+  const handleUpdatePayment = useCallback(async () => {
     if (!selectedPaymentMethod) {
       toast.error("Please select a new payment method first");
       return;
@@ -150,7 +150,7 @@ const OrderDetails = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedPaymentMethod, order, setSelectedPaymentMethod]);
 
   // Auto-trigger payment update when selectedPaymentMethod changes and differs from current order payment
   useEffect(() => {
@@ -161,7 +161,7 @@ const OrderDetails = () => {
     ) {
       handleUpdatePayment();
     }
-  }, [selectedPaymentMethod, order]);
+  }, [selectedPaymentMethod, order, handleUpdatePayment]);
 
   if (loading) return <div className="p-4">Loading...</div>;
   if (!order) return <div className="p-4">Order not found</div>;

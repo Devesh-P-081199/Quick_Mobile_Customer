@@ -15,7 +15,11 @@ import {
 } from "./components";
 
 // Static constant moved outside component to prevent recreation
-const ANIMATION_TEXTS = ["Highest Price", "Hassle Free Pickup", "Instant Payment"];
+const ANIMATION_TEXTS = [
+  "Highest Price",
+  "Hassle Free Pickup",
+  "Instant Payment",
+];
 
 /**
  * SellHomeBanner - Main banner component for the Sell page
@@ -47,7 +51,6 @@ function SellHomeBanner({ onViewAllClick }) {
     closeDropdown,
   } = useSellBannerData(slug1);
 
-
   // Initialize data on mount
   useEffect(() => {
     fetchCategories();
@@ -67,7 +70,7 @@ function SellHomeBanner({ onViewAllClick }) {
         debouncedSearch(value, isMobile);
       }
     },
-    [clearResults, debouncedSearch]
+    [clearResults, debouncedSearch],
   );
 
   /**
@@ -81,7 +84,7 @@ function SellHomeBanner({ onViewAllClick }) {
         navigate(`/${slug}`);
       }
     },
-    [selectCategory, slug1, navigate]
+    [selectCategory, slug1, navigate],
   );
 
   /**
@@ -93,12 +96,12 @@ function SellHomeBanner({ onViewAllClick }) {
       const path = item?.subCategorySlug
         ? `/${item.subCategorySlug}/${item.slugSell}`
         : `/${item.categorySlug}/${item.slugSell}`;
-      
+
       navigate(path);
       closeDropdown();
       setSearchTerm("");
     },
-    [navigate, closeDropdown]
+    [navigate, closeDropdown],
   );
 
   /**
@@ -108,7 +111,7 @@ function SellHomeBanner({ onViewAllClick }) {
     (brand) => {
       navigate(`${brand.slugSell}`);
     },
-    [navigate]
+    [navigate],
   );
 
   /**
