@@ -9,7 +9,7 @@ function BreadCrumb({ items = [] }) {
           <React.Fragment key={index}>
             <h2>{item}</h2>
             &nbsp;&nbsp;
-            {index < items.length - 1 && '>'}
+            {index < items.length - 1 && ">"}
             &nbsp;&nbsp;
           </React.Fragment>
         ))}

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./SavedAddress.module.css";
 import ProfileCard from "../components/ProfileCard";
 import MobileBackHeader from "../../common/components/layout/MobileCommonHeader/MobileBackHeader";
-import { FaMapMarkerAlt, FaPlus, FaHome, FaBriefcase } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPlus } from "react-icons/fa";
 import api from "../../../Utils/api";
 import { toast } from "react-toastify";
 import trash from "../../../assets/flaticons/trash-basecolor.png";
@@ -55,17 +55,17 @@ const SavedAddress = () => {
     }
   };
 
-  const getAddressIcon = (saveAs) => {
-    switch (saveAs) {
-      case "Home":
-        return <FaHome />;
-      case "Office":
-      case "Work":
-        return <FaBriefcase />;
-      default:
-        return <FaMapMarkerAlt />;
-    }
-  };
+  // const getAddressIcon = (saveAs) => {
+  //   switch (saveAs) {
+  //     case "Home":
+  //       return <FaHome />;
+  //     case "Office":
+  //     case "Work":
+  //       return <FaBriefcase />;
+  //     default:
+  //       return <FaMapMarkerAlt />;
+  //   }
+  // };
 
   return (
     <>

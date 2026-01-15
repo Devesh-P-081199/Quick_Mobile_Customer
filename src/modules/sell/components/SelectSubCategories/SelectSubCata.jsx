@@ -16,7 +16,7 @@ function SelectSubCata() {
   const [subCata, setSubCata] = useState([]);
   const [allBrands, setAllBrands] = useState([]);
   const [selectedSubCategoryId, setSelectedSubCategoryId] = useState(null);
-  const [seoData, setSeoData] = useState({});
+  const [, setSeoData] = useState({});
 
   useEffect(() => {
     const fetchMetaInfo = async () => {
@@ -57,7 +57,7 @@ function SelectSubCata() {
     };
 
     fetchBrandsAndSubs();
-  }, [categorySlug]);
+  }, [categorySlug, setSeoData]);
 
   const handleSubCategoryClick = (subcata) => {
     const isSelected = selectedSubCategoryId === subcata._id;

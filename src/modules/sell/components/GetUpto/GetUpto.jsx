@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState, useCallback } from "react";
 import styles from "./GetUpto.module.css";
 import backarrow from "../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "../../../../Context/contextAPI";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
@@ -118,15 +118,7 @@ const GetUpto = () => {
         toast.error("Failed to fetch price and packages");
       }
     }
-  }, [
-    userSelection,
-    slug1,
-    slug2,
-    navigate,
-    setPackages,
-    setDeviceInfo,
-    setSeoData,
-  ]);
+  }, [userSelection, slug2, navigate, setPackages, setDeviceInfo]);
 
   useEffect(() => {
     // Only fetch if we have both cityId and variantId, and haven't fetched this variant yet
@@ -171,24 +163,22 @@ const GetUpto = () => {
     const freshEntryKey = `freshEntry_${productId}`;
     sessionStorage.setItem(freshEntryKey, "true");
 
-      navigate(
-        `/${slug1}/final-price-calculator?pid=${encodeURIComponent(
-          productId,
-        )}&ct=${encodeURIComponent(categoryName)}&pn=${encodeURIComponent(
-          deviceName,
-        )}&bn=${encodeURIComponent(brandName)}&bbmp=${encodeURIComponent(
-          price,
-        )}&vid=${encodeURIComponent(variantDetail)}&pin=${encodeURIComponent(
-          devicePic,
-        )}`,
-      );
+    navigate(
+      `/${slug1}/final-price-calculator?pid=${encodeURIComponent(
+        productId,
+      )}&ct=${encodeURIComponent(categoryName)}&pn=${encodeURIComponent(
+        deviceName,
+      )}&bn=${encodeURIComponent(brandName)}&bbmp=${encodeURIComponent(
+        price,
+      )}&vid=${encodeURIComponent(variantDetail)}&pin=${encodeURIComponent(
+        devicePic,
+      )}`,
+    );
   };
 
   return (
     <>
-      <MobileBackHeader
-        title="Get Price"
-      />
+      <MobileBackHeader title="Get Price" />
       <div className="page-content">
         <div className="page-content-wrapper">
           <div className="wrapper mobile-pt-section">
@@ -218,7 +208,8 @@ const GetUpto = () => {
                   {deviceInfo?.deviceName ? (
                     <>
                       Sell Old {deviceInfo.deviceName}{" "}
-                      {deviceInfo?.variantDetail && `(${deviceInfo.variantDetail})`}
+                      {deviceInfo?.variantDetail &&
+                        `(${deviceInfo.variantDetail})`}
                     </>
                   ) : (
                     "\u00A0"
@@ -241,10 +232,11 @@ const GetUpto = () => {
                         </div>
 
                         <span
-                          className={`${styles.currentPrice} ${sliderPositions.isNarrowRange
-                            ? styles.currentPriceMinNarrow
-                            : styles.currentPriceMin
-                            }`}
+                          className={`${styles.currentPrice} ${
+                            sliderPositions.isNarrowRange
+                              ? styles.currentPriceMinNarrow
+                              : styles.currentPriceMin
+                          }`}
                           style={{
                             left: sliderPositions.thumb1Position,
                           }}
@@ -253,10 +245,11 @@ const GetUpto = () => {
                         </span>
 
                         <span
-                          className={`${styles.currentPrice} ${sliderPositions.isNarrowRange
-                            ? styles.currentPriceMaxNarrow
-                            : styles.currentPriceMax
-                            }`}
+                          className={`${styles.currentPrice} ${
+                            sliderPositions.isNarrowRange
+                              ? styles.currentPriceMaxNarrow
+                              : styles.currentPriceMax
+                          }`}
                           style={{
                             left: sliderPositions.thumb2Position,
                           }}
@@ -310,8 +303,10 @@ const GetUpto = () => {
 
                   <div className={styles.highlightBox}>
                     <img src={info} alt="info" title="info" />
-                    The displayed price is the maximum estimate.<br />
-                    Final value may vary after selection of the device’s actual condition.
+                    The displayed price is the maximum estimate.
+                    <br />
+                    Final value may vary after selection of the device’s actual
+                    condition.
                   </div>
                 </div>
 

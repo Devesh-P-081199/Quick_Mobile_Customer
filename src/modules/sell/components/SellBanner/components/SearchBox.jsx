@@ -56,14 +56,14 @@ function SearchBox({
     (e) => {
       onSearchChange(e, true);
     },
-    [onSearchChange]
+    [onSearchChange],
   );
 
   const handleDesktopSearchChange = useCallback(
     (e) => {
       onSearchChange(e, false);
     },
-    [onSearchChange]
+    [onSearchChange],
   );
 
   const handleBrandClickMobile = useCallback(
@@ -71,7 +71,7 @@ function SearchBox({
       onBrandClick(brand);
       setIsMobileSearchOpen(false);
     },
-    [onBrandClick]
+    [onBrandClick],
   );
 
   const handleProductClickMobile = useCallback(
@@ -79,7 +79,7 @@ function SearchBox({
       onProductClick(product);
       setIsMobileSearchOpen(false);
     },
-    [onProductClick]
+    [onProductClick],
   );
 
   return (
@@ -115,10 +115,9 @@ function SearchBox({
           {showDropdown && !isMobileSearchOpen && (
             <div className={styles.dropdownStyled}>
               {/* Check for no results */}
-              {(!results.ActiveBrands?.length && !results.ActiveProducts?.length) ? (
-                <div className={styles.noDataFound}>
-                  No data found
-                </div>
+              {!results.ActiveBrands?.length &&
+              !results.ActiveProducts?.length ? (
+                <div className={styles.noDataFound}>No data found</div>
               ) : (
                 <>
                   {results.ActiveBrands?.length > 0 && (
@@ -143,7 +142,9 @@ function SearchBox({
                           className={styles.suggestionRow}
                           onClick={() => onProductClick(product)}
                         >
-                          <span className={styles.name}>{product.deviceName}</span>
+                          <span className={styles.name}>
+                            {product.deviceName}
+                          </span>
                           <span className={styles.tag}>in Product</span>
                         </div>
                       ))}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./BlogsPage.module.css";
 import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
@@ -6,15 +6,17 @@ import blogsData from "./block-content.json";
 
 const BlogsPage = () => {
   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  // const [selectedCategory, setSelectedCategory] = useState("All");
+  const selectedCategory = "All";
 
-  const categories = [
-    "All",
-    "Design",
-    "Technology",
-    "Web Development",
-    "UX Design",
-  ];
+  // const categories = [
+  //   "All",
+  //   "Design",
+  //   "Technology",
+  //   "Web Development",
+  //   "UX Design",
+  //   "App Development",
+  // ];
 
   const handleBlogClick = (id) => {
     navigate(`/blog-details/${id}`);

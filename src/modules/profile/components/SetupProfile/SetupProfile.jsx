@@ -8,8 +8,8 @@ import { UserContext } from "../../../../Context/contextAPI";
 const SetupProfile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
   const { setUser } = useContext(UserContext);
   const [profilePic, setProfilePic] = useState(null); // Image file state
   const [previewUrl, setPreviewUrl] = useState(""); // Image preview state
@@ -68,10 +68,10 @@ const SetupProfile = () => {
       return;
     }
 
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match.");
-      return;
-    }
+    // if (password !== confirmPassword) {
+    //   toast.error("Passwords do not match.");
+    //   return;
+    // }
 
     try {
       // Check if a new profile picture is selected
@@ -86,7 +86,7 @@ const SetupProfile = () => {
       const response = await api.put("/sell-module/user/set-password", {
         name,
         email,
-        password,
+        // password,
         profilePic: finalProfilePicUrl, // Send the profile picture URL
       });
 

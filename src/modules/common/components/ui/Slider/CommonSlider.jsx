@@ -8,8 +8,8 @@ const CommonSlider = ({
   renderItem,
   scrollAmount = 300,
   showNav = true,
-  leftIcon,
-  rightIcon,
+  _leftIcon,
+  _rightIcon,
   itemGap = 24,
 }) => {
   const scrollRef = useRef(null);
@@ -20,7 +20,7 @@ const CommonSlider = ({
     if (itemRef.current) {
       setItemWidth(itemRef.current.offsetWidth + itemGap);
     }
-  }, []);
+  }, [itemGap]);
 
   const scrollLeft = () => {
     scrollRef.current?.scrollBy({ left: -itemWidth, behavior: "smooth" });

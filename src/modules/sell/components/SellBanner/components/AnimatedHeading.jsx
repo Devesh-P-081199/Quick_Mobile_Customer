@@ -5,7 +5,10 @@ import styles from "../SellBanner.module.css";
  * Animated heading with typewriter effect
  * Cycles through an array of texts with a typing animation
  */
-function AnimatedHeading({ texts = ["Highest Price", "Hassle Free Pickup", "Instant Payment"], catName = "" }) {
+function AnimatedHeading({
+  texts = ["Highest Price", "Hassle Free Pickup", "Instant Payment"],
+  catName = "",
+}) {
   const [displayedText, setDisplayedText] = useState("");
 
   useEffect(() => {

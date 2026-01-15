@@ -1,7 +1,14 @@
 // BREADCRUM TESTING
 
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState, Suspense, lazy, useRef } from "react";
+import {
+  useEffect,
+  useState,
+  Suspense,
+  lazy,
+  useRef,
+  useCallback,
+} from "react";
 import api from "../../../Utils/api";
 import Loader from "../components/layout/Loader/Loader";
 import GetUpto from "../../sell/components/GetUpto/GetUpto";
@@ -25,7 +32,7 @@ const DynamicRouteHandler = () => {
   const { slug1, slug2 } = useParams();
   const navigate = useNavigate();
 
-  const { setUserSelection, userSelection } = useContext(UserContext);
+  const { setUserSelection } = useContext(UserContext);
 
   const [ComponentToRender, setComponentToRender] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -33,7 +40,7 @@ const DynamicRouteHandler = () => {
 
   const resolvedSlugCache = useRef({});
 
-  const resolveRouting = async () => {
+  const resolveRouting = useCallback(async () => {
     setLoading(true);
 
     try {
@@ -167,11 +174,11 @@ const DynamicRouteHandler = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [slug1, slug2, navigate, setUserSelection, setSeoData]);
 
   useEffect(() => {
     resolveRouting();
-  }, [slug1, slug2]);
+  }, [resolveRouting]);
 
   if (loading || !ComponentToRender) return <Loader />;
 

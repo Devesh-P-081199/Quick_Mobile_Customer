@@ -1,4 +1,11 @@
-import { useState, useRef, useMemo, useCallback, useContext, useEffect } from "react";
+import {
+  useState,
+  useRef,
+  useMemo,
+  useCallback,
+  useContext,
+  useEffect,
+} from "react";
 import debounce from "lodash.debounce";
 import api from "../../../../../Utils/api";
 import { UserContext } from "../../../../../Context/contextAPI";
@@ -32,13 +39,31 @@ export function useSellBannerData(slug1) {
   const { setSelectedCategory } = useContext(UserContext);
 
   /**
+   * Fetch brands for a specific category
+   */
+  const fetchBrandsByCategory = useCallback(async (categoryId) => {
+    setIsLoadingBrands(true);
+    try {
+      const brandResp = await api.get(
+        `/common-module/FetchbrandByCatSelection?option=Sell&categoryId=${categoryId}`,
+      );
+      setBrands(brandResp.data?.data || []);
+    } catch (err) {
+      console.error("Failed to fetch brands:", err);
+      setError({ type: "brands", message: "Failed to load brands" });
+    } finally {
+      setIsLoadingBrands(false);
+    }
+  }, []);
+
+  /**
    * Fetch all categories and select the appropriate one based on URL slug
    */
   const fetchCategories = useCallback(async () => {
     setIsLoadingCategories(true);
     try {
       const response = await api.get(
-        "/common-module/category?option=Sell&all=true"
+        "/common-module/category?option=Sell&all=true",
       );
       const allCategories = response?.data?.categories || [];
       setCategories(allCategories);
@@ -61,69 +86,54 @@ export function useSellBannerData(slug1) {
       }
     } catch (err) {
       console.error("Failed to fetch categories:", err);
-      setError({ type: 'categories', message: 'Failed to load categories' });
+      setError({ type: "categories", message: "Failed to load categories" });
     } finally {
       setIsLoadingCategories(false);
     }
-  }, [slug1, setSelectedCategory]);
-
-  /**
-   * Fetch brands for a specific category
-   */
-  const fetchBrandsByCategory = useCallback(async (categoryId) => {
-    setIsLoadingBrands(true);
-    try {
-      const brandResp = await api.get(
-        `/common-module/FetchbrandByCatSelection?option=Sell&categoryId=${categoryId}`
-      );
-      setBrands(brandResp.data?.data || []);
-    } catch (err) {
-      console.error("Failed to fetch brands:", err);
-      setError({ type: 'brands', message: 'Failed to load brands' });
-    } finally {
-      setIsLoadingBrands(false);
-    }
-  }, []);
+  }, [slug1, setSelectedCategory, fetchBrandsByCategory]);
 
   /**
    * Perform main search for brands and products
    */
-  const handleMainSearch = useCallback(async (search = "", isMobile = false) => {
-    const catId = categoryRef.current;
-    if (!catId) return;
+  const handleMainSearch = useCallback(
+    async (search = "", isMobile = false) => {
+      const catId = categoryRef.current;
+      if (!catId) return;
 
-    try {
-      const resp = await api.get(
-        `/sell-module/user/main-Search?search=${search}&catId=${catId}`
-      );
-      
-      // Prevent race condition: only update if this is still the latest search
-      if (search !== lastSearchRef.current) return;
-      
-      const data = resp.data?.[0];
+      try {
+        const resp = await api.get(
+          `/sell-module/user/main-Search?search=${search}&catId=${catId}`,
+        );
 
-      if (!data) {
+        // Prevent race condition: only update if this is still the latest search
+        if (search !== lastSearchRef.current) return;
+
+        const data = resp.data?.[0];
+
+        if (!data) {
+          if (isMobile) {
+            setMobileResults(EMPTY_RESULTS);
+          } else {
+            setResults(EMPTY_RESULTS);
+            // Keep dropdown open to show "No data found" message
+            setShowDropdown(true);
+          }
+          return;
+        }
+
         if (isMobile) {
-          setMobileResults(EMPTY_RESULTS);
+          setMobileResults(data);
         } else {
-          setResults(EMPTY_RESULTS);
-          // Keep dropdown open to show "No data found" message
+          setResults(data);
           setShowDropdown(true);
         }
-        return;
+      } catch (err) {
+        console.error("Search failed:", err);
+        setError({ type: "search", message: "Search failed" });
       }
-
-      if (isMobile) {
-        setMobileResults(data);
-      } else {
-        setResults(data);
-        setShowDropdown(true);
-      }
-    } catch (err) {
-      console.error("Search failed:", err);
-      setError({ type: 'search', message: 'Search failed' });
-    }
-  }, []);
+    },
+    [],
+  );
 
   /**
    * Debounced search function
@@ -134,7 +144,7 @@ export function useSellBannerData(slug1) {
         lastSearchRef.current = value; // Update tracker before search
         handleMainSearch(value, isMobile);
       }, 300),
-    [handleMainSearch]
+    [handleMainSearch],
   );
 
   /**
@@ -150,23 +160,26 @@ export function useSellBannerData(slug1) {
 
       await fetchBrandsByCategory(id);
     },
-    [fetchBrandsByCategory, setSelectedCategory]
+    [fetchBrandsByCategory, setSelectedCategory],
   );
 
   /**
    * Clear search results
    */
-  const clearResults = useCallback((isMobile = false) => {
-    // Cancel any pending debounced searches
-    debouncedSearch.cancel();
-    lastSearchRef.current = ""; // Reset tracker
-    if (isMobile) {
-      setMobileResults(EMPTY_RESULTS);
-    } else {
-      setResults(EMPTY_RESULTS);
-      setShowDropdown(false);
-    }
-  }, [debouncedSearch]);
+  const clearResults = useCallback(
+    (isMobile = false) => {
+      // Cancel any pending debounced searches
+      debouncedSearch.cancel();
+      lastSearchRef.current = ""; // Reset tracker
+      if (isMobile) {
+        setMobileResults(EMPTY_RESULTS);
+      } else {
+        setResults(EMPTY_RESULTS);
+        setShowDropdown(false);
+      }
+    },
+    [debouncedSearch],
+  );
 
   /**
    * Close dropdown
@@ -181,8 +194,6 @@ export function useSellBannerData(slug1) {
   const clearError = useCallback(() => {
     setError(null);
   }, []);
-
-
 
   // Cancel debounced search on unmount
   useEffect(() => {
@@ -201,11 +212,11 @@ export function useSellBannerData(slug1) {
     mobileResults,
     showDropdown,
     error,
-    
+
     // Loading states
     isLoadingCategories,
     isLoadingBrands,
-    
+
     // Actions
     fetchCategories,
     fetchBrandsByCategory,

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import styles from "./Payment.module.css";
 import bank from "../../../../assets/images/icons/bank.png";
 import upi from "../../../../assets/images/icons/upi.png";
@@ -54,19 +54,22 @@ function PaymentComponent() {
   };
 
   // Sort payment methods to show selected one on top
-  const sortPaymentMethodsBySelected = (methods, type) => {
-    if (!selectedPaymentMethod || selectedPaymentMethod.type !== type)
-      return methods;
+  const sortPaymentMethodsBySelected = useCallback(
+    (methods, type) => {
+      if (!selectedPaymentMethod || selectedPaymentMethod.type !== type)
+        return methods;
 
-    const selectedId = selectedPaymentMethod._id || selectedPaymentMethod.id;
-    return [...methods].sort((a, b) => {
-      const aId = a._id || a.id;
-      const bId = b._id || b.id;
-      if (aId === selectedId) return -1;
-      if (bId === selectedId) return 1;
-      return 0;
-    });
-  };
+      const selectedId = selectedPaymentMethod._id || selectedPaymentMethod.id;
+      return [...methods].sort((a, b) => {
+        const aId = a._id || a.id;
+        const bId = b._id || b.id;
+        if (aId === selectedId) return -1;
+        if (bId === selectedId) return 1;
+        return 0;
+      });
+    },
+    [selectedPaymentMethod],
+  );
 
   useEffect(() => {
     const loadPaymentMethods = async () => {
@@ -165,8 +168,12 @@ function PaymentComponent() {
     };
 
     loadPaymentMethods();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [
+    location.state,
+    selectedPaymentMethod,
+    setSelectedPaymentMethod,
+    sortPaymentMethodsBySelected,
+  ]);
 
   // Sync effect to handle external updates to context (if any) or tab switching
   useEffect(() => {
@@ -257,25 +264,25 @@ function PaymentComponent() {
     }
   };
 
-  const handleBack = () => {
-    // Check for custom return path in state
-    if (location.state?.returnPath) {
-      navigate(location.state.returnPath, {
-        state: {
-          paymentUpdated: true,
-          orderData: location.state?.orderData,
-        },
-      });
-      return;
-    }
+  // const handleBack = () => {
+  //   // Check for custom return path in state
+  //   if (location.state?.returnPath) {
+  //     navigate(location.state.returnPath, {
+  //       state: {
+  //         paymentUpdated: true,
+  //         orderData: location.state?.orderData,
+  //       },
+  //     });
+  //     return;
+  //   }
 
-    // Navigate back to order summary - preserve query params
-    const queryString = new URLSearchParams(location.search).toString();
-    const targetUrl = queryString
-      ? `/${slug}/price-summary?${queryString}`
-      : `/${slug}/price-summary`;
-    navigate(targetUrl);
-  };
+  //   // Navigate back to order summary - preserve query params
+  //   const queryString = new URLSearchParams(location.search).toString();
+  //   const targetUrl = queryString
+  //     ? `/${slug}/price-summary?${queryString}`
+  //     : `/${slug}/price-summary`;
+  //   navigate(targetUrl);
+  // };
 
   const handleContinue = () => {
     if (!selectedPaymentMethod) {

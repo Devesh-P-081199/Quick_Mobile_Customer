@@ -1,7 +1,12 @@
-import { forwardRef, useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  forwardRef,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./SelectBrand.module.css";
-import debounce from "lodash.debounce";
 import api from "../../../../Utils/api";
 import { UserContext } from "../../../../Context/contextAPI";
 import BrandCard from "../../../common/components/ui/BrandCard/BrandCard";
@@ -9,39 +14,42 @@ import BrandCard from "../../../common/components/ui/BrandCard/BrandCard";
 const SelectBrand = forwardRef((props, ref) => {
   const navigate = useNavigate();
   const [brands, setBrands] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
   const { selectedCategory } = useContext(UserContext);
 
-  const { slug1 } = useParams();
+  // const { slug1 } = useParams();
 
   const handleBrandClick = (slugSell) => {
     navigate(`${slugSell}`);
   };
 
-  const fetchBrands = async (search = "") => {
-    try {
-      const response = await api.get(
-        `/common-module/FetchbrandByCatSelection?option=Sell&categoryId=${selectedCategory}`,
-        {
-          params: { search },
-        },
-      );
+  const fetchBrands = useCallback(
+    async (search = "") => {
+      try {
+        const response = await api.get(
+          `/common-module/FetchbrandByCatSelection?option=Sell&categoryId=${selectedCategory}`,
+          {
+            params: { search },
+          },
+        );
 
-      setBrands(response?.data?.data);
-    } catch (error) {
-      console.error("Error in fetching brands: ", error);
-    }
-  };
+        setBrands(response?.data?.data);
+      } catch (error) {
+        console.error("Error in fetching brands: ", error);
+      }
+    },
+    [selectedCategory],
+  );
 
-  const debouncedSearch = debounce((value) => {
-    fetchBrands(value);
-  }, 300);
+  // const debouncedSearch = debounce((value) => {
+  //   fetchBrands(value);
+  // }, 300);
 
   useEffect(() => {
     if (selectedCategory) {
       fetchBrands();
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, fetchBrands]);
 
   return (
     <section ref={ref} className="page-content-wrapper scrollbar-hidden">

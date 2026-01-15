@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./SelectModel.module.css";
 import { NavLink, useParams } from "react-router-dom";
 import api from "../../../../Utils/api";
@@ -10,7 +10,7 @@ function SelectModel() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     try {
       const response = await api.get(
         `/sell-module/user/model-by-series-id/${seriesId}?option=Sell`,
@@ -21,11 +21,11 @@ function SelectModel() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [seriesId]);
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [fetchProducts]);
 
   return (
     <section className="default-padding-section">

@@ -1,12 +1,4 @@
-// // SelectBrand.js
-
-//             ))}
-
-//             )}
-
-//             ))}
-
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./AllCategory.module.css";
 import api from "../../../../Utils/api";
@@ -14,7 +6,7 @@ import api from "../../../../Utils/api";
 const AllCategory = forwardRef((props, ref) => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-  const [brands] = useState([]);
+  // const [brands] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const fetchCategories = async () => {
@@ -23,12 +15,17 @@ const AllCategory = forwardRef((props, ref) => {
         "/common-module/category?option=Sell&all=true",
       );
       setCategories(response?.data?.categories);
-    } catch (error) {}
+    } catch {
+      // ignore
+    }
   };
 
-  const handleNavigate = async (selectedCategory) => {
-    navigate(`/${selectedCategory?.slug?.sell}`);
-  };
+  const handleNavigate = useCallback(
+    (category) => {
+      navigate(`/${category?.slug?.sell}`);
+    },
+    [navigate],
+  );
 
   useEffect(() => {
     fetchCategories();
@@ -38,14 +35,14 @@ const AllCategory = forwardRef((props, ref) => {
     if (selectedCategory) {
       handleNavigate(selectedCategory);
     }
-  }, [handleNavigate, selectedCategory]);
+  }, [selectedCategory, handleNavigate]);
 
   const handleCataClick = (category) => {
     setSelectedCategory(category);
   };
-  const handleBrandClick = (brandId) => {
-    navigate(`/select-series/${brandId}`);
-  };
+  // const handleBrandClick = (brandId) => {
+  //   navigate(`/select-series/${brandId}`);
+  // };
 
   return (
     <section ref={ref} className="page-content-wrapper scrollbar-hidden">
@@ -70,7 +67,7 @@ const AllCategory = forwardRef((props, ref) => {
             ))}
           </div>
 
-          {brands?.length > 0 && (
+          {/* {brands?.length > 0 && (
             <h2 className={styles.sectionHeading}>All Brands</h2>
           )}
           <div className={`${styles.brandImageBox} scrollbar-hidden`}>
@@ -86,7 +83,7 @@ const AllCategory = forwardRef((props, ref) => {
                 <span>{brand?.brandName}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

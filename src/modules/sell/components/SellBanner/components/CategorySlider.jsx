@@ -49,13 +49,15 @@ function CategorySlider({
   }, [categories, updateArrowVisibility]);
 
   // Memoized sorted categories to prevent expensive sort on every render
-  const sortedCategories = useMemo(() => 
-    [...categories].sort((a, b) => {
-      if (a._id === selectedCategoryId) return -1;
-      if (b._id === selectedCategoryId) return 1;
-      return 0;
-    }), 
-  [categories, selectedCategoryId]);
+  const sortedCategories = useMemo(
+    () =>
+      [...categories].sort((a, b) => {
+        if (a._id === selectedCategoryId) return -1;
+        if (b._id === selectedCategoryId) return 1;
+        return 0;
+      }),
+    [categories, selectedCategoryId],
+  );
 
   // Skeleton loading state
   if (isLoading) {
@@ -77,15 +79,16 @@ function CategorySlider({
   return (
     <div className={styles.sliderWrapper}>
       {showLeftArrow && (
-        <button type="button" className={styles.arrowLeft} onClick={handleScrollLeft}>
+        <button
+          type="button"
+          className={styles.arrowLeft}
+          onClick={handleScrollLeft}
+        >
           &#10094;
         </button>
       )}
 
-      <div
-        className={`${styles.imgSlider} scrollbar-hidden`}
-        ref={sliderRef}
-      >
+      <div className={`${styles.imgSlider} scrollbar-hidden`} ref={sliderRef}>
         {sortedCategories.map((cat) => (
           <div
             key={cat._id}
@@ -108,8 +111,8 @@ function CategorySlider({
         ))}
 
         {/* View All / More button - NavLink handles navigation */}
-        <NavLink 
-          to="/view-all-category" 
+        <NavLink
+          to="/view-all-category"
           className={`${styles.imgCard} ${styles.viewAllCard}`}
         >
           <div className={styles.imageBg}>
@@ -126,7 +129,11 @@ function CategorySlider({
       </div>
 
       {showRightArrow && (
-        <button type="button" className={styles.arrowRight} onClick={handleScrollRight}>
+        <button
+          type="button"
+          className={styles.arrowRight}
+          onClick={handleScrollRight}
+        >
           &#10095;
         </button>
       )}

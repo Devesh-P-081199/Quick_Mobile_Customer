@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import styles from "./Checkout.module.css";
 import RightCard from "./RightCard";
@@ -60,6 +60,27 @@ function CheckOut() {
     });
   };
 
+  // Sort addresses to show selected one on top
+  const sortAddressesBySelected = useCallback(
+    (addresses) => {
+      if (!selectedAddress) {
+        return addresses;
+      }
+
+      const selectedId = selectedAddress._id || selectedAddress.id;
+
+      const sorted = [...addresses].sort((a, b) => {
+        const aId = a._id || a.id;
+        const bId = b._id || b.id;
+        if (aId === selectedId) return -1;
+        if (bId === selectedId) return 1;
+        return 0;
+      });
+
+      return sorted;
+    },
+    [selectedAddress],
+  );
 
   useEffect(() => {
     // Check if addresses were passed from Step6 via navigation state
@@ -70,27 +91,7 @@ function CheckOut() {
       fetchAddress();
     }
     // Don't clear selectedAddress - keep the one from Step6
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Sort addresses to show selected one on top
-  const sortAddressesBySelected = (addresses) => {
-    if (!selectedAddress) {
-      return addresses;
-    }
-
-    const selectedId = selectedAddress._id || selectedAddress.id;
-
-    const sorted = [...addresses].sort((a, b) => {
-      const aId = a._id || a.id;
-      const bId = b._id || b.id;
-      if (aId === selectedId) return -1;
-      if (bId === selectedId) return 1;
-      return 0;
-    });
-
-    return sorted;
-  };
+  }, [location.state?.addresses, sortAddressesBySelected]);
 
   return (
     <>

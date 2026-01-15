@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import SellBanner from "../components/SellBanner/SellBanner";
 import StaticBanner from "../../common/components/SellYourOldDevice/StaticBanner";
 import SelectBrand from "../components/SelectBrand/SelectBrand";
@@ -9,18 +9,13 @@ import FAQ from "../../common/components/layout/FAQ/FAQ";
 import BrowsePicks from "../../common/components/BrowsePicks/BrowsePicks";
 
 import SuggestionProductSlider from "../../common/components/SuggestionProductSlider/SuggestionProductSlider";
-import { useParams } from "react-router-dom";
 import Testimonials from "../../buy/components/Cards/Testimonials";
 
 function SellHome() {
-  const [loading, setLoading] = useState(true);
-  const [seoData, setSeo] = useState({});
-  const { slug1 } = useParams();
-
   const brandRef = useRef(null);
   useEffect(() => {
     const fakeDelay = setTimeout(() => {
-      setLoading(false);
+      // setLoading(false); // This line is commented out because loading state is removed
     }, 2000);
     return () => clearTimeout(fakeDelay);
   }, []);

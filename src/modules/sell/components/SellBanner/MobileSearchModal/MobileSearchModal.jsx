@@ -72,11 +72,10 @@ const MobileSearchModal = ({
         {searchTerm && (
           <>
             {/* No data found message */}
-            {(!results?.ActiveBrands?.length && !results?.ActiveProducts?.length) && (
-              <div className={styles.noDataFound}>
-                No data found
-              </div>
-            )}
+            {!results?.ActiveBrands?.length &&
+              !results?.ActiveProducts?.length && (
+                <div className={styles.noDataFound}>No data found</div>
+              )}
 
             {/* Brands */}
             {results?.ActiveBrands?.length > 0 && (

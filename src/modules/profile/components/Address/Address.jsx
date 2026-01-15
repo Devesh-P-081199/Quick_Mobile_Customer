@@ -66,7 +66,7 @@ const Address = () => {
     e.preventDefault();
     try {
       if (isEditing) {
-        const response = await api.put(
+        await api.put(
           `/sell-module/user/update-address/${editingAddressId}`,
           formData,
         );
@@ -74,7 +74,7 @@ const Address = () => {
         toast.success("Address updated successfully");
       } else {
         // Add new address
-        const response = await api.post("/sell-module/user/address", formData);
+        await api.post("/sell-module/user/address", formData);
 
         toast.success("Address submitted successfully");
       }
@@ -134,9 +134,7 @@ const Address = () => {
 
   const handleDelete = async (addressId) => {
     try {
-      const response = await api.delete(
-        `/sell-module/user/address/${addressId}`,
-      );
+      await api.delete(`/sell-module/user/address/${addressId}`);
 
       toast.success("Address deleted successfully");
       getSavedAddresses();

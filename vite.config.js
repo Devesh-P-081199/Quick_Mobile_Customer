@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       strictPort: true, // Fail if port is already in use
       proxy: {
         "/api": {
-          target: env.BACKEND_URL || "http://localhdfkost:8080",
+          target: env.BACKEND_URL || "http://localhost:8080",
           changeOrigin: true,
           secure: false,
         },

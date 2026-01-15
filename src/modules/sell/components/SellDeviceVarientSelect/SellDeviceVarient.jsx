@@ -15,6 +15,7 @@ function SellDeviceVarient() {
   const [selectedMemory, setSelectedMemory] = useState({});
   const [, setSeoData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const userSelectionRef = useRef(null);
 
   const {
     variants,
@@ -43,8 +44,13 @@ function SellDeviceVarient() {
     if (seoDataFromContext) setSeoData(seoDataFromContext);
   }, [seoDataFromContext]);
 
+  // Keep ref in sync with userSelection
   useEffect(() => {
-    if (!userSelection?.cityId) toggleModal();
+    userSelectionRef.current = userSelection;
+  }, [userSelection]);
+
+  useEffect(() => {
+    if (!userSelectionRef.current?.cityId) toggleModal();
 
     setIsLoading(true);
 
@@ -90,16 +96,17 @@ function SellDeviceVarient() {
 
       if (variantsArr.length === 1) {
         const variant = variantsArr[0];
+        const currentSelection = userSelectionRef.current || {};
 
         const newSelection = {
-          cityName: userSelection.cityName,
-          cityId: userSelection.cityId,
+          cityName: currentSelection.cityName,
+          cityId: currentSelection.cityId,
           wholeVariantId: variant.wholeVariantId,
           variantId: variant._id,
           variantSlug: variant.slug,
-          catSubcatSlug: userSelection.catSubcatSlug,
+          catSubcatSlug: currentSelection.catSubcatSlug,
           productSlug: slug2, // Store current product slug for back navigation from GetUpto
-          brandSlug: userSelection.brandSlug, // Preserve brand slug
+          brandSlug: currentSelection.brandSlug, // Preserve brand slug
         };
 
         // Update cookie immediately so GetUpto sees complete data
@@ -115,8 +122,15 @@ function SellDeviceVarient() {
         navigate(`/${slug1}/${variant.slug}`);
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug2, slug1]);
+  }, [
+    slug2,
+    slug1,
+    toggleModal,
+    fetchVariantsByProductId,
+    setPhoneName,
+    setUserSelection,
+    navigate,
+  ]);
 
   // Dynamic width calculation
   useEffect(() => {
@@ -215,7 +229,6 @@ function SellDeviceVarient() {
     const handleResize = () => calculateWidths();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-
   }, [variants, isLoading]);
 
   const handleChange = (wholeVariantId, variantId, variantSlug) => {
@@ -247,7 +260,7 @@ function SellDeviceVarient() {
 
   const isVariantsLoading = isLoading || !variants?.variants;
   const isImageLoading = !variants?.productId?.devicePic;
-  const isPhoneNameLoading = !phoneName;
+  // const isPhoneNameLoading = !phoneName;
 
   return (
     <div className="page-content-wrapper mobile-pt-section">
@@ -278,7 +291,8 @@ function SellDeviceVarient() {
 
             <div className={styles.selectBox}>
               <span>Select Variant</span>
-              <p><img src={info} alt="info" title="info" />
+              <p>
+                <img src={info} alt="info" title="info" />
                 Check your device storage from Settings → Storage
               </p>
             </div>
@@ -290,8 +304,8 @@ function SellDeviceVarient() {
                     <label
                       key={option._id}
                       className={`${styles.radioLabel} ${selectedMemory?.variantId === option._id
-                        ? styles.active
-                        : ""
+                          ? styles.active
+                          : ""
                         }`}
                     >
                       <input
