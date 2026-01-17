@@ -695,17 +695,16 @@ function DeviceEvaluation() {
 
     return (
       <div
-        className={`options ${
-          showIcons
-            ? "box-grid icon-option-container"
-            : q.options.some(
-                  (opt) =>
-                    (opt.label?.length || 0) > 40 ||
-                    (opt.description?.length || 0) > 60,
-                )
-              ? "long-text"
-              : "short-text"
-        }`}
+        className={`options ${showIcons
+          ? "box-grid icon-option-container"
+          : q.options.some(
+            (opt) =>
+              (opt.label?.length || 0) > 40 ||
+              (opt.description?.length || 0) > 60,
+          )
+            ? "long-text"
+            : "short-text"
+          }`}
       >
         {q.options.map((opt) => {
           const isSelected = isMulti
@@ -748,9 +747,8 @@ function DeviceEvaluation() {
           ) : (
             <label
               key={opt.id}
-              className={`option ${
-                isSelected ? "selected" : ""
-              } option-with-des-box`}
+              className={`option ${isSelected ? "selected" : ""
+                } option-with-des-box`}
               onClick={() => handleOptionChange(q.id, opt.value, isMulti)}
             >
               <input
@@ -987,9 +985,8 @@ function DeviceEvaluation() {
             }}
           >
             <h3 className="answer-heading">
-              {`${index + 1}. ${
-                packageData?.packageType || packageData?.packageName
-              }`}
+              {`${index + 1}. ${packageData?.packageType || packageData?.packageName
+                }`}
             </h3>
             {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
           </div>
@@ -1021,11 +1018,10 @@ function DeviceEvaluation() {
                     <div
                       key={qid}
                       ref={(el) => (sidebarAnswerRefs.current[qid] = el)}
-                      className={`answer-item ${
-                        lastInteractedQuestionId === qid
-                          ? "active-answer-item"
-                          : ""
-                      }`}
+                      className={`answer-item ${lastInteractedQuestionId === qid
+                        ? "active-answer-item"
+                        : ""
+                        }`}
                     >
                       <p className="question-text">
                         {`${ansIndex + 1}. ${q?.question}`}
@@ -1051,13 +1047,13 @@ function DeviceEvaluation() {
     return (
       <>
         <MobileBackHeader title="Calculation" />
-        <section className="form-section mobile-pt-section">
+        <div className="form-section mobile-pt-section">
           <div className="wrapper">
             <div className="loading-container">
               <p>Loading device information...</p>
             </div>
           </div>
-        </section>
+        </div>
       </>
     );
   }
@@ -1066,7 +1062,7 @@ function DeviceEvaluation() {
     return (
       <>
         <MobileBackHeader title="Calculation" />
-        <section className="form-section mobile-pt-section">
+        <div className="form-section mobile-pt-section">
           <div className="wrapper">
             <div className="error-container">
               <p>
@@ -1080,7 +1076,7 @@ function DeviceEvaluation() {
               </button>
             </div>
           </div>
-        </section>
+        </div>
       </>
     );
   }
@@ -1088,7 +1084,7 @@ function DeviceEvaluation() {
   return (
     <>
       <MobileBackHeader title="Calculation" onBack={handlePrevious} />
-      <section className="form-section mobile-pt-section">
+      <div className="form-section page-content-wrapper space-remove">
         <div className="wrapper">
           {/* Left Side */}
           <div className="form-left">
@@ -1113,16 +1109,15 @@ function DeviceEvaluation() {
           </div>
 
           {/* Right Side */}
-          <div className="form-right page-content-wrapper">
+          <div className="form-right mobile-pt-section">
             <div className="package-progress">
               {/* Progress Bar */}
               <div className="progress-bar-container">
                 <div
                   className="progress-bar-fill"
                   style={{
-                    width: `${
-                      ((currentPackageIndex + 1) / allPackageData.length) * 100
-                    }%`,
+                    width: `${((currentPackageIndex + 1) / allPackageData.length) * 100
+                      }%`,
                   }}
                 />
               </div>
@@ -1151,8 +1146,8 @@ function DeviceEvaluation() {
                       {(q.type === "radio" ||
                         q.type === "icon-radio" ||
                         q.type === "dropdown") && (
-                        <sup className="required-asterisk">*</sup>
-                      )}
+                          <sup className="required-asterisk">*</sup>
+                        )}
                     </p>
                     <p className="question-explaination-text">
                       {q?.questionExplanation}
@@ -1191,7 +1186,7 @@ function DeviceEvaluation() {
             </form>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }

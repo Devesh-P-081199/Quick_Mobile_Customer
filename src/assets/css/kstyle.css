@@ -381,10 +381,6 @@ body::-webkit-scrollbar-thumb {
   border-radius: 5px;
 }
 
-.device-name h2 {
-  font-size: 22px;
-}
-
 .md-none {
   display: block;
 }
