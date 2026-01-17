@@ -931,17 +931,7 @@ function DeviceEvaluation() {
 
     sessionStorage.removeItem(formSubmittedKey);
 
-    // Navigate to GetUpto component with the respective model
-    // Use userSelection slugs to construct the correct URL
-    const catSubcatSlug = userSelection?.catSubcatSlug || slug;
-    const variantSlug = userSelection?.variantSlug;
-
-    if (variantSlug) {
-      navigate(`/${catSubcatSlug}/${variantSlug}`);
-    } else {
-      // Fallback to category/subcategory page
-      navigate(`/${catSubcatSlug}`);
-    }
+    navigate(-1);
   };
 
   const getButtonText = () => {
@@ -985,7 +975,7 @@ function DeviceEvaluation() {
             }}
           >
             <h3 className="answer-heading">
-              {`${index + 1}. ${packageData?.packageType || packageData?.packageName
+              {`${index + 1}. ${packageData?.pageTitle || packageData?.packageName
                 }`}
             </h3>
             {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
