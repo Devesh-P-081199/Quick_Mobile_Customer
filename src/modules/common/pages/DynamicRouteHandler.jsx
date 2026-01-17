@@ -167,10 +167,10 @@ const DynamicRouteHandler = () => {
       }
 
       // ❌ Fallback
-      navigate("/404");
+      navigate("/not-found", { replace: true });
     } catch (err) {
       console.error("Routing Error:", err.message);
-      navigate("/404");
+      navigate("/not-found", { replace: true });
     } finally {
       setLoading(false);
     }

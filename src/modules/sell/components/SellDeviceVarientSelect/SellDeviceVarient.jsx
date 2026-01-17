@@ -276,7 +276,7 @@ function SellDeviceVarient() {
                 />
               )}
               <button
-                onClick={() => navigate("/select-series")}
+                onClick={() => navigate(-1)}
                 className={styles.backButton}
               >
                 <img src={backarrow} alt="back-arrow" title="back-arrow" />
