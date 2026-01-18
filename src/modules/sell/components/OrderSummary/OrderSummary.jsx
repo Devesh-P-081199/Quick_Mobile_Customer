@@ -199,7 +199,7 @@ function OrderSummary() {
   return (
     <>
       <MobileBackHeader title="Order Summery" />
-      <div className="page-content-wrapper">
+      <div className={`page-content-wrapper ${styles.orderSummary}`}>
         {/* Left Section */}
         <div className={styles.LeftBox}>
           <div className={styles.DeviceImg}>
@@ -317,7 +317,7 @@ function OrderSummary() {
           </div>
         </div>
 
-        <div className={styles.summaryCard}>
+        <div className={styles.summaryCardAddress}>
           <div className={styles.summaryHeader}>
             <div className={styles.summaryHeaderLeft}>
               <img src={van} alt="" className={styles.featureOption}></img>
@@ -359,7 +359,7 @@ function OrderSummary() {
           )}
         </div>
 
-        <div className={styles.summaryCard}>
+        <div className={styles.summaryCardPayment}>
           <div className={styles.summaryHeader}>
             <div className={styles.summaryHeaderLeft}>
               <img

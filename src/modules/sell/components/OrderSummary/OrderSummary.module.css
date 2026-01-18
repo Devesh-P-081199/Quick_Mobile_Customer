@@ -6,8 +6,9 @@
   margin: auto;
 }
 
-.page-content-wrapper {
-  padding-bottom: 50px;
+.orderSummary {
+  display: flex;
+  flex-direction: row;
 }
 
 .LeftBox {
@@ -17,7 +18,7 @@
   padding: 20px;
   border: 0.3px solid #e1e1e1;
   background-color: #ffffff;
-  height: 100%;
+  height: auto;
   margin: 10px 0;
 }
 
@@ -446,7 +447,7 @@
   margin: 0 0 15px 0;
 }
 
-.summaryCard {
+.summaryCardAddress {
   background-color: #ffffff;
   border: 0.3px solid #e1e1e1;
   border-radius: 10px;
@@ -454,14 +455,33 @@
   margin-bottom: 12px;
 }
 
-.summaryCard .summaryHeaderLeft img {
+.summaryCardPayment {
+  background-color: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.summaryCardAddress .summaryHeaderLeft img {
   width: 30px;
   height: 30px;
   padding: 2px;
   background-color: transparent;
 }
 
-.summaryCard:last-child {
+.summaryCardPayment .summaryHeaderLeft img {
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  background-color: transparent;
+}
+
+.summaryCardAddress:last-child {
+  margin-bottom: 0;
+}
+
+.summaryCardPayment:last-child {
   margin-bottom: 0;
 }
 
@@ -564,6 +584,11 @@
     padding-bottom: 90px;
   }
 
+  .orderSummary {
+    padding-bottom: 85px;
+    flex-direction: column;
+  }
+
   .DeviceDetails h2 {
     font-family: IBM Plex Sans;
     font-weight: 500;
@@ -584,7 +609,7 @@
     height: auto;
     background: none;
     border: none;
-    padding: 0px 0px 85px 0px;
+    padding: 0px;
     gap: 15px;
   }
 
@@ -789,7 +814,13 @@
     margin-bottom: 12px;
   }
 
-  .summaryCard {
+  .summaryCardAddress {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+  }
+
+  .summaryCardPayment {
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 15px;
