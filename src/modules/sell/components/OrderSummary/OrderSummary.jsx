@@ -14,8 +14,8 @@ import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
 import Answers from "../AnswerList/Answers";
 import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
-import arrow from "../../../../assets/QuickSellNewIcons/backarrowwithouttail.svg";
-import closeIcon from "../../../../assets/QuickSellNewIcons/cross.svg";
+import arrow from "../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
+import closeIcon from "../../../../assets/QuickSellNewIcons/Cross.svg";
 
 function OrderSummary() {
   const {
