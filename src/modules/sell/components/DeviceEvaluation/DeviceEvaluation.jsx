@@ -695,16 +695,17 @@ function DeviceEvaluation() {
     }
 
     // Dynamic Width Calculation
-    // Find the longest option length (label + description)
     const maxLen = q.options.reduce((max, opt) => {
       const labelLen = opt.label?.length || 0;
       const descLen = opt.description?.length || 0;
-      const totalLen = labelLen + descLen;
-      return Math.max(max, totalLen);
+      // Effective length is the max of label or description for this option
+      const effectiveLen = Math.max(labelLen, descLen);
+      return Math.max(max, effectiveLen);
     }, 0);
 
     // Determine grid class
     let gridClass = "grid-1"; // Default 100%
+
     if (maxLen <= 15) {
       gridClass = "grid-3"; // 33% (3 cols)
     } else if (maxLen <= 35) {
