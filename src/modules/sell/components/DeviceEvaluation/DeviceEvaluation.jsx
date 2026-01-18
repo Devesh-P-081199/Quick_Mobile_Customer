@@ -1106,13 +1106,13 @@ function DeviceEvaluation() {
             <div className="package-progress">
               {/* Progress Bar */}
               <div className="progress-bar-container">
-                <div
-                  className="progress-bar-fill"
-                  style={{
-                    width: `${((currentPackageIndex + 1) / allPackageData.length) * 100
-                      }%`,
-                  }}
-                />
+                {allPackageData.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`progress-segment ${index <= currentPackageIndex ? "filled" : ""
+                      }`}
+                  />
+                ))}
               </div>
             </div>
 

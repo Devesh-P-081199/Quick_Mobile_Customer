@@ -46,17 +46,23 @@
 
 .progress-bar-container {
   width: 100%;
-  height: 2px;
-  background-color: #f9fafb;
-  border-radius: 1px;
+  height: 3px;
+  /* Increased slightly for better visibility */
+  display: flex;
+  gap: 4px;
   overflow: hidden;
 }
 
-.progress-bar-fill {
+.progress-segment {
+  flex: 1;
   height: 100%;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.progress-segment.filled {
   background-color: #1968b3;
-  transition: width 0.3s ease-in-out;
-  border-radius: 1px;
 }
 
 .progress-text {
@@ -324,11 +330,6 @@
   border: 1px solid #1968b3;
 }
 
-.pre-btn:hover {
-  background: #1968b3;
-  color: #ffffff;
-}
-
 .continue-btn {
   height: 50px;
   font-size: 16px;
@@ -382,11 +383,6 @@
 
 .answer-heading-container img.expanded {
   transform: rotate(180deg);
-}
-
-.continue-btn:hover {
-  background: #ffffff !important;
-  color: #1968b3;
 }
 
 .continue-btn.enabled {
@@ -625,7 +621,6 @@
 
   /* Merged from max-width 550px: Remove extra top spacing */
   .form-right h2 {
-    margin-top: 0 !important;
     padding-top: 10px !important;
     padding: 5px 0px;
     font-size: 18px;
@@ -657,22 +652,16 @@
     opacity: 0.8;
   }
 
-  /* Mobile Progress Bar Styles */
   .package-progress {
     padding: 0;
     margin-bottom: 10px;
-    /* Merged from max-width 550px */
-    margin-left: -10px;
-    margin-right: -10px;
-
-    /* Fixed Positioning Strategy */
     position: fixed;
     left: 0;
     right: 0;
     width: 100%;
     z-index: 99;
-    background-color: #f5f6fa;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); */
+    background-color: transparent;
   }
 
   .progress-text {
@@ -712,7 +701,8 @@
   }
 
   .form-content {
-    margin-top: 25px;
+    margin-top: 15px;
+    padding-top: 0px;
     gap: 20px;
     padding-bottom: 90px;
   }
