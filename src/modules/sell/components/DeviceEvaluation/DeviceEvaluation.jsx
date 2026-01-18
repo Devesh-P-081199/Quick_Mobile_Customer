@@ -22,6 +22,7 @@ import bluetoothIcon from "../../../../assets/flaticons/bluetooth-off.png";
 import muteIcon from "../../../../assets/flaticons/mute.png";
 import silenceIcon from "../../../../assets/flaticons/silence.png";
 import lightningIcon from "../../../../assets/flaticons/lightning.png";
+import dropdownIcon from "../../../../assets/QuickSellNewIcons/arrow_down.png";
 
 // ====== Icon mapping for broken items ======
 const getIconForOption = (optionLabel) => {
@@ -978,7 +979,7 @@ function DeviceEvaluation() {
               {`${index + 1}. ${packageData?.pageTitle || packageData?.packageName
                 }`}
             </h3>
-            {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+            {isExpanded ? <img src={dropdownIcon} alt="dropdownIcon" className="expanded" /> : <img src={dropdownIcon} alt="dropdownIcon" />}
           </div>
 
           {isExpanded && (
@@ -1014,7 +1015,7 @@ function DeviceEvaluation() {
                         }`}
                     >
                       <p className="question-text">
-                        {`${ansIndex + 1}. ${q?.question}`}
+                        {`${q?.question}`}
                       </p>
                       <ul className="answer-text">
                         {displayValue.split(",").map((item, i) => (
@@ -1079,16 +1080,18 @@ function DeviceEvaluation() {
           {/* Left Side */}
           <div className="form-left">
             <div className="device-detail">
-              <img src={deviceInfo?.devicePic || DeviceImg} alt="Device" />
+              <div className="device-img">
+                <img src={deviceInfo?.devicePic || DeviceImg} alt="Device" />
+              </div>
               <div className="device-name">
                 <h2>
                   {deviceInfo?.deviceName ||
                     new URLSearchParams(location.search).get("pn")}
                 </h2>
-                <span>
+                <h3>
                   {deviceInfo?.variantDetail ||
                     new URLSearchParams(location.search).get("vid")}
-                </span>
+                </h3>
               </div>
             </div>
 

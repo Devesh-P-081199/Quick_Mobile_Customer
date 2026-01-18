@@ -13,14 +13,14 @@
 .form-left {
   width: 35.09%;
   height: calc(100vh - 140px);
-  /* Desktop default */
+  padding-right: 25px;
   border-right-width: 0.5px;
   gap: 13px;
   background: #ffffff;
   border-right: 0.5px solid #00000040;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
   /* Prevent container scroll */
 }
 
@@ -28,10 +28,8 @@
   width: 64.91%;
   margin: 0 auto;
   height: calc(100vh - 140px);
-  /* Desktop default */
+  padding-left: 25px;
   background-color: #ffffff;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -72,12 +70,10 @@
 .form-content {
   display: flex;
   flex-direction: column;
-  gap: 19px;
+  gap: 10px;
   overflow-y: auto;
-  padding-bottom: 25px;
+  padding: 15px 0 0 0;
   flex: 1;
-  /* Take remaining height */
-  /* Spacing for scrollbar */
 }
 
 .icon-space {
@@ -94,33 +90,53 @@
 
 .device-detail {
   display: flex;
-  align-items: start;
-  gap: 10px;
+  align-items: center;
+  gap: 15px;
   border-bottom-width: 0.5px;
-  padding-bottom: 13px;
+  padding-bottom: 15px;
   border-bottom: 0.5px solid #00000040;
 }
 
-.device-detail img {
-  height: 75px;
+.device-detail .device-img {
+  height: 85px;
+  width: auto;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.device-detail .device-img img {
+  height: 100%;
 }
 
 .device-name {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.device-name h2 {
   font-family: IBM Plex Sans;
   font-weight: 500;
   font-size: 20px;
+  margin-bottom: 0px;
 }
 
-.device-name span {
+.device-name h3 {
   font-family: IBM Plex Sans;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
+  margin-bottom: 0px;
 }
 
 .form-details {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   flex: 1;
   /* Take remaining height */
   overflow-y: auto;
@@ -134,14 +150,23 @@
   font-size: 18px;
   line-height: 100%;
   letter-spacing: 0%;
-  color: #007fee;
+  color: #1968b3;
 }
 
 .form-right h2 {
   font-family: IBM Plex Sans;
   font-weight: 500;
-  font-size: 28px;
-  padding: 25px;
+  font-size: 24px;
+  padding: 15px 0 10px 0;
+  margin-bottom: 0;
+}
+
+.form-right h3 {
+  font-family: IBM Plex Sans;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 0;
+  margin-bottom: 10px;
 }
 
 /* Hide scrollbars for Chrome, Safari and Opera */
@@ -160,9 +185,12 @@
 }
 
 .package-answers {
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 13px 10px;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  gap: 10px;
 }
 
 .package-answers:last-child {
@@ -173,6 +201,14 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+.answers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
 }
 
 /* Ensure default bullets are used since we removed the manual ones */
@@ -207,6 +243,7 @@
 .form-box .options .option {
   align-items: flex-start;
   margin-bottom: 0px;
+  min-height: 50px;
 }
 
 .form-box .options label {
@@ -223,7 +260,7 @@
 
 /* Custom radio button styling */
 .form-box .options label input[type="radio"] {
-  padding: none !important;
+  padding: 0 !important;
   cursor: pointer;
   accent-color: #1968b3;
   appearance: none;
@@ -234,7 +271,7 @@
   position: relative;
   width: 16px;
   aspect-ratio: 1;
-  margin-top: 4px;
+  margin-top: 3px;
 }
 
 /* Radio button checked state */
@@ -258,7 +295,7 @@
 .form-box label span {
   font-family: IBM Plex Sans;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .form-box label span.option-text-des {
@@ -267,40 +304,42 @@
 }
 
 .button-box {
-  padding: 0px 25px;
+  padding: 15px 0 0 0;
   display: flex;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
-  justify-content: end;
+  justify-content: start;
   width: 100%;
 }
 
 .pre-btn {
-  width: 150px;
-  height: 54px;
-  padding-top: 11px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 500;
   padding-right: 35px;
-  padding-bottom: 11px;
   padding-left: 35px;
-  gap: 10px;
   border-radius: 10px;
-  background: #000000;
+  background: #ffffff;
+  color: #1968b3;
+  border: 1px solid #1968b3;
+}
+
+.pre-btn:hover {
+  background: #1968b3;
   color: #ffffff;
 }
 
 .continue-btn {
-  width: 150px;
-  height: 54px;
-  padding-top: 11px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 500;
   padding-right: 35px;
-  padding-bottom: 11px;
   padding-left: 35px;
-  gap: 10px;
   border-radius: 10px;
   background: #00000040;
   color: #ffffff;
   cursor: not-allowed;
-  transition: background 0.3s ease-in-out;
+  border: 1px solid #1968b3;
 }
 
 .answer-item {
@@ -324,13 +363,30 @@
   font-weight: 400;
   line-height: 100%;
   letter-spacing: 0%;
-  color: orange;
+  color: #f26921;
+  margin-bottom: 0;
 }
 
 .answer-heading {
   font-family: IBM Plex Sans;
   font-weight: 500;
   font-size: 16px;
+  margin-bottom: 0;
+}
+
+.answer-heading-container img {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.answer-heading-container img.expanded {
+  transform: rotate(180deg);
+}
+
+.continue-btn:hover {
+  background: #ffffff !important;
+  color: #1968b3;
 }
 
 .continue-btn.enabled {
@@ -355,7 +411,7 @@
 
 .conditions-pagination .pagination-btn {
   padding: 8px 8px;
-  background-color: #007fee;
+  background-color: #1968b3;
   border: 1px solid #ddd;
   border-radius: 10px;
   cursor: pointer;
@@ -390,20 +446,24 @@
 /* Formerly min-width: 768px desktop specifics merged here */
 .select-box {
   width: 150px;
-  border: 0.3px solid #dddddd;
-  border-radius: 5px;
+  border: 1px solid #dddddd;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  height: fit-content;
 }
 
 /* Specific desktop override for padding */
 .form-box .options label {
+  padding-top: 13.5px;
+  padding-bottom: 13.5px;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 .select-box .icon-space img {
-  padding: 14px;
+  padding: 25px;
   object-fit: contain;
 }
 
@@ -469,6 +529,7 @@
   justify-content: flex-start;
   background-color: #ededed;
   border: none;
+  margin-bottom: 0;
   border-radius: 0px 0px 14px 14px;
   min-height: fit-content;
 }
@@ -525,6 +586,15 @@
   color: red;
   font-size: 12px;
   margin: 0;
+}
+
+.form-box .question .question-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.form-box .question .question-explaination-text {
+  font-weight: 400;
 }
 
 
