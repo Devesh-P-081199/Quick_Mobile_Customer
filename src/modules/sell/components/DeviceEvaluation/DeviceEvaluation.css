@@ -560,6 +560,9 @@
 
 .select-box .option-text {
   font-size: 12px;
+  text-align: center;
+  width: 100%;
+  display: block;
 }
 
 .dropdown-select {
