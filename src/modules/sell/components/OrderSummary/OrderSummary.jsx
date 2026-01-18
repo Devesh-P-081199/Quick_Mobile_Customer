@@ -199,351 +199,318 @@ function OrderSummary() {
   return (
     <>
       <MobileBackHeader title="Order Summery" />
-
-      <section className={`${styles.StepSix} mobile-pt-section `}>
-        <div className="page-content-wrapper">
-          {/* Left Section */}
-          <div className={styles.LeftBox}>
-            <div className={styles.DeviceImg}>
-              <div className={styles.mobileImg}>
-                <img src={currentEvaluationId?.devicePic || MobileImg} alt="" />
-              </div>
-              <div className={styles.DeviceDetails}>
-                <h2 className={styles.name}>
-                  <>
-                    {currentEvaluationId?.deviceName} (
-                    {currentEvaluationId?.deviceVariant})
-                  </>
-                </h2>
-                <div className={styles.pricing}>
-                  <h2 className={styles.price}>Selling Price</h2>
-                  <span className="color-red">
-                    {`₹ ${(currentEvaluationId?.finalPrice || 0).toFixed(2)}`}
-                  </span>
-                </div>
-                <span className={styles.infoLine}>
-                  "5,933+ Sold on QuickMobile"
-                </span>
+      <div className="page-content-wrapper">
+        {/* Left Section */}
+        <div className={styles.LeftBox}>
+          <div className={styles.DeviceImg}>
+            <div className={styles.mobileImg}>
+              <img src={currentEvaluationId?.devicePic || MobileImg} alt="" />
+            </div>
+            <div className={styles.DeviceDetails}>
+              <h2 className={styles.name}>
                 <>
-                  <NavLink
-                    to={`/${slug}/final-price-calculator?${queryParams.toString()}`}
-                    className={styles.recalculate}
-                    onClick={() => {
-                      // Clear all Step3 form data when recalculating
-                      const productId = queryParams.get("pid");
-                      const variantId = queryParams.get("vid");
-
-                      if (productId) {
-                        // Clear packageDetails so old selections don't show in Device Details
-                        const packageDetailsKey = `packageDetails_${productId}`;
-                        sessionStorage.removeItem(packageDetailsKey);
-
-                        // Clear step3 form data
-                        const storageKey = `step3PackageData_${productId}_${
-                          variantId || "unknown"
-                        }`;
-                        sessionStorage.removeItem(storageKey);
-
-                        // Clear current package index
-                        const currentIndexKey = `currentPackageIndex_${storageKey}`;
-                        sessionStorage.removeItem(currentIndexKey);
-
-                        // Clear packages data
-                        const packagesKey = `packages_${productId}`;
-                        sessionStorage.removeItem(packagesKey);
-
-                        // Clear form submitted flag
-                        const formSubmittedKey = `formSubmitted_${productId}`;
-                        sessionStorage.removeItem(formSubmittedKey);
-
-                        // Set recalculate flag to force Step3 to load fresh
-                        const recalculateKey = `recalculate_${productId}`;
-                        sessionStorage.setItem(recalculateKey, "true");
-                      }
-                    }}
-                  >
-                    <img
-                      src={Recalculate}
-                      alt="Recalculate"
-                      className={styles.recalculateImg}
-                    />
-                  </NavLink>
-                  <img
-                    src={FreePickup}
-                    alt=""
-                    className={styles.FreePickupImg}
-                  />
+                  {currentEvaluationId?.deviceName} (
+                  {currentEvaluationId?.deviceVariant})
                 </>
+              </h2>
+              <div className={styles.pricing}>
+                <h2 className={styles.price}>Selling Price</h2>
+                <span className="color-red">
+                  {`₹ ${(currentEvaluationId?.finalPrice || 0).toFixed(2)}`}
+                </span>
               </div>
-            </div>
-            <div className={styles.deliveryfeature}>
-              <div className={styles.feature}>
-                <img src={clock} alt="" className={styles.featureOption}></img>
-                <p>Instant Payment</p>
-              </div>
-              <div className={styles.feature}>
-                <img src={van} alt="" className={styles.featureOption}></img>
-                <p>Free Pickup</p>
-              </div>
-              <div className={styles.feature}>
-                <img
-                  src={secureShield}
-                  alt=""
-                  className={styles.featureOption}
-                ></img>
-                <p>100% Safe & Secure</p>
-              </div>
-            </div>
-            <p className={styles.BottomPara}>
-              {`Congratulations! Based on the details you provided, your device is
-              valued at ₹ ${currentEvaluationId?.finalPrice}. This is the best
-              price we offer, reflecting the current market demand and the
-              condition of your device. Ready to move forward?`}
-            </p>
-          </div>
+              <span className={styles.infoLine}>
+                "5,933+ Sold on QuickMobile"
+              </span>
+              <>
+                <NavLink
+                  to={`/${slug}/final-price-calculator?${queryParams.toString()}`}
+                  className={styles.recalculate}
+                  onClick={() => {
+                    // Clear all Step3 form data when recalculating
+                    const productId = queryParams.get("pid");
+                    const variantId = queryParams.get("vid");
 
-          <div className={styles.detailsDown}>
-            <div className={styles.deviceDetailsBtn}>
-              <button onClick={() => setShowAnswersModal(true)}>
-                <div className={styles.bottonTitle}>
+                    if (productId) {
+                      // Clear packageDetails so old selections don't show in Device Details
+                      const packageDetailsKey = `packageDetails_${productId}`;
+                      sessionStorage.removeItem(packageDetailsKey);
+
+                      // Clear step3 form data
+                      const storageKey = `step3PackageData_${productId}_${variantId || "unknown"
+                        }`;
+                      sessionStorage.removeItem(storageKey);
+
+                      // Clear current package index
+                      const currentIndexKey = `currentPackageIndex_${storageKey}`;
+                      sessionStorage.removeItem(currentIndexKey);
+
+                      // Clear packages data
+                      const packagesKey = `packages_${productId}`;
+                      sessionStorage.removeItem(packagesKey);
+
+                      // Clear form submitted flag
+                      const formSubmittedKey = `formSubmitted_${productId}`;
+                      sessionStorage.removeItem(formSubmittedKey);
+
+                      // Set recalculate flag to force Step3 to load fresh
+                      const recalculateKey = `recalculate_${productId}`;
+                      sessionStorage.setItem(recalculateKey, "true");
+                    }
+                  }}
+                >
                   <img
-                    src={clock}
-                    alt=""
-                    className={styles.featureOption}
-                  ></img>
-                  <p>Device Details</p>
-                </div>
-                <span>
-                  <img src={arrow} alt="" />
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div className={styles.summaryCard}>
-            <div className={styles.summaryHeader}>
-              <div className={styles.summaryHeaderLeft}>
-                <img src={van} alt="" className={styles.featureOption}></img>
-                <span className={styles.summaryLabel}>Pickup Address</span>
-              </div>
-              <button
-                className={styles.changeBtn}
-                onClick={handleChangeAddress}
-              >
-                {selectedAddress ? "Change" : "Add"}
-              </button>
-            </div>
-            {selectedAddress ? (
-              <div className={styles.summaryContent}>
-                <span className={styles.addressTag}>
-                  {selectedAddress?.saveAs}
-                </span>
-                <p className={styles.addressText}>
-                  {selectedAddress?.houseNumber}, {selectedAddress?.street}
-                  {selectedAddress?.landmark &&
-                    `, ${selectedAddress?.landmark}`}
-                  {selectedAddress?.cityName}, {selectedAddress?.state} -{" "}
-                  {selectedAddress?.zipCode}
-                </p>
-                <p className={styles.addressText}>
-                  {selectedAddress?.alternatePhone}
-                </p>
-              </div>
-            ) : addresses.length === 0 ? (
-              <p className={styles.notSelected}>
-                No addresses found. Click "Add" button above to add a delivery
-                address.
-              </p>
-            ) : (
-              <p className={styles.notSelected}>
-                No address selected. Click "Add" button above to select an
-                address.
-              </p>
-            )}
-          </div>
-
-          <div className={styles.summaryCard}>
-            <div className={styles.summaryHeader}>
-              <div className={styles.summaryHeaderLeft}>
+                    src={Recalculate}
+                    alt="Recalculate"
+                    className={styles.recalculateImg}
+                  />
+                </NavLink>
                 <img
-                  src={secureShield}
+                  src={FreePickup}
                   alt=""
-                  className={styles.featureOption}
-                ></img>
-                <span className={styles.summaryLabel}>Payment Method</span>
-              </div>
-              <button
-                className={styles.changeBtn}
-                onClick={handleChangePayment}
-              >
-                {selectedPaymentMethod ? "Change" : "Add"}
-              </button>
-            </div>
-            {selectedPaymentMethod ? (
-              <div className={styles.summaryContent}>
-                {selectedPaymentMethod.type === "upi" ? (
-                  <>
-                    <span className={styles.paymentType}>UPI Payment</span>
-                    <p className={styles.paymentText}>
-                      UPI ID:{" "}
-                      <span className={styles.paymentValue}>
-                        {selectedPaymentMethod?.upiId}
-                      </span>
-                    </p>
-                  </>
-                ) : selectedPaymentMethod.type === "bank" ? (
-                  <>
-                    <span className={styles.paymentType}>
-                      Bank Transfer (IMPS)
-                    </span>
-                    <p className={styles.paymentText}>
-                      Account:{" "}
-                      <span className={styles.paymentValue}>
-                        {selectedPaymentMethod?.bankDetails?.accountNumber}
-                      </span>
-                    </p>
-                    <p className={styles.paymentText}>
-                      IFSC:{" "}
-                      <span className={styles.paymentValue}>
-                        {selectedPaymentMethod?.bankDetails?.ifscCode}
-                      </span>
-                    </p>
-                    <p className={styles.paymentText}>
-                      Bank:{" "}
-                      <span className={styles.paymentValue}>
-                        {selectedPaymentMethod?.bankDetails?.bankName}
-                      </span>
-                    </p>
-                  </>
-                ) : null}
-              </div>
-            ) : paymentMethods.upi.length === 0 &&
-              paymentMethods.bank.length === 0 ? (
-              <p className={styles.notSelected}>
-                No payment methods found. Click "Add" button above to add a
-                payment method.
-              </p>
-            ) : (
-              <p className={styles.notSelected}>
-                No payment method selected. Click "Add" button above to select a
-                payment method.
-              </p>
-            )}
-          </div>
-          <div className={styles.detailsDown}>
-            <div className={styles.applyCoupon} onClick={openCouponModal}>
-              <button>
-                <div className={styles.bottonTitle}>
-                  <img
-                    src={clock}
-                    alt=""
-                    className={styles.featureOption}
-                  ></img>
-                  <p>Apply Coupon</p>
-                </div>
-                <span>
-                  <img src={arrow} alt="" />
-                </span>
-              </button>
-            </div>
-          </div>
-
-          {showAnswersModal && (
-            <div className={styles.modalOverlay}>
-              <div className={styles.modalContent}>
-                <Answers
-                  onBack={() => setShowAnswersModal(false)}
-                  onRecalculate={() =>
-                    navigate(
-                      `/${slug}/final-price-calculator${location.search}`,
-                    )
-                  }
+                  className={styles.FreePickupImg}
                 />
-              </div>
+              </>
             </div>
-          )}
-
-          {/* Right Section */}
-          <div className={styles.RightBox}>
-            <div className={styles.details}>
-              <div className={styles.summary}>Summary</div>
-              <div className={styles.row}>
-                <span className={styles.label}>Phone Price</span>
-                <span className={styles.value}>
-                  {`₹ ${currentEvaluationId?.finalPrice}`}
-                </span>
-              </div>
-              <div className={styles.row}>
-                <span className={styles.label}>Pickup Charges</span>
-                <div className={styles.pickupCharges}>
-                  <>
-                    <span className={styles.free}>Free</span>
-                    <span className={styles.striked}>₹ 150</span>
-                  </>
-                </div>
-              </div>
-              <div className={styles.row}>
-                <span className={styles.label}>Processing</span>
-                <span className={styles.value}>Free</span>
-              </div>
-              <div className={styles.row}>
-                <span className={styles.label}>Offer/Coupon</span>
-                <span className={styles.value}>₹10.00</span>
-              </div>
-              <div className={styles.totalRow}>
-                <span className={styles.totalLabel}>Total</span>
-                <span className={styles.totalValue}>
-                  {`₹ ${currentEvaluationId?.finalPrice}`}
-                </span>
-              </div>
+          </div>
+          <div className={styles.deliveryfeature}>
+            <div className={styles.feature}>
+              <img src={clock} alt="" className={styles.featureOption}></img>
+              <p>Instant Payment</p>
             </div>
-
-            {/* Place Order Button */}
-            <div className={styles.sellNowContainer}>
-              <button
-                className={styles.sellNow}
-                onClick={
-                  selectedAddress ? handlePlaceOrder : handleChangeAddress
-                }
-                disabled={loading}
-              >
-                {selectedAddress ? "Place Order" : "Add Address to Continue"}
-              </button>
+            <div className={styles.feature}>
+              <img src={van} alt="" className={styles.featureOption}></img>
+              <p>Free Pickup</p>
             </div>
+            <div className={styles.feature}>
+              <img
+                src={secureShield}
+                alt=""
+                className={styles.featureOption}
+              ></img>
+              <p>100% Safe & Secure</p>
+            </div>
+          </div>
+          <p className={styles.BottomPara}>
+            {`Congratulations! Based on the details you provided, your device is
+            valued at ₹ ${currentEvaluationId?.finalPrice}. This is the best
+            price we offer, reflecting the current market demand and the
+            condition of your device. Ready to move forward?`}
+          </p>
+        </div>
 
-            {/* Apply Coupon Button */}
+        <div className={styles.detailsDown}>
+          <div className={styles.deviceDetailsBtn}>
+            <button onClick={() => setShowAnswersModal(true)}>
+              <div className={styles.bottonTitle}>
+                <img
+                  src={clock}
+                  alt=""
+                  className={styles.featureOption}
+                ></img>
+                <p>Device Details</p>
+              </div>
+              <span>
+                <img src={arrow} alt="" />
+              </span>
+            </button>
           </div>
         </div>
 
-        {/* Coupon Modal */}
-        {isCouponModalOpen && (
-          <div className={styles.modalOverlay} onClick={closeCouponModal}>
-            <div
-              className={styles.simpleModal}
-              onClick={(e) => e.stopPropagation()}
+        <div className={styles.summaryCard}>
+          <div className={styles.summaryHeader}>
+            <div className={styles.summaryHeaderLeft}>
+              <img src={van} alt="" className={styles.featureOption}></img>
+              <span className={styles.summaryLabel}>Pickup Address</span>
+            </div>
+            <button
+              className={styles.changeBtn}
+              onClick={handleChangeAddress}
             >
-              {/* Close Button */}
-              <button className={styles.closeButton} onClick={closeCouponModal}>
-                <img src={closeIcon} alt="" />
-              </button>
+              {selectedAddress ? "Change" : "Add"}
+            </button>
+          </div>
+          {selectedAddress ? (
+            <div className={styles.summaryContent}>
+              <span className={styles.addressTag}>
+                {selectedAddress?.saveAs}
+              </span>
+              <p className={styles.addressText}>
+                {selectedAddress?.houseNumber}, {selectedAddress?.street}
+                {selectedAddress?.landmark &&
+                  `, ${selectedAddress?.landmark}`}
+                {selectedAddress?.cityName}, {selectedAddress?.state} -{" "}
+                {selectedAddress?.zipCode}
+              </p>
+              <p className={styles.addressText}>
+                {selectedAddress?.alternatePhone}
+              </p>
+            </div>
+          ) : addresses.length === 0 ? (
+            <p className={styles.notSelected}>
+              No addresses found. Click "Add" button above to add a delivery
+              address.
+            </p>
+          ) : (
+            <p className={styles.notSelected}>
+              No address selected. Click "Add" button above to select an
+              address.
+            </p>
+          )}
+        </div>
 
-              <div className={styles.modalContentWrapper}>
-                <div className={styles.modalIcon}>
-                  <i className="fas fa-ticket-alt"></i>{" "}
-                  {/* You can use react-icons instead */}
-                </div>
-                <h2 className={styles.modalTitle}>Oops!</h2>
-                <p className={styles.modalText}>
-                  Coupon code is not available at the moment.
-                </p>
-                <p className={styles.modalSubText}>
-                  Please check back later for exciting offers.
-                </p>
+        <div className={styles.summaryCard}>
+          <div className={styles.summaryHeader}>
+            <div className={styles.summaryHeaderLeft}>
+              <img
+                src={secureShield}
+                alt=""
+                className={styles.featureOption}
+              ></img>
+              <span className={styles.summaryLabel}>Payment Method</span>
+            </div>
+            <button
+              className={styles.changeBtn}
+              onClick={handleChangePayment}
+            >
+              {selectedPaymentMethod ? "Change" : "Add"}
+            </button>
+          </div>
+          {selectedPaymentMethod ? (
+            <div className={styles.summaryContent}>
+              {selectedPaymentMethod.type === "upi" ? (
+                <>
+                  <span className={styles.paymentType}>UPI Payment</span>
+                  <p className={styles.paymentText}>
+                    UPI ID:{" "}
+                    <span className={styles.paymentValue}>
+                      {selectedPaymentMethod?.upiId}
+                    </span>
+                  </p>
+                </>
+              ) : selectedPaymentMethod.type === "bank" ? (
+                <>
+                  <span className={styles.paymentType}>
+                    Bank Transfer (IMPS)
+                  </span>
+                  <p className={styles.paymentText}>
+                    Account:{" "}
+                    <span className={styles.paymentValue}>
+                      {selectedPaymentMethod?.bankDetails?.accountNumber}
+                    </span>
+                  </p>
+                  <p className={styles.paymentText}>
+                    IFSC:{" "}
+                    <span className={styles.paymentValue}>
+                      {selectedPaymentMethod?.bankDetails?.ifscCode}
+                    </span>
+                  </p>
+                  <p className={styles.paymentText}>
+                    Bank:{" "}
+                    <span className={styles.paymentValue}>
+                      {selectedPaymentMethod?.bankDetails?.bankName}
+                    </span>
+                  </p>
+                </>
+              ) : null}
+            </div>
+          ) : paymentMethods.upi.length === 0 &&
+            paymentMethods.bank.length === 0 ? (
+            <p className={styles.notSelected}>
+              No payment methods found. Click "Add" button above to add a
+              payment method.
+            </p>
+          ) : (
+            <p className={styles.notSelected}>
+              No payment method selected. Click "Add" button above to select a
+              payment method.
+            </p>
+          )}
+        </div>
+        <div className={styles.detailsDown}>
+          <div className={styles.applyCoupon} onClick={openCouponModal}>
+            <button>
+              <div className={styles.bottonTitle}>
+                <img
+                  src={clock}
+                  alt=""
+                  className={styles.featureOption}
+                ></img>
+                <p>Apply Coupon</p>
               </div>
+              <span>
+                <img src={arrow} alt="" />
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {showAnswersModal && (
+          <div className={styles.modalOverlay}>
+            <div className={styles.modalContent}>
+              <Answers
+                onBack={() => setShowAnswersModal(false)}
+                onRecalculate={() =>
+                  navigate(
+                    `/${slug}/final-price-calculator${location.search}`,
+                  )
+                }
+              />
             </div>
           </div>
         )}
-      </section>
+
+        {/* Right Section */}
+        <div className={styles.RightBox}>
+          <div className={styles.details}>
+            <div className={styles.summary}>Summary</div>
+            <div className={styles.row}>
+              <span className={styles.label}>Phone Price</span>
+              <span className={styles.value}>
+                {`₹ ${currentEvaluationId?.finalPrice}`}
+              </span>
+            </div>
+            <div className={styles.row}>
+              <span className={styles.label}>Pickup Charges</span>
+              <div className={styles.pickupCharges}>
+                <>
+                  <span className={styles.free}>Free</span>
+                  <span className={styles.striked}>₹ 150</span>
+                </>
+              </div>
+            </div>
+            <div className={styles.row}>
+              <span className={styles.label}>Processing</span>
+              <span className={styles.value}>Free</span>
+            </div>
+            <div className={styles.row}>
+              <span className={styles.label}>Offer/Coupon</span>
+              <span className={styles.value}>₹10.00</span>
+            </div>
+            <div className={styles.totalRow}>
+              <span className={styles.totalLabel}>Total</span>
+              <span className={styles.totalValue}>
+                {`₹ ${currentEvaluationId?.finalPrice}`}
+              </span>
+            </div>
+          </div>
+
+          {/* Place Order Button */}
+          <div className={styles.sellNowContainer}>
+            <button
+              className={styles.sellNow}
+              onClick={
+                selectedAddress ? handlePlaceOrder : handleChangeAddress
+              }
+              disabled={loading}
+            >
+              {selectedAddress ? "Place Order" : "Add Address to Continue"}
+            </button>
+          </div>
+
+          {/* Apply Coupon Button */}
+        </div>
+      </div>
     </>
   );
 }
