@@ -694,17 +694,26 @@ function DeviceEvaluation() {
       );
     }
 
+    // Dynamic Width Calculation
+    // Find the longest option length (label + description)
+    const maxLen = q.options.reduce((max, opt) => {
+      const labelLen = opt.label?.length || 0;
+      const descLen = opt.description?.length || 0;
+      const totalLen = labelLen + descLen;
+      return Math.max(max, totalLen);
+    }, 0);
+
+    // Determine grid class
+    let gridClass = "grid-1"; // Default 100%
+    if (maxLen <= 15) {
+      gridClass = "grid-3"; // 33% (3 cols)
+    } else if (maxLen <= 35) {
+      gridClass = "grid-2"; // 50% (2 cols)
+    }
+
     return (
       <div
-        className={`options ${showIcons
-          ? "box-grid icon-option-container"
-          : q.options.some(
-            (opt) =>
-              (opt.label?.length || 0) > 40 ||
-              (opt.description?.length || 0) > 60,
-          )
-            ? "long-text"
-            : "short-text"
+        className={`options ${showIcons ? "box-grid icon-option-container" : gridClass
           }`}
       >
         {q.options.map((opt) => {

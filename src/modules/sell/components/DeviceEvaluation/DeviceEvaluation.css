@@ -246,6 +246,24 @@
   flex-wrap: wrap;
 }
 
+.form-box .options.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.form-box .options.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.form-box .options.grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
 .form-box .options .option {
   align-items: flex-start;
   margin-bottom: 0px;
@@ -770,7 +788,7 @@
   }
 
   /* default (short text -> 2 cols) */
-  .options.short-text {
+  .options.grid-3 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
@@ -781,9 +799,18 @@
   }
 
   /* long text -> force 1 col */
-  .options.long-text {
+  .options.grid-1 {
     display: grid;
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .options.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Fallback for medium text, or keep 2? Usually medium = longer than short */
+    /* wait, user said 50% = 2 cols. On mobile 50% is ok. */
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
