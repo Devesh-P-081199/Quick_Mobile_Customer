@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./answers.module.css";
 import { UserContext } from "../../../../Context/contextAPI";
-import backArrow from "../../../../assets/QuickSellNewIcons/backArrow.svg";
+import backArrow from "../../../../assets/QuickSellNewIcons/BackArrow.svg";
 import { useLocation } from "react-router-dom";
 
 const Answers = ({ onBack, onRecalculate }) => {
