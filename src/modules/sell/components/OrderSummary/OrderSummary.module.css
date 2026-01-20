@@ -9,12 +9,38 @@
 .orderSummary {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  /* Use space-between layout */
+  gap: 20px;
+  overflow: visible !important;
+  /* Force visible overflow */
+  position: relative;
+  /* Context for children */
+  align-items: stretch;
+}
+
+/* Ensure global wrapper doesn't clip */
+:global(.page-content-wrapper) {
+  overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+  .orderSummary {
+    padding-bottom: 85px;
+    flex-direction: column;
+    gap: 0px;
+  }
+}
+
+.leftColumn {
+  width: 68%;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
 .LeftBox {
-  width: 68%;
+  width: 100%;
   border-width: 0.3px;
   border-radius: 20px;
   padding: 20px;
@@ -22,7 +48,12 @@
   background-color: #ffffff;
   height: auto;
   margin: 0;
-  order: 1;
+}
+
+.rightColumn {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
 }
 
 .RightBox {
@@ -33,11 +64,15 @@
   padding: 20px;
   gap: 10px;
   margin: 0 auto;
-  width: 30%;
+  width: 100%;
   background: #ffffff;
   border: 0.3px solid #e1e1e1;
   border-radius: 20px;
-  order: 2;
+  position: sticky;
+  top: 90px;
+  align-self: flex-start;
+  z-index: 10;
+  height: fit-content;
 }
 
 .deliveryfeature {
@@ -373,12 +408,10 @@
 
 .detailsDown {
   display: none;
-  order: 3;
 }
 
 .detailsCoupon {
   display: none;
-  order: 4;
 }
 
 .modalContentWrapper {
@@ -462,8 +495,7 @@
   border-radius: 10px;
   padding: 12px;
   margin-bottom: 0px;
-  width: 68%;
-  order: 5;
+  width: 100%;
 }
 
 .summaryCardPayment {
@@ -472,8 +504,7 @@
   border-radius: 10px;
   padding: 12px;
   margin-bottom: 0px;
-  width: 68%;
-  order: 6;
+  width: 100%;
 }
 
 .summaryCardAddress .summaryHeaderLeft img {
@@ -636,6 +667,13 @@
     gap: 0px;
   }
 
+  .leftColumn {
+    width: 100%;
+    gap: 0px;
+    margin-bottom: 0px;
+    /* Add margin to separate from RightBox which is now below */
+  }
+
   .DeviceDetails h2 {
     font-family: IBM Plex Sans;
     font-weight: 500;
@@ -655,6 +693,11 @@
     font-size: 20px;
   }
 
+  .rightColumn {
+    width: 100%;
+    margin-bottom: 0px;
+  }
+
   .RightBox {
     width: 100%;
     height: auto;
@@ -662,7 +705,7 @@
     border: none;
     padding: 0px;
     gap: 15px;
-    order: 6;
+    position: static;
   }
 
   .featureOption {
@@ -704,7 +747,6 @@
     padding: 10px;
     width: 100%;
     margin: 20px 0 15px;
-    order: 1;
   }
 
   .DeviceDetails .price {
@@ -759,7 +801,6 @@
     gap: 0px;
     border-radius: 15px;
     margin-bottom: 15px;
-    order: 2;
     display: block;
   }
 
@@ -770,7 +811,6 @@
     gap: 0px;
     border-radius: 15px;
     margin-bottom: 15px;
-    order: 5;
     display: block;
   }
 

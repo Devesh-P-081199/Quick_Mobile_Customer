@@ -121,7 +121,7 @@ html {
   text-rendering: optimizeLegibility;
 
   /* Prevent horizontal scroll on mobile */
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 
   /* Smooth scrolling */
   scroll-behavior: smooth;
@@ -140,7 +140,7 @@ body {
   color: var(--color-text-primary);
   background-color: var(--color-background);
   /* Prevent horizontal scroll */
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 
   /* Better mobile scrolling */
   -webkit-overflow-scrolling: touch;
