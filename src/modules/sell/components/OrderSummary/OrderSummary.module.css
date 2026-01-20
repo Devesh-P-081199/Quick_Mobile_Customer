@@ -9,17 +9,20 @@
 .orderSummary {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .LeftBox {
-  width: 715px;
+  width: 68%;
   border-width: 0.3px;
   border-radius: 20px;
   padding: 20px;
   border: 0.3px solid #e1e1e1;
   background-color: #ffffff;
   height: auto;
-  margin: 10px 0;
+  margin: 0;
+  order: 1;
 }
 
 .RightBox {
@@ -28,13 +31,13 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
-  gap: 30px;
+  gap: 10px;
   margin: 0 auto;
-  width: 404px;
-  height: 499px;
+  width: 30%;
   background: #ffffff;
   border: 0.3px solid #e1e1e1;
-  border-radius: 10px;
+  border-radius: 20px;
+  order: 2;
 }
 
 .deliveryfeature {
@@ -42,13 +45,16 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+  padding-top: 20px;
+  border-top: 0.3px solid #e1e1e1;
+  margin-top: 20px;
 }
 
 .deliveryfeature .feature {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex: 1;
   border-right: 0.3px solid #e1e1e1;
 }
@@ -58,7 +64,7 @@
 }
 
 .featureOption {
-  height: 45px;
+  height: 40px;
   aspect-ratio: 1;
   padding: 10px;
   border-radius: 15px;
@@ -66,112 +72,108 @@
 }
 
 .deliveryfeature .feature p {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
-  margin: 10px 0 0 0;
+  margin: 0 0 0 10px;
   text-align: center;
 }
 
 .BottomPara {
   font-family: IBM Plex Sans;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 130%;
   letter-spacing: 0%;
-  margin-top: 30px;
-  color: #00000080;
+  margin-top: 25px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #374151;
+  background-color: rgba(255, 224, 202, 0.56);
 }
 
 .DeviceImg {
   display: flex;
-  gap: 30px;
+  gap: 10px;
 }
 
 .mobileImg {
-  width: 255px;
+  width: 150px;
+  min-width: 150px;
+  aspect-ratio: 1;
   border-width: 1px;
-  padding-right: 30px;
-  padding-left: 30px;
   gap: 10px;
   border-radius: 10px;
-  border: 1px solid #0000001a;
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: center;
   position: relative;
 }
 
 .mobileImg img {
-  width: auto;
+  width: fit-content;
   height: 100%;
 }
 
 .DeviceDetails {
-  height: 278px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0px;
+  gap: 10px;
+  width: calc(100% - 150px);
 }
 
 .DeviceDetails h2 {
   font-family: IBM Plex Sans;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 100%;
   letter-spacing: 0%;
 }
 
 .DeviceDetails .name {
-  margin-bottom: 52px;
+  margin-bottom: 5px;
 }
 
 .DeviceDetails span {
   font-family: IBM Plex Sans;
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 500;
   line-height: 100%;
   letter-spacing: 0%;
 }
 
-.recalculateImg {
-  width: 120px;
-  height: 40px;
-  border-radius: 5px;
-  border-right-width: 1px;
+.recalculate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  font-size: 14px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  color: #000000 !important;
+  text-decoration: none !important;
+  border: 0.3px solid #000000;
 }
 
-.FreePickupImg {
-  width: 370px;
-  height: 40;
-  gap: 5px;
-  border-radius: 5px;
+.recalculateImg {
+  width: 18px;
+  height: 18px;
+  margin-right: 7px;
 }
 
 .details {
-  padding: 10px;
-  border-radius: 15px;
-  background-color: #fff;
-  border: 0.3px solid #e1e1e1;
   display: flex;
   flex-direction: column;
   gap: 0px;
-  width: 364px;
-}
-
-.DeviceDetails a {
-  width: fit-content;
+  width: 100%;
 }
 
 .summary {
-  height: 26px;
   font-family: "IBM Plex Sans";
   font-style: normal;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
-  line-height: 26px;
   color: #000000;
-  margin: 10px 0px;
 }
 
 .row {
@@ -179,7 +181,6 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 7px 0;
-  width: 364px;
   border-bottom: 0.3px solid #e1e1e1;
 }
 
@@ -188,8 +189,7 @@
   font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 23px;
+  font-size: 16px;
   color: rgba(0, 0, 0);
 }
 
@@ -206,6 +206,7 @@
 
 .free {
   font-weight: 500;
+  font-size: 16px;
   color: #34a853;
 }
 
@@ -213,6 +214,7 @@
   text-decoration: line-through;
   color: rgba(0, 0, 0, 0.7);
   display: flex;
+  font-size: 16px;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -220,7 +222,6 @@
 .totalRow {
   display: flex;
   justify-content: space-between;
-  width: 364px;
   margin: 10px 0;
 }
 
@@ -233,8 +234,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 11px 35px;
-  width: 364px;
+  padding: 5px 15px;
   height: 54px;
   background: #1968b3;
   border-radius: 10px;
@@ -244,6 +244,7 @@
   color: #ffffff;
   cursor: pointer;
   border: none;
+  width: 100%;
 }
 
 /* Default Desktop: Hide Coupon & Mobile elements */
@@ -344,12 +345,10 @@
   display: none;
 }
 
-.FreePickupImgMobile {
-  display: none;
-}
-
 .DeviceDetails .price {
+  font-size: 16px;
   font-weight: 400 !important;
+  margin-bottom: 5px;
 }
 
 .deviceDetailsBtn img {
@@ -370,6 +369,16 @@
   position: relative;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   animation: fadeIn 0.3s ease-in-out;
+}
+
+.detailsDown {
+  display: none;
+  order: 3;
+}
+
+.detailsCoupon {
+  display: none;
+  order: 4;
 }
 
 .modalContentWrapper {
@@ -452,7 +461,9 @@
   border: 0.3px solid #e1e1e1;
   border-radius: 10px;
   padding: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 0px;
+  width: 68%;
+  order: 5;
 }
 
 .summaryCardPayment {
@@ -460,7 +471,9 @@
   border: 0.3px solid #e1e1e1;
   border-radius: 10px;
   padding: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 0px;
+  width: 68%;
+  order: 6;
 }
 
 .summaryCardAddress .summaryHeaderLeft img {
@@ -529,11 +542,14 @@
 
 .paymentType {
   display: inline-block;
+  font-size: 14px;
   font-weight: 500;
 }
 
 .paymentText {
   font-family: IBM Plex Sans;
+  font-size: 13px;
+  font-weight: 400;
   color: #000000;
   margin: 0;
   line-height: 1.4;
@@ -575,6 +591,10 @@
   margin-top: 8px;
 }
 
+.sellNowContainer {
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .wrapper {
     flex-direction: column;
@@ -584,9 +604,36 @@
     padding-bottom: 90px;
   }
 
+  .recalculate {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: #000000 !important;
+    text-decoration: none !important;
+    border: 0.3px solid #000000;
+  }
+
+  .deliveryfeature {
+    padding-top: 0px;
+    border-top: none;
+    margin-top: 0px;
+  }
+
+  .deliveryfeature .feature p {
+    font-size: 12px;
+    margin: 10px 0 0 0;
+  }
+
+  .deliveryfeature .feature {
+    flex-direction: column;
+    border-right: 0.3px solid #e1e1e1;
+    justify-content: flex-start;
+  }
+
   .orderSummary {
     padding-bottom: 85px;
     flex-direction: column;
+    gap: 0px;
   }
 
   .DeviceDetails h2 {
@@ -604,6 +651,10 @@
     line-height: 1.3;
   }
 
+  .DeviceDetails span {
+    font-size: 20px;
+  }
+
   .RightBox {
     width: 100%;
     height: auto;
@@ -611,6 +662,11 @@
     border: none;
     padding: 0px;
     gap: 15px;
+    order: 6;
+  }
+
+  .featureOption {
+    height: 45px;
   }
 
   .DeviceDetails {
@@ -626,7 +682,11 @@
   }
 
   .details {
+    padding: 10px;
     width: 100%;
+    background-color: #fff;
+    border: 0.3px solid #e1e1e1;
+    border-radius: 15px;
   }
 
   .sellNow {
@@ -644,6 +704,7 @@
     padding: 10px;
     width: 100%;
     margin: 20px 0 15px;
+    order: 1;
   }
 
   .DeviceDetails .price {
@@ -657,14 +718,6 @@
   }
 
   .recalculateImg {
-    display: none;
-  }
-
-  .FreePickupImgMobile {
-    display: block;
-  }
-
-  .FreePickupImg {
     display: none;
   }
 
@@ -686,6 +739,7 @@
     padding: 12px;
     border: 0.3px solid #e1e1e1;
     width: 100px;
+    min-width: 100px;
     height: 100px;
   }
 
@@ -705,10 +759,19 @@
     gap: 0px;
     border-radius: 15px;
     margin-bottom: 15px;
+    order: 2;
+    display: block;
   }
 
-  .infoLine {
-    display: none;
+  .detailsCoupon {
+    background-color: #ffffff;
+    padding: 10px;
+    border: 0.3px solid #e1e1e1;
+    gap: 0px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    order: 5;
+    display: block;
   }
 
   .summary {
@@ -818,12 +881,14 @@
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 15px;
+    order: 3;
   }
 
   .summaryCardPayment {
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 15px;
+    order: 4;
   }
 
   .summaryIcon {

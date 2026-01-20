@@ -2,7 +2,7 @@ import { useContext, useEffect, useState, useCallback } from "react";
 import styles from "./OrderSummary.module.css";
 import MobileImg from "../../../../assets/images/Products/mobile.png";
 import "../../../../assets/images/icons/rightarrow.png";
-import Recalculate from "../../../../assets/images/recalculate_icon.png";
+import Recalculate from "../../../../assets/QuickSellNewIcons/set-to-zero.png";
 import FreePickup from "../../../../assets/images/free_pickup_icon.png";
 import clock from "../../../../assets/flaticons/clock-basecolor.png";
 import van from "../../../../assets/flaticons/delivery-van-basecolor.png";
@@ -219,9 +219,6 @@ function OrderSummary() {
                   {`₹ ${(currentEvaluationId?.finalPrice || 0).toFixed(2)}`}
                 </span>
               </div>
-              <span className={styles.infoLine}>
-                "5,933+ Sold on QuickMobile"
-              </span>
               <>
                 <NavLink
                   to={`/${slug}/final-price-calculator?${queryParams.toString()}`}
@@ -264,12 +261,8 @@ function OrderSummary() {
                     alt="Recalculate"
                     className={styles.recalculateImg}
                   />
+                  Recalculate
                 </NavLink>
-                <img
-                  src={FreePickup}
-                  alt=""
-                  className={styles.FreePickupImg}
-                />
               </>
             </div>
           </div>
@@ -427,7 +420,7 @@ function OrderSummary() {
             </p>
           )}
         </div>
-        <div className={styles.detailsDown}>
+        <div className={styles.detailsCoupon}>
           <div className={styles.applyCoupon} onClick={openCouponModal}>
             <button>
               <div className={styles.bottonTitle}>
