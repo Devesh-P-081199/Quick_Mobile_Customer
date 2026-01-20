@@ -24,14 +24,6 @@
   overflow: visible !important;
 }
 
-@media (max-width: 768px) {
-  .orderSummary {
-    padding-bottom: 85px;
-    flex-direction: column;
-    gap: 0px;
-  }
-}
-
 .leftColumn {
   width: 68%;
   display: flex;
@@ -48,6 +40,7 @@
   background-color: #ffffff;
   height: auto;
   margin: 0;
+  order: 1
 }
 
 .rightColumn {
@@ -408,10 +401,12 @@
 
 .detailsDown {
   display: none;
+  order: 2;
 }
 
 .detailsCoupon {
   display: none;
+  order: 5;
 }
 
 .modalContentWrapper {
@@ -496,6 +491,7 @@
   padding: 12px;
   margin-bottom: 0px;
   width: 100%;
+  order: 3;
 }
 
 .summaryCardPayment {
@@ -505,6 +501,7 @@
   padding: 12px;
   margin-bottom: 0px;
   width: 100%;
+  order: 4;
 }
 
 .summaryCardAddress .summaryHeaderLeft img {
@@ -635,13 +632,14 @@
     padding-bottom: 90px;
   }
 
+  .orderSummary {
+    padding-bottom: 85px;
+    flex-direction: column;
+    gap: 0px;
+  }
+
   .recalculate {
-    font-size: 12px;
-    padding: 5px 10px;
-    border-radius: 10px;
-    color: #000000 !important;
-    text-decoration: none !important;
-    border: 0.3px solid #000000;
+    display: none;
   }
 
   .deliveryfeature {
@@ -659,12 +657,6 @@
     flex-direction: column;
     border-right: 0.3px solid #e1e1e1;
     justify-content: flex-start;
-  }
-
-  .orderSummary {
-    padding-bottom: 85px;
-    flex-direction: column;
-    gap: 0px;
   }
 
   .leftColumn {
@@ -747,6 +739,7 @@
     padding: 10px;
     width: 100%;
     margin: 20px 0 15px;
+    order: 1;
   }
 
   .DeviceDetails .price {
@@ -802,6 +795,7 @@
     border-radius: 15px;
     margin-bottom: 15px;
     display: block;
+    order: 2;
   }
 
   .detailsCoupon {
@@ -812,6 +806,7 @@
     border-radius: 15px;
     margin-bottom: 15px;
     display: block;
+    order: 5
   }
 
   .summary {
