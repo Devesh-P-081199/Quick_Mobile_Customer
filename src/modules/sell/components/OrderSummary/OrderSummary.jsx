@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
 import Answers from "../AnswerList/Answers";
 import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
+import coupon from "../../../../assets/QuickSellNewIcons/discount-coupon.png";
 import arrow from "../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 import closeIcon from "../../../../assets/QuickSellNewIcons/Cross.svg";
 
@@ -507,6 +508,54 @@ function OrderSummary() {
             {/* Apply Coupon Button */}
           </div>
         </div>
+        {/* Coupon Modal */}
+        {isCouponModalOpen && (
+          <div className={styles.modalOverlay}>
+            <div className={styles.simpleModal}>
+              <button
+                className={styles.closeButton}
+                onClick={closeCouponModal}
+              >
+                <img src={closeIcon} alt="Close" />
+              </button>
+
+              <div className={styles.modalContentWrapper}>
+                {/* Icon */}
+                <div className={styles.modalIcon}>
+                  {/* You can use an img tag or FontAwesome icon here */}
+                  <img
+                    src={coupon} // Using clock as placeholder if Coupon icon not imported, or import Coupon
+                    alt=""
+                    className={styles.featureOption}
+                    style={{ width: '40px', height: '40px' }}
+                  />
+                </div>
+
+                {/* Title */}
+                <h2 className={styles.modalTitle}>Apply Coupon</h2>
+
+                {/* Text */}
+                <p className={styles.modalText}>
+                  Have a promo code? Enter it below to redeem your discount.
+                </p>
+
+                {/* Input */}
+                <input
+                  type="text"
+                  placeholder="Enter Coupon Code"
+                  className={styles.couponInput}
+                />
+
+                {/* Apply Button */}
+                <button className={styles.applyButton}>Apply</button>
+
+                <p className={styles.modalSubText}>
+                  Terms & Conditions apply
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
