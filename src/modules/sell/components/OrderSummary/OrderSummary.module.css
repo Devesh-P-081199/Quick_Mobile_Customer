@@ -691,6 +691,8 @@
 
   .summaryCardCoupon {
     order: 4;
+    margin-bottom: 15px;
+    padding: 10px;
     /* Adjust order for mobile flow if needed */
   }
 
@@ -1025,7 +1027,7 @@
     font-size: 11px;
   }
 
-  .summaryHeader {
+  .summaryCardCoupon .summaryHeader {
     display: none;
   }
 
