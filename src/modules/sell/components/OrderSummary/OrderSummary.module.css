@@ -178,14 +178,14 @@
   font-size: 14px;
   padding: 7px 10px;
   border-radius: 10px;
-  color: #000000 !important;
+  color: #ffffff !important;
+  background-color: #1968b3 !important;
   text-decoration: none !important;
-  border: 0.3px solid #000000;
 }
 
 .recalculateImg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   margin-right: 7px;
 }
 
@@ -403,16 +403,23 @@
   order: 2;
 }
 
-.detailsCoupon {
+/* Desktop Coupon Styles */
+.desktopCoupon {
   display: block;
-  order: 5;
+  margin-top: 20px;
+  width: 100%;
 }
 
-.modalContentWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+/* Mobile Coupon Button Trigger Styles */
+.detailsCoupon {
+  display: none !important;
+  /* Hidden on desktop */
+}
+
+/* Modal Content Wrapper reused in Desktop - Adjust padding */
+.desktopCoupon .modalContentWrapper {
+  align-items: flex-start;
+  text-align: left;
 }
 
 .modalIcon {
@@ -486,21 +493,65 @@
 .summaryCardAddress {
   background-color: #ffffff;
   border: 0.3px solid #e1e1e1;
-  border-radius: 10px;
+  border-radius: 20px;
+  padding: 12px;
+  margin-bottom: 0px;
+  width: 100%;
+  order: 4;
+}
+
+.summaryCardPayment {
+  background-color: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 20px;
+  padding: 12px;
+  margin-bottom: 0px;
+  width: 100%;
+  order: 5;
+}
+
+.summaryCardCoupon {
+  background-color: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 20px;
   padding: 12px;
   margin-bottom: 0px;
   width: 100%;
   order: 3;
 }
 
-.summaryCardPayment {
-  background-color: #ffffff;
-  border: 0.3px solid #e1e1e1;
+.summaryCardCoupon .summaryHeaderLeft img {
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  background-color: transparent;
+}
+
+/* Coupon Content Layout */
+.couponContent {
+  padding-top: 10px;
+}
+
+.desktopCouponForm {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.desktopCouponForm input {
+  width: 75%;
   border-radius: 10px;
-  padding: 12px;
-  margin-bottom: 0px;
-  width: 100%;
-  order: 4;
+}
+
+.desktopCouponForm button {
+  width: 25%;
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+.mobileCouponTrigger {
+  display: none;
 }
 
 .summaryCardAddress .summaryHeaderLeft img {
@@ -623,6 +674,26 @@
 }
 
 @media (max-width: 768px) {
+
+  .desktopCoupon {
+    display: none !important;
+    /* Hidden on mobile */
+  }
+
+  .desktopCouponForm {
+    display: none;
+  }
+
+  .mobileCouponTrigger {
+    display: block;
+    width: 100%;
+  }
+
+  .summaryCardCoupon {
+    order: 4;
+    /* Adjust order for mobile flow if needed */
+  }
+
   .wrapper {
     flex-direction: column;
     justify-content: center;
@@ -798,6 +869,7 @@
   }
 
   .detailsCoupon {
+    display: block !important;
     background-color: #ffffff;
     padding: 10px;
     border: 0.3px solid #e1e1e1;
@@ -805,7 +877,7 @@
     border-radius: 15px;
     margin-bottom: 15px;
     display: block;
-    order: 5
+    order: 5;
   }
 
   .summary {
@@ -954,6 +1026,10 @@
   }
 
   .summaryHeader {
-    padding: 0 0 10px;
+    display: none;
+  }
+
+  .couponContent {
+    padding-top: 0px;
   }
 }
