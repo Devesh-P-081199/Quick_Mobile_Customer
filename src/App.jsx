@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,18 +9,18 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Import Pages - Updated to use feature-based structure
-const SeriesSelection = React.lazy(
-  () => import("./modules/sell/pages/SeriesSelection"),
-);
-const ModelSelection = React.lazy(
-  () => import("./modules/sell/pages/ModelSelection"),
-);
-const SelectVarient = React.lazy(
-  () => import("./modules/sell/pages/SelectVarient"),
-);
-const GetPriceUpto = React.lazy(
-  () => import("./modules/sell/pages/GetPriceUpto"),
-);
+// const SeriesSelection = React.lazy(
+//   () => import("./modules/sell/pages/SeriesSelection"),
+// );
+// const ModelSelection = React.lazy(
+//   () => import("./modules/sell/pages/ModelSelection"),
+// );
+// const SelectVarient = React.lazy(
+//   () => import("./modules/sell/pages/SelectVarient"),
+// );
+// const GetPriceUpto = React.lazy(
+//   () => import("./modules/sell/pages/GetPriceUpto"),
+// );
 const DeviceEvaluationPage = React.lazy(
   () => import("./modules/sell/pages/DeviceEvaluationPage"),
 );
@@ -42,28 +42,31 @@ const PaymentForm = React.lazy(
 const ThankYouPage = React.lazy(
   () => import("./modules/common/pages/ThankYouPage"),
 );
-const SelectSubCata = React.lazy(
-  () => import("./modules/sell/components/SelectSubCategories/SelectSubCata"),
+// const SelectSubCata = React.lazy(
+//   () => import("./modules/sell/components/SelectSubCategories/SelectSubCata"),
+// );
+import Loader from "./modules/common/components/layout/Loader/Loader";
+import DynamicRouteHandler from "./modules/common/pages/DynamicRouteHandler";
+import NotFoundPage from "./modules/common/pages/NotFoundPage";
+
+const BlogDetail = React.lazy(
+  () => import("./modules/common/pages/BlogDetail"),
+);
+const BlogsPage = React.lazy(() => import("./modules/common/pages/BlogsPage"));
+const StorePage = React.lazy(() => import("./modules/common/pages/StorePage"));
+const StoresListPage = React.lazy(
+  () => import("./modules/common/pages/StoresListPage"),
 );
 
-const ViewAllCata = React.lazy(
-  () => import("./modules/sell/pages/ViewAllCata"),
-);
-import FAQPage from "./modules/sell/pages/FAQPage";
-import Header from "./modules/common/components/layout/Header/Header";
-import Footer from "./modules/common/components/layout/Footer/Footer";
 // Updated imports to use new feature-based structure
-const Login = React.lazy(
-  () => import("./modules/profile/components/Login/Login"),
-);
-const SignUp = React.lazy(
-  () => import("./modules/profile/components/Signup/Signup"),
-);
+// const Login = React.lazy(
+//   () => import("./modules/profile/components/Login/Login"),
+// );
+// const SignUp = React.lazy(
+//   () => import("./modules/profile/components/Signup/Signup"),
+// );
 const Address = React.lazy(
   () => import("./modules/profile/pages/SavedAddress"),
-);
-const PaymentOptions = React.lazy(
-  () => import("./modules/checkout/components/Payment/Payment"),
 );
 const ProfilePayments = React.lazy(
   () => import("./modules/profile/pages/PaymentOptions"),
@@ -81,31 +84,45 @@ const EditProfile = React.lazy(
 const OrderDetails = React.lazy(
   () => import("./modules/profile/components/MyOrder/OrderDetails"),
 );
-import { Suspense } from "react";
 
-// testing for loader
-import Loader from "./modules/common/components/layout/Loader/Loader";
-import DynamicRouteHandler from "./modules/common/pages/DynamicRouteHandler";
-import NotFoundPage from "./modules/common/pages/NotFoundPage";
-const BlogDetail = React.lazy(
-  () => import("./modules/common/pages/BlogDetail"),
+const ViewAllCata = React.lazy(
+  () => import("./modules/sell/pages/ViewAllCata"),
 );
-const BlogsPage = React.lazy(() => import("./modules/common/pages/BlogsPage"));
-const StorePage = React.lazy(() => import("./modules/common/pages/StorePage"));
-const StoresListPage = React.lazy(
-  () => import("./modules/common/pages/StoresListPage"),
-);
+const FAQPage = React.lazy(() => import("./modules/sell/pages/FAQPage"));
+import Header from "./modules/common/components/layout/Header/Header";
+import Footer from "./modules/common/components/layout/Footer/Footer";
 import HomePage from "./modules/buy/pages/HomePage";
-import AboutUs from "./modules/common/pages/general/AboutUs/AboutUs";
-import Cookies from "./modules/common/pages/general/Cookies/Cookies";
-import TermsOfService from "./modules/common/pages/general/Terms/Terms";
-import RefundPolicy from "./modules/common/pages/general/RefundPolicy/RefundPolicy";
-import ContactUs from "./modules/common/pages/general/ContactUs/ContactUs";
-import QuickImpact from "./modules/common/pages/general/QuickImpact/QuickImpact";
-import SearchBar from "./modules/common/components/layout/SearchBar/SearchBar";
-import GuidePrivacyPolicy from "./modules/common/pages/general/Privacy/Privacy";
-import ProfileCard from "./modules/profile/components/ProfileCard";
-import NoOffer from "./modules/profile/components/Offer/Offer";
+
+const AboutUs = React.lazy(
+  () => import("./modules/common/pages/general/AboutUs/AboutUs"),
+);
+const Cookies = React.lazy(
+  () => import("./modules/common/pages/general/Cookies/Cookies"),
+);
+const TermsOfService = React.lazy(
+  () => import("./modules/common/pages/general/Terms/Terms"),
+);
+const RefundPolicy = React.lazy(
+  () => import("./modules/common/pages/general/RefundPolicy/RefundPolicy"),
+);
+const ContactUs = React.lazy(
+  () => import("./modules/common/pages/general/ContactUs/ContactUs"),
+);
+const QuickImpact = React.lazy(
+  () => import("./modules/common/pages/general/QuickImpact/QuickImpact"),
+);
+const SearchBar = React.lazy(
+  () => import("./modules/common/components/layout/SearchBar/SearchBar"),
+);
+const GuidePrivacyPolicy = React.lazy(
+  () => import("./modules/common/pages/general/Privacy/Privacy"),
+);
+const ProfileCard = React.lazy(
+  () => import("./modules/profile/components/ProfileCard"),
+);
+const NoOffer = React.lazy(
+  () => import("./modules/profile/components/Offer/Offer"),
+);
 
 const ScrollToTop = () => {
   const { pathname, search } = useLocation();
@@ -438,16 +455,79 @@ const AppContent = () => {
           }
         />
 
-        <Route path="/FAQPage" element={<FAQPage />} />
+        <Route
+          path="/FAQPage"
+          element={
+            <Suspense fallback={<Loader />}>
+              <FAQPage />
+            </Suspense>
+          }
+        />
         <Route path="/not-found" element={<NotFoundPage />} />
-        <Route path="/Cookies" element={<Cookies />} />
-        <Route path="/About-us" element={<AboutUs />} />
-        <Route path="/Terms" element={<TermsOfService />} />
-        <Route path="/Refund" element={<RefundPolicy />} />
-        <Route path="/Contact-us" element={<ContactUs />} />
-        <Route path="/Impact" element={<QuickImpact />} />
-        <Route path="/Search" element={<SearchBar />} />
-        <Route path="/Privacy" element={<GuidePrivacyPolicy />} />
+        <Route
+          path="/Cookies"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Cookies />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/About-us"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AboutUs />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/Terms"
+          element={
+            <Suspense fallback={<Loader />}>
+              <TermsOfService />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/Refund"
+          element={
+            <Suspense fallback={<Loader />}>
+              <RefundPolicy />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/Contact-us"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ContactUs />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/Impact"
+          element={
+            <Suspense fallback={<Loader />}>
+              <QuickImpact />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/Search"
+          element={
+            <Suspense fallback={<Loader />}>
+              <SearchBar />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/Privacy"
+          element={
+            <Suspense fallback={<Loader />}>
+              <GuidePrivacyPolicy />
+            </Suspense>
+          }
+        />
         <Route
           path="/blogs"
           element={

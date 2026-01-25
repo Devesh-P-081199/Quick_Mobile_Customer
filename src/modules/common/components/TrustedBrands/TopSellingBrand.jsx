@@ -2,6 +2,7 @@ import styles from "./TopSellingBrand.module.css";
 import leftCircleIcon from "../../../../assets/icons/Frame 32.svg";
 import rightCircleIcon from "../../../../assets/icons/Frame 42.svg";
 import CommonSlider from "../ui/Slider/CommonSlider";
+import AppImage from "../Image/AppImage";
 import appleLogo from "../../../../assets/TopSellingBrands/apple-logo.png";
 import xiaomiLogo from "../../../../assets/TopSellingBrands/xiaomi-logo.png";
 import samsungLogo from "../../../../assets/TopSellingBrands/samsung-logo.png";
@@ -40,7 +41,15 @@ function TopSellingBrand() {
             renderItem={(item, index) => (
               <div className={styles.brandSingleBox} key={index}>
                 <div className={styles.imgIndividual}>
-                  <img src={item.icon} alt={item.name} title={item?.name} />
+                  <AppImage
+                    src={item.icon}
+                    alt={item.name}
+                    title={item?.name}
+                    width="60px"
+                    height="60px"
+                    className="brand-logo"
+                    style={{ objectFit: "contain" }}
+                  />
                 </div>
                 <span>{item.name}</span>
               </div>

@@ -1,6 +1,7 @@
 import styles from "./TopSellingProduct.module.css";
 import starIcon from "../../../../assets/icons/star.png"; // Replace with actual star icon path
 import productImage from "../../../../assets/images/Products/mobile.png";
+import AppImage from "../Image/AppImage";
 
 const TopSellingProducts = () => {
   return (
@@ -12,11 +13,13 @@ const TopSellingProducts = () => {
           </div>
 
           <div className={styles.imageSection}>
-            <img
+            <AppImage
               src={productImage}
               alt="iPhone 16 Pro Max"
               title="iphone 16 Pro Max"
               className={styles.productImage}
+              width="150px"
+              height="150px"
             />
           </div>
 

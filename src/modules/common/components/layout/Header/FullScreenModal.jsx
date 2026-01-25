@@ -7,13 +7,21 @@ const MobileFullScreenModal = ({ title, children, onClose, onCloseBtn }) => {
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.header}>
-        <button onClick={onClose} className={styles.backButton}>
-          <img src={backarrow} alt="" />
+        <button
+          onClick={onClose}
+          className={styles.backButton}
+          aria-label="Go back"
+        >
+          <img src={backarrow} alt="" aria-hidden="true" />
         </button>
         <h2 className={styles.title}>{title}</h2>
         {onCloseBtn && (
-          <button onClick={onCloseBtn} className={styles.closeButton}>
-            <img src={closeIcon} alt="Close" />
+          <button
+            onClick={onCloseBtn}
+            className={styles.closeButton}
+            aria-label="Close modal"
+          >
+            <img src={closeIcon} alt="" aria-hidden="true" />
           </button>
         )}
       </div>

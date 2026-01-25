@@ -2,6 +2,7 @@ import styles from "./TopSellingModel.module.css";
 import leftCircleIcon from "../../../../assets/icons/Frame 32.svg";
 import rightCircleIcon from "../../../../assets/icons/Frame 42.svg";
 import CommonSlider from "../ui/Slider/CommonSlider";
+import AppImage from "../Image/AppImage";
 
 // Import phone icon as fallback for all models
 import phoneIcon from "../../../../assets/images/static/1763650262064-Oppo F31 Pro 5G.avif";
@@ -38,7 +39,14 @@ function TopSellingModel() {
             renderItem={(item, index) => (
               <div className={styles.brandSingleBox} key={index}>
                 <div className={styles.imgIndividual}>
-                  <img src={item.icon} alt={item.name} title={item?.name} />
+                  <AppImage
+                    src={item.icon}
+                    alt={item.name}
+                    title={item?.name}
+                    width="60px"
+                    height="60px"
+                    style={{ borderRadius: "8px", objectFit: "cover" }}
+                  />
                 </div>
                 <span>{item.name}</span>
               </div>

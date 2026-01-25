@@ -3,7 +3,6 @@ import styles from "./OrderSummary.module.css";
 import MobileImg from "../../../../assets/images/Products/mobile.png";
 import "../../../../assets/images/icons/rightarrow.png";
 import Recalculate from "../../../../assets/QuickSellNewIcons/set-to-zero.png";
-import FreePickup from "../../../../assets/images/free_pickup_icon.png";
 import clock from "../../../../assets/flaticons/clock-basecolor.png";
 import van from "../../../../assets/flaticons/delivery-van-basecolor.png";
 import secureShield from "../../../../assets/flaticons/secure-basecolor.png";
@@ -74,14 +73,14 @@ function OrderSummary() {
   const location = useLocation();
 
   // ... existing effects and handlers ...
-  // (Copying context from previous view to ensure nothing is lost, but relying on "StartLine" to replace only the necessary parts if possible. 
-  // However, since I need to insert the helper component OUTSIDE the function or define it inside, 
-  // and I need to update the JSX return, I will do a targeted replace for the return statement 
+  // (Copying context from previous view to ensure nothing is lost, but relying on "StartLine" to replace only the necessary parts if possible.
+  // However, since I need to insert the helper component OUTSIDE the function or define it inside,
+  // and I need to update the JSX return, I will do a targeted replace for the return statement
   // and a separate one for the helper definition if needed.
   // Actually, defining it inside is easier for now to access imports, but imports are top level.)
 
   // WAIT, I can't put the helper component *inside* the replace block if I'm only replacing the `return` or specific parts.
-  // The tool replaces a block. 
+  // The tool replaces a block.
   // I will replace the END of the file to include the component definition if I place it outside, or just define it inside OrderSummary before return.
   // Let's define it inside OrderSummary for simplicity of this edit, or better, keep the file structure clean.
   // I will assume imports are available.
@@ -113,7 +112,9 @@ function OrderSummary() {
       const fetchedAddresses = resp?.data.data?.addresses || [];
       setAddresses(fetchedAddresses);
       if (fetchedAddresses.length > 0 && !selectedAddress) {
-        const activeAddress = fetchedAddresses.find((addr) => addr.isActive === true);
+        const activeAddress = fetchedAddresses.find(
+          (addr) => addr.isActive === true,
+        );
         const defaultAddress = activeAddress || fetchedAddresses[0];
         setSelectedAddress(defaultAddress);
       }
@@ -139,7 +140,9 @@ function OrderSummary() {
           setSelectedPaymentMethod({ type: "upi", ...activeUpi });
           return;
         }
-        const activeBank = bankMethods.find((method) => method.isActive === true);
+        const activeBank = bankMethods.find(
+          (method) => method.isActive === true,
+        );
         if (activeBank) {
           setSelectedPaymentMethod({ type: "bank", ...activeBank });
           return;
@@ -173,7 +176,10 @@ function OrderSummary() {
         address: selectedAddress,
         paymentDetail: selectedPaymentMethod,
       };
-      const placeOrder = await api.post("/sell-module/user/orders", orderPayload);
+      const placeOrder = await api.post(
+        "/sell-module/user/orders",
+        orderPayload,
+      );
       toast.success("Order placed successfully!");
       navigate("/thank-you", {
         replace: true,
@@ -222,7 +228,8 @@ function OrderSummary() {
               <div className={styles.DeviceDetails}>
                 <h2 className={styles.name}>
                   <>
-                    {currentEvaluationId?.deviceName} ({currentEvaluationId?.deviceVariant})
+                    {currentEvaluationId?.deviceName} (
+                    {currentEvaluationId?.deviceVariant})
                   </>
                 </h2>
                 <div className={styles.pricing}>
@@ -254,7 +261,11 @@ function OrderSummary() {
                       }
                     }}
                   >
-                    <img src={Recalculate} alt="Recalculate" className={styles.recalculateImg} />
+                    <img
+                      src={Recalculate}
+                      alt="Recalculate"
+                      className={styles.recalculateImg}
+                    />
                     Recalculate
                   </NavLink>
                 </>
@@ -270,7 +281,11 @@ function OrderSummary() {
                 <p>Free Pickup</p>
               </div>
               <div className={styles.feature}>
-                <img src={secureShield} alt="" className={styles.featureOption}></img>
+                <img
+                  src={secureShield}
+                  alt=""
+                  className={styles.featureOption}
+                ></img>
                 <p>100% Safe & Secure</p>
               </div>
             </div>
@@ -283,7 +298,11 @@ function OrderSummary() {
             <div className={styles.deviceDetailsBtn}>
               <button onClick={() => setShowAnswersModal(true)}>
                 <div className={styles.bottonTitle}>
-                  <img src={clock} alt="" className={styles.featureOption}></img>
+                  <img
+                    src={clock}
+                    alt=""
+                    className={styles.featureOption}
+                  ></img>
                   <p>Device Details</p>
                 </div>
                 <span>
@@ -299,27 +318,38 @@ function OrderSummary() {
                 <img src={van} alt="" className={styles.featureOption}></img>
                 <span className={styles.summaryLabel}>Pickup Address</span>
               </div>
-              <button className={styles.changeBtn} onClick={handleChangeAddress}>
+              <button
+                className={styles.changeBtn}
+                onClick={handleChangeAddress}
+              >
                 {selectedAddress ? "Change" : "Add"}
               </button>
             </div>
             {selectedAddress ? (
               <div className={styles.summaryContent}>
-                <span className={styles.addressTag}>{selectedAddress?.saveAs}</span>
+                <span className={styles.addressTag}>
+                  {selectedAddress?.saveAs}
+                </span>
                 <p className={styles.addressText}>
                   {selectedAddress?.houseNumber}, {selectedAddress?.street}
-                  {selectedAddress?.landmark && `, ${selectedAddress?.landmark}`}
-                  {selectedAddress?.cityName}, {selectedAddress?.state} - {selectedAddress?.zipCode}
+                  {selectedAddress?.landmark &&
+                    `, ${selectedAddress?.landmark}`}
+                  {selectedAddress?.cityName}, {selectedAddress?.state} -{" "}
+                  {selectedAddress?.zipCode}
                 </p>
-                <p className={styles.addressText}>{selectedAddress?.alternatePhone}</p>
+                <p className={styles.addressText}>
+                  {selectedAddress?.alternatePhone}
+                </p>
               </div>
             ) : addresses.length === 0 ? (
               <p className={styles.notSelected}>
-                No addresses found. Click "Add" button above to add a delivery address.
+                No addresses found. Click "Add" button above to add a delivery
+                address.
               </p>
             ) : (
               <p className={styles.notSelected}>
-                No address selected. Click "Add" button above to select an address.
+                No address selected. Click "Add" button above to select an
+                address.
               </p>
             )}
           </div>
@@ -327,10 +357,17 @@ function OrderSummary() {
           <div className={styles.summaryCardPayment}>
             <div className={styles.summaryHeader}>
               <div className={styles.summaryHeaderLeft}>
-                <img src={secureShield} alt="" className={styles.featureOption}></img>
+                <img
+                  src={secureShield}
+                  alt=""
+                  className={styles.featureOption}
+                ></img>
                 <span className={styles.summaryLabel}>Payment Method</span>
               </div>
-              <button className={styles.changeBtn} onClick={handleChangePayment}>
+              <button
+                className={styles.changeBtn}
+                onClick={handleChangePayment}
+              >
                 {selectedPaymentMethod ? "Change" : "Add"}
               </button>
             </div>
@@ -340,12 +377,17 @@ function OrderSummary() {
                   <>
                     <span className={styles.paymentType}>UPI Payment</span>
                     <p className={styles.paymentText}>
-                      UPI ID: <span className={styles.paymentValue}>{selectedPaymentMethod?.upiId}</span>
+                      UPI ID:{" "}
+                      <span className={styles.paymentValue}>
+                        {selectedPaymentMethod?.upiId}
+                      </span>
                     </p>
                   </>
                 ) : selectedPaymentMethod.type === "bank" ? (
                   <>
-                    <span className={styles.paymentType}>Bank Transfer (IMPS)</span>
+                    <span className={styles.paymentType}>
+                      Bank Transfer (IMPS)
+                    </span>
                     <p className={styles.paymentText}>
                       Account:{" "}
                       <span className={styles.paymentValue}>
@@ -353,21 +395,30 @@ function OrderSummary() {
                       </span>
                     </p>
                     <p className={styles.paymentText}>
-                      IFSC: <span className={styles.paymentValue}>{selectedPaymentMethod?.bankDetails?.ifscCode}</span>
+                      IFSC:{" "}
+                      <span className={styles.paymentValue}>
+                        {selectedPaymentMethod?.bankDetails?.ifscCode}
+                      </span>
                     </p>
                     <p className={styles.paymentText}>
-                      Bank: <span className={styles.paymentValue}>{selectedPaymentMethod?.bankDetails?.bankName}</span>
+                      Bank:{" "}
+                      <span className={styles.paymentValue}>
+                        {selectedPaymentMethod?.bankDetails?.bankName}
+                      </span>
                     </p>
                   </>
                 ) : null}
               </div>
-            ) : paymentMethods.upi.length === 0 && paymentMethods.bank.length === 0 ? (
+            ) : paymentMethods.upi.length === 0 &&
+              paymentMethods.bank.length === 0 ? (
               <p className={styles.notSelected}>
-                No payment methods found. Click "Add" button above to add a payment method.
+                No payment methods found. Click "Add" button above to add a
+                payment method.
               </p>
             ) : (
               <p className={styles.notSelected}>
-                No payment method selected. Click "Add" button above to select a payment method.
+                No payment method selected. Click "Add" button above to select a
+                payment method.
               </p>
             )}
           </div>
@@ -382,7 +433,12 @@ function OrderSummary() {
                   src={coupon}
                   alt=""
                   className={styles.featureOption}
-                  style={{ width: "30px", height: "30px", padding: "2px", background: "transparent" }}
+                  style={{
+                    width: "30px",
+                    height: "30px",
+                    padding: "2px",
+                    background: "transparent",
+                  }}
                 ></img>
                 <span className={styles.summaryLabel}>Apply Coupon</span>
               </div>
@@ -403,7 +459,11 @@ function OrderSummary() {
                 <div className={styles.applyCoupon} onClick={openCouponModal}>
                   <button>
                     <div className={styles.bottonTitle}>
-                      <img src={coupon} alt="" className={styles.featureOption}></img>
+                      <img
+                        src={coupon}
+                        alt=""
+                        className={styles.featureOption}
+                      ></img>
                       <p>Apply Coupon</p>
                     </div>
                     <span>
@@ -421,7 +481,9 @@ function OrderSummary() {
             <div className={styles.modalContent}>
               <Answers
                 onBack={() => setShowAnswersModal(false)}
-                onRecalculate={() => navigate(`/${slug}/final-price-calculator${location.search}`)}
+                onRecalculate={() =>
+                  navigate(`/${slug}/final-price-calculator${location.search}`)
+                }
               />
             </div>
           </div>
@@ -433,7 +495,9 @@ function OrderSummary() {
               <div className={styles.summary}>Summary</div>
               <div className={styles.row}>
                 <span className={styles.label}>Phone Price</span>
-                <span className={styles.value}>{`₹ ${currentEvaluationId?.finalPrice}`}</span>
+                <span
+                  className={styles.value}
+                >{`₹ ${currentEvaluationId?.finalPrice}`}</span>
               </div>
               <div className={styles.row}>
                 <span className={styles.label}>Pickup Charges</span>
@@ -454,21 +518,23 @@ function OrderSummary() {
               </div>
               <div className={styles.totalRow}>
                 <span className={styles.totalLabel}>Total</span>
-                <span className={styles.totalValue}>{`₹ ${currentEvaluationId?.finalPrice}`}</span>
+                <span
+                  className={styles.totalValue}
+                >{`₹ ${currentEvaluationId?.finalPrice}`}</span>
               </div>
             </div>
 
             <div className={styles.sellNowContainer}>
               <button
                 className={styles.sellNow}
-                onClick={selectedAddress ? handlePlaceOrder : handleChangeAddress}
+                onClick={
+                  selectedAddress ? handlePlaceOrder : handleChangeAddress
+                }
                 disabled={loading}
               >
                 {selectedAddress ? "Place Order" : "Add Address to Continue"}
               </button>
             </div>
-
-
           </div>
         </div>
 
@@ -487,6 +553,5 @@ function OrderSummary() {
     </>
   );
 }
-
 
 export default OrderSummary;

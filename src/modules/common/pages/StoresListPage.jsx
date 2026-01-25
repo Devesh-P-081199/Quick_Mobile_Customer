@@ -82,5 +82,4 @@ function StoreCard({ store, onClick }) {
   );
 }
 
-
 export default StoresListPage;

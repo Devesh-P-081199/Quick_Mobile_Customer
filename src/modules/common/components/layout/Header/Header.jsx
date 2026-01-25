@@ -52,9 +52,9 @@ import Loader from "../Loader/Loader";
 import MobileFullScreenModal from "./FullScreenModal";
 
 // Lazy-loaded components for better performance
-const SignUp = React.lazy(
-  () => import("../../../../../modules/profile/components/Signup/Signup"),
-);
+// const SignUp = React.lazy(
+//   () => import("../../../../../modules/profile/components/Signup/Signup"),
+// );
 const Login = React.lazy(
   () => import("../../../../../modules/profile/components/Login/Login"),
 );

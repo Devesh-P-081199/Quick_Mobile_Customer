@@ -6,6 +6,17 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   return {
     plugins: [react()],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ["react", "react-dom", "react-router-dom"],
+            ui: ["react-toastify", "react-loading-skeleton"],
+            utils: ["axios", "lodash.debounce", "lodash.throttle"],
+          },
+        },
+      },
+    },
     server: {
       host: "0.0.0.0", // Allow external connections from any IP
       port: 3000, // Set your preferred port

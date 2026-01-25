@@ -142,7 +142,15 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <div className={styles.logoContainer}>
               <a href="#">
-                <img src={logo} alt="Logo" className={styles.logo} />
+                {/* Explicit width/height to prevent reflow */}
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className={styles.logo}
+                  width="120"
+                  height="50"
+                  style={{ aspectRatio: "120/50" }}
+                />
               </a>
             </div>
 

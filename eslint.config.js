@@ -40,7 +40,7 @@ export default [
         'warn',
         {
           vars: 'all',
-          varsIgnorePattern: '^[A-Z_]',
+          varsIgnorePattern: "^_",
           args: 'after-used',
           argsIgnorePattern: '^_',
         },

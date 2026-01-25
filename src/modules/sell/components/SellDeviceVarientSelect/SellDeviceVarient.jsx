@@ -303,10 +303,11 @@ function SellDeviceVarient() {
                   variants.variants.map((option) => (
                     <label
                       key={option._id}
-                      className={`${styles.radioLabel} ${selectedMemory?.variantId === option._id
+                      className={`${styles.radioLabel} ${
+                        selectedMemory?.variantId === option._id
                           ? styles.active
                           : ""
-                        }`}
+                      }`}
                     >
                       <input
                         type="radio"

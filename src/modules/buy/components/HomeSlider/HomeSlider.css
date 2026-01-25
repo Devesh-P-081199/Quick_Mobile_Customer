@@ -1,0 +1,181 @@
+/* HomeSlider Styles - Extracted from BuyCss.css */
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  margin: auto;
+  overflow: hidden;
+  background-image: url('../../../../assets/images/banner_images/homepage_banner_image_desktop.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.slider-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider-container .slide {
+  min-width: 100%;
+  transition: transform 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.slider-content {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 1184px;
+  padding: 0 2rem;
+  margin: auto;
+  width: 100%;
+}
+
+.slider-title {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 35px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #000;
+}
+
+.slider-description {
+  font-family: "IBM Plex Sans";
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  max-width: 742px;
+  line-height: 36px;
+}
+
+.slider-button {
+  background: #1968b3;
+  color: #fff;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 11px 35px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.slider-image {
+  position: absolute;
+  right: 12.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 255px;
+  height: auto;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px 5px;
+  gap: 5px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background: #ccc;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  width: 25px;
+  height: 8px;
+  border-radius: 10px;
+  background: #ccc;
+  position: relative;
+  overflow: hidden;
+}
+
+.dot-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #1968b3;
+  border-radius: 10px;
+  transition: width 0.05s linear;
+  z-index: 1;
+}
+
+.slider-nav {
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-nav.left {
+  left: 10px;
+}
+
+.slider-nav.right {
+  right: 10px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .slider-container {
+    height: auto;
+    min-height: 300px;
+    background-image: url('../../../../assets/images/banner_images/homepage_banner_image_phone.png');
+  }
+  
+  .slider-image {
+    position: relative;
+    width: 60%;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin: 1rem auto;
+  }
+  
+  .slider-content {
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  .slider-container .slide {
+    flex-direction: column-reverse;
+  }
+  
+  .slider-title {
+    font-size: 24px;
+  }
+  
+  .slider-description {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}

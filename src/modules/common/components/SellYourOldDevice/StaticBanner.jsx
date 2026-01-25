@@ -12,10 +12,10 @@ import {
 const steps = [
   {
     icon: <FaCircle />,
-    iconStyle: { color: "#f26921" },
+    iconStyle: { color: "#d95818" },
     title: "If you sell your device today",
     subtitle: "By 4 PM",
-    subtitleStyle: { color: "#f26921" },
+    subtitleStyle: { color: "#d95818" },
   },
   {
     icon: <FaRegCalendarCheck />,

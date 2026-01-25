@@ -1,4 +1,5 @@
 import iPhone from "../../../../assets/images/Products/mobile.png";
+import AppImage from "../Image/AppImage";
 import styles from "./BrowsePicks.module.css";
 
 const serviceData = [
@@ -44,7 +45,12 @@ const BrowsePicks = () => {
           {serviceData.map((data, index) => (
             <div key={index} className={styles.card}>
               <div className={styles.imageWrapper}>
-                <img src={data.img} alt={data.title} />
+                <AppImage
+                  src={data.img}
+                  alt={data.title}
+                  width="120px"
+                  height="120px"
+                />
               </div>
               <p className={styles.cardText}>{data.text}</p>
             </div>

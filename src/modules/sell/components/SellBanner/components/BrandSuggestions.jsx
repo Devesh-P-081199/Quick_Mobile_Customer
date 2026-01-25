@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import styles from "../SellBanner.module.css";
+import AppImage from "../../../../common/components/Image/AppImage";
 
 /**
  * Brand suggestions grid showing top brands and a "More" button
@@ -32,10 +33,14 @@ const BrandSuggestions = forwardRef(function BrandSuggestions(
             className={styles.brandImageBg}
             onClick={() => onBrandClick(brand)}
           >
-            <img
+            <AppImage
               src={brand?.brandLogo}
               alt={brand?.brandName}
               title={brand?.brandName}
+              width="90"
+              height="90"
+              style={{ objectFit: "contain" }}
+              priority={true}
             />
           </div>
         </div>
