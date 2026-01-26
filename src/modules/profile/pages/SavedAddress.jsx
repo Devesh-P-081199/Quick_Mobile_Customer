@@ -6,6 +6,7 @@ import MobileBackHeader from "../../common/components/layout/MobileCommonHeader/
 import { FaMapMarkerAlt, FaPlus } from "react-icons/fa";
 import api from "../../../Utils/api";
 import { toast } from "react-toastify";
+import no_address from "../../../assets/QuickSellNewIcons/notfound/no_address_found.png"
 import trash from "../../../assets/flaticons/trash-basecolor.png";
 import edit from "../../../assets/flaticons/pen-basecolor.png";
 
@@ -82,7 +83,7 @@ const SavedAddress = () => {
               </button>
             </div>
 
-            <div className={`${styles.addressList} profile-content-scroll`}>
+            <div className={`${styles.addressList}`}>
               {addresses.length > 0 ? (
                 addresses.map((address, index) => (
                   <div
@@ -126,7 +127,7 @@ const SavedAddress = () => {
                 ))
               ) : (
                 <div className={styles.emptyState}>
-                  <FaMapMarkerAlt className={styles.emptyIcon} />
+                  <img src={no_address} alt="No Address" title="No Address" />
                   <h3>No Saved Addresses</h3>
                   <p>Add an address to make checkout faster.</p>
                 </div>

@@ -2,278 +2,147 @@ import styles from "./Terms.module.css";
 
 const TermsOfServies = () => {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <h2 className={styles.title}>Terms of Use – Quick Mobile</h2>
+    <div className="page-content-wrapper">
+      <div className={styles.wrapper}>
+        <h2 className={styles.title}>Terms of Use</h2>
+
         <p className={styles.intro}>
-          Welcome to Quick Mobile. These Terms of Use (“Terms”) govern your
-          access to and use of our platform, services, and applications related
-          to selling, buying, and repairing devices. By using our website or
-          services, you agree to these Terms. Please read them carefully before
-          proceeding. If you do not agree with any part of these Terms, kindly
-          stop using our services immediately.
+          Please read these Terms of Use carefully before using the Quick Mobile website, mobile application, or services (“Platform”).
         </p>
 
-        <p className={styles.date}>October 2024</p>
+        <p className={styles.intro}>
+          By accessing or using our Platform, you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, please do not use our services.
+        </p>
+
+        <p className={styles.intro}>
+          These Terms form a legally binding agreement between you (the seller of the device) and Quick Mobile LLP (“Quick Mobile”, “we”, “our”, or “us”), along with our authorised third-party buyers where applicable.
+        </p>
 
         <ol className={styles.toc}>
           <li>About Quick Mobile</li>
-          <li>Eligibility</li>
-          <li>Selling a Device</li>
-          <li>Buying a Device</li>
-          <li>Repairing a Device</li>
-          <li>Payments & Pricing</li>
-          <li>Prohibited Activities</li>
+          <li>Ownership of Device</li>
+          <li>Price Quotes & Inspection</li>
+          <li>Binding Sale</li>
+          <li>Change in Offer</li>
+          <li>Required Documents</li>
+          <li>Lawful Sale Only</li>
+          <li>Data Deletion Responsibility</li>
+          <li>No Return Policy</li>
+          <li>Restricted Devices</li>
+          <li>Right to Modify Terms</li>
+          <li>Fraud & Cancellation</li>
           <li>Limitation of Liability</li>
-          <li>Intellectual Property</li>
-          <li>Privacy & Data Security</li>
-          <li>Changes to Terms</li>
-          <li>Contact Us</li>
+          <li>Governing Law</li>
         </ol>
 
-        {/* About Section */}
-        <h2>About Quick Mobile</h2>
+        <h2>1. About Quick Mobile</h2>
         <ul>
-          <li>
-            Quick Mobile provides an online platform that allows users to:
-          </li>
-          <li>Sell their used mobile phones and gadgets for instant cash.</li>
-          <li>Buy certified pre-owned devices at fair prices.</li>
-          <li>Repair mobile phones and gadgets through trusted technicians.</li>
-          <li>
-            We aim to make the process simple, transparent, and secure for
-            everyone.
-          </li>
+          <li>Quick Mobile LLP operates a platform that allows users to sell used mobile phones and other eligible electronic devices.</li>
+          <li>Quick Mobile acts only as a facilitator. The actual sale may be completed either with Quick Mobile or with an authorised third-party buyer.</li>
+          <li>Unless clearly stated otherwise, Quick Mobile is not the final buyer and does not control or take responsibility for the actions of third-party buyers.</li>
         </ul>
 
-        {/* Eligibility */}
-        <h2>Eligibility</h2>
+        <h2>2. Ownership of Device</h2>
+        <p>You confirm that:</p>
         <ul>
-          <li>You must be 18 years or older to use our services.</li>
-          <li>
-            By using our services, you confirm that you have the legal right and
-            authority to transact.
-          </li>
-          <li>
-            Devices sold must be legally owned by you and not involved in theft,
-            fraud, unpaid EMIs, or other disputes.
-          </li>
+          <li>You are the legal owner of the device you are selling.</li>
+          <li>The device is not stolen, lost, financed, blacklisted, or involved in any legal dispute.</li>
+          <li>You have full rights to sell the device.</li>
         </ul>
 
-        {/* Selling a Device */}
-        <h2>Selling a Device</h2>
-        <p>
-          When you sell your device to Quick Mobile, you agree to the following:
-        </p>
+        <h2>3. Price Quotes & Inspection</h2>
         <ul>
-          <li>
-            Accurate Information: You must provide true and complete details
-            about the device (model, storage, condition, functionality, age,
-            accessories, etc.).
-          </li>
-          <li>
-            Device Ownership: You confirm that the device is legally yours, and
-            is not stolen, lost, counterfeit, or under unpaid EMI/finance.
-          </li>
-          <li>
-            IMEI Verification: All devices may be verified against official
-            databases. If found stolen, blacklisted, or reported lost, Quick
-            Mobile is legally bound to report the case to authorities, and no
-            payment will be made.
-          </li>
-          <li>
-            Condition Check: The final price is confirmed only after physical
-            inspection. If there is any discrepancy, a revised price will be
-            offered.
-          </li>
-          <li>
-            Data & Security: You must remove SIM cards, memory cards, and sign
-            out of all accounts (Cloud, Google, Samsung ID, etc.). Failure to do
-            so may result in cancellation.
-          </li>
-          <li>
-            Accessories: Chargers, earphones, or original boxes are optional,
-            but including them may improve your device’s value.
-          </li>
-          <li>
-            Non-Returnable: Once the sale and payment is made, the device cannot
-            be returned under any circumstances.
-          </li>
-          <li>
-            Fraud Prevention: Selling counterfeit, tampered, or stolen devices
-            may result in permanent account suspension, forfeiture of payment,
-            and legal action under applicable laws.
-          </li>
+          <li>Any price shown on our website/app is an initial estimate based on the details provided by you.</li>
+          <li>The final price is decided only after physical inspection of the device.</li>
+          <li>We reserve the right to change or refuse a quote if the device condition, model, or details do not match what was declared.</li>
+          <li>No sale is final until the device is inspected and accepted.</li>
         </ul>
 
-        {/* Buying a Device */}
-        <h2>Buying a Device</h2>
+        <h2>4. Binding Sale</h2>
+        <p>If:</p>
         <ul>
-          <li>
-            Quality Assurance: All devices go through a multi-point quality
-            check before being listed for sale.
-          </li>
-          <li>
-            Device Condition: Each device is sold with a clear label (Brand New,
-            Like New, Good, or Fair) so you know exactly what to expect.
-          </li>
-          <li>
-            Warranty Coverage: If a warranty applies, it will be clearly
-            mentioned. Warranty does not cover physical or liquid damage.
-          </li>
-          <li>
-            Returns: Return requests are accepted only under our Return & Refund
-            Policy (e.g., wrong item delivered, device not working on arrival).
-          </li>
-          <li>
-            Payments: Orders must be prepaid unless Cash-on-Delivery is
-            explicitly offered in your location.
-          </li>
-          <li>
-            Delivery Timeline: Delivery times may vary depending on stock and
-            location.
-          </li>
-          <li>
-            Ownership Transfer: Once purchased, the device legally belongs to
-            you. Quick Mobile is not responsible for how the device is used
-            afterward.
-          </li>
-          <li>
-            Device Authenticity: All devices sold are genuine and sourced from
-            trusted suppliers. Quick Mobile does not sell counterfeit or illegal
-            products.
-          </li>
+          <li>You receive a quote on the Platform, and</li>
+          <li>After inspection, we agree to pay that quoted price,</li>
+        </ul>
+        <p>then you are legally bound to sell the device at that agreed price.</p>
+
+        <h2>5. Change in Offer</h2>
+        <p>We may revise the quoted price if:</p>
+        <ul>
+          <li>The device model is different</li>
+          <li>Parts are missing</li>
+          <li>The condition is worse than stated</li>
+          <li>The device is not working as declared</li>
+        </ul>
+        <p>In such cases, you may choose to accept or reject the revised offer.</p>
+
+        <h2>6. Required Documents</h2>
+        <p>At the time of pickup, you must provide:</p>
+        <ul>
+          <li>A self-attested government-approved ID proof</li>
+          <li>A self-attested indemnity bond, if requested by us</li>
+        </ul>
+        <p className={styles.note}>Failure to provide documents may lead to cancellation of the order.</p>
+
+        <h2>7. Lawful Sale Only</h2>
+        <p>You agree that:</p>
+        <ul>
+          <li>The sale does not violate any law or regulation</li>
+          <li>The device does not contain illegal, harmful, offensive, or copyrighted content</li>
+          <li>You are not transferring any restricted software or licensed material unlawfully</li>
+        </ul>
+        <p>You agree to indemnify and hold Quick Mobile harmless against any claims, losses, or legal actions arising from violation of these terms.</p>
+
+        <h2>8. Data Deletion Responsibility</h2>
+        <ul>
+          <li>You are fully responsible for backing up and deleting all personal data from the device before handing it over.</li>
+          <li>Once the device is collected, Quick Mobile or the buyer is not responsible for any remaining data.</li>
+          <li>We will not assist in data recovery after pickup.</li>
         </ul>
 
-        {/* Repairing a Device */}
-        <h2>Repairing a Device</h2>
+        <h2>9. No Return Policy</h2>
+        <p>Once the device is sold and picked up:</p>
         <ul>
-          <li>
-            Diagnosis First: A technician may diagnose the device before
-            confirming the final repair cost.
-          </li>
-          <li>
-            Parts Used: We use high-quality genuine or compatible parts
-            depending on availability and your preference (with price
-            variations).
-          </li>
-          <li>
-            Warranty: Repairs may come with a limited warranty (e.g., 3–6 months
-            for screens, 6–12 months for batteries). Warranty will not apply to
-            accidental or water damage after repair.
-          </li>
-          <li>
-            Repair Timelines: While we aim for fast service, actual repair time
-            may vary depending on issue complexity and parts availability.
-          </li>
-          <li>
-            Data Safety: While technicians take precautions, Quick Mobile is not
-            responsible for data loss during repair. Please back up your data
-            before handing over the device.
-          </li>
-          <li>
-            Third-Party Service: Some repairs may be performed by authorized
-            third-party technicians. Quick Mobile is not liable for delays or
-            failures beyond its control.
-          </li>
-          <li>
-            Device Responsibility: If a device is not collected within 30 days
-            after repair, Quick Mobile reserves the right to charge storage fees
-            or responsibly recycle it.
-          </li>
-          <li>
-            Non-Repairable Devices: If a device cannot be repaired, you may be
-            offered options (return-as-is or sell it at salvage value).
-          </li>
+          <li>It cannot be returned under any circumstances.</li>
         </ul>
 
-        {/* Payments */}
-        <h2>Payments & Pricing</h2>
+        <h2>10. Restricted Devices</h2>
+        <p>Devices received as:</p>
         <ul>
-          <li>
-            All payments are processed through secure channels (UPI, bank
-            transfer, cash, or card).
-          </li>
-          <li>
-            Prices displayed online are indicative and subject to revision based
-            on market fluctuations and physical verification.
-          </li>
-          <li>
-            Quick Mobile reserves the right to modify prices at any time without
-            prior notice.
-          </li>
+          <li>Government-funded,</li>
+          <li>NGO-distributed,</li>
+          <li>Gifted under state or sponsored schemes</li>
+        </ul>
+        <p>are not accepted on the Quick Mobile platform.</p>
+
+        <h2>11. Right to Modify Terms</h2>
+        <ul>
+          <li>We may update or change these Terms of Use at any time without prior notice.</li>
+          <li>Continued use of the Platform after changes means you accept the updated terms.</li>
+          <li>Changes become effective immediately after being published.</li>
         </ul>
 
-        {/* Prohibited Activities */}
-        <h2>Prohibited Activities</h2>
-        <p>By using our platform, you agree not to:</p>
+        <h2>12. Fraud & Cancellation</h2>
+        <p>Quick Mobile reserves the right to:</p>
         <ul>
-          <li>
-            Sell or attempt to sell stolen, counterfeit, or blacklisted devices.
-          </li>
-          <li>Provide false, misleading, or incomplete information.</li>
-          <li>Engage in fraudulent transactions or misuse our services.</li>
-          <li>
-            Violate applicable laws, intellectual property rights, or
-            third-party rights.
-          </li>
-        </ul>
-        <p className={styles.note}>
-          Quick Mobile reserves the right to suspend or terminate accounts found
-          violating these terms and may cooperate with law enforcement agencies
-          if required.
-        </p>
-
-        {/* Limitation */}
-        <h2>Limitation of Liability</h2>
-        <ul>
-          <li>
-            Quick Mobile is not liable for indirect, incidental, or
-            consequential damages arising from the use of our services.
-          </li>
-          <li>
-            Our maximum liability is limited to the amount paid to or received
-            from you for the transaction in question.
-          </li>
+          <li>Cancel any transaction that appears fraudulent, suspicious, or unlawful</li>
+          <li>Block users who misuse the Platform or violate these Terms</li>
         </ul>
 
-        {/* Intellectual */}
-        <h2>Intellectual Property</h2>
-        <p>
-          All trademarks, logos, and brand names belong to their respective
-          owners. Any company, product, or service names mentioned on this site
-          are used purely for identification and reference. Their appearance
-          here does not suggest any partnership, sponsorship, or endorsement.
-        </p>
+        <h2>13. Limitation of Liability</h2>
+        <p>Quick Mobile shall not be responsible for:</p>
+        <ul>
+          <li>Disputes between sellers and third-party buyers</li>
+          <li>Loss of data</li>
+          <li>Indirect or consequential damages arising from use of the Platform</li>
+        </ul>
 
-        {/* Privacy */}
-        <h2>Privacy & Data Security</h2>
-        <p>
-          We value your privacy. Please review our Privacy Policy to understand
-          how we collect, use, and protect your personal information.
-        </p>
+        <h2>14. Governing Law</h2>
+        <p>These Terms of Use are governed by the laws of India, and courts of appropriate jurisdiction shall have exclusive authority.</p>
 
-        {/* Changes */}
-        <h2>Changes to Terms</h2>
-        <p>
-          Quick Mobile may update these Terms from time to time. Any changes
-          will be posted on this page with a revised date. Continued use of our
-          services means you accept the updated Terms.
-        </p>
-
-        {/* Contact */}
         <h2>Contact Us</h2>
         <p>
-          If you have questions about these Terms or our services, you can reach
-          us at: <br />
-          <b>Email: [support@quickmobile.in]</b>
-        </p>
-        <p className={styles.note}>
-          <b>Important Legal Note:</b> Selling stolen, counterfeit, or
-          blacklisted devices is a criminal offense under Indian law (including
-          the Information Technology Act, 2000 and Indian Penal Code). Quick
-          Mobile fully cooperates with law enforcement and reserves the right to
-          report such cases, withhold payment, and assist in investigations.
+          If you have any questions about these Terms, please contact Quick Mobile through our official website or customer support channels.
         </p>
       </div>
     </div>

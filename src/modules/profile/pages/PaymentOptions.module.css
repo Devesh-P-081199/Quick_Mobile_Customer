@@ -287,6 +287,11 @@
   font-family: "IBM Plex Sans", sans-serif;
 }
 
+.emptyState img {
+  width: 50%;
+  margin: auto;
+}
+
 .cardActions {
   display: flex;
   justify-content: space-between;

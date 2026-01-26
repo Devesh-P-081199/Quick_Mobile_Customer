@@ -1,8 +1,8 @@
-import { FaTicketAlt } from "react-icons/fa";
 import styles from "./offer.module.css";
 // Import ProfileCard
 import ProfileCard from "../ProfileCard";
 import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
+import no_offer from "../../../../assets/QuickSellNewIcons/notfound/no_offers_found.png";
 
 const NoOffer = () => {
   return (
@@ -16,7 +16,7 @@ const NoOffer = () => {
           <div className={styles.left}>
             <div className={styles.wrapper}>
               <div className={styles.iconWrapper}>
-                <FaTicketAlt className={styles.icon} />
+                <img src={no_offer} alt="No Offer" title="No Offer" className={styles.icon} />
               </div>
               <p className={styles.text}>No Offer Found!</p>
             </div>

@@ -4,18 +4,25 @@
 /* Legacy CSS Custom Properties - Mapped to Design Tokens */
 :root {
   /* Legacy variables mapped to design tokens for backward compatibility */
-  --section-bg: #f9fafb; /* Tailwind gray-50 equivalent */
-  --btn-desable: #9ca3af; /* Tailwind gray-400 equivalent */
-  --btn-enable: #1968b3; /* Custom primary color */
+  --section-bg: #f9fafb;
+  /* Tailwind gray-50 equivalent */
+  --btn-desable: #9ca3af;
+  /* Tailwind gray-400 equivalent */
+  --btn-enable: #1968b3;
+  /* Custom primary color */
   --primary-font: "IBM Plex Sans", sans-serif;
   --heading-font: "Hedvig Letters Serif", serif;
 
   /* Additional legacy mappings that work with Tailwind */
   --primary-color: #1968b3;
-  --secondary-color: #6b7280; /* Tailwind gray-500 */
-  --background-color: #f9fafb; /* Tailwind gray-50 */
-  --text-color: #111827; /* Tailwind gray-900 */
-  --border-color: #e5e7eb; /* Tailwind gray-200 */
+  --secondary-color: #6b7280;
+  /* Tailwind gray-500 */
+  --background-color: #f9fafb;
+  /* Tailwind gray-50 */
+  --text-color: #111827;
+  /* Tailwind gray-900 */
+  --border-color: #e5e7eb;
+  /* Tailwind gray-200 */
 }
 
 /* Global styles that complement Tailwind */
@@ -34,39 +41,48 @@ body {
 /* Section padding - Use Tailwind responsive classes where possible */
 /* Keep this for legacy compatibility, but prefer Tailwind classes like py-8 px-24 lg:px-20 md:px-12 sm:px-5 */
 section {
-  padding: var(--spacing-2) 12.5%; /* 32px 96px - equivalent to py-8 px-24 */
+  padding: var(--spacing-2) 12.5%;
+  /* 32px 96px - equivalent to py-8 px-24 */
 }
 
 @media screen and (max-width: 1200px) {
   section {
-    padding: var(--spacing-2) 12.5%; /* py-8 px-20 */
+    padding: var(--spacing-2) 12.5%;
+    /* py-8 px-20 */
   }
 }
 
 @media screen and (max-width: 1024px) {
   section {
-    padding: 2rem 3rem; /* py-8 px-12 */
+    padding: 2rem 3rem;
+    /* py-8 px-12 */
   }
 }
 
 @media screen and (max-width: 768px) {
   section {
-    padding: 0rem 0rem; /* py-8 px-5 */
+    padding: 0rem 0rem;
+    /* py-8 px-5 */
   }
 }
+
 /* Wrapper - Use Tailwind container class where possible */
 /* Keep for legacy compatibility: prefer Tailwind's "container mx-auto px-4" */
 .wrapper {
-  max-width: 1200px; /* max-w-7xl equivalent */
-  margin: 0 auto; /* mx-auto */
-  width: 100%; /* w-full */
+  max-width: 1200px;
+  /* max-w-7xl equivalent */
+  margin: 0 auto;
+  /* mx-auto */
+  width: 100%;
+  /* w-full */
 }
 
 /* Flexible row layout - Use Tailwind flex classes where possible */
 /* Keep for legacy compatibility: prefer Tailwind's "flex gap-4" */
 .flex {
   display: flex;
-  gap: 1rem; /* gap-4 equivalent */
+  gap: 1rem;
+  /* gap-4 equivalent */
 }
 
 /* Image styles handled in main.css - REMOVED DUPLICATE */
@@ -83,6 +99,7 @@ section {
 .header_searchBar ._searchContainer_1erli_79 {
   position: unset;
 }
+
 .header_searchBar {
   position: relative;
 }
@@ -92,13 +109,4 @@ section {
   height: var(--space-5);
   width: var(--space-8);
   border-radius: var(--radius-base);
-}
-
-/* Profile page content scroll - Desktop only */
-/* Apply this class to profile content containers for consistent scrollable behavior */
-@media screen and (min-width: 769px) {
-  .profile-content-scroll {
-    max-height: calc(100vh - 300px);
-    overflow-y: auto;
-  }
 }

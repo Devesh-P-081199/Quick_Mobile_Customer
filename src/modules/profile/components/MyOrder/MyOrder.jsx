@@ -3,6 +3,7 @@ import styles from "./MyOrder.module.css";
 import OrderCard from "./Order";
 import ProfileCard from "../ProfileCard";
 import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
+import no_order_found from "../../../../assets/QuickSellNewIcons/notfound/no_order_found.png"
 
 const ORDER_TABS = ["All Orders", "Buy", "Sell", "Repair"];
 
@@ -42,9 +43,8 @@ const MyOrder = () => {
                   <button
                     key={label}
                     onClick={() => setActiveTab(label)}
-                    className={`${styles.filterBtn} ${
-                      activeTab === label ? styles.activeBtn : ""
-                    }`}
+                    className={`${styles.filterBtn} ${activeTab === label ? styles.activeBtn : ""
+                      }`}
                   >
                     {label}
                   </button>
@@ -52,13 +52,14 @@ const MyOrder = () => {
               </div>
             </div>
 
-            <div className={`${styles.ordersList} profile-content-scroll`}>
+            <div className={`${styles.ordersList}`}>
               {displayedOrders.length > 0 ? (
                 displayedOrders.map((order) => (
                   <OrderCard key={order.id} order={order} />
                 ))
               ) : (
                 <div className={styles.emptyState}>
+                  <img src={no_order_found} alt="No Orders" title="No Orders" />
                   <h3>You Haven't Placed Any Orders Yet!</h3>
                   <p>Start exploring and place your first order.</p>
                   <button className={styles.shopBtn}>Go to Shop</button>

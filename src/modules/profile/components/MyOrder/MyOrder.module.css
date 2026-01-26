@@ -91,6 +91,11 @@
   margin-bottom: 16px;
 }
 
+.emptyState img {
+  width: 50%;
+  margin: auto;
+}
+
 .shopBtn {
   background: #1968b3;
   color: #fff;
