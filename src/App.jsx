@@ -99,6 +99,9 @@ import HomePage from "./modules/buy/pages/HomePage";
 import AboutUs from "./modules/common/pages/general/AboutUs/AboutUs";
 import Cookies from "./modules/common/pages/general/Cookies/Cookies";
 import TermsOfService from "./modules/common/pages/general/Terms/Terms";
+import TermsAndConditions from "./modules/common/pages/general/TermsAndConditions/Terms-and-condition";
+import PrivacyPolicy from "./modules/common/pages/general/PrivacyPolicy/Privacy-policy";
+import CookiesPolicy from "./modules/common/pages/general/CookiesPolicy/Cookies-policy";
 import RefundPolicy from "./modules/common/pages/general/RefundPolicy/RefundPolicy";
 import ContactUs from "./modules/common/pages/general/ContactUs/ContactUs";
 import QuickImpact from "./modules/common/pages/general/QuickImpact/QuickImpact";
@@ -442,7 +445,10 @@ const AppContent = () => {
         <Route path="/not-found" element={<NotFoundPage />} />
         <Route path="/Cookies" element={<Cookies />} />
         <Route path="/About-us" element={<AboutUs />} />
-        <Route path="/Terms" element={<TermsOfService />} />
+        <Route path="/Terms-of-Use" element={<TermsOfService />} />
+        <Route path="/Terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/Privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/Cookies-policy" element={<CookiesPolicy />} />
         <Route path="/Refund" element={<RefundPolicy />} />
         <Route path="/Contact-us" element={<ContactUs />} />
         <Route path="/Impact" element={<QuickImpact />} />

@@ -116,11 +116,11 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <h3 className={styles.footerHeading}>Law and Orders</h3>
             <div className={styles.footerLinks}>
-              <Link to="/terms">Terms of Use</Link>
-              <a href="#">Terms and Conditions</a>
-              <Link to="/Cookies">Cookies</Link>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Cookies Policy</a>
+              <Link to="/terms-of-use">Terms of Use</Link>
+              <Link to="/terms-and-conditions">Terms and Conditions</Link>
+              <Link to="/cookies">Cookies</Link>
+              <Link to="/privacy-policy">Privacy Policy</Link>
+              <Link to="/cookies-policy">Cookies Policy</Link>
             </div>
           </div>
 
@@ -237,11 +237,11 @@ const Footer = () => {
           <FooterSection
             title="Law and Order"
             links={[
-              { text: "Terms to Use", path: "/terms" },
-              { text: "Terms and Conditions", path: "#" },
-              { text: "Cookies", path: "/Cookies" },
-              { text: "Privacy Policy", path: "/Privacy" },
-              { text: "Cookies Policy", path: "#" },
+              { text: "Terms to Use", path: "/terms-of-use" },
+              { text: "Terms and Conditions", path: "/terms-and-conditions" },
+              { text: "Cookies", path: "/cookies" },
+              { text: "Privacy Policy", path: "/privacy-policy" },
+              { text: "Cookies Policy", path: "/cookies-policy" },
             ]}
           />
           <FooterSection

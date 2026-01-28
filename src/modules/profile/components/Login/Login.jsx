@@ -226,10 +226,10 @@ const Login = ({ setShowLoginModal }) => {
               style={
                 !otpSent && !isTermsChecked
                   ? {
-                      backgroundColor: "#e0e0e0",
-                      color: "#aaa",
-                      cursor: "not-allowed",
-                    }
+                    backgroundColor: "#e0e0e0",
+                    color: "#aaa",
+                    cursor: "not-allowed",
+                  }
                   : {}
               }
             >
