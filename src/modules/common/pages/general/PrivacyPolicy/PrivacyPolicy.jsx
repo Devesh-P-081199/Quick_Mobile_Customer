@@ -1,4 +1,4 @@
-import styles from "./Privacy-policy.module.css";
+import styles from "./PrivacyPolicy.module.css";
 
 const PrivacyPolicy = () => {
   return (

@@ -1,4 +1,4 @@
-import styles from "./Terms-and-condition.module.css";
+import styles from "./TermsAndConditions.module.css";
 
 const TermsAndConditions = () => {
   return (

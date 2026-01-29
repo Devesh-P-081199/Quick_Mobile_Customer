@@ -1,4 +1,4 @@
-import styles from "./Cookies-policy.module.css";
+import styles from "./CookiesPolicy.module.css";
 
 const CookiesPolicy = () => {
   return (
