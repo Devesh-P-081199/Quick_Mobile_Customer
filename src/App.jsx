@@ -100,8 +100,12 @@ import AboutUs from "./modules/common/pages/general/AboutUs/AboutUs";
 import Cookies from "./modules/common/pages/general/Cookies/Cookies";
 import TermsOfService from "./modules/common/pages/general/Terms/Terms";
 import TermsAndConditions from "./modules/common/pages/general/TermsAndConditions/TermsAndConditions";
-import PrivacyPolicy from "./modules/common/pages/general/PrivacyPolicy/PrivacyPolicy";
-import CookiesPolicy from "./modules/common/pages/general/CookiesPolicy/CookiesPolicy";
+const PrivacyPolicy = React.lazy(
+  () => import("./modules/common/pages/general/PlatformPrivacy/PrivacyPolicy"),
+);
+const CookiesPolicy = React.lazy(
+  () => import("./modules/common/pages/general/PlatformCookies/CookiesPolicy"),
+);
 import RefundPolicy from "./modules/common/pages/general/RefundPolicy/RefundPolicy";
 import ContactUs from "./modules/common/pages/general/ContactUs/ContactUs";
 import QuickImpact from "./modules/common/pages/general/QuickImpact/QuickImpact";
@@ -447,8 +451,22 @@ const AppContent = () => {
         <Route path="/About-us" element={<AboutUs />} />
         <Route path="/Terms-of-Use" element={<TermsOfService />} />
         <Route path="/Terms-and-conditions" element={<TermsAndConditions />} />
-        <Route path="/Privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/Cookies-policy" element={<CookiesPolicy />} />
+        <Route
+          path="/Privacy-policy"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PrivacyPolicy />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/Cookies-policy"
+          element={
+            <Suspense fallback={<Loader />}>
+              <CookiesPolicy />
+            </Suspense>
+          }
+        />
         <Route path="/Refund" element={<RefundPolicy />} />
         <Route path="/Contact-us" element={<ContactUs />} />
         <Route path="/Impact" element={<QuickImpact />} />
