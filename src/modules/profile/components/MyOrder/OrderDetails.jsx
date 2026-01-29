@@ -169,297 +169,299 @@ const OrderDetails = () => {
   return (
     <>
       <MobileBackHeader title="Order Details" />
-      <div className={styles.container}>
-        {/* Device Info Header */}
-        <div className={styles.modalDeviceInfo}>
-          <img
-            src={order?.deviceEvaluationId?.devicePic || phoneImg}
-            alt={order?.deviceEvaluationId?.deviceName || "Device"}
-            className={styles.modalDeviceImage}
-          />
-          <div>
-            <div className={styles.modalDeviceTitle}>
-              {order?.deviceEvaluationId?.deviceName || "Unknown Device"}
-              {order?.deviceEvaluationId?.deviceVariant
-                ? ` (${order.deviceEvaluationId.deviceVariant})`
-                : ""}
-            </div>
-            <div className={styles.modalOrderId}>Order ID: {order.orderId}</div>
-            <div className={styles.modalDevicePrice}>
-              ₹
-              {order?.deviceEvaluationId?.finalPrice?.toLocaleString() ||
-                "0.00"}
-            </div>
-          </div>
-        </div>
-
-        {/* Details Content */}
-        <div className={styles.details} style={{ border: "none", padding: 0 }}>
-          {/* Partner info */}
-          <div className={styles.partnerBox}>
-            <div style={{ position: "relative" }}>
-              <img src={account} alt="" className={styles.account} />
-              <div
-                className={styles.rating}
-                style={{ backgroundColor: getRatingColor(3.7), color: "#fff" }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 576 512"
-                  fill="currentColor"
-                >
-                  <path d="M309.5-18.9c-4.1-8-12.4-13.1-21.4-13.1s-17.3 5.1-21.4 13.1L193.1 125.3 33.2 150.7c-8.9 1.4-16.3 7.7-19.1 16.3s-.5 18 5.8 24.4l114.4 114.5-25.2 159.9c-1.4 8.9 2.3 17.9 9.6 23.2s16.9 6.1 25 2L288.1 417.6 432.4 491c8 4.1 17.7 3.3 25-2s11-14.2 9.6-23.2L441.7 305.9 556.1 191.4c6.4-6.4 8.6-15.8 5.8-24.4s-10.1-14.9-19.1-16.3L383 125.3 309.5-18.9z" />
-                </svg>{" "}
-                3.7
-              </div>
-            </div>
+      <div className="page-content-wrapper">
+        <div className={styles.container}>
+          {/* Device Info Header */}
+          <div className={styles.modalDeviceInfo}>
+            <img
+              src={order?.deviceEvaluationId?.devicePic || phoneImg}
+              alt={order?.deviceEvaluationId?.deviceName || "Device"}
+              className={styles.modalDeviceImage}
+            />
             <div>
-              <div className={styles.partnerName}>Partner name</div>
-              <div className={styles.partnerAchivement}>
-                200+ orders completed
+              <div className={styles.modalDeviceTitle}>
+                {order?.deviceEvaluationId?.deviceName || "Unknown Device"}
+                {order?.deviceEvaluationId?.deviceVariant
+                  ? ` (${order.deviceEvaluationId.deviceVariant})`
+                  : ""}
               </div>
-            </div>
-            <div className={styles.partnerIcons}>
-              <MdCall size={40} />
+              <div className={styles.modalOrderId}>Order ID: {order.orderId}</div>
+              <div className={styles.modalDevicePrice}>
+                ₹
+                {order?.deviceEvaluationId?.finalPrice?.toLocaleString() ||
+                  "0.00"}
+              </div>
             </div>
           </div>
 
-          {/* Timeline */}
-          <div className={styles.timelineWrapper}>
-            {[
-              { label: "Order Placed", date: "07 Jan 2025", active: true },
-              { label: "Partner Assigned", date: "09 Jan 2025", active: true },
-              { label: "Out for pickup" },
-              { label: "Completed" },
-            ].map((step, idx) => (
-              <div
-                key={idx}
-                className={`${styles.step} ${step.active ? styles.active : ""}`}
-              >
-                <div className={styles.circle}></div>
-                <div className={styles.line}>
-                  <span>{step.label}</span>
-                  {step.date && <small>{step.date}</small>}
+          {/* Details Content */}
+          <div className={styles.details} style={{ border: "none", padding: 0 }}>
+            {/* Partner info */}
+            <div className={styles.partnerBox}>
+              <div style={{ position: "relative" }}>
+                <img src={account} alt="" className={styles.account} />
+                <div
+                  className={styles.rating}
+                  style={{ backgroundColor: getRatingColor(3.7), color: "#fff" }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512"
+                    fill="currentColor"
+                  >
+                    <path d="M309.5-18.9c-4.1-8-12.4-13.1-21.4-13.1s-17.3 5.1-21.4 13.1L193.1 125.3 33.2 150.7c-8.9 1.4-16.3 7.7-19.1 16.3s-.5 18 5.8 24.4l114.4 114.5-25.2 159.9c-1.4 8.9 2.3 17.9 9.6 23.2s16.9 6.1 25 2L288.1 417.6 432.4 491c8 4.1 17.7 3.3 25-2s11-14.2 9.6-23.2L441.7 305.9 556.1 191.4c6.4-6.4 8.6-15.8 5.8-24.4s-10.1-14.9-19.1-16.3L383 125.3 309.5-18.9z" />
+                  </svg>{" "}
+                  3.7
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Payment Summary Card */}
-          <div className={styles.summaryCard}>
-            <div className={styles.summaryHeader}>
-              <div className={styles.summaryHeaderLeft}>
-                <img
-                  src={secureShield}
-                  alt=""
-                  className={styles.featureOption}
-                ></img>
-                <span className={styles.summaryLabel}>Payment Method</span>
+              <div>
+                <div className={styles.partnerName}>Partner name</div>
+                <div className={styles.partnerAchivement}>
+                  200+ orders completed
+                </div>
               </div>
-              <button
-                className={styles.changeBtn}
-                onClick={handleChangePayment}
-              >
-                {displayPayment
-                  ? "Change"
-                  : hasSavedPayments
-                    ? "Select"
-                    : "Add"}
-              </button>
-            </div>
-            {displayPayment ? (
-              <div className={styles.summaryContent}>
-                {displayPayment.type === "upi" ? (
-                  <>
-                    <span className={styles.paymentType}>UPI Payment</span>
-                    <p className={styles.paymentText}>
-                      UPI ID:{" "}
-                      <span className={styles.paymentValue}>
-                        {displayPayment?.upiId}
-                      </span>
-                    </p>
-                  </>
-                ) : displayPayment.type === "bank" ? (
-                  <>
-                    <span className={styles.paymentType}>
-                      Bank Transfer (IMPS)
-                    </span>
-                    <p className={styles.paymentText}>
-                      Account:{" "}
-                      <span className={styles.paymentValue}>
-                        {displayPayment?.bankDetails?.accountNumber}
-                      </span>
-                    </p>
-                    <p className={styles.paymentText}>
-                      IFSC:{" "}
-                      <span className={styles.paymentValue}>
-                        {displayPayment?.bankDetails?.ifscCode}
-                      </span>
-                    </p>
-                    <p className={styles.paymentText}>
-                      Bank:{" "}
-                      <span className={styles.paymentValue}>
-                        {displayPayment?.bankDetails?.bankName}
-                      </span>
-                    </p>
-                  </>
-                ) : null}
+              <div className={styles.partnerIcons}>
+                <MdCall size={40} />
               </div>
-            ) : (
-              <p className={styles.notSelected}>
-                No payment method selected, please select a payment method for
-                smooth transaction.
-              </p>
-            )}
-          </div>
-
-          {/* Condition buttons */}
-          <div className={styles.conditionBtns}>
-            <button
-              className={
-                selected === "user" ? styles.blackButton : styles.greyButton
-              }
-              onClick={() => setSelected("user")}
-            >
-              Condition selected
-            </button>
-            <button
-              className={
-                selected === "partner" ? styles.blackButton : styles.greyButton
-              }
-              onClick={() => setSelected("partner")}
-            >
-              Condition by partner
-            </button>
-          </div>
-
-          {/* Q&A */}
-          <div className={styles.qaSection}>
-            <h4>Functionality</h4>
-            <p>
-              1. Is device on? <span className={styles.answer}>Yes</span>
-            </p>
-            <p>
-              2. Touch working? <span className={styles.answer}>Yes</span>
-            </p>
-            <p>
-              3. Calls working? <span className={styles.answer}>Yes</span>
-            </p>
-            <p>
-              4. Under warranty? <span className={styles.answer}>Yes</span>
-            </p>
-
-            <h4>Condition</h4>
-            <p>5. Front Camera not working</p>
-
-            <h4>Display</h4>
-            <p>
-              6. Spots? <span className={styles.answer}>No</span>
-            </p>
-            <p>
-              7. Lines? <span className={styles.answer}>No</span>
-            </p>
-            <p>
-              8. Scratches? <span className={styles.answer}>No</span>
-            </p>
-            <p>
-              9. Dents? <span className={styles.answer}>No</span>
-            </p>
-
-            <h4>Warranty</h4>
-            <p>
-              10. Warranty? <span className={styles.answer}>3-6 Months</span>
-            </p>
-
-            <h4>Accessories</h4>
-            <p>
-              11. Original Charger? <span className={styles.answer}>Yes</span>
-            </p>
-          </div>
-          {/* Price Difference */}
-          {order?.priceDifference && (
-            <div className={styles.priceDiff}>
-              <div className={styles.priceDiffText}>
-                <span>Price Difference</span>
-                <span className={styles.priceDiffSubText}>
-                  According to partner's selected condition
-                </span>
-              </div>
-              <span className={styles.priceDiffValue}>
-                <span className={styles.oldValue}>
-                  ₹ {order?.priceDifference?.old || 10000}
-                </span>
-                <span className={styles.newValue}>
-                  ₹ {order?.priceDifference?.new || 9000}
-                </span>
-              </span>
             </div>
-          )}
-          {/* Transaction Detail */}
-          <div className={styles.transactionDetail}>
-            <div
-              className={styles.priceDiffText}
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <span>Transaction Detail</span>
-              <span
-                className={`${styles.statusPill} ${(order?.status || defaultTransaction.status).toLowerCase() === "completed" ? styles.statusCompleted : styles.statusPending}`}
-              >
-                {order?.status || defaultTransaction.status}
-              </span>
-            </div>
-            <div className={styles.transactionRow}>
-              <span className={styles.transactionLabel}>Transaction ID</span>
-              <span className={styles.transactionValue}>
-                {order?.transactionId || defaultTransaction.transactionId}
-              </span>
-            </div>
-            <div className={styles.transactionRow}>
-              <span className={styles.transactionLabel}>Date</span>
-              <span className={styles.transactionValue}>
-                {order?.date
-                  ? new Date(order.date).toLocaleString()
-                  : defaultTransaction.date}
-              </span>
-            </div>
-          </div>
 
-          <button className={styles.invoiceBtn} onClick={handleDownloadInvoice}>
-            <img src={downloadIcon} alt="Download Invoice" />
-            Download Invoice
-          </button>
-
-          {/* Review Form */}
-          <div className={styles.reviewForm}>
-            <h5>Rate your order</h5>
-            <div className={styles.starRating}>
-              {[1, 2, 3, 4, 5].map((star) => (
-                <span
-                  key={star}
-                  className={`${styles.star} ${rating >= star ? styles.starFilled : ""}`}
-                  onClick={() => setRating(star)}
+            {/* Timeline */}
+            <div className={styles.timelineWrapper}>
+              {[
+                { label: "Order Placed", date: "07 Jan 2025", active: true },
+                { label: "Partner Assigned", date: "09 Jan 2025", active: true },
+                { label: "Out for pickup" },
+                { label: "Completed" },
+              ].map((step, idx) => (
+                <div
+                  key={idx}
+                  className={`${styles.step} ${step.active ? styles.active : ""}`}
                 >
-                  ★
-                </span>
+                  <div className={styles.circle}></div>
+                  <div className={styles.line}>
+                    <span>{step.label}</span>
+                    {step.date && <small>{step.date}</small>}
+                  </div>
+                </div>
               ))}
             </div>
-            <textarea
-              className={styles.reviewTextArea}
-              placeholder="Write your review here..."
-              value={reviewMessage}
-              onChange={(e) => setReviewMessage(e.target.value)}
-              rows={3}
-            />
-            <button
-              className={styles.submitButton}
-              onClick={handleReviewSubmit}
-            >
-              Submit Review
+
+            {/* Payment Summary Card */}
+            <div className={styles.summaryCard}>
+              <div className={styles.summaryHeader}>
+                <div className={styles.summaryHeaderLeft}>
+                  <img
+                    src={secureShield}
+                    alt=""
+                    className={styles.featureOption}
+                  ></img>
+                  <span className={styles.summaryLabel}>Payment Method</span>
+                </div>
+                <button
+                  className={styles.changeBtn}
+                  onClick={handleChangePayment}
+                >
+                  {displayPayment
+                    ? "Change"
+                    : hasSavedPayments
+                      ? "Select"
+                      : "Add"}
+                </button>
+              </div>
+              {displayPayment ? (
+                <div className={styles.summaryContent}>
+                  {displayPayment.type === "upi" ? (
+                    <>
+                      <span className={styles.paymentType}>UPI Payment</span>
+                      <p className={styles.paymentText}>
+                        UPI ID:{" "}
+                        <span className={styles.paymentValue}>
+                          {displayPayment?.upiId}
+                        </span>
+                      </p>
+                    </>
+                  ) : displayPayment.type === "bank" ? (
+                    <>
+                      <span className={styles.paymentType}>
+                        Bank Transfer (IMPS)
+                      </span>
+                      <p className={styles.paymentText}>
+                        Account:{" "}
+                        <span className={styles.paymentValue}>
+                          {displayPayment?.bankDetails?.accountNumber}
+                        </span>
+                      </p>
+                      <p className={styles.paymentText}>
+                        IFSC:{" "}
+                        <span className={styles.paymentValue}>
+                          {displayPayment?.bankDetails?.ifscCode}
+                        </span>
+                      </p>
+                      <p className={styles.paymentText}>
+                        Bank:{" "}
+                        <span className={styles.paymentValue}>
+                          {displayPayment?.bankDetails?.bankName}
+                        </span>
+                      </p>
+                    </>
+                  ) : null}
+                </div>
+              ) : (
+                <p className={styles.notSelected}>
+                  No payment method selected, please select a payment method for
+                  smooth transaction.
+                </p>
+              )}
+            </div>
+
+            {/* Condition buttons */}
+            <div className={styles.conditionBtns}>
+              <button
+                className={
+                  selected === "user" ? styles.blackButton : styles.greyButton
+                }
+                onClick={() => setSelected("user")}
+              >
+                Condition selected
+              </button>
+              <button
+                className={
+                  selected === "partner" ? styles.blackButton : styles.greyButton
+                }
+                onClick={() => setSelected("partner")}
+              >
+                Condition by partner
+              </button>
+            </div>
+
+            {/* Q&A */}
+            <div className={styles.qaSection}>
+              <h4>Functionality</h4>
+              <p>
+                1. Is device on? <span className={styles.answer}>Yes</span>
+              </p>
+              <p>
+                2. Touch working? <span className={styles.answer}>Yes</span>
+              </p>
+              <p>
+                3. Calls working? <span className={styles.answer}>Yes</span>
+              </p>
+              <p>
+                4. Under warranty? <span className={styles.answer}>Yes</span>
+              </p>
+
+              <h4>Condition</h4>
+              <p>5. Front Camera not working</p>
+
+              <h4>Display</h4>
+              <p>
+                6. Spots? <span className={styles.answer}>No</span>
+              </p>
+              <p>
+                7. Lines? <span className={styles.answer}>No</span>
+              </p>
+              <p>
+                8. Scratches? <span className={styles.answer}>No</span>
+              </p>
+              <p>
+                9. Dents? <span className={styles.answer}>No</span>
+              </p>
+
+              <h4>Warranty</h4>
+              <p>
+                10. Warranty? <span className={styles.answer}>3-6 Months</span>
+              </p>
+
+              <h4>Accessories</h4>
+              <p>
+                11. Original Charger? <span className={styles.answer}>Yes</span>
+              </p>
+            </div>
+            {/* Price Difference */}
+            {order?.priceDifference && (
+              <div className={styles.priceDiff}>
+                <div className={styles.priceDiffText}>
+                  <span>Price Difference</span>
+                  <span className={styles.priceDiffSubText}>
+                    According to partner's selected condition
+                  </span>
+                </div>
+                <span className={styles.priceDiffValue}>
+                  <span className={styles.oldValue}>
+                    ₹ {order?.priceDifference?.old || 10000}
+                  </span>
+                  <span className={styles.newValue}>
+                    ₹ {order?.priceDifference?.new || 9000}
+                  </span>
+                </span>
+              </div>
+            )}
+            {/* Transaction Detail */}
+            <div className={styles.transactionDetail}>
+              <div
+                className={styles.priceDiffText}
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <span>Transaction Detail</span>
+                <span
+                  className={`${styles.statusPill} ${(order?.status || defaultTransaction.status).toLowerCase() === "completed" ? styles.statusCompleted : styles.statusPending}`}
+                >
+                  {order?.status || defaultTransaction.status}
+                </span>
+              </div>
+              <div className={styles.transactionRow}>
+                <span className={styles.transactionLabel}>Transaction ID</span>
+                <span className={styles.transactionValue}>
+                  {order?.transactionId || defaultTransaction.transactionId}
+                </span>
+              </div>
+              <div className={styles.transactionRow}>
+                <span className={styles.transactionLabel}>Date</span>
+                <span className={styles.transactionValue}>
+                  {order?.date
+                    ? new Date(order.date).toLocaleString()
+                    : defaultTransaction.date}
+                </span>
+              </div>
+            </div>
+
+            <button className={styles.invoiceBtn} onClick={handleDownloadInvoice}>
+              <img src={downloadIcon} alt="Download Invoice" />
+              Download Invoice
             </button>
+
+            {/* Review Form */}
+            <div className={styles.reviewForm}>
+              <h5>Rate your order</h5>
+              <div className={styles.starRating}>
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <span
+                    key={star}
+                    className={`${styles.star} ${rating >= star ? styles.starFilled : ""}`}
+                    onClick={() => setRating(star)}
+                  >
+                    ★
+                  </span>
+                ))}
+              </div>
+              <textarea
+                className={styles.reviewTextArea}
+                placeholder="Write your review here..."
+                value={reviewMessage}
+                onChange={(e) => setReviewMessage(e.target.value)}
+                rows={3}
+              />
+              <button
+                className={styles.submitButton}
+                onClick={handleReviewSubmit}
+              >
+                Submit Review
+              </button>
+            </div>
           </div>
         </div>
       </div>
