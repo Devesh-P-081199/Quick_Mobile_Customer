@@ -1,5 +1,5 @@
 .CheckOutSection {
-  padding: 40px 20px;
+  padding: 0px;
   background: #f9f9f9;
 }
 
@@ -7,20 +7,15 @@
   max-width: 1140px;
   margin: 0 auto;
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0px;
 }
 
 .PaymentBox {
   flex: 1;
-  /* min-width: 700px; */
-  padding: 30px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .Title {
@@ -100,7 +95,11 @@
 }
 
 .DropDown {
-  padding: 16px;
+  padding: 0 0 15px 0;
+}
+
+.DropDown::first-child {
+  border-top: none;
 }
 
 .DefaultInfo {
@@ -276,7 +275,7 @@
   background: white;
 }
 
-.radioInput:checked + .customRadio {
+.radioInput:checked+.customRadio {
   background: rgb(255, 255, 255);
 }
 
@@ -290,11 +289,11 @@
   flex-shrink: 0;
 }
 
-.radioInput:checked + .customRadio {
+.radioInput:checked+.customRadio {
   border-color: #1968b3;
 }
 
-.radioInput:checked + .customRadio::after {
+.radioInput:checked+.customRadio::after {
   content: "";
   width: 10px;
   height: 10px;
@@ -359,9 +358,11 @@
   .DropDown {
     padding: 0px;
   }
+
   .Wrapper {
     flex-direction: column;
   }
+
   .DefaultInfo {
     /* width: fit-content; */
   }
@@ -369,6 +370,7 @@
   .PaymentBox {
     padding: 0px 10px;
   }
+
   .CheckOutSection {
     padding: 0px;
     background: none;
@@ -516,9 +518,6 @@
 /* Continue Button Container */
 .continueButtonContainer {
   width: 100%;
-  max-width: 404px;
-  margin: 20px auto;
-  padding: 0 20px;
   display: flex;
   gap: 10px;
 }

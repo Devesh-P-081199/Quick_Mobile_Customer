@@ -1,20 +1,9 @@
-.panelWrapper {
-  display: flex;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.left {
-  flex: 1;
+.paymentsSection {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.right {
-  width: 350px;
+  padding: 0px;
+  gap: 15px;
+  border-radius: 12px;
 }
 
 .header {
@@ -368,16 +357,8 @@
 }
 
 @media (max-width: 768px) {
-  .panelWrapper {
-    flex-direction: column;
-    padding: 20px 10px;
-  }
-
-  .right {
-    display: none;
-  }
-
-  .left {
+  .paymentsSection {
+    padding: 0;
     gap: 15px;
   }
 

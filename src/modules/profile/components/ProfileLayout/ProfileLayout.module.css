@@ -1,0 +1,85 @@
+/* Desktop Layout (Default) */
+.layoutContainer {
+    display: flex;
+    gap: 30px;
+    max-width: 1184px;
+    margin: 40px auto;
+    padding: 0 2rem;
+    box-sizing: border-box;
+}
+
+.leftPanel {
+    width: 320px;
+    flex-shrink: 0;
+}
+
+.rightPanel {
+    flex: 1;
+    min-width: 0;
+}
+
+.contentHeading {
+    font-family: "IBM Plex Sans";
+    font-size: 24px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.welcomeMessage {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.welcomeMessage h2 {
+    font-family: "IBM Plex Sans";
+    font-size: 24px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+.welcomeMessage p {
+    font-family: "IBM Plex Sans";
+    font-size: 16px;
+    color: #666666;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .layoutContainer {
+        padding: 20px 10px 30px;
+        gap: 0;
+        margin: 0;
+        min-height: calc(100vh - 55px);
+    }
+
+    .leftPanel,
+    .rightPanel {
+        width: 100%;
+    }
+
+    .leftPanel.hidden,
+    .rightPanel.hidden {
+        display: none;
+    }
+
+    .rightPanel {
+        padding: 0px;
+        border-radius: 0;
+    }
+
+    .welcomeMessage {
+        padding: 40px 20px;
+    }
+
+    .welcomeMessage h2 {
+        font-size: 20px;
+    }
+
+    .welcomeMessage p {
+        font-size: 14px;
+    }
+}

@@ -109,17 +109,10 @@ const OrderDetails = () => {
       setSelectedPaymentMethod(order.paymentDetail);
     }
 
-    if (displayPayment || hasSavedPayments) {
-      // Navigate to payment list page with return path
-      navigate(`/user/payment`, {
-        state: { returnPath: location.pathname },
-      });
-    } else {
-      // Navigate directly to add payment page with return path
-      navigate(`/user/payment/add-payment`, {
-        state: { returnPath: location.pathname },
-      });
-    }
+    // Navigate to the payment selection page rendered in ProfileLayout
+    navigate(`/payment-selection`, {
+      state: { returnPath: location.pathname },
+    });
   };
 
   const handleUpdatePayment = useCallback(async () => {
@@ -169,7 +162,7 @@ const OrderDetails = () => {
   return (
     <>
       <MobileBackHeader title="Order Details" />
-      <div className="page-content-wrapper">
+      <div className={styles.orderDetailWrapper}>
         <div className={styles.container}>
           {/* Device Info Header */}
           <div className={styles.modalDeviceInfo}>
@@ -261,11 +254,7 @@ const OrderDetails = () => {
                   className={styles.changeBtn}
                   onClick={handleChangePayment}
                 >
-                  {displayPayment
-                    ? "Change"
-                    : hasSavedPayments
-                      ? "Select"
-                      : "Add"}
+                  {displayPayment ? "Change" : "Select"}
                 </button>
               </div>
               {displayPayment ? (

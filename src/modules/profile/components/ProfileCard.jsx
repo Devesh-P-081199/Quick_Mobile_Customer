@@ -6,17 +6,22 @@ import {
   FaCreditCard,
   FaBoxOpen,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 import { UserContext } from "../../../Context/contextAPI";
-import MobileBackHeader from "../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import rightangle from "../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 
-const ProfileCard = () => {
+const ProfileCard = ({ onOptionClick }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { setUser, user } = useContext(UserContext);
 
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  // Check if a path is currently active
+  const isActive = (path) => {
+    return location.pathname.includes(path);
+  };
 
   const handleLogOut = () => {
     setShowLogoutModal(true);
@@ -41,9 +46,17 @@ const ProfileCard = () => {
     ).toUpperCase();
   };
 
+  // Handle navigation with optional parent callback
+  const handleNavigate = (path) => {
+    if (onOptionClick) {
+      onOptionClick(path);
+    } else {
+      navigate(path);
+    }
+  };
+
   return (
     <>
-      <MobileBackHeader title="Profile" />
       <div className={styles.cardContainer}>
         <div className={styles.profile}>
           <div className={styles.profileImage}>
@@ -66,36 +79,36 @@ const ProfileCard = () => {
           </div>
         </div>
         <div className={styles.options}>
-          <div className={styles.optionRow}>
+          <div className={`${styles.optionRow} ${isActive("/edit-my-profile") ? styles.active : ""}`}>
             <FaBoxOpen />
-            <span onClick={() => navigate("/edit-my-profile")}>
+            <span onClick={() => handleNavigate("/edit-my-profile")}>
               Edit Profile <img src={rightangle} alt="" />
             </span>
           </div>
         </div>
 
         <div className={styles.options}>
-          <div className={styles.optionRow}>
+          <div className={`${styles.optionRow} ${isActive("/my-profile-orders") ? styles.active : ""}`}>
             <FaBoxOpen />
-            <span onClick={() => navigate("/my-profile-orders")}>
+            <span onClick={() => handleNavigate("/my-profile-orders")}>
               My Orders <img src={rightangle} alt="" />
             </span>
           </div>
-          <div className={styles.optionRow}>
+          <div className={`${styles.optionRow} ${isActive("/my-profile-payments") ? styles.active : ""}`}>
             <FaCreditCard />
-            <span onClick={() => navigate("/my-profile-payments")}>
+            <span onClick={() => handleNavigate("/my-profile-payments")}>
               Saved Payments <img src={rightangle} alt="" />
             </span>
           </div>
-          <div className={styles.optionRow}>
+          <div className={`${styles.optionRow} ${isActive("/Address") ? styles.active : ""}`}>
             <FaMapMarkerAlt />
-            <span onClick={() => navigate("/Address")}>
+            <span onClick={() => handleNavigate("/Address")}>
               Saved Address <img src={rightangle} alt="" />
             </span>
           </div>
-          <div className={styles.optionRow}>
+          <div className={`${styles.optionRow} ${isActive("/offers") ? styles.active : ""}`}>
             <FaMapMarkerAlt />
-            <span onClick={() => navigate("/offers")}>
+            <span onClick={() => handleNavigate("/offers")}>
               Offer <img src={rightangle} alt="" />
             </span>
           </div>

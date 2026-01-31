@@ -5,9 +5,6 @@
 .formContainer {
   max-width: 1140px;
   margin: 0 auto;
-  padding: 15px 10px;
-  padding-bottom: 100px;
-  /* Space for sticky bottom */
 }
 
 .formGroup {
@@ -218,20 +215,30 @@ select.input option:not([value=""]) {
   text-decoration: underline;
 }
 
-/* Sticky Bottom Buttons */
+/* Desktop Button - shown on desktop, hidden on mobile */
+.desktopButton {
+  width: 100%;
+  height: 50px;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "IBM Plex Sans", sans-serif;
+  background-color: #1968b3;
+  color: white;
+  margin-top: 20px;
+}
+
+.desktopButton:hover {
+  background-color: #145a9a;
+}
+
+/* Sticky Bottom - hidden on desktop, shown on mobile */
 .stickyBottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: white;
-  border-top: 1px solid #e1e1e1;
-  padding: 10px;
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  z-index: 100;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  display: none;
 }
 
 .submitButton {
@@ -244,9 +251,6 @@ select.input option:not([value=""]) {
   cursor: pointer;
   transition: all 0.2s;
   font-family: "IBM Plex Sans", sans-serif;
-}
-
-.submitButton {
   background-color: #1968b3;
   color: white;
 }
@@ -256,6 +260,32 @@ select.input option:not([value=""]) {
 }
 
 @media (max-width: 768px) {
+  .formContainer {
+    padding-bottom: 0px;
+  }
+
+  /* Hide desktop button on mobile */
+  .desktopButton {
+    display: none;
+  }
+
+  /* Show sticky button on mobile */
+  .stickyBottom {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e1e1e1;
+    padding: 10px;
+    gap: 15px;
+    justify-content: center;
+    z-index: 100;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    flex-direction: column-reverse;
+  }
+
   .gridBoxes {
     grid-template-columns: 1fr;
   }
@@ -264,10 +294,6 @@ select.input option:not([value=""]) {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-  }
-
-  .stickyBottom {
-    flex-direction: column-reverse;
   }
 
   .submitButton {

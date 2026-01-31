@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PaymentOptions.module.css";
-import ProfileCard from "../components/ProfileCard";
-import MobileBackHeader from "../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import { FaCreditCard, FaPlus } from "react-icons/fa";
 import api from "../../../Utils/api";
 import { toast } from "react-toastify";
@@ -99,134 +97,126 @@ const PaymentOptions = () => {
 
   return (
     <>
-      <MobileBackHeader title="Payment Options" />
-      <section className="zero-padding-section">
-        <div className={styles.panelWrapper}>
-          <div className={styles.right}>
-            <ProfileCard />
-          </div>
-          <div className={styles.left}>
-            <div className={styles.header}>
-              <button className={styles.addBtn} onClick={handleAddNew}>
-                <FaPlus /> Add Payment Method
-              </button>
-            </div>
-
-            {/* Tabs for UPI and Bank */}
-            <div className={styles.tabContainer}>
-              <button
-                className={`${styles.tabButton} ${selectedMethod === 0 ? styles.activeTab : ""
-                  }`}
-                onClick={() => setSelectedMethod(0)}
-              >
-                UPI
-              </button>
-              <button
-                className={`${styles.tabButton} ${selectedMethod === 1 ? styles.activeTab : ""
-                  }`}
-                onClick={() => setSelectedMethod(1)}
-              >
-                Bank Transfer
-              </button>
-            </div>
-
-            <div className={`${styles.paymentsList}`}>
-              {/* UPI Tab Content */}
-              {selectedMethod === 0 && (
-                <>
-                  {paymentUpi.length > 0 ? (
-                    paymentUpi.map((upi, i) => (
-                      <div
-                        key={upi.id || upi._id || i}
-                        className={styles.paymentCard}
-                      >
-                        <div className={styles.cardDetails}>
-                          <div className={styles.cardType}>UPI</div>
-                          <div className={styles.cardNumber}>
-                            UPI ID: {upi?.upiId}
-                            <br></br>
-                            Verfied Name : namesurname39428@hdbsdkbank
-                          </div>
-                        </div>
-                        <div className={styles.cardActions}>
-                          <button
-                            className={styles.editIconBtn}
-                            onClick={() => handleEditUpi(upi)}
-                          >
-                            <img src={edit} alt="edit" />
-                          </button>
-                          <button
-                            className={styles.deleteIconBtn}
-                            onClick={() => handleDeleteUpi(upi)}
-                          >
-                            <img src={trash} alt="trash" />
-                          </button>
-                        </div>
-                      </div>
-                    ))
-                  ) : (
-                    <div className={styles.emptyState}>
-                      <img src={no_payment_found} alt="No UPI Method" title="No UPI Method" />
-                      <h3>No UPI Methods Added</h3>
-                      <p>Add a UPI method to make checkout faster.</p>
-                    </div>
-                  )}
-                </>
-              )}
-
-              {/* Bank Tab Content */}
-              {selectedMethod === 1 && (
-                <>
-                  {paymentBank.length > 0 ? (
-                    paymentBank.map((bank, i) => (
-                      <div
-                        key={bank.id || bank._id || i}
-                        className={styles.paymentCard}
-                      >
-                        <div className={styles.cardDetails}>
-                          <div className={styles.cardType}>Bank Transfer</div>
-                          <div className={styles.cardNumber}>
-                            Acc no: {bank?.bankDetails?.accountNumber}
-                          </div>
-                          <div className={styles.cardHolder}>
-                            IFSC Code: {bank?.bankDetails?.ifscCode}
-                          </div>
-                          <div className={styles.cardHolder}>
-                            Bank: {bank?.bankDetails?.bankName}
-                          </div>
-                          <div className={styles.cardHolder}>
-                            Beneficiary: {bank?.bankDetails?.beneficiaryName}
-                          </div>
-                        </div>
-                        <div className={styles.cardActions}>
-                          <button
-                            className={styles.editIconBtn}
-                            onClick={() => handleEditBank(bank)}
-                          >
-                            <img src={edit} alt="edit" />
-                          </button>
-                          <button
-                            className={styles.deleteIconBtn}
-                            onClick={() => handleDeleteBank(bank)}
-                          >
-                            <img src={trash} alt="trash" />
-                          </button>
-                        </div>
-                      </div>
-                    ))
-                  ) : (
-                    <div className={styles.emptyState}>
-                      <img src={no_payment_found} alt="No Bank Account" title="No Bank Account" />
-                      <h3>No Bank Accounts Added</h3>
-                      <p>Add a bank account to make checkout faster.</p>
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
+      <div className={styles.paymentsSection}>
+        <div className={styles.header}>
+          <button className={styles.addBtn} onClick={handleAddNew}>
+            <FaPlus /> Add Payment Method
+          </button>
         </div>
-      </section>
+
+        {/* Tabs for UPI and Bank */}
+        <div className={styles.tabContainer}>
+          <button
+            className={`${styles.tabButton} ${selectedMethod === 0 ? styles.activeTab : ""
+              }`}
+            onClick={() => setSelectedMethod(0)}
+          >
+            UPI
+          </button>
+          <button
+            className={`${styles.tabButton} ${selectedMethod === 1 ? styles.activeTab : ""
+              }`}
+            onClick={() => setSelectedMethod(1)}
+          >
+            Bank Transfer
+          </button>
+        </div>
+
+        <div className={`${styles.paymentsList}`}>
+          {/* UPI Tab Content */}
+          {selectedMethod === 0 && (
+            <>
+              {paymentUpi.length > 0 ? (
+                paymentUpi.map((upi, i) => (
+                  <div
+                    key={upi.id || upi._id || i}
+                    className={styles.paymentCard}
+                  >
+                    <div className={styles.cardDetails}>
+                      <div className={styles.cardType}>UPI</div>
+                      <div className={styles.cardNumber}>
+                        UPI ID: {upi?.upiId}
+                        <br></br>
+                        Verfied Name : namesurname39428@hdbsdkbank
+                      </div>
+                    </div>
+                    <div className={styles.cardActions}>
+                      <button
+                        className={styles.editIconBtn}
+                        onClick={() => handleEditUpi(upi)}
+                      >
+                        <img src={edit} alt="edit" />
+                      </button>
+                      <button
+                        className={styles.deleteIconBtn}
+                        onClick={() => handleDeleteUpi(upi)}
+                      >
+                        <img src={trash} alt="trash" />
+                      </button>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className={styles.emptyState}>
+                  <img src={no_payment_found} alt="No UPI Method" title="No UPI Method" />
+                  <h3>No UPI Methods Added</h3>
+                  <p>Add a UPI method to make checkout faster.</p>
+                </div>
+              )}
+            </>
+          )}
+
+          {/* Bank Tab Content */}
+          {selectedMethod === 1 && (
+            <>
+              {paymentBank.length > 0 ? (
+                paymentBank.map((bank, i) => (
+                  <div
+                    key={bank.id || bank._id || i}
+                    className={styles.paymentCard}
+                  >
+                    <div className={styles.cardDetails}>
+                      <div className={styles.cardType}>Bank Transfer</div>
+                      <div className={styles.cardNumber}>
+                        Acc no: {bank?.bankDetails?.accountNumber}
+                      </div>
+                      <div className={styles.cardHolder}>
+                        IFSC Code: {bank?.bankDetails?.ifscCode}
+                      </div>
+                      <div className={styles.cardHolder}>
+                        Bank: {bank?.bankDetails?.bankName}
+                      </div>
+                      <div className={styles.cardHolder}>
+                        Beneficiary: {bank?.bankDetails?.beneficiaryName}
+                      </div>
+                    </div>
+                    <div className={styles.cardActions}>
+                      <button
+                        className={styles.editIconBtn}
+                        onClick={() => handleEditBank(bank)}
+                      >
+                        <img src={edit} alt="edit" />
+                      </button>
+                      <button
+                        className={styles.deleteIconBtn}
+                        onClick={() => handleDeleteBank(bank)}
+                      >
+                        <img src={trash} alt="trash" />
+                      </button>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className={styles.emptyState}>
+                  <img src={no_payment_found} alt="No Bank Account" title="No Bank Account" />
+                  <h3>No Bank Accounts Added</h3>
+                  <p>Add a bank account to make checkout faster.</p>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </div>
     </>
   );
 };

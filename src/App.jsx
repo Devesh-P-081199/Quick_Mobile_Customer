@@ -113,6 +113,7 @@ import SearchBar from "./modules/common/components/layout/SearchBar/SearchBar";
 import GuidePrivacyPolicy from "./modules/common/pages/general/Privacy/Privacy";
 import ProfileCard from "./modules/profile/components/ProfileCard";
 import NoOffer from "./modules/profile/components/Offer/Offer";
+import ProfileLayout from "./modules/profile/components/ProfileLayout/ProfileLayout";
 
 const ScrollToTop = () => {
   const { pathname, search } = useLocation();
@@ -191,16 +192,13 @@ const AppContent = () => {
   }, []);
 
   // hide footer if mobile & url includes "final-price-calculator"
-  // Also hide footer for checkout and payment routes on all devices
+  // Hide footer only on mobile for specific routes
   const hideFooter =
-    (isMobile &&
-      (location.pathname.includes("final-price-calculator") ||
-        location.pathname === "/not-found" ||
-        location.pathname.includes("price-summary") ||
-        location.pathname.includes("dfds"))) ||
-    location.pathname.includes("check-out") ||
-    location.pathname.includes("/payment") ||
-    location.pathname.includes("payment-mode-selection");
+    isMobile &&
+    (location.pathname.includes("final-price-calculator") ||
+      location.pathname === "/not-found" ||
+      location.pathname.includes("price-summary") ||
+      location.pathname.includes("dfds"));
 
   return (
     <>
@@ -231,7 +229,7 @@ const AppContent = () => {
           path="/:slug/check-out"
           element={
             <Suspense fallback={<Loader />}>
-              <CheckOut />
+              <OrderSummaryPage />
             </Suspense>
           }
         />
@@ -240,7 +238,7 @@ const AppContent = () => {
           path="/:slug/check-out/add-address"
           element={
             <Suspense fallback={<Loader />}>
-              <AddressForm />
+              <OrderSummaryPage />
             </Suspense>
           }
         />
@@ -249,7 +247,7 @@ const AppContent = () => {
           path="/:slug/check-out/edit-address/:addressId"
           element={
             <Suspense fallback={<Loader />}>
-              <AddressForm />
+              <OrderSummaryPage />
             </Suspense>
           }
         />
@@ -258,7 +256,7 @@ const AppContent = () => {
           path="/:slug/payment-mode-selection"
           element={
             <Suspense fallback={<Loader />}>
-              <PaymentComponent />
+              <OrderSummaryPage />
             </Suspense>
           }
         />
@@ -276,7 +274,7 @@ const AppContent = () => {
           path="/:slug/payment/add-payment"
           element={
             <Suspense fallback={<Loader />}>
-              <PaymentForm />
+              <OrderSummaryPage />
             </Suspense>
           }
         />
@@ -285,7 +283,7 @@ const AppContent = () => {
           path="/:slug/payment/edit-payment/:paymentId"
           element={
             <Suspense fallback={<Loader />}>
-              <PaymentForm />
+              <OrderSummaryPage />
             </Suspense>
           }
         />
@@ -313,15 +311,6 @@ const AppContent = () => {
         />
 
         <Route
-          path="/Address"
-          element={
-            <Suspense fallback={<Loader />}>
-              <Address />
-            </Suspense>
-          }
-        />
-
-        <Route
           path="/profile/saved-address"
           element={
             <Suspense fallback={<Loader />}>
@@ -334,7 +323,7 @@ const AppContent = () => {
           path="/profile/saved-address/add-address"
           element={
             <Suspense fallback={<Loader />}>
-              <AddressForm />
+              <ProfileLayout />
             </Suspense>
           }
         />
@@ -343,16 +332,7 @@ const AppContent = () => {
           path="/profile/saved-address/edit-address/:addressId"
           element={
             <Suspense fallback={<Loader />}>
-              <AddressForm />
-            </Suspense>
-          }
-        />
-
-        <Route
-          path="/my-profile-payments"
-          element={
-            <Suspense fallback={<Loader />}>
-              <ProfilePayments />
+              <ProfileLayout />
             </Suspense>
           }
         />
@@ -361,7 +341,7 @@ const AppContent = () => {
           path="/profile/add-payment"
           element={
             <Suspense fallback={<Loader />}>
-              <PaymentForm />
+              <ProfileLayout />
             </Suspense>
           }
         />
@@ -370,7 +350,7 @@ const AppContent = () => {
           path="/profile/edit-payment/:paymentId"
           element={
             <Suspense fallback={<Loader />}>
-              <PaymentForm />
+              <ProfileLayout />
             </Suspense>
           }
         />
@@ -385,27 +365,58 @@ const AppContent = () => {
         />
 
         <Route
-          path="/my-profile-orders"
+          path="/my-profile"
           element={
             <Suspense fallback={<Loader />}>
-              <MyOrder />
+              <ProfileLayout />
             </Suspense>
           }
         />
         <Route
-          path="/my-profile"
+          path="/my-profile-orders"
           element={
             <Suspense fallback={<Loader />}>
-              <ProfileCard />
+              <ProfileLayout />
             </Suspense>
           }
         />
-
         <Route
           path="/edit-my-profile"
           element={
             <Suspense fallback={<Loader />}>
-              <EditProfile />
+              <ProfileLayout />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/my-profile-payments"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProfileLayout />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/Address"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProfileLayout />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/offers"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProfileLayout />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/payment-selection"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProfileLayout />
             </Suspense>
           }
         />
@@ -423,7 +434,7 @@ const AppContent = () => {
           path="/profile/order-details/:orderId"
           element={
             <Suspense fallback={<Loader />}>
-              <OrderDetails />
+              <ProfileLayout />
             </Suspense>
           }
         />

@@ -17,6 +17,10 @@ import MobileBackHeader from "../../../common/components/layout/MobileCommonHead
 import coupon from "../../../../assets/QuickSellNewIcons/discount-coupon.png";
 import arrow from "../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 import closeIcon from "../../../../assets/QuickSellNewIcons/Cross.svg";
+import AddressForm from "../../../checkout/components/AddressForm/AddressForm";
+import PaymentForm from "../../../checkout/components/PaymentForm/PaymentForm";
+import Payment from "../../../checkout/components/Payment/Payment";
+import CheckOut from "../../../checkout/components/CheckOut/CheckOut";
 
 const CouponContent = ({ styles }) => (
   <div className={styles.modalContentWrapper}>
@@ -193,20 +197,49 @@ function OrderSummary() {
         state: { returnPath: location.pathname + location.search },
       });
     } else {
-      navigate(`/${slug}/check-out${urlSuffix}`, { state: { addresses } });
+      // Don't pass addresses - force fresh fetch for latest data
+      navigate(`/${slug}/check-out${urlSuffix}`, {
+        state: { returnPath: location.pathname + location.search }
+      });
     }
   };
 
   const handleChangePayment = () => {
     const queryString = queryParams.toString();
     const urlSuffix = queryString ? `?${queryString}` : "";
-    if (paymentMethods.upi.length === 0 && paymentMethods.bank.length === 0) {
-      navigate(`/${slug}/payment/add-payment${urlSuffix}`, {
-        state: { returnPath: location.pathname + location.search },
-      });
-    } else {
-      navigate(`/${slug}/payment${urlSuffix}`, { state: { paymentMethods } });
+    // Don't pass paymentMethods - force fresh fetch for latest data
+    navigate(`/${slug}/payment-mode-selection${urlSuffix}`, {
+      state: { returnPath: location.pathname + location.search }
+    });
+  };
+
+  const renderLeftContent = () => {
+    const path = location.pathname;
+    if (path.includes("/add-address") || path.includes("/edit-address")) {
+      return <AddressForm />;
     }
+    if (path.includes("/add-payment") || path.includes("/edit-payment")) {
+      return <PaymentForm />;
+    }
+    if (path.includes("/payment-mode-selection")) {
+      return <Payment />;
+    }
+    if (path.includes("/check-out") && !path.includes("/price-summary")) {
+      return <CheckOut />;
+    }
+    return null;
+  };
+
+  // Get title for desktop content heading
+  const getContentTitle = () => {
+    const path = location.pathname;
+    if (path.includes("/check-out") && !path.includes("/price-summary")) return "Select Delivery Address";
+    if (path.includes("/payment-mode-selection")) return "Select Payment Method";
+    if (path.includes("/add-address")) return "Add Address";
+    if (path.includes("/edit-address")) return "Edit Address";
+    if (path.includes("/add-payment")) return "Add Payment";
+    if (path.includes("/edit-payment")) return "Edit Payment";
+    return null; // No title for root order summary page
   };
 
   return (
@@ -214,197 +247,87 @@ function OrderSummary() {
       <MobileBackHeader title="Order Summery" />
       <div className={`page-content-wrapper ${styles.orderSummary}`}>
         <div className={styles.leftColumn}>
-          <div className={styles.LeftBox}>
-            <div className={styles.DeviceImg}>
-              <div className={styles.mobileImg}>
-                <img src={currentEvaluationId?.devicePic || MobileImg} alt="" />
-              </div>
-              <div className={styles.DeviceDetails}>
-                <h2 className={styles.name}>
-                  <>
-                    {currentEvaluationId?.deviceName} ({currentEvaluationId?.deviceVariant})
-                  </>
-                </h2>
-                <div className={styles.pricing}>
-                  <h2 className={styles.price}>Selling Price</h2>
-                  <span className="color-red">
-                    {`₹ ${(currentEvaluationId?.finalPrice || 0).toFixed(2)}`}
-                  </span>
-                </div>
-                <>
-                  <NavLink
-                    to={`/${slug}/final-price-calculator?${queryParams.toString()}`}
-                    className={styles.recalculate}
-                    onClick={() => {
-                      const productId = queryParams.get("pid");
-                      const variantId = queryParams.get("vid");
-                      if (productId) {
-                        const packageDetailsKey = `packageDetails_${productId}`;
-                        sessionStorage.removeItem(packageDetailsKey);
-                        const storageKey = `step3PackageData_${productId}_${variantId || "unknown"}`;
-                        sessionStorage.removeItem(storageKey);
-                        const currentIndexKey = `currentPackageIndex_${storageKey}`;
-                        sessionStorage.removeItem(currentIndexKey);
-                        const packagesKey = `packages_${productId}`;
-                        sessionStorage.removeItem(packagesKey);
-                        const formSubmittedKey = `formSubmitted_${productId}`;
-                        sessionStorage.removeItem(formSubmittedKey);
-                        const recalculateKey = `recalculate_${productId}`;
-                        sessionStorage.setItem(recalculateKey, "true");
-                      }
-                    }}
-                  >
-                    <img src={Recalculate} alt="Recalculate" className={styles.recalculateImg} />
-                    Recalculate
-                  </NavLink>
-                </>
-              </div>
-            </div>
-            <div className={styles.deliveryfeature}>
-              <div className={styles.feature}>
-                <img src={clock} alt="" className={styles.featureOption}></img>
-                <p>Instant Payment</p>
-              </div>
-              <div className={styles.feature}>
-                <img src={van} alt="" className={styles.featureOption}></img>
-                <p>Free Pickup</p>
-              </div>
-              <div className={styles.feature}>
-                <img src={secureShield} alt="" className={styles.featureOption}></img>
-                <p>100% Safe & Secure</p>
-              </div>
-            </div>
-            <p className={styles.BottomPara}>
-              {`Congratulations! Based on the details you provided, your device is valued at ₹ ${currentEvaluationId?.finalPrice}. This is the best price we offer, reflecting the current market demand and the condition of your device. Ready to move forward?`}
-            </p>
-          </div>
-
-          <div className={styles.detailsDown}>
-            <div className={styles.deviceDetailsBtn}>
-              <button onClick={() => setShowAnswersModal(true)}>
-                <div className={styles.bottonTitle}>
-                  <img src={clock} alt="" className={styles.featureOption}></img>
-                  <p>Device Details</p>
-                </div>
-                <span>
-                  <img src={arrow} alt="" />
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div className={styles.summaryCardAddress}>
-            <div className={styles.summaryHeader}>
-              <div className={styles.summaryHeaderLeft}>
-                <img src={van} alt="" className={styles.featureOption}></img>
-                <span className={styles.summaryLabel}>Pickup Address</span>
-              </div>
-              <button className={styles.changeBtn} onClick={handleChangeAddress}>
-                {selectedAddress ? "Change" : "Add"}
-              </button>
-            </div>
-            {selectedAddress ? (
-              <div className={styles.summaryContent}>
-                <span className={styles.addressTag}>{selectedAddress?.saveAs}</span>
-                <p className={styles.addressText}>
-                  {selectedAddress?.houseNumber}, {selectedAddress?.street}
-                  {selectedAddress?.landmark && `, ${selectedAddress?.landmark}`}
-                  {selectedAddress?.cityName}, {selectedAddress?.state} - {selectedAddress?.zipCode}
-                </p>
-                <p className={styles.addressText}>{selectedAddress?.alternatePhone}</p>
-              </div>
-            ) : addresses.length === 0 ? (
-              <p className={styles.notSelected}>
-                No addresses found. Click "Add" button above to add a delivery address.
-              </p>
-            ) : (
-              <p className={styles.notSelected}>
-                No address selected. Click "Add" button above to select an address.
-              </p>
-            )}
-          </div>
-
-          <div className={styles.summaryCardPayment}>
-            <div className={styles.summaryHeader}>
-              <div className={styles.summaryHeaderLeft}>
-                <img src={secureShield} alt="" className={styles.featureOption}></img>
-                <span className={styles.summaryLabel}>Payment Method</span>
-              </div>
-              <button className={styles.changeBtn} onClick={handleChangePayment}>
-                {selectedPaymentMethod ? "Change" : "Add"}
-              </button>
-            </div>
-            {selectedPaymentMethod ? (
-              <div className={styles.summaryContent}>
-                {selectedPaymentMethod.type === "upi" ? (
-                  <>
-                    <span className={styles.paymentType}>UPI Payment</span>
-                    <p className={styles.paymentText}>
-                      UPI ID: <span className={styles.paymentValue}>{selectedPaymentMethod?.upiId}</span>
-                    </p>
-                  </>
-                ) : selectedPaymentMethod.type === "bank" ? (
-                  <>
-                    <span className={styles.paymentType}>Bank Transfer (IMPS)</span>
-                    <p className={styles.paymentText}>
-                      Account:{" "}
-                      <span className={styles.paymentValue}>
-                        {selectedPaymentMethod?.bankDetails?.accountNumber}
+          {renderLeftContent() ? (
+            <>
+              {/* Desktop-only heading */}
+              {getContentTitle() && (
+                <h2 className={styles.contentHeading}>{getContentTitle()}</h2>
+              )}
+              {renderLeftContent()}
+            </>
+          ) : (
+            <>
+              <div className={styles.LeftBox}>
+                <div className={styles.DeviceImg}>
+                  <div className={styles.mobileImg}>
+                    <img src={currentEvaluationId?.devicePic || MobileImg} alt="" />
+                  </div>
+                  <div className={styles.DeviceDetails}>
+                    <h2 className={styles.name}>
+                      <>
+                        {currentEvaluationId?.deviceName} ({currentEvaluationId?.deviceVariant})
+                      </>
+                    </h2>
+                    <div className={styles.pricing}>
+                      <h2 className={styles.price}>Selling Price</h2>
+                      <span className="color-red">
+                        {`₹ ${(currentEvaluationId?.finalPrice || 0).toFixed(2)}`}
                       </span>
-                    </p>
-                    <p className={styles.paymentText}>
-                      IFSC: <span className={styles.paymentValue}>{selectedPaymentMethod?.bankDetails?.ifscCode}</span>
-                    </p>
-                    <p className={styles.paymentText}>
-                      Bank: <span className={styles.paymentValue}>{selectedPaymentMethod?.bankDetails?.bankName}</span>
-                    </p>
-                  </>
-                ) : null}
+                    </div>
+                    <>
+                      <NavLink
+                        to={`/${slug}/final-price-calculator?${queryParams.toString()}`}
+                        className={styles.recalculate}
+                        onClick={() => {
+                          const productId = queryParams.get("pid");
+                          const variantId = queryParams.get("vid");
+                          if (productId) {
+                            const packageDetailsKey = `packageDetails_${productId}`;
+                            sessionStorage.removeItem(packageDetailsKey);
+                            const storageKey = `step3PackageData_${productId}_${variantId || "unknown"}`;
+                            sessionStorage.removeItem(storageKey);
+                            const currentIndexKey = `currentPackageIndex_${storageKey}`;
+                            sessionStorage.removeItem(currentIndexKey);
+                            const packagesKey = `packages_${productId}`;
+                            sessionStorage.removeItem(packagesKey);
+                            const formSubmittedKey = `formSubmitted_${productId}`;
+                            sessionStorage.removeItem(formSubmittedKey);
+                            const recalculateKey = `recalculate_${productId}`;
+                            sessionStorage.setItem(recalculateKey, "true");
+                          }
+                        }}
+                      >
+                        <img src={Recalculate} alt="Recalculate" className={styles.recalculateImg} />
+                        Recalculate
+                      </NavLink>
+                    </>
+                  </div>
+                </div>
+                <div className={styles.deliveryfeature}>
+                  <div className={styles.feature}>
+                    <img src={clock} alt="" className={styles.featureOption}></img>
+                    <p>Instant Payment</p>
+                  </div>
+                  <div className={styles.feature}>
+                    <img src={van} alt="" className={styles.featureOption}></img>
+                    <p>Free Pickup</p>
+                  </div>
+                  <div className={styles.feature}>
+                    <img src={secureShield} alt="" className={styles.featureOption}></img>
+                    <p>100% Safe & Secure</p>
+                  </div>
+                </div>
+                <p className={styles.BottomPara}>
+                  {`Congratulations! Based on the details you provided, your device is valued at ₹ ${currentEvaluationId?.finalPrice}. This is the best price we offer, reflecting the current market demand and the condition of your device. Ready to move forward?`}
+                </p>
               </div>
-            ) : paymentMethods.upi.length === 0 && paymentMethods.bank.length === 0 ? (
-              <p className={styles.notSelected}>
-                No payment methods found. Click "Add" button above to add a payment method.
-              </p>
-            ) : (
-              <p className={styles.notSelected}>
-                No payment method selected. Click "Add" button above to select a payment method.
-              </p>
-            )}
-          </div>
 
-          {/* "Apply Coupon" Button for MOBILE VIEW ONLY - Triggers Modal */}
-
-          {/* New Coupon Card in Left Column */}
-          <div className={styles.summaryCardCoupon}>
-            <div className={styles.summaryHeader}>
-              <div className={styles.summaryHeaderLeft}>
-                <img
-                  src={coupon}
-                  alt=""
-                  className={styles.featureOption}
-                  style={{ width: "30px", height: "30px", padding: "2px", background: "transparent" }}
-                ></img>
-                <span className={styles.summaryLabel}>Apply Coupon</span>
-              </div>
-            </div>
-            <div className={styles.couponContent}>
-              {/* Desktop View: Inline Form */}
-              <div className={styles.desktopCouponForm}>
-                <input
-                  type="text"
-                  placeholder="Enter Coupon Code"
-                  className={styles.couponInput}
-                />
-                <button className={styles.applyButton}>Apply</button>
-              </div>
-
-              {/* Mobile View: Trigger Button */}
-              <div className={styles.mobileCouponTrigger}>
-                <div className={styles.applyCoupon} onClick={openCouponModal}>
-                  <button>
+              <div className={styles.detailsDown}>
+                <div className={styles.deviceDetailsBtn}>
+                  <button onClick={() => setShowAnswersModal(true)}>
                     <div className={styles.bottonTitle}>
-                      <img src={coupon} alt="" className={styles.featureOption}></img>
-                      <p>Apply Coupon</p>
+                      <img src={clock} alt="" className={styles.featureOption}></img>
+                      <p>Device Details</p>
                     </div>
                     <span>
                       <img src={arrow} alt="" />
@@ -412,8 +335,130 @@ function OrderSummary() {
                   </button>
                 </div>
               </div>
-            </div>
-          </div>
+
+              <div className={styles.summaryCardAddress}>
+                <div className={styles.summaryHeader}>
+                  <div className={styles.summaryHeaderLeft}>
+                    <img src={van} alt="" className={styles.featureOption}></img>
+                    <span className={styles.summaryLabel}>Pickup Address</span>
+                  </div>
+                  <button className={styles.changeBtn} onClick={handleChangeAddress}>
+                    {selectedAddress ? "Change" : "Add"}
+                  </button>
+                </div>
+                {selectedAddress ? (
+                  <div className={styles.summaryContent}>
+                    <span className={styles.addressTag}>{selectedAddress?.saveAs}</span>
+                    <p className={styles.addressText}>
+                      {selectedAddress?.houseNumber}, {selectedAddress?.street}
+                      {selectedAddress?.landmark && `, ${selectedAddress?.landmark}`}
+                      {selectedAddress?.cityName}, {selectedAddress?.state} - {selectedAddress?.zipCode}
+                    </p>
+                    <p className={styles.addressText}>{selectedAddress?.alternatePhone}</p>
+                  </div>
+                ) : addresses.length === 0 ? (
+                  <p className={styles.notSelected}>
+                    No addresses found. Click "Add" button above to add a delivery address.
+                  </p>
+                ) : (
+                  <p className={styles.notSelected}>
+                    No address selected. Click "Add" button above to select an address.
+                  </p>
+                )}
+              </div>
+
+              <div className={styles.summaryCardPayment}>
+                <div className={styles.summaryHeader}>
+                  <div className={styles.summaryHeaderLeft}>
+                    <img src={secureShield} alt="" className={styles.featureOption}></img>
+                    <span className={styles.summaryLabel}>Payment Method</span>
+                  </div>
+                  <button className={styles.changeBtn} onClick={handleChangePayment}>
+                    {selectedPaymentMethod ? "Change" : "Add"}
+                  </button>
+                </div>
+                {selectedPaymentMethod ? (
+                  <div className={styles.summaryContent}>
+                    {selectedPaymentMethod.type === "upi" ? (
+                      <>
+                        <span className={styles.paymentType}>UPI Payment</span>
+                        <p className={styles.paymentText}>
+                          UPI ID: <span className={styles.paymentValue}>{selectedPaymentMethod?.upiId}</span>
+                        </p>
+                      </>
+                    ) : selectedPaymentMethod.type === "bank" ? (
+                      <>
+                        <span className={styles.paymentType}>Bank Transfer (IMPS)</span>
+                        <p className={styles.paymentText}>
+                          Account:{" "}
+                          <span className={styles.paymentValue}>
+                            {selectedPaymentMethod?.bankDetails?.accountNumber}
+                          </span>
+                        </p>
+                        <p className={styles.paymentText}>
+                          IFSC: <span className={styles.paymentValue}>{selectedPaymentMethod?.bankDetails?.ifscCode}</span>
+                        </p>
+                        <p className={styles.paymentText}>
+                          Bank: <span className={styles.paymentValue}>{selectedPaymentMethod?.bankDetails?.bankName}</span>
+                        </p>
+                      </>
+                    ) : null}
+                  </div>
+                ) : paymentMethods.upi.length === 0 && paymentMethods.bank.length === 0 ? (
+                  <p className={styles.notSelected}>
+                    No payment methods found. Click "Add" button above to add a payment method.
+                  </p>
+                ) : (
+                  <p className={styles.notSelected}>
+                    No payment method selected. Click "Add" button above to select a payment method.
+                  </p>
+                )}
+              </div>
+
+              {/* "Apply Coupon" Button for MOBILE VIEW ONLY - Triggers Modal */}
+
+              {/* New Coupon Card in Left Column */}
+              <div className={styles.summaryCardCoupon}>
+                <div className={styles.summaryHeader}>
+                  <div className={styles.summaryHeaderLeft}>
+                    <img
+                      src={coupon}
+                      alt=""
+                      className={styles.featureOption}
+                      style={{ width: "30px", height: "30px", padding: "2px", background: "transparent" }}
+                    ></img>
+                    <span className={styles.summaryLabel}>Apply Coupon</span>
+                  </div>
+                </div>
+                <div className={styles.couponContent}>
+                  {/* Desktop View: Inline Form */}
+                  <div className={styles.desktopCouponForm}>
+                    <input
+                      type="text"
+                      placeholder="Enter Coupon Code"
+                      className={styles.couponInput}
+                    />
+                    <button className={styles.applyButton}>Apply</button>
+                  </div>
+
+                  {/* Mobile View: Trigger Button */}
+                  <div className={styles.mobileCouponTrigger}>
+                    <div className={styles.applyCoupon} onClick={openCouponModal}>
+                      <button>
+                        <div className={styles.bottonTitle}>
+                          <img src={coupon} alt="" className={styles.featureOption}></img>
+                          <p>Apply Coupon</p>
+                        </div>
+                        <span>
+                          <img src={arrow} alt="" />
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         {showAnswersModal && (
@@ -429,6 +474,22 @@ function OrderSummary() {
 
         <div className={styles.rightColumn}>
           <div className={styles.RightBox}>
+            {/* Device Image Section */}
+            <div className={styles.deviceSection}>
+              <div className={styles.imageContainer}>
+                <img
+                  src={currentEvaluationId?.devicePic || MobileImg}
+                  alt={currentEvaluationId?.deviceName || "Device"}
+                />
+              </div>
+              <div className={styles.deviceInfo}>
+                <span className={styles.deviceName}>
+                  {currentEvaluationId?.deviceName || ""}
+                  {currentEvaluationId?.deviceVariant ? ` (${currentEvaluationId.deviceVariant})` : ""}
+                </span>
+              </div>
+            </div>
+
             <div className={styles.details}>
               <div className={styles.summary}>Summary</div>
               <div className={styles.row}>
@@ -458,16 +519,18 @@ function OrderSummary() {
               </div>
             </div>
 
-            <div className={styles.sellNowContainer}>
-              <button
-                className={styles.sellNow}
-                onClick={selectedAddress ? handlePlaceOrder : handleChangeAddress}
-                disabled={loading}
-              >
-                {selectedAddress ? "Place Order" : "Add Address to Continue"}
-              </button>
-            </div>
-
+            {/* Only show Continue button if NOT on address/payment selection pages */}
+            {!renderLeftContent() && (
+              <div className={styles.sellNowContainer}>
+                <button
+                  className={styles.sellNow}
+                  onClick={selectedAddress ? handlePlaceOrder : handleChangeAddress}
+                  disabled={loading}
+                >
+                  {selectedAddress ? "Place Order" : "Add Address to Continue"}
+                </button>
+              </div>
+            )}
 
           </div>
         </div>

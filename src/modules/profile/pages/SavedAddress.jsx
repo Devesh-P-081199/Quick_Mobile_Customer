@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SavedAddress.module.css";
-import ProfileCard from "../components/ProfileCard";
-import MobileBackHeader from "../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import { FaMapMarkerAlt, FaPlus } from "react-icons/fa";
 import api from "../../../Utils/api";
 import { toast } from "react-toastify";
@@ -70,72 +68,59 @@ const SavedAddress = () => {
 
   return (
     <>
-      <MobileBackHeader title="Saved Addresses" />
-      <section className="zero-padding-section">
-        <div className={styles.panelWrapper}>
-          <div className={styles.right}>
-            <ProfileCard />
-          </div>
-          <div className={styles.left}>
-            <div className={styles.header}>
-              <button className={styles.addBtn} onClick={handleAddNew}>
-                <FaPlus /> Add New Address
-              </button>
-            </div>
-
-            <div className={`${styles.addressList}`}>
-              {addresses.length > 0 ? (
-                addresses.map((address, index) => (
-                  <div
-                    key={address._id || address.id || index}
-                    className={styles.addressCard}
-                  >
-                    <div className={styles.addressDetails}>
-                      <div className={styles.addressHeader}>
-                        <span className={styles.addressType}>
-                          {address.saveAs}
-                        </span>
-                      </div>
-                      {address.alternatePhone && (
-                        <div className={styles.addressPhone}>
-                          {address.alternatePhone}
-                        </div>
-                      )}
-                      <div className={styles.addressText}>
-                        {address.houseNumber}, {address.street}
-                        {address.landmark && `, ${address.landmark}`}
-                      </div>
-                      <div className={styles.addressText}>
-                        {address.cityName}, {address.state} - {address.zipCode}
-                      </div>
-                    </div>
-                    <div className={styles.addressActions}>
-                      <button
-                        className={styles.editIconBtn}
-                        onClick={() => handleEdit(address)}
-                      >
-                        <img src={edit} alt="edit" />
-                      </button>
-                      <button
-                        className={styles.deleteIconBtn}
-                        onClick={() => handleDelete(address)}
-                      >
-                        <img src={trash} alt="trash" />
-                      </button>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className={styles.emptyState}>
-                  <img src={no_address} alt="No Address" title="No Address" />
-                  <h3>No Saved Addresses</h3>
-                  <p>Add an address to make checkout faster.</p>
-                </div>
-              )}
-            </div>
-          </div>
+      <div className={styles.addressSection}>
+        <div className={styles.header}>
+          <button className={styles.addBtn} onClick={handleAddNew}>
+            <FaPlus /> Add New Address
+          </button>
         </div>
-      </section>
+
+        <div className={`${styles.addressList}`}>
+          {addresses.length > 0 ? (
+            addresses.map((address, index) => (
+              <div
+                key={address._id || address.id || index}
+                className={styles.addressCard}
+              >
+                <div className={styles.addressDetails}>
+                  <div className={styles.addressHeader}>
+                    <span className={styles.addressType}>{address?.type}</span>
+                    {address?.isDefault && (
+                      <span className={styles.defaultBadge}>Default</span>
+                    )}
+                  </div>
+                  <div className={styles.addressName}>{address?.name}</div>
+                  <div className={styles.addressPhone}>{address?.phone}</div>
+                  <div className={styles.addressText}>
+                    {address?.houseNumber}, {address?.area}, {address?.landmark},{" "}
+                    {address?.city}, {address?.state} - {address?.pincode}
+                  </div>
+                </div>
+                <div className={styles.addressActions}>
+                  <button
+                    className={styles.editIconBtn}
+                    onClick={() => handleEdit(address)}
+                  >
+                    <img src={edit} alt="edit" />
+                  </button>
+                  <button
+                    className={styles.deleteIconBtn}
+                    onClick={() => handleDelete(address)}
+                  >
+                    <img src={trash} alt="trash" />
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className={styles.emptyState}>
+              <img src={no_address} alt="No Addresses" title="No Addresses" />
+              <h3>No Addresses Saved</h3>
+              <p>Add a new address to save time during checkout.</p>
+            </div>
+          )}
+        </div>
+      </div>
     </>
   );
 };

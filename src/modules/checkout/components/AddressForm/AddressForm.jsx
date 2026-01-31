@@ -154,11 +154,11 @@ const AddressForm = () => {
 
   return (
     <>
-      <BreadCrumb items={["Home", "Sell Your Phone"]} />
+      {/* <BreadCrumb items={["Home", "Sell Your Phone"]} /> */}
       <MobileBackHeader
         title={editingAddress ? "Edit Address" : "Add Address"}
       />
-      <section className={`${styles.addressFormSection} mobile-pt-section`}>
+      <div className={`${styles.addressFormSection} mobile-pt-section`}>
         <div className={styles.formContainer}>
           <div className={styles.formContent}>
             {/* Flat no/House no */}
@@ -287,9 +287,8 @@ const AddressForm = () => {
                 placeholder="Select the State"
                 value={formData.state}
                 onChange={handleInputChange}
-                className={`${styles.input} ${
-                  !formData.state ? styles.placeholderSelect : ""
-                }`}
+                className={`${styles.input} ${!formData.state ? styles.placeholderSelect : ""
+                  }`}
               >
                 <option value="">Select State</option>
                 {statesAddress.map((state) => (
@@ -320,9 +319,8 @@ const AddressForm = () => {
               <span className={styles.saveAsLabel}>Save as:</span>
               <div className={styles.radioButtonGroup}>
                 <label
-                  className={`${styles.radioButton} ${
-                    formData.saveAs === "Home" ? styles.radioButtonSelected : ""
-                  }`}
+                  className={`${styles.radioButton} ${formData.saveAs === "Home" ? styles.radioButtonSelected : ""
+                    }`}
                 >
                   <input
                     type="radio"
@@ -335,11 +333,10 @@ const AddressForm = () => {
                   Home
                 </label>
                 <label
-                  className={`${styles.radioButton} ${
-                    formData.saveAs === "Office"
-                      ? styles.radioButtonSelected
-                      : ""
-                  }`}
+                  className={`${styles.radioButton} ${formData.saveAs === "Office"
+                    ? styles.radioButtonSelected
+                    : ""
+                    }`}
                 >
                   <input
                     type="radio"
@@ -352,11 +349,10 @@ const AddressForm = () => {
                   Office
                 </label>
                 <label
-                  className={`${styles.radioButton} ${
-                    formData.saveAs === "Other"
-                      ? styles.radioButtonSelected
-                      : ""
-                  }`}
+                  className={`${styles.radioButton} ${formData.saveAs === "Other"
+                    ? styles.radioButtonSelected
+                    : ""
+                    }`}
                 >
                   <input
                     type="radio"
@@ -404,16 +400,24 @@ const AddressForm = () => {
                 </span>
               </label>
             </div>
+
+            {/* Desktop Button */}
+            <button
+              className={styles.desktopButton}
+              onClick={handleSubmit}
+            >
+              {editingAddress ? "Update" : "Save and Continue"}
+            </button>
           </div>
 
-          {/* Sticky Bottom Buttons */}
+          {/* Mobile Sticky Bottom Button */}
           <div className={styles.stickyBottom}>
             <button className={styles.submitButton} onClick={handleSubmit}>
               {editingAddress ? "Update" : "Save and Continue"}
             </button>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };

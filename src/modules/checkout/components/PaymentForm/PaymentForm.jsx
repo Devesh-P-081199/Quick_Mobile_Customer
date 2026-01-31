@@ -179,11 +179,10 @@ const PaymentForm = () => {
 
   return (
     <>
-      <BreadCrumb items={["Home", "Sell Your Phone"]} />
       <MobileBackHeader
         title={editingPayment ? "Edit Payment Method" : "Add Payment Method"}
       />
-      <section className={`${styles.paymentFormSection} mobile-pt-section`}>
+      <div className={`${styles.paymentFormSection} mobile-pt-section`}>
         <div className={styles.formContainer}>
           <div className={styles.formContent}>
             {/* Payment Type Selection */}
@@ -191,11 +190,10 @@ const PaymentForm = () => {
               <span className={styles.paymentTypeLabel}>Payment Type:</span>
               <div className={styles.radioButtonGroup}>
                 <label
-                  className={`${styles.radioButton} ${
-                    formData.paymentType === "UPI"
-                      ? styles.radioButtonSelected
-                      : ""
-                  }`}
+                  className={`${styles.radioButton} ${formData.paymentType === "UPI"
+                    ? styles.radioButtonSelected
+                    : ""
+                    }`}
                 >
                   <input
                     type="radio"
@@ -208,11 +206,10 @@ const PaymentForm = () => {
                   UPI
                 </label>
                 <label
-                  className={`${styles.radioButton} ${
-                    formData.paymentType === "Bank"
-                      ? styles.radioButtonSelected
-                      : ""
-                  }`}
+                  className={`${styles.radioButton} ${formData.paymentType === "Bank"
+                    ? styles.radioButtonSelected
+                    : ""
+                    }`}
                 >
                   <input
                     type="radio"
@@ -338,16 +335,24 @@ const PaymentForm = () => {
                 </span>
               </label>
             </div>
+
+            {/* Desktop Button */}
+            <button
+              className={styles.desktopButton}
+              onClick={handleSubmit}
+            >
+              {editingPayment ? "Update" : "Save and Continue"}
+            </button>
           </div>
 
-          {/* Sticky Bottom Button */}
+          {/* Mobile Sticky Bottom Button */}
           <div className={styles.stickyBottom}>
             <button className={styles.submitButton} onClick={handleSubmit}>
               {editingPayment ? "Update" : "Save and Continue"}
             </button>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };

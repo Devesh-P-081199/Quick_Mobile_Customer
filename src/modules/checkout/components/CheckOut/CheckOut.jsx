@@ -95,9 +95,8 @@ function CheckOut() {
 
   return (
     <>
-      <BreadCrumb items={["Home", "Sell Your Phone"]} />
       <MobileBackHeader title="Address" />
-      <section className={`${styles.CheckOutSection} mobile-pt-section `}>
+      <div className={`${styles.CheckOutSection} mobile-pt-section `}>
         <div className={styles.Wrapper}>
           <div className={styles.LeftContainer}>
             <div className={styles.addressBoxes}>
@@ -116,9 +115,8 @@ function CheckOut() {
                     return (
                       <div
                         key={itemId || index}
-                        className={`${styles.addressCard} ${
-                          isSelected ? styles.selectedCard : ""
-                        }`}
+                        className={`${styles.addressCard} ${isSelected ? styles.selectedCard : ""
+                          }`}
                       >
                         <label className={styles.addressLabel}>
                           <input
@@ -172,12 +170,29 @@ function CheckOut() {
                   <p></p>
                 )}
               </div>
+
+              {/* Continue Button */}
+              <div className={styles.continueButtonContainer}>
+                <button
+                  className={styles.continueButton}
+                  onClick={() => {
+                    if (selectedAddress) {
+                      const returnPath = location.state?.returnPath || `/${slug}/price-summary`;
+                      navigate(returnPath);
+                    } else {
+                      toast.error("Please select an address");
+                    }
+                  }}
+                  disabled={!selectedAddress}
+                >
+                  Continue
+                </button>
+              </div>
             </div>
           </div>
-
-          <RightCard />
+          {/* RightCard removed - OrderSummary's RightBox handles all summary displays */}
         </div>
-      </section>
+      </div>
     </>
   );
 }

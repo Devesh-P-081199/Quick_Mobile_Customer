@@ -122,28 +122,17 @@ function RightCard() {
           </div>
         </div>
 
-        <button onClick={handlePlaceOrder} className={styles.sellNow}>
+        {/* Continue button removed - CheckOut component has its own Continue button in LeftContainer */}
+        {/* <button onClick={handlePlaceOrder} className={styles.sellNow}>
           {location.pathname === `/${slug}/payment-mode-selection`
             ? "Place Order"
             : location.pathname === `/${slug}/payment`
               ? "Continue"
               : "Continue"}
-        </button>
-
-        <div className={styles.applyCoupon}>
-          <div className={styles.couponContent}>
-            <div className={styles.couponIcon}>
-              <img src={coupenicon} alt="" />
-            </div>
-            <span className={styles.couponText}>Apply Coupon</span>
-          </div>
-
-          <div className={styles.arrow}>
-            <img src={rightarrow} alt="" />
-          </div>
-        </div>
+        </button> */}
       </div>
-      <div className={styles.sellNowMobileContainer}>
+      {/* Mobile Continue button also removed */}
+      {/* <div className={styles.sellNowMobileContainer}>
         <button onClick={handlePlaceOrder} className={styles.sellNowMobile}>
           {location.pathname === `/${slug}/payment-mode-selection`
             ? "Place Order"
@@ -151,7 +140,7 @@ function RightCard() {
               ? "Continue"
               : "Continue"}
         </button>
-      </div>
+      </div> */}
     </>
   );
 }

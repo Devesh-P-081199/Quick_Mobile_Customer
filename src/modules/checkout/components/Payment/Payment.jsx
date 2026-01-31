@@ -24,7 +24,7 @@ function PaymentComponent() {
   const { selectedPaymentMethod, setSelectedPaymentMethod } =
     useContext(UserContext);
 
-  const [selectedMethod, setSelectedMethod] = useState(null);
+  const [selectedMethod, setSelectedMethod] = useState(0);
   const [paymentBank, setPaymentBank] = useState([]);
   const [paymentUpi, setPaymentUpi] = useState([]);
   const [selectedBankIndex, setSelectedBankIndex] = useState(null);
@@ -313,10 +313,9 @@ function PaymentComponent() {
     <>
       <MobileBackHeader title="Payment" />
 
-      <section className={styles.CheckOutSection}>
+      <div className={styles.CheckOutSection}>
         <div className={styles.Wrapper}>
           <div className={styles.PaymentBox}>
-            <h2 className={styles.Title}>Payment</h2>
 
             {/* Add New Payment Method Button */}
             {/* Add New Payment Method Button */}
@@ -338,27 +337,23 @@ function PaymentComponent() {
             {/* Tabs for UPI and Bank */}
             <div className={styles.tabContainer}>
               <button
-                className={`${styles.tabButton} ${
-                  selectedMethod === 0 ? styles.activeTab : ""
-                }`}
+                className={`${styles.tabButton} ${selectedMethod === 0 ? styles.activeTab : ""
+                  }`}
                 onClick={() => {
                   setSelectedMethod(0);
                   setSelectedBankIndex(null);
                   setSelectedUpiIndex(null);
-                  setSelectedPaymentMethod(null);
                 }}
               >
                 UPI
               </button>
               <button
-                className={`${styles.tabButton} ${
-                  selectedMethod === 1 ? styles.activeTab : ""
-                }`}
+                className={`${styles.tabButton} ${selectedMethod === 1 ? styles.activeTab : ""
+                  }`}
                 onClick={() => {
                   setSelectedMethod(1);
                   setSelectedBankIndex(null);
                   setSelectedUpiIndex(null);
-                  setSelectedPaymentMethod(null);
                 }}
               >
                 Bank Transfer
@@ -385,9 +380,8 @@ function PaymentComponent() {
                           paymentUpi.map((upi, i) => (
                             <label
                               key={i}
-                              className={`${styles.paymentCard} ${
-                                selectedUpiIndex === i ? styles.selected : ""
-                              }`}
+                              className={`${styles.paymentCard} ${selectedUpiIndex === i ? styles.selected : ""
+                                }`}
                             >
                               <input
                                 type="radio"
@@ -449,9 +443,8 @@ function PaymentComponent() {
                           paymentBank.map((bank, i) => (
                             <label
                               key={i}
-                              className={`${styles.paymentCard} ${
-                                selectedBankIndex === i ? styles.selected : ""
-                              }`}
+                              className={`${styles.paymentCard} ${selectedBankIndex === i ? styles.selected : ""
+                                }`}
                             >
                               <input
                                 type="radio"
@@ -522,7 +515,7 @@ function PaymentComponent() {
             </button>
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }
