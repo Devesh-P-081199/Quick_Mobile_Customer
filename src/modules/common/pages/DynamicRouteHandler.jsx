@@ -36,7 +36,7 @@ const DynamicRouteHandler = () => {
 
   const [ComponentToRender, setComponentToRender] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [breadcrumbItems, setBreadcrumbItems] = useState(["Home"]); // 👈 breadcrumb state
+  const [breadcrumbItems, setBreadcrumbItems] = useState([{ label: "Home", path: "/" }]); // 👈 breadcrumb state
 
   const resolvedSlugCache = useRef({});
 
@@ -63,7 +63,7 @@ const DynamicRouteHandler = () => {
 
       // 🔹 CATEGORY FLOW
       if (slug1Type === "category") {
-        setBreadcrumbItems(["Home", slug1]); // 👈 add category
+        setBreadcrumbItems([{ label: "Home", path: "/" }, { label: slug1, path: `/${slug1}` }]); // 👈 add category
 
         if (!slug2 && !categoryHasSub) {
           setComponentToRender(() => SellHome);
@@ -84,17 +84,69 @@ const DynamicRouteHandler = () => {
           setSeoData(res2.data?.seoData?.Sell);
 
           if (type2 === "brand") {
-            setBreadcrumbItems(["Home", slug1, res2.data?.name || slug2]); // 👈 add brand
+            setBreadcrumbItems([{ label: "Home", path: "/" }, { label: slug1, path: `/${slug1}` }, { label: res2.data?.name || slug2, path: `/${slug1}/${slug2}` }]); // 👈 add brand
             setComponentToRender(() => SelectSeries);
             return;
           }
           if (type2 === "product") {
-            setBreadcrumbItems(["Home", slug1, res2.data?.name || slug2]); // 👈 add product
+            // Build breadcrumb with brand lookup
+            const breadcrumb = [{ label: "Home", path: "/" }, { label: slug1, path: `/${slug1}` }];
+
+            // Check if product has deviceBrand ID - fetch brand details  
+            console.log("🔍 Product data:", res2.data);
+            if (res2.data?.data?.product?.deviceBrand) {
+              console.log("🔍 Product has deviceBrand ID:", res2.data.data.product.deviceBrand);
+              try {
+                const brandsRes = await api.get('/common-module/getBrandsAndProducts');
+                const brands = brandsRes.data?.BrandsWithProducts || [];
+                console.log("🔍 Total brands fetched:", brands.length);
+                const brand = brands.find(b => b._id === res2.data.data.product.deviceBrand);
+                console.log("🔍 Brand found:", brand);
+
+                if (brand && brand.slugSell) {
+                  breadcrumb.push({
+                    label: brand.slugSell,
+                    path: `/${slug1}/${brand.slugSell}`
+                  });
+                  console.log("✅ Brand added to breadcrumb:", brand.slugSell);
+                }
+              } catch (err) {
+                console.error("Error fetching brand for breadcrumb:", err);
+              }
+            } else {
+              console.log("⚠️ No deviceBrand found in res2.data.data.product");
+              console.log("⚠️ res2.data structure:", JSON.stringify(res2.data, null, 2));
+            }
+
+            breadcrumb.push({ label: res2.data?.name || slug2, path: `/${slug1}/${slug2}` });
+            setBreadcrumbItems(breadcrumb);
             setComponentToRender(() => SelectVarient);
             return;
           }
           if (type2 === "variant") {
-            setBreadcrumbItems(["Home", slug1, res2.data?.name || slug2]); // 👈 add variant
+            // Build breadcrumb with brand lookup
+            const breadcrumb = [{ label: "Home", path: "/" }, { label: slug1, path: `/${slug1}` }];
+
+            // Check if variant has deviceBrand ID - fetch brand details
+            if (res2.data?.data?.product?.deviceBrand) {
+              try {
+                const brandsRes = await api.get('/common-module/getBrandsAndProducts');
+                const brands = brandsRes.data?.BrandsWithProducts || [];
+                const brand = brands.find(b => b._id === res2.data.data.product.deviceBrand);
+
+                if (brand && brand.slugSell) {
+                  breadcrumb.push({
+                    label: brand.slugSell,
+                    path: `/${slug1}/${brand.slugSell}`
+                  });
+                }
+              } catch (err) {
+                console.error("Error fetching brand for breadcrumb:", err);
+              }
+            }
+
+            breadcrumb.push({ label: res2.data?.name || slug2, path: `/${slug1}/${slug2}` });
+            setBreadcrumbItems(breadcrumb);
 
             if (res2.data?.singleVariant) {
               const variant = res2.data;
@@ -117,7 +169,7 @@ const DynamicRouteHandler = () => {
 
       // 🔹 SUBCATEGORY FLOW
       if (slug1Type === "subcategory") {
-        setBreadcrumbItems(["Home", slug1]); // 👈 add subcategory
+        setBreadcrumbItems([{ label: "Home", path: "/" }, { label: slug1, path: `/${slug1}` }]); // 👈 add subcategory
 
         if (!slug2) {
           setComponentToRender(() => SelectSubCata);
@@ -131,17 +183,61 @@ const DynamicRouteHandler = () => {
         setSeoData(res2?.data?.seoData?.Sell);
 
         if (type2 === "brand") {
-          setBreadcrumbItems(["Home", slug1, res2.data?.name || slug2]);
+          setBreadcrumbItems([{ label: "Home", path: "/" }, { label: slug1, path: `/${slug1}` }, { label: res2.data?.name || slug2, path: `/${slug1}/${slug2}` }]);
           setComponentToRender(() => SelectSeries);
           return;
         }
         if (type2 === "product") {
-          setBreadcrumbItems(["Home", slug1, res2.data?.name || slug2]);
+          // Build breadcrumb with brand lookup
+          const breadcrumb = [{ label: "Home", path: "/" }, { label: slug1, path: `/${slug1}` }];
+
+          // Check if product has deviceBrand ID - fetch brand details  
+          if (res2.data?.data?.product?.deviceBrand) {
+            try {
+              const brandsRes = await api.get('/common-module/getBrandsAndProducts');
+              const brands = brandsRes.data?.BrandsWithProducts || [];
+              const brand = brands.find(b => b._id === res2.data.data.product.deviceBrand);
+
+              if (brand && brand.slugSell) {
+                breadcrumb.push({
+                  label: brand.slugSell,
+                  path: `/${slug1}/${brand.slugSell}`
+                });
+              }
+            } catch (err) {
+              console.error("Error fetching brand for breadcrumb:", err);
+            }
+          }
+
+          breadcrumb.push({ label: res2.data?.name || slug2, path: `/${slug1}/${slug2}` });
+          setBreadcrumbItems(breadcrumb);
           setComponentToRender(() => SelectVarient);
           return;
         }
         if (type2 === "variant") {
-          setBreadcrumbItems(["Home", slug1, res2.data?.name || slug2]);
+          // Build breadcrumb with brand lookup
+          const breadcrumb = [{ label: "Home", path: "/" }, { label: slug1, path: `/${slug1}` }];
+
+          // Check if variant has deviceBrand ID - fetch brand details
+          if (res2.data?.data?.product?.deviceBrand) {
+            try {
+              const brandsRes = await api.get('/common-module/getBrandsAndProducts');
+              const brands = brandsRes.data?.BrandsWithProducts || [];
+              const brand = brands.find(b => b._id === res2.data.data.product.deviceBrand);
+
+              if (brand && brand.slugSell) {
+                breadcrumb.push({
+                  label: brand.slugSell,
+                  path: `/${slug1}/${brand.slugSell}`
+                });
+              }
+            } catch (err) {
+              console.error("Error fetching brand for breadcrumb:", err);
+            }
+          }
+
+          breadcrumb.push({ label: res2.data?.name || slug2, path: `/${slug1}/${slug2}` });
+          setBreadcrumbItems(breadcrumb);
 
           //   // Update cookie immediately so GetUpto sees complete data
           //   Cookies.set("userSelection", JSON.stringify(newSelection), {

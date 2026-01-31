@@ -117,7 +117,7 @@ function StaticBanner() {
   }, [handleScroll]);
 
   return (
-    <section className={`${style.StaticSection} page-content-wrapper`}>
+    <div className={`${style.StaticSection} page-content-wrapper`}>
       <div className={style.heading}>
         <h2>Sell your old devices for instant cash</h2>
         <p>
@@ -171,7 +171,7 @@ function StaticBanner() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

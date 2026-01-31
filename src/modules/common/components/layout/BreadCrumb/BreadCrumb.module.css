@@ -20,6 +20,25 @@
   font-weight: 500;
 }
 
+.breadcrumbLink {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: #1968b3;
+  cursor: pointer;
+}
+
+.breadcrumbLink:hover h2 {
+  color: #1968b3;
+}
+
+.currentPage {
+  color: #666;
+}
+
 @media screen and (max-width: 768px) {
   .breadcrumbsection {
     padding-bottom: 18px;
