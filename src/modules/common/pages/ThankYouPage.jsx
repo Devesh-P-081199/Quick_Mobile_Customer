@@ -271,7 +271,7 @@ const ThankYouPage = () => {
             </div>
           </div>
 
-          <div className={orderStyles.summaryCard}>
+          {/* <div className={orderStyles.summaryCard}>
             <div className={orderStyles.summaryHeader}>
               <div className={orderStyles.summaryHeaderLeft}>
                 <span className={orderStyles.summaryLabel}>Payment Method</span>
@@ -331,7 +331,7 @@ const ThankYouPage = () => {
                 smooth transaction.
               </p>
             )}
-          </div>
+          </div> */}
 
           {/* Additional Details Form */}
           {!submitted && (

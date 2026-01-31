@@ -1,7 +1,7 @@
-.blogsPageContainer {
+/* .blogsPageContainer {
   background-color: #f9fafb;
   padding: 10px;
-}
+} */
 
 /* Header Section */
 .headerSection {
@@ -58,7 +58,7 @@
 /* Blogs Grid */
 .blogsGrid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   margin-bottom: 10px;
 }
@@ -143,10 +143,10 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 639px) {
-  .blogsPageContainer {
+@media (max-width: 768px) {
+  /* .blogsPageContainer {
     padding: 15px 10px;
-  }
+  } */
 
   .pageTitle {
     font-size: 20px;

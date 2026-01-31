@@ -45,7 +45,7 @@ const BlogDetail = () => {
     <>
       <MobileBackHeader title="Blog" />
 
-      <div className={styles.blogDetailContainer}>
+      <div className="page-content-wrapper">
         {/* Blog Header */}
         <div className={styles.blogHeader}>
           <h1 className={styles.blogTitle}>{blog.title}</h1>

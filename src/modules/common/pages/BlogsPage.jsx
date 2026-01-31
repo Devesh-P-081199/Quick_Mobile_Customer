@@ -23,7 +23,7 @@ const BlogsPage = () => {
   };
 
   const getImageUrl = (name) => {
-    return new URL(`../assets/images/blog/${name}`, import.meta.url).href;
+    return new URL(`../../../assets/images/blog/${name}`, import.meta.url).href;
   };
 
   const filteredBlogs =
@@ -35,7 +35,7 @@ const BlogsPage = () => {
     <>
       <MobileBackHeader title="Blogs" />
 
-      <div className={styles.blogsPageContainer}>
+      <div className="page-content-wrapper">
         {/* Header Section */}
         <div className={styles.headerSection}>
           <h1 className={styles.pageTitle}>Our Blogs</h1>
