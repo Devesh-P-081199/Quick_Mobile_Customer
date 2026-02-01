@@ -9,13 +9,12 @@ const ContactUs = () => {
     alert("Data Submitted");
   };
   return (
-    <section>
+    <div className="page-content-wrapper">
       <div className={styles.contactPage}>
         <form onSubmit={sendData}>
           <div className={styles.contactSection}>
             <div className={styles.formContainer}>
               <h2>Contact Us</h2>
-              <h4>Submit a form</h4>
               <p>
                 For any queries, please submit the form below with correct
                 information.
@@ -121,7 +120,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -23,16 +23,6 @@
   display: none;
 }
 
-@media (min-width: 768px) {
-  .navigation {
-    display: flex;
-    gap: 0.5rem;
-  }
-  .title {
-    font-size: 1.5rem;
-  }
-}
-
 .arrowLeft,
 .arrowRight {
   padding: 0.5rem;
@@ -42,11 +32,13 @@
 }
 
 .arrowLeft {
-  background-color: #e5e7eb; /* gray-200 */
+  background-color: #e5e7eb;
+  /* gray-200 */
 }
 
 .arrowLeft:hover {
-  background-color: #d1d5db; /* gray-300 */
+  background-color: #d1d5db;
+  /* gray-300 */
 }
 
 .arrowRight {
@@ -55,19 +47,23 @@
 }
 
 .arrowRight:hover {
-  background-color: #1f2937; /* gray-800 */
+  background-color: #1f2937;
+  /* gray-800 */
 }
 
 .blogList {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
 }
 
 .blogList::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 .blogCard {
@@ -78,20 +74,6 @@
   flex-shrink: 0;
   cursor: pointer;
   overflow: hidden;
-}
-
-@media (min-width: 640px) and (max-width: 1023px) {
-  .blogCard {
-    width: 20rem;
-  }
-
-  .blogImage {
-    height: 12rem;
-  }
-
-  .blogTitle {
-    font-size: 16px;
-  }
 }
 
 .blogImage {
@@ -116,11 +98,24 @@
 
 .blogSubtitle {
   font-size: 14px;
-  color: #555; /* gray-500 */
+  color: #555;
+  /* gray-500 */
 }
 
 .blogDescription {
   font-size: 14px;
-  color: #555; /* gray-600 */
+  color: #555;
+  /* gray-600 */
   margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .navigation {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
 }

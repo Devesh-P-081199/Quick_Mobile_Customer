@@ -266,20 +266,6 @@
 }
 
 .customRadio {
-  position: absolute;
-  height: 23px;
-  width: 23px;
-  border: 2px solid #dfdfdf;
-  border-radius: 50%;
-  margin-top: 5px;
-  background: white;
-}
-
-.radioInput:checked+.customRadio {
-  background: rgb(255, 255, 255);
-}
-
-.customRadio {
   width: 18px;
   height: 18px;
   border: 1px solid #e1e1e1;
@@ -352,44 +338,6 @@
 .deleteIconBtn {
   color: #dc3545;
   background-color: #ffe6e6;
-}
-
-@media (max-width: 550px) {
-  .DropDown {
-    padding: 0px;
-  }
-
-  .Wrapper {
-    flex-direction: column;
-  }
-
-  .DefaultInfo {
-    /* width: fit-content; */
-  }
-
-  .PaymentBox {
-    padding: 0px 10px;
-  }
-
-  .CheckOutSection {
-    padding: 0px;
-    background: none;
-    border: none;
-  }
-
-  .PaymentBox {
-    padding-top: 10px;
-    background: none;
-    border: none;
-  }
-
-  .PaymentBox h2 {
-    display: none;
-  }
-
-  .CheckOutSection {
-    padding-bottom: 90px;
-  }
 }
 
 .ActionButtons a {
@@ -576,7 +524,32 @@
   transform: none;
 }
 
+/* Mobile Styles - All screens below 768px */
 @media (max-width: 768px) {
+  .DropDown {
+    padding: 0px;
+  }
+
+  .Wrapper {
+    flex-direction: column;
+  }
+
+  .PaymentBox {
+    padding: 10px 10px 0;
+    background: none;
+    border: none;
+  }
+
+  .PaymentBox h2 {
+    display: none;
+  }
+
+  .CheckOutSection {
+    padding: 0 0 90px 0;
+    background: none;
+    border: none;
+  }
+
   .continueButtonContainer {
     position: fixed;
     bottom: 0;

@@ -25,7 +25,7 @@ const guideData = [
 
 export default function GuidePrivacyPolicy() {
   return (
-    <section>
+    <div className="page-content-wrapper">
       <div className={styles.container}>
         <h2 className={styles.heading}>Explore Our Guide and Privacy Policy</h2>
         <div className={styles.contentWrapper}>
@@ -37,6 +37,6 @@ export default function GuidePrivacyPolicy() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

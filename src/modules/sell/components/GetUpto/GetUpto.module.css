@@ -148,8 +148,122 @@
   font-family: "IBM Plex Sans", sans-serif;
 }
 
+.userData span {
+  color: #1968b3;
+  font-weight: 600;
+}
+
+.priceBox {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.sliderContainer {
+  position: relative;
+  width: 390px;
+  height: 80px;
+  border: 0.3px solid #e1e1e1;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0 8px;
+  user-select: none;
+  isolation: isolate;
+}
+
+.priceLabelMin,
+.priceLabelMax {
+  position: absolute;
+  bottom: 0px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000;
+}
+
+.priceLabelMin {
+  left: 0px;
+  padding: 4px 10px;
+  border-radius: 0 9px;
+  /* border: 0.3px solid #e1e1e1; */
+}
+
+.priceLabelMax {
+  right: 0;
+  padding: 4px 10px;
+  border-radius: 9px 0;
+  /* border: 0.3px solid #e1e1e1; */
+}
+
+.currentPrice {
+  position: absolute;
+  top: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 0px;
+  color: #1968b3;
+}
+
+.currentPriceMin {
+  transform: translateX(-50%);
+}
+
+.currentPriceMax {
+  transform: translateX(-50%);
+}
+
+/* When price range is narrow (< 10000), adjust alignment to prevent overlap */
+.currentPriceMinNarrow {
+  transform: translateX(-100%);
+}
+
+.currentPriceMaxNarrow {
+  transform: translateX(0%);
+}
+
+.track {
+  position: absolute;
+  top: 32px;
+  width: calc(100% - 40px);
+  left: 20px;
+  height: 4px;
+  background-color: #e1e1e1;
+  border-radius: 4px;
+}
+
+.filledTrack {
+  position: absolute;
+  top: 32px;
+  height: 4px;
+  background-color: #1968b3;
+  border-radius: 4px;
+  transform: translateX(20px);
+  z-index: 1;
+}
+
+.thumb {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: default;
+  pointer-events: none;
+  transform: translateX(-50%);
+  background-color: #1968b3;
+  top: 29px;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
+  .sliderContainer {
+    width: 100%;
+    height: 70px;
+  }
+
+  .track {
+    width: calc(100% - 40px);
+  }
+
   .browsePopular {
     flex-direction: column;
   }
@@ -333,121 +447,5 @@
     width: 100%;
     border: none;
     z-index: 99;
-  }
-}
-
-.userData span {
-  color: #1968b3;
-  font-weight: 600;
-}
-
-.priceBox {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
-
-.sliderContainer {
-  position: relative;
-  width: 390px;
-  height: 80px;
-  border: 0.3px solid #e1e1e1;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 0 8px;
-  user-select: none;
-  isolation: isolate;
-}
-
-.priceLabelMin,
-.priceLabelMax {
-  position: absolute;
-  bottom: 0px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #000;
-}
-
-.priceLabelMin {
-  left: 0px;
-  padding: 4px 10px;
-  border-radius: 0 9px;
-  /* border: 0.3px solid #e1e1e1; */
-}
-
-.priceLabelMax {
-  right: 0;
-  padding: 4px 10px;
-  border-radius: 9px 0;
-  /* border: 0.3px solid #e1e1e1; */
-}
-
-.currentPrice {
-  position: absolute;
-  top: 2px;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 5px 0px;
-  color: #1968b3;
-}
-
-.currentPriceMin {
-  transform: translateX(-50%);
-}
-
-.currentPriceMax {
-  transform: translateX(-50%);
-}
-
-/* When price range is narrow (< 10000), adjust alignment to prevent overlap */
-.currentPriceMinNarrow {
-  transform: translateX(-100%);
-}
-
-.currentPriceMaxNarrow {
-  transform: translateX(0%);
-}
-
-.track {
-  position: absolute;
-  top: 32px;
-  width: calc(100% - 40px);
-  left: 20px;
-  height: 4px;
-  background-color: #e1e1e1;
-  border-radius: 4px;
-}
-
-.filledTrack {
-  position: absolute;
-  top: 32px;
-  height: 4px;
-  background-color: #1968b3;
-  border-radius: 4px;
-  transform: translateX(20px);
-  z-index: 1;
-}
-
-.thumb {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  cursor: default;
-  pointer-events: none;
-  transform: translateX(-50%);
-  background-color: #1968b3;
-  top: 29px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 550px) {
-  .sliderContainer {
-    width: 100%;
-    height: 70px;
-  }
-
-  .track {
-    width: calc(100% - 40px);
   }
 }

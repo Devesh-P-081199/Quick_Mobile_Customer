@@ -873,10 +873,6 @@
   box-sizing: border-box;
 }
 
-.page-content {
-  padding-bottom: 20px;
-}
-
 /* Ensure child elements respect box-sizing */
 .page-content-wrapper>* {
   box-sizing: border-box;
@@ -888,5 +884,9 @@
     padding-left: 10px;
     padding-right: 10px;
     margin: 0px auto;
+  }
+
+  .page-content {
+    padding-bottom: 20px;
   }
 }

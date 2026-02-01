@@ -1,13 +1,34 @@
+import React, { useState, useEffect } from "react";
 import styles from "./ErrorPage.module.css";
-import illustration from "../../../assets/QuickSellNewIcons/illustration.png";
 
 const NotFoundPage = () => {
+  const [illustration, setIllustration] = useState(null);
+
+  useEffect(() => {
+    const loadIllustration = async () => {
+      const randomIndex = Math.floor(Math.random() * 5) + 1;
+      try {
+        /* @vite-ignore */
+        const image = await import(
+          `../../../assets/QuickSellNewIcons/notfound/404Page0${randomIndex}.png`
+        );
+        setIllustration(image.default);
+      } catch (error) {
+        console.error("Failed to load illustration:", error);
+      }
+    };
+
+    loadIllustration();
+  }, []);
+
   return (
     <div className={styles.errorPage}>
       {/* Left Side Illustration */}
       <div className={styles.imageSection}>
         <div className={styles.illustration}>
-          <img src={illustration} alt="not-found" title="not-found" />
+          {illustration && (
+            <img src={illustration} alt="not-found" title="not-found" />
+          )}
         </div>
       </div>
 
@@ -19,9 +40,12 @@ const NotFoundPage = () => {
           This page doesn’t exist or was removed! We suggest you go back to
           home.
         </p>
-        <a href="/" className={styles.backButton}>
+        <button
+          onClick={() => (window.location.href = "/")}
+          className={styles.backButton}
+        >
           Back to Home
-        </a>
+        </button>
       </div>
     </div>
   );

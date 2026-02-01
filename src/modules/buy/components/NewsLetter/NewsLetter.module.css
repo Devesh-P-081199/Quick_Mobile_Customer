@@ -20,14 +20,6 @@
   margin: auto;
 }
 
-/* Tablet-specific spacing */
-@media (min-width: 640px) and (max-width: 1023px) {
-  .wrapper {
-    padding: 32px 36px;
-    gap: 1.5rem;
-  }
-}
-
 .textSection {
   text-align: center;
 }
@@ -36,41 +28,6 @@
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .wrapper {
-    flex-direction: column;
-    padding: 45px 48px;
-  }
-
-  .textSection {
-    text-align: center;
-  }
-
-  .heading {
-    font-size: 18px;
-    font-weight: 500 !important;
-    font-family: var(--font-family-primary);
-  }
-
-  .wrapper {
-    padding: 25px 10px;
-  }
-
-  .subheading {
-    font-size: 14px;
-    font-family: IBM Plex Sans;
-    margin-bottom: 0;
-  }
-
-  .submitButton {
-    width: 50%;
-  }
-
-  .input {
-    padding: 0.5rem 0.3rem;
-  }
 }
 
 .subheading {
@@ -144,4 +101,39 @@
   font-size: 16px;
   border-radius: 10px;
   height: 47px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    padding: 45px 48px;
+  }
+
+  .textSection {
+    text-align: center;
+  }
+
+  .heading {
+    font-size: 18px;
+    font-weight: 500 !important;
+    font-family: var(--font-family-primary);
+  }
+
+  .wrapper {
+    padding: 25px 10px;
+  }
+
+  .subheading {
+    font-size: 14px;
+    font-family: IBM Plex Sans;
+    margin-bottom: 0;
+  }
+
+  .submitButton {
+    width: 50%;
+  }
+
+  .input {
+    padding: 0.5rem 0.3rem;
+  }
 }

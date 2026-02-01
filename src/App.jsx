@@ -196,7 +196,6 @@ const AppContent = () => {
   const hideFooter =
     isMobile &&
     (location.pathname.includes("final-price-calculator") ||
-      location.pathname === "/not-found" ||
       location.pathname.includes("price-summary") ||
       location.pathname.includes("dfds"));
 
