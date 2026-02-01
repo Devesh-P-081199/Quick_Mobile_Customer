@@ -260,15 +260,94 @@ function DeviceEvaluation() {
     }
   }, [currentPackageIndex]);
 
+  // ===== Transform answers for backend =====
+  const transformAnswersForBackend = (answers, questions) => {
+    const transformed = {};
+    Object.entries(answers).forEach(([questionId, answerValue]) => {
+      const question = questions.find((q) => q.id === questionId);
+      if (!question) return;
+
+      if (Array.isArray(answerValue)) {
+        transformed[questionId] = answerValue.map((val) =>
+          isNaN(val) ? val : Number(val),
+        );
+      } else {
+        transformed[questionId] = isNaN(answerValue)
+          ? answerValue
+          : Number(answerValue);
+      }
+    });
+    return transformed;
+  };
+
+  // ===== Save and price calculation =====
+  const priceCalculationAndSave = useCallback(async () => {
+    try {
+      if (!user?.userId) {
+        return;
+      }
+
+      if (!deviceInfo.deviceName) {
+        return;
+      }
+
+      // Use URL parameters as fallback for device info
+      const urlParams = new URLSearchParams(location.search);
+      const deviceName =
+        deviceInfo.deviceName || urlParams.get("pn") || "Unknown Device";
+
+      if (!userSelection?.cityId || !userSelection?.cityName) {
+        return;
+      }
+
+      const transformedPackageData = allPackageData.map((pkg) => ({
+        ...pkg,
+        answers: transformAnswersForBackend(pkg.answers || {}, pkg.questions),
+      }));
+
+      await api.post("/sell-module/user/price-estimation", {
+        packagesAnswer: transformedPackageData,
+        basePrice: 50000,
+        userSelection,
+        deviceName: deviceName,
+        deviceVariant:
+          deviceInfo.variantDetail || urlParams.get("vid") || "Unknown Variant",
+      });
+
+      // Store allPackageData in sessionStorage for device details component
+      const productId = urlParams.get("pid");
+      const packageDetailsKey = `packageDetails_${productId}`;
+
+      // Store the original allPackageData which has questions, options, and answers
+      sessionStorage.setItem(packageDetailsKey, JSON.stringify(allPackageData));
+
+      const formSubmittedKey = `formSubmitted_${productId}`;
+      sessionStorage.setItem(formSubmittedKey, "true");
+
+      // Don't clear session storage - keep data so user can come back and edit
+      // Data will only be cleared when user goes back to Get Price page
+
+      navigate(`/${slug}/price-summary?${urlParams.toString()}`);
+    } catch (error) {
+      console.error("Error fetching final price:", error);
+    }
+  }, [
+    deviceInfo,
+    location.search,
+    userSelection,
+    allPackageData,
+    navigate,
+    slug,
+    user,
+  ]);
+
   // Watch for login completion if we have a pending calculation
   useEffect(() => {
     if (!isLoginModalOpen && pendingPriceCalculation) {
       if (user?.userId) {
         setPendingPriceCalculation(false);
         setanswersforMobile(extractAnsweredQuestions(allPackageData));
-        if (priceCalculationRef.current) {
-          priceCalculationRef.current();
-        }
+        priceCalculationAndSave();
       } else {
         // User closed modal without logging in
         setPendingPriceCalculation(false);
@@ -279,6 +358,8 @@ function DeviceEvaluation() {
     pendingPriceCalculation,
     allPackageData,
     setanswersforMobile,
+    user,
+    priceCalculationAndSave,
   ]);
 
   // ===== Adjust icon option containers for long text and equalize label heights =====
@@ -784,86 +865,10 @@ function DeviceEvaluation() {
     );
   };
 
-  // ===== Transform answers for backend =====
-  const transformAnswersForBackend = (answers, questions) => {
-    const transformed = {};
-    Object.entries(answers).forEach(([questionId, answerValue]) => {
-      const question = questions.find((q) => q.id === questionId);
-      if (!question) return;
 
-      if (Array.isArray(answerValue)) {
-        transformed[questionId] = answerValue.map((val) =>
-          isNaN(val) ? val : Number(val),
-        );
-      } else {
-        transformed[questionId] = isNaN(answerValue)
-          ? answerValue
-          : Number(answerValue);
-      }
-    });
-    return transformed;
-  };
-
-  // ===== Save and price calculation =====
-  const priceCalculationAndSave = useCallback(async () => {
-    try {
-      if (!user?.userId) return;
-
-      if (!deviceInfo.deviceName) return;
-
-      // Use URL parameters as fallback for device info
-      const urlParams = new URLSearchParams(location.search);
-      const deviceName =
-        deviceInfo.deviceName || urlParams.get("pn") || "Unknown Device";
-
-      if (!userSelection?.cityId || !userSelection?.cityName) {
-        return;
-      }
-
-      const transformedPackageData = allPackageData.map((pkg) => ({
-        ...pkg,
-        answers: transformAnswersForBackend(pkg.answers || {}, pkg.questions),
-      }));
-
-      await api.post("/sell-module/user/price-estimation", {
-        packagesAnswer: transformedPackageData,
-        basePrice: 50000,
-        userSelection,
-        deviceName: deviceName,
-        deviceVariant:
-          deviceInfo.variantDetail || urlParams.get("vid") || "Unknown Variant",
-      });
-
-      // Store allPackageData in sessionStorage for device details component
-      const productId = urlParams.get("pid");
-      const packageDetailsKey = `packageDetails_${productId}`;
-
-      // Store the original allPackageData which has questions, options, and answers
-      sessionStorage.setItem(packageDetailsKey, JSON.stringify(allPackageData));
-
-      const formSubmittedKey = `formSubmitted_${productId}`;
-      sessionStorage.setItem(formSubmittedKey, "true");
-
-      // Don't clear session storage - keep data so user can come back and edit
-      // Data will only be cleared when user goes back to Get Price page
-
-      navigate(`/${slug}/price-summary?${urlParams.toString()}`);
-    } catch (error) {
-      console.error("Error fetching final price:", error);
-    }
-  }, [
-    deviceInfo,
-    location.search,
-    userSelection,
-    allPackageData,
-    navigate,
-    slug,
-  ]);
 
   // Keep ref in sync with the latest priceCalculationAndSave
-  useEffect(() => {
-    priceCalculationRef.current = priceCalculationAndSave;
-  }, [priceCalculationAndSave]);
+
 
   // ===== Continue / Previous =====
   const handleContinue = async () => {

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useCallback } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import styles from "./Checkout.module.css";
+import styles from "./CheckOut.module.css";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../../Context/contextAPI";
 import api from "../../../../Utils/api";
