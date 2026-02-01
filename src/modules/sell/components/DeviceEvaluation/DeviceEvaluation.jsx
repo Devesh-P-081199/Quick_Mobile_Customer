@@ -6,7 +6,6 @@ import {
   useCallback,
   useMemo,
 } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import "./DeviceEvaluation.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import DeviceImg from "../../../../assets/images/Products/mobile.png";
@@ -714,8 +713,9 @@ function DeviceEvaluation() {
 
     return (
       <div
-        className={`options ${showIcons ? "box-grid icon-option-container" : gridClass
-          }`}
+        className={`options ${
+          showIcons ? "box-grid icon-option-container" : gridClass
+        }`}
       >
         {q.options.map((opt) => {
           const isSelected = isMulti
@@ -758,8 +758,9 @@ function DeviceEvaluation() {
           ) : (
             <label
               key={opt.id}
-              className={`option ${isSelected ? "selected" : ""
-                } option-with-des-box`}
+              className={`option ${
+                isSelected ? "selected" : ""
+              } option-with-des-box`}
               onClick={() => handleOptionChange(q.id, opt.value, isMulti)}
             >
               <input
@@ -986,56 +987,58 @@ function DeviceEvaluation() {
             }}
           >
             <h3 className="answer-heading">
-              {`${index + 1}. ${packageData?.pageTitle || packageData?.packageName
-                }`}
+              {`${index + 1}. ${
+                packageData?.pageTitle || packageData?.packageName
+              }`}
             </h3>
-            {isExpanded ? <img src={dropdownIcon} alt="dropdownIcon" className="expanded" /> : <img src={dropdownIcon} alt="dropdownIcon" />}
+            {isExpanded ? (
+              <img src={dropdownIcon} alt="dropdownIcon" className="expanded" />
+            ) : (
+              <img src={dropdownIcon} alt="dropdownIcon" />
+            )}
           </div>
 
           {isExpanded && (
             <div className="answers-list">
-              {Object.entries(packageData.answers).map(
-                ([qid, ans], ansIndex) => {
-                  const q = packageData.questions.find((q) => q.id === qid);
-                  if (!q) return null;
+              {Object.entries(packageData.answers).map(([qid, ans]) => {
+                const q = packageData.questions.find((q) => q.id === qid);
+                if (!q) return null;
 
-                  let displayValue;
-                  if (Array.isArray(ans)) {
-                    displayValue = ans
-                      .map((value) => {
-                        const opt = q.options.find((o) => o.value === value);
-                        return opt?.label || value;
-                      })
-                      .filter(Boolean)
-                      .join(", ");
-                  } else {
-                    const opt = q.options.find((o) => o.value === ans);
-                    displayValue = opt?.label || ans;
-                  }
+                let displayValue;
+                if (Array.isArray(ans)) {
+                  displayValue = ans
+                    .map((value) => {
+                      const opt = q.options.find((o) => o.value === value);
+                      return opt?.label || value;
+                    })
+                    .filter(Boolean)
+                    .join(", ");
+                } else {
+                  const opt = q.options.find((o) => o.value === ans);
+                  displayValue = opt?.label || ans;
+                }
 
-                  if (!displayValue) return null;
+                if (!displayValue) return null;
 
-                  return (
-                    <div
-                      key={qid}
-                      ref={(el) => (sidebarAnswerRefs.current[qid] = el)}
-                      className={`answer-item ${lastInteractedQuestionId === qid
+                return (
+                  <div
+                    key={qid}
+                    ref={(el) => (sidebarAnswerRefs.current[qid] = el)}
+                    className={`answer-item ${
+                      lastInteractedQuestionId === qid
                         ? "active-answer-item"
                         : ""
-                        }`}
-                    >
-                      <p className="question-text">
-                        {`${q?.question}`}
-                      </p>
-                      <ul className="answer-text">
-                        {displayValue.split(",").map((item, i) => (
-                          <li key={i}>{item.trim()}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  );
-                },
-              )}
+                    }`}
+                  >
+                    <p className="question-text">{`${q?.question}`}</p>
+                    <ul className="answer-text">
+                      {displayValue.split(",").map((item, i) => (
+                        <li key={i}>{item.trim()}</li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
@@ -1119,8 +1122,9 @@ function DeviceEvaluation() {
                 {allPackageData.map((_, index) => (
                   <div
                     key={index}
-                    className={`progress-segment ${index <= currentPackageIndex ? "filled" : ""
-                      }`}
+                    className={`progress-segment ${
+                      index <= currentPackageIndex ? "filled" : ""
+                    }`}
                   />
                 ))}
               </div>
@@ -1149,8 +1153,8 @@ function DeviceEvaluation() {
                       {(q.type === "radio" ||
                         q.type === "icon-radio" ||
                         q.type === "dropdown") && (
-                          <sup className="required-asterisk">*</sup>
-                        )}
+                        <sup className="required-asterisk">*</sup>
+                      )}
                     </p>
                     <p className="question-explaination-text">
                       {q?.questionExplanation}

@@ -2,6 +2,7 @@ import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "../SellBanner.module.css";
 import MobileIcon from "../../../../../assets/images/Products/mobile.png";
+import AppImage from "../../../../common/components/Image/AppImage";
 
 /**
  * Category slider with horizontal scrolling and navigation arrows
@@ -12,6 +13,7 @@ function CategorySlider({
   isLoading,
   onCategorySelect,
 }) {
+  // ... (keep existing hook logic, no changes needed to refs/state) ...
   const sliderRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
@@ -39,16 +41,13 @@ function CategorySlider({
   useEffect(() => {
     const slider = sliderRef.current;
     if (!slider) return;
-
     updateArrowVisibility();
     slider.addEventListener("scroll", updateArrowVisibility);
-
     return () => {
       slider.removeEventListener("scroll", updateArrowVisibility);
     };
   }, [categories, updateArrowVisibility]);
 
-  // Memoized sorted categories to prevent expensive sort on every render
   const sortedCategories = useMemo(
     () =>
       [...categories].sort((a, b) => {
@@ -59,7 +58,6 @@ function CategorySlider({
     [categories, selectedCategoryId],
   );
 
-  // Skeleton loading state
   if (isLoading) {
     return (
       <div className={styles.sliderWrapper}>
@@ -100,20 +98,24 @@ function CategorySlider({
             }`}
           >
             <div className={styles.imageBg}>
-              <img
+              <AppImage
                 src={cat?.categoryImageUrl || MobileIcon}
                 alt={cat?.categoryName}
                 title={cat?.categoryName}
+                width="90"
+                height="90"
+                className={styles.categoryImg}
+                priority={true} // Critical for LCP
               />
               <span className={styles.cardName}>{cat.categoryName}</span>
             </div>
           </div>
         ))}
 
-        {/* View All / More button - NavLink handles navigation */}
         <NavLink
           to="/view-all-category"
           className={`${styles.imgCard} ${styles.viewAllCard}`}
+          aria-label="View more categories"
         >
           <div className={styles.imageBg}>
             <span className={styles.dotButton}>

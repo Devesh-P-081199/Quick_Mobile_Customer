@@ -4,6 +4,14 @@
   border-top: 1px solid #e1e1e1;
   margin: 40px auto 0;
   box-sizing: border-box;
+  min-height: 400px; /* Default for Desktop */
+  contain: content; /* Helps browser rendering optimization */
+}
+
+@media (max-width: 768px) {
+  .footerContainer {
+    min-height: 250px; /* Reduced for mobile to prevent excess whitespace but still prevent shift */
+  }
 }
 
 

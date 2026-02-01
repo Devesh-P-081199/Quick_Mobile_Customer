@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import slide1 from "../../../../assets/images/banner_images/homepage_banner_slider_image_01.png";
+import "./HomeSlider.css";
 
 function HomeSlider() {
   const slides = [

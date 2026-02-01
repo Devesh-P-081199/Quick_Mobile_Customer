@@ -3,7 +3,6 @@ import styles from "./OrderSummary.module.css";
 import MobileImg from "../../../../assets/images/Products/mobile.png";
 import "../../../../assets/images/icons/rightarrow.png";
 import Recalculate from "../../../../assets/QuickSellNewIcons/set-to-zero.png";
-import FreePickup from "../../../../assets/images/free_pickup_icon.png";
 import clock from "../../../../assets/flaticons/clock-basecolor.png";
 import van from "../../../../assets/flaticons/delivery-van-basecolor.png";
 import secureShield from "../../../../assets/flaticons/secure-basecolor.png";
@@ -78,14 +77,14 @@ function OrderSummary() {
   const location = useLocation();
 
   // ... existing effects and handlers ...
-  // (Copying context from previous view to ensure nothing is lost, but relying on "StartLine" to replace only the necessary parts if possible. 
-  // However, since I need to insert the helper component OUTSIDE the function or define it inside, 
-  // and I need to update the JSX return, I will do a targeted replace for the return statement 
+  // (Copying context from previous view to ensure nothing is lost, but relying on "StartLine" to replace only the necessary parts if possible.
+  // However, since I need to insert the helper component OUTSIDE the function or define it inside,
+  // and I need to update the JSX return, I will do a targeted replace for the return statement
   // and a separate one for the helper definition if needed.
   // Actually, defining it inside is easier for now to access imports, but imports are top level.)
 
   // WAIT, I can't put the helper component *inside* the replace block if I'm only replacing the `return` or specific parts.
-  // The tool replaces a block. 
+  // The tool replaces a block.
   // I will replace the END of the file to include the component definition if I place it outside, or just define it inside OrderSummary before return.
   // Let's define it inside OrderSummary for simplicity of this edit, or better, keep the file structure clean.
   // I will assume imports are available.
@@ -117,7 +116,9 @@ function OrderSummary() {
       const fetchedAddresses = resp?.data.data?.addresses || [];
       setAddresses(fetchedAddresses);
       if (fetchedAddresses.length > 0 && !selectedAddress) {
-        const activeAddress = fetchedAddresses.find((addr) => addr.isActive === true);
+        const activeAddress = fetchedAddresses.find(
+          (addr) => addr.isActive === true,
+        );
         const defaultAddress = activeAddress || fetchedAddresses[0];
         setSelectedAddress(defaultAddress);
       }
@@ -143,7 +144,9 @@ function OrderSummary() {
           setSelectedPaymentMethod({ type: "upi", ...activeUpi });
           return;
         }
-        const activeBank = bankMethods.find((method) => method.isActive === true);
+        const activeBank = bankMethods.find(
+          (method) => method.isActive === true,
+        );
         if (activeBank) {
           setSelectedPaymentMethod({ type: "bank", ...activeBank });
           return;
@@ -177,7 +180,10 @@ function OrderSummary() {
         address: selectedAddress,
         paymentDetail: selectedPaymentMethod,
       };
-      const placeOrder = await api.post("/sell-module/user/orders", orderPayload);
+      const placeOrder = await api.post(
+        "/sell-module/user/orders",
+        orderPayload,
+      );
       toast.success("Order placed successfully!");
       navigate("/thank-you", {
         replace: true,
@@ -466,7 +472,9 @@ function OrderSummary() {
             <div className={styles.modalContent}>
               <Answers
                 onBack={() => setShowAnswersModal(false)}
-                onRecalculate={() => navigate(`/${slug}/final-price-calculator${location.search}`)}
+                onRecalculate={() =>
+                  navigate(`/${slug}/final-price-calculator${location.search}`)
+                }
               />
             </div>
           </div>
@@ -494,7 +502,9 @@ function OrderSummary() {
               <div className={styles.summary}>Summary</div>
               <div className={styles.row}>
                 <span className={styles.label}>Phone Price</span>
-                <span className={styles.value}>{`₹ ${currentEvaluationId?.finalPrice}`}</span>
+                <span
+                  className={styles.value}
+                >{`₹ ${currentEvaluationId?.finalPrice}`}</span>
               </div>
               <div className={styles.row}>
                 <span className={styles.label}>Pickup Charges</span>
@@ -515,7 +525,9 @@ function OrderSummary() {
               </div>
               <div className={styles.totalRow}>
                 <span className={styles.totalLabel}>Total</span>
-                <span className={styles.totalValue}>{`₹ ${currentEvaluationId?.finalPrice}`}</span>
+                <span
+                  className={styles.totalValue}
+                >{`₹ ${currentEvaluationId?.finalPrice}`}</span>
               </div>
             </div>
 
@@ -550,6 +562,5 @@ function OrderSummary() {
     </>
   );
 }
-
 
 export default OrderSummary;

@@ -2,7 +2,7 @@ import HomeSlider from "../components/HomeSlider/HomeSlider";
 import PressRelease from "../components/PressRelease/PressRelease";
 import UsedvsBrand from "../components/UsedvsBrand/UsedvsBrand";
 import Newsletter from "../components/NewsLetter/NewsLetter";
-import Download from "../components/Download/Download";
+
 import LearnTemplate from "../components/LearnTemplate/LearnTemplate";
 import HomeBlogSlider from "../components/Cards/HomeBlogSlider";
 import Testimonials from "../components/Cards/Testimonials";
@@ -45,10 +45,6 @@ const HomePage = () => {
 
         <div className="page-content-wrapper">
           <Newsletter />
-        </div>
-
-        <div className="page-content-wrapper">
-          <Download />
         </div>
 
         {/* FooterContent excluded - no wrapper */}
