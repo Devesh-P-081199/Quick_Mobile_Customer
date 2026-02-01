@@ -2,7 +2,6 @@ import { forwardRef, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./AllCategory.module.css";
 import api from "../../../../Utils/api";
-import AppImage from "../Image/AppImage";
 
 const Allcategoryhome = forwardRef((props, ref) => {
   const navigate = useNavigate();
@@ -61,13 +60,7 @@ const Allcategoryhome = forwardRef((props, ref) => {
                 onClick={() => handleCataClick(cat)}
               >
                 <div className={styles.imgIndividual}>
-                  <AppImage
-                    src={cat?.categoryImageUrl}
-                    alt={cat?.categoryName}
-                    width="60px"
-                    height="60px"
-                    className={styles.catImage}
-                  />
+                  <img src={cat?.categoryImageUrl} alt={cat?.categoryName} />
                 </div>
                 <span>{cat?.categoryName}</span>
               </div>

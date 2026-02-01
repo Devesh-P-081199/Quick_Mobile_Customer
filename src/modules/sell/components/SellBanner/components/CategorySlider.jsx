@@ -2,7 +2,6 @@ import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "../SellBanner.module.css";
 import MobileIcon from "../../../../../assets/images/Products/mobile.png";
-import AppImage from "../../../../common/components/Image/AppImage";
 
 /**
  * Category slider with horizontal scrolling and navigation arrows
@@ -93,19 +92,14 @@ function CategorySlider({
             onClick={() =>
               onCategorySelect(cat._id, cat.categoryName, cat?.slug?.sell)
             }
-            className={`${styles.imgCard} ${
-              selectedCategoryId === cat._id ? styles.selectedCategory : ""
-            }`}
+            className={`${styles.imgCard} ${selectedCategoryId === cat._id ? styles.selectedCategory : ""
+              }`}
           >
             <div className={styles.imageBg}>
-              <AppImage
+              <img
                 src={cat?.categoryImageUrl || MobileIcon}
                 alt={cat?.categoryName}
                 title={cat?.categoryName}
-                width="90"
-                height="90"
-                className={styles.categoryImg}
-                priority={true} // Critical for LCP
               />
               <span className={styles.cardName}>{cat.categoryName}</span>
             </div>

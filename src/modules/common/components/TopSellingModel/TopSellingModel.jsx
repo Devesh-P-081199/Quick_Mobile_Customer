@@ -2,7 +2,6 @@ import styles from "./TopSellingModel.module.css";
 import leftCircleIcon from "../../../../assets/icons/Frame 32.svg";
 import rightCircleIcon from "../../../../assets/icons/Frame 42.svg";
 import CommonSlider from "../ui/Slider/CommonSlider";
-import AppImage from "../Image/AppImage";
 
 // Dynamically import all images from TopSellingModel folder using Vite's import.meta.glob
 const images = import.meta.glob("../../../../assets/TopSellingModel/*.avif", { eager: true });
@@ -59,14 +58,7 @@ function TopSellingModel() {
             renderItem={(item, index) => (
               <div className={styles.brandSingleBox} key={index}>
                 <div className={styles.imgIndividual}>
-                  <AppImage
-                    src={item.icon}
-                    alt={item.name}
-                    title={item?.name}
-                    width="60px"
-                    height="60px"
-                    style={{ borderRadius: "8px", objectFit: "cover" }}
-                  />
+                  <img src={item.icon} alt={item.name} title={item?.name} />
                 </div>
                 <span>{item.name}</span>
               </div>
