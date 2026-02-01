@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useContext, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./ThankYou.module.css";
-import orderStyles from "../../profile/components/MyOrder/Order.module.css"; // Reuse OrderDetails styles
+// Reuse OrderDetails styles
 import { FaPlus, FaTimes } from "react-icons/fa";
 import completeImg from "../../../assets/flaticons/approved.png";
 import batteryImg from "../../../assets/flaticons/battery-with-a-bolt-symbol.png";

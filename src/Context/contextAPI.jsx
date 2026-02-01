@@ -70,6 +70,19 @@ const ContextAPI = (props) => {
         console.error("Failed to parse deviceInfo cookie", error);
       }
     }
+
+    // Listen for session expiration event from api interceptor
+    const handleSessionExpired = () => {
+      setUser({});
+      setIsLoginModalOpen(true);
+      Cookies.remove("user"); // Only clear UI state
+    };
+
+    window.addEventListener("auth:session-expired", handleSessionExpired);
+
+    return () => {
+      window.removeEventListener("auth:session-expired", handleSessionExpired);
+    };
   }, []);
 
   // Save to cookies on change

@@ -10,7 +10,6 @@ import "./DeviceEvaluation.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import DeviceImg from "../../../../assets/images/Products/mobile.png";
 import { UserContext } from "../../../../Context/contextAPI";
-import Cookies from "js-cookie";
 import api from "../../../../Utils/api";
 import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 
@@ -148,6 +147,7 @@ function DeviceEvaluation() {
     setIsLoginModalOpen,
     isLoginModalOpen,
     setanswersforMobile,
+    user, // Add user from context
   } = useContext(UserContext);
 
   // Generate unique session storage key
@@ -263,8 +263,7 @@ function DeviceEvaluation() {
   // Watch for login completion if we have a pending calculation
   useEffect(() => {
     if (!isLoginModalOpen && pendingPriceCalculation) {
-      const savedToken = Cookies.get("auth-token");
-      if (savedToken) {
+      if (user?.userId) {
         setPendingPriceCalculation(false);
         setanswersforMobile(extractAnsweredQuestions(allPackageData));
         if (priceCalculationRef.current) {
@@ -808,8 +807,7 @@ function DeviceEvaluation() {
   // ===== Save and price calculation =====
   const priceCalculationAndSave = useCallback(async () => {
     try {
-      const token = JSON.parse(Cookies.get("auth-token"));
-      if (!token) return;
+      if (!user?.userId) return;
 
       if (!deviceInfo.deviceName) return;
 
@@ -894,8 +892,7 @@ function DeviceEvaluation() {
       return;
     }
 
-    const savedToken = Cookies.get("auth-token");
-    if (!savedToken) {
+    if (!user?.userId) {
       setPendingPriceCalculation(true);
       setIsLoginModalOpen(true);
       return;

@@ -79,7 +79,9 @@ const ProfileCard = ({ onOptionClick }) => {
           </div>
         </div>
         <div className={styles.options}>
-          <div className={`${styles.optionRow} ${isActive("/edit-my-profile") ? styles.active : ""}`}>
+          <div
+            className={`${styles.optionRow} ${isActive("/edit-my-profile") ? styles.active : ""}`}
+          >
             <FaBoxOpen />
             <span onClick={() => handleNavigate("/edit-my-profile")}>
               Edit Profile <img src={rightangle} alt="" />
@@ -88,25 +90,33 @@ const ProfileCard = ({ onOptionClick }) => {
         </div>
 
         <div className={styles.options}>
-          <div className={`${styles.optionRow} ${isActive("/my-profile-orders") ? styles.active : ""}`}>
+          <div
+            className={`${styles.optionRow} ${isActive("/my-profile-orders") ? styles.active : ""}`}
+          >
             <FaBoxOpen />
             <span onClick={() => handleNavigate("/my-profile-orders")}>
               My Orders <img src={rightangle} alt="" />
             </span>
           </div>
-          <div className={`${styles.optionRow} ${isActive("/my-profile-payments") ? styles.active : ""}`}>
+          <div
+            className={`${styles.optionRow} ${isActive("/my-profile-payments") ? styles.active : ""}`}
+          >
             <FaCreditCard />
             <span onClick={() => handleNavigate("/my-profile-payments")}>
               Saved Payments <img src={rightangle} alt="" />
             </span>
           </div>
-          <div className={`${styles.optionRow} ${isActive("/Address") ? styles.active : ""}`}>
+          <div
+            className={`${styles.optionRow} ${isActive("/Address") ? styles.active : ""}`}
+          >
             <FaMapMarkerAlt />
             <span onClick={() => handleNavigate("/Address")}>
               Saved Address <img src={rightangle} alt="" />
             </span>
           </div>
-          <div className={`${styles.optionRow} ${isActive("/offers") ? styles.active : ""}`}>
+          <div
+            className={`${styles.optionRow} ${isActive("/offers") ? styles.active : ""}`}
+          >
             <FaMapMarkerAlt />
             <span onClick={() => handleNavigate("/offers")}>
               Offer <img src={rightangle} alt="" />

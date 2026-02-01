@@ -3,7 +3,6 @@ import { MdEmail } from "react-icons/md";
 import styles from "./SignUp.module.css";
 // import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-import Cookies from "js-cookie";
 
 import api from "../../../../Utils/api";
 import { UserContext } from "../../../../Context/contextAPI";
@@ -18,11 +17,20 @@ const SignUp = ({ onSwitchToLogin, onSuccessSignup }) => {
   // const location = useLocation();
   // const fromPage = location.state?.from || "/";
 
-  const handleSendOtp = (e) => {
+  const handleSendOtp = async (e) => {
     e.preventDefault(); // ← this is crucial
     if (mobile.length === 10) {
-      setOtpSent(true);
-      toast.success("OTP sent successfully");
+      try {
+        const loadingToast = toast.loading("Sending OTP...");
+        await api.post("/sell-module/user/sendotp", { phone: mobile });
+        toast.dismiss(loadingToast);
+
+        setOtpSent(true);
+        toast.success("OTP sent successfully");
+      } catch (error) {
+        toast.dismiss();
+        toast.error(error?.response?.data?.message || "Failed to send OTP");
+      }
     } else {
       toast.warning("Please enter a valid 10-digit mobile number.");
     }
@@ -57,14 +65,9 @@ const SignUp = ({ onSwitchToLogin, onSuccessSignup }) => {
         verifyOtp: otp.join(""),
       });
 
-      if (data?.token) {
-        Cookies.set("auth-token", JSON.stringify(data.token), {
-          expires: 2,
-          sameSite: "strict",
-        });
+      if (data?.user) {
         setUser(data.user);
         toast.success("Signup Successful!");
-
         onSuccessSignup(); // ✅ open SetupProfile inside modal
       }
     } catch (err) {

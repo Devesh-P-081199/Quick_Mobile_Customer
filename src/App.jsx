@@ -103,7 +103,8 @@ const TermsOfService = React.lazy(
   () => import("./modules/common/pages/general/Terms/Terms"),
 );
 const TermsAndConditions = React.lazy(
-  () => import("./modules/common/pages/general/TermsAndConditions/TermsAndConditions"),
+  () =>
+    import("./modules/common/pages/general/TermsAndConditions/TermsAndConditions"),
 );
 const PrivacyPolicy = React.lazy(
   () => import("./modules/common/pages/general/PlatformPrivacy/PrivacyPolicy"),

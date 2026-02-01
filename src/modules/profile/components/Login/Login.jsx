@@ -2,7 +2,6 @@ import { useContext, useState, useRef, useEffect } from "react";
 import styles from "./Login.module.css";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
-import Cookies from "js-cookie";
 import { UserContext } from "../../../../Context/contextAPI";
 import api from "../../../../Utils/api";
 import loginVector from "../../../../assets/icons/login-vector.png";
@@ -28,20 +27,29 @@ const Login = ({ setShowLoginModal }) => {
     return () => clearInterval(interval);
   }, [otpSent, timer]);
 
-  const handleSendOtp = (e) => {
+  const handleSendOtp = async (e) => {
     e.preventDefault();
     if (mobile.length === 10) {
-      setOtpSent(true);
-      setTimer(60); // start 60 sec countdown
-      toast.success("OTP sent successfully", {
-        autoClose: 3000, // Disappears after 3 seconds
-        position: "bottom-center",
-        className: "custom-toast",
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: false,
-      });
+      try {
+        const loadingToast = toast.loading("Sending OTP...");
+        await api.post("/sell-module/user/sendotp", { phone: mobile });
+        toast.dismiss(loadingToast);
+
+        setOtpSent(true);
+        setTimer(60); // start 60 sec countdown
+        toast.success("OTP sent successfully", {
+          autoClose: 3000,
+          position: "bottom-center",
+          className: "custom-toast",
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: false,
+        });
+      } catch (error) {
+        toast.dismiss();
+        toast.error(error?.response?.data?.message || "Failed to send OTP");
+      }
     }
   };
 
@@ -74,12 +82,8 @@ const Login = ({ setShowLoginModal }) => {
         verifyOtp: otp.join(""),
       });
 
-      if (data?.token) {
-        Cookies.set("auth-token", JSON.stringify(data?.token), {
-          expires: 2,
-          sameSite: "strict",
-        });
-        setUser(data?.user);
+      if (data?.user) {
+        setUser(data.user);
         setIsLoginModalOpen(false);
         setShowLoginModal(false);
       }
@@ -226,10 +230,10 @@ const Login = ({ setShowLoginModal }) => {
               style={
                 !otpSent && !isTermsChecked
                   ? {
-                    backgroundColor: "#e0e0e0",
-                    color: "#aaa",
-                    cursor: "not-allowed",
-                  }
+                      backgroundColor: "#e0e0e0",
+                      color: "#aaa",
+                      cursor: "not-allowed",
+                    }
                   : {}
               }
             >

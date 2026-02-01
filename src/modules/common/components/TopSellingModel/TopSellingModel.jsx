@@ -4,7 +4,9 @@ import rightCircleIcon from "../../../../assets/icons/Frame 42.svg";
 import CommonSlider from "../ui/Slider/CommonSlider";
 
 // Dynamically import all images from TopSellingModel folder using Vite's import.meta.glob
-const images = import.meta.glob("../../../../assets/TopSellingModel/*.avif", { eager: true });
+const images = import.meta.glob("../../../../assets/TopSellingModel/*.avif", {
+  eager: true,
+});
 
 // Helper function to get image path based on model name
 const getImageForModel = (modelName) => {

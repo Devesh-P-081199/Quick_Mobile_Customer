@@ -1,6 +1,4 @@
 import { useNavigate, useLocation, useParams } from "react-router-dom";
-import coupenicon from "../../../../assets/images/icons/coupen.png";
-import rightarrow from "../../../../assets/images/icons/rightarrow.png";
 import MobileIcon from "../../../../assets/images/Products/mobile.png";
 import styles from "./RightCard.module.css";
 import { useContext, useEffect, useState } from "react";

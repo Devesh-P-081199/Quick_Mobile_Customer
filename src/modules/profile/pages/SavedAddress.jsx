@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./SavedAddress.module.css";
-import { FaMapMarkerAlt, FaPlus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import api from "../../../Utils/api";
 import { toast } from "react-toastify";
-import no_address from "../../../assets/QuickSellNewIcons/notfound/no_address_found.png"
+import no_address from "../../../assets/QuickSellNewIcons/notfound/no_address_found.png";
 import trash from "../../../assets/flaticons/trash-basecolor.png";
 import edit from "../../../assets/flaticons/pen-basecolor.png";
 
@@ -92,8 +92,8 @@ const SavedAddress = () => {
                   <div className={styles.addressName}>{address?.name}</div>
                   <div className={styles.addressPhone}>{address?.phone}</div>
                   <div className={styles.addressText}>
-                    {address?.houseNumber}, {address?.area}, {address?.landmark},{" "}
-                    {address?.city}, {address?.state} - {address?.pincode}
+                    {address?.houseNumber}, {address?.area}, {address?.landmark}
+                    , {address?.city}, {address?.state} - {address?.pincode}
                   </div>
                 </div>
                 <div className={styles.addressActions}>

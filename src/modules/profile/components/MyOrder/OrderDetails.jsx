@@ -178,7 +178,9 @@ const OrderDetails = () => {
                   ? ` (${order.deviceEvaluationId.deviceVariant})`
                   : ""}
               </div>
-              <div className={styles.modalOrderId}>Order ID: {order.orderId}</div>
+              <div className={styles.modalOrderId}>
+                Order ID: {order.orderId}
+              </div>
               <div className={styles.modalDevicePrice}>
                 ₹
                 {order?.deviceEvaluationId?.finalPrice?.toLocaleString() ||
@@ -188,14 +190,20 @@ const OrderDetails = () => {
           </div>
 
           {/* Details Content */}
-          <div className={styles.details} style={{ border: "none", padding: 0 }}>
+          <div
+            className={styles.details}
+            style={{ border: "none", padding: 0 }}
+          >
             {/* Partner info */}
             <div className={styles.partnerBox}>
               <div style={{ position: "relative" }}>
                 <img src={account} alt="" className={styles.account} />
                 <div
                   className={styles.rating}
-                  style={{ backgroundColor: getRatingColor(3.7), color: "#fff" }}
+                  style={{
+                    backgroundColor: getRatingColor(3.7),
+                    color: "#fff",
+                  }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -222,7 +230,11 @@ const OrderDetails = () => {
             <div className={styles.timelineWrapper}>
               {[
                 { label: "Order Placed", date: "07 Jan 2025", active: true },
-                { label: "Partner Assigned", date: "09 Jan 2025", active: true },
+                {
+                  label: "Partner Assigned",
+                  date: "09 Jan 2025",
+                  active: true,
+                },
                 { label: "Out for pickup" },
                 { label: "Completed" },
               ].map((step, idx) => (
@@ -315,7 +327,9 @@ const OrderDetails = () => {
               </button>
               <button
                 className={
-                  selected === "partner" ? styles.blackButton : styles.greyButton
+                  selected === "partner"
+                    ? styles.blackButton
+                    : styles.greyButton
                 }
                 onClick={() => setSelected("partner")}
               >
@@ -418,7 +432,10 @@ const OrderDetails = () => {
               </div>
             </div>
 
-            <button className={styles.invoiceBtn} onClick={handleDownloadInvoice}>
+            <button
+              className={styles.invoiceBtn}
+              onClick={handleDownloadInvoice}
+            >
               <img src={downloadIcon} alt="Download Invoice" />
               Download Invoice
             </button>

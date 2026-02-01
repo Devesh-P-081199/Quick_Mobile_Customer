@@ -194,11 +194,7 @@ const EditProfile = () => {
         <div className={styles.avatarWrapper}>
           <div className={styles.profile}>
             {profileImage ? (
-              <img
-                src={profileImage}
-                alt="profile"
-                className={styles.avatar}
-              />
+              <img src={profileImage} alt="profile" className={styles.avatar} />
             ) : (
               <div className={styles.initialsAvatar}>
                 {getInitials(ProfileUpdate.name)}

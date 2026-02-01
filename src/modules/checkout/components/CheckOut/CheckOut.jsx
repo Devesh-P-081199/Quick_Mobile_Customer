@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState, useCallback } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import styles from "./Checkout.module.css";
-import RightCard from "./RightCard";
 import { toast } from "react-toastify";
 import { UserContext } from "../../../../Context/contextAPI";
 import api from "../../../../Utils/api";
-import BreadCrumb from "../../../common/components/layout/BreadCrumb/BreadCrumb";
 import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
 import { FaPlus } from "react-icons/fa";
 import trash from "../../../../assets/flaticons/trash-basecolor.png";
@@ -115,8 +113,9 @@ function CheckOut() {
                     return (
                       <div
                         key={itemId || index}
-                        className={`${styles.addressCard} ${isSelected ? styles.selectedCard : ""
-                          }`}
+                        className={`${styles.addressCard} ${
+                          isSelected ? styles.selectedCard : ""
+                        }`}
                       >
                         <label className={styles.addressLabel}>
                           <input
@@ -177,7 +176,8 @@ function CheckOut() {
                   className={styles.continueButton}
                   onClick={() => {
                     if (selectedAddress) {
-                      const returnPath = location.state?.returnPath || `/${slug}/price-summary`;
+                      const returnPath =
+                        location.state?.returnPath || `/${slug}/price-summary`;
                       navigate(returnPath);
                     } else {
                       toast.error("Please select an address");

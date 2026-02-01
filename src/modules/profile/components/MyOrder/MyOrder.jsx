@@ -1,8 +1,7 @@
 import { useState } from "react";
 import styles from "./MyOrder.module.css";
 import OrderCard from "./Order";
-import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
-import no_order_found from "../../../../assets/QuickSellNewIcons/notfound/no_order_found.png"
+import no_order_found from "../../../../assets/QuickSellNewIcons/notfound/no_order_found.png";
 
 const ORDER_TABS = ["All Orders", "Buy", "Sell", "Repair"];
 
@@ -34,8 +33,9 @@ const MyOrder = () => {
               <button
                 key={label}
                 onClick={() => setActiveTab(label)}
-                className={`${styles.filterBtn} ${activeTab === label ? styles.activeBtn : ""
-                  }`}
+                className={`${styles.filterBtn} ${
+                  activeTab === label ? styles.activeBtn : ""
+                }`}
               >
                 {label}
               </button>

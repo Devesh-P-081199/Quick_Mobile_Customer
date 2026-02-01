@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PaymentOptions.module.css";
-import { FaCreditCard, FaPlus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import api from "../../../Utils/api";
 import { toast } from "react-toastify";
 import trash from "../../../assets/flaticons/trash-basecolor.png";
 import edit from "../../../assets/flaticons/pen-basecolor.png";
-import no_payment_found from "../../../assets/QuickSellNewIcons/notfound/no_payment_found.png"
+import no_payment_found from "../../../assets/QuickSellNewIcons/notfound/no_payment_found.png";
 
 const PaymentOptions = () => {
   const navigate = useNavigate();
@@ -107,15 +107,17 @@ const PaymentOptions = () => {
         {/* Tabs for UPI and Bank */}
         <div className={styles.tabContainer}>
           <button
-            className={`${styles.tabButton} ${selectedMethod === 0 ? styles.activeTab : ""
-              }`}
+            className={`${styles.tabButton} ${
+              selectedMethod === 0 ? styles.activeTab : ""
+            }`}
             onClick={() => setSelectedMethod(0)}
           >
             UPI
           </button>
           <button
-            className={`${styles.tabButton} ${selectedMethod === 1 ? styles.activeTab : ""
-              }`}
+            className={`${styles.tabButton} ${
+              selectedMethod === 1 ? styles.activeTab : ""
+            }`}
             onClick={() => setSelectedMethod(1)}
           >
             Bank Transfer
@@ -158,7 +160,11 @@ const PaymentOptions = () => {
                 ))
               ) : (
                 <div className={styles.emptyState}>
-                  <img src={no_payment_found} alt="No UPI Method" title="No UPI Method" />
+                  <img
+                    src={no_payment_found}
+                    alt="No UPI Method"
+                    title="No UPI Method"
+                  />
                   <h3>No UPI Methods Added</h3>
                   <p>Add a UPI method to make checkout faster.</p>
                 </div>
@@ -208,7 +214,11 @@ const PaymentOptions = () => {
                 ))
               ) : (
                 <div className={styles.emptyState}>
-                  <img src={no_payment_found} alt="No Bank Account" title="No Bank Account" />
+                  <img
+                    src={no_payment_found}
+                    alt="No Bank Account"
+                    title="No Bank Account"
+                  />
                   <h3>No Bank Accounts Added</h3>
                   <p>Add a bank account to make checkout faster.</p>
                 </div>

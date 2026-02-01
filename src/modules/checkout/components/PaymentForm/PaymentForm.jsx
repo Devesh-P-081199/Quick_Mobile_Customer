@@ -4,7 +4,6 @@ import styles from "./PaymentForm.module.css";
 import { toast } from "react-toastify";
 import api from "../../../../Utils/api";
 import MobileBackHeader from "../../../common/components/layout/MobileCommonHeader/MobileBackHeader";
-import BreadCrumb from "../../../common/components/layout/BreadCrumb/BreadCrumb";
 import { UserContext } from "../../../../Context/contextAPI";
 
 const PaymentForm = () => {
@@ -190,10 +189,11 @@ const PaymentForm = () => {
               <span className={styles.paymentTypeLabel}>Payment Type:</span>
               <div className={styles.radioButtonGroup}>
                 <label
-                  className={`${styles.radioButton} ${formData.paymentType === "UPI"
-                    ? styles.radioButtonSelected
-                    : ""
-                    }`}
+                  className={`${styles.radioButton} ${
+                    formData.paymentType === "UPI"
+                      ? styles.radioButtonSelected
+                      : ""
+                  }`}
                 >
                   <input
                     type="radio"
@@ -206,10 +206,11 @@ const PaymentForm = () => {
                   UPI
                 </label>
                 <label
-                  className={`${styles.radioButton} ${formData.paymentType === "Bank"
-                    ? styles.radioButtonSelected
-                    : ""
-                    }`}
+                  className={`${styles.radioButton} ${
+                    formData.paymentType === "Bank"
+                      ? styles.radioButtonSelected
+                      : ""
+                  }`}
                 >
                   <input
                     type="radio"
@@ -337,10 +338,7 @@ const PaymentForm = () => {
             </div>
 
             {/* Desktop Button */}
-            <button
-              className={styles.desktopButton}
-              onClick={handleSubmit}
-            >
+            <button className={styles.desktopButton} onClick={handleSubmit}>
               {editingPayment ? "Update" : "Save and Continue"}
             </button>
           </div>

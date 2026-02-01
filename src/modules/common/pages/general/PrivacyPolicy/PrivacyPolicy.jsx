@@ -10,16 +10,26 @@ const PrivacyPolicy = () => {
 
         <h2>1. Who We Are</h2>
         <p>
-          Quick Mobile LLP ("Quick Mobile", "we", "our", or "us") is committed to protecting your privacy and safeguarding your personal information.
+          Quick Mobile LLP ("Quick Mobile", "we", "our", or "us") is committed
+          to protecting your privacy and safeguarding your personal information.
         </p>
-        <p>This Privacy Policy explains how we collect, use, store, share, and protect your personal data when you access or use:</p>
+        <p>
+          This Privacy Policy explains how we collect, use, store, share, and
+          protect your personal data when you access or use:
+        </p>
         <ul>
           <li>Our website</li>
           <li>Our mobile application</li>
-          <li>Any other platform, service, or communication operated by Quick Mobile</li>
+          <li>
+            Any other platform, service, or communication operated by Quick
+            Mobile
+          </li>
           <li>(collectively referred to as the "Platform")</li>
         </ul>
-        <p>By using our Platform, you agree to the practices described in this Privacy Policy.</p>
+        <p>
+          By using our Platform, you agree to the practices described in this
+          Privacy Policy.
+        </p>
 
         <h2>2. What This Privacy Policy Covers</h2>
         <p>This Privacy Policy applies when you:</p>
@@ -29,13 +39,17 @@ const PrivacyPolicy = () => {
           <li>Request a price quote or service</li>
           <li>Sell, exchange, or repair a device</li>
           <li>Contact customer support</li>
-          <li>Interact with us via email, phone, SMS, WhatsApp, or social media</li>
+          <li>
+            Interact with us via email, phone, SMS, WhatsApp, or social media
+          </li>
         </ul>
 
         <h2>3. Personal Data We Collect</h2>
 
         <h2>A. Information You Provide Directly</h2>
-        <p>We may collect the following information when you use our Platform:</p>
+        <p>
+          We may collect the following information when you use our Platform:
+        </p>
         <ul>
           <li>Name</li>
           <li>Mobile number</li>
@@ -57,7 +71,10 @@ const PrivacyPolicy = () => {
           <li>Location data (approximate)</li>
           <li>Log files and cookies data</li>
         </ul>
-        <p>This information helps us improve performance, security, and user experience.</p>
+        <p>
+          This information helps us improve performance, security, and user
+          experience.
+        </p>
 
         <h2>C. Information from Third Parties</h2>
         <p>We may receive limited information from:</p>
@@ -70,7 +87,10 @@ const PrivacyPolicy = () => {
         <p>This data is used only for lawful and relevant business purposes.</p>
 
         <h2>4. How We Use Your Personal Data</h2>
-        <p>We use your data only when legally permitted and for the following purposes:</p>
+        <p>
+          We use your data only when legally permitted and for the following
+          purposes:
+        </p>
 
         <h2>A. To Provide Our Services</h2>
         <ul>
@@ -127,7 +147,10 @@ const PrivacyPolicy = () => {
           <li>Measure traffic and performance</li>
           <li>Deliver relevant content</li>
         </ul>
-        <p>You can manage cookie settings through your browser. Disabling cookies may affect some features.</p>
+        <p>
+          You can manage cookie settings through your browser. Disabling cookies
+          may affect some features.
+        </p>
 
         <h2>7. Sharing of Personal Data</h2>
         <p>We do not sell your personal data.</p>
@@ -142,13 +165,19 @@ const PrivacyPolicy = () => {
           <li>Customer support</li>
           <li>Analytics</li>
         </ul>
-        <p>They are contractually required to keep your data secure and confidential.</p>
+        <p>
+          They are contractually required to keep your data secure and
+          confidential.
+        </p>
 
         <h2>B. Legal & Regulatory Authorities</h2>
         <p>When required by law, court orders, or government requests.</p>
 
         <h2>C. Business Transfers</h2>
-        <p>In case of merger, acquisition, or sale of business assets, your data may be transferred in accordance with law.</p>
+        <p>
+          In case of merger, acquisition, or sale of business assets, your data
+          may be transferred in accordance with law.
+        </p>
 
         <h2>8. Data Retention</h2>
         <p>We retain your personal data only for as long as necessary to:</p>
@@ -168,7 +197,10 @@ const PrivacyPolicy = () => {
           <li>Restricted access controls</li>
           <li>OTP-based login protection</li>
         </ul>
-        <p>Despite best efforts, no system is 100% secure. Please keep your login credentials and OTP confidential.</p>
+        <p>
+          Despite best efforts, no system is 100% secure. Please keep your login
+          credentials and OTP confidential.
+        </p>
 
         <h2>10. Your Rights</h2>
         <p>You have the right to:</p>
@@ -184,7 +216,11 @@ const PrivacyPolicy = () => {
 
         <h2>11. Minors</h2>
         <p>Our Platform is intended for users 18 years and above.</p>
-        <p>We do not knowingly collect personal data from minors. If you believe a minor has shared data with us, please contact us and we will take appropriate action.</p>
+        <p>
+          We do not knowingly collect personal data from minors. If you believe
+          a minor has shared data with us, please contact us and we will take
+          appropriate action.
+        </p>
 
         <h2>12. Communications from Us</h2>
         <p>We may contact you via:</p>
@@ -197,15 +233,24 @@ const PrivacyPolicy = () => {
         <p>You may opt out of promotional communications at any time.</p>
 
         <h2>13. Changes to This Privacy Policy</h2>
-        <p>We may update this Privacy Policy from time to time. Any changes will be effective immediately once posted on the Platform.</p>
+        <p>
+          We may update this Privacy Policy from time to time. Any changes will
+          be effective immediately once posted on the Platform.
+        </p>
         <p>We encourage you to review this page regularly.</p>
 
         <h2>14. Contact Us</h2>
-        <p>If you have questions, concerns, or requests related to your privacy, please contact us at:</p>
+        <p>
+          If you have questions, concerns, or requests related to your privacy,
+          please contact us at:
+        </p>
         <p>Email: info@quickmobile.in</p>
 
         <h2>Final Note</h2>
-        <p>Your trust matters to us. We are committed to handling your data responsibly, transparently, and securely.</p>
+        <p>
+          Your trust matters to us. We are committed to handling your data
+          responsibly, transparently, and securely.
+        </p>
       </div>
     </div>
   );
