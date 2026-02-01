@@ -1,5 +1,5 @@
-import styles from "./offer.module.css";
-import no_offer from "../../../../assets/QuickSellNewIcons/notfound/no_offers_found.png";
+import styles from "./Offer.module.css";
+import no_offer from "../../../../assets/QuickSellNewIcons/notfound/NoOffersFound.png";
 
 const NoOffer = () => {
   return (

@@ -1,4 +1,4 @@
-import styles from "./UsedVsBrand.module.css";
+import styles from "./UsedvsBrand.module.css";
 
 const benefits = [
   {

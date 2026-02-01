@@ -120,7 +120,6 @@ const Cities = () => {
 
     // Close modal immediately to prevent flickering
     setIsModalOpen(false);
-    toggleModal();
 
     // Update state after modal is closed to prevent visual conflicts
     setTimeout(() => {

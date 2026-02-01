@@ -91,6 +91,7 @@ deploy() {
     log_info "Installing dependencies, building, and restarting PM2..."
     
     ssh_cmd "
+        set -e # Exit immediately if any command exits with non-zero status
         export NVM_DIR=\"\$HOME/.nvm\"
         [ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\"
         

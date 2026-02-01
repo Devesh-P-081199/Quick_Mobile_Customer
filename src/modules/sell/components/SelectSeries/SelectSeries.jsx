@@ -47,9 +47,16 @@ function SelectSeries() {
       )
     : allModels;
 
+  const brandName = allModels?.[0]?.deviceBrandName || "";
+  const categoryName = allModels?.[0]?.deviceCategory || "";
+  const headerTitle =
+    brandName && categoryName
+      ? `Sell ${brandName} ${categoryName}`
+      : "Sell Device";
+
   return (
     <>
-      <MobileCommonHeader title="Sell {Brand} {Category}" onSearch />
+      <MobileCommonHeader title={headerTitle} onSearch />
 
       <div className={styles.mobilePtSection}>
         {displayedSeries.length > 0 && (

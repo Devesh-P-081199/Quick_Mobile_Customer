@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useContext, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import styles from "./ThankYou.module.css";
+import styles from "./Thankyou.module.css";
 // Reuse OrderDetails styles
 import { FaPlus, FaTimes } from "react-icons/fa";
 import completeImg from "../../../../assets/flaticons/approved.png";
