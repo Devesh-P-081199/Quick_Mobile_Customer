@@ -133,7 +133,7 @@ const NoOffer = React.lazy(
   () => import("./modules/profile/components/Offer/Offer"),
 );
 const ProfileLayout = React.lazy(
-  () => ("./modules/profile/components/ProfileLayout/ProfileLayout"),
+  () => import("./modules/profile/components/ProfileLayout/ProfileLayout"),
 );
 
 const ScrollToTop = () => {
