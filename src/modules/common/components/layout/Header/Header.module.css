@@ -551,7 +551,7 @@
 
 .bottomNavContainer {
   background-color: var(--color-surface);
-  padding: 5px 155px;
+  padding: 5px 7%;
   padding-top: 72px;
   font-size: 14px;
   position: relative;
@@ -569,6 +569,7 @@
   opacity: 1;
   transform: translateY(0);
   will-change: opacity, transform;
+  gap: 10px;
   max-width: 1024px;
 }
 

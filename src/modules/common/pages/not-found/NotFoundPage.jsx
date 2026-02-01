@@ -10,7 +10,7 @@ const NotFoundPage = () => {
       try {
         /* @vite-ignore */
         const image = await import(
-          `../../../assets/QuickSellNewIcons/notfound/404Page0${randomIndex}.png`
+          `../../../../assets/QuickSellNewIcons/notfound/404Page0${randomIndex}.png`
         );
         setIllustration(image.default);
       } catch (error) {

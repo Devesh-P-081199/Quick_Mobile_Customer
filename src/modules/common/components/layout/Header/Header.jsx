@@ -724,9 +724,9 @@ const Header = () => {
                             return (
                               results.ActiveBrands?.[contextType]?.length > 0 ||
                               results.ActiveProducts?.[contextType]?.length >
-                                0 ||
+                              0 ||
                               results.ActiveCategories?.[contextType]?.length >
-                                0
+                              0
                             );
                           },
                         );
@@ -854,9 +854,14 @@ const Header = () => {
             {/* Right Group: Become Partner + Login/User */}
             <div className={styles.rightGroup}>
               {/* Become Partner */}
-              <Link to="/become-partner" className={styles.becomePartner}>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfN2ViBAlS-5vEcaD5BtRPd9b5Y6fdSfFJzWcQQNgh3_SrhRg/viewform"
+                className={styles.becomePartner}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span>Become Partner</span>
-              </Link>
+              </a>
 
               {/* Vertical Divider */}
               <div className={styles.verticalDivider}></div>
@@ -1300,9 +1305,30 @@ const Header = () => {
                   </ul>
                 )}
               </li>
-              <li>Buy Phone</li>
-              <li>Recycle Device</li>
-              <li>Accessories</li>
+              <li
+                onClick={() => {
+                  setIsOpen(false);
+                  navigate("/coming-soon");
+                }}
+              >
+                Buy Phone
+              </li>
+              <li
+                onClick={() => {
+                  setIsOpen(false);
+                  navigate("/coming-soon");
+                }}
+              >
+                Recycle Device
+              </li>
+              <li
+                onClick={() => {
+                  setIsOpen(false);
+                  navigate("/coming-soon");
+                }}
+              >
+                Accessories
+              </li>
               <li
                 onClick={() => {
                   setIsOpen(false);
@@ -1513,6 +1539,19 @@ const Header = () => {
                     }
                   }}
                   onClick={() => {
+                    // Navigation for specific items
+                    if (
+                      [
+                        "Good deals",
+                        "Buy Phone",
+                        "Recycle Device",
+                        "Accessories",
+                      ].includes(item)
+                    ) {
+                      navigate("/coming-soon");
+                      return;
+                    }
+
                     // Click support: Explicitly open this dropdown
                     if (item === "Sell Phone" || item === "Sell Gadget") {
                       setHoveredItem(item);
@@ -1553,11 +1592,10 @@ const Header = () => {
                         {category?.slice(0, 5).map((cat) => (
                           <div
                             key={cat._id}
-                            className={`${styles.categoryItem} ${
-                              activeCategory === cat.categoryName
-                                ? styles.active
-                                : ""
-                            }`}
+                            className={`${styles.categoryItem} ${activeCategory === cat.categoryName
+                              ? styles.active
+                              : ""
+                              }`}
                             onMouseEnter={() => handleCategoryHover(cat)}
                           >
                             <img
@@ -1639,11 +1677,10 @@ const Header = () => {
                             <div
                               key={brand._id}
                               className={`${styles.categoryItem} 
-                            ${
-                              activeBrand === brand.brandName
-                                ? styles.active
-                                : ""
-                            }
+                            ${activeBrand === brand.brandName
+                                  ? styles.active
+                                  : ""
+                                }
                             `}
                               onMouseEnter={() => handleBrandHover(brand)}
                             >
@@ -1717,11 +1754,10 @@ const Header = () => {
                         {brandsWithProducts?.slice(0, 3)?.map((brand) => (
                           <div
                             key={brand._id}
-                            className={`${styles.categoryItem} ${
-                              activeBrand === brand.brandName
-                                ? styles.active
-                                : ""
-                            }`}
+                            className={`${styles.categoryItem} ${activeBrand === brand.brandName
+                              ? styles.active
+                              : ""
+                              }`}
                             onMouseEnter={() => handleBrandHover(brand)}
                           >
                             <img src={brand?.brandLogo} alt="" />

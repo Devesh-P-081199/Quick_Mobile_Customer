@@ -1,0 +1,166 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #ef5350;
+    /* Red background similar to reference */
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative;
+    padding: 2rem;
+    /* Add padding to prevent edge touches on small screens */
+    margin-bottom: -40px;
+}
+
+.signContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+    animation: swing 3s infinite ease-in-out alternate;
+}
+
+/* The Pin/Nail */
+.pin {
+    width: 16px;
+    height: 16px;
+    background-color: #34495e;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    /* Adjust based on string geometry */
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* The Strings */
+.stringLeft,
+.stringRight {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 80px;
+    background-color: #ecf0f1;
+    /* White string */
+    z-index: 5;
+}
+
+.stringLeft {
+    left: 50%;
+    transform-origin: top center;
+    transform: translateX(-50%) rotate(30deg);
+    /* Angled out */
+    height: 70px;
+    /* Adjust length to meet the sign corners */
+    top: -5px;
+}
+
+.stringRight {
+    right: 50%;
+    transform-origin: top center;
+    transform: translateX(50%) rotate(-30deg);
+    /* Angled out */
+    height: 70px;
+    top: -5px;
+}
+
+/* The Board */
+.signBoard {
+    background-color: #a2d9f7;
+    /* Light blue closer to reference */
+    border: 8px solid #00a0e9;
+    /* Darker blue border */
+    border-radius: 12px;
+    padding: 20px 40px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin-top: 55px;
+    /* Push down below the strings */
+    position: relative;
+    min-width: 280px;
+}
+
+/* Text Styles */
+.textComing,
+.textSoon {
+    display: block;
+    font-weight: 800;
+    color: #153c55;
+    /* Dark blue text */
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.textComing {
+    font-size: 2.5rem;
+}
+
+.textSoon {
+    font-size: 2.5rem;
+}
+
+/* Subtitle under the sign (optional "Under Construction" look) */
+.underConstruction {
+    margin-top: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: absolute;
+    bottom: -60px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Back Button styling to fit the theme */
+.backButton {
+    /* Position relative/static in flow instead of absolute */
+    margin-top: 120px;
+    /* Space between sign and button */
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    z-index: 20;
+    /* Ensure clickable */
+}
+
+.backButton:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Swing Animation */
+@keyframes swing {
+    0% {
+        transform: rotate(3deg);
+    }
+
+    100% {
+        transform: rotate(-3deg);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+
+    .textComing,
+    .textSoon {
+        font-size: 2rem;
+    }
+
+    .signBoard {
+        padding: 15px 30px;
+        min-width: 240px;
+    }
+}

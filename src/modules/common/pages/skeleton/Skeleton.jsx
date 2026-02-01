@@ -1,4 +1,4 @@
-Skeleton.js;
+
 import styles from "./skeleton.module.css";
 
 const Skeleton = ({ width, height, borderRadius }) => {

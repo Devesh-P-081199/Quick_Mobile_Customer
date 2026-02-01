@@ -40,22 +40,26 @@ const PaymentForm = React.lazy(
   () => import("./modules/checkout/components/PaymentForm/PaymentForm"),
 );
 const ThankYouPage = React.lazy(
-  () => import("./modules/common/pages/ThankYouPage"),
+  () => import("./modules/common/pages/thank-you/ThankYouPage"),
 );
 // const SelectSubCata = React.lazy(
 //   () => import("./modules/sell/components/SelectSubCategories/SelectSubCata"),
 // );
 import Loader from "./modules/common/components/layout/Loader/Loader";
-import DynamicRouteHandler from "./modules/common/pages/DynamicRouteHandler";
-import NotFoundPage from "./modules/common/pages/NotFoundPage";
+import DynamicRouteHandler from "./modules/common/pages/dynamic/DynamicRouteHandler";
+import NotFoundPage from "./modules/common/pages/not-found/NotFoundPage";
 
 const BlogDetail = React.lazy(
-  () => import("./modules/common/pages/BlogDetail"),
+  () => import("./modules/common/pages/blogs/BlogDetail"),
 );
-const BlogsPage = React.lazy(() => import("./modules/common/pages/BlogsPage"));
-const StorePage = React.lazy(() => import("./modules/common/pages/StorePage"));
+const BlogsPage = React.lazy(() => import("./modules/common/pages/blogs/BlogsPage"));
+const StorePage = React.lazy(() => import("./modules/common/pages/stores/StorePage"));
 const StoresListPage = React.lazy(
-  () => import("./modules/common/pages/StoresListPage"),
+  () => import("./modules/common/pages/stores/StoresListPage"),
+);
+
+const ComingSoon = React.lazy(
+  () => import("./modules/common/pages/coming-soon/ComingSoon"),
 );
 
 // Updated imports to use new feature-based structure
@@ -603,6 +607,14 @@ const AppContent = () => {
           element={
             <Suspense fallback={<Loader />}>
               <BlogDetail />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/coming-soon"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ComingSoon />
             </Suspense>
           }
         />
