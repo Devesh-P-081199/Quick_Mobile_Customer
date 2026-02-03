@@ -81,10 +81,10 @@ const Footer = () => {
               <a href="#">Sell Smartwatch</a>
               <a href="#">Sell Earbuds</a>
               <a href="#">Sell Gaming Console</a>
-              <a href="#">Recycle Phone/Other Device</a>
-              <a href="#">Retire Phone</a>
+              {/* <a href="#">Recycle Phone/Other Device</a>
+              <a href="#">Repair Phone</a>
               <a href="#">Buy Phone</a>
-              <a href="#">Buy Accessories</a>
+              <a href="#">Buy Accessories</a> */}
             </div>
           </div>
 
@@ -94,9 +94,9 @@ const Footer = () => {
             <div className={styles.footerLinks}>
               <Link to="/About-us">About us</Link>
               <Link to="/Impact">Impact</Link>
-              <a href="#">Press Release</a>
+              {/* <a href="#">Press Release</a> */}
               <Link to="/blogs">Blogs</Link>
-              <a href="#">Career</a>
+              {/* <a href="#">Career</a> */}
             </div>
           </div>
 
@@ -107,8 +107,8 @@ const Footer = () => {
               <a href="#">FAQ</a>
               <Link to="/Contact-us">Contact Us</Link>
               <Link to="/Refund">Return & Refund</Link>
-              <a href="#">Shipment</a>
-              <a href="#">Warranty Policy</a>
+              {/* <a href="#">Shipment</a>
+              <a href="#">Warranty Policy</a> */}
             </div>
           </div>
 
@@ -129,12 +129,12 @@ const Footer = () => {
             <h3 className={styles.footerHeading}>Others</h3>
             <div className={styles.footerLinks}>
               <Link to="/our-stores">Our Stores</Link>
-              <a href="#">Register Warranty</a>
-              <a href="#">Claim Warranty</a>
+              {/* <a href="#">Register Warranty</a>
+              <a href="#">Claim Warranty</a> */}
               <a href="#">Become Partner</a>
-              <a href="#">Frenchies</a>
-              <a href="#">Bulk Buying</a>
-              <a href="#">Become Partner Store</a>
+              <a href="#">Franchise</a>
+              {/* <a href="#">Bulk Buying</a> */}
+              {/* <a href="#">Become Partner Store</a> */}
             </div>
           </div>
 
@@ -191,8 +191,8 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className={styles.footerBottom}>
           <p>
-            Quickmobile LLP. ROC Mumbai, Maharashtra, CIN :
-            <b> 12345678912345678912</b> | GST no :<b> 123456789123</b>. For
+            Quickmobile LLP.  Mumbai, Maharashtra, Registration Number :
+            <b> AAJ-9650</b>. For
             complaint or greviences email :<b> grevience@quickmobile.in</b>
             <br />
             ** All trademarks, logos, and brand names are the property of their
@@ -200,7 +200,7 @@ const Footer = () => {
             website is for identification purpose only and does not imply
             ownership or endorsement.
           </p>
-          <p>&copy; 2025 Quick Mobile All Right Reserved</p>
+          <p>&copy; 2026 Quick Mobile All Right Reserved</p>
         </div>
       </footer>
 
@@ -216,10 +216,10 @@ const Footer = () => {
               "Sell Smartwatch",
               "Sell Earbuds",
               "Sell Gaming Console",
-              "Recycle Phone/Other Device",
-              "Retire Phone",
-              "Buy Phone",
-              "Buy Accessories",
+              // "Recycle Phone/Other Device",
+              // "Repair Phone",
+              // "Buy Phone",
+              // "Buy Accessories",
             ]}
           />
           <FooterSection
@@ -227,9 +227,9 @@ const Footer = () => {
             links={[
               { text: "About Us", path: "/About-us" },
               { text: "Impact", path: "/Impact" },
-              { text: "Press Release", path: "/press" },
+              // { text: "Press Release", path: "/press" },
               { text: "Blogs", path: "/blogs" },
-              { text: "Career", path: "/career" },
+              // { text: "Career", path: "/career" },
             ]}
           />
           <FooterSection
@@ -238,8 +238,8 @@ const Footer = () => {
               "FAQ",
               "Contact Us",
               "Return & Refund",
-              "Shipment",
-              "Warranty Policy",
+              // "Shipment",
+              // "Warranty Policy",
             ]}
           />
           <FooterSection
@@ -256,12 +256,12 @@ const Footer = () => {
             title="Others"
             links={[
               { text: "Our Stores", path: "/our-stores" },
-              "Register Warranty",
-              "Claim Warranty",
+              // "Register Warranty",
+              // "Claim Warranty",
               "Become Partner",
-              "Frenchies",
-              "Bulk Buying",
-              "Become Partner Store",
+              "Franchise",
+              // "Bulk Buying",
+              // "Become Partner Store",
             ]}
           />
 
@@ -313,8 +313,8 @@ const Footer = () => {
           <div className={styles.footerBottom}>
             <p className={styles.logoHeader}>Registered company</p>
             <p className={styles.notice}>
-              Quickmobile LLP. ROC Mumbai, Maharashtra.<br></br> CIN :
-              12345678912345678912 | GST no. : 123456789123<br></br>
+              Quickmobile LLP. Mumbai, Maharashtra.<br></br>
+              Registration Number : AAJ-9650<br></br>
               For complaint or greviences email : grevience@quickmobile.in
               <br></br>
               <br></br>
@@ -324,7 +324,7 @@ const Footer = () => {
               ownership or endorsement.
             </p>
 
-            <p>&copy; 2025 Quick Mobile All Right Reserved</p>
+            <p>&copy; 2026 Quick Mobile All Right Reserved</p>
           </div>
         </div>
       </footer>
