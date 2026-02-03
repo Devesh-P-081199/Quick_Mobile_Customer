@@ -92,9 +92,8 @@ function CategorySlider({
             onClick={() =>
               onCategorySelect(cat._id, cat.categoryName, cat?.slug?.sell)
             }
-            className={`${styles.imgCard} ${
-              selectedCategoryId === cat._id ? styles.selectedCategory : ""
-            }`}
+            className={`${styles.imgCard} ${selectedCategoryId === cat._id ? styles.selectedCategory : ""
+              }`}
           >
             <div className={styles.imageBg}>
               <img
@@ -108,7 +107,7 @@ function CategorySlider({
         ))}
 
         <NavLink
-          to="/view-all-category"
+          to="/sell-gadgets"
           className={`${styles.imgCard} ${styles.viewAllCard}`}
           aria-label="View more categories"
         >

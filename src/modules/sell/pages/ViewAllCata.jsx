@@ -4,7 +4,7 @@ import BreadCrumb from "../../common/components/layout/BreadCrumb/BreadCrumb";
 function ViewAllCata() {
   return (
     <>
-      <BreadCrumb items={["Home", "View all category"]} />
+      <BreadCrumb items={["Home", "Sell Gadgets"]} />
       <AllCategory />
     </>
   );

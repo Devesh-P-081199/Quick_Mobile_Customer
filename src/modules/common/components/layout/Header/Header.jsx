@@ -1518,7 +1518,7 @@ const Header = () => {
               {[
                 "Good deals",
                 "Sell Phone",
-                "Sell Gadget",
+                "Sell Gadgets",
                 "Buy Phone",
                 "Recycle Device",
                 "Accessories",
@@ -1528,13 +1528,13 @@ const Header = () => {
                 <div
                   key={index}
                   className={
-                    item === "Sell Phone" || item === "Sell Gadget"
+                    item === "Sell Phone" || item === "Sell Gadgets"
                       ? styles.dropdownTrigger
                       : styles.navItemNoDropdown
                   }
                   onMouseEnter={() => {
                     // Only set hover state for items with dropdowns
-                    if (item === "Sell Phone" || item === "Sell Gadget") {
+                    if (item === "Sell Phone" || item === "Sell Gadgets") {
                       setHoveredItem(item);
                     }
                   }}
@@ -1553,13 +1553,17 @@ const Header = () => {
                     }
 
                     // Click support: Explicitly open this dropdown
-                    if (item === "Sell Phone" || item === "Sell Gadget") {
+                    if (item === "Sell Phone") {
                       setHoveredItem(item);
+                    }
+
+                    if (item === "Sell Gadgets") {
+                      navigate("/sell-gadgets");
                     }
                   }}
                   onMouseLeave={() => {
                     // Clear all dropdown states when leaving the trigger
-                    if (item === "Sell Phone" || item === "Sell Gadget") {
+                    if (item === "Sell Phone" || item === "Sell Gadgets") {
                       setHoveredItem(null);
                       setActiveCategory(null);
                       setHoveredBrand(null);
@@ -1570,7 +1574,7 @@ const Header = () => {
                 >
                   <span>{item}</span>
                   {/* Only show dropdown icon for items that have dropdowns */}
-                  {(item === "Sell Phone" || item === "Sell Gadget") && (
+                  {(item === "Sell Phone" || item === "Sell Gadgets") && (
                     <img
                       src={dropdownIcon}
                       alt="Dropdown"
@@ -1578,11 +1582,11 @@ const Header = () => {
                     />
                   )}
 
-                  {item === "Sell Gadget" && hoveredItem === "Sell Gadget" && (
+                  {item === "Sell Gadgets" && hoveredItem === "Sell Gadgets" && (
                     <div
                       className={styles.dropdownMenu}
                       ref={dropdownRef}
-                      onMouseEnter={() => setHoveredItem("Sell Gadget")} // Keep dropdown open when hovering over it
+                      onMouseEnter={() => setHoveredItem("Sell Gadgets")} // Keep dropdown open when hovering over it
                       onMouseLeave={() => {
                         setHoveredItem(null);
                         setActiveCategory(null);
@@ -1612,7 +1616,7 @@ const Header = () => {
                           <div
                             className={styles.categoryItem}
                             onClick={() => {
-                              navigate("/view-all-category");
+                              navigate("/sell-gadgets");
                               setHoveredItem(null);
                             }}
                           >

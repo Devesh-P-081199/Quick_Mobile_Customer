@@ -465,7 +465,7 @@ const AppContent = () => {
         />
 
         <Route
-          path="/view-all-category"
+          path="/sell-gadgets"
           element={
             <Suspense fallback={<Loader />}>
               <ViewAllCata />
