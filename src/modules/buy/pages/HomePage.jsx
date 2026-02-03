@@ -1,5 +1,5 @@
 import HomeSlider from "../components/HomeSlider/HomeSlider";
-import PressRelease from "../components/PressRelease/PressRelease";
+// import PressRelease from "../components/PressRelease/PressRelease";
 import UsedvsBrand from "../components/UsedvsBrand/UsedvsBrand";
 import Newsletter from "../components/NewsLetter/NewsLetter";
 
@@ -39,9 +39,9 @@ const HomePage = () => {
           <UsedvsBrand />
         </div>
 
-        <div className="page-content-wrapper">
+        {/* <div className="page-content-wrapper">
           <PressRelease />
-        </div>
+        </div> */}
 
         <div className="page-content-wrapper">
           <Newsletter />

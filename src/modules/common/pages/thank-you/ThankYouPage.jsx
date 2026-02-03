@@ -3,15 +3,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Thankyou.module.css";
 // Reuse OrderDetails styles
 import { FaPlus, FaTimes } from "react-icons/fa";
-import completeImg from "../../../assets/flaticons/approved.png";
-import batteryImg from "../../../assets/flaticons/battery-with-a-bolt-symbol.png";
-import playImg from "../../../assets/flaticons/play.png";
-import documentImg from "../../../assets/flaticons/document.png";
-import bankImg from "../../../assets/flaticons/bank-account.png";
-import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
+import completeImg from "../../../../assets/flaticons/approved.png";
+import batteryImg from "../../../../assets/flaticons/battery-with-a-bolt-symbol.png";
+import playImg from "../../../../assets/flaticons/play.png";
+import documentImg from "../../../../assets/flaticons/document.png";
+import bankImg from "../../../../assets/flaticons/bank-account.png";
+import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
 import { toast } from "react-toastify";
-import { UserContext } from "../../../Context/contextAPI";
-import api from "../../../Utils/api";
+import { UserContext } from "../../../../Context/contextAPI";
+import api from "../../../../Utils/api";
 
 const ThankYouPage = () => {
   const navigate = useNavigate();

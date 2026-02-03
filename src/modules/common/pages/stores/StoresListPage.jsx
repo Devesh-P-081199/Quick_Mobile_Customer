@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./StoresListPage.module.css";
-import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
-import location from "../../../assets/flaticons/location.png";
-import time from "../../../assets/flaticons/clock.png";
-import storeImg from "../../../assets/images/store_img.jpg";
+import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
+import location from "../../../../assets/flaticons/location.png";
+import time from "../../../../assets/flaticons/clock.png";
+import storeImg from "../../../../assets/images/store_img.jpg";
 
 // Sample stores data - replace with API call
 const STORES_DATA = [

@@ -167,4 +167,8 @@
   .blogTitle {
     font-size: 16px;
   }
+
+  .blogsGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

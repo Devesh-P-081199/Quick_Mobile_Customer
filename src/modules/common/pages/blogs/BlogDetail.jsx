@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./BlogDetail.module.css";
-import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
+import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
 import blogsData from "./block-content.json";
 
 const BlogDetail = () => {
@@ -10,7 +10,7 @@ const BlogDetail = () => {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const getImageUrl = (name) => {
-    return new URL(`../../../assets/images/blog/${name}`, import.meta.url).href;
+    return new URL(`../../../../assets/images/blog/${name}`, import.meta.url).href;
   };
 
   useEffect(() => {

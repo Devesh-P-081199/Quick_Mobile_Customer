@@ -9,22 +9,22 @@ import {
   useRef,
   useCallback,
 } from "react";
-import api from "../../../Utils/api";
-import Loader from "../components/layout/Loader/Loader";
-import GetUpto from "../../sell/components/GetUpto/GetUpto";
-import SEO from "../../../Utils/SEO";
-import BreadCrumb from "../components/layout/BreadCrumb/BreadCrumb";
-import { UserContext } from "../../../Context/contextAPI";
+import api from "../../../../Utils/api";
+import Loader from "../../components/layout/Loader/Loader";
+import GetUpto from "../../../sell/components/GetUpto/GetUpto";
+import SEO from "../../../../Utils/SEO";
+import BreadCrumb from "../../components/layout/BreadCrumb/BreadCrumb";
+import { UserContext } from "../../../../Context/contextAPI";
 import { useContext } from "react";
 
-const SellHome = lazy(() => import("../../sell/pages/SellHome"));
+const SellHome = lazy(() => import("../../../sell/pages/SellHome"));
 const SelectSubCata = lazy(
-  () => import("../../sell/components/SelectSubCategories/SelectSubCata"),
+  () => import("../../../sell/components/SelectSubCategories/SelectSubCata"),
 );
 const SelectSeries = lazy(
-  () => import("../../sell/components/SelectSeries/SelectSeries"),
+  () => import("../../../sell/components/SelectSeries/SelectSeries"),
 );
-const SelectVarient = lazy(() => import("../../sell/pages/SelectVarient"));
+const SelectVarient = lazy(() => import("../../../sell/pages/SelectVarient"));
 
 const DynamicRouteHandler = () => {
   const [seoData, setSeoData] = useState(null);

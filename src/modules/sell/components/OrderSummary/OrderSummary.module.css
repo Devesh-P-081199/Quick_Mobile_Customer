@@ -189,7 +189,7 @@
 }
 
 .mobileImg img {
-  width: fit-content;
+  width: auto;
   height: 100%;
 }
 
@@ -729,6 +729,10 @@
   .desktopCoupon {
     display: none !important;
     /* Hidden on mobile */
+  }
+
+  .deviceSection {
+    display: none;
   }
 
   .desktopCouponForm {

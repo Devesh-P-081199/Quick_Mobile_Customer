@@ -70,7 +70,7 @@ const Allcategoryhome = forwardRef((props, ref) => {
             {categories?.length > 5 && (
               <div
                 className={`${styles.brandSingleBox} cursor-pointer`}
-                onClick={() => navigate("/view-all-category")}
+                onClick={() => navigate("/sell-gadgets")}
               >
                 <div className={styles.imgIndividual}>
                   <div className={styles.viewAllCircle}>

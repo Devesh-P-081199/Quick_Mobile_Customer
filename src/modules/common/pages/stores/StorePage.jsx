@@ -2,14 +2,14 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import styles from "./StorePage.module.css";
-import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
-import storeImg from "../../../assets/images/store_img.jpg";
-import location from "../../../assets/flaticons/location.png";
-import time from "../../../assets/flaticons/clock.png";
-import headphone from "../../../assets/flaticons/headphone.png";
-import onlineShopping from "../../../assets/flaticons/online-shopping.png";
-import smartphone from "../../../assets/flaticons/smartphone.png";
-import support from "../../../assets/flaticons/support.png";
+import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
+import storeImg from "../../../../assets/images/store_img.jpg";
+import location from "../../../../assets/flaticons/location.png";
+import time from "../../../../assets/flaticons/clock.png";
+import headphone from "../../../../assets/flaticons/headphone.png";
+import onlineShopping from "../../../../assets/flaticons/online-shopping.png";
+import smartphone from "../../../../assets/flaticons/smartphone.png";
+import support from "../../../../assets/flaticons/support.png";
 
 // Sample stores database - replace with API call
 const STORES_DATABASE = {
@@ -151,9 +151,8 @@ function StorePage() {
                 {STORE_IMAGES.map((_, index) => (
                   <span
                     key={index}
-                    className={`${styles.dot} ${
-                      index === currentImageIndex ? styles.activeDot : ""
-                    }`}
+                    className={`${styles.dot} ${index === currentImageIndex ? styles.activeDot : ""
+                      }`}
                     onClick={() => handleImageClick(index)}
                   ></span>
                 ))}

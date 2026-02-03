@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import styles from "./HomeBlogSlider.module.css";
 // Importing data from the same source as BlogsPage
-import blogsData from "../../../common/pages/block-content.json";
+import blogsData from "../../../common/pages/blogs/block-content.json";
 
 const HomeBlogSlider = () => {
   const navigate = useNavigate();

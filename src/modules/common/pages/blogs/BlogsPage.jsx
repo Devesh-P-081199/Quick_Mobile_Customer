@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./BlogsPage.module.css";
-import MobileBackHeader from "../components/layout/MobileCommonHeader/MobileBackHeader";
+import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
 import blogsData from "./block-content.json";
 
 const BlogsPage = () => {
@@ -23,7 +23,7 @@ const BlogsPage = () => {
   };
 
   const getImageUrl = (name) => {
-    return new URL(`../../../assets/images/blog/${name}`, import.meta.url).href;
+    return new URL(`../../../../assets/images/blog/${name}`, import.meta.url).href;
   };
 
   const filteredBlogs =
