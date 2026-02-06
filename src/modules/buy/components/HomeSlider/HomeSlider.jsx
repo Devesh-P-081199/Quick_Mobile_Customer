@@ -1,24 +1,10 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import slide1 from "../../../../assets/images/banner_images/homepage_banner_slider_image_01.png";
 import "./HomeSlider.css";
 
 function HomeSlider() {
-  const slides = [
-    {
-      title: "Sell Your Old Phone in Minutes!",
-      description: "Highest Price | Doorstep Pickups | Instant Payment",
-      image: slide1,
-    },
-    {
-      title: "Sell Your Old Phone in Minutes!",
-      description: "Highest Price | Doorstep Pickups | Instant Payment",
-      image: slide1,
-    },
-    {
-      title: "Sell Your Old Phone in Minutes!",
-      description: "Highest Price | Doorstep Pickups | Instant Payment",
-      image: slide1,
-    },
+  // Define unique slides (remove duplicates)
+  const uniqueSlides = [
     {
       title: "Sell Your Old Phone in Minutes!",
       description: "Highest Price | Doorstep Pickups | Instant Payment",
@@ -26,8 +12,22 @@ function HomeSlider() {
     },
   ];
 
+  // Create the final slides array based on number of unique slides
+  // If we have 2+ unique slides, repeat each slide twice (e.g., 2 slides → 4)
+  // If we have only 1 slide, keep it as is (no repetition)
+  const slides = useMemo(() => {
+    if (uniqueSlides.length === 1) {
+      return uniqueSlides;
+    }
+    // Repeat each slide twice: [slide1, slide2] → [slide1, slide2, slide1, slide2]
+    return [...uniqueSlides, ...uniqueSlides];
+  }, []);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
+
+  // Determine if navigation should be shown
+  const showNavigation = uniqueSlides.length > 1;
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -45,7 +45,13 @@ function HomeSlider() {
   };
 
   // Auto-slide with 5-second delay and progress tracking
+  // Only enable auto-slide when there are multiple unique slides
   useEffect(() => {
+    if (!showNavigation) {
+      // No auto-slide for single slide
+      return;
+    }
+
     setProgress(0); // Reset progress when slide changes
 
     const progressInterval = setInterval(() => {
@@ -66,7 +72,7 @@ function HomeSlider() {
       clearInterval(progressInterval);
       clearTimeout(slideTimeout);
     };
-  }, [currentSlide, nextSlide]);
+  }, [currentSlide, nextSlide, showNavigation]);
 
   return (
     <>
@@ -91,32 +97,38 @@ function HomeSlider() {
           ))}
         </div>
 
-        {/* Navigation Buttons */}
-        <button className="slider-nav left" onClick={prevSlide}>
-          {"<"}
-        </button>
-        <button className="slider-nav right" onClick={nextSlide}>
-          {">"}
-        </button>
+        {/* Navigation Buttons - Only show when there are multiple unique slides */}
+        {showNavigation && (
+          <>
+            <button className="slider-nav left" onClick={prevSlide}>
+              {"<"}
+            </button>
+            <button className="slider-nav right" onClick={nextSlide}>
+              {">"}
+            </button>
+          </>
+        )}
       </div>
 
-      {/* Dots Navigation with Progress Bar */}
-      <div className="slider-dots">
-        {slides.map((_, index) => (
-          <div
-            key={index}
-            className={`dot ${index === currentSlide ? "active" : ""}`}
-            onClick={() => handleDotClick(index)}
-          >
-            {index === currentSlide && (
-              <div
-                className="dot-progress"
-                style={{ width: `${progress}%` }}
-              ></div>
-            )}
-          </div>
-        ))}
-      </div>
+      {/* Dots Navigation with Progress Bar - Only show when there are multiple unique slides */}
+      {showNavigation && (
+        <div className="slider-dots">
+          {uniqueSlides.map((_, index) => (
+            <div
+              key={index}
+              className={`dot ${index === currentSlide % uniqueSlides.length ? "active" : ""}`}
+              onClick={() => handleDotClick(index)}
+            >
+              {index === currentSlide % uniqueSlides.length && (
+                <div
+                  className="dot-progress"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 }

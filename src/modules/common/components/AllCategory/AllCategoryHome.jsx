@@ -2,6 +2,7 @@ import { forwardRef, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./AllCategory.module.css";
 import api from "../../../../Utils/api";
+import application from "../../../../assets/images/application.png";
 
 const Allcategoryhome = forwardRef((props, ref) => {
   const navigate = useNavigate();
@@ -73,9 +74,7 @@ const Allcategoryhome = forwardRef((props, ref) => {
                 onClick={() => navigate("/sell-gadgets")}
               >
                 <div className={styles.imgIndividual}>
-                  <div className={styles.viewAllCircle}>
-                    <span>󠁯•󠁏󠁯•󠁏󠁯•󠁏</span>
-                  </div>
+                  <img src={application} alt="application" />
                 </div>
                 <span>View All</span>
               </div>

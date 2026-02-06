@@ -65,7 +65,8 @@
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 16px;
   font-weight: 500;
-  padding: 11px 35px;
+  padding: 8px 35px;
+  height: 40px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
@@ -145,37 +146,41 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .slider-nav {
+    display: none;
+  }
+
   .slider-container {
     height: auto;
     min-height: 300px;
     background-image: url('../../../../assets/images/banner_images/homepage_banner_image_phone.png');
   }
-  
+
   .slider-image {
     position: relative;
     width: 60%;
     right: auto;
     top: auto;
     transform: none;
-    margin: 1rem auto;
   }
-  
+
   .slider-content {
     align-items: center;
     text-align: center;
     padding: 2rem 1rem;
+    gap: 10px;
   }
-  
+
   .slider-container .slide {
     flex-direction: column-reverse;
   }
-  
+
   .slider-title {
-    font-size: 24px;
+    font-size: 22px;
   }
-  
+
   .slider-description {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.4;
   }
 }
