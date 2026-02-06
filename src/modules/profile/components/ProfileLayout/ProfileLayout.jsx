@@ -125,10 +125,22 @@ const ProfileLayout = () => {
     return null; // No title for root profile page
   };
 
+  // Check if the current route's component has its own header
+  const hasOwnHeader = () => {
+    const path = location.pathname;
+    return (
+      path.includes("/order-details/") ||
+      path.includes("/add-address") ||
+      path.includes("/edit-address") ||
+      path.includes("/add-payment") ||
+      path.includes("/edit-payment")
+    );
+  };
+
   return (
     <>
-      {/* Mobile Header - only show when on right panel content */}
-      {isMobile && !showLeftPanel && (
+      {/* Mobile Header - only show when on right panel content and component doesn't have its own header */}
+      {isMobile && !showLeftPanel && !hasOwnHeader() && (
         <MobileBackHeader title={getHeaderTitle()} onBack={handleBack} />
       )}
 
@@ -137,18 +149,16 @@ const ProfileLayout = () => {
       <div className={styles.layoutContainer}>
         {/* Left Panel - ProfileCard */}
         <div
-          className={`${styles.leftPanel} ${
-            isMobile && !showLeftPanel ? styles.hidden : ""
-          }`}
+          className={`${styles.leftPanel} ${isMobile && !showLeftPanel ? styles.hidden : ""
+            }`}
         >
           <ProfileCard onOptionClick={handleOptionClick} />
         </div>
 
         {/* Right Panel - Content */}
         <div
-          className={`${styles.rightPanel} ${
-            isMobile && showLeftPanel ? styles.hidden : ""
-          }`}
+          className={`${styles.rightPanel} ${isMobile && showLeftPanel ? styles.hidden : ""
+            }`}
         >
           {/* Desktop-only heading */}
           {!isMobile && getContentTitle() && (
