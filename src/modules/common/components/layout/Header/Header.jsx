@@ -436,12 +436,19 @@ const Header = () => {
   // Handle brand selection from search results or dropdowns
   const handleBrandClick = (id, brand) => {
     setIsVisible(false);
+    setHoveredItem(null);
 
     // Navigate based on available slug structure
     if (brand?.subCategorySlug) {
       navigate(`/${brand.subCategorySlug}/${brand.slugSell}`);
     } else if (brand?.categorySlug && brand?.slugSell) {
       navigate(`/${brand.categorySlug}/${brand.slugSell}`);
+    } else if (brand?.categoryId && brand?.slugSell) {
+      // Look up category slug from categories array
+      const brandCategory = category.find((c) => c._id === brand.categoryId);
+      if (brandCategory?.slug?.sell) {
+        navigate(`/${brandCategory.slug.sell}/${brand.slugSell}`);
+      }
     }
 
     // Clean up search state
@@ -459,6 +466,12 @@ const Header = () => {
       navigate(`/${prod?.subCategorySlug}/${prod.slugSell}`);
     } else if (prod?.categorySlug && prod?.slugSell) {
       navigate(`/${prod.categorySlug}/${prod.slugSell}`);
+    } else if (prod?.categoryId && prod?.slugSell) {
+      // Look up category slug from categories array
+      const prodCategory = category.find((c) => c._id === prod.categoryId);
+      if (prodCategory?.slug?.sell) {
+        navigate(`/${prodCategory.slug.sell}/${prod.slugSell}`);
+      }
     }
 
     // Clean up search state
@@ -466,9 +479,10 @@ const Header = () => {
     setSearchTerm("");
   };
 
-  // Handle category selection from search results
+  // Handle category selection from search results or dropdowns
   const handleCategoryClick = (cat) => {
     setIsVisible(false);
+    setHoveredItem(null);
     navigate(`/${cat.slug.sell}`);
     setShowDropdown(false);
     setSearchTerm("");
@@ -1611,6 +1625,10 @@ const Header = () => {
                               : ""
                               }`}
                             onMouseEnter={() => handleCategoryHover(cat)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleCategoryClick(cat);
+                            }}
                           >
                             <img
                               src={cat?.categoryImageUrl}
@@ -1655,9 +1673,10 @@ const Header = () => {
                                   key={brandTwo._id}
                                   className={styles.brandName}
                                   onMouseEnter={() => setHoveredBrand(brandTwo)}
-                                  onClick={() =>
-                                    handleBrandClick(brandTwo._id, brandTwo)
-                                  }
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleBrandClick(brandTwo._id, brandTwo);
+                                  }}
                                 >
                                   {brandTwo?.brandName}
                                   <br />
@@ -1696,9 +1715,13 @@ const Header = () => {
                                   : ""
                                 }
                             `}
-                              onMouseEnter={() => handleBrandHover(brand)}
-                            >
-                              <img src={brand?.brandLogo} alt="" />
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleBrandClick(brand._id, brand);
+                                }}
+                                onMouseEnter={() => handleBrandHover(brand)}
+                              >
+                                <img src={brand?.brandLogo} alt="" />
                               {brand?.brandName}
                               <span className={styles.arrow}>
                                 <img src={RightArrow} alt="" />
@@ -1714,9 +1737,14 @@ const Header = () => {
                               <div key={prod._id} className={styles.brandItems}>
                                 <span
                                   className={styles.brandName}
-                                  onClick={() =>
-                                    handleProductClick(prod._id, prod)
-                                  }
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleProductClick(prod._id, {
+                                      ...prod,
+                                      categorySlug: hoveredBrand?.categorySlug,
+                                      categoryId: hoveredBrand?.categoryId,
+                                    });
+                                  }}
                                 >
                                   {prod?.deviceName}
                                   <br />

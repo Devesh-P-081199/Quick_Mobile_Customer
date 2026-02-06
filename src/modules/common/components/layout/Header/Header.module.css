@@ -1125,7 +1125,7 @@
 .categoryItem:hover,
 .categoryItem.active {
   background-color: #eaf3ff;
-  color: #0a66c2;
+  color: #2874f0;
 }
 
 .categoryItem img {
@@ -1207,6 +1207,15 @@
 }
 
 .brandItems span:hover {
+  color: #2874f0;
+}
+
+.brandName {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.brandName:hover {
   color: #2874f0;
 }
 
