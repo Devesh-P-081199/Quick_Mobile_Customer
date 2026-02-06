@@ -2,7 +2,7 @@ import styles from "./AboutUs.module.css";
 
 const AboutUs = () => {
   return (
-    <section className={styles.section}>
+    <div className="page-content-wrapper">
       <div className={styles.container}>
         {/* About Us Section */}
         <h2 className={styles.heading}>About Us</h2>
@@ -108,7 +108,7 @@ const AboutUs = () => {
           our planet.
         </p>
         <p className={styles.btmtext}>
-          <strong>Join Us in Making a Difference</strong>
+          Join Us in Making a Difference
           <br />
           By choosing to sell, buy, or repair your mobile devices with Quick
           Mobile, you are playing a vital role in reducing e-waste and
@@ -116,7 +116,7 @@ const AboutUs = () => {
           sustainable for future generations.
         </p>
       </div>
-    </section>
+    </div>
   );
 };
 

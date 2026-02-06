@@ -12,7 +12,7 @@ import emissionImg from "../../../../../assets/Emissions.png";
 
 const QuickImpact = () => {
   return (
-    <section className={styles.mainContainer}>
+    <div className="page-content-wrapper">
       <div className={styles.quickImpact}>
         <div className={styles.intro}>
           <h2>Quick Mobile Impact</h2>
@@ -35,7 +35,7 @@ const QuickImpact = () => {
             <img src={wasteImg} alt="E-Waste" title="E-Waste" />
           </div>
           <div className={`${styles.textBox} && ${styles.textBox2}`}>
-            <h3>♻ Reducing E-Waste</h3>
+            <h3>Reducing E-Waste</h3>
             <p>
               E-waste contains toxic substances like lead, mercury, and cadmium,
               which can seep into the soil and water, harming ecosystems and
@@ -49,9 +49,7 @@ const QuickImpact = () => {
         {/* Conserving Resources */}
         <div className={styles.blockReverse}>
           <div className={styles.textBox}>
-            <h3>
-              <PiLeafBold /> Conserving Natural Resources
-            </h3>
+            <h3>Conserving Natural Resources</h3>
             <p>
               Manufacturing a new smartphone requires around 34 kg of raw
               materials, including rare and valuable metals such as:
@@ -83,33 +81,29 @@ const QuickImpact = () => {
               </div>
             </div>
             <p>
-              Mining these resources is an environmentally damaging process{" "}
-              <br /> that depletes natural reserves and contaminates water
-              sources. <br />
-              Even more shocking, producing just one smartphone consumes 16,000
-              liters of water—enough to sustain a <br />
-              person for 10 years.
+              Mining these resources is an environmentally damaging process that depletes natural reserves and contaminates water
+              sources. Even more shocking, producing just one smartphone consumes 16,000
+              liters of water enough to sustain a person for 10 years.
             </p>
-            <p className={styles.highlight}>
-              If 100 million people chose refurbished phones instead of new
-              ones, we could:
-            </p>
-            <div className={styles.stats}>
-              <div className={styles.stat}>
-                <TbDroplet size={50} /> Save 3.4 million tons of raw materials
-                annually
-              </div>
-              <div className={styles.stat}>
-                <TbDroplet size={50} /> Conserve 1.6 trillion liters of water,
-                equivalent to a year’s supply for 20 million people
-              </div>
-            </div>
           </div>
           <div className={`${styles.imageBox} && ${styles.textBox2}`}>
             <img src={resourcesImg} alt="Resources" title="Resources" />
           </div>
         </div>
         <div className={styles.textBox}>
+          <p className={styles.highlight}>
+            If 100 million people chose refurbished phones instead of new
+            ones, we could:
+          </p>
+          <div className={styles.stats}>
+            <div className={styles.stat}>
+              Save 3.4 million tons of raw materials annually
+            </div>
+            <div className={styles.stat}>
+              Conserve 1.6 trillion liters of water, equivalent to a year’s
+              supply for 20 million people
+            </div>
+          </div>
           <p>
             Through its refurbishment efforts, Quick Mobile is helping minimize
             unnecessary mining, preserve Earth’s limited resources, and
@@ -123,14 +117,11 @@ const QuickImpact = () => {
             <img src={emissionImg} alt="Carbon Emissions" />
           </div>
           <div className={styles.textBox}>
-            <h3>
-              <PiLeafBold size={35} style={{ marginRight: "10px" }} />
-              Lowering Carbon Emissions
-            </h3>
+            <h3>Lowering Carbon Emissions</h3>
             <p>
               A brand-new smartphone’s production generates 50 kg of CO₂
               emissions, contributing to the smartphone industry’s 4% share of
-              global emissions—a figure that could double by 2030 if current
+              global emissions a figure that could double by 2030 if current
               trends continue.
             </p>
             <p>
@@ -171,7 +162,7 @@ const QuickImpact = () => {
         {/* Circular Economy */}
         <div className={styles.blockReverse}>
           <div className={styles.textBox}>
-            <h3>♻ Promoting a Circular Economy</h3>
+            <h3>Promoting a Circular Economy</h3>
             <p>
               Most smartphones are discarded after just 2-3 years, even though
               they can last much longer with proper care. Refurbishing extends a
@@ -194,7 +185,7 @@ const QuickImpact = () => {
         {/* Affordable & Sustainable */}
         <div className={styles.techblock}>
           <div className={styles.textBox}>
-            <h3>♻ Making Technology Affordable & Sustainable</h3>
+            <h3>Making Technology Affordable & Sustainable</h3>
             <p>
               Most smartphones are discarded after just 2-3 years, even though
               they can last much longer with proper care. Refurbishing extends a
@@ -216,28 +207,41 @@ const QuickImpact = () => {
         {/*Table div */}
         <div className={styles.tableSection}>
           <div className={styles.desktopTable}>
-            <h2>Quick Mobile’s Environmental Impact in Numbers</h2>
-            <table className={styles.impactTable}>
+            <h2>Quick Mobile vs Second hand phone</h2>
+            <table className={styles.compareTable}>
               <thead>
                 <tr>
-                  <th>Impact Area</th>
-                  <th>Without Refurbishment</th>
-                  <th>With Quick Mobile</th>
+                  <th>Benefits</th>
+                  <th>Quick Mobile</th>
+                  <th>Other Second Hand Phone</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>E-waste produced</td>
-                  <td>50 million metric tons/year</td>
-                  <td>30–40% Reduction</td>
+                  <td>25 Quality Check Points</td>
+                  <td>✅</td>
+                  <td>❌</td>
                 </tr>
-                {[...Array(8)].map((_, i) => (
-                  <tr key={i}>
-                    <td>CO₂ emissions per phone</td>
-                    <td>50 kg</td>
-                    <td>80% lower emissions</td>
-                  </tr>
-                ))}
+                <tr>
+                  <td>Upto 12 Months Warranty</td>
+                  <td>✅</td>
+                  <td>❌</td>
+                </tr>
+                <tr>
+                  <td>15 Days Refund</td>
+                  <td>✅</td>
+                  <td>❌</td>
+                </tr>
+                <tr>
+                  <td>Phone as Brand New</td>
+                  <td>✅</td>
+                  <td>❌</td>
+                </tr>
+                <tr>
+                  <td>Service Assured</td>
+                  <td>✅</td>
+                  <td>❌</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -292,7 +296,7 @@ const QuickImpact = () => {
             our planet, contributing to rising e-waste, resource depletion, and
             carbon emissions. Choosing refurbished devices is a simple yet
             impactful way to reduce waste, conserve natural resources, and lower
-            CO₂ emissions—all while saving money.
+            CO₂ emissions all while saving money.
           </p>
           <p>
             Quick Mobile is leading the charge in sustainability, ensuring that
@@ -306,13 +310,13 @@ const QuickImpact = () => {
             <li>Make sustainable technology accessible for everyone</li>
           </ol>
           <p>
-            Switching to a refurbished phone isn’t just about saving money—it’s
+            Switching to a refurbished phone isn’t just about saving money it’s
             about making a real difference for the planet. Choose Quick Mobile
             today and be part of the solution!
           </p>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
