@@ -1873,10 +1873,6 @@
     padding: 0;
   }
 
-  .sidebar .citySelector:hover {
-    color: var(--color-interactive-primary) !important;
-  }
-
   .sidebar .citySelector .locationicon {
     height: 30px;
     width: 30px;
