@@ -1,26 +1,15 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Order.module.css";
 import phoneImg from "../../../../assets/images/Products/mobile.png";
-import api from "../../../../Utils/api";
 import uparrow from "../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 
-const OrderCard = () => {
-  const [orders, setOrders] = useState([]);
+const OrderCard = ({ orders = [] }) => {
   const navigate = useNavigate();
 
-  const getOrders = async () => {
-    try {
-      const resp = await api.get("sell-module/user/order-by-Id");
-      setOrders(resp.data || []);
-    } catch (error) {
-      console.error("Error in fetching orders", error);
-    }
-  };
-
-  useEffect(() => {
-    getOrders();
-  }, []);
+  // Return null if no orders - parent will handle emptyState
+  if (!orders || orders.length === 0) {
+    return null;
+  }
 
   const handleCardClick = (order) => {
     navigate(`/profile/order-details/${order._id}`);

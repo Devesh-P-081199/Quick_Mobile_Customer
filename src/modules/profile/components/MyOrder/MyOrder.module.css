@@ -31,7 +31,7 @@
 
 .filterButtons {
   display: flex;
-  border-radius: 15px;
+  border-radius: 0px;
   gap: 10px;
   width: 100%;
   overflow-x: auto;

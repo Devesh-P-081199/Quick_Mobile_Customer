@@ -5,6 +5,8 @@ import {
   FaMapMarkerAlt,
   FaCreditCard,
   FaBoxOpen,
+  FaUserEdit,
+  FaTicketAlt,
 } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -82,7 +84,7 @@ const ProfileCard = ({ onOptionClick }) => {
           <div
             className={`${styles.optionRow} ${isActive("/edit-my-profile") ? styles.active : ""}`}
           >
-            <FaBoxOpen />
+            <FaUserEdit />
             <span onClick={() => handleNavigate("/edit-my-profile")}>
               Edit Profile <img src={rightangle} alt="" />
             </span>
@@ -117,9 +119,9 @@ const ProfileCard = ({ onOptionClick }) => {
           <div
             className={`${styles.optionRow} ${isActive("/offers") ? styles.active : ""}`}
           >
-            <FaMapMarkerAlt />
+            <FaTicketAlt />
             <span onClick={() => handleNavigate("/offers")}>
-              Offer <img src={rightangle} alt="" />
+              Offers <img src={rightangle} alt="" />
             </span>
           </div>
         </div>
