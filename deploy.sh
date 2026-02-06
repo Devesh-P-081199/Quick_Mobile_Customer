@@ -4,27 +4,41 @@
 # QuickMobile Customer Frontend - EC2 Deploy Script
 # ===========================================
 # Uploads local code to EC2 and rebuilds the frontend
-# Usage: ./deploy.sh [--upload | --deploy | --quick | --build | --logs | --status]
-# ./deploy.sh --upload   Just upload code
-# ./deploy.sh --deploy   Upload + npm install + build + restart PM2
-# ./deploy.sh --quick    Upload + build + restart PM2 (fastest)
-# ./deploy.sh --build    Build only on remote (no upload)
-# ./deploy.sh --logs     View PM2 logs
-# ./deploy.sh --status   Check PM2 status
-# ./deploy.sh --ssh      SSH into EC2
+# Usage: ./deploy.sh [COMMAND] [--prod]
+# Commands:
+#   --upload    Just upload code
+#   --deploy    Upload + npm install + build + restart PM2
+#   --quick     Upload + build + restart PM2 (fastest)
+#   --build     Build only on remote (no upload)
+#   --logs      View PM2 logs
+#   --status    Check PM2 status
+#   --ssh       SSH into EC2
 
 set -e
 
 # ===========================================
-# CONFIGURATION - UPDATE THESE
+# CONFIGURATION
 # ===========================================
-EC2_HOST="65.1.41.179"                           # Quickmobile EC2
-EC2_USER="ubuntu"                                 # Ubuntu user
-EC2_KEY="~/.ssh/id_ed25519_movies"               # Your SSH key
+EC2_HOST="65.1.41.179"
+EC2_USER="ubuntu"
+EC2_KEY="~/.ssh/id_ed25519_movies"
 
-APP_DIR="/home/ubuntu/QuickMobile_Customer"       # Remote app directory
-APP_NAME="quickmobile-customer"                   # PM2 app name
-SERVE_PORT="3000"                                 # Port to serve the frontend
+# Default Configuration (Staging)
+APP_DIR="/home/ubuntu/QuickMobile_Customer"
+APP_NAME="quickmobile-customer"
+SERVE_PORT="3000"
+ENV_NAME="Staging"
+
+# Check for --prod flag
+for arg in "$@"; do
+    if [ "$arg" == "--prod" ]; then
+        APP_DIR="/home/ubuntu/prod_Customer"
+        APP_NAME="quickmobile-customer-prod"
+        SERVE_PORT="3001"
+        ENV_NAME="Production"
+        break
+    fi
+done
 
 # Colors
 GREEN='\033[0;32m'
@@ -46,15 +60,19 @@ ssh_cmd() {
 # UPLOAD - Sync local code to EC2
 # ===========================================
 upload() {
-    log_info "Uploading code to EC2..."
+    log_info "Uploading code to $ENV_NAME ($APP_DIR)..."
     
     SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     
+    # Ensure remote directory exists
+    ssh_cmd "mkdir -p $APP_DIR"
+
     rsync -avz --progress \
         --exclude 'node_modules' \
         --exclude '.git' \
         --exclude 'dist' \
         --exclude '.env' \
+        --exclude '.env.production' \
         --exclude '*.log' \
         --exclude '.DS_Store' \
         --exclude '.vite' \
@@ -69,7 +87,7 @@ upload() {
 # BUILD - Build the frontend on remote
 # ===========================================
 build() {
-    log_info "Building frontend on remote..."
+    log_info "Building frontend on $ENV_NAME..."
     
     ssh_cmd "
         export NVM_DIR=\"\$HOME/.nvm\"
@@ -88,7 +106,7 @@ build() {
 deploy() {
     upload
     
-    log_info "Installing dependencies, building, and restarting PM2..."
+    log_info "Installing dependencies, building, and restarting PM2 for $ENV_NAME..."
     
     ssh_cmd "
         set -e # Exit immediately if any command exits with non-zero status
@@ -105,7 +123,7 @@ deploy() {
         pm2 status
     "
     
-    log_success "Full deployment complete!"
+    log_success "Full deployment to $ENV_NAME complete!"
 }
 
 # ===========================================
@@ -114,7 +132,7 @@ deploy() {
 quick() {
     upload
     
-    log_info "Building frontend and restarting PM2 (skipping npm install)..."
+    log_info "Building frontend and restarting PM2 for $ENV_NAME (skipping npm install)..."
     
     ssh_cmd "
         export NVM_DIR=\"\$HOME/.nvm\"
@@ -127,13 +145,14 @@ quick() {
         pm2 status
     "
     
-    log_success "Quick deployment complete!"
+    log_success "Quick deployment to $ENV_NAME complete!"
 }
 
 # ===========================================
 # LOGS - View PM2 logs
 # ===========================================
 logs() {
+    log_info "Fetching logs for $APP_NAME..."
     ssh_cmd "
         export NVM_DIR=\"\$HOME/.nvm\"
         [ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\"
@@ -145,6 +164,7 @@ logs() {
 # STATUS - Check PM2 status
 # ===========================================
 status() {
+    log_info "Checking status for $APP_NAME..."
     ssh_cmd "
         export NVM_DIR=\"\$HOME/.nvm\"
         [ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\"
@@ -156,6 +176,7 @@ status() {
 # SSH - Connect to EC2
 # ===========================================
 connect() {
+    log_info "Connecting to EC2..."
     ssh -i $EC2_KEY $EC2_USER@$EC2_HOST
 }
 
@@ -164,7 +185,7 @@ connect() {
 # ===========================================
 print_usage() {
     echo ""
-    echo "Usage: ./deploy.sh [OPTION]"
+    echo "Usage: ./deploy.sh [COMMAND] [--prod]"
     echo ""
     echo "  --upload    Upload code to EC2 (rsync)"
     echo "  --deploy    Upload + npm install + build + restart PM2"
@@ -174,9 +195,26 @@ print_usage() {
     echo "  --status    Check PM2 status"
     echo "  --ssh       SSH into EC2"
     echo ""
+    echo "Options:"
+    echo "  --prod      Target production environment ($APP_DIR)"
+    echo ""
 }
 
-case "$1" in
+# Identify command (first argument that is not --prod)
+COMMAND=""
+for arg in "$@"; do
+    if [ "$arg" != "--prod" ]; then
+        COMMAND="$arg"
+        break
+    fi
+done
+
+if [ -z "$COMMAND" ]; then
+    print_usage
+    exit 1
+fi
+
+case "$COMMAND" in
     --upload)  upload ;;
     --deploy)  deploy ;;
     --quick)   quick ;;
