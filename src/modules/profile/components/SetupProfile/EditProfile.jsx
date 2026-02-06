@@ -127,7 +127,7 @@ const EditProfile = () => {
         formData.append("profilePic", file);
 
         const response = await api.post(
-          `/sell-module/user/upload-profile-pic/${user.userId}`,
+          `/sell-module/user/upload-profile-pic`,
           formData,
           {
             headers: {
@@ -136,14 +136,14 @@ const EditProfile = () => {
           },
         );
 
-        if (response.data && response.data.profilePicUrl) {
+        if (response.data && response.data.payload.profilePicUrl) {
           // Update with server URL
-          setProfileImage(response.data.profilePicUrl);
+          setProfileImage(response.data.payload.profilePicUrl);
 
           // Update user context
           setUser((prev) => ({
             ...prev,
-            profilePic: response.data.profilePicUrl,
+            profilePic: response.data.payload.profilePicUrl,
           }));
 
           // Update cookies
@@ -151,7 +151,7 @@ const EditProfile = () => {
             "user",
             JSON.stringify({
               ...user,
-              profilePic: response.data.profilePicUrl,
+              profilePic: response.data.payload.profilePicUrl,
             }),
             {
               expires: 2,

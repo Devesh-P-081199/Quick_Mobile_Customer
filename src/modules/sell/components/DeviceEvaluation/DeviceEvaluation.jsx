@@ -21,6 +21,7 @@ import muteIcon from "../../../../assets/flaticons/mute.png";
 import silenceIcon from "../../../../assets/flaticons/silence.png";
 import lightningIcon from "../../../../assets/flaticons/lightning.png";
 import dropdownIcon from "../../../../assets/QuickSellNewIcons/arrow_down.png";
+import Cookies from "js-cookie";
 
 // ====== Icon mapping for broken items ======
 const getIconForOption = (optionLabel) => {
@@ -281,65 +282,58 @@ function DeviceEvaluation() {
   };
 
   // ===== Save and price calculation =====
-  const priceCalculationAndSave = useCallback(async () => {
-    try {
-      if (!user?.userId) {
-        return;
+const priceCalculationAndSave = async () => {
+  try {
+  
+
+    const urlParams = new URLSearchParams(location.search);
+    const deviceName = deviceInfo.deviceName || urlParams.get("pn") || "Unknown Device";
+
+    const isWarrantyRemoved = !allPackageData.some(pkg => pkg.packageType === "Warranty");
+
+    let transformedPackageData = allPackageData.map((pkg) => ({
+      ...pkg,
+      answers: transformAnswersForBackend(pkg.answers || {}, pkg.questions),
+    }));
+
+    if (isWarrantyRemoved) {
+      const originalWarrantyPkg = assignedPackages.find(p => p.packageId.packageType === "Warranty");
+
+      if (originalWarrantyPkg) {
+        const fakeWarrantyEntry = {
+          packageId: originalWarrantyPkg.packageId._id,
+          packageName: originalWarrantyPkg.packageId.packageName,
+          packageType: originalWarrantyPkg.packageId.packageType,
+          pageTitle: originalWarrantyPkg.packageId.pageTitle,
+          titleExplanation: originalWarrantyPkg.packageId.titleExplanation,
+          
+          answers: {
+            [originalWarrantyPkg.packageId.questions[0]._id]: 0 
+          }
+        };
+        
+        transformedPackageData.push(fakeWarrantyEntry);
       }
-
-      if (!deviceInfo.deviceName) {
-        return;
-      }
-
-      // Use URL parameters as fallback for device info
-      const urlParams = new URLSearchParams(location.search);
-      const deviceName =
-        deviceInfo.deviceName || urlParams.get("pn") || "Unknown Device";
-
-      if (!userSelection?.cityId || !userSelection?.cityName) {
-        return;
-      }
-
-      const transformedPackageData = allPackageData.map((pkg) => ({
-        ...pkg,
-        answers: transformAnswersForBackend(pkg.answers || {}, pkg.questions),
-      }));
-
-      await api.post("/sell-module/user/price-estimation", {
-        packagesAnswer: transformedPackageData,
-        basePrice: 50000,
-        userSelection,
-        deviceName: deviceName,
-        deviceVariant:
-          deviceInfo.variantDetail || urlParams.get("vid") || "Unknown Variant",
-      });
-
-      // Store allPackageData in sessionStorage for device details component
-      const productId = urlParams.get("pid");
-      const packageDetailsKey = `packageDetails_${productId}`;
-
-      // Store the original allPackageData which has questions, options, and answers
-      sessionStorage.setItem(packageDetailsKey, JSON.stringify(allPackageData));
-
-      const formSubmittedKey = `formSubmitted_${productId}`;
-      sessionStorage.setItem(formSubmittedKey, "true");
-
-      // Don't clear session storage - keep data so user can come back and edit
-      // Data will only be cleared when user goes back to Get Price page
-
-      navigate(`/${slug}/price-summary?${urlParams.toString()}`);
-    } catch (error) {
-      console.error("Error fetching final price:", error);
     }
-  }, [
-    deviceInfo,
-    location.search,
-    userSelection,
-    allPackageData,
-    navigate,
-    slug,
-    user,
-  ]);
+
+    await api.post("/sell-module/user/price-estimation", {
+      packagesAnswer: transformedPackageData,
+      basePrice: 50000,
+      userSelection,
+      deviceName: deviceName,
+      deviceVariant: deviceInfo.variantDetail || urlParams.get("vid") || "Unknown Variant",
+    });
+
+    // Storage and Navigation
+    const productId = urlParams.get("pid");
+    sessionStorage.setItem(`packageDetails_${productId}`, JSON.stringify(allPackageData));
+    sessionStorage.setItem(`formSubmitted_${productId}`, "true");
+
+    navigate(`/${slug}/price-summary?${urlParams.toString()}`, { replace: true });
+  } catch (error) {
+    console.error("Error in price estimation:", error);
+  }
+};
 
   // Watch for login completion if we have a pending calculation
   useEffect(() => {
@@ -654,95 +648,88 @@ function DeviceEvaluation() {
   ]);
 
   // ===== Handle option change =====
-  const handleOptionChange = (questionId, optionValue, isMulti) => {
-    setLastInteractedQuestionId(questionId);
-    setActiveSectionIndex(currentPackageIndex); // Ensure accordion opens
-    setAllPackageData((prev) => {
-      const updatedData = prev.map((pkg, index) => {
-        if (index !== currentPackageIndex) return pkg;
+ const handleOptionChange = (questionId, optionValue, isMulti) => {
+  setLastInteractedQuestionId(questionId);
+  setActiveSectionIndex(currentPackageIndex);
 
-        const prevAnswers = pkg.answers || {};
-        let updatedAnswers;
+  setAllPackageData((prev) => {
+    const updatedWithAnswers = prev.map((pkg, index) => {
+      if (index !== currentPackageIndex) return pkg;
+      const prevAnswers = pkg.answers || {};
+      let updatedAnswers;
 
-        if (isMulti) {
-          const current = prevAnswers[questionId] || [];
-          updatedAnswers = {
-            ...prevAnswers,
-            [questionId]: current.includes(optionValue)
-              ? current.filter((v) => v !== optionValue)
-              : [...current, optionValue],
-          };
-        } else {
-          updatedAnswers = {
-            ...prevAnswers,
-            [questionId]: optionValue,
-          };
-        }
-
-        return { ...pkg, answers: updatedAnswers };
-      });
-
-      // Save to sessionStorage with unique key
-      const storageKey = getStorageKey();
-      sessionStorage.setItem(storageKey, JSON.stringify(updatedData));
-
-      const currentIndexKey = `currentPackageIndex_${getStorageKey()}`;
-      sessionStorage.setItem(currentIndexKey, currentPackageIndex.toString());
-
-      return updatedData;
+      if (isMulti) {
+        const current = prevAnswers[questionId] || [];
+        updatedAnswers = {
+          ...prevAnswers,
+          [questionId]: current.includes(optionValue)
+            ? current.filter((v) => v !== optionValue)
+            : [...current, optionValue],
+        };
+      } else {
+        updatedAnswers = {
+          ...prevAnswers,
+          [questionId]: optionValue,
+        };
+      }
+      return { ...pkg, answers: updatedAnswers };
     });
 
-    setMissingQuestions((prev) => prev.filter((id) => id !== questionId));
+    let shouldSkipWarranty = false;
 
-    if (!isMulti) {
-      setTimeout(() => {
-        const paginatedQuestions = getPaginatedQuestions();
-        const currentQuestionIndex = paginatedQuestions.findIndex(
-          (q) => q.id === questionId,
-        );
-
-        // If there's a next question, check if it's visible and scroll if needed
-        if (
-          currentQuestionIndex !== -1 &&
-          currentQuestionIndex < paginatedQuestions.length - 1
-        ) {
-          const nextQuestion = paginatedQuestions[currentQuestionIndex + 1];
-          const nextQuestionRef = questionRefs.current[nextQuestion.id];
-
-          if (nextQuestionRef) {
-            const optionsContainer = nextQuestionRef.querySelector(
-              ".options, .dropdown-select",
+    updatedWithAnswers.forEach(pkg => {
+      const originalPkg = assignedPackages.find(ap => ap.packageId._id === pkg.packageId);
+      
+      if (originalPkg) {
+        Object.entries(pkg.answers).forEach(([qId, selectedVal]) => {
+          const question = originalPkg.packageId.questions.find(q => q._id === qId);
+          if (question) {
+            const selectedOptions = question.options.filter(opt => 
+              Array.isArray(selectedVal) 
+                ? selectedVal.includes(String(question.options.indexOf(opt))) 
+                : String(question.options.indexOf(opt)) === selectedVal
             );
-            const viewportHeight = window.innerHeight * 0.8;
 
-            if (optionsContainer) {
-              const rect = optionsContainer.getBoundingClientRect();
-              const isOptionsVisible =
-                rect.top >= 0 && rect.bottom <= viewportHeight;
-
-              // Only scroll if options are not fully visible in 80% viewport
-              if (!isOptionsVisible) {
-                nextQuestionRef.scrollIntoView({
-                  behavior: "smooth",
-                  block: "center",
-                });
-              }
-            } else {
-              const rect = nextQuestionRef.getBoundingClientRect();
-              const isVisible = rect.top >= 0 && rect.bottom <= viewportHeight;
-
-              if (!isVisible) {
-                nextQuestionRef.scrollIntoView({
-                  behavior: "smooth",
-                  block: "center",
-                });
-              }
+            if (selectedOptions.some(opt => opt.skipWarranty === true)) {
+              shouldSkipWarranty = true;
             }
           }
+        });
+      }
+    });
+
+    let finalData;
+    if (shouldSkipWarranty) {
+      finalData = updatedWithAnswers.filter(pkg => pkg.packageType !== "Warranty");
+    } else {
+      const hasWarranty = updatedWithAnswers.some(pkg => pkg.packageType === "Warranty");
+      if (!hasWarranty) {
+        const warrantyPkg = assignedPackages.find(p => p.packageId.packageType === "Warranty");
+        if (warrantyPkg) {
+          const transformedWarranty = {
+            packageId: warrantyPkg.packageId._id,
+            packageName: warrantyPkg.packageId.packageName,
+            packageType: warrantyPkg.packageId.packageType,
+            pageTitle: warrantyPkg.packageId.pageTitle,
+            questions: transformQuestions(warrantyPkg.packageId.questions || []),
+            answers: {},
+          };
+          finalData = [...updatedWithAnswers, transformedWarranty];
+        } else {
+          finalData = updatedWithAnswers;
         }
-      }, 300); // Small delay to allow state update
+      } else {
+        finalData = updatedWithAnswers;
+      }
     }
-  };
+
+    const storageKey = getStorageKey();
+    sessionStorage.setItem(storageKey, JSON.stringify(finalData));
+    return finalData;
+  });
+
+  setMissingQuestions((prev) => prev.filter((id) => id !== questionId));
+};
 
   // ===== Render options =====
   const renderOptions = (q) => {
@@ -896,7 +883,7 @@ function DeviceEvaluation() {
 
       return;
     }
-
+console.log("Final package data before price calculation:", user);
     if (!user?.userId) {
       setPendingPriceCalculation(true);
       setIsLoginModalOpen(true);
