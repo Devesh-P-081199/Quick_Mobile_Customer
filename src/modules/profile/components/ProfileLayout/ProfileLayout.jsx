@@ -144,7 +144,9 @@ const ProfileLayout = () => {
         <MobileBackHeader title={getHeaderTitle()} onBack={handleBack} />
       )}
 
-      {isMobile && showLeftPanel && <MobileBackHeader title="Profile" />}
+      {isMobile && showLeftPanel && (
+        <MobileBackHeader title="Profile" onBack={() => navigate("/")} />
+      )}
 
       <div className={styles.layoutContainer}>
         {/* Left Panel - ProfileCard */}

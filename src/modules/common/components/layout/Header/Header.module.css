@@ -775,6 +775,20 @@
   flex-shrink: 0;
 }
 
+.userProfilePic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.userIconDefault {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
 .dropdownContainer {
   position: relative;
   display: flex;

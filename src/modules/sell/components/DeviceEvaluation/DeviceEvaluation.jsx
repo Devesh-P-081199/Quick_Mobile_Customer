@@ -825,19 +825,19 @@ const priceCalculationAndSave = async () => {
           ) : (
             <label
               key={opt.id}
+              htmlFor={`${q.id}-${opt.value}`}
               className={`option ${
                 isSelected ? "selected" : ""
               } option-with-des-box`}
-              onClick={() => handleOptionChange(q.id, opt.value, isMulti)}
             >
               <input
+                id={`${q.id}-${opt.value}`}
                 type={isMulti ? "checkbox" : "radio"}
                 name={q.id}
                 value={opt.value}
                 checked={isSelected}
                 onChange={() => handleOptionChange(q.id, opt.value, isMulti)}
                 className="custom-radio"
-                onClick={(e) => e.stopPropagation()}
               />
               <div className="option-input-flex">
                 <span className="option-text">{opt.label}</span>

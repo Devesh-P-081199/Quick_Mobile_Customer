@@ -877,9 +877,19 @@ const Header = () => {
                       onMouseLeave={() => setIsProfileDropdownOpen(false)}
                     >
                       <span className={styles.loginUserHover}>
-                        <div className={styles.userInitials}>
-                          {getUserInitials(user.name || user.phone)}
-                        </div>
+                        {user?.profilePic ? (
+                          <img
+                            src={user.profilePic}
+                            alt="Profile"
+                            className={styles.userProfilePic}
+                          />
+                        ) : (
+                          <img
+                            src={usericon}
+                            alt="Profile"
+                            className={styles.userIconDefault}
+                          />
+                        )}
                         <img
                           src={dropdownIcon}
                           alt="dropdown"
