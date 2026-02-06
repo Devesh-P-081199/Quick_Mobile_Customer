@@ -92,7 +92,7 @@ const OrderDetails = React.lazy(
 const ViewAllCata = React.lazy(
   () => import("./modules/sell/pages/ViewAllCata"),
 );
-const FAQPage = React.lazy(() => import("./modules/sell/pages/FAQPage"));
+const FAQFullPage = React.lazy(() => import("./modules/common/components/FAQ/FAQFullPage"));
 import Header from "./modules/common/components/layout/Header/Header";
 import Footer from "./modules/common/components/layout/Footer/Footer";
 import HomePage from "./modules/buy/pages/HomePage";
@@ -485,7 +485,7 @@ const AppContent = () => {
           path="/FAQPage"
           element={
             <Suspense fallback={<Loader />}>
-              <FAQPage />
+              <FAQFullPage />
             </Suspense>
           }
         />

@@ -104,7 +104,7 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <h3 className={styles.footerHeading}>Help Center</h3>
             <div className={styles.footerLinks}>
-              <a href="#">FAQ</a>
+              <Link to="/FAQPage">FAQ</Link>
               <Link to="/Contact-us">Contact Us</Link>
               <Link to="/Refund">Return & Refund</Link>
               {/* <a href="#">Shipment</a>
@@ -235,9 +235,9 @@ const Footer = () => {
           <FooterSection
             title="Help Center"
             links={[
-              "FAQ",
-              "Contact Us",
-              "Return & Refund",
+              { text: "FAQ", path: "/FAQPage" },
+              { text: "Contact Us", path: "/Contact-us" },
+              { text: "Return & Refund", path: "/Refund" },
               // "Shipment",
               // "Warranty Policy",
             ]}

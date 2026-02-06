@@ -1,13 +1,6 @@
 import { useState } from "react";
 import styles from "./FAQFullPage.module.css";
-
-const faqTabs = [
-  "Sell Phone - FAQ",
-  "Buy Phone - FAQ",
-  "Repair Phone - FAQ",
-  "Exchange Phone - FAQ",
-  "Other - FAQ",
-];
+import uparrow from "../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 
 const allFaqs = Array.from({ length: 20 }, (_, index) => ({
   question: `${index + 1} - What exactly is a refurbished phone?`,
@@ -16,7 +9,6 @@ const allFaqs = Array.from({ length: 20 }, (_, index) => ({
 }));
 
 export default function FAQFullPage() {
-  const [activeTab, setActiveTab] = useState(0);
   const [visibleCount, setVisibleCount] = useState(10);
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -29,49 +21,41 @@ export default function FAQFullPage() {
   };
 
   return (
-    <section className={styles.container}>
-      <div className="wrapper">
-        <h2 className={styles.heading}>Frequently Asked Questions (FAQ)</h2>
-        <div className={styles.wrapper}>
-          <div className={styles.sidebar}>
-            {faqTabs.map((tab, index) => (
-              <button
-                key={index}
-                className={`${styles.tabButton} ${activeTab === index ? styles.active : ""}`}
-                onClick={() => {
-                  setActiveTab(index);
-                  setVisibleCount(10);
-                }}
+    <div className="page-content-wrapper">
+      <div className={styles.faqSection}>
+        <h2 className={styles.faqTitle}>Frequently Asked Questions (FAQ)</h2>
+
+        <div className={styles.faqList}>
+          {allFaqs.slice(0, visibleCount).map((faq, index) => (
+            <div key={index} className={styles.faqItem}>
+              <div
+                className={styles.faqQuestion}
+                onClick={() => toggleFAQ(index)}
               >
-                {tab}
-              </button>
-            ))}
-          </div>
-          <div className={styles.faqContent}>
-            {allFaqs.slice(0, visibleCount).map((faq, index) => (
-              <div key={index} className={styles.faqItem}>
+                <span>{faq.question}</span>
                 <div
-                  className={styles.faqQuestion}
-                  onClick={() => toggleFAQ(index)}
+                  className={`${styles.faqIcon} ${openIndex === index ? styles.open : ""
+                    }`}
                 >
-                  {faq.question}
-                  <span className={styles.icon}>
-                    {openIndex === index ? "−" : "+"}
-                  </span>
+                  <img src={uparrow} alt="" />
                 </div>
-                {openIndex === index && (
-                  <div className={styles.faqAnswer}>{faq.answer}</div>
-                )}
               </div>
-            ))}
-            {visibleCount < allFaqs.length && (
-              <button className={styles.viewMore} onClick={handleViewMore}>
-                View more
-              </button>
-            )}
-          </div>
+              <div
+                className={`${styles.faqAnswer} ${openIndex === index ? styles.visible : ""
+                  }`}
+              >
+                {faq.answer}
+              </div>
+            </div>
+          ))}
         </div>
+
+        {visibleCount < allFaqs.length && (
+          <button className={styles.viewMore} onClick={handleViewMore}>
+            View more
+          </button>
+        )}
       </div>
-    </section>
+    </div>
   );
 }
