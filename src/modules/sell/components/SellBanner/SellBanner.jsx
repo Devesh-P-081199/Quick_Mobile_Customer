@@ -38,6 +38,7 @@ function SellHomeBanner({ onViewAllClick }) {
     categories,
     brands,
     catName,
+    categoryBannerUrl,
     selectedCategoryId,
     results,
     mobileResults,
@@ -128,7 +129,11 @@ function SellHomeBanner({ onViewAllClick }) {
         <div className={styles.sellerbanner}>
           {/* Left banner image */}
           <div className={styles.leftImg}>
-            <img src={BannerImage} alt="Sell Banner" title="Sell Banner" />
+            <img 
+              src={categoryBannerUrl || BannerImage} 
+              alt="Sell Banner" 
+              title="Sell Banner" 
+            />
           </div>
 
           {/* Right content area */}

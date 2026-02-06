@@ -164,21 +164,20 @@ const Cities = () => {
 
       const citiesData = response.data?.data || [];
 
-      // Separate popular and other cities based on isPopular flag
+      // Separate popular and other cities based on cityIcon presence
       const popular = citiesData
-        .filter((city) => city.isPopular)
+        .filter((city) => city.cityIcon)
         .map((city) => ({
           _id: city._id,
           cityName: city.cityName,
-          cityImage: cityImageMap[city.cityName] || locationIcon,
+          cityImage: city.cityIcon, // Use cityIcon from API
         }));
 
       const others = citiesData
-        .filter((city) => !city.isPopular)
+        .filter((city) => !city.cityIcon)
         .map((city) => ({
           _id: city._id,
           cityName: city.cityName,
-          cityImage: cityImageMap[city.cityName] || locationIcon,
         }));
 
       setPopularCities(popular);
