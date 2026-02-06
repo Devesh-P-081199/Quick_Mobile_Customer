@@ -29,6 +29,7 @@ export function useSellBannerData(slug1) {
   const [isLoadingBrands, setIsLoadingBrands] = useState(true);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [catName, setCatName] = useState("");
+  const [categoryBannerUrl, setCategoryBannerUrl] = useState(null);
   const [results, setResults] = useState(EMPTY_RESULTS);
   const [mobileResults, setMobileResults] = useState(EMPTY_RESULTS);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -80,6 +81,7 @@ export function useSellBannerData(slug1) {
         setSelectedCategory(selectedCat._id);
         setSelectedCategoryId(selectedCat._id);
         setCatName(selectedCat.categoryName);
+        setCategoryBannerUrl(selectedCat.categoryBannerUrl || null);
         categoryRef.current = selectedCat._id;
 
         await fetchBrandsByCategory(selectedCat._id);
@@ -158,9 +160,13 @@ export function useSellBannerData(slug1) {
       categoryRef.current = id;
       setShowDropdown(false);
 
+      // Find the category to get its banner URL
+      const selectedCat = categories.find((cat) => cat._id === id);
+      setCategoryBannerUrl(selectedCat?.categoryBannerUrl || null);
+
       await fetchBrandsByCategory(id);
     },
-    [fetchBrandsByCategory, setSelectedCategory],
+    [fetchBrandsByCategory, setSelectedCategory, categories],
   );
 
   /**
@@ -207,6 +213,7 @@ export function useSellBannerData(slug1) {
     categories,
     brands,
     catName,
+    categoryBannerUrl,
     selectedCategoryId,
     results,
     mobileResults,

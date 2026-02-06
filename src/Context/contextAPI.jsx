@@ -24,15 +24,26 @@ const ContextAPI = (props) => {
     setLoadCities(true);
   }, []);
 
-  const [userSelection, setUserSelection] = useState({
-    cityName: "",
-    cityId: null,
-    wholeVariantId: null,
-    variantId: null,
-    variantSlug: null,
-    catSubcatSlug: null,
-    productSlug: null, // For back navigation from GetUpto to SelectVarient
-    brandSlug: null, // For back navigation from SelectVarient to SelectSeries
+  // Lazy initialize userSelection from cookies to prevent race condition
+  const [userSelection, setUserSelection] = useState(() => {
+    const saved = Cookies.get("userSelection");
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (error) {
+        console.error("Failed to parse userSelection cookie", error);
+      }
+    }
+    return {
+      cityName: "",
+      cityId: null,
+      wholeVariantId: null,
+      variantId: null,
+      variantSlug: null,
+      catSubcatSlug: null,
+      productSlug: null,
+      brandSlug: null,
+    };
   });
   const [currentEvaluationId, setCurrentEvaluationId] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState(null);
@@ -41,9 +52,8 @@ const ContextAPI = (props) => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [, setLastFetchedProductSlug] = useState(null);
 
-  // Load from cookies on mount
+  // Load user and deviceInfo from cookies on mount
   useEffect(() => {
-    const saved = Cookies.get("userSelection");
     const user = Cookies.get("user");
     const deviceInfo = Cookies.get("deviceInfo");
     if (user) {
@@ -52,14 +62,6 @@ const ContextAPI = (props) => {
         setUser(parsed);
       } catch (error) {
         console.error("Failed to parse user cookie", error);
-      }
-    }
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        setUserSelection(parsed);
-      } catch (error) {
-        console.error("Failed to parse userSelection cookie", error);
       }
     }
     if (deviceInfo) {
