@@ -11,7 +11,7 @@ import oppoLogo from "../../../../assets/TopSellingBrands/oppo-logo.png";
 import realmeLogo from "../../../../assets/TopSellingBrands/realme-logo.png";
 import pocoLogo from "../../../../assets/TopSellingBrands/poco-logo.png";
 import iqooLogo from "../../../../assets/TopSellingBrands/iqoo-logo.png";
-import nothingLogo from "../../../../assets/TopSellingBrands/iqoo-logo.png";
+import nothingLogo from "../../../../assets/TopSellingBrands/nothing_logo.png";
 
 const brands = [
   { name: "Apple", icon: appleLogo },

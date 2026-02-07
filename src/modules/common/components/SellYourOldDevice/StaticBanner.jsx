@@ -7,50 +7,65 @@ import {
   FaCheckCircle,
   FaCircle,
 } from "react-icons/fa";
-
-// Steps data moved outside component to prevent recreation on every render
-const steps = [
-  {
-    icon: <FaCircle />,
-    iconStyle: { color: "#d95818" },
-    title: "If you sell your device today",
-    subtitle: "By 4 PM",
-    subtitleStyle: { color: "#d95818" },
-  },
-  {
-    icon: <FaRegCalendarCheck />,
-    iconStyle: { color: "#a8a8a8" },
-    title: "Get Quote",
-    description:
-      "Select your device and answer a few questions about its condition, our smart tech will instantly calculate the best price.",
-  },
-  {
-    icon: <FaPaperPlane />,
-    iconStyle: { color: "#a8a8a8" },
-    title: "Assign pick-up partner",
-    description:
-      "A nearby partner will be assigned to collect your device right from your doorstep.",
-  },
-  {
-    icon: <FaCheckCircle />,
-    iconStyle: { color: "#a8a8a8" },
-    title: "Get paid",
-    description:
-      "Once your device is inspected by our partner and approved, your payment is processed instantly straight to your UPI or bank account.",
-  },
-  {
-    icon: <FaCircle />,
-    iconStyle: { color: "#29d929" },
-    title: "Your phone is sold",
-    subtitle: "By 23 June",
-    subtitleStyle: { color: "#29d929" },
-  },
-];
+import deliveryMan from "../../../../assets/images/delivery-man.png";
+import quoteRequest from "../../../../assets/images/quote-request.png";
+import rupee from "../../../../assets/images/rupee.png";
 
 function StaticBanner() {
   const [fillPercent, setFillPercent] = useState(0);
   const [mobileLineHeight, setMobileLineHeight] = useState("100%");
   const timelineRef = useRef(null);
+
+  // Calculate next day's date dynamically
+  const getNextDayDate = () => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    const day = tomorrow.getDate();
+    const month = tomorrow.toLocaleDateString('en-US', { month: 'short' });
+    const year = tomorrow.getFullYear();
+
+    return `By ${day} ${month} ${year}`;
+  };
+
+  // Steps data with dynamic date
+  const steps = useMemo(() => [
+    {
+      icon: <FaCircle />,
+      iconStyle: { color: "#d95818" },
+      title: "If you sell your device today",
+      subtitle: "By 4 PM",
+      subtitleStyle: { color: "#d95818" },
+    },
+    {
+      icon: <img src={quoteRequest} alt="Get Quote" />,
+      iconStyle: { color: "#a8a8a8" },
+      title: "Get Quote",
+      description:
+        "Select your device and answer a few questions about its condition, our smart tech will instantly calculate the best price.",
+    },
+    {
+      icon: <img src={deliveryMan} alt="Assign pick-up partner" />,
+      iconStyle: { color: "#a8a8a8" },
+      title: "Assign pick-up partner",
+      description:
+        "A nearby partner will be assigned to collect your device right from your doorstep.",
+    },
+    {
+      icon: <img src={rupee} alt="Get paid" />,
+      iconStyle: { color: "#a8a8a8" },
+      title: "Get paid",
+      description:
+        "Once your device is inspected by our partner and approved, your payment is processed instantly straight to your UPI or bank account.",
+    },
+    {
+      icon: <FaCircle />,
+      iconStyle: { color: "#006c2f" },
+      title: "Your phone is sold",
+      subtitle: getNextDayDate(),
+      subtitleStyle: { color: "#006c2f" },
+    },
+  ], []);
 
   useEffect(() => {
     const calculateHeight = () => {

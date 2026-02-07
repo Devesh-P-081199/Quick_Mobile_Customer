@@ -182,7 +182,7 @@ const Footer = () => {
             </p>
             <div className={styles.helpCenterAction}>
               <a href="/contact-us" className={styles.getAnswersBtn}>
-                GET ANSWERS
+                Get Answers
               </a>
             </div>
           </div>
@@ -304,7 +304,7 @@ const Footer = () => {
               </div>
               <div className={styles.helpCenterAction}>
                 <a href="/contact-us" className={styles.getAnswersBtn}>
-                  GET ANSWERS
+                  Get Answers
                 </a>
               </div>
             </div>

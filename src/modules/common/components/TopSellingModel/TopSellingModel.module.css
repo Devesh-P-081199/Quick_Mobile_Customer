@@ -112,6 +112,10 @@
     overflow: hidden;
   }
 
+  .imgIndividual img {
+    padding: 15px;
+  }
+
   .topSellingWrapper {
     display: flex;
     flex-direction: column;

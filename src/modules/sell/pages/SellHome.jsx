@@ -27,7 +27,7 @@ function SellHome() {
           if (brandRef.current) {
             const offsetTop =
               brandRef.current.getBoundingClientRect().top + window.pageYOffset;
-            const offset = 90; // increased offset to ensure header is visible
+            const offset = 40; // increased offset to ensure header is visible
             window.scrollTo({
               top: offsetTop - offset,
               behavior: "smooth",
@@ -36,7 +36,7 @@ function SellHome() {
         }}
       />
 
-      <SuggestionProductSlider />
+      {/* <SuggestionProductSlider /> */}
       <StaticBanner />
       <div ref={brandRef}>
         <SelectBrand />

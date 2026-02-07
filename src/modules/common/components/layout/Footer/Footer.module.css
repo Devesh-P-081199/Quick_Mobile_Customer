@@ -4,13 +4,16 @@
   border-top: 1px solid #e1e1e1;
   margin: 40px auto 0;
   box-sizing: border-box;
-  min-height: 400px; /* Default for Desktop */
-  contain: content; /* Helps browser rendering optimization */
+  min-height: 400px;
+  /* Default for Desktop */
+  contain: content;
+  /* Helps browser rendering optimization */
 }
 
 @media (max-width: 768px) {
   .footerContainer {
-    min-height: 250px; /* Reduced for mobile to prevent excess whitespace but still prevent shift */
+    min-height: 250px;
+    /* Reduced for mobile to prevent excess whitespace but still prevent shift */
   }
 }
 
@@ -241,7 +244,7 @@
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   border: 1px solid #1968b3;
@@ -438,7 +441,7 @@
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   border: 1px solid transparent;

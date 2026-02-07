@@ -1,0 +1,124 @@
+CSS Module Files with Multiple Media Queries
+Generated: C:\Users\deves\Downloads\Quick_Mobile_Customer
+================================================================================
+
+
+================================================================================
+FILE: sell\components\WhySellYourPhone\WhySell.module.css
+FULL PATH: src\modules\sell\components\WhySellYourPhone\WhySell.module.css
+MEDIA QUERIES: 7
+================================================================================
+
+================================================================================
+FILE: profile\components\Login\Login.module.css
+FULL PATH: src\modules\profile\components\Login\Login.module.css
+MEDIA QUERIES: 6
+================================================================================
+
+================================================================================
+FILE: checkout\components\CheckOut\CheckOut.module.css
+FULL PATH: src\modules\checkout\components\CheckOut\CheckOut.module.css
+MEDIA QUERIES: 6
+================================================================================
+
+================================================================================
+FILE: buy\components\Services\OurServices.module.css
+FULL PATH: src\modules\buy\components\Services\OurServices.module.css
+MEDIA QUERIES: 6
+================================================================================
+
+================================================================================
+FILE: common\pages\general\AboutUs\AboutUs.module.css
+FULL PATH: src\modules\common\pages\general\AboutUs\AboutUs.module.css
+MEDIA QUERIES: 5
+================================================================================
+
+================================================================================
+FILE: sell\components\SelectSubCategories\SelectSubCata.module.css
+FULL PATH: src\modules\sell\components\SelectSubCategories\SelectSubCata.module.css
+MEDIA QUERIES: 4
+================================================================================
+
+================================================================================
+FILE: common\pages\general\ContactUs\ContactUs.module.css
+FULL PATH: src\modules\common\pages\general\ContactUs\ContactUs.module.css
+MEDIA QUERIES: 4
+================================================================================
+
+================================================================================
+FILE: common\pages\general\Cookies\Cookies.module.css
+FULL PATH: src\modules\common\pages\general\Cookies\Cookies.module.css
+MEDIA QUERIES: 4
+================================================================================
+
+================================================================================
+FILE: common\pages\general\QuickImpact\QuickImpact.module.css
+FULL PATH: src\modules\common\pages\general\QuickImpact\QuickImpact.module.css
+MEDIA QUERIES: 4
+================================================================================
+
+================================================================================
+FILE: common\pages\general\Privacy\Privacy.module.css
+FULL PATH: src\modules\common\pages\general\Privacy\Privacy.module.css
+MEDIA QUERIES: 3
+================================================================================
+
+================================================================================
+FILE: checkout\components\CheckOut\RightCard.module.css
+FULL PATH: src\modules\checkout\components\CheckOut\RightCard.module.css
+MEDIA QUERIES: 3
+================================================================================
+
+================================================================================
+FILE: sell\components\GetUpto\GetUpto.module.css
+FULL PATH: src\modules\sell\components\GetUpto\GetUpto.module.css
+MEDIA QUERIES: 2
+================================================================================
+
+================================================================================
+FILE: profile\components\Address\Address.module.css
+FULL PATH: src\modules\profile\components\Address\Address.module.css
+MEDIA QUERIES: 2
+================================================================================
+
+================================================================================
+FILE: common\pages\ErrorPage.module.css
+FULL PATH: src\modules\common\pages\ErrorPage.module.css
+MEDIA QUERIES: 2
+================================================================================
+
+================================================================================
+FILE: common\pages\Thankyou.module.css
+FULL PATH: src\modules\common\pages\Thankyou.module.css
+MEDIA QUERIES: 2
+================================================================================
+
+================================================================================
+FILE: common\pages\general\RefundPolicy\RefundPolicy.module.css
+FULL PATH: src\modules\common\pages\general\RefundPolicy\RefundPolicy.module.css
+MEDIA QUERIES: 2
+================================================================================
+
+================================================================================
+FILE: common\components\ui\Slider\CommonSlider.module.css
+FULL PATH: src\modules\common\components\ui\Slider\CommonSlider.module.css
+MEDIA QUERIES: 2
+================================================================================
+
+================================================================================
+FILE: checkout\components\Payment\Payment.module.css
+FULL PATH: src\modules\checkout\components\Payment\Payment.module.css
+MEDIA QUERIES: 2
+================================================================================
+
+================================================================================
+FILE: buy\components\Cards\Blogs.module.css
+FULL PATH: src\modules\buy\components\Cards\Blogs.module.css
+MEDIA QUERIES: 2
+================================================================================
+
+================================================================================
+FILE: buy\components\NewsLetter\NewsLetter.module.css
+FULL PATH: src\modules\buy\components\NewsLetter\NewsLetter.module.css
+MEDIA QUERIES: 2
+================================================================================

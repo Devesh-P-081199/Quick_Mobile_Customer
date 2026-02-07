@@ -2,6 +2,7 @@ import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "../SellBanner.module.css";
 import MobileIcon from "../../../../../assets/images/Products/mobile.png";
+import ApplicationIcon from "../../../../../assets/images/application.png";
 
 /**
  * Category slider with horizontal scrolling and navigation arrows
@@ -112,13 +113,14 @@ function CategorySlider({
           aria-label="View more categories"
         >
           <div className={styles.imageBg}>
-            <span className={styles.dotButton}>
+            {/* <span className={styles.dotButton}>
               <div className={styles.dotsContainer}>
                 <span className={styles.dot} />
                 <span className={styles.dot} />
                 <span className={styles.dot} />
               </div>
-            </span>
+            </span> */}
+            <img src={ApplicationIcon} alt="Application" />
             <span className={styles.morelink}>More</span>
           </div>
         </NavLink>
