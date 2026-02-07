@@ -726,6 +726,10 @@
 
 @media (max-width: 768px) {
 
+  .contentHeading {
+    display: none;
+  }
+
   .desktopCoupon {
     display: none !important;
     /* Hidden on mobile */
