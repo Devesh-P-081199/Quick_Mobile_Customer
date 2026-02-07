@@ -4,6 +4,10 @@ import MobileImg from "../../../../assets/images/Products/mobile.png";
 import "../../../../assets/images/icons/rightarrow.png";
 import Recalculate from "../../../../assets/QuickSellNewIcons/set-to-zero.png";
 import clock from "../../../../assets/flaticons/clock-basecolor.png";
+import evalution from "../../../../assets/images/evalution.png";
+import creditCard from "../../../../assets/images/credit-card.png";
+import locations from "../../../../assets/images/location.png";
+import sale from "../../../../assets/images/sale.png";
 import van from "../../../../assets/flaticons/delivery-van-basecolor.png";
 import secureShield from "../../../../assets/flaticons/secure-basecolor.png";
 
@@ -21,39 +25,59 @@ import PaymentForm from "../../../checkout/components/PaymentForm/PaymentForm";
 import Payment from "../../../checkout/components/Payment/Payment";
 import CheckOut from "../../../checkout/components/CheckOut/CheckOut";
 
-const CouponContent = ({ styles }) => (
-  <div className={styles.modalContentWrapper}>
-    {/* Icon */}
-    <div className={styles.modalIcon}>
-      <img
-        src={coupon}
-        alt=""
-        className={styles.featureOption}
-        style={{ width: "40px", height: "40px" }}
+const CouponContent = ({ styles }) => {
+  const [couponCode, setCouponCode] = useState('');
+  const [showError, setShowError] = useState(false);
+
+  const handleApply = () => {
+    // Show "no coupon found" message when Apply is clicked
+    setShowError(true);
+  };
+
+  return (
+    <div className={styles.modalContentWrapper}>
+      {/* Icon */}
+      <div className={styles.modalIcon}>
+        <img
+          src={coupon}
+          alt=""
+          className={styles.featureOption}
+          style={{ width: "40px", height: "40px" }}
+        />
+      </div>
+
+      {/* Title */}
+      <h2 className={styles.modalTitle}>Apply Coupon</h2>
+
+      {/* Text */}
+      <p className={styles.modalText}>
+        Have a promo code? Enter it below to redeem your discount.
+      </p>
+
+      {/* Input */}
+      <input
+        type="text"
+        placeholder="Enter Coupon Code"
+        className={styles.couponInput}
+        value={couponCode}
+        onChange={(e) => {
+          setCouponCode(e.target.value);
+          setShowError(false); // Hide error when user types
+        }}
       />
+
+      {/* Apply Button */}
+      <button className={styles.applyButton} onClick={handleApply}>
+        Apply
+      </button>
+
+      {/* Error Message */}
+      {showError && (
+        <p className={styles.couponError}>No coupon found</p>
+      )}
     </div>
-
-    {/* Title */}
-    <h2 className={styles.modalTitle}>Apply Coupon</h2>
-
-    {/* Text */}
-    <p className={styles.modalText}>
-      Have a promo code? Enter it below to redeem your discount.
-    </p>
-
-    {/* Input */}
-    <input
-      type="text"
-      placeholder="Enter Coupon Code"
-      className={styles.couponInput}
-    />
-
-    {/* Apply Button */}
-    <button className={styles.applyButton}>Apply</button>
-
-    <p className={styles.modalSubText}>Terms & Conditions apply</p>
-  </div>
-);
+  );
+};
 
 function OrderSummary() {
   // ... existing hooks ...
@@ -252,7 +276,7 @@ function OrderSummary() {
 
   return (
     <>
-      <MobileBackHeader title="Order Summery" />
+      <MobileBackHeader title="Order Summary" />
       <div className={`page-content-wrapper ${styles.orderSummary}`}>
         <div className={styles.leftColumn}>
           {renderLeftContent() ? (
@@ -355,7 +379,7 @@ function OrderSummary() {
                   <button onClick={() => setShowAnswersModal(true)}>
                     <div className={styles.bottonTitle}>
                       <img
-                        src={clock}
+                        src={evalution}
                         alt=""
                         className={styles.featureOption}
                       ></img>
@@ -372,7 +396,7 @@ function OrderSummary() {
                 <div className={styles.summaryHeader}>
                   <div className={styles.summaryHeaderLeft}>
                     <img
-                      src={van}
+                      src={locations}
                       alt=""
                       className={styles.featureOption}
                     ></img>
@@ -418,7 +442,7 @@ function OrderSummary() {
                 <div className={styles.summaryHeader}>
                   <div className={styles.summaryHeaderLeft}>
                     <img
-                      src={secureShield}
+                      src={creditCard}
                       alt=""
                       className={styles.featureOption}
                     ></img>
@@ -523,7 +547,7 @@ function OrderSummary() {
                       <button>
                         <div className={styles.bottonTitle}>
                           <img
-                            src={coupon}
+                            src={sale}
                             alt=""
                             className={styles.featureOption}
                           ></img>
@@ -554,7 +578,14 @@ function OrderSummary() {
           </div>
         )}
 
-        <div className={styles.rightColumn}>
+        <div
+          className={`${styles.rightColumn} ${(location.pathname.includes('/check-out') && !location.pathname.includes('/price-summary')) ||
+            location.pathname.includes('/payment-mode-selection') ||
+            location.pathname.includes('/add-payment')
+            ? styles.hideOnMobile
+            : ''
+            }`}
+        >
           <div className={styles.RightBox}>
             {/* Device Image Section */}
             <div className={styles.deviceSection}>

@@ -352,7 +352,7 @@ const ThankYouPage = () => {
               </div>
 
               <div className={styles.uploadGroup}>
-                <label>Device Images (Max 2)</label>
+                <label>Invoice Images (Max 2)</label>
                 <div className={styles.uploadContainer}>
                   {images.map((img, index) => (
                     <div key={index} className={styles.imagePreview}>

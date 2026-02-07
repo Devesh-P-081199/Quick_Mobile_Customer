@@ -261,7 +261,7 @@ select.input option:not([value=""]) {
 
 @media (max-width: 768px) {
   .formContainer {
-    padding-bottom: 0px;
+    padding: 10px 0 0 0;
   }
 
   /* Hide desktop button on mobile */

@@ -345,4 +345,8 @@
     margin-bottom: 20px;
     gap: 10px;
   }
+
+  .btnBox {
+    width: 100%;
+  }
 }

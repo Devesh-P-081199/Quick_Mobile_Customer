@@ -223,7 +223,9 @@ const AppContent = () => {
     isMobile &&
     (location.pathname.includes("final-price-calculator") ||
       location.pathname.includes("price-summary") ||
-      location.pathname.includes("dfds"));
+      location.pathname.includes("check-out") ||
+      location.pathname.includes("payment-mode-selection") ||
+      location.pathname.includes("/payment/add-payment"));
 
   return (
     <>
