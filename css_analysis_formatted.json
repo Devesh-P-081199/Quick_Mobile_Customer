@@ -1,215 +1,188 @@
 ﻿{
-    "value":  [
-                  {
-                      "count":  7,
-                      "path":  "sell\\components\\WhySellYourPhone\\WhySell.module.css",
-                      "full_path":  "src\\modules\\sell\\components\\WhySellYourPhone\\WhySell.module.css",
-                      "queries":  [
-                                      "@media (min-width: 1600px)",
-                                      "@media (max-width: 1440px)",
-                                      "@media screen and (max-width: 1280px)",
-                                      "@media (max-width: 1024px)",
-                                      "@media (max-width: 950px)",
-                                      "@media (max-width: 550px)",
-                                      "@media (max-width: 900px)"
-                                  ]
-                  },
-                  {
-                      "count":  6,
-                      "path":  "profile\\components\\Login\\Login.module.css",
-                      "full_path":  "src\\modules\\profile\\components\\Login\\Login.module.css",
-                      "queries":  [
-                                      "@media (max-width: 900px)",
-                                      "@media (max-width: 550px)",
-                                      "@media (max-width: 900px)",
-                                      "@media (max-width: 550px)",
-                                      "@media screen and (max-width: 550px)",
-                                      "@media (max-width: 768px)"
-                                  ]
-                  },
-                  {
-                      "count":  6,
-                      "path":  "checkout\\components\\CheckOut\\CheckOut.module.css",
-                      "full_path":  "src\\modules\\checkout\\components\\CheckOut\\CheckOut.module.css",
-                      "queries":  [
-                                      "@media (max-width: 1200px)",
-                                      "@media (max-width: 768px)",
-                                      "@media (max-width: 550px)",
-                                      "@media (max-width: 550px)",
-                                      "@media screen and (max-width: 550px)",
-                                      "@media (max-width: 768px)"
-                                  ]
-                  },
-                  {
-                      "count":  6,
-                      "path":  "buy\\components\\Services\\OurServices.module.css",
-                      "full_path":  "src\\modules\\buy\\components\\Services\\OurServices.module.css",
-                      "queries":  [
-                                      "@media (min-width: 768px)",
-                                      "@media (min-width: 640px) and (max-width: 1023px)",
-                                      "@media (min-width: 768px)",
-                                      "@media (min-width: 640px) and (max-width: 1023px)",
-                                      "@media (min-width: 768px)",
-                                      "@media (max-width: 550px)"
-                                  ]
-                  },
-                  {
-                      "count":  5,
-                      "path":  "common\\pages\\general\\AboutUs\\AboutUs.module.css",
-                      "full_path":  "src\\modules\\common\\pages\\general\\AboutUs\\AboutUs.module.css",
-                      "queries":  [
-                                      "@media (max-width: 140px)",
-                                      "@media (max-width: 240px)",
-                                      "@media (min-width: 550px)",
-                                      "@media (min-width: 1024px)",
-                                      "@media (min-width: 1440px)"
-                                  ]
-                  },
-                  {
-                      "count":  4,
-                      "path":  "sell\\components\\SelectSubCategories\\SelectSubCata.module.css",
-                      "full_path":  "src\\modules\\sell\\components\\SelectSubCategories\\SelectSubCata.module.css",
-                      "queries":  [
-                                      "@media (max-width: 1200px)",
-                                      "@media (max-width: 768px)",
-                                      "@media (max-width: 550px)",
-                                      "@media (max-width: 350px)"
-                                  ]
-                  },
-                  {
-                      "count":  4,
-                      "path":  "common\\pages\\general\\ContactUs\\ContactUs.module.css",
-                      "full_path":  "src\\modules\\common\\pages\\general\\ContactUs\\ContactUs.module.css",
-                      "queries":  [
-                                      "@media (max-width: 992px)",
-                                      "@media (max-width: 600px)",
-                                      "@media (max-width: 380px)",
-                                      "@media (max-width: 300px)"
-                                  ]
-                  },
-                  {
-                      "count":  4,
-                      "path":  "common\\pages\\general\\Cookies\\Cookies.module.css",
-                      "full_path":  "src\\modules\\common\\pages\\general\\Cookies\\Cookies.module.css",
-                      "queries":  [
-                                      "@media (max-width: 1024px)",
-                                      "@media (max-width: 768px)",
-                                      "@media (max-width: 520px)",
-                                      "@media (max-width: 260px)"
-                                  ]
-                  },
-                  {
-                      "count":  4,
-                      "path":  "common\\pages\\general\\QuickImpact\\QuickImpact.module.css",
-                      "full_path":  "src\\modules\\common\\pages\\general\\QuickImpact\\QuickImpact.module.css",
-                      "queries":  [
-                                      "@media (max-width: 550px)",
-                                      "@media (max-width: 1024px)",
-                                      "@media (max-width: 768px)",
-                                      "@media (max-width: 550px)"
-                                  ]
-                  },
-                  {
-                      "count":  3,
-                      "path":  "common\\pages\\general\\Privacy\\Privacy.module.css",
-                      "full_path":  "src\\modules\\common\\pages\\general\\Privacy\\Privacy.module.css",
-                      "queries":  [
-                                      "@media (min-width: 640px)",
-                                      "@media (min-width: 1024px)",
-                                      "@media (min-width: 640px)"
-                                  ]
-                  },
-                  {
-                      "count":  3,
-                      "path":  "checkout\\components\\CheckOut\\RightCard.module.css",
-                      "full_path":  "src\\modules\\checkout\\components\\CheckOut\\RightCard.module.css",
-                      "queries":  [
-                                      "@media (max-width: 768px)",
-                                      "@media (max-width: 550px)",
-                                      "@media (max-width: 768px)"
-                                  ]
-                  },
-                  {
-                      "count":  2,
-                      "path":  "sell\\components\\GetUpto\\GetUpto.module.css",
-                      "full_path":  "src\\modules\\sell\\components\\GetUpto\\GetUpto.module.css",
-                      "queries":  [
-                                      "@media (max-width: 768px)",
-                                      "@media (max-width: 550px)"
-                                  ]
-                  },
-                  {
-                      "count":  2,
-                      "path":  "profile\\components\\Address\\Address.module.css",
-                      "full_path":  "src\\modules\\profile\\components\\Address\\Address.module.css",
-                      "queries":  [
-                                      "@media (max-width: 550px)",
-                                      "@media (max-width: 900px)"
-                                  ]
-                  },
-                  {
-                      "count":  2,
-                      "path":  "common\\pages\\ErrorPage.module.css",
-                      "full_path":  "src\\modules\\common\\pages\\ErrorPage.module.css",
-                      "queries":  [
-                                      "@media (min-width: 1280px)",
-                                      "@media screen and (max-width: 550px)"
-                                  ]
-                  },
-                  {
-                      "count":  2,
-                      "path":  "common\\pages\\Thankyou.module.css",
-                      "full_path":  "src\\modules\\common\\pages\\Thankyou.module.css",
-                      "queries":  [
-                                      "@media (max-width: 1540px) and (min-width: 900px)",
-                                      "@media (max-width: 768px)"
-                                  ]
-                  },
-                  {
-                      "count":  2,
-                      "path":  "common\\pages\\general\\RefundPolicy\\RefundPolicy.module.css",
-                      "full_path":  "src\\modules\\common\\pages\\general\\RefundPolicy\\RefundPolicy.module.css",
-                      "queries":  [
-                                      "@media (max-width: 768px)",
-                                      "@media (max-width: 550px)"
-                                  ]
-                  },
-                  {
-                      "count":  2,
-                      "path":  "common\\components\\ui\\Slider\\CommonSlider.module.css",
-                      "full_path":  "src\\modules\\common\\components\\ui\\Slider\\CommonSlider.module.css",
-                      "queries":  [
-                                      "@media screen and (max-width: 768px)",
-                                      "@media (hover: none) and (pointer: coarse)"
-                                  ]
-                  },
-                  {
-                      "count":  2,
-                      "path":  "checkout\\components\\Payment\\Payment.module.css",
-                      "full_path":  "src\\modules\\checkout\\components\\Payment\\Payment.module.css",
-                      "queries":  [
-                                      "@media (max-width: 550px)",
-                                      "@media (max-width: 768px)"
-                                  ]
-                  },
-                  {
-                      "count":  2,
-                      "path":  "buy\\components\\Cards\\Blogs.module.css",
-                      "full_path":  "src\\modules\\buy\\components\\Cards\\Blogs.module.css",
-                      "queries":  [
-                                      "@media (min-width: 768px)",
-                                      "@media (min-width: 640px) and (max-width: 1023px)"
-                                  ]
-                  },
-                  {
-                      "count":  2,
-                      "path":  "buy\\components\\NewsLetter\\NewsLetter.module.css",
-                      "full_path":  "src\\modules\\buy\\components\\NewsLetter\\NewsLetter.module.css",
-                      "queries":  [
-                                      "@media (min-width: 640px) and (max-width: 1023px)",
-                                      "@media (max-width: 768px)"
-                                  ]
-                  }
-              ],
-    "Count":  20
+    "generated_at": "2026-02-08T01:45:47+05:30",
+    "verified": true,
+    "total_files_with_multiple_queries": 7,
+    "refactored_files_count": 11,
+    "refactoring_progress_percent": 61,
+    "value": [
+        {
+            "count": 7,
+            "path": "sell\\components\\WhySellYourPhone\\WhySell.module.css",
+            "full_path": "src\\modules\\sell\\components\\WhySellYourPhone\\WhySell.module.css",
+            "status": "needs_refactoring",
+            "queries": [
+                "@media (min-width: 1600px)",
+                "@media (max-width: 1440px)",
+                "@media screen and (max-width: 1280px)",
+                "@media (max-width: 1024px)",
+                "@media (max-width: 950px)",
+                "@media (max-width: 550px)",
+                "@media (max-width: 900px)"
+            ]
+        },
+        {
+            "count": 6,
+            "path": "profile\\components\\Login\\Login.module.css",
+            "full_path": "src\\modules\\profile\\components\\Login\\Login.module.css",
+            "status": "needs_refactoring",
+            "queries": [
+                "@media (max-width: 900px)",
+                "@media (max-width: 550px)",
+                "@media (max-width: 900px)",
+                "@media (max-width: 550px)",
+                "@media screen and (max-width: 550px)",
+                "@media (max-width: 768px)"
+            ]
+        },
+        {
+            "count": 6,
+            "path": "checkout\\components\\CheckOut\\CheckOut.module.css",
+            "full_path": "src\\modules\\checkout\\components\\CheckOut\\CheckOut.module.css",
+            "status": "needs_refactoring",
+            "queries": [
+                "@media (max-width: 1200px)",
+                "@media (max-width: 768px)",
+                "@media (max-width: 550px)",
+                "@media (max-width: 550px)",
+                "@media screen and (max-width: 550px)",
+                "@media (max-width: 768px)"
+            ]
+        },
+        {
+            "count": 6,
+            "path": "buy\\components\\Services\\OurServices.module.css",
+            "full_path": "src\\modules\\buy\\components\\Services\\OurServices.module.css",
+            "status": "needs_refactoring",
+            "queries": [
+                "@media (min-width: 768px)",
+                "@media (min-width: 640px) and (max-width: 1023px)",
+                "@media (min-width: 768px)",
+                "@media (min-width: 640px) and (max-width: 1023px)",
+                "@media (min-width: 768px)",
+                "@media (max-width: 550px)"
+            ]
+        },
+        {
+            "count": 4,
+            "path": "sell\\components\\SelectSubCategories\\SelectSubCata.module.css",
+            "full_path": "src\\modules\\sell\\components\\SelectSubCategories\\SelectSubCata.module.css",
+            "status": "needs_refactoring",
+            "queries": [
+                "@media (max-width: 1200px)",
+                "@media (max-width: 768px)",
+                "@media (max-width: 550px)",
+                "@media (max-width: 350px)"
+            ]
+        },
+        {
+            "count": 4,
+            "path": "common\\pages\\general\\Cookies\\Cookies.module.css",
+            "full_path": "src\\modules\\common\\pages\\general\\Cookies\\Cookies.module.css",
+            "status": "needs_refactoring",
+            "queries": [
+                "@media (max-width: 1024px)",
+                "@media (max-width: 900px)",
+                "@media (max-width: 768px)",
+                "@media (max-width: 550px)"
+            ]
+        },
+        {
+            "count": 4,
+            "path": "common\\pages\\general\\QuickImpact\\QuickImpact.module.css",
+            "full_path": "src\\modules\\common\\pages\\general\\QuickImpact\\QuickImpact.module.css",
+            "status": "needs_refactoring",
+            "queries": [
+                "@media (max-width: 768px)",
+                "@media (max-width: 550px)",
+                "@media (max-width: 1024px)",
+                "@media (max-width: 768px)"
+            ]
+        }
+    ],
+    "refactored_files": [
+        {
+            "path": "common\\pages\\general\\AboutUs\\AboutUs.module.css",
+            "full_path": "src\\modules\\common\\pages\\general\\AboutUs\\AboutUs.module.css",
+            "previous_count": 5,
+            "current_count": 1,
+            "status": "refactored"
+        },
+        {
+            "path": "common\\pages\\general\\ContactUs\\ContactUs.module.css",
+            "full_path": "src\\modules\\common\\pages\\general\\ContactUs\\ContactUs.module.css",
+            "previous_count": 4,
+            "current_count": 0,
+            "status": "refactored"
+        },
+        {
+            "path": "common\\pages\\general\\Privacy\\Privacy.module.css",
+            "full_path": "src\\modules\\common\\pages\\general\\Privacy\\Privacy.module.css",
+            "previous_count": 3,
+            "current_count": 1,
+            "status": "refactored"
+        },
+        {
+            "path": "checkout\\components\\CheckOut\\RightCard.module.css",
+            "full_path": "src\\modules\\checkout\\components\\CheckOut\\RightCard.module.css",
+            "previous_count": 3,
+            "current_count": 0,
+            "status": "refactored"
+        },
+        {
+            "path": "sell\\components\\GetUpto\\GetUpto.module.css",
+            "full_path": "src\\modules\\sell\\components\\GetUpto\\GetUpto.module.css",
+            "previous_count": 2,
+            "current_count": 1,
+            "status": "refactored"
+        },
+        {
+            "path": "common\\pages\\not-found\\ErrorPage.module.css",
+            "full_path": "src\\modules\\common\\pages\\not-found\\ErrorPage.module.css",
+            "previous_count": 2,
+            "current_count": 1,
+            "status": "refactored"
+        },
+        {
+            "path": "common\\pages\\thank-you\\Thankyou.module.css",
+            "full_path": "src\\modules\\common\\pages\\thank-you\\Thankyou.module.css",
+            "previous_count": 2,
+            "current_count": 1,
+            "status": "refactored"
+        },
+        {
+            "path": "common\\pages\\general\\RefundPolicy\\RefundPolicy.module.css",
+            "full_path": "src\\modules\\common\\pages\\general\\RefundPolicy\\RefundPolicy.module.css",
+            "previous_count": 2,
+            "current_count": 1,
+            "status": "refactored"
+        },
+        {
+            "path": "common\\components\\ui\\Slider\\CommonSlider.module.css",
+            "full_path": "src\\modules\\common\\components\\ui\\Slider\\CommonSlider.module.css",
+            "previous_count": 2,
+            "current_count": 0,
+            "status": "refactored"
+        },
+        {
+            "path": "checkout\\components\\Payment\\Payment.module.css",
+            "full_path": "src\\modules\\checkout\\components\\Payment\\Payment.module.css",
+            "previous_count": 2,
+            "current_count": 0,
+            "status": "refactored"
+        },
+        {
+            "path": "buy\\components\\Cards\\Blogs.module.css",
+            "full_path": "src\\modules\\buy\\components\\Cards\\Blogs.module.css",
+            "previous_count": 2,
+            "current_count": 0,
+            "status": "refactored"
+        },
+        {
+            "path": "buy\\components\\NewsLetter\\NewsLetter.module.css",
+            "full_path": "src\\modules\\buy\\components\\NewsLetter\\NewsLetter.module.css",
+            "previous_count": 2,
+            "current_count": 0,
+            "status": "refactored"
+        }
+    ]
 }
