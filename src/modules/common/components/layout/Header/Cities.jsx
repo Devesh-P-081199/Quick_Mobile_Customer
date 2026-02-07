@@ -56,6 +56,7 @@ const Cities = () => {
   const [popularCities, setPopularCities] = useState([]);
   const [otherCities, setOtherCities] = useState([]);
   const [isLoadingCities, setIsLoadingCities] = useState(true);
+  const [isDetectingLocation, setIsDetectingLocation] = useState(false);
 
   const {
     isModalOpen,
@@ -194,6 +195,106 @@ const Cities = () => {
     getCities();
   }, [getCities]);
 
+  // Handle location detection
+  const handleDetectLocation = async () => {
+    // Check if geolocation is supported
+    if (!navigator.geolocation) {
+      toast.error("Geolocation is not supported by your browser");
+      return;
+    }
+
+    setIsDetectingLocation(true);
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+
+          // Use Nominatim (OpenStreetMap) reverse geocoding API
+          const geocodeUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&addressdetails=1`;
+
+          const response = await fetch(geocodeUrl, {
+            headers: {
+              "User-Agent": "QuickMobileCustomer/1.0",
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Failed to fetch location data");
+          }
+
+          const data = await response.json();
+
+          // Extract city name from the response
+          const detectedCity =
+            data.address?.city ||
+            data.address?.town ||
+            data.address?.village ||
+            data.address?.state_district ||
+            data.address?.state;
+
+          if (!detectedCity) {
+            toast.error("Could not determine your city. Please select manually.");
+            setIsDetectingLocation(false);
+            return;
+          }
+
+          // Find matching city in available cities (both popular and other)
+          const allAvailableCities = [...popularCities, ...otherCities];
+          const matchedCity = allAvailableCities.find(
+            (city) =>
+              city.cityName.toLowerCase() === detectedCity.toLowerCase() ||
+              city.cityName.toLowerCase().includes(detectedCity.toLowerCase()) ||
+              detectedCity.toLowerCase().includes(city.cityName.toLowerCase())
+          );
+
+          if (matchedCity) {
+            // Determine if it's a popular city or other city
+            const isPopular = popularCities.some((c) => c._id === matchedCity._id);
+            handleCitySelect(matchedCity, isPopular ? "popular" : "all");
+            toast.success(`Location detected: ${matchedCity.cityName}`);
+          } else {
+            toast.warning(
+              `Detected city "${detectedCity}" is not in our service area. Please select from available cities.`
+            );
+          }
+
+          setIsDetectingLocation(false);
+        } catch (error) {
+          console.error("Reverse geocoding error:", error);
+          toast.error("Failed to detect location. Please try again or select manually.");
+          setIsDetectingLocation(false);
+        }
+      },
+      (error) => {
+        // Handle geolocation errors
+        setIsDetectingLocation(false);
+
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            toast.error(
+              "Location permission denied. Please enable location access and try again."
+            );
+            break;
+          case error.POSITION_UNAVAILABLE:
+            toast.error("Location information is unavailable. Please try again later.");
+            break;
+          case error.TIMEOUT:
+            toast.error("Location request timed out. Please try again.");
+            break;
+          default:
+            toast.error("An unknown error occurred while detecting your location.");
+            break;
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0,
+      }
+    );
+  };
+
   // Cleanup for debounced search
   useEffect(() => {
     return () => {
@@ -230,77 +331,99 @@ const Cities = () => {
                   />
                   <img src={searchicon} alt="search" className="nav-icons" />
                 </div>
-                <div className={styles.locationDetectButton}>
+                {/* <button
+                  className={styles.locationDetectButton}
+                  onClick={handleDetectLocation}
+                  disabled={isDetectingLocation}
+                  style={{
+                    opacity: isDetectingLocation ? 0.6 : 1,
+                    cursor: isDetectingLocation ? "not-allowed" : "pointer",
+                  }}
+                >
                   <img src={locationdot} alt="detect" className="nav-icons" />
-                  Detect My Location
-                </div>
+                  {isDetectingLocation ? "Detecting..." : "Detect My Location"}
+                </button> */}
+                <button
+                  className={styles.locationDetectButton}
+                  style={{
+                    opacity: 1,
+                    cursor: "pointer",
+                  }}
+                  onClick={handleSearchChange}
+                >
+                  Search City
+                </button>
               </div>
             </div>
 
-            <h3 className={styles.modalCityHeading}>Popular Cities</h3>
-            <div className={styles.popularCityGrid}>
-              {isLoadingCities ? (
-                <div className={styles.loadingText}>Loading cities...</div>
-              ) : filteredPopularCities.length > 0 ? (
-                filteredPopularCities.map((city) => (
-                  <button
-                    key={city._id}
-                    onClick={() => handleCitySelect(city, "popular")}
-                    className={`${styles.popularCityButton} ${
-                      selectedCity?._id === city._id &&
-                      selectedSource === "popular"
-                        ? styles.selectedPopularCity
-                        : ""
-                    }`}
-                  >
-                    <img
-                      src={city?.cityImage || locationIcon}
-                      alt={city?.cityName || "City"}
-                      className={styles.popularCityImage}
-                      onError={(e) => {
-                        e.target.src = locationIcon;
-                      }}
-                    />
-                    <span className={styles.popularCityText}>
-                      {city?.cityName}
-                    </span>
-                    {selectedCity?._id === city._id &&
-                      selectedSource === "popular" && (
-                        <span className={styles.selectedIndicator}>✓</span>
-                      )}
-                  </button>
-                ))
-              ) : (
-                <div className={styles.noCitiesText}>
-                  <p>No popular cities found</p>
-                </div>
-              )}
-            </div>
+            {isLoadingCities ? (
+              <div className={styles.loadingText}>Loading cities...</div>
+            ) : filteredPopularCities.length === 0 && filteredOtherCities.length === 0 ? (
+              <div className={styles.noCitiesText}>
+                <p>City not found</p>
+              </div>
+            ) : (
+              <>
+                {/* Only show Popular Cities section if there are results */}
+                {filteredPopularCities.length > 0 && (
+                  <>
+                    <h3 className={styles.modalCityHeading}>Popular Cities</h3>
+                    <div className={styles.popularCityGrid}>
+                      {filteredPopularCities.map((city) => (
+                        <button
+                          key={city._id}
+                          onClick={() => handleCitySelect(city, "popular")}
+                          className={`${styles.popularCityButton} ${selectedCity?._id === city._id &&
+                              selectedSource === "popular"
+                              ? styles.selectedPopularCity
+                              : ""
+                            }`}
+                        >
+                          <img
+                            src={city?.cityImage || locationIcon}
+                            alt={city?.cityName || "City"}
+                            className={styles.popularCityImage}
+                            onError={(e) => {
+                              e.target.src = locationIcon;
+                            }}
+                          />
+                          <span className={styles.popularCityText}>
+                            {city?.cityName}
+                          </span>
+                          {selectedCity?._id === city._id &&
+                            selectedSource === "popular" && (
+                              <span className={styles.selectedIndicator}>✓</span>
+                            )}
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
 
-            <h3 className={styles.modalCityHeading}>Other Cities</h3>
-            <div className={styles.otherCitiesGrid}>
-              {isLoadingCities ? (
-                <div className={styles.loadingText}>Loading cities...</div>
-              ) : filteredOtherCities.length > 0 ? (
-                filteredOtherCities.map((city) => (
-                  <button
-                    key={city._id}
-                    onClick={() => handleCitySelect(city, "all")}
-                    className={`${styles.otherCityPill} ${
-                      selectedCity?._id === city._id && selectedSource === "all"
-                        ? styles.selectedCityPill
-                        : ""
-                    }`}
-                  >
-                    <span className={styles.otherCityText}>
-                      {city?.cityName}
-                    </span>
-                  </button>
-                ))
-              ) : (
-                <div className={styles.noCitiesText}>No other cities found</div>
-              )}
-            </div>
+                {/* Only show Other Cities section if there are results */}
+                {filteredOtherCities.length > 0 && (
+                  <>
+                    <h3 className={styles.modalCityHeading}>Other Cities</h3>
+                    <div className={styles.otherCitiesGrid}>
+                      {filteredOtherCities.map((city) => (
+                        <button
+                          key={city._id}
+                          onClick={() => handleCitySelect(city, "all")}
+                          className={`${styles.otherCityPill} ${selectedCity?._id === city._id && selectedSource === "all"
+                              ? styles.selectedCityPill
+                              : ""
+                            }`}
+                        >
+                          <span className={styles.otherCityText}>
+                            {city?.cityName}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </>
+            )}
           </div>
         </>
       )}

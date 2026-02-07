@@ -381,8 +381,8 @@
 
 .popularCityGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
   margin-bottom: 24px;
 }
 
@@ -393,6 +393,7 @@
 .noCitiesText {
   font-size: 14px;
   color: #565656;
+  margin-top: 15px;
 }
 
 .popularCityButton {
@@ -470,7 +471,7 @@
   width: 47px;
   height: 47px;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 0px;
 }
 
 .popularCityText,
@@ -1955,6 +1956,21 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 900;
+  }
+
+  .otherCitiesGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .otherCityPill {
+    width: auto;
+  }
+
+  .popularCityGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0px;
   }
 
   .bottomNavContainer {
