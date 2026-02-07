@@ -1022,11 +1022,6 @@ const Header = () => {
           </div>
         )}
 
-        {/* City Selection Modal */}
-        <Suspense fallback={<Loader />}>
-          <Cities />
-        </Suspense>
-
         {/* Mobile Navigation Container */}
         {shouldShowNavbar && !isBrandModalOpen && !isCategoryModalOpen && (
           <div className={styles.mobileContainer}>
@@ -1715,13 +1710,13 @@ const Header = () => {
                                   : ""
                                 }
                             `}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleBrandClick(brand._id, brand);
-                                }}
-                                onMouseEnter={() => handleBrandHover(brand)}
-                              >
-                                <img src={brand?.brandLogo} alt="" />
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleBrandClick(brand._id, brand);
+                              }}
+                              onMouseEnter={() => handleBrandHover(brand)}
+                            >
+                              <img src={brand?.brandLogo} alt="" />
                               {brand?.brandName}
                               <span className={styles.arrow}>
                                 <img src={RightArrow} alt="" />

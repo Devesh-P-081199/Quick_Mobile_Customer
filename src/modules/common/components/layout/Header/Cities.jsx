@@ -78,18 +78,25 @@ const Cities = () => {
         };
         setSelectedCity(city);
 
-        // Determine if city is in popular cities or other cities
-        const isPopularCity = popularCities.some(
-          (popCity) => popCity.cityName === parsed.cityName,
-        );
-        setSelectedSource(isPopularCity ? "popular" : "all");
+        // Note: selectedSource will be determined when cities are loaded
+        // We don't need to determine it here since popularCities may not be loaded yet
 
         setUserSelection(parsed); // sync with context
       } catch (err) {
         console.error("Failed to parse saved city:", err);
       }
     }
-  }, [setUserSelection, popularCities]);
+  }, [setUserSelection]);
+
+  // Determine selectedSource after cities are loaded
+  useEffect(() => {
+    if (selectedCity && (popularCities.length > 0 || otherCities.length > 0)) {
+      const isPopularCity = popularCities.some(
+        (popCity) => popCity._id === selectedCity._id,
+      );
+      setSelectedSource(isPopularCity ? "popular" : "all");
+    }
+  }, [popularCities, otherCities, selectedCity]);
 
   const handleSearchChange = (e) => {
     const value = e.target.value.trimStart();
@@ -374,9 +381,9 @@ const Cities = () => {
                           key={city._id}
                           onClick={() => handleCitySelect(city, "popular")}
                           className={`${styles.popularCityButton} ${selectedCity?._id === city._id &&
-                              selectedSource === "popular"
-                              ? styles.selectedPopularCity
-                              : ""
+                            selectedSource === "popular"
+                            ? styles.selectedPopularCity
+                            : ""
                             }`}
                         >
                           <img
@@ -410,8 +417,8 @@ const Cities = () => {
                           key={city._id}
                           onClick={() => handleCitySelect(city, "all")}
                           className={`${styles.otherCityPill} ${selectedCity?._id === city._id && selectedSource === "all"
-                              ? styles.selectedCityPill
-                              : ""
+                            ? styles.selectedCityPill
+                            : ""
                             }`}
                         >
                           <span className={styles.otherCityText}>
