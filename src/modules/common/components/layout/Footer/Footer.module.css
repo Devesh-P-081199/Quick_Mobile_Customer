@@ -251,7 +251,7 @@
 }
 
 .mobileFooterColumn .getAnswersBtn:hover {
-  background: #155a9a;
+  background: #1968b3;
 }
 
 .chatbox {
@@ -433,13 +433,13 @@
 
 .getAnswersBtn {
   display: inline-block;
-  background: #3b82f6;
+  background: #1968b3;
   color: white;
-  padding: 8px 10px;
-  border-radius: 20px;
+  padding: 8px 15px;
+  border-radius: 10px;
   /* Rounded button */
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   text-decoration: none;
   text-transform: capitalize;
   letter-spacing: 0.5px;

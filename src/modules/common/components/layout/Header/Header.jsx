@@ -32,6 +32,7 @@ import NewMenuBar from "../../../../../assets/QuickSellNewIcons/MenuBar.svg";
 import NewCloseIcon from "../../../../../assets/QuickSellNewIcons/Cross.svg";
 import NewLocationIcon from "../../../../../assets/QuickSellNewIcons/Location_new.png";
 import NewBackArrow from "../../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
+import LoggedInUser from "../../../../../assets/images/loggedinuser.png";
 
 // External Dependencies
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -899,7 +900,7 @@ const Header = () => {
                           />
                         ) : (
                           <img
-                            src={usericon}
+                            src={LoggedInUser}
                             alt="Profile"
                             className={styles.userIconDefault}
                           />
@@ -1612,7 +1613,7 @@ const Header = () => {
                       }}
                     >
                       <div className={styles.categories}>
-                        {category?.slice(0, 5).map((cat) => (
+                        {category?.slice(0, 10).map((cat) => (
                           <div
                             key={cat._id}
                             className={`${styles.categoryItem} ${activeCategory === cat.categoryName
@@ -1625,35 +1626,48 @@ const Header = () => {
                               handleCategoryClick(cat);
                             }}
                           >
-                            <img
+                            {/* <img
                               src={cat?.categoryImageUrl}
                               alt={cat?.categoryName}
-                            />
+                            /> */}
                             {cat?.categoryName}
                             <span className={styles.arrow}>
                               <img src={RightArrow} alt="" />
                             </span>
                           </div>
                         ))}
-                        {category?.length > 5 && (
-                          <div
-                            className={styles.categoryItem}
-                            onClick={() => {
-                              navigate("/sell-gadgets");
-                              setHoveredItem(null);
-                            }}
-                          >
-                            <span style={{ fontWeight: 600 }}>View More</span>
-                            <span className={styles.arrow}>
-                              <img src={RightArrow} alt="" />
-                            </span>
-                          </div>
-                        )}
                       </div>
 
                       {activeCategory && (
                         <div className={styles.subMenu}>
-                          <h4>Brands</h4>
+                          {/* All Brands button logic */}
+                          {(() => {
+                            const activeCat = category.find(
+                              (c) => c.categoryName === activeCategory,
+                            );
+                            const catBrands = brandsWithProducts.filter(
+                              (b) => b.categoryId === activeCat?._id,
+                            );
+
+                            if (catBrands.length >= 10) {
+                              return (
+                                <div
+                                  className={styles.allPhonesHeaderButton}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleCategoryClick(activeCat);
+                                  }}
+                                >
+                                  All Brands
+                                  <span className={styles.arrow}>
+                                    <img src={RightArrow} alt="" />
+                                  </span>
+                                </div>
+                              );
+                            }
+                            return null;
+                          })()}
+                          <h4>Popular Brands</h4>
                           <div className={styles.brandList}>
                             {brandsWithProducts
                               .filter((b) => {
@@ -1698,6 +1712,29 @@ const Header = () => {
                       }}
                     >
                       <div className={styles.categories}>
+                        {/* View More option at 1st position */}
+                        <div
+                          className={`${styles.categoryItem} ${styles.allBrandsButton}`}
+                          onMouseEnter={() => {
+                            setActiveBrand(null);
+                            setHoveredBrand(null);
+                            setActiveProducts([]);
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setHoveredItem(null);
+                            navigate("/sell-old-mobile");
+                          }}
+                        >
+                          All Brands
+                          <span className={styles.arrow}>
+                            <img src={RightArrow} alt="" />
+                          </span>
+                        </div>
+                        {/* Popular Brands Heading */}
+                        <h4 className={styles.popularBrandsHeading}>
+                          Popular Brands
+                        </h4>
                         {brandsWithProducts
                           ?.filter((b) => b.categoryId === mobileCategory?._id)
                           ?.slice(0, 5)
@@ -1716,7 +1753,7 @@ const Header = () => {
                               }}
                               onMouseEnter={() => handleBrandHover(brand)}
                             >
-                              <img src={brand?.brandLogo} alt="" />
+                              {/* <img src={brand?.brandLogo} alt="" /> */}
                               {brand?.brandName}
                               <span className={styles.arrow}>
                                 <img src={RightArrow} alt="" />
@@ -1726,7 +1763,22 @@ const Header = () => {
                       </div>
                       {hoveredBrand && (
                         <div className={styles.subMenu}>
-                          <h4>Top Selling Phones</h4>
+                          {/* View More button at top */}
+                          {activeProducts?.length >= 5 && (
+                            <div
+                              className={styles.allPhonesHeaderButton}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleProductnavigation(hoveredBrand._id);
+                              }}
+                            >
+                              All Phones
+                              <span className={styles.arrow}>
+                                <img src={RightArrow} alt="" />
+                              </span>
+                            </div>
+                          )}
+                          <h4>Popular Phones</h4>
                           <div className={styles.brandList}>
                             {activeProducts?.slice(0, 5)?.map((prod) => (
                               <div key={prod._id} className={styles.brandItems}>
@@ -1746,16 +1798,6 @@ const Header = () => {
                                 </span>
                               </div>
                             ))}
-                            {activeProducts.length > 4 && (
-                              <button
-                                onClick={() =>
-                                  handleProductnavigation(hoveredBrand._id)
-                                }
-                                className={styles.viewMoreButton}
-                              >
-                                View More
-                              </button>
-                            )}
                           </div>
                         </div>
                       )}

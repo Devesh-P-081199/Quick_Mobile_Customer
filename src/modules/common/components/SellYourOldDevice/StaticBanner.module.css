@@ -40,7 +40,7 @@
 
 .progressBarContainer {
   position: absolute;
-  top: 54px;
+  top: 57px;
   /* Constrain line to be between the centers of first and last item */
   /* Items are 18% width. Center is at 9%. */
   left: 9%;
@@ -89,8 +89,8 @@
 }
 
 .markerContainer {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   margin-bottom: 20px;
   background: white;
   display: flex;
@@ -107,14 +107,14 @@
   width: 40px;
   height: 40px;
   margin-left: 10px;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .timelineItem:last-child .markerContainer {
   width: 40px;
   height: 40px;
   margin-left: 10px;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .marker {
@@ -124,8 +124,8 @@
 }
 
 .marker img {
-  width: 28px;
-  height: 28px;
+  width: 33px;
+  height: 33px;
   margin: auto;
 }
 

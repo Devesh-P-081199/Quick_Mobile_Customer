@@ -31,7 +31,7 @@
   padding: 15px 10px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
   background-color: #ededed;
   width: 63.51%;
   border-radius: 0px 10px 10px 0px;
@@ -201,7 +201,7 @@ button.laptopviewall {
   position: relative;
   display: flex;
   align-items: center;
-  height: 115px;
+  height: 135px;
   margin-bottom: 15px;
 }
 
@@ -209,13 +209,13 @@ button.laptopviewall {
 .arrowRight {
   position: absolute;
   z-index: 10;
-  background-color: rgb(0, 0, 0);
+  background-color: #1968b3;
   border: none;
   cursor: pointer;
   font-size: 12px;
-  padding: 6px 11px;
+  padding: 5px 11px;
   border-radius: 50%;
-  border: 0.3px solid #000000;
+  border: 0.3px solid #1968b3;
   transition: background 0.3s ease;
   color: #ffffff;
 }
@@ -246,11 +246,11 @@ button.laptopviewall {
 
 .dropdownStyled {
   background: white;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid #e0e0e0;
   border-top: none;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  padding: 12px;
+  padding: 0px;
   max-height: 300px;
   overflow-y: auto;
   position: absolute;
@@ -267,33 +267,33 @@ button.laptopviewall {
 }
 
 .sectionGroup {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .suggestionRow {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 8px 10px;
-  border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s ease;
-  gap: 5px;
+  gap: 0px;
 }
 
 .suggestionRow:hover {
-  background-color: #f3f3f3;
+  background-color: #e6f0ff;
 }
 
 .name {
-  font-size: 17px;
+  font-size: 14px;
+  font-weight: 500;
   color: #000000;
 }
 
 .tag {
-  font-size: 14px;
+  font-size: 12px;
   color: #1968b3;
-  padding: 2px 6px;
-  border-radius: 12px;
+  padding: 0px;
 }
 
 .searchIcon {
@@ -321,7 +321,7 @@ button.laptopviewall {
 }
 
 .searchInput:focus {
-  border-color: #2a2a2a;
+  border-color: #1968b3;
   outline: none;
 }
 
@@ -346,8 +346,8 @@ button.laptopviewall {
 }
 
 .selectedCategory .imageBg {
-  box-shadow: 0px 0px 5px 1px #0e61af94;
-  border: none;
+  /* box-shadow: 0px 0px 5px 1px #0e61af94; */
+  border: 1px solid #1968b3;
 }
 
 .selectedCategory .imageBg .cardName {
@@ -466,6 +466,7 @@ span.dotButton {
     width: 100%;
     padding: 10px;
     border-radius: 0;
+    gap: 16px;
     /* from old <550px radius: 0 */
   }
 
@@ -557,6 +558,7 @@ span.dotButton {
 
   .sliderWrapper {
     margin-bottom: 0;
+    height: 115px;
   }
 
   .sellerbanner .rightContent .sliderWrapper .imgSlider .imgCard .imageBg img {

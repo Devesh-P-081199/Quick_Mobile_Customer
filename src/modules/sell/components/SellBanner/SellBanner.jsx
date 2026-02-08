@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import BannerImage from "../../../../assets/images/static/banner-img.png";
 import styles from "./SellBanner.module.css";
 
 // Custom hook for data management
@@ -129,10 +128,10 @@ function SellHomeBanner({ onViewAllClick }) {
         <div className={styles.sellerbanner}>
           {/* Left banner image */}
           <div className={styles.leftImg}>
-            <img 
-              src={categoryBannerUrl || BannerImage} 
-              alt="Sell Banner" 
-              title="Sell Banner" 
+            <img
+              src={categoryBannerUrl}
+              alt="Sell Banner"
+              title="Sell Banner"
             />
           </div>
 

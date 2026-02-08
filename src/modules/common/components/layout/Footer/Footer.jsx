@@ -133,7 +133,7 @@ const Footer = () => {
               <a href="#">Claim Warranty</a> */}
               <a href="#">Become Partner</a>
               <a href="#">Franchise</a>
-              {/* <a href="#">Bulk Buying</a> */}
+              <a href="#">Bulk Buying</a>
               {/* <a href="#">Become Partner Store</a> */}
             </div>
           </div>
@@ -260,7 +260,7 @@ const Footer = () => {
               // "Claim Warranty",
               "Become Partner",
               "Franchise",
-              // "Bulk Buying",
+              "Bulk Buying",
               // "Become Partner Store",
             ]}
           />

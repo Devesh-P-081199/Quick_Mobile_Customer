@@ -799,17 +799,20 @@
 }
 
 .userProfilePic {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
 }
 
 .userIconDefault {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   flex-shrink: 0;
+  background-color: #1968b3;
+  border-radius: 50px;
+  padding: 4px;
 }
 
 .dropdownContainer {
@@ -1123,7 +1126,7 @@
   min-width: 200px;
   flex-shrink: 0;
   flex: 0 0 auto;
-  max-height: 400px;
+  max-height: fit-content;
   overflow-y: auto;
   gap: 10px;
   background: #fff;
@@ -1141,14 +1144,14 @@
   align-items: center;
   font-weight: 500;
   transition: background 0.2s, color 0.2s;
-  color: #333;
+  color: #000000;
   font-size: 14px;
 }
 
 .categoryItem:hover,
 .categoryItem.active {
   background-color: #eaf3ff;
-  color: #2874f0;
+  color: #1968b3;
 }
 
 .categoryItem img {
@@ -1172,6 +1175,7 @@
 .arrow img {
   float: right;
   font-weight: bold;
+  width: 14px;
   height: 14px;
   transform: rotate(180deg);
 }
@@ -1230,7 +1234,7 @@
 }
 
 .brandItems span:hover {
-  color: #2874f0;
+  color: #1968b3;
 }
 
 .brandName {
@@ -1239,7 +1243,40 @@
 }
 
 .brandName:hover {
-  color: #2874f0;
+  color: #1968b3;
+}
+
+.popularBrandsHeading {
+  padding: 10px 5px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.allPhonesHeaderButton {
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.allPhonesHeaderButton .arrow img {
+  transform: rotate(0deg);
+}
+
+.allBrandsButton {
+  font-size: 14px;
+  font-weight: 450;
+}
+
+.allPhonesHeaderButton:hover {
+  color: #1968b3;
 }
 
 .productItem {
@@ -1661,7 +1698,7 @@
 }
 
 .navItemNoDropdown:hover {
-  color: #0a66c2;
+  color: #1968b3;
 }
 
 .navItemNoDropdown span {
