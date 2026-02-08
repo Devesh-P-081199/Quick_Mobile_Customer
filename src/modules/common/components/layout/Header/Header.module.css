@@ -268,7 +268,8 @@
   z-index: var(--z-index-overlay);
 }
 
-.modal {
+/* City Modal Specific Styles */
+.cityModal {
   position: fixed;
   z-index: var(--z-index-modal);
   background: var(--color-surface);
@@ -283,6 +284,23 @@
   max-width: 90vw;
   max-height: 462px;
   overflow-y: auto;
+}
+
+/* Login Modal Specific Styles */
+.loginModal {
+  position: fixed;
+  z-index: var(--z-index-modal);
+  background: #1968b3;
+  border-radius: 10px;
+  box-shadow: var(--shadow-xl);
+  top: 11%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 462px;
+  max-width: 90vw;
+  max-height: 462px;
+  overflow: hidden;
 }
 
 .modalHeader {
@@ -1678,7 +1696,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1002;
 }
 
 .modalContent {
@@ -1740,10 +1758,6 @@
 
 .cancelBtn:hover {
   background: #f9fafb;
-}
-
-.logoutBtn:hover {
-  background: #dc2626;
 }
 
 @keyframes fadeIn {
@@ -2153,7 +2167,7 @@
     gap: 10px;
   }
 
-  .modal {
+  .cityModal {
     width: 100%;
     max-width: 100vw;
     top: 0%;
@@ -2162,6 +2176,16 @@
     overflow: scroll;
     border-radius: 0px;
     padding: 12px 10px;
+  }
+
+  .loginModal {
+    width: 100%;
+    max-width: 100vw;
+    top: 0%;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: scroll;
+    border-radius: 0px;
   }
 
   .modalHeader {

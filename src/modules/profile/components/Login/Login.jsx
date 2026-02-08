@@ -93,7 +93,7 @@ const Login = ({ setShowLoginModal }) => {
   };
 
   return (
-    <section className={styles.loginWrapper}>
+    <div className={styles.loginWrapper}>
       <div className={styles.modalBox}>
         {/* Left Section */}
         <div className={styles.leftSection}>
@@ -128,6 +128,7 @@ const Login = ({ setShowLoginModal }) => {
           <form
             onSubmit={otpSent ? handleSignUp : handleSendOtp}
             className={styles.form}
+            autoComplete="off"
           >
             {!otpSent ? (
               <>
@@ -141,7 +142,7 @@ const Login = ({ setShowLoginModal }) => {
                 <div className={styles.inputWrapper}>
                   <span className={styles.countryCode}>+91</span>
                   <input
-                    type="tel"
+                    type="text"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     maxLength="10"
@@ -151,6 +152,7 @@ const Login = ({ setShowLoginModal }) => {
                       setMobile(value);
                     }}
                     className={styles.inputField}
+                    autoComplete="new-password"
                   />
                 </div>
                 <p className={styles.terms}>
@@ -174,7 +176,7 @@ const Login = ({ setShowLoginModal }) => {
               <>
                 <h3 className={styles.heading}>Login/Signup</h3>
                 <p className={styles.otpSentText}>
-                  We’ve sent an OTP to your registered mobile number{" "}
+                  We’ve sent an OTP to your registered mobile number{" "}<br></br>
                   <span>+91-{mobile}</span>
                   <span
                     className={styles.editLink}
@@ -188,7 +190,7 @@ const Login = ({ setShowLoginModal }) => {
                   {otp.map((digit, index) => (
                     <input
                       key={index}
-                      type="tel"
+                      type="text"
                       inputMode="numeric"
                       pattern="[0-9]*"
                       maxLength="1"
@@ -197,6 +199,8 @@ const Login = ({ setShowLoginModal }) => {
                       ref={(el) => (otpRefs.current[index] = el)}
                       onChange={(e) => handleOtpChange(e.target.value, index)}
                       onKeyDown={(e) => handleOtpKeyDown(e, index)}
+                      autoComplete="new-password"
+                      name={`field-${index}`}
                     />
                   ))}
                 </div>
@@ -230,10 +234,10 @@ const Login = ({ setShowLoginModal }) => {
               style={
                 !otpSent && !isTermsChecked
                   ? {
-                      backgroundColor: "#e0e0e0",
-                      color: "#aaa",
-                      cursor: "not-allowed",
-                    }
+                    backgroundColor: "#e0e0e0",
+                    color: "#aaa",
+                    cursor: "not-allowed",
+                  }
                   : {}
               }
             >
@@ -242,7 +246,7 @@ const Login = ({ setShowLoginModal }) => {
           </form>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

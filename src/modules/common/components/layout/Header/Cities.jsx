@@ -313,8 +313,8 @@ const Cities = () => {
     <>
       {isModalOpen && (
         <>
-          <div className={styles.modalBackdrop}></div>
-          <div className={styles.modal}>
+          <div className={styles.modalBackdrop} onClick={toggleModal}></div>
+          <div className={styles.cityModal} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalHeader}>
               <h2>Choose Location</h2>
               <button onClick={toggleModal} className="closebutton">

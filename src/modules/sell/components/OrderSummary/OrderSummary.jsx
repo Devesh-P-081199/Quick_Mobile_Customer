@@ -566,8 +566,8 @@ function OrderSummary() {
         </div>
 
         {showAnswersModal && (
-          <div className={styles.modalOverlay}>
-            <div className={styles.modalContent}>
+          <div className={styles.modalOverlay} onClick={() => setShowAnswersModal(false)}>
+            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
               <Answers
                 onBack={() => setShowAnswersModal(false)}
                 onRecalculate={() =>
@@ -657,8 +657,8 @@ function OrderSummary() {
 
         {/* Modal Coupon Content for MOBILE VIEW ONLY (Triggered by Button) */}
         {isCouponModalOpen && (
-          <div className={styles.modalOverlay}>
-            <div className={styles.simpleModal}>
+          <div className={styles.modalOverlay} onClick={closeCouponModal}>
+            <div className={styles.simpleModal} onClick={(e) => e.stopPropagation()}>
               <button className={styles.closeButton} onClick={closeCouponModal}>
                 <img src={closeIcon} alt="Close" />
               </button>

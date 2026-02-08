@@ -1009,8 +1009,8 @@ const Header = () => {
         </div>
         {/* Login/Signup Modal */}
         {isLoginModalOpen && (
-          <div className={styles.loginmodalBackdrop}>
-            <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+          <div className={styles.loginmodalBackdrop} onClick={() => setIsLoginModalOpen(false)}>
+            <div className={styles.loginModal} onClick={(e) => e.stopPropagation()}>
               <Suspense fallback={<Loader />}>
                 {authType === "login" && (
                   <Login onSwitchToSignup={handleSignupClick} />
@@ -2052,8 +2052,8 @@ const Header = () => {
       </div>
 
       {showLogoutModal && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modalContent}>
+        <div className={styles.modalOverlay} onClick={() => setShowLogoutModal(false)}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <h3>Are you sure you want to logout?</h3>
             <p>Hope to see you back soon!!</p>
             <div className={styles.modalActions}>

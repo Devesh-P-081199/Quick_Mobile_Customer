@@ -137,8 +137,8 @@ const ProfileCard = ({ onOptionClick }) => {
       </div>
 
       {showLogoutModal && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modalContent}>
+        <div className={styles.modalOverlay} onClick={() => setShowLogoutModal(false)}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <h3>Are you sure you want to logout?</h3>
             <p>Hope to see you back soon!!</p>
             <div className={styles.modalActions}>

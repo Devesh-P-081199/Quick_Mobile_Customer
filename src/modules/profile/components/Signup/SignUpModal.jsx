@@ -13,10 +13,10 @@ const SignUpModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
   // handleloginclose
 
-  const handleSignupClick = () => {};
+  const handleSignupClick = () => { };
 
   return (
-    <div className={styles.loginmodalBackdrop}>
+    <div className={styles.loginmodalBackdrop} onClick={onClose}>
       <div
         className={styles.modal}
         onClick={(e) => e.stopPropagation()} // prevent backdrop close when clicking inside modal
