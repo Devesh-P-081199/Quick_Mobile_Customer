@@ -5,10 +5,11 @@ import { AiFillGolden } from "react-icons/ai";
 import { RiCopperCoinFill } from "react-icons/ri";
 import { LiaCarSideSolid } from "react-icons/lia";
 import { IoHomeOutline } from "react-icons/io5";
-import wasteImg from "../../../../../assets/E-Waste.png";
+import wasteImg from "../../../../../assets/E-Waste.jpeg";
 import resourcesImg from "../../../../../assets/Resources.png";
 import economyImg from "../../../../../assets/Economy.png";
-import emissionImg from "../../../../../assets/Emissions.png";
+import technologyImg from "../../../../../assets/Technology.jpeg";
+import emissionImg from "../../../../../assets/Emissions.jpeg";
 
 const QuickImpact = () => {
   return (
@@ -201,7 +202,7 @@ const QuickImpact = () => {
             </p>
           </div>
           <div className={styles.imageBox}>
-            <img src={economyImg} alt="Affordable & Sustainable" />
+            <img src={technologyImg} alt="Affordable & Sustainable" />
           </div>
         </div>
         {/*Table div */}

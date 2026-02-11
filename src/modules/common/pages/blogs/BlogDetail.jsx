@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import styles from "./BlogDetail.module.css";
 import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
 import blogsData from "./block-content.json";
+import { slugify } from "../../../../Utils/slugify";
 
 const BlogDetail = () => {
-  const { blogId } = useParams();
+  const { blogTitle } = useParams();
   // const navigate = useNavigate();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -14,11 +15,13 @@ const BlogDetail = () => {
   };
 
   useEffect(() => {
-    // Find blog by _id
-    const foundBlog = blogsData.find((b) => b._id === blogId);
+    // Find blog by matching slugified title or _id (for backward compatibility or direct access)
+    const foundBlog = blogsData.find(
+      (b) => slugify(b.title) === blogTitle || b._id === blogTitle
+    );
     setBlog(foundBlog);
     setLoading(false);
-  }, [blogId]);
+  }, [blogTitle]);
 
   if (loading) {
     return (

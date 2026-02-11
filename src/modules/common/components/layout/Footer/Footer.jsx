@@ -131,9 +131,9 @@ const Footer = () => {
               <Link to="/our-stores">Our Stores</Link>
               {/* <a href="#">Register Warranty</a>
               <a href="#">Claim Warranty</a> */}
-              <a href="#">Become Partner</a>
-              <a href="#">Franchise</a>
-              <a href="#">Bulk Buying</a>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfN2ViBAlS-5vEcaD5BtRPd9b5Y6fdSfFJzWcQQNgh3_SrhRg/viewform">Become Partner</a>
+              <a href="https://forms.gle/EoqRZukySmqsnr547">Franchise</a>
+              <a href="https://forms.gle/9wftASTsuwfvcdWPA">Bulk Buying</a>
               {/* <a href="#">Become Partner Store</a> */}
             </div>
           </div>
@@ -157,19 +157,19 @@ const Footer = () => {
             {/* Follow Us Section - Moved to logo column */}
             <div className={styles.followUsSection}>
               <div className={styles.socialIconsLarge}>
-                <a href="#" className={styles.socialIconLink}>
+                <a href="https://www.facebook.com/share/18536k5MMQ/?mibextid=wwXIfr" className={styles.socialIconLink}>
                   <img src={facebookIcon} alt="Facebook" />
                 </a>
-                <a href="#" className={styles.socialIconLink}>
+                <a href="https://www.instagram.com/quickmobile.in?igsh=YXJuMTNlb3Nmczc2" className={styles.socialIconLink}>
                   <img src={instagramIcon} alt="Instagram" />
                 </a>
-                <a href="#" className={styles.socialIconLink}>
+                {/* <a href="#" className={styles.socialIconLink}>
                   <img src={xIcon} alt="X" />
-                </a>
-                <a href="#" className={styles.socialIconLink}>
+                </a> */}
+                <a href="https://youtube.com/@quickmobile9809?si=4Gy-Ls_YeE7_ENZQ" className={styles.socialIconLink}>
                   <img src={youtubeIcon} alt="YouTube" />
                 </a>
-                <a href="#" className={styles.socialIconLink}>
+                <a href="https://www.linkedin.com/company/quickmobile-in" className={styles.socialIconLink}>
                   <img src={linkedIn} alt="LinkediIn" />
                 </a>
               </div>
@@ -258,9 +258,9 @@ const Footer = () => {
               { text: "Our Stores", path: "/our-stores" },
               // "Register Warranty",
               // "Claim Warranty",
-              "Become Partner",
-              "Franchise",
-              "Bulk Buying",
+              { text: "Become Partner", path: "https://docs.google.com/forms/d/e/1FAIpQLSfN2ViBAlS-5vEcaD5BtRPd9b5Y6fdSfFJzWcQQNgh3_SrhRg/viewform" },
+              { text: "Franchise", path: "https://forms.gle/EoqRZukySmqsnr547" },
+              { text: "Bulk Buying", path: "https://forms.gle/9wftASTsuwfvcdWPA" },
               // "Become Partner Store",
             ]}
           />
@@ -275,19 +275,19 @@ const Footer = () => {
               {/* Follow Us Section */}
               <div className={styles.followUsSection}>
                 <div className={styles.socialIconsLarge}>
-                  <a href="#" className={styles.socialIconLink}>
+                  <a href="https://www.facebook.com/share/18536k5MMQ/?mibextid=wwXIfr" className={styles.socialIconLink}>
                     <img src={facebookIcon} alt="Facebook" />
                   </a>
-                  <a href="#" className={styles.socialIconLink}>
+                  <a href="https://www.instagram.com/quickmobile.in?igsh=YXJuMTNlb3Nmczc2" className={styles.socialIconLink}>
                     <img src={instagramIcon} alt="Instagram" />
                   </a>
-                  <a href="#" className={styles.socialIconLink}>
+                  {/* <a href="#" className={styles.socialIconLink}>
                     <img src={xIcon} alt="X" />
-                  </a>
-                  <a href="#" className={styles.socialIconLink}>
+                  </a> */}
+                  <a href="https://youtube.com/@quickmobile9809?si=4Gy-Ls_YeE7_ENZQ" className={styles.socialIconLink}>
                     <img src={youtubeIcon} alt="YouTube" />
                   </a>
-                  <a href="#" className={styles.socialIconLink}>
+                  <a href="https://in.linkedin.com/company/quickmobiles" className={styles.socialIconLink}>
                     <img src={linkedIn} alt="LinkediIn" />
                   </a>
                 </div>

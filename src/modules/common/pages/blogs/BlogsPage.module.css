@@ -148,6 +148,10 @@
     padding: 15px 10px;
   } */
 
+  .headerSection {
+    margin-top: 20px;
+  }
+
   .pageTitle {
     font-size: 20px;
   }
@@ -170,5 +174,6 @@
 
   .blogsGrid {
     grid-template-columns: repeat(1, 1fr);
+    margin-bottom: 20px;
   }
 }

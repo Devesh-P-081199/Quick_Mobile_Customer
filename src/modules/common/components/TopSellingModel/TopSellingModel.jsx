@@ -1,4 +1,5 @@
 import styles from "./TopSellingModel.module.css";
+import { useNavigate } from "react-router-dom";
 import leftCircleIcon from "../../../../assets/icons/Frame 32.svg";
 import rightCircleIcon from "../../../../assets/icons/Frame 42.svg";
 import CommonSlider from "../ui/Slider/CommonSlider";
@@ -26,27 +27,63 @@ const getImageForModel = (modelName) => {
 };
 
 const brands = [
-  { name: "Apple iPhone 12" },
-  { name: "Apple iPhone 12 Pro" },
-  { name: "Apple iPhone 14" },
-  { name: "OnePlus 11" },
-  { name: "Oppo F21 Pro" },
-  { name: "Poco M3" },
-  { name: "Realme 8" },
-  { name: "Realme Narzo 20A" },
-  { name: "Xiaomi Redmi Note 9 Pro" },
-  { name: "Xiaomi Redmi Note 7" },
-  { name: "Samsung Galaxy S21" },
-  { name: "Samsung Galaxy A14" },
-  { name: "Samsung Galaxy M14" },
-  { name: "Samsung Galaxy Note 20" },
-  { name: "Vivo V25" },
-].map((brand) => ({
-  ...brand,
-  icon: getImageForModel(brand.name),
-}));
+  {
+    name: "Apple iPhone 12",
+    url: "/sell-old-mobile/sell-used-apple-iphone-12",
+  },
+  {
+    name: "Apple iPhone 12 Pro",
+    url: "/sell-old-mobile/sell-used-apple-iphone-12-pro",
+  },
+  {
+    name: "Apple iPhone 14",
+    url: "/sell-old-mobile/sell-used-apple-iphone-14",
+  },
+  { name: "OnePlus 11", url: "/sell-old-mobile/sell-used-oneplus-11-5g" },
+  {
+    name: "Oppo F21 Pro",
+    url: "/sell-old-mobile/sell-old-oppo-f21-pro-8gb128gb",
+  },
+  { name: "Poco M3", url: "/sell-old-mobile/sell-used-poco-m3" },
+  { name: "Realme 8", url: "/sell-old-mobile/sell-used-realme-8" },
+  {
+    name: "Realme Narzo 20A",
+    url: "/sell-old-mobile/sell-used-realme-narzo-20a",
+  },
+  {
+    name: "Xiaomi Redmi Note 9 Pro",
+    url: "/sell-old-mobile/sell-used-xiaomi-redmi-note-9-pro",
+  },
+  {
+    name: "Xiaomi Redmi Note 7",
+    url: "/sell-old-mobile/sell-used-xiaomi-redmi-note-7",
+  },
+  {
+    name: "Samsung Galaxy S21",
+    url: "/sell-old-mobile/sell-used-samsung-galaxy-s21-5g",
+  },
+  {
+    name: "Samsung Galaxy A14",
+    url: "/sell-old-mobile/sell-used-samsung-galaxy-a14-5g",
+  },
+  {
+    name: "Samsung Galaxy M14",
+    url: "/sell-old-mobile/sell-used-samsung-galaxy-m14-5g",
+  },
+  {
+    name: "Samsung Galaxy Note 20",
+    url: "/sell-old-mobile/sell-old-samsung-galaxy-note-20-8gb256gb",
+  },
+  { name: "Vivo V25", url: "/sell-old-mobile/sell-used-vivo-v25-5g" },
+  { name: "Mi note 14 pro", url: "/sell-old-mobile/sell-old-mi-note-14-pro-128gb" },
+]
+  .map((brand) => ({
+    ...brand,
+    icon: getImageForModel(brand.name),
+  }));
 
 function TopSellingModel() {
+  const navigate = useNavigate();
   return (
     <div className="page-content-wrapper">
       <div className="wrapper">
@@ -58,7 +95,12 @@ function TopSellingModel() {
           <CommonSlider
             items={brands}
             renderItem={(item, index) => (
-              <div className={styles.brandSingleBox} key={index}>
+              <div
+                className={styles.brandSingleBox}
+                key={index}
+                onClick={() => navigate(item.url)}
+                style={{ cursor: "pointer" }}
+              >
                 <div className={styles.imgIndividual}>
                   <img src={item.icon} alt={item.name} title={item?.name} />
                 </div>

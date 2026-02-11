@@ -29,7 +29,7 @@ function StoresListPage() {
       <MobileBackHeader title="Our Stores" />
       <div className={styles.storesListPage}>
         <div className="wrapper page-content-wrapper">
-          <h1 className={styles.pageTitle}>Our Store</h1>
+          <h1 className={styles.pageTitle}>Our Stores</h1>
           <p className={styles.pageDescription}>
             Visit our store for the best deals on refurbished phones, repairs,
             and accessories

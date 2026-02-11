@@ -1627,7 +1627,7 @@ const Header = () => {
                 "Buy Phone",
                 "Recycle Device",
                 "Accessories",
-                "Our Store",
+                "Our Stores",
                 "More",
               ].map((item, index) => (
                 <div
@@ -1664,6 +1664,10 @@ const Header = () => {
 
                     if (item === "Sell Gadgets") {
                       navigate("/sell-gadgets");
+                    }
+
+                    if (item === "Our Stores") {
+                      navigate("/our-stores");
                     }
                   }}
                   onMouseLeave={() => {
@@ -2088,7 +2092,7 @@ const Header = () => {
                       </div>
                     )}
 
-                  {item === "Our Store" && hoveredItem === "Our Store" && (
+                  {item === "Our Stores" && hoveredItem === "Our Stores" && (
                     <div
                       className={styles.dropdownMenu}
                       ref={dropdownRef}
@@ -2105,7 +2109,7 @@ const Header = () => {
                         willChange: "transform",
                         backfaceVisibility: "hidden",
                       }}
-                      onMouseEnter={() => setHoveredItem("Our Store")}
+                      onMouseEnter={() => setHoveredItem("Our Stores")}
                       onMouseLeave={() => {
                         setHoveredItem(null);
                       }}

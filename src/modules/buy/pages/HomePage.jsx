@@ -48,7 +48,7 @@ const HomePage = () => {
         </div>
 
         {/* FooterContent excluded - no wrapper */}
-        <FooterContent />
+        <FooterContent page="home" />
       </div>
     </>
   );

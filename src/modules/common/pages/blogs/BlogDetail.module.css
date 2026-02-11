@@ -71,4 +71,13 @@
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+
+  .blogHeader {
+    margin-top: 20px;
+  }
+
+  .blogContent {
+    margin-bottom: 20px;
+  }
+}

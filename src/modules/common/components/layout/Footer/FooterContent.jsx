@@ -1,166 +1,267 @@
 import Style from "./FooterContent.module.css";
 
-function FooterContent() {
+function FooterContent({ page = "home" }) {
+  const isHomePage = page === "home";
+
+  if (isHomePage) {
+    return (
+      <div className={`page-content-wrapper ${Style.footerSection}`}>
+        <div className={Style.footerContentContainer}>
+          <div className={Style.sectionBlock}>
+            <h2 className={Style.mainHeading}>
+              Buy or Sell Your Old Phone Online with Quick Mobile
+            </h2>
+            <p className={Style.description}>
+              Quick Mobile is India’s trusted online platform to sell old mobile
+              phones, buy refurbished mobiles, and get mobile phone repairs all
+              in one place. We provide a fast, secure, and 100% transparent
+              process so you can upgrade your device or earn instant cash
+              without stepping out of your home. In today’s digital world,
+              everyone wants the latest smartphone at the best price. Quick
+              Mobile helps you check your phone’s value online, sell it at the
+              best market price, or buy a high-quality refurbished smartphone at
+              an affordable cost.
+            </p>
+          </div>
+
+          <div className={Style.sectionBlock}>
+            <h3 className={Style.subHeading}>
+              Why Quick Mobile is the Best Platform to Sell Old Phones
+            </h3>
+            <p className={Style.description}>
+              Selling a second-hand phone can be time-consuming and risky. With
+              Quick Mobile, you get a hassle-free phone selling experience.
+            </p>
+          </div>
+
+          <div className={Style.sectionBlock}>
+            <h3 className={Style.subHeading}>
+              Where Can I Sell My Phone Online?
+            </h3>
+            <p className={Style.description}>
+              With Quick Mobile, you can sell your used phone instantly. No more
+              waiting for buyers or bargaining.
+            </p>
+            <p className={Style.description}>
+              Benefits:
+              <br />
+              * Best price guarantee
+              <br />
+              * Free doorstep pickup across India
+              <br />
+              * Instant payment via UPI, bank transfer, or cash
+              <br />* 100% safe and transparent process
+            </p>
+          </div>
+
+          <div className={Style.sectionBlock}>
+            <h3 className={Style.subHeading}>
+              Buy Refurbished and Second-Hand Mobiles Online
+            </h3>
+            <p className={Style.description}>
+              Worried about fraud while buying used phones? At Quick Mobile, all
+              refurbished mobiles are verified, tested, and quality certified by
+              professionals. Get premium smartphones at up to 60% lower prices
+              than new devices.
+            </p>
+          </div>
+
+          <div className={Style.sectionBlock}>
+            <h3 className={Style.subHeading}>
+              Professional Mobile & iPhone Repair Services
+            </h3>
+            <p className={Style.description}>
+              Quick Mobile offers expert mobile phone repair services, including
+              genuine iPhone repairs. All parts are replaced with certified
+              components to ensure top performance.
+            </p>
+          </div>
+
+          <div className={Style.sectionBlock}>
+            <h3 className={Style.subHeading}>Our Core Advantages</h3>
+            <p className={Style.description}>
+              * Best Price for Old Phones
+              <br />
+              * Certified Refurbished Mobiles
+              <br />
+              * Fast and Reliable Repair Services
+              <br />
+              * Safe & Secure Transactions
+              <br />* Quick Doorstep Service
+            </p>
+          </div>
+
+          <div className={Style.sectionBlock}>
+            <h3 className={Style.subHeading}>
+              Your One-Stop Mobile Marketplace
+            </h3>
+            <p className={Style.description}>
+              Quick Mobile offers a complete online solution to:
+              <br />
+              * Sell old phones online
+              <br />
+              * Buy refurbished mobiles
+              <br />* Repair smartphones easily
+            </p>
+            <p className={Style.description}>
+              Visit Quick Mobile, enter your phone details, get an instant
+              price, and complete your order in minutes.
+            </p>
+            <p className={Style.description}>
+              Quick Mobile - The smarter way to buy, sell, and repair
+              smartphones online.
+            </p>
+          </div>
+
+          <div className={Style.sectionBlock}>
+            <h3 className={Style.subHeading}>Quick Links</h3>
+            <p className={Style.description}>
+              Sell Old Apple Mobile | Sell Old Samsung Mobile | Sell Old OnePlus
+              Mobile | Sell Old Oppo Mobile | Sell Old Vivo Mobile | Sell Old
+              Huawei Mobile | Sell Old Xiaomi Mobile | Sell Old Motorola Mobile
+              | Sell Old Google Mobile | Sell Old Lenovo Mobile | Sell Old Asus
+              Mobile | Sell Old Nokia Mobile
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Sell Page Content
   return (
     <div className={`page-content-wrapper ${Style.footerSection}`}>
       <div className={Style.footerContentContainer}>
         <div className={Style.sectionBlock}>
+          <h2 className={Style.mainHeading}>
+            Sell Your Mobile Phone Online with Quick Mobile
+          </h2>
           <p className={Style.description}>
-            Quick Mobile Is The Best Online Platform, Where You Can Sell Old
-            Mobile Phones, Buy Second-Hand Mobile And Can Repair Mobile Phones.
-            Avail Of All These Benefits At Your Own Comfort, By Saving Your Time
-            And Energy. We Give You An Efficient Platform To Buy Refurbished
-            Mobiles, As In This Modern World Everyone Wants To Enjoy The Latest
-            Technology In Their Budget. We Help You Value Your Phone And Know
-            The Actual Worth Of Your Mobile Phone. Selling A Smartphone Isn’t An
-            Easy Job, But Now You Can Do This Easily Too With Us. We Offer
-            Hassle-Free Purchasing And Selling Of Mobile Phones And Bestows Many
-            Other Services Too. Buying And Selling Of Old Mobiles Is A Very
-            Time-Consuming Process And Today’s Life Who Really Want To Waste
-            Their Time. These Entire Problems’ Solution Is To Try These Things
-            On Quick Mobile. We Offer A Variety Of Services That Befits Your
-            Requirement. You Can Also Avail For Mobile Phone Repair Service
-            Through Us Without Having Tension. Every Damaged Part Is Repaired
-            Effectively Through Our Technicians So That You Can Enjoy Your Phone
-            And Its Services Uninterruptedly.
-          </p>
-        </div>
-
-        <div className={Style.sectionBlock}>
-          <p className={Style.description}>
-            While You Come Across The Benefits Of Selling Used Phone With Quick
-            Mobile There Are A Lot Of Beneficial And Valid Points That Will Make
-            You Agree That Selling Your Mobile Phone With The Website Is Your
-            Best Decision Ever.
-          </p>
-        </div>
-
-        <h2 className={Style.mainHeading}>Some Common Queries That We Have-</h2>
-
-        <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>Where I Can Sell My Phone?</h3>
-          <p className={Style.description}>
-            Are You Still Wasting Your Time To Search The Right Customer For
-            Your Phone Or Struggling To Get A Good Price For Your Phone? Now
-            With The Help Of Quick Mobile Just Simply Sell Your Old Mobile Phone
-            At The Best Price Offered. You Can Easily Hand Over Your Phone To
-            Our Doorstep Boy And Avail Easy Payments Through Cash Or Online
-            Modes.
+            Selling your old phone can be difficult when you have to find the
+            right buyer and negotiate for a fair price. With Quick Mobile, you
+            can now sell your old or broken phone online in just a few simple
+            steps without leaving your home. We offer free doorstep pickup,
+            instant payment, and the best resale value for your smartphone.
+            <br />
+            <br />
+            Whether your phone is old, used, or damaged, Quick Mobile helps you
+            turn it into instant cash while saving your time and effort.
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
           <h3 className={Style.subHeading}>
-            Can I Buy A Refurbished Mobile Or Can Buy Secondhand Mobile?
+            Why Sell Your Phone on Quick Mobile?
           </h3>
           <p className={Style.description}>
-            Hearing About Plenty Of Frauds When You Buy Refurbished Mobile Or
-            Old Mobiles, We Lost Our Faith To Spend Money On A Refurbished Or
-            Old Phone. Now, This Option Has Become An Easy One With Quick
-            Mobile, You Can Now Buy Refurbished And Old Phones Easily Without
-            Any Further Tensions. We Offer You The Best Quality And
-            High-Efficiency Phones To Make Your Life Easier And Help You Save
-            Your Money.
+            Quick Mobile provides the most efficient and secure way to sell your
+            smartphone online. Our easy process lets you sell, buy, or repair
+            mobile phones on one trusted platform.
+            <br />
+            <br />
+            * Sell in minutes
+            <br />
+            * Free doorstep pickup
+            <br />
+            * Instant cash or online payment
+            <br />* 100% safe & transparent process
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>Who Can Best Repair My IPhone?</h3>
+          <h3 className={Style.subHeading}>Where Can I Sell My Phone?</h3>
           <p className={Style.description}>
-            When You Put Your Money In An IPhone And It Gets Damaged, You
-            Obviously Will Have A Sincere Thought That Where To Get A Genuine
-            IPhone Repair. Quick Mobile Is The Best Platform You Can Approach
-            Without Hesitating. We Not Only Render You The High-Quality Repair
-            Your IPhone But Also Each And Every Damaged Part Is Replaced With An
-            Original Certified New One.
-          </p>
-          <p className={Style.description}>
-            We Are Your Most Trusted Partners, Whom You Can Completely Rely On
-            Without Having A Second Thought. We Attire You With The Best
-            Facilities And Most Profitable Price Range On Any Of Our Services
-            That Make Your Deal More Efficient. We Aim For Customer
-            Satisfaction, No Matter What Service You Require. Quick Mobile
-            Bestows You The Best Out Of The Best. All Our Services Are Reliable
-            And The Best.
+            Quick Mobile is the easiest answer.
+            <br />
+            We help you sell your old mobile phone in just a few steps.
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>Why Prefer Us?</h3>
+          <h3 className={Style.subHeading}>1. Check Your Phone Price</h3>
           <p className={Style.description}>
-            Though There Are Many Other Online Websites Where You Can Avail For
-            Online Mobile Repair, But We Assure You Of The Best Services And
-            Guarantee You That You’ll Not Regret Your Choice While Choosing Us.
-            Here Are Some Of The Key Factors That You Should Rely On Us:
+            Search your mobile model and get the best resale price instantly.
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>Best Price Guarantee</h3>
+          <h3 className={Style.subHeading}>2. Quote Your Device</h3>
           <p className={Style.description}>
-            We Guarantee You The Best Price For Your Old Smartphone, Helping You
-            Save Your Time And Energy Too. The Main Issue That Arises While
-            Selling Your Old Phone Is The Low Price You Are Getting, But Quick
-            Mobile Offers You The Most Beneficial Deals To You.
+            Answer a few questions about your phone’s condition and receive an
+            instant quote.
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>Verified Product</h3>
+          <h3 className={Style.subHeading}>3. Schedule Free Pickup</h3>
           <p className={Style.description}>
-            All Our Products Are Highly Verified By The Trained Technicians So
-            That You Should Not Face Any Problem While Using Them In Future. All
-            The Mobile Phones Are Highly Tested And Undergo Several Tests To
-            Enhance Their Stability.
+            Choose a pickup time that suits you. Our executive will come to your
+            doorstep and confirm before arriving.
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>Highly Efficient Services</h3>
+          <h3 className={Style.subHeading}>4. Get Instant Payment</h3>
           <p className={Style.description}>
-            All Our Services Are Highly Efficient And You Are Provided With The
-            Phone Repair Service In A Manner That It Performs Even Better Than
-            Before.
+            Once your phone is collected, you receive instant payment via UPI,
+            bank transfer, or cash.
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>Safe And Secure</h3>
+          <h3 className={Style.subHeading}>100% Safe & Secure Process</h3>
           <p className={Style.description}>
-            We Attire A Safe And Secure Procedure For You To Avail Of Our
-            Services. All Your Personal Information And Data Is Safe So That You
-            Can Enjoy Services Tension-Free And Peacefully.
+            Your phone is in safe hands. After pickup:
+            <br />
+            <br />
+            * Your data is fully erased (factory reset)
+            <br />
+            * Your privacy is protected
+            <br />* Your device is refurbished or recycled responsibly
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>Quick Solution To You</h3>
+          <h3 className={Style.subHeading}>Common Questions</h3>
+          <h3 className={Style.subHeading}>
+            Where Can I Sell Broken Smartphones?
+          </h3>
           <p className={Style.description}>
-            We Allow You To Sell Your Old Phone, Buy Old Mobile Phones Online Or
-            Refurbished Phone And Can Get Your Phone Repaired, Being A Solution
-            To Your Main Three Problems.
+            With Quick Mobile, you can sell broken, used, or old phones safely.
+            No more searching for buyers or worrying about fraud.
+          </p>
+          <br />
+          <h3 className={Style.subHeading}>Will I Get a Good Price?</h3>
+          <p className={Style.description}>
+            Yes! We offer the best market value after carefully evaluating your
+            device.
+          </p>
+          <br />
+          <h3 className={Style.subHeading}>Is My Phone Safe?</h3>
+          <p className={Style.description}>
+            Absolutely. We follow strict privacy standards and provide 100% data
+            wipe assurance.
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
+          <h3 className={Style.subHeading}>Trusted by Thousands</h3>
           <p className={Style.description}>
-            Whenever You Decide To Sell Second Hand Mobile Phone Quick Mobile Is
-            Definitely The Solution.
-          </p>
-          <p className={Style.description}>
-            Quick Mobile Is A Website That Helps You Purchase And Sell Mobile
-            Phone With A Complete Online Process And Transparent Procedure. We
-            Help You Deal With Old As Well As Refurbished Phone And Its
-            Accessories At Your Minimum Efforts Yet Complete Efficiency.
+            Quick Mobile has safely sold 1,00,000+ phones with excellent
+            customer reviews. Our technicians ensure complete data erasure so
+            your personal photos, videos, and files are never compromised.
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
+          <h3 className={Style.subHeading}>Sell Your Old Phone Today</h3>
           <p className={Style.description}>
-            Quick Mobile Has A Complete Online Process Of Mobile Repair. All You
-            Have To Do Is Approach Quick Mobile From Its Official Website And
-            Tell Us About Your Mobile Phone. Basically, About Its Brand Model
-            And Its Condition.
+            If you’re wondering “How can I sell my mobile phone with best
+            price?” Quick Mobile is your trusted solution.
+            <br />
+            <br />
+            Quick Mobile - Sell your phone online safely, quickly, and at the
+            best price.
           </p>
         </div>
 
@@ -171,11 +272,7 @@ function FooterContent() {
             Mobile | Sell Old Oppo Mobile | Sell Old Vivo Mobile | Sell Old
             Huawei Mobile | Sell Old Xiaomi Mobile | Sell Old Motorola Mobile |
             Sell Old Google Mobile | Sell Old Lenovo Mobile | Sell Old Asus
-            Mobile | Sell Old Nokia Mobile | Sell Old Sony Mobile | Sell Old LG
-            Mobile | Sell Old HTC Mobile | Sell Old Coolpad Mobile | Sell Old
-            Xolo Mobile | Sell Old Intex Mobile | Sell Old Karbonn Mobile| Sell
-            Old Lava Mobile | Sell Old Panasonic Mobile | Sell Old Gionee Mobile
-            | Sell Old LeEco Mobile | Sell Old Micromax Mobile
+            Mobile | Sell Old Nokia Mobile
           </p>
         </div>
       </div>

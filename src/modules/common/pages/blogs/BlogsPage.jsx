@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./BlogsPage.module.css";
 import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
 import blogsData from "./block-content.json";
+import { slugify } from "../../../../Utils/slugify";
 
 const BlogsPage = () => {
   const navigate = useNavigate();
@@ -18,8 +19,8 @@ const BlogsPage = () => {
   //   "App Development",
   // ];
 
-  const handleBlogClick = (id) => {
-    navigate(`/blog-details/${id}`);
+  const handleBlogClick = (title) => {
+    navigate(`/blogs/${slugify(title)}`);
   };
 
   const getImageUrl = (name) => {
@@ -47,7 +48,7 @@ const BlogsPage = () => {
             <div
               key={blogItem._id}
               className={styles.blogCard}
-              onClick={() => handleBlogClick(blogItem._id)}
+              onClick={() => handleBlogClick(blogItem.title)}
             >
               <img
                 src={getImageUrl(blogItem.img)}
