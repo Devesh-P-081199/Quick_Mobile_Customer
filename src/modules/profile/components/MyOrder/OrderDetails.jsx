@@ -356,10 +356,13 @@ const OrderDetails = () => {
                           const selectedOption =
                             q.options?.[selectedIndices[0]];
                           return (
-                            <p key={q._id || qIdx}>
-                              {pkgIdx + 1}. {q.questionName}{" "}
-                              <span className={styles.answer}>
-                                {selectedOption?.label || "N/A"}
+                            <p key={q._id || qIdx} className={styles.qaItem}>
+                              <span className={styles.dot}>•</span>
+                              <span className={styles.questionText}>
+                                {q.questionName}{" "}
+                                <span className={styles.answer}>
+                                  {selectedOption?.label || "N/A"}
+                                </span>
                               </span>
                             </p>
                           );

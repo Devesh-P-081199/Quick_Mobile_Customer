@@ -75,7 +75,7 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <h3 className={styles.footerHeading}>Services</h3>
             <div className={styles.footerLinks}>
-              <Link to="/sell-old-mobile-phone">Sell Phone</Link>
+              <Link to="/sell-old-mobile">Sell Phone</Link>
               <Link to="/sell-old-tablet">Sell Tablet</Link>
               <Link to="/sell-old-laptop">Sell Laptop</Link>
               <Link to="/sell-old-smartwatch">Sell Smartwatch</Link>
@@ -210,7 +210,7 @@ const Footer = () => {
           <FooterSection
             title="Services"
             links={[
-              { text: "Sell Phone", path: "/sell-old-mobile-phone" },
+              { text: "Sell Phone", path: "/sell-old-mobile" },
               { text: "Sell Tablet", path: "/sell-old-tablet" },
               { text: "Sell Laptop", path: "/sell-old-laptop" },
               { text: "Sell Smartwatch", path: "/sell-old-smartwatch" },
