@@ -111,7 +111,7 @@ select.input option:not([value=""]) {
 
 /* Save As Button Group */
 .saveAsContainer {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .saveAsLabel {
@@ -131,7 +131,8 @@ select.input option:not([value=""]) {
 .radioButton {
   flex: 1;
   padding: 12px 20px;
-  border: 1px solid #e1e1e1;
+  border: 1px solid transparent;
+  box-shadow: 0 0 4px 1px #00000006;
   border-radius: 8px;
   background-color: white;
   color: #000;
@@ -267,6 +268,11 @@ select.input option:not([value=""]) {
   /* Hide desktop button on mobile */
   .desktopButton {
     display: none;
+  }
+
+  .radioButton {
+    border: 1px solid #e1e1e1;
+    box-shadow: none;
   }
 
   /* Show sticky button on mobile */

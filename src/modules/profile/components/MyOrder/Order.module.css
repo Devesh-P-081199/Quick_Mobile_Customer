@@ -27,7 +27,8 @@
   padding: 10px 15px;
   /* More horizontal padding */
   position: relative;
-  border: 0.3px solid #e1e1e1;
+  border: 0.3px solid transparent;
+  box-shadow: 0 0 4px 1px #00000006;
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -218,7 +219,8 @@
   padding: 10px;
   background: #fff;
   border-radius: 15px;
-  border: 0.3px solid #e1e1e1;
+  box-shadow: 0 0 4px 1px #00000006;
+  border: none;
   position: relative;
 }
 
@@ -285,7 +287,8 @@
   background: #fff;
   padding: 20px;
   border-radius: 15px;
-  border: 0.3px solid #e1e1e1;
+  box-shadow: 0 0 4px 1px #00000006;
+  border: none;
 }
 
 .line {
@@ -369,7 +372,8 @@
   color: #000;
   background-color: #fff;
   border-radius: 15px;
-  border: 0.3px solid #e1e1e1;
+  box-shadow: 0 0 4px 1px #00000006;
+  border: none;
   width: 100%;
   overflow: hidden;
 }
@@ -406,7 +410,8 @@
   padding: 10px;
   margin-bottom: 15px;
   border-radius: 15px;
-  border: 0.3px solid #e1e1e1;
+  border: none;
+  box-shadow: 0 0 4px 1px #00000006;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -417,7 +422,8 @@
   padding: 10px;
   background: #fff;
   border-radius: 15px;
-  border: 0.3px solid #e1e1e1;
+  border: none;
+  box-shadow: 0 0 4px 1px #00000006;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -443,7 +449,8 @@
 .reviewForm {
   padding: 10px;
   border-radius: 15px;
-  border: 0.3px solid #e1e1e1;
+  border: none;
+  box-shadow: 0 0 4px 1px #00000006;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -548,7 +555,8 @@
   color: #1968b3;
   font-weight: 500;
   border-radius: 10px;
-  border: 0.3px solid #e1e1e1;
+  border: none;
+  box-shadow: 0 0 4px 1px #00000006;
   margin-bottom: 15px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -677,7 +685,8 @@
   gap: 15px;
   padding: 15px;
   background: #ffffff;
-  border: 0.3px solid #e1e1e1;
+  border: none;
+  box-shadow: 0 0 4px 1px #00000006;
   border-radius: 15px;
 }
 
@@ -707,7 +716,8 @@
 /* Summary Card Styles for Payment Integration */
 .summaryCard {
   background: #ffffff;
-  border: 0.3px solid #e1e1e1;
+  border: none;
+  box-shadow: 0 0 4px 1px #00000006;
   border-radius: 15px;
   padding: 10px;
   margin-bottom: 15px;
@@ -800,6 +810,21 @@
     padding: 0px;
   }
 
+  .reviewForm {
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
+  }
+
+  .modalDeviceInfo {
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
+  }
+
+  .card {
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
+  }
+
   .container {
     padding: 20px 0px;
     gap: 15px;
@@ -845,6 +870,8 @@
     gap: 15px;
     padding: 15px;
     margin: 0 0 15px 0;
+    box-shadow: none;
+    border: 0.3px solid #e1e1e1;
   }
 
   .timelineWrapper::before {
@@ -898,11 +925,13 @@
 
   .conditionBtns {
     flex-direction: row;
-    padding: 10px;
+    padding: 0px;
     justify-content: space-between;
     margin-bottom: 0;
     border-bottom: none;
     border-radius: 15px 15px 0 0;
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .qaSection {
@@ -917,6 +946,8 @@
 
   .partnerBox {
     margin-bottom: 15px;
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .paymentType {
@@ -924,19 +955,27 @@
   }
 
   .summaryCard {
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
     margin-bottom: 15px;
   }
 
   .priceDiff {
     margin-bottom: 15px;
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .transactionDetail {
     margin-bottom: 15px;
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .invoiceBtn {
     margin-bottom: 15px;
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .submitButton {

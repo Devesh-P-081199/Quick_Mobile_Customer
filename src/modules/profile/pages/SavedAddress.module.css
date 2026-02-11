@@ -181,10 +181,11 @@
   align-items: flex-start;
   gap: 10px;
   background: white;
-  border: 0.3px solid #e1e1e1;
   border-radius: 15px;
   padding: 12px;
   transition: box-shadow 0.2s;
+  box-shadow: 0 0 4px 1px #00000006;
+  border: none;
 }
 
 .addressIcon {
@@ -335,6 +336,8 @@
   .addressCard {
     flex-direction: column;
     padding: 10px;
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .addressActions {

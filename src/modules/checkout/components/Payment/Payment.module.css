@@ -347,7 +347,8 @@
 /* Default card style */
 .paymentCard {
   background: #fff;
-  border: 0.3px solid #e1e1e1;
+  border: none;
+  box-shadow: 0px 0px 4px 1px #00000006;
   border-radius: 15px;
   padding: 10px;
   display: flex;
@@ -426,7 +427,8 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 20px;
-  border: 1px solid #e1e1e1;
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 4px 1px #00000006;
   border-radius: 8px;
   background-color: white;
   color: #000;
@@ -530,8 +532,18 @@
     padding: 0px;
   }
 
+  .paymentCard {
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
+  }
+
   .Wrapper {
     flex-direction: column;
+  }
+
+  .tabButton {
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .PaymentBox {

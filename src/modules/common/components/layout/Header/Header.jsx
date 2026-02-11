@@ -13,9 +13,10 @@
 
 import React, {
   useState,
+  useMemo,
   useEffect,
   useContext,
-  useMemo,
+
   useRef,
   Suspense,
   useLayoutEffect,
@@ -201,6 +202,38 @@ const Header = () => {
    * Effect: Handle clicks outside search dropdown to close it
    * Improves UX by closing search results when clicking elsewhere
    */
+  // Fix for ID mismatch across ALL categories: map categoryName to correct Brand Category ID
+  const categoryIdMap = useMemo(() => {
+    const map = {};
+    // Default mapping: Start with API IDs
+    category.forEach((c) => (map[c.categoryName] = c._id));
+
+    // Heuristics: Override with brand data if available
+    const heuristics = {
+      Mobile: ["iphone"],
+      Tablet: ["ipad"],
+      Laptop: ["macbook", "latitude", "thinkpad", "zenbook", "surface"],
+      Smartwatch: ["watch", "galaxy watch"],
+      "Gaming console": ["playstation", "xbox", "nintendo"],
+      "Earbuds 1": ["airpods", "galaxy buds"],
+      PC: ["imac", "desktop"],
+    };
+
+    if (brandsWithProducts?.length) {
+      Object.entries(heuristics).forEach(([catName, keywords]) => {
+        const matchingBrand = brandsWithProducts.find((b) =>
+          b.products?.some((p) =>
+            keywords.some((k) => p.deviceName.toLowerCase().includes(k)),
+          ),
+        );
+        if (matchingBrand) {
+          map[catName] = matchingBrand.categoryId;
+        }
+      });
+    }
+    return map;
+  }, [category, brandsWithProducts]);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -1286,10 +1319,16 @@ const Header = () => {
                         {openMobileCategory === cat._id && (
                           <ul className={styles.subMenu}>
                             {brandsWithProducts.filter(
-                              (b) => b.categoryId === cat._id,
+                              (b) =>
+                                b.categoryId ===
+                                (categoryIdMap[cat.categoryName] || cat._id),
                             ).length > 0 ? (
                               brandsWithProducts
-                                .filter((b) => b.categoryId === cat._id)
+                                .filter(
+                                  (b) =>
+                                    b.categoryId ===
+                                    (categoryIdMap[cat.categoryName] || cat._id),
+                                )
                                 .slice(0, 10)
                                 .map((brand) => (
                                   <li
@@ -1671,10 +1710,9 @@ const Header = () => {
                           <div className={styles.brandList}>
                             {brandsWithProducts
                               .filter((b) => {
-                                const activeCatId = category.find(
-                                  (c) => c.categoryName === activeCategory,
-                                )?._id;
-                                return b.categoryId === activeCatId;
+                                return (
+                                  b.categoryId === categoryIdMap[activeCategory]
+                                );
                               })
                               .slice(0, 10)
                               .map((brandTwo) => (
@@ -1736,7 +1774,9 @@ const Header = () => {
                           Popular Brands
                         </h4>
                         {brandsWithProducts
-                          ?.filter((b) => b.categoryId === mobileCategory?._id)
+                          ?.filter(
+                            (b) => b.categoryId === categoryIdMap["Mobile"],
+                          )
                           ?.slice(0, 5)
                           ?.map((brand) => (
                             <div

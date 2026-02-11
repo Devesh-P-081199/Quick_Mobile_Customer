@@ -113,9 +113,8 @@ function CheckOut() {
                     return (
                       <div
                         key={itemId || index}
-                        className={`${styles.addressCard} ${
-                          isSelected ? styles.selectedCard : ""
-                        }`}
+                        className={`${styles.addressCard} ${isSelected ? styles.selectedCard : ""
+                          }`}
                       >
                         <label className={styles.addressLabel}>
                           <input

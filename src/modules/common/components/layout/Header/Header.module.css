@@ -450,7 +450,8 @@
 
 .otherCityPill {
   padding: 8px 16px;
-  border: 1px solid #ddd;
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 4px 1px #00000006;
   border-radius: 10px;
   background: #fff;
   cursor: pointer;
@@ -2284,6 +2285,7 @@
   .otherCityPill {
     height: 39px;
     border: 1px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .selectedCityPill {

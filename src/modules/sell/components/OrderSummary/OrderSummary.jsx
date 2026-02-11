@@ -333,11 +333,6 @@ function OrderSummary() {
                           }
                         }}
                       >
-                        <img
-                          src={Recalculate}
-                          alt="Recalculate"
-                          className={styles.recalculateImg}
-                        />
                         Recalculate
                       </NavLink>
                     </>
@@ -369,9 +364,6 @@ function OrderSummary() {
                     <p>100% Safe & Secure</p>
                   </div>
                 </div>
-                <p className={styles.BottomPara}>
-                  {`Congratulations! Based on the details you provided, your device is valued at ₹ ${currentEvaluationId?.finalPrice}. This is the best price we offer, reflecting the current market demand and the condition of your device. Ready to move forward?`}
-                </p>
               </div>
 
               <div className={styles.detailsDown}>
@@ -514,7 +506,7 @@ function OrderSummary() {
                 <div className={styles.summaryHeader}>
                   <div className={styles.summaryHeaderLeft}>
                     <img
-                      src={coupon}
+                      src={sale}
                       alt=""
                       className={styles.featureOption}
                       style={{
@@ -627,8 +619,8 @@ function OrderSummary() {
                 <span className={styles.value}>Free</span>
               </div>
               <div className={styles.row}>
-                <span className={styles.label}>Offer/Coupon</span>
-                <span className={styles.value}>₹10.00</span>
+                <span className={styles.label}>Coupon</span>
+                <span className={styles.value}>--</span>
               </div>
               <div className={styles.totalRow}>
                 <span className={styles.totalLabel}>Total</span>

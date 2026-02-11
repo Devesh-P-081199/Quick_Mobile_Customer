@@ -329,7 +329,6 @@
   width: 16px;
   aspect-ratio: 1;
   margin-top: 3px;
-  display: none;
 }
 
 /* Radio button checked state */
@@ -511,6 +510,8 @@
 }
 
 .select-box .icon-space img {
+  width: 100%;
+  aspect-ratio: 1;
   padding: 20px;
   object-fit: contain;
 }

@@ -21,6 +21,7 @@ const SavedAddress = () => {
     try {
       const response = await api.get("/sell-module/user/address");
       setAddresses(response?.data?.data?.addresses || []);
+      console.log("address", response?.data?.data?.addresses);
     } catch (error) {
       console.error("Error fetching addresses:", error);
       toast.error("Error fetching addresses");
@@ -92,8 +93,8 @@ const SavedAddress = () => {
                   <div className={styles.addressName}>{address?.name}</div>
                   <div className={styles.addressPhone}>{address?.phone}</div>
                   <div className={styles.addressText}>
-                    {address?.houseNumber}, {address?.area}, {address?.landmark}
-                    , {address?.city}, {address?.state} - {address?.pincode}
+                    {address?.houseNumber}, {address?.street}, {address?.landmark}
+                    , {address?.cityName}, {address?.state} - {address?.zipCode}
                   </div>
                 </div>
                 <div className={styles.addressActions}>

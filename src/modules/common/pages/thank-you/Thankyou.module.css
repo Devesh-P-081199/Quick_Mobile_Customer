@@ -120,7 +120,8 @@
   padding: 15px;
   border-radius: 15px;
   background-color: #fff;
-  border: 0.3px solid #e1e1e1;
+  border: none;
+  box-shadow: 0px 0px 4px 1px #00000006;
   margin: 15px 0;
 }
 
@@ -209,7 +210,8 @@
   gap: 10px;
   margin-top: 10px;
   text-align: left;
-  border: 0.3px solid #e1e1e1;
+  box-shadow: 0px 0px 4px 1px #00000006;
+  border: none;
 }
 
 .formTitle {
@@ -327,6 +329,11 @@
     font-size: 25px;
   }
 
+  .infoGrid {
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
+  }
+
   .title {
     font-size: 20px;
     width: 95%;
@@ -344,6 +351,8 @@
   .detailsForm {
     margin-bottom: 20px;
     gap: 10px;
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .btnBox {

@@ -154,10 +154,11 @@
   display: flex;
   align-items: center;
   background: white;
-  border: 0.3px solid #e1e1e1;
   border-radius: 15px;
   padding: 10px 15px;
   transition: box-shadow 0.2s;
+  box-shadow: 0 0 4px 1px #00000006;
+  border: none;
 }
 
 .cardIcon {
@@ -335,7 +336,7 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 20px;
-  border: 1px solid #e1e1e1;
+  box-shadow: 0 0 4px 1px #00000006;
   border-radius: 8px;
   background-color: white;
   color: #000;
@@ -346,12 +347,8 @@
   transition: all 0.2s;
 }
 
-.tabButton:hover {
-  border-color: #1968b3;
-}
-
 .activeTab {
-  border-color: #1968b3 !important;
+  border: 1px solid #1968b3 !important;
   background-color: #ddefff !important;
   color: #1968b3 !important;
 }
@@ -384,6 +381,8 @@
   .paymentCard {
     flex-direction: column;
     align-items: flex-start;
+    border: 0.3px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .cardActions {
@@ -394,6 +393,8 @@
   .tabButton {
     padding: 11px 20px;
     height: 45px;
+    border: 1px solid #e1e1e1;
+    box-shadow: none;
   }
 
   .paymentsList {
