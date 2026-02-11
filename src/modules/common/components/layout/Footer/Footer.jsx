@@ -131,9 +131,9 @@ const Footer = () => {
               <Link to="/our-stores">Our Stores</Link>
               {/* <a href="#">Register Warranty</a>
               <a href="#">Claim Warranty</a> */}
-              <a href="#">Become Partner</a>
-              <a href="#">Franchise</a>
-              <a href="#">Bulk Buying</a>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfN2ViBAlS-5vEcaD5BtRPd9b5Y6fdSfFJzWcQQNgh3_SrhRg/viewform">Become Partner</a>
+              <a href="https://forms.gle/EoqRZukySmqsnr547">Franchise</a>
+              <a href="https://forms.gle/9wftASTsuwfvcdWPA">Bulk Buying</a>
               {/* <a href="#">Become Partner Store</a> */}
             </div>
           </div>
@@ -258,9 +258,9 @@ const Footer = () => {
               { text: "Our Stores", path: "/our-stores" },
               // "Register Warranty",
               // "Claim Warranty",
-              "Become Partner",
-              "Franchise",
-              "Bulk Buying",
+              { text: "Become Partner", path: "https://docs.google.com/forms/d/e/1FAIpQLSfN2ViBAlS-5vEcaD5BtRPd9b5Y6fdSfFJzWcQQNgh3_SrhRg/viewform" },
+              { text: "Franchise", path: "https://forms.gle/EoqRZukySmqsnr547" },
+              { text: "Bulk Buying", path: "https://forms.gle/9wftASTsuwfvcdWPA" },
               // "Become Partner Store",
             ]}
           />

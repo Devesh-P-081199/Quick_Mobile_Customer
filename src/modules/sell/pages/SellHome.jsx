@@ -10,6 +10,7 @@ import BrowsePicks from "../../common/components/BrowsePicks/BrowsePicks";
 
 import SuggestionProductSlider from "../../common/components/SuggestionProductSlider/SuggestionProductSlider";
 import Testimonials from "../../buy/components/Cards/Testimonials";
+import FooterContent from "../../common/components/layout/Footer/FooterContent";
 
 function SellHome() {
   const brandRef = useRef(null);
@@ -51,6 +52,7 @@ function SellHome() {
       </div>
 
       <FAQ />
+      <FooterContent page="sell" />
     </>
   );
 }

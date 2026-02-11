@@ -605,7 +605,7 @@ const AppContent = () => {
           }
         />
         <Route
-          path="/blog-details/:blogId"
+          path="/blogs/:blogTitle"
           element={
             <Suspense fallback={<Loader />}>
               <BlogDetail />
