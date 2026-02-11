@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import iPhone from "../../../../assets/images/Products/mobile.png";
 import styles from "./BrowsePicks.module.css";
 import api from "../../../../Utils/api";
@@ -14,8 +15,18 @@ const ALLOWED_CATEGORIES = [
 ];
 
 const BrowsePicks = () => {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleCategoryClick = useCallback(
+    (slug) => {
+      if (slug) {
+        navigate(`/${slug}`);
+      }
+    },
+    [navigate],
+  );
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -62,7 +73,12 @@ const BrowsePicks = () => {
               ))
           ) : categories.length > 0 ? (
             categories.map((category) => (
-              <div key={category._id} className={styles.card}>
+              <div
+                key={category._id}
+                className={styles.card}
+                onClick={() => handleCategoryClick(category?.slug?.sell)}
+                style={{ cursor: "pointer" }}
+              >
                 <div className={styles.imageWrapper}>
                   <img
                     src={category.categoryImageUrl || iPhone}

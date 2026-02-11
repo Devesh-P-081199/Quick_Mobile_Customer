@@ -24,9 +24,9 @@ const benefits = [
   },
   {
     id: 4,
-    title: "Reduction in E-Waste",
+    title: "Affordable and sustainable",
     description:
-      "Prevent approximately 70-80% of the e-waste generated from manufacturing and disposing of a new device.",
+      "Make technology affordable and sustainable by extending the life of devices and choosing smarter alternatives.",
     borderColor: "borderBlue",
   },
 ];

@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import slide1 from "../../../../assets/images/banner_images/homepage_banner_slider_image_01.png";
 import "./HomeSlider.css";
 
 function HomeSlider() {
+  const navigate = useNavigate();
   // Define unique slides (remove duplicates)
   const uniqueSlides = [
     {
@@ -91,7 +93,12 @@ function HomeSlider() {
                 <img src={slide.image} alt="iPhone" className="slider-image" />
                 <h2 className="slider-title">{slide.title}</h2>
                 <p className="slider-description">{slide.description}</p>
-                <button className="slider-button">Sell Now</button>
+                <button
+                  className="slider-button"
+                  onClick={() => navigate("/sell-old-mobile")}
+                >
+                  Sell Now
+                </button>
               </div>
             </div>
           ))}

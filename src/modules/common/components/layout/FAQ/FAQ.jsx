@@ -7,24 +7,24 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "What exactly is a refurbished phone?",
+      question: "How do I sell my old mobile phone on Quick Mobile?",
       answer:
-        "A refurbished phone is a pre-owned device that has been tested, repaired, and restored to working condition.",
+        "Select your phone’s brand and model, answer a few questions about its condition, and receive an instant price quote. If you’re happy with the offer, schedule a free pickup and get paid instantly after device verification.",
     },
     {
-      question: "What are the warranty and return terms for smartphones?",
+      question: "Do you offer doorstep pickup services?",
       answer:
-        "Refurbished phones usually come with a limited warranty and a return policy, depending on the seller.",
+        "Yes, we provide free doorstep pickup across most cities in India. Our executive will visit at your chosen time and location.",
     },
     {
-      question: "What comes with purchasing a refurbished phone?",
+      question: "When will I receive the payment?",
       answer:
-        "Typically, a refurbished phone comes with a charger, accessories, and a warranty, but this may vary by seller.",
+        "You will get instant payment via UPI, bank transfer, or cash right after the device is verified during pickup.",
     },
     {
-      question: "Are refurbished phones tested before being sold?",
+      question: "Is it safe to sell my phone on Quick Mobile?",
       answer:
-        "Yes, all refurbished phones undergo testing to ensure they are fully functional before being resold.",
+        "Absolutely. We ensure 100% data privacy with secure data wiping. Our trained agents and transparent process make selling safe and reliable.",
     },
   ];
 
@@ -45,17 +45,15 @@ const FAQ = () => {
               >
                 <span>{faq.question}</span>
                 <div
-                  className={`${styles.faqIcon} ${
-                    openIndex === index ? styles.open : ""
-                  }`}
+                  className={`${styles.faqIcon} ${openIndex === index ? styles.open : ""
+                    }`}
                 >
                   <img src={uparrow} alt="" />
                 </div>
               </div>
               <div
-                className={`${styles.faqAnswer} ${
-                  openIndex === index ? styles.visible : ""
-                }`}
+                className={`${styles.faqAnswer} ${openIndex === index ? styles.visible : ""
+                  }`}
               >
                 {faq.answer}
               </div>
