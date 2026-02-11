@@ -525,7 +525,7 @@ const AppContent = () => {
           }
         />
         <Route
-          path="/Refund"
+          path="/Return&Refund"
           element={
             <Suspense fallback={<Loader />}>
               <RefundPolicy />

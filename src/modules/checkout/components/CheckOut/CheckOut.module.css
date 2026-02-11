@@ -4,7 +4,7 @@
   width: 100%;
   justify-content: space-between;
   margin: auto;
-  /* gap: 15px; */
+  gap: 15px;
 }
 
 .AddressBox {
@@ -13,7 +13,6 @@
 }
 
 .AddressBox h2 {
-  /* font-family: IBM Plex Sans; */
   font-weight: 500;
   font-size: 28px;
   line-height: 100%;
@@ -39,21 +38,17 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  margin-top: 1rem;
 }
 
 .input {
   border-width: 1px;
-  padding-top: 10px;
-  /* padding-right: 20px; */
-  padding-bottom: 10px;
-  padding-left: 10px;
-  gap: 10px;
+  padding: 10px;
   border-radius: 5px;
   border: 1px solid #00000033;
 }
 
 .label {
-  /* font-family: IBM Plex Sans; */
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -63,7 +58,6 @@
 
 .input::placeholder {
   color: rgb(147, 147, 147);
-  /* font-family: IBM Plex Sans; */
   font-weight: 500;
   font-size: 14px;
   line-height: 100%;
@@ -71,7 +65,6 @@
 }
 
 .AddressBox h3 {
-  /* font-family: IBM Plex Sans; */
   font-weight: 500;
   font-size: 20px;
   line-height: 100%;
@@ -91,64 +84,6 @@
   color: #555555;
 }
 
-@media (max-width: 1200px) {
-  .Wrapper {
-    gap: 15px;
-  }
-}
-
-@media (max-width: 768px) {
-  .Wrapper {
-    flex-direction: column;
-    /* gap: 30px; */
-  }
-
-  .CheckOutSection img {
-    /* display: none; */
-  }
-
-  @media (max-width: 550px) {
-
-    /* h2 {
-
-        display: none;
-       } */
-    .LeftContainer h2 {
-      display: none;
-    }
-
-    .input {
-      background-color: #ffffff;
-    }
-  }
-
-  .LeftContainer {
-    width: 100%;
-    height: 100%;
-    border-width: 0.3px;
-    border-radius: 10px;
-    padding: 0px;
-    background: none;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    border: none;
-  }
-
-  .label {
-    font-size: 12px;
-  }
-
-  .input {
-    font-size: 14px;
-    height: 50px;
-  }
-
-  .input::placeholder {
-    font-size: 12px;
-  }
-}
-
 .buttonContainer {
   margin-top: 1rem;
   display: flex;
@@ -166,20 +101,23 @@
   height: 50px;
 }
 
-/* Container for address boxes */
 .AddressBoxes {
   margin-top: 1rem;
 }
 
-/* Outer flex for column layout */
 .addressList {
   display: flex;
-  /* flex-direction: column; */
-  gap: 20px;
+  flex-direction: column;
+  gap: 15px;
   overflow: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Row flex for wrapping address cards */
+.addressList::-webkit-scrollbar {
+  display: none;
+}
+
 .addressFlex {
   display: flex;
   flex-wrap: wrap;
@@ -188,22 +126,24 @@
   align-items: flex-start;
 }
 
-/* Single address card */
 .addressCard {
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  gap: 8px;
-  background-color: #ebebeb;
-  border-radius: 8px;
-  width: 100%;
-  transition: all 0.2s ease-in-out;
+  flex-direction: column;
+  background: #fff !important;
+  border: none;
+  box-shadow: 0px 0px 4px 1px #00000006;
+  border-radius: 15px;
+  padding: 12px;
   cursor: pointer;
+  transition: all 0.2s ease;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
-/* Radio button styling */
 .addressRadio {
   position: absolute;
   left: 12px;
@@ -212,7 +152,6 @@
   height: 16px;
 }
 
-/* Address text block */
 .addressDetails {
   position: absolute;
   left: 12px;
@@ -229,7 +168,6 @@
   margin: 0;
 }
 
-/* Save As Tag */
 .addressTag {
   position: absolute;
   left: 50%;
@@ -244,38 +182,10 @@
   border: none;
 }
 
-/* Responsive adjustments */
-@media (max-width: 550px) {
-  .addressCard {
-    width: 100%;
-    height: auto;
-    min-height: 170px;
-  }
-
-  .addressDetails {
-    top: 40px;
-  }
-}
-
 .addressBoxes {
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
-
-.addressList {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE/Edge */
-}
-
-.addressList::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari */
 }
 
 .addBtn {
@@ -285,7 +195,6 @@
   border: none;
   min-height: 45px;
   padding: 10px 15px;
-  border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -294,30 +203,8 @@
   color: #1968b3;
   border-radius: 10px;
   border: 0.3px solid #e1e1e1;
-}
-
-.addressCard {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
   justify-content: flex-start;
-  background: #ffffff;
-  border-radius: 10px;
-  /* height: 160px; */
-  padding: 1rem;
-  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); */
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  border: none;
-  align-items: start;
-  border: 0.3px solid #00000033;
-  flex: 0 0 auto;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-}
-
-.selectedCard {
-  /* border: 0.3px solid #000000;  */
 }
 
 .radioInput {
@@ -325,13 +212,13 @@
 }
 
 .customRadio {
-  position: absolute;
-  height: 23px;
-  width: 23px;
-  border: 2px solid #dfdfdf;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #e1e1e1;
   border-radius: 50%;
-  margin-top: 5px;
-  background: white;
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .addressLabel input[type="radio"] {
@@ -347,24 +234,29 @@
   cursor: pointer;
 }
 
-.radioInput:checked+.customRadio {
-  background: rgb(255, 255, 255);
+.radioInput:checked+.customRadio::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #1968b3;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .addressContent {
   font-size: 14px;
   line-height: 1.4;
   color: #000000;
+  flex: 1;
 }
 
 .saveTag {
   color: rgb(0, 0, 0);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
-}
-
-.inputContainer {
-  margin-top: 1rem;
 }
 
 .checkboxLabel {
@@ -375,7 +267,6 @@
   user-select: none;
 }
 
-/* Hide default checkbox */
 .checkboxInput {
   appearance: none;
   -webkit-appearance: none;
@@ -389,7 +280,6 @@
   transition: all 0.2s ease;
 }
 
-/* Tick mark when checked */
 .checkboxInput:checked {
   background-color: #007bff;
   border-color: #007bff;
@@ -407,12 +297,10 @@
   transform: rotate(45deg);
 }
 
-/* Hover effect */
 .checkboxInput:hover {
   border-color: #0056b3;
 }
 
-/* Checkbox text */
 .checkboxText {
   font-size: 14px;
   color: #555;
@@ -428,60 +316,31 @@
   text-decoration: none;
 }
 
-@media screen and (max-width: 550px) {
-  .addressVerifyRadio {
-    height: 16px;
-    width: 31px !important;
-  }
-
-  .CheckOutSection {
-    padding: 10px 0px 90px 0px;
-  }
-
-  .gridBoxes {
-    grid-template-columns: repeat(1, 1fr) !important;
-  }
-}
-
-.addBtn {
-  width: 100%;
-  justify-content: flex-start;
-}
-
-.topLabel {
-  font-size: 12px;
-}
-
-.addressCard {
-  background: #fff !important;
-  border: 0.3px solid #e1e1e1 !important;
-  border-radius: 15px;
-  padding: 12px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.selectedCard {
-  /* background: #e6f0ff ;
-  border: 1px solid #007bff !important; */
-}
-
 .addNewCard {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #f5f5f5;
+  border: 2px dashed #ccc;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-height: 149px;
+}
+
+.addNewCard:hover {
+  background-color: #e6f0ff;
+  border-color: #1968b3;
 }
 
 .plusIcon {
-  font-size: 24px;
-  font-weight: bold;
-  color: #007bff;
+  font-size: 48px;
+  color: #666;
 }
 
-/* Address card with edit/delete buttons */
+.addNewCard:hover .plusIcon {
+  color: #1968b3;
+}
+
 .addressLabel {
   display: flex;
   align-items: flex-start;
@@ -490,7 +349,6 @@
   margin: 0;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -506,20 +364,11 @@
   background-color: #1968b3;
 }
 
-.addressContent {
-  flex: 1;
-}
-
 .addressContent p {
   font-size: 14px;
   line-height: 1.5;
   color: #333;
   margin: 4px 0;
-}
-
-.saveTag {
-  font-size: 16px;
-  font-weight: 500;
 }
 
 .addressActions {
@@ -555,57 +404,6 @@
 .deleteIconBtn {
   color: #dc3545;
   background-color: #ffe6e6;
-}
-
-.customRadio {
-  width: 18px;
-  height: 18px;
-  border: 1px solid #e1e1e1;
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.radioInput:checked+.customRadio {
-  border-color: #1968b3;
-}
-
-.radioInput:checked+.customRadio::after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background-color: #1968b3;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.addNewCard {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f5f5f5;
-  border: 2px dashed #ccc;
-  cursor: pointer;
-  transition: all 0.2s;
-  min-height: 149px;
-}
-
-.addNewCard:hover {
-  background-color: #e6f0ff;
-  border-color: #1968b3;
-}
-
-.plusIcon {
-  font-size: 48px;
-  color: #666;
-}
-
-.addNewCard:hover .plusIcon {
-  color: #1968b3;
 }
 
 .cancelButton {
@@ -657,7 +455,6 @@
   opacity: 0.6;
 }
 
-/* Empty State */
 .emptyState {
   text-align: center;
   padding: 40px 20px;
@@ -678,7 +475,6 @@
   color: #999 !important;
 }
 
-/* Continue Button Container */
 .continueButtonContainer {
   width: 100%;
   margin: 0px auto;
@@ -718,6 +514,60 @@
 }
 
 @media (max-width: 768px) {
+  .Wrapper {
+    flex-direction: column;
+  }
+
+  .LeftContainer {
+    border: none;
+    gap: 20px;
+    padding: 0;
+    background: none;
+  }
+
+  .LeftContainer h2 {
+    display: none;
+  }
+
+  .label {
+    font-size: 12px;
+  }
+
+  .input {
+    font-size: 14px;
+    height: 50px;
+    background-color: #ffffff;
+  }
+
+  .input::placeholder {
+    font-size: 12px;
+  }
+
+  .addressCard {
+    width: 100%;
+    height: auto;
+    min-height: 170px;
+    border: 0.3px solid #e1e1e1 !important;
+    box-shadow: none;
+  }
+
+  .addressDetails {
+    top: 40px;
+  }
+
+  .addressVerifyRadio {
+    height: 16px;
+    width: 31px !important;
+  }
+
+  .CheckOutSection {
+    padding: 10px 0px 90px 0px;
+  }
+
+  .gridBoxes {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+
   .continueButtonContainer {
     position: fixed;
     bottom: 0;

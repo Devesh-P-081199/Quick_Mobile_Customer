@@ -6,7 +6,7 @@ import instagramIcon from "../../../../../assets/images/icons/instagram-b&w.png"
 import xIcon from "../../../../../assets/images/icons/twitter-b&w.png";
 import youtubeIcon from "../../../../../assets/images/icons/youtube-b&w.png";
 import linkedIn from "../../../../../assets/images/icons/linkedin-b&w.png";
-import logo from "../../../../../assets/QuickSellNewIcons/New_icon_18-10-25.jpg";
+import logo from "../../../../../assets/images/banner_images/Quick_Mobile_Logo.png";
 import uparrow from "../../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 import downarrow from "../../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 import { Link } from "react-router-dom";
@@ -106,7 +106,7 @@ const Footer = () => {
             <div className={styles.footerLinks}>
               <Link to="/FAQPage">FAQ</Link>
               <Link to="/Contact-us">Contact Us</Link>
-              <Link to="/Refund">Return & Refund</Link>
+              <Link to="/Return&Refund">Return & Refund</Link>
               {/* <a href="#">Shipment</a>
               <a href="#">Warranty Policy</a> */}
             </div>
@@ -237,7 +237,7 @@ const Footer = () => {
             links={[
               { text: "FAQ", path: "/FAQPage" },
               { text: "Contact Us", path: "/Contact-us" },
-              { text: "Return & Refund", path: "/Refund" },
+              { text: "Return & Refund", path: "/Return&Refund" },
               // "Shipment",
               // "Warranty Policy",
             ]}

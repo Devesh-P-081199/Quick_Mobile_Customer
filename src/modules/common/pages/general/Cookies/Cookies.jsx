@@ -8,7 +8,7 @@ const Cookies = () => {
   const [ads, setAds] = useState(false);
 
   return (
-    <section className={styles.section}>
+    <div className="page-content-wrapper">
       <div className={styles.container}>
         <h2 className={styles.title}>Cookies</h2>
         <p className={styles.sectionTitle}>
@@ -156,7 +156,7 @@ const Cookies = () => {
           .
         </p>
       </div>
-    </section>
+    </div>
   );
 };
 

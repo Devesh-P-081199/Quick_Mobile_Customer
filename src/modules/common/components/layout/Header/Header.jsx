@@ -24,7 +24,7 @@ import React, {
 import styles from "./Header.module.css";
 
 // Assets - Logo and Icons
-import HeaderLogo from "../../../../../assets/QuickSellNewIcons/New_icon_18-10-25.jpg";
+import HeaderLogo from "../../../../../assets/images/banner_images/Quick_Mobile_Logo.png";
 import dropdownIcon from "../../../../../assets/QuickSellNewIcons/arrow_down.png";
 import usericon from "../../../../../assets/QuickSellNewIcons/user.png";
 import RightArrow from "../../../../../assets/icons/RightArrow.svg";

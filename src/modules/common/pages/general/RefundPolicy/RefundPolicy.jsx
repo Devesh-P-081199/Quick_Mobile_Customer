@@ -2,12 +2,12 @@ import styles from "./RefundPolicy.module.css";
 
 const RefundPolicy = () => {
   return (
-    <div className={styles.wrapper}>
+    <div className="page-content-wrapper">
       <div className={styles.container}>
         <h2 className={styles.heading}>
           Refund & Return Policy – Quick Mobile
         </h2>
-        <p className={styles.date}>Last Updated: [Insert Date]</p>
+        <p className={styles.date}>Last Updated: 11-02-2026</p>
         <p className={styles.intro}>
           At Quick Mobile, we strive to make your experience smooth and
           hassle-free. This Refund & Return Policy explains the conditions under
