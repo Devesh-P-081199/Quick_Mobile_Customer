@@ -468,15 +468,23 @@ const Header = () => {
    */
 
   // Handle brand selection from search results or dropdowns
-  const handleBrandClick = (id, brand) => {
+  const handleBrandClick = (id, brand, e) => {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    console.log("handleBrandClick:", id, brand);
     setIsVisible(false);
     setHoveredItem(null);
+    setIsMobileSearchDrop(false);
 
     // Navigate based on available slug structure
     if (brand?.subCategorySlug) {
       navigate(`/${brand.subCategorySlug}/${brand.slugSell}`);
     } else if (brand?.categorySlug && brand?.slugSell) {
       navigate(`/${brand.categorySlug}/${brand.slugSell}`);
+    } else if (brand?.categoryData?.slug?.sell && brand?.slugSell) {
+      navigate(`/${brand.categoryData.slug.sell}/${brand.slugSell}`);
     } else if (brand?.categoryId && brand?.slugSell) {
       // Look up category slug from categories array
       const brandCategory = category.find((c) => c._id === brand.categoryId);
@@ -491,21 +499,37 @@ const Header = () => {
   };
 
   // Handle product selection from search results
-  const handleProductClick = (id, prod) => {
+  const handleProductClick = (id, prod, e) => {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    console.log("handleProductClick called with:", id, prod);
     setHoveredItem(null);
     setIsVisible(false);
+    setIsMobileSearchDrop(false);
 
     // Navigate based on product's category structure
     if (prod?.subCategorySlug) {
+      console.log("Navigating to subCategorySlug:", prod.subCategorySlug);
       navigate(`/${prod?.subCategorySlug}/${prod.slugSell}`);
     } else if (prod?.categorySlug && prod?.slugSell) {
+      console.log("Navigating to categorySlug:", prod.categorySlug);
       navigate(`/${prod.categorySlug}/${prod.slugSell}`);
+    } else if (prod?.categoryData?.slug?.sell && prod?.slugSell) {
+      console.log("Navigating to categoryData.slug.sell:", prod.categoryData.slug.sell);
+      navigate(`/${prod.categoryData.slug.sell}/${prod.slugSell}`);
     } else if (prod?.categoryId && prod?.slugSell) {
       // Look up category slug from categories array
       const prodCategory = category.find((c) => c._id === prod.categoryId);
       if (prodCategory?.slug?.sell) {
+        console.log("Navigating to categoryId lookup:", prodCategory.slug.sell);
         navigate(`/${prodCategory.slug.sell}/${prod.slugSell}`);
+      } else {
+        console.log("Failed to find category slug via categoryId lookup");
       }
+    } else {
+        console.log("Navigation failed: missing slugs or ID");
     }
 
     // Clean up search state
@@ -514,7 +538,12 @@ const Header = () => {
   };
 
   // Handle category selection from search results or dropdowns
-  const handleCategoryClick = (cat) => {
+  const handleCategoryClick = (cat, e) => {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    console.log("handleCategoryClick:", cat);
     setIsVisible(false);
     setHoveredItem(null);
     navigate(`/${cat.slug.sell}`);
@@ -813,7 +842,9 @@ const Header = () => {
                                     <div
                                       key={cat._id}
                                       className={styles.resultItem}
-                                      onClick={() => handleCategoryClick(cat)}
+                                      onMouseDown={(e) =>
+                                        handleCategoryClick(cat, e)
+                                      }
                                     >
                                       {cat.categoryName}
                                       <span className={styles.resultTag}>
@@ -833,8 +864,8 @@ const Header = () => {
                                     <div
                                       key={brand._id}
                                       className={styles.resultItem}
-                                      onClick={() =>
-                                        handleBrandClick(brand._id, brand)
+                                      onMouseDown={(e) =>
+                                        handleBrandClick(brand._id, brand, e)
                                       }
                                     >
                                       <div>
@@ -866,8 +897,8 @@ const Header = () => {
                                     <div
                                       key={product._id}
                                       className={styles.resultItem}
-                                      onClick={() =>
-                                        handleProductClick(product._id, product)
+                                      onMouseDown={(e) =>
+                                        handleProductClick(product._id, product, e)
                                       }
                                     >
                                       <div className={styles.productImage}>
@@ -1263,6 +1294,14 @@ const Header = () => {
                 onClick={() => {
                   setIsOpen(false); // Close sidebar
                   setBrandModalOpen(true);
+                  if (mobileCategory?._id) {
+                    const firstMobileBrand = brandsWithProducts.find(
+                      (b) => b.categoryId === mobileCategory._id,
+                    );
+                    if (firstMobileBrand) {
+                      setOpenMobileCategory(firstMobileBrand._id);
+                    }
+                  }
                 }}
               >
                 Sell Phone{" "}
@@ -1539,7 +1578,14 @@ const Header = () => {
                               setOpenMobileInnerDropdown(null);
                               setOpenMobileCategory(null);
                               setBrandModalOpen(false);
-                              handleProductClick(prod._id, prod); // Navigate to product page
+                              const parentBrand = brandsWithProducts.find(
+                                (b) => b._id === openMobileCategory,
+                              );
+                              handleProductClick(prod._id, {
+                                ...prod,
+                                categorySlug: parentBrand?.categorySlug,
+                                categoryId: parentBrand?.categoryId,
+                              }); // Navigate to product page
                             }}
                           >
                             <img

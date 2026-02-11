@@ -194,8 +194,8 @@ const OrderDetails = () => {
             className={styles.details}
             style={{ border: "none", padding: 0 }}
           >
-            {/* Partner info */}
-            <div className={styles.partnerBox}>
+            {/* Partner info - HIDDEN as per requirement */}
+            {/* <div className={styles.partnerBox}>
               <div style={{ position: "relative" }}>
                 <img src={account} alt="" className={styles.account} />
                 <div
@@ -224,7 +224,7 @@ const OrderDetails = () => {
               <div className={styles.partnerIcons}>
                 <MdCall size={40} />
               </div>
-            </div>
+            </div> */}
 
             {/* Timeline */}
             <div className={styles.timelineWrapper}>
@@ -315,8 +315,8 @@ const OrderDetails = () => {
               )}
             </div>
 
-            {/* Condition buttons */}
-            <div className={styles.conditionBtns}>
+            {/* Condition buttons - HIDDEN */}
+            {/* <div className={styles.conditionBtns}>
               <button
                 className={
                   selected === "user" ? styles.blackButton : styles.greyButton
@@ -335,53 +335,46 @@ const OrderDetails = () => {
               >
                 Condition by partner
               </button>
-            </div>
+            </div> */}
 
-            {/* Q&A */}
+            {/* Q&A / Condition Selected */}
             <div className={styles.qaSection}>
-              <h4>Functionality</h4>
-              <p>
-                1. Is device on? <span className={styles.answer}>Yes</span>
-              </p>
-              <p>
-                2. Touch working? <span className={styles.answer}>Yes</span>
-              </p>
-              <p>
-                3. Calls working? <span className={styles.answer}>Yes</span>
-              </p>
-              <p>
-                4. Under warranty? <span className={styles.answer}>Yes</span>
-              </p>
-
-              <h4>Condition</h4>
-              <p>5. Front Camera not working</p>
-
-              <h4>Display</h4>
-              <p>
-                6. Spots? <span className={styles.answer}>No</span>
-              </p>
-              <p>
-                7. Lines? <span className={styles.answer}>No</span>
-              </p>
-              <p>
-                8. Scratches? <span className={styles.answer}>No</span>
-              </p>
-              <p>
-                9. Dents? <span className={styles.answer}>No</span>
-              </p>
-
-              <h4>Warranty</h4>
-              <p>
-                10. Warranty? <span className={styles.answer}>3-6 Months</span>
-              </p>
-
-              <h4>Accessories</h4>
-              <p>
-                11. Original Charger? <span className={styles.answer}>Yes</span>
-              </p>
+              <h4>Condition selected</h4>
+              {order?.deviceEvaluationId?.PackagesWithUserAnswer?.length > 0 ? (
+                order.deviceEvaluationId.PackagesWithUserAnswer.map(
+                  (pkg, pkgIdx) => (
+                    <div key={pkg._id || pkgIdx}>
+                      {pkg.questions?.map((q, qIdx) => {
+                        const selectedIndices =
+                          pkg.selectedAnswerIndexMap?.[q._id];
+                        // Assuming single select for now as per typical flow, but handling array
+                        // If selectedIndices is valid array
+                        if (
+                          Array.isArray(selectedIndices) &&
+                          selectedIndices.length > 0
+                        ) {
+                          const selectedOption =
+                            q.options?.[selectedIndices[0]];
+                          return (
+                            <p key={q._id || qIdx}>
+                              {pkgIdx + 1}. {q.questionName}{" "}
+                              <span className={styles.answer}>
+                                {selectedOption?.label || "N/A"}
+                              </span>
+                            </p>
+                          );
+                        }
+                        return null;
+                      })}
+                    </div>
+                  ),
+                )
+              ) : (
+                <p>No condition details available.</p>
+              )}
             </div>
-            {/* Price Difference */}
-            {order?.priceDifference && (
+            {/* Price Difference - HIDDEN */}
+            {/* {order?.priceDifference && (
               <div className={styles.priceDiff}>
                 <div className={styles.priceDiffText}>
                   <span>Price Difference</span>
@@ -398,9 +391,9 @@ const OrderDetails = () => {
                   </span>
                 </span>
               </div>
-            )}
-            {/* Transaction Detail */}
-            <div className={styles.transactionDetail}>
+            )} */}
+            {/* Transaction Detail - HIDDEN */}
+            {/* <div className={styles.transactionDetail}>
               <div
                 className={styles.priceDiffText}
                 style={{
@@ -430,7 +423,7 @@ const OrderDetails = () => {
                     : defaultTransaction.date}
                 </span>
               </div>
-            </div>
+            </div> */}
 
             <button
               className={styles.invoiceBtn}
