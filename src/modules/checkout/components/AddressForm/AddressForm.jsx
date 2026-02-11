@@ -59,6 +59,8 @@ const AddressForm = () => {
     agreement: true,
   });
 
+  const [errors, setErrors] = useState({});
+
   useEffect(() => {
     if (editingAddress) {
       setFormData({
@@ -75,6 +77,10 @@ const AddressForm = () => {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+    // Clear error when user types
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
   const fetchZipDetails = useCallback(async (zipcode) => {
@@ -99,18 +105,50 @@ const AddressForm = () => {
 
   const handleSubmit = async () => {
     try {
-      if (
-        !formData.name ||
-        !formData.email ||
-        !formData.houseNumber ||
-        !formData.street ||
-        !formData.cityName ||
-        !formData.zipCode ||
-        !formData.state ||
-        !formData.agreement ||
-        (formData.saveAs === "Other" && !formData.customAddressType)
-      ) {
-        toast.error("Please fill all required fields");
+      // Helper regex patterns
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^[0-9]{10}$/;
+      const zipRegex = /^[0-9]{6}$/;
+
+      const newErrors = {};
+
+      // Validations
+      if (!formData.name?.trim()) newErrors.name = "Name is required";
+      
+      if (!formData.email?.trim()) {
+        newErrors.email = "Email is required";
+      } else if (!emailRegex.test(formData.email)) {
+        newErrors.email = "Please enter a valid email address";
+      }
+      
+      if (!formData.houseNumber?.trim()) newErrors.houseNumber = "Flat no / House no is required";
+      
+      if (!formData.street?.trim()) newErrors.street = "Area / Street / Locality is required";
+      
+      if (!formData.cityName?.trim()) newErrors.cityName = "City is required";
+      
+      if (!formData.zipCode) {
+        newErrors.zipCode = "Pincode is required";
+      } else if (!zipRegex.test(formData.zipCode)) {
+        newErrors.zipCode = "Pincode must be exactly 6 digits";
+      }
+      
+      if (!formData.state) newErrors.state = "State is required";
+      
+      if (formData.alternatePhone && !phoneRegex.test(formData.alternatePhone)) {
+        newErrors.alternatePhone = "Alternate Phone Number must be exactly 10 digits";
+      }
+      
+      if (formData.saveAs === "Other" && !formData.customAddressType?.trim()) {
+        newErrors.customAddressType = "Please specify the address type";
+      }
+      
+      if (!formData.agreement) {
+        newErrors.agreement = "You must agree to the terms and conditions";
+      }
+
+      if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors);
         return;
       }
 
@@ -171,6 +209,7 @@ const AddressForm = () => {
                 value={formData.name}
                 onChange={handleInputChange}
               />
+              {errors.name && <span className={styles.errorText}>{errors.name}</span>}
             </div>
 
             {/* Email */}
@@ -184,6 +223,7 @@ const AddressForm = () => {
                 value={formData.email}
                 onChange={handleInputChange}
               />
+              {errors.email && <span className={styles.errorText}>{errors.email}</span>}
             </div>
 
             {/* Flat no/House no */}
@@ -197,6 +237,7 @@ const AddressForm = () => {
                 value={formData.houseNumber}
                 onChange={handleInputChange}
               />
+              {errors.houseNumber && <span className={styles.errorText}>{errors.houseNumber}</span>}
             </div>
 
             {/* Area/Street/Locality */}
@@ -210,6 +251,7 @@ const AddressForm = () => {
                 value={formData.street}
                 onChange={handleInputChange}
               />
+              {errors.street && <span className={styles.errorText}>{errors.street}</span>}
             </div>
 
             {/* Landmark */}
@@ -245,6 +287,7 @@ const AddressForm = () => {
                 className={styles.input}
                 required
               />
+              {errors.zipCode && <span className={styles.errorText}>{errors.zipCode}</span>}
             </div>
 
             {/* City */}
@@ -276,6 +319,7 @@ const AddressForm = () => {
                   }}
                 />
               )}
+              {errors.cityName && <span className={styles.errorText}>{errors.cityName}</span>}
             </div>
 
             {/* State */}
@@ -297,6 +341,7 @@ const AddressForm = () => {
                   </option>
                 ))}
               </select>
+              {errors.state && <span className={styles.errorText}>{errors.state}</span>}
             </div>
 
             {/* Alternate Phone Number */}
@@ -313,6 +358,7 @@ const AddressForm = () => {
                 value={formData.alternatePhone}
                 onChange={handleInputChange}
               />
+              {errors.alternatePhone && <span className={styles.errorText}>{errors.alternatePhone}</span>}
             </div>
 
             <div className={styles.saveAsContainer}>
@@ -382,6 +428,7 @@ const AddressForm = () => {
                   onChange={handleInputChange}
                   required
                 />
+                {errors.customAddressType && <span className={styles.errorText}>{errors.customAddressType}</span>}
               </div>
             )}
 
@@ -402,6 +449,7 @@ const AddressForm = () => {
                   the information I have entered is correct.
                 </span>
               </label>
+              {errors.agreement && <span className={styles.errorText} style={{ marginLeft: "30px" }}>{errors.agreement}</span>}
             </div>
 
             {/* Desktop Button */}

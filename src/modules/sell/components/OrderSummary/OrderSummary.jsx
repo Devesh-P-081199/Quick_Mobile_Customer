@@ -191,7 +191,7 @@ function OrderSummary() {
     FetchPriceDetails();
     fetchAddresses();
     fetchPaymentMethods();
-  }, [FetchPriceDetails, fetchAddresses, fetchPaymentMethods]);
+  }, [FetchPriceDetails, fetchAddresses, fetchPaymentMethods, location.pathname]);
 
   const handlePlaceOrder = async () => {
     if (!selectedAddress) {

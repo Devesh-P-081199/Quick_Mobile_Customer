@@ -17,11 +17,13 @@ const ThankYouPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const orderData = location.state?.orderData;
-  const orderId =
+  const displayOrderId =
     orderData?.order?.orderId ||
     orderData?.orderId ||
     orderData?.id ||
     orderData?._id;
+
+  const navigationId = orderData?.order?._id || orderData?._id || orderData?.id;
   const fileInputRef = useRef(null);
 
   const { selectedPaymentMethod, setSelectedPaymentMethod } =
@@ -186,9 +188,9 @@ const ThankYouPage = () => {
               Thank you for selling your phone on Quick Mobile
             </h2>
 
-            {orderId && (
+            {displayOrderId && (
               <div className={styles.orderIdBox}>
-                <p>Order ID: {orderId}</p>
+                <p>Order ID: {displayOrderId}</p>
               </div>
             )}
 
@@ -209,8 +211,8 @@ const ThankYouPage = () => {
             <button
               className={styles.orderBtn}
               onClick={() => {
-                if (orderId) {
-                  navigate(`/profile/order-details/${orderId}`);
+                if (navigationId) {
+                  navigate(`/profile/order-details/${navigationId}`);
                 } else {
                   navigate("/my-profile-orders");
                 }
