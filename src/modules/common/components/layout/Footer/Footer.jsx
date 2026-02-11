@@ -75,12 +75,12 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <h3 className={styles.footerHeading}>Services</h3>
             <div className={styles.footerLinks}>
-              <a href="#">Sell Phone</a>
-              <a href="#">Sell Tablet</a>
-              <a href="#">Sell Laptop</a>
-              <a href="#">Sell Smartwatch</a>
-              <a href="#">Sell Earbuds</a>
-              <a href="#">Sell Gaming Console</a>
+              <Link to="/sell-old-mobile-phone">Sell Phone</Link>
+              <Link to="/sell-old-tablet">Sell Tablet</Link>
+              <Link to="/sell-old-laptop">Sell Laptop</Link>
+              <Link to="/sell-old-smartwatch">Sell Smartwatch</Link>
+              <Link to="/sell-old-earbuds">Sell Earbuds</Link>
+              <Link to="/sell-old-gaming-console">Sell Gaming Console</Link>
               {/* <a href="#">Recycle Phone/Other Device</a>
               <a href="#">Repair Phone</a>
               <a href="#">Buy Phone</a>
@@ -210,12 +210,12 @@ const Footer = () => {
           <FooterSection
             title="Services"
             links={[
-              "Sell Phone",
-              "Sell Tablet",
-              "Sell Laptop",
-              "Sell Smartwatch",
-              "Sell Earbuds",
-              "Sell Gaming Console",
+              { text: "Sell Phone", path: "/sell-old-mobile-phone" },
+              { text: "Sell Tablet", path: "/sell-old-tablet" },
+              { text: "Sell Laptop", path: "/sell-old-laptop" },
+              { text: "Sell Smartwatch", path: "/sell-old-smartwatch" },
+              { text: "Sell Earbuds", path: "/sell-old-earbuds" },
+              { text: "Sell Gaming Console", path: "/sell-old-gaming-console" },
               // "Recycle Phone/Other Device",
               // "Repair Phone",
               // "Buy Phone",

@@ -996,14 +996,14 @@ const Header = () => {
                           onMouseLeave={() => setIsProfileDropdownOpen(false)}
                         >
                           <div
-                            onClick={() => navigate("/my-profile-orders")}
+                            onClick={() => navigate("/edit-my-profile")}
                             className={styles.dropdownItem}
                           >
                             <FaUserCircle className={styles.icon} />
                             My Profile
                           </div>
                           <div
-                            onClick={() => navigate("/my-orders")}
+                            onClick={() => navigate("/my-profile-orders")}
                             className={styles.dropdownItem}
                           >
                             <FaShoppingBag className={styles.icon} />
