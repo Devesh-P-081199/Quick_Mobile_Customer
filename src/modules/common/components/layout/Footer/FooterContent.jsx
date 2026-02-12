@@ -8,65 +8,61 @@ function FooterContent({ page = "home" }) {
       <div className={`page-content-wrapper ${Style.footerSection}`}>
         <div className={Style.footerContentContainer}>
           <div className={Style.sectionBlock}>
-            <h2 className={Style.mainHeading}>
-              Buy or Sell Your Old Phone Online with Quick Mobile
-            </h2>
+            <h1 className={Style.mainHeading}>
+              Sell/Buy Your Old Mobile Phone Online with Quick Mobile
+            </h1>
             <p className={Style.description}>
-              Quick Mobile is India’s trusted online platform to sell old mobile
-              phones, buy refurbished mobiles, and get mobile phone repairs all
-              in one place. We provide a fast, secure, and 100% transparent
-              process so you can upgrade your device or earn instant cash
-              without stepping out of your home. In today’s digital world,
-              everyone wants the latest smartphone at the best price. Quick
-              Mobile helps you check your phone’s value online, sell it at the
-              best market price, or buy a high-quality refurbished smartphone at
-              an affordable cost.
+              Quick Mobile is one of the most trusted online platform in India for the sale of old mobile phones, the buying of refurbished mobiles, and offering of mobile phone repairs. All of these services are accessible in one place. We offer a process that is 100% transparent, secure, and fast, providing you to upgrade your device or earn instant cash without moving your home. In the current digital era, everyone seeks the most recent smartphone at the most competitive price.
+            </p>
+            <p className={Style.description}>
+              Quick Mobile enables you to determine the value of your phone online, sell it at the most competitive market price, or purchase a high-quality refurbished smartphone at a reasonable price.
             </p>
           </div>
 
           <div className={Style.sectionBlock}>
             <h3 className={Style.subHeading}>
-              Why Quick Mobile is the Best Platform to Sell Old Phones
+              Why Quick Mobile is the Most Effective Platform for Selling Old Phones
             </h3>
             <p className={Style.description}>
-              Selling a second-hand phone can be time-consuming and risky. With
-              Quick Mobile, you get a hassle-free phone selling experience.
+              Selling a second-hand phone can be both time-consuming and hazardous. Quick Mobile provides a hassle-free phone purchasing experience.
+
             </p>
           </div>
 
           <div className={Style.sectionBlock}>
             <h3 className={Style.subHeading}>
-              Where Can I Sell My Phone Online?
+              Where can I sell my Mobile phone online?
             </h3>
             <p className={Style.description}>
-              With Quick Mobile, you can sell your used phone instantly. No more
-              waiting for buyers or bargaining.
+              You can immediately sell your used phone with Quick Mobile. There will be no more waiting for clients or bargaining.
+
             </p>
             <p className={Style.description}>
               Benefits:
               <br />
-              * Best price guarantee
+              * Best price Assured
               <br />
-              * Free doorstep pickup across India
+              *  Doorstep pickup throughout India
+
               <br />
-              * Instant payment via UPI, bank transfer, or cash
-              <br />* 100% safe and transparent process
+              *  Bank transfer, or UPI for immediate payment
+
+              <br />*  The process is completely transparent and secure.
+
             </p>
           </div>
 
           <div className={Style.sectionBlock}>
             <h3 className={Style.subHeading}>
-              Buy Refurbished and Second-Hand Mobiles Online
+              Buy used or refurbished phones online
+
             </h3>
             <p className={Style.description}>
-              Worried about fraud while buying used phones? At Quick Mobile, all
-              refurbished mobiles are verified, tested, and quality certified by
-              professionals. Get premium smartphones at up to 60% lower prices
-              than new devices.
+              Is there a concern about fraud when purchasing used phones? At Quick Mobile Technician tested and verified, and quality-certify all refurbished/resell mobile devices. Purchase device at prices that are up to 50-65% of new devices.
             </p>
           </div>
 
-          <div className={Style.sectionBlock}>
+          {/* <div className={Style.sectionBlock}>
             <h3 className={Style.subHeading}>
               Professional Mobile & iPhone Repair Services
             </h3>
@@ -75,52 +71,49 @@ function FooterContent({ page = "home" }) {
               genuine iPhone repairs. All parts are replaced with certified
               components to ensure top performance.
             </p>
-          </div>
+          </div> */}
 
           <div className={Style.sectionBlock}>
-            <h3 className={Style.subHeading}>Our Core Advantages</h3>
+            <h3 className={Style.subHeading}>Our Primary Advantages</h3>
             <p className={Style.description}>
-              * Best Price for Old Phones
+              * The best price for used phones
               <br />
-              * Certified Refurbished Mobiles
+              * Certified Refurbished Phones 
               <br />
-              * Fast and Reliable Repair Services
+              * Safe and secure payments
               <br />
-              * Safe & Secure Transactions
-              <br />* Quick Doorstep Service
+              * Service at your doorstep
+
             </p>
           </div>
 
           <div className={Style.sectionBlock}>
             <h3 className={Style.subHeading}>
-              Your One-Stop Mobile Marketplace
+             Your Complete Mobile Marketplace 
             </h3>
             <p className={Style.description}>
-              Quick Mobile offers a complete online solution to:
+              Quick Mobile provides a complete online solution for:
               <br />
-              * Sell old phones online
+              * Online sell of used devices 
               <br />
-              * Buy refurbished mobiles
-              <br />* Repair smartphones easily
+              *  Purchase refurbished mobile devices 
+
+              <br />* Smartphones can be effortlessly repaired 
             </p>
             <p className={Style.description}>
-              Visit Quick Mobile, enter your phone details, get an instant
-              price, and complete your order in minutes.
+              Visit Quick Mobile, Enter your Device details, give answer for device condition, and get an instant quote, and complete your process of in minutes
             </p>
             <p className={Style.description}>
-              Quick Mobile - The smarter way to buy, sell, and repair
-              smartphones online.
+              Quick Mobile - The smarter way to buy, sell, and repair Device (mobile, laptop, tablet, etc.) online.
+
             </p>
           </div>
 
           <div className={Style.sectionBlock}>
             <h3 className={Style.subHeading}>Quick Links</h3>
             <p className={Style.description}>
-              Sell Old Apple Mobile | Sell Old Samsung Mobile | Sell Old OnePlus
-              Mobile | Sell Old Oppo Mobile | Sell Old Vivo Mobile | Sell Old
-              Huawei Mobile | Sell Old Xiaomi Mobile | Sell Old Motorola Mobile
-              | Sell Old Google Mobile | Sell Old Lenovo Mobile | Sell Old Asus
-              Mobile | Sell Old Nokia Mobile
+             Sell Old Apple Mobile | Sell Old Samsung Mobile | Sell Old OnePlus Mobile | Sell Old Oppo Mobile | Sell Old Vivo Mobile | Sell Old Huawei Mobile | Sell Old Xiaomi Mobile | Sell Old Motorola Mobile | Sell Old Google Mobile | Sell Old Lenovo Mobile | Sell Old Asus Mobile | Sell Old Nokia Mobile
+
             </p>
           </div>
         </div>
