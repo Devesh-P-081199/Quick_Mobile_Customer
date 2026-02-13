@@ -95,7 +95,7 @@ function HomeSlider() {
                 <p className="slider-description">{slide.description}</p>
                 <button
                   className="slider-button"
-                  onClick={() => navigate("/sell-old-mobile")}
+                  onClick={() => navigate("/sell-old-mobile-phone")}
                 >
                   Sell Now
                 </button>

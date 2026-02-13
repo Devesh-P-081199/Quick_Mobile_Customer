@@ -1,0 +1,403 @@
+.footerContainer {
+  width: 100%;
+  background: #ffffff;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 30px 150px;
+}
+
+.footerContent {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  /* flex-wrap: wrap; */
+  gap: 30px;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.footerColumn {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.footerHeading {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  color: black;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footerLink {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.footerLink:hover {
+  color: gray;
+}
+
+.iconbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  /* width: 109px; */
+}
+
+.footerBottom {
+  /* width: 1060px; */
+  margin: 30px auto;
+  margin-bottom: 0px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.footerRightBox {
+  display: flex;
+  gap: 4px;
+}
+
+.footerRightBox img {
+  width: 125px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerCopyright {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18.2px;
+  color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footerContent,
+  .footerBottom {
+    /* width: 90%; */
+    flex-wrap: wrap;
+    /* justify-content: center; */
+  }
+  .footerContainer {
+    padding: 30px 50px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerContainer {
+    padding-top: 60px;
+  }
+
+  .footerContent {
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* text-align: center; */
+  }
+
+  .footerColumn {
+    /* width: 100%; */
+  }
+
+  .footerBottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footerRightBox {
+    /* width: 100%; */
+    /* max-width: 150px; */
+  }
+  .footerContent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .footerHeading {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    color: black;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerHeading {
+    font-size: 18px;
+  }
+
+  .footerContent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .footerHeading {
+    font-size: 18px;
+  }
+
+  .footerLink {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18.2px;
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  .footerColumn {
+    width: auto;
+  }
+  .footerContainer {
+    padding: 0px 10px !important;
+  }
+}
+
+.socialIcons {
+  display: flex;
+  gap: 8px;
+}
+
+.footerSection {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+.footerSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.footerSectionHeader h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  /* padding: 10px 0 0 10px; */
+  gap: 8px;
+}
+
+.footerLinks a {
+  font-size: 13px;
+  color: #000;
+  text-decoration: none;
+}
+
+.footerLinks a:hover {
+  color: #555;
+}
+
+.logoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 0;
+}
+
+.logo {
+  /* width: 90px; */
+  height: 30px;
+  margin-bottom: 12px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 10px;
+}
+
+.mobileFooterContent {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.footerBottom {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: justify;
+  font-size: 14px;
+}
+
+.footerRightBox img {
+  width: 120px;
+  height: 38px;
+}
+
+@media (max-width: 1200px) {
+  .footerLinks {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0 0 0px;
+    gap: 8px;
+  }
+  .footerHeading {
+    font-size: 18px;
+  }
+  .footerContainer {
+    padding: 30px 80px;
+  }
+  .footerContent {
+    gap: 2px;
+  }
+
+  .footerSectionHeader h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  .footerLinks {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0 0 0px;
+    gap: 8px;
+  }
+  .footerHeading {
+    font-size: 18px;
+  }
+  .footerContent {
+    gap: 30px;
+  }
+
+  .footerSectionHeader h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.footerLinks a {
+  color: #000000;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 0.3s ease, color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: black;
+  text-decoration-color: rgb(1, 1, 1);
+}
+
+@media (max-width: 480px) {
+  .footerContainer {
+    padding: 0px 0px;
+  }
+  .footerSectionHeader {
+    margin-bottom: 0px;
+  }
+  .footerLinks a:hover {
+    color: black;
+    text-decoration: none;
+  }
+  .footerLinks {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0 0 0px;
+    gap: 8px;
+    margin-top: 12px;
+  }
+}
+
+.chatbox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #1968b3;
+  padding: 6px 15px;
+  color: white;
+  border-radius: 8px;
+  margin-top: 10px;
+  justify-content: center;
+  width: 100%;
+  font-size: 20px;
+}
+.chatbox h5 {
+  font-size: 16px;
+}
+.chatbox img {
+  height: 38px;
+}
+
+.chatbox p {
+  font-size: 12px;
+}
+
+@media screen and (min-width:1024px) and  (max-width: 2480px) {
+  .chatbox {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #1968b3;
+    padding: 5px;
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+  }
+  .chatbox h5 {
+    font-size: 10px;
+  }
+  .chatbox img {
+    height: 22px;
+  }
+  .chatbox p {
+    font-size: 8px;
+  }
+}
+
+.socialIcons img {
+  height: 30px;
+  width: 30px;
+  margin-top: 8px;
+}
+
+.uparrow {
+  transform: rotate(270deg);
+  height: 21px;
+}
+
+.downarrow {
+  height: 21px;
+  transform: rotate(90deg);
+}
+
+
+.notice {
+  padding-bottom: 20px;
+  border-bottom: 0.3px solid #ddd;
+}

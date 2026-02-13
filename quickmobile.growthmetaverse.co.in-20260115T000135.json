@@ -1,9 +1,9 @@
 {
   "lighthouseVersion": "13.0.1",
-  "requestedUrl": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
-  "mainDocumentUrl": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
-  "finalDisplayedUrl": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
-  "finalUrl": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+  "requestedUrl": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
+  "mainDocumentUrl": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
+  "finalDisplayedUrl": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
+  "finalUrl": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
   "fetchTime": "2026-01-14T18:31:35.877Z",
   "gatherMode": "navigation",
   "runWarnings": [],
@@ -254,7 +254,7 @@
         ],
         "items": [
           {
-            "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+            "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
             "responseTime": 43
           }
         ],
@@ -580,7 +580,7 @@
             "scriptParseCompile": 13.468
           },
           {
-            "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+            "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
             "total": 609.36,
             "scripting": 80.85199999999999,
             "scriptParseCompile": 0.44
@@ -731,7 +731,7 @@
         ],
         "items": [
           {
-            "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+            "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
             "sessionTargetType": "page",
             "protocol": "h2",
             "rendererStartTime": 0,
@@ -1117,7 +1117,7 @@
             "entity": "growthmetaverse.co.in"
           },
           {
-            "url": "https://api.quickmobileadmin.growthmetaverse.co.in/api/sell-module/user/resolve-category-or-subcategory/sell-old-mobile",
+            "url": "https://api.quickmobileadmin.growthmetaverse.co.in/api/sell-module/user/resolve-category-or-subcategory/sell-old-mobile-phone",
             "sessionTargetType": "page",
             "protocol": "h2",
             "rendererStartTime": 499.40599966049194,
@@ -1783,25 +1783,25 @@
           "initiators": [
             {
               "type": "parser",
-              "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+              "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
               "lineNumber": 5,
               "columnNumber": 62
             },
             {
               "type": "parser",
-              "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+              "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
               "lineNumber": 6,
               "columnNumber": 60
             },
             {
               "type": "parser",
-              "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+              "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
               "lineNumber": 13,
               "columnNumber": 70
             },
             {
               "type": "parser",
-              "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+              "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
               "lineNumber": 14,
               "columnNumber": 73
             },
@@ -2375,7 +2375,7 @@
             "startTime": 1432.2343
           },
           {
-            "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+            "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
             "duration": 104,
             "startTime": 818.2343
           },
@@ -2395,7 +2395,7 @@
             "startTime": 16593.019299999996
           },
           {
-            "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+            "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
             "duration": 62,
             "startTime": 934.2343
           }
@@ -2412,7 +2412,7 @@
             "chrome-extension://ahpjneeebfjdmadkfgoacjoaobajnfcg/libs/jquery.min.js",
             "https://connect.facebook.net/en_US/fbevents.js",
             "Unattributable",
-            "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+            "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
             "https://quickmobile.growthmetaverse.co.in/assets/index-AjJX66ca.js",
             "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
           ],
@@ -4940,7 +4940,7 @@
               "type": "subitems",
               "items": [
                 {
-                  "frameUrl": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile"
+                  "frameUrl": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone"
                 }
               ]
             },
@@ -6714,7 +6714,7 @@
               "type": "network-tree",
               "chains": {
                 "69B7FF0A70FCAE079CD45E053497FC57": {
-                  "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile",
+                  "url": "https://quickmobile.growthmetaverse.co.in/sell-old-mobile-phone",
                   "navStartToEndTime": 133,
                   "transferSize": 492,
                   "isLongest": true,
@@ -6834,7 +6834,7 @@
                           "children": {}
                         },
                         "14180.417": {
-                          "url": "https://api.quickmobileadmin.growthmetaverse.co.in/api/sell-module/user/resolve-category-or-subcategory/sell-old-mobile",
+                          "url": "https://api.quickmobileadmin.growthmetaverse.co.in/api/sell-module/user/resolve-category-or-subcategory/sell-old-mobile-phone",
                           "navStartToEndTime": 610,
                           "transferSize": 1370,
                           "children": {}

@@ -1,0 +1,358 @@
+.storePage {
+  padding: 20px 0;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Banner Section */
+.bannerSection {
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.mainImage {
+  position: relative;
+  /* Ensure dots are positioned relative to this */
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.imageSlider {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.dotsContainer {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #cccccc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.activeDot {
+  width: 20px;
+  background-color: #1968b3;
+}
+
+.sliderBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+  font-size: 18px;
+}
+
+.sliderBtn:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.prevBtn {
+  left: 10px;
+}
+
+.nextBtn {
+  right: 10px;
+}
+
+/* Store Info */
+.storeInfo {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  border: 0.3px solid #e1e1e1;
+}
+
+.storeName {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.address {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.storeName {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.time img {
+  width: 30px;
+  height: 30px;
+  padding: 5.3px;
+  border-radius: 50%;
+  background-color: #ddefff !important;
+}
+
+.address {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.address img {
+  width: 30px;
+  height: 30px;
+  padding: 5.3px;
+  border-radius: 50%;
+  background-color: #ddefff !important;
+}
+
+.address p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.time p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.directionsBtn,
+.callBtn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #1968b3;
+  color: #fff;
+  border: 0.3px solid #1968b3;
+}
+
+/* Services Section */
+.servicesSection {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  border: 0.3px solid #e1e1e1;
+}
+
+.servicesSection h2 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.servicesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.servicesList li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  width: 48%;
+  border-radius: 15px;
+  border: 0.3px solid #e1e1e1;
+  background-color: #f0f7ff !important;
+}
+
+.servicesList li img {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* Review Section */
+.reviewSection {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 0.3px solid #e1e1e1;
+}
+
+.reviewSection h2 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 0px;
+}
+
+.starRating {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 24px;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.starFilled {
+  color: #fbbc05;
+}
+
+.submitButton {
+  background: #1968b3;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+}
+
+.reviewTextArea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 0.3px solid #e1e1e1;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.reviewTextArea:focus {
+  outline: none;
+  border-color: #000;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .storePage {
+    padding: 20px 0;
+  }
+
+  .mainImage {
+    height: 250px;
+  }
+
+  .storeName {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .actionButtons {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .directionsBtn,
+  .callBtn {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    height: 45px;
+    padding: 11px 20px;
+  }
+
+  .servicesSection h2,
+  .reviewSection h2 {
+    font-size: 16px;
+  }
+
+  .servicesSection {
+    margin-bottom: 15px;
+  }
+
+  .sliderBtn {
+    display: none;
+  }
+
+  .bannerSection {
+    margin-bottom: 15px;
+  }
+
+  .storeInfo {
+    margin-bottom: 15px;
+  }
+
+  .address {
+    margin-bottom: 10px;
+  }
+
+  .time {
+    margin-bottom: 10px;
+  }
+
+  .servicesList li {
+    height: 45px;
+  }
+
+  .submitButton {
+    padding: 12px 16px;
+  }
+}

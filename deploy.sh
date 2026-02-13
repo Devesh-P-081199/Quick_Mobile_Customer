@@ -21,7 +21,8 @@ set -e
 # ===========================================
 EC2_HOST="65.1.41.179"
 EC2_USER="ubuntu"
-EC2_KEY="~/.ssh/id_ed25519_movies"
+EC2_KEY="$HOME/Quickmobile.pem"
+
 
 # Default Configuration (Staging)
 APP_DIR="/home/ubuntu/QuickMobile_Customer"
