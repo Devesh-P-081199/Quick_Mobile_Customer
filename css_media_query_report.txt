@@ -1,30 +1,24 @@
 CSS Module Files with Multiple Media Queries - UPDATED
-Generated: 2026-02-08 01:45:47 IST
+Generated: 2026-02-14 15:00:00 IST
 Verified: Current codebase
 C:\Users\deves\Downloads\Quick_Mobile_Customer
 ================================================================================
 
-STATUS: 7 files still contain more than 1 media query
-        11 files have been successfully refactored
+STATUS: 6 files still contain more than 1 media query
+        13 files have been successfully refactored (4 since last report)
+        2 files identified as regressions (RightCard, CommonSlider)
 
 ================================================================================
 FILE: sell\components\WhySellYourPhone\WhySell.module.css
 FULL PATH: src\modules\sell\components\WhySellYourPhone\WhySell.module.css
 MEDIA QUERIES: 7
-STATUS: ⚠️ NEEDS REFACTORING
-================================================================================
-
-================================================================================
-FILE: profile\components\Login\Login.module.css
-FULL PATH: src\modules\profile\components\Login\Login.module.css
-MEDIA QUERIES: 6
-STATUS: ⚠️ NEEDS REFACTORING
-================================================================================
-
-================================================================================
-FILE: checkout\components\CheckOut\CheckOut.module.css
-FULL PATH: src\modules\checkout\components\CheckOut\CheckOut.module.css
-MEDIA QUERIES: 6
+  - @media (min-width: 1600px)
+  - @media (max-width: 1440px)
+  - @media screen and (max-width: 1280px)
+  - @media (max-width: 1024px)
+  - @media (max-width: 950px)
+  - @media (max-width: 550px)
+  - @media (max-width: 900px)
 STATUS: ⚠️ NEEDS REFACTORING
 ================================================================================
 
@@ -32,6 +26,12 @@ STATUS: ⚠️ NEEDS REFACTORING
 FILE: buy\components\Services\OurServices.module.css
 FULL PATH: src\modules\buy\components\Services\OurServices.module.css
 MEDIA QUERIES: 6
+  - @media (min-width: 768px)
+  - @media (min-width: 640px) and (max-width: 1023px)
+  - @media (min-width: 768px)
+  - @media (min-width: 640px) and (max-width: 1023px)
+  - @media (min-width: 768px)
+  - @media (max-width: 550px)
 STATUS: ⚠️ NEEDS REFACTORING
 ================================================================================
 
@@ -39,67 +39,64 @@ STATUS: ⚠️ NEEDS REFACTORING
 FILE: sell\components\SelectSubCategories\SelectSubCata.module.css
 FULL PATH: src\modules\sell\components\SelectSubCategories\SelectSubCata.module.css
 MEDIA QUERIES: 4
+  - @media (max-width: 1200px)
+  - @media (max-width: 768px)
+  - @media (max-width: 550px)
+  - @media (max-width: 350px)
 STATUS: ⚠️ NEEDS REFACTORING
 ================================================================================
 
 ================================================================================
-FILE: common\pages\general\Cookies\Cookies.module.css
-FULL PATH: src\modules\common\pages\general\Cookies\Cookies.module.css
-MEDIA QUERIES: 4
-STATUS: ⚠️ NEEDS REFACTORING
+FILE: checkout\components\CheckOut\RightCard.module.css
+FULL PATH: src\modules\checkout\components\CheckOut\RightCard.module.css
+MEDIA QUERIES: 3
+  - @media (max-width: 768px)
+  - @media (max-width: 550px)
+  - @media (max-width: 768px)
+STATUS: ⚠️ NEEDS REFACTORING (REGRESSION)
 ================================================================================
 
 ================================================================================
-FILE: common\pages\general\QuickImpact\QuickImpact.module.css
-FULL PATH: src\modules\common\pages\general\QuickImpact\QuickImpact.module.css
-MEDIA QUERIES: 4
-STATUS: ⚠️ NEEDS REFACTORING
+FILE: common\components\layout\Footer\Footer.module.css
+FULL PATH: src\modules\common\components\layout\Footer\Footer.module.css
+MEDIA QUERIES: 2
+  - @media (max-width: 768px) (Line 13)
+  - @media (max-width: 768px) (Line 469)
+STATUS: ⚠️ NEEDS REFACTORING (NEW DISCOVERY)
+================================================================================
+
+================================================================================
+FILE: common\components\ui\Slider\CommonSlider.module.css
+FULL PATH: src\modules\common\components\ui\Slider\CommonSlider.module.css
+MEDIA QUERIES: 2
+  - @media screen and (max-width: 768px)
+  - @media (hover: none) and (pointer: coarse)
+STATUS: ⚠️ NEEDS REFACTORING (REGRESSION)
 ================================================================================
 
 ================================================================================
 SUCCESSFULLY REFACTORED FILES (Now have 0-1 media queries)
 ================================================================================
 
+✅ profile\components\Login\Login.module.css (6 → 1 query)
+✅ checkout\components\CheckOut\CheckOut.module.css (6 → 1 query)
+✅ common\pages\general\Cookies\Cookies.module.css (4 → 1 query)
+✅ common\pages\general\QuickImpact\QuickImpact.module.css (4 → 1 query)
 ✅ common\pages\general\AboutUs\AboutUs.module.css
-   Previous: 5 queries → Current: 1 query
-
 ✅ common\pages\general\ContactUs\ContactUs.module.css
-   Previous: 4 queries → Current: 0 queries
-
 ✅ common\pages\general\Privacy\Privacy.module.css
-   Previous: 3 queries → Current: 1 query
-
-✅ checkout\components\CheckOut\RightCard.module.css
-   Previous: 3 queries → Current: 0 queries
-
 ✅ sell\components\GetUpto\GetUpto.module.css
-   Previous: 2 queries → Current: 1 query
-
 ✅ common\pages\not-found\ErrorPage.module.css
-   Previous: 2 queries → Current: 1 query
-
 ✅ common\pages\thank-you\Thankyou.module.css
-   Previous: 2 queries → Current: 1 query
-
 ✅ common\pages\general\RefundPolicy\RefundPolicy.module.css
-   Previous: 2 queries → Current: 1 query
-
-✅ common\components\ui\Slider\CommonSlider.module.css
-   Previous: 2 queries → Current: 0 queries
-
 ✅ checkout\components\Payment\Payment.module.css
-   Previous: 2 queries → Current: 0 queries
-
 ✅ buy\components\Cards\Blogs.module.css
-   Previous: 2 queries → Current: 0 queries
-
 ✅ buy\components\NewsLetter\NewsLetter.module.css
-   Previous: 2 queries → Current: 0 queries
 
 ================================================================================
 SUMMARY
 ================================================================================
-Total files in original report: 18
-Files still needing refactoring: 7
-Files successfully refactored: 11
-Refactoring progress: 61% complete
+Total files needing refactoring: 6
+Files successfully refactored: 13
+Progress: 68% complete
+================================================================================

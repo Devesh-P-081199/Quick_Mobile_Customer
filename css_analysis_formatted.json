@@ -1,9 +1,9 @@
 ﻿{
-    "generated_at": "2026-02-08T01:45:47+05:30",
+    "generated_at": "2026-02-14T15:00:00+05:30",
     "verified": true,
-    "total_files_with_multiple_queries": 7,
-    "refactored_files_count": 11,
-    "refactoring_progress_percent": 61,
+    "total_files_with_multiple_queries": 6,
+    "refactored_files_count": 13,
+    "refactoring_progress_percent": 68,
     "value": [
         {
             "count": 7,
@@ -18,34 +18,6 @@
                 "@media (max-width: 950px)",
                 "@media (max-width: 550px)",
                 "@media (max-width: 900px)"
-            ]
-        },
-        {
-            "count": 6,
-            "path": "profile\\components\\Login\\Login.module.css",
-            "full_path": "src\\modules\\profile\\components\\Login\\Login.module.css",
-            "status": "needs_refactoring",
-            "queries": [
-                "@media (max-width: 900px)",
-                "@media (max-width: 550px)",
-                "@media (max-width: 900px)",
-                "@media (max-width: 550px)",
-                "@media screen and (max-width: 550px)",
-                "@media (max-width: 768px)"
-            ]
-        },
-        {
-            "count": 6,
-            "path": "checkout\\components\\CheckOut\\CheckOut.module.css",
-            "full_path": "src\\modules\\checkout\\components\\CheckOut\\CheckOut.module.css",
-            "status": "needs_refactoring",
-            "queries": [
-                "@media (max-width: 1200px)",
-                "@media (max-width: 768px)",
-                "@media (max-width: 550px)",
-                "@media (max-width: 550px)",
-                "@media screen and (max-width: 550px)",
-                "@media (max-width: 768px)"
             ]
         },
         {
@@ -75,31 +47,66 @@
             ]
         },
         {
-            "count": 4,
-            "path": "common\\pages\\general\\Cookies\\Cookies.module.css",
-            "full_path": "src\\modules\\common\\pages\\general\\Cookies\\Cookies.module.css",
-            "status": "needs_refactoring",
-            "queries": [
-                "@media (max-width: 1024px)",
-                "@media (max-width: 900px)",
-                "@media (max-width: 768px)",
-                "@media (max-width: 550px)"
-            ]
-        },
-        {
-            "count": 4,
-            "path": "common\\pages\\general\\QuickImpact\\QuickImpact.module.css",
-            "full_path": "src\\modules\\common\\pages\\general\\QuickImpact\\QuickImpact.module.css",
+            "count": 3,
+            "path": "checkout\\components\\CheckOut\\RightCard.module.css",
+            "full_path": "src\\modules\\checkout\\components\\CheckOut\\RightCard.module.css",
             "status": "needs_refactoring",
             "queries": [
                 "@media (max-width: 768px)",
                 "@media (max-width: 550px)",
-                "@media (max-width: 1024px)",
                 "@media (max-width: 768px)"
+            ]
+        },
+        {
+            "count": 2,
+            "path": "common\\components\\layout\\Footer\\Footer.module.css",
+            "full_path": "src\\modules\\common\\components\\layout\\Footer\\Footer.module.css",
+            "status": "needs_refactoring",
+            "queries": [
+                "@media (max-width: 768px)",
+                "@media (max-width: 768px)"
+            ]
+        },
+        {
+            "count": 2,
+            "path": "common\\components\\ui\\Slider\\CommonSlider.module.css",
+            "full_path": "src\\modules\\common\\components\\ui\\Slider\\CommonSlider.module.css",
+            "status": "needs_refactoring",
+            "queries": [
+                "@media screen and (max-width: 768px)",
+                "@media (hover: none) and (pointer: coarse)"
             ]
         }
     ],
     "refactored_files": [
+        {
+            "path": "profile\\components\\Login\\Login.module.css",
+            "full_path": "src\\modules\\profile\\components\\Login\\Login.module.css",
+            "previous_count": 6,
+            "current_count": 1,
+            "status": "refactored"
+        },
+        {
+            "path": "checkout\\components\\CheckOut\\CheckOut.module.css",
+            "full_path": "src\\modules\\checkout\\components\\CheckOut\\CheckOut.module.css",
+            "previous_count": 6,
+            "current_count": 1,
+            "status": "refactored"
+        },
+        {
+            "path": "common\\pages\\general\\Cookies\\Cookies.module.css",
+            "full_path": "src\\modules\\common\\pages\\general\\Cookies\\Cookies.module.css",
+            "previous_count": 4,
+            "current_count": 1,
+            "status": "refactored"
+        },
+        {
+            "path": "common\\pages\\general\\QuickImpact\\QuickImpact.module.css",
+            "full_path": "src\\modules\\common\\pages\\general\\QuickImpact\\QuickImpact.module.css",
+            "previous_count": 4,
+            "current_count": 1,
+            "status": "refactored"
+        },
         {
             "path": "common\\pages\\general\\AboutUs\\AboutUs.module.css",
             "full_path": "src\\modules\\common\\pages\\general\\AboutUs\\AboutUs.module.css",
@@ -119,13 +126,6 @@
             "full_path": "src\\modules\\common\\pages\\general\\Privacy\\Privacy.module.css",
             "previous_count": 3,
             "current_count": 1,
-            "status": "refactored"
-        },
-        {
-            "path": "checkout\\components\\CheckOut\\RightCard.module.css",
-            "full_path": "src\\modules\\checkout\\components\\CheckOut\\RightCard.module.css",
-            "previous_count": 3,
-            "current_count": 0,
             "status": "refactored"
         },
         {
@@ -154,13 +154,6 @@
             "full_path": "src\\modules\\common\\pages\\general\\RefundPolicy\\RefundPolicy.module.css",
             "previous_count": 2,
             "current_count": 1,
-            "status": "refactored"
-        },
-        {
-            "path": "common\\components\\ui\\Slider\\CommonSlider.module.css",
-            "full_path": "src\\modules\\common\\components\\ui\\Slider\\CommonSlider.module.css",
-            "previous_count": 2,
-            "current_count": 0,
             "status": "refactored"
         },
         {
