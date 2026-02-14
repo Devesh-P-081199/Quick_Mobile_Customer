@@ -1,0 +1,254 @@
+/* Container Helpers */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.download-btn {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.canvas-container {
+  background: white; /* Ensures capture background is white */
+}
+
+/* Receipt Base - Optimized for A4 PDF */
+.receipt-page {
+  width: 600px;
+  margin: 0 auto;
+  padding: 40px 30px;
+  background: #fff;
+  font-family: 'Arial', sans-serif;
+  color: #000;
+  box-sizing: border-box;
+}
+
+/* Typography */
+.text-center { text-align: center; }
+.mb-4 { margin-bottom: 20px; }
+.text-green { color: green; font-weight: bold; }
+.bold { font-weight: bold; }
+.underline { text-decoration: underline; }
+
+/* Title */
+.title-main {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+/* Header */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+.company-brand { font-size: 24px; font-weight: 800; margin: 0; }
+.company-sub { font-size: 13px; margin: 5px 0 0 0; }
+.header-right { text-align: right; margin-top: 5px; }
+.date-text { font-size: 12px; margin: 0 0 5px 0; }
+.receipt-no { font-size: 13px; font-weight: 800; margin: 0; }
+
+/* Details Boxes */
+.details-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+.detail-box {
+  flex: 1;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.box-left { align-items: flex-start; text-align: left; }
+.box-right { align-items: flex-end; text-align: right; }
+
+.box-title {
+  text-decoration: underline;
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  font-weight: 800;
+}
+.box-content p {
+  margin: 4px 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Main Table Layout */
+.main-table {
+  display: flex;
+  border: 1px solid #000;
+  margin-bottom: 5px;
+  /* Ensure heights match */
+  align-items: stretch; 
+}
+
+/* Device Column */
+.device-col {
+  flex: 6; /* 60% Width */
+  border-right: 1px solid #000;
+  /* padding: 25px 15px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center content */
+}
+.device-content { text-align: left; margin-left: 20px; } /* Indent slightly */
+.device-label { font-size: 14px; margin-bottom: 8px; }
+.device-name { font-size: 14px; margin-bottom: 8px; }
+.device-imei { font-size: 13px; margin-bottom: 8px; }
+.device-condition { font-size: 13px; margin: 0; }
+
+/* Price Column */
+.pricing-col {
+  flex: 4; /* 40% Width */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top "22477" area */
+.price-top-section {
+  flex-grow: 1; /* Fills empty space */
+  padding: 15px;
+  text-align: right;
+  /* No bottom border here, looks cleaner */
+}
+.top-price-val {
+  font-weight: 800;
+  font-size: 15px;
+}
+
+/* Bottom Price Rows */
+.price-bottom-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-top: 1px solid #000; /* Clean borders */
+  font-size: 12px;
+}
+
+/* Specific styling to fix "coupon" glitch */
+.price-row span {
+  display: block;
+  z-index: 1; /* Ensures text is above any border glitches */
+}
+
+.total-row {
+  font-weight: 800;
+  font-size: 13px;
+  padding: 8px 10px;
+  background-color: #fff;
+}
+
+/* Amount Words */
+.amount-text {
+  text-align: right;
+  font-size: 11px;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+/* Payment Box */
+.payment-box {
+  border: 1px solid #000;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+.payment-box .box-title {
+  text-align: center;
+  margin: 0 0 15px 0;
+  font-weight: 800;
+  font-size: 13px;
+}
+.payment-grid {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.pay-left { text-align: left; }
+.pay-right { text-align: right; }
+.payment-grid p { margin: 4px 0; }
+
+/* Notes */
+.notes-section h3 {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+}
+.notes-section ul {
+  padding-left: 15px;
+  margin: 0;
+}
+.notes-section li {
+  font-size: 10px;
+  margin-bottom: 5px;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+/* Footer */
+.footer-line {
+  margin-top: 30px;
+}
+.footer-line hr {
+  border: none;
+  border-top: 1px solid #000;
+  margin-bottom: 8px;
+}
+.footer-line p {
+  text-align: center;
+  font-size: 10px;
+  margin: 0;
+}/* फुटर के नीचे एक्स्ट्रा मार्जिन जोड़ें */
+.receipt-page {
+  width: 600px;
+  margin: 0 auto;
+  padding: 40px 30px 60px 30px; /* नीचे 60px पैडिंग दी है */
+  background: #fff;
+  font-family: 'Arial', sans-serif;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* फुटर स्टाइल  */
+.footer-line {
+  margin-top: auto; /* यह फुटर को हमेशा सबसे नीचे धकेलता है */
+  padding-top: 40px;
+}
+
+.footer-line hr {
+  border: none;
+  border-top: 1px solid #000;
+  margin-bottom: 8px;
+}
+
+.footer-line p {
+  text-align: center;
+  font-size: 10px;
+  margin: 0;
+  color: #000;
+}
+
