@@ -30,6 +30,7 @@ const SEO = ({ seoData = {} }) => {
     ...fallbackSEO, // fallback if backend is empty
     ...seoData,
   };
+  const dynamicUrl = window.location.origin + window.location.pathname;
 
   return (
     <Helmet>
@@ -41,14 +42,14 @@ const SEO = ({ seoData = {} }) => {
       />
 
       {/* ---------- CANONICAL & ROBOTS ---------- */}
-      <link rel="canonical" href={mergedSEO.canonical} />
+      <link rel="canonical" href={dynamicUrl} />
       <meta name="robots" content={mergedSEO.robots} />
 
       {/* ---------- OPEN GRAPH ---------- */}
       <meta property="og:type" content="website" />
       <meta property="og:title" content={mergedSEO.title} />
       <meta property="og:description" content={mergedSEO.description} />
-      <meta property="og:url" content={mergedSEO.canonical} />
+      <meta property="og:url" content={dynamicUrl} />
       <meta property="og:image" content={mergedSEO.image} />
 
       {/* ---------- TWITTER CARDS ---------- */}
@@ -72,7 +73,7 @@ const SEO = ({ seoData = {} }) => {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "QuickMobile",
-          url: mergedSEO.canonical,
+          url: dynamicUrl,
           logo: mergedSEO.image,
           sameAs: Object.values(mergedSEO.socialLinks),
         })}

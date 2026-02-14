@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -612,6 +613,7 @@ const AppContent = () => {
             </Suspense>
           }
         />
+        <Route path="/sitemap.xml" element={<Navigate to="/sitemap.xml" replace />} />
         <Route
           path="/coming-soon"
           element={

@@ -4,6 +4,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import styles from "./HomeBlogSlider.module.css";
 // Importing data from the same source as BlogsPage
 import blogsData from "../../../common/pages/blogs/block-content.json";
+import { slugify } from "../../../../Utils/slugify";
 
 const HomeBlogSlider = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const HomeBlogSlider = () => {
   };
 
   const handleBlogClick = (id) => {
-    navigate(`/blog-details/${id}`);
+      navigate(`/blogs/${slugify(id)}`); 
   };
 
   const getImageUrl = (name) => {
@@ -39,7 +40,7 @@ const HomeBlogSlider = () => {
     <div className={styles.blogsection}>
       <div className={styles.blogwrapper}>
         <div className={styles.blogheader}>
-          <h2 className={styles.blogtitle}>Our Blogs</h2>
+          <h2 className={styles.blogtitle}>Our Blogss</h2>
           <div className={styles.blognavigation}>
             <button
               onClick={() => scroll("left")}
@@ -63,7 +64,7 @@ const HomeBlogSlider = () => {
             <div
               key={blogItem._id}
               className={styles.blogCard}
-              onClick={() => handleBlogClick(blogItem._id)}
+              onClick={() => handleBlogClick(blogItem.title)}
             >
               <img
                 src={getImageUrl(blogItem.img)}

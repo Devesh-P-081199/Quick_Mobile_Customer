@@ -84,7 +84,7 @@ const brands = [
 
 function TopSellingModel() {
   const navigate = useNavigate();
-  return (
+  return ( 
     <div className="page-content-wrapper">
       <div className="wrapper">
         <div className={styles.topSellingWrapper}>

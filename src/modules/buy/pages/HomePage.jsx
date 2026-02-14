@@ -19,7 +19,6 @@ const HomePage = () => {
           <title>Buy/Sell Old & Used Second hand Mobile Phones Online in India | QuickMobile
           </title>
           <meta name="description" content="Sell/Buy Old Mobile Phones, Laptops, Tablets, Smartwatches Online From Doorstep and Get Best Price, Pickup and Get Instant Cash. Sell Your Used device Now!" />
-          <link rel="canonical" href={"https://www.quickmobile.in"} />
         </Helmet>
         {/* COMPONENT WRAPPER: Each component wrapped individually for granular padding control */}
 
