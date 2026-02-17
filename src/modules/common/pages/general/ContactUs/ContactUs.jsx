@@ -2,6 +2,7 @@ import styles from "./ContactUs.module.css";
 import bannerImg from "../../../../../assets/banner_img.png";
 import { FaWhatsapp } from "react-icons/fa";
 import { BsChatText } from "react-icons/bs";
+import { Helmet } from "react-helmet-async";
 
 const ContactUs = () => {
   const sendData = (e) => {
@@ -10,11 +11,21 @@ const ContactUs = () => {
   };
   return (
     <div className="page-content-wrapper">
+       <Helmet>
+        <title> Contact-us | Quick Mobile Customer Support
+
+</title>
+        <meta
+          name="description"
+          content={`Ready to sell your device? Take a quick quote online and get paid fast | Contact us: +91-72085-48807 | Email: support@quickmobile.in
+`}
+        />
+      </Helmet>
       <div className={styles.contactPage}>
         <form onSubmit={sendData}>
           <div className={styles.contactSection}>
             <div className={styles.formContainer}>
-              <h2>Contact Us</h2>
+              <h1>Contact-us Quick Mobile</h1>
               <p>
                 For any queries, please submit the form below with correct
                 information.

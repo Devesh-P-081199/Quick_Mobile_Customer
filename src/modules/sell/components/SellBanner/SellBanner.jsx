@@ -12,6 +12,7 @@ import {
   SearchBox,
   BrandSuggestions,
 } from "./components";
+import { Helmet } from "react-helmet-async";
 
 // Static constant moved outside component to prevent recreation
 const ANIMATION_TEXTS = [
@@ -124,6 +125,14 @@ function SellHomeBanner({ onViewAllClick }) {
 
   return (
     <div className={styles.sellbanneronly}>
+      <Helmet>
+        <title> Sell Old {catName} and Get Instant Cash | Quick Mobile
+</title>
+        <meta
+          name="description"
+          content={`Selling Old ${catName} Online for Cash at Quick Mobile Website. Sell your Used Phone and Get Best Value, Free Pickup & Instant Cash. Visit the website now!`}
+        />
+      </Helmet>
       <div className={styles.bannerContainer}>
         <div className={styles.sellerbanner}>
           {/* Left banner image */}

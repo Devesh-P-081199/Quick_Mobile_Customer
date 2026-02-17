@@ -10,25 +10,31 @@ import resourcesImg from "../../../../../assets/Resources.png";
 import economyImg from "../../../../../assets/Economy.png";
 import technologyImg from "../../../../../assets/Technology.jpeg";
 import emissionImg from "../../../../../assets/Emissions.jpeg";
+import { Helmet } from "react-helmet-async";
 
 const QuickImpact = () => {
-  return (
+  return (<>
+    <Helmet>
+      <title>Impact through Sustainable Use of Technology | Quick Mobile
+      </title>
+      <meta name="description" content="Innovation shouldn’t create waste. Quick Mobile exists to give second life of technology, reduce e-waste, and help people earn from the devices they no longer use.
+" />
+
+    </Helmet>
     <div className="page-content-wrapper">
       <div className={styles.quickImpact}>
         <div className={styles.intro}>
-          <h2>Quick Mobile Impact</h2>
+          <h1> Quick Mobile Mission to saves the environment by refurbishing and reusing phones.
+
+
+          </h1>
           <h4>
-            The Environmental Impact of Reusing and Refurbishing Phones, How
-            Quick Mobile is Driving Sustainability
+            Quick Mobile Mission to saves the environment by refurbishing and reusing phones.
+
           </h4>
           <p>
-            Every year, the world generates a staggering 50 million metric tons
-            of electronic waste (e-waste), yet only 20% of it is properly
-            recycled. Smartphones alone make up 12% of this waste, with millions
-            of discarded devices ending up in landfills. Quick Mobile is
-            tackling this growing problem by refurbishing and reselling used
-            smartphones, reducing e-waste by 30-40% and keeping harmful
-            materials out of our environment.
+            Only 20% of the world's e-waste, which amounts to over 50 million metric tons annually, Smartphones make up 12% of all trash, and millions of old phones/device wind up in landfills. Quick Mobile wants to solve this problem by fixing up and selling secondhand smartphones. This method keeps dangerous chemicals out of our environment and reduces e-waste by 30–40%.
+
           </p>
         </div>
         <div className={styles.block}>
@@ -38,11 +44,8 @@ const QuickImpact = () => {
           <div className={`${styles.textBox} && ${styles.textBox2}`}>
             <h3>Reducing E-Waste</h3>
             <p>
-              E-waste contains toxic substances like lead, mercury, and cadmium,
-              which can seep into the soil and water, harming ecosystems and
-              human health. By giving used smartphones a second life, Quick
-              Mobile helps prevent these hazardous materials from becoming
-              environmental threats.
+              Lead, mercury, and cadmium are some of the dangerous compounds found in e-waste. These pollutants can get into the ground and water, which can harm ecosystems and people's health. Quick Mobile provides new life to old gadgets. This procedure keeps these hazardous materials from hurting the environment.
+
             </p>
           </div>
         </div>
@@ -52,8 +55,7 @@ const QuickImpact = () => {
           <div className={styles.textBox}>
             <h3>Conserving Natural Resources</h3>
             <p>
-              Manufacturing a new smartphone requires around 34 kg of raw
-              materials, including rare and valuable metals such as:
+              Lead, mercury, and cadmium are some of the dangerous compounds found in e-waste. These pollutants can get into the ground and water, which can harm ecosystems and people's health. Quick Mobile provides new life to old gadgets. This procedure keeps these hazardous materials from hurting the environment.
             </p>
             <div className={styles.metalCards}>
               <div className={styles.metalCard}>
@@ -82,9 +84,7 @@ const QuickImpact = () => {
               </div>
             </div>
             <p>
-              Mining these resources is an environmentally damaging process that depletes natural reserves and contaminates water
-              sources. Even more shocking, producing just one smartphone consumes 16,000
-              liters of water enough to sustain a person for 10 years.
+              Mining these minerals harms the environment by using up natural resources and contaminating water systems. It takes more than 16,000 gallons of water to make one smartphone.  A person can live on that much water for more than five years.
             </p>
           </div>
           <div className={`${styles.imageBox} && ${styles.textBox2}`}>
@@ -93,22 +93,22 @@ const QuickImpact = () => {
         </div>
         <div className={styles.textBox}>
           <p className={styles.highlight}>
-            If 100 million people chose refurbished phones instead of new
-            ones, we could:
+
+            If 100 million people choose to reuse phones instead of new phones, we could:
+
           </p>
           <div className={styles.stats}>
             <div className={styles.stat}>
-              Save 3.4 million tons of raw materials annually
+              Save 3.4 million tons of raw materials annually.
             </div>
             <div className={styles.stat}>
-              Conserve 1.6 trillion liters of water, equivalent to a year’s
-              supply for 20 million people
+              Save 1.6 trillion litres of water, equivalent to a year’s supply for 20 million people.
+
             </div>
           </div>
           <p>
-            Through its refurbishment efforts, Quick Mobile is helping minimize
-            unnecessary mining, preserve Earth’s limited resources, and
-            significantly reduce water consumption.
+            Quick Mobile is helping to protect the Earth's resources by significantly reducing water use and minimizing resource waste from mining through the reuse of phones and the breakdown of e-waste material.
+
           </p>
         </div>
 
@@ -120,21 +120,18 @@ const QuickImpact = () => {
           <div className={styles.textBox}>
             <h3>Lowering Carbon Emissions</h3>
             <p>
-              A brand-new smartphone’s production generates 50 kg of CO₂
-              emissions, contributing to the smartphone industry’s 4% share of
-              global emissions a figure that could double by 2030 if current
-              trends continue.
+              The smartphone industry is responsible for 4% of all emissions in the world. Making a new smartphone produces 50 kg of CO₂. If things keep going the way they are, this number might triple by 2030.
+
             </p>
             <p>
-              Refurbished phones, however, produce 80% less CO₂ than new ones.
-              If 1 billion people switched to refurbished devices, the impact
-              would be game-changing:
+              Refurbished phones, on the other hand, release 80% less CO₂ than new ones. If a billion people converted to secondhand devices, it would be a significant deal:
+
             </p>
           </div>
         </div>
         <div className={styles.box}>
           <p className={styles.highlight}>
-            Prevent 50 million metric tons of CO₂ emissions each year
+            Prevent 50 million metric tons of CO₂ are released into the air every year.
           </p>
           <p style={{ fontSize: "16px" }}>This is equivalent to:</p>
           <div className={styles.statsRow}>
@@ -153,9 +150,8 @@ const QuickImpact = () => {
           </div>
           <div className={styles.textBox}>
             <p>
-              By extending the lifespan of smartphones, Quick Mobile plays a
-              vital role in reducing carbon emissions and fighting climate
-              change.
+              Quick Mobile is a significant part of the fight against climate change and decreasing carbon emissions because it helps gadgets last longer.
+
             </p>
           </div>
         </div>
@@ -165,17 +161,12 @@ const QuickImpact = () => {
           <div className={styles.textBox}>
             <h3>Promoting a Circular Economy</h3>
             <p>
-              Most smartphones are discarded after just 2-3 years, even though
-              they can last much longer with proper care. Refurbishing extends a
-              phone’s life by 3-5 additional years, cutting down the need for
-              new production and reducing waste.
+            People discard their phones after two or three years, even though they can last much longer with care. Fixing up a phone can help it last three to five years longer, which means that fewer new phones need to be built and less waste is made.
+
             </p>
             <p>
-              A circular economy focuses on reusing and refurbishing products
-              instead of constantly manufacturing new ones. Quick Mobile
-              embraces this sustainable approach by keeping smartphones in
-              circulation longer, reducing the environmental footprint of the
-              mobile industry.
+            A circular economy doesn't always make new things; instead, it focuses on fixing and reusing them. Quick Mobile supports this environmentally beneficial initiative by keeping cell phones in use longer, which lessens the mobile industry's impact on the environment.
+
             </p>
           </div>
           <div className={styles.imageBox}>
@@ -188,17 +179,12 @@ const QuickImpact = () => {
           <div className={styles.textBox}>
             <h3>Making Technology Affordable & Sustainable</h3>
             <p>
-              Most smartphones are discarded after just 2-3 years, even though
-              they can last much longer with proper care. Refurbishing extends a
-              phone’s life by 3-5 additional years, cutting down the need for
-              new production and reducing waste.
+             People discard their smartphones after only two or three years, despite their potential to last much longer with proper care. Refurbishing a phone provides it 3 to 5 more years of life. This implies that fewer new phones need to be made and less waste is made.
+
             </p>
             <p>
-              A circular economy focuses on reusing and refurbishing products
-              instead of constantly manufacturing new ones. Quick Mobile
-              embraces this sustainable approach by keeping smartphones in
-              circulation longer, reducing the environmental footprint of the
-              mobile industry.
+     A circular economy doesn't always make new things; instead, it focuses on Reuse and recycling things. Quick Mobile supports this environmentally friendly plan by making phones/device live longer, which makes the mobile business have less of an impact on the environment.
+
             </p>
           </div>
           <div className={styles.imageBox}>
@@ -293,31 +279,26 @@ const QuickImpact = () => {
         <div className={styles.conclusion}>
           <h2>Conclusion</h2>
           <p>
-            The increasing demand for new smartphones places immense pressure on
-            our planet, contributing to rising e-waste, resource depletion, and
-            carbon emissions. Choosing refurbished devices is a simple yet
-            impactful way to reduce waste, conserve natural resources, and lower
-            CO₂ emissions all while saving money.
+        The growing demand for new smartphones puts a lot of pressure to extract minerals, which causes more e-waste, resource depletion, and carbon emissions. Choosing used / refurbished device  is a simple yet effective approach to save money, reduce waste, protect natural resources, and lessen CO₂ emissions.
+
           </p>
           <p>
-            Quick Mobile is leading the charge in sustainability, ensuring that
-            used smartphones don’t end up as waste but instead get a second
-            life. Through its efforts, Quick Mobile is helping to:
-          </p>
+          Quick Mobile aims to lead in sustainability since it makes sure that old smartphones don't go to trash; instead, they get a second life. Quick Mobile is assisting with:
+    </p>
           <ol>
             <li>Reduce global e-waste</li>
-            <li>Save valuable raw materials and water</li>
-            <li>Significantly cut carbon emissions</li>
-            <li>Make sustainable technology accessible for everyone</li>
+            <li>Save water and raw materials for the future.</li>
+            <li>Cut down on carbon emissions</li>
+            <li>Let everyone use eco-friendly technologies.</li>
           </ol>
           <p>
-            Switching to a refurbished phone isn’t just about saving money it’s
-            about making a real difference for the planet. Choose Quick Mobile
-            today and be part of the solution!
+            Buying a used phone is a terrific way to help the world and save money at the same time. Join the solution by choosing Quick Mobile today!
+
           </p>
         </div>
       </div>
     </div>
+  </>
   );
 };
 

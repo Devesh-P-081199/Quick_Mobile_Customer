@@ -1,10 +1,19 @@
+import { Helmet } from "react-helmet-async";
 import styles from "./TermsAndConditions.module.css";
 
 const TermsAndConditions = () => {
   return (
     <div className="page-content-wrapper">
+         <Helmet>
+              <title> Terms and Conditions | Quick Mobile
+      </title>
+              <meta
+                name="description"
+                content={`We’ve made our Terms and Conditions simple and clear, so you always know how Quick Mobile works and what to expect.`}
+              />
+            </Helmet>
       <div className={styles.wrapper}>
-        <h2 className={styles.title}>Terms & Conditions</h2>
+        <h1 className={styles.title}>Terms & Conditions</h1>
 
         <p className={styles.intro}>
           By accessing or using the Quick Mobile website, mobile application, or

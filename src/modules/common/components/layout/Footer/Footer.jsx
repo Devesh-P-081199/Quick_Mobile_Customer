@@ -46,10 +46,10 @@ const Footer = () => {
   // Paths where footer should be hidden
   // Paths where footer should be hidden
   // const hiddenPaths = [
-  //   "/FAQPage",
+  //   "/Faq",
   //   "/404",
   //   "/Cookies",
-  //   "/About-us",
+  //   "/about-us",
   //   "/terms",
   //   "/Refund",
   //   "/Contact-us",
@@ -92,7 +92,7 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <h3 className={styles.footerHeading}>About</h3>
             <div className={styles.footerLinks}>
-              <Link to="/About-us">About us</Link>
+              <Link to="/about-us">About us</Link>
               <Link to="/Impact">Impact</Link>
               {/* <a href="#">Press Release</a> */}
               <Link to="/blogs">Blogs</Link>
@@ -104,7 +104,7 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <h3 className={styles.footerHeading}>Help Center</h3>
             <div className={styles.footerLinks}>
-              <Link to="/FAQPage">FAQ</Link>
+              <Link to="/Faq">FAQ</Link>
               <Link to="/Contact-us">Contact Us</Link>
               <Link to="/Return&Refund">Return & Refund</Link>
               {/* <a href="#">Shipment</a>
@@ -225,7 +225,7 @@ const Footer = () => {
           <FooterSection
             title="About"
             links={[
-              { text: "About Us", path: "/About-us" },
+              { text: "About Us", path: "/about-us" },
               { text: "Impact", path: "/Impact" },
               // { text: "Press Release", path: "/press" },
               { text: "Blogs", path: "/blogs" },
@@ -235,7 +235,7 @@ const Footer = () => {
           <FooterSection
             title="Help Center"
             links={[
-              { text: "FAQ", path: "/FAQPage" },
+              { text: "FAQ", path: "/Faq" },
               { text: "Contact Us", path: "/Contact-us" },
               { text: "Return & Refund", path: "/Return&Refund" },
               // "Shipment",

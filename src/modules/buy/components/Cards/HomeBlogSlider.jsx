@@ -21,7 +21,7 @@ const HomeBlogSlider = () => {
   };
 
   const handleBlogClick = (id) => {
-      navigate(`/blogs/${slugify(id)}`); 
+      navigate(`/blog/${slugify(id)}`); 
   };
 
   const getImageUrl = (name) => {

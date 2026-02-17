@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./Cookies.module.css";
+import { Helmet } from "react-helmet-async";
 
 const Cookies = () => {
   const [functional] = useState(true);
@@ -9,8 +10,16 @@ const Cookies = () => {
 
   return (
     <div className="page-content-wrapper">
+      <Helmet>
+        <title>Cookie Policy | Quick Mobile
+        </title>
+        <meta
+          name="description"
+          content={` Quick Mobile Cookie Policy, This policy explains how we use cookies on the Quick Mobile website to improve your experience while helping you buy, sell, repair, and discover smartphones.`}
+        />
+      </Helmet>
       <div className={styles.container}>
-        <h2 className={styles.title}>Cookies</h2>
+        <h1 className={styles.title}>Quick Mobile Cookies</h1>
         <p className={styles.sectionTitle}>
           Your Cookie Preferences and Rights to Opt Out of Sharing Personal
           Information.

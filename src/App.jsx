@@ -97,6 +97,7 @@ const FAQFullPage = React.lazy(() => import("./modules/common/components/FAQ/FAQ
 import Header from "./modules/common/components/layout/Header/Header";
 import Footer from "./modules/common/components/layout/Footer/Footer";
 import HomePage from "./modules/buy/pages/HomePage";
+import { Helmet } from "react-helmet-async";
 
 const AboutUs = React.lazy(
   () => import("./modules/common/pages/general/AboutUs/AboutUs"),
@@ -485,7 +486,7 @@ const AppContent = () => {
         />
 
         <Route
-          path="/FAQPage"
+          path="/Faq"
           element={
             <Suspense fallback={<Loader />}>
               <FAQFullPage />
@@ -502,7 +503,7 @@ const AppContent = () => {
           }
         />
         <Route
-          path="/About-us"
+          path="/about-us"
           element={
             <Suspense fallback={<Loader />}>
               <AboutUs />
@@ -606,7 +607,7 @@ const AppContent = () => {
           }
         />
         <Route
-          path="/blogs/:blogTitle"
+          path="/blog/:blogTitle"
           element={
             <Suspense fallback={<Loader />}>
               <BlogDetail />
@@ -627,10 +628,22 @@ const AppContent = () => {
     </>
   );
 };
+const SEOUpdater = () => {
+  const location = useLocation();
+  // Construct the absolute URL
+  const canonicalUrl = `${window.location.origin}${location.pathname}`;
 
+  return (
+    <Helmet>
+      <link rel="canonical" href={canonicalUrl} />
+    </Helmet>
+  );
+};
 function App() {
+  const dynamicUrl = window.location.origin + window.location.pathname;
   return (
     <Router>
+    <SEOUpdater />
       <AppContent />
       <ToastContainer />
     </Router>

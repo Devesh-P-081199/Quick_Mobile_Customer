@@ -1,10 +1,21 @@
+import { Helmet } from "react-helmet-async";
 import styles from "./CookiesPolicy.module.css";
 
 const CookiesPolicy = () => {
   return (
     <div className="page-content-wrapper">
+      <Helmet>
+        <title> Cookie Policy | Quick Mobile
+
+
+        </title>
+        <meta
+          name="description"
+          content={`Quick Mobile Cookie Policy, This policy explains how we use cookies on the Quick Mobile website to improve your experience while helping you buy, sell, repair, and discover smartphones.`}
+        />
+      </Helmet>
       <div className={styles.wrapper}>
-        <h2 className={styles.title}>Cookies Policy</h2>
+        <h1 className={styles.title}>Quick Mobile Cookie Policy</h1>
 
         <h2>1. Introduction</h2>
         <p>
