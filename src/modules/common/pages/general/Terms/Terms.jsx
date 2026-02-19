@@ -13,8 +13,8 @@ const TermsOfServies = () => {
           name="description"
           content={` Our Terms of Use explain what “use” means between Quick Mobile and our customers, so you can clearly understand how our policies work.
 `}
-        />
-      </Helmet>
+        />        <meta property="og:title" content="Terms of Use | Quick Mobile" />
+        <meta property="og:description" content="Our Terms of Use explain what use means between Quick Mobile and our customers, so you can clearly understand how our policies work." />      </Helmet>
       <div className={styles.wrapper}>
         <h1 className={styles.title}>Terms of Use</h1>
 

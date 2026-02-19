@@ -191,8 +191,10 @@ const DynamicRouteHandler = () => {
 
   useEffect(() => {
     resolveRouting();
+
   }, [slug1, slug2]);
 
+ 
   if (loading || !ComponentToRender) return <Loader />;
 
   return (

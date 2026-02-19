@@ -132,6 +132,8 @@ function SellHomeBanner({ onViewAllClick }) {
           name="description"
           content={`Selling Old ${catName} Online for Cash at Quick Mobile Website. Sell your Used Phone and Get Best Value, Free Pickup & Instant Cash. Visit the website now!`}
         />
+        <meta property="og:title" content={`Sell Old ${catName} and Get Instant Cash | Quick Mobile`} />
+        <meta property="og:description" content={`Selling Old ${catName} Online for Cash at Quick Mobile Website. Sell your Used Phone and Get Best Value, Free Pickup & Instant Cash. Visit the website now!`} />
       </Helmet>
       <div className={styles.bannerContainer}>
         <div className={styles.sellerbanner}>

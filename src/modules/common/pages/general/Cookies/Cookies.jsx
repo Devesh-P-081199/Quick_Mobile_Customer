@@ -17,6 +17,8 @@ const Cookies = () => {
           name="description"
           content={` Quick Mobile Cookie Policy, This policy explains how we use cookies on the Quick Mobile website to improve your experience while helping you buy, sell, repair, and discover smartphones.`}
         />
+        <meta property="og:title" content="Cookie Policy | Quick Mobile" />
+        <meta property="og:description" content="Quick Mobile Cookie Policy, This policy explains how we use cookies on the Quick Mobile website to improve your experience while helping you buy, sell, repair, and discover smartphones." />
       </Helmet>
       <div className={styles.container}>
         <h1 className={styles.title}>Quick Mobile Cookies</h1>

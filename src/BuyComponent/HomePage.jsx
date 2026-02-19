@@ -13,6 +13,7 @@ import Blogs from "./Cards/Blogs";
 import Testimonials from "./Cards/Testimonials";
 import AllCategory from "../Components/AllCategory/AllCategory";
 import Allcategoryhome from "../Components/AllCategory/AllCategoryHome";
+import { Helmet } from "react-helmet-async";
 
 const HomePage = () => {
   return (

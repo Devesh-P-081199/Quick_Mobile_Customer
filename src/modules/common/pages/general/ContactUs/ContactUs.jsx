@@ -20,6 +20,8 @@ const ContactUs = () => {
           content={`Ready to sell your device? Take a quick quote online and get paid fast | Contact us: +91-72085-48807 | Email: support@quickmobile.in
 `}
         />
+        <meta property="og:title" content="Contact-us | Quick Mobile Customer Support" />
+        <meta property="og:description" content="Ready to sell your device? Take a quick quote online and get paid fast | Contact us: +91-72085-48807 | Email: support@quickmobile.in" />
       </Helmet>
       <div className={styles.contactPage}>
         <form onSubmit={sendData}>

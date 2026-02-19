@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState, Suspense, useContext } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -98,6 +98,8 @@ import Header from "./modules/common/components/layout/Header/Header";
 import Footer from "./modules/common/components/layout/Footer/Footer";
 import HomePage from "./modules/buy/pages/HomePage";
 import { Helmet } from "react-helmet-async";
+import SEO from "./Utils/SEO";
+import { UserContext } from "./Context/contextAPI";
 
 const AboutUs = React.lazy(
   () => import("./modules/common/pages/general/AboutUs/AboutUs"),
@@ -632,11 +634,13 @@ const SEOUpdater = () => {
   const location = useLocation();
   // Construct the absolute URL
   const canonicalUrl = `${window.location.origin}${location.pathname}`;
-
   return (
+    <>
     <Helmet>
       <link rel="canonical" href={canonicalUrl} />
     </Helmet>
+     <SEO />
+     </>
   );
 };
 function App() {

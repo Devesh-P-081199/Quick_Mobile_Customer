@@ -9,7 +9,8 @@ const RefundPolicy = () => {
         <title>Refund & Return Policy | Quick Mobile
         </title>
         <meta name="description" content="Quick Mobile want you to feel secure. Our Refund Policy clearly explains when you can receive a refund and how the process works." />
-
+        <meta property="og:title" content="Refund & Return Policy | Quick Mobile" />
+        <meta property="og:description" content="Quick Mobile want you to feel secure. Our Refund Policy clearly explains when you can receive a refund and how the process works." />
       </Helmet>
       <div className={styles.container}>
         <h1 className={styles.heading}>

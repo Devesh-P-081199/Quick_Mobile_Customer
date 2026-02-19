@@ -12,8 +12,8 @@ const AboutUs = () => {
           name="description"
           content={`Quick Mobile, India’s most trusted and transparent platform for buying, selling, and repairing mobile phones
 `}
-        />
-      </Helmet>
+        />        <meta property="og:title" content="About Us | Quick Mobile" />
+        <meta property="og:description" content="Quick Mobile, India's most trusted and transparent platform for buying, selling, and repairing mobile phones" />      </Helmet>
       <div className={styles.container}>
         {/* About Us Section */}
         <h1 className={styles.heading}>About us Quick mobile

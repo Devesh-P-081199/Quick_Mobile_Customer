@@ -19,7 +19,8 @@ const QuickImpact = () => {
       </title>
       <meta name="description" content="Innovation shouldn’t create waste. Quick Mobile exists to give second life of technology, reduce e-waste, and help people earn from the devices they no longer use.
 " />
-
+      <meta property="og:title" content="Impact through Sustainable Use of Technology | Quick Mobile" />
+      <meta property="og:description" content="Innovation shouldn't create waste. Quick Mobile exists to give second life of technology, reduce e-waste, and help people earn from the devices they no longer use." />
     </Helmet>
     <div className="page-content-wrapper">
       <div className={styles.quickImpact}>

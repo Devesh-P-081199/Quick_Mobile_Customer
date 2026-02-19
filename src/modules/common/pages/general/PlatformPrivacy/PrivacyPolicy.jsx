@@ -13,6 +13,8 @@ const PrivacyPolicy = () => {
           content={` Quick Mobile is your complete smartphone solution. Sell, repair, or recycle your old device — we make it easy.
 `}
         />
+        <meta property="og:title" content="Privacy Policy | Quick Mobile" />
+        <meta property="og:description" content="Quick Mobile is your complete smartphone solution. Sell, repair, or recycle your old device — we make it easy." />
       </Helmet>
       <div className={styles.wrapper}>
         <h1 className={styles.title}>Quick Mobile Privacy policy

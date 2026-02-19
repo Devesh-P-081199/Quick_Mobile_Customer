@@ -10,8 +10,8 @@ const TermsAndConditions = () => {
               <meta
                 name="description"
                 content={`We’ve made our Terms and Conditions simple and clear, so you always know how Quick Mobile works and what to expect.`}
-              />
-            </Helmet>
+              />              <meta property="og:title" content="Terms and Conditions | Quick Mobile" />
+              <meta property="og:description" content="We've made our Terms and Conditions simple and clear, so you always know how Quick Mobile works and what to expect." />            </Helmet>
       <div className={styles.wrapper}>
         <h1 className={styles.title}>Terms & Conditions</h1>
 

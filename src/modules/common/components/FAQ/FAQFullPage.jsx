@@ -113,6 +113,8 @@ export default function FAQFullPage() {
           content={` Find out how to sell, buy, exchange, or repair your phone with Quick Mobile, plus answers to common questions for a hassle-free experience.
 `}
         />
+        <meta property="og:title" content="Frequently Asked Questions | Quick Mobile" />
+        <meta property="og:description" content="Find out how to sell, buy, exchange, or repair your phone with Quick Mobile, plus answers to common questions for a hassle-free experience." />
       </Helmet>
       <div className={styles.faqSection}>
         <h1 className={styles.faqTitle}>Frequently Asked Questions (FAQ)</h1>
