@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import styles from "./StoresListPage.module.css";
 import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
 import location from "../../../../assets/flaticons/location.png";
@@ -26,6 +27,13 @@ function StoresListPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Find QuickMobile Stores Near You | QuickMobile</title>
+        <meta
+          name="description"
+          content="Visit a QuickMobile store near you to sell, buy, or repair your mobile phone. Walk in for instant cash, expert repairs, and the best deals on refurbished phones."
+        />
+      </Helmet>
       <MobileBackHeader title="Our Stores" />
       <div className={styles.storesListPage}>
         <div className="wrapper page-content-wrapper">

@@ -98,7 +98,6 @@ import Header from "./modules/common/components/layout/Header/Header";
 import Footer from "./modules/common/components/layout/Footer/Footer";
 import HomePage from "./modules/buy/pages/HomePage";
 import { Helmet } from "react-helmet-async";
-import SEO from "./Utils/SEO";
 import { UserContext } from "./Context/contextAPI";
 
 const AboutUs = React.lazy(
@@ -632,22 +631,18 @@ const AppContent = () => {
 };
 const SEOUpdater = () => {
   const location = useLocation();
-  // Construct the absolute URL
   const canonicalUrl = `${window.location.origin}${location.pathname}`;
   return (
-    <>
     <Helmet>
       <link rel="canonical" href={canonicalUrl} />
     </Helmet>
-     <SEO />
-     </>
   );
 };
 function App() {
   const dynamicUrl = window.location.origin + window.location.pathname;
   return (
     <Router>
-    <SEOUpdater />
+      <SEOUpdater />
       <AppContent />
       <ToastContainer />
     </Router>

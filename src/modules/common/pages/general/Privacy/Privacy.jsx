@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import styles from "./Privacy.module.css";
 
 const guideData = [
@@ -26,6 +27,13 @@ const guideData = [
 export default function GuidePrivacyPolicy() {
   return (
     <div className="page-content-wrapper">
+      <Helmet>
+        <title>Privacy Guide | QuickMobile</title>
+        <meta
+          name="description"
+          content="Learn how QuickMobile handles your personal data. Read our comprehensive guide and privacy policy to understand how we protect your information and your rights."
+        />
+      </Helmet>
       <div className={styles.container}>
         <h2 className={styles.heading}>Explore Our Guide and Privacy Policy</h2>
         <div className={styles.contentWrapper}>

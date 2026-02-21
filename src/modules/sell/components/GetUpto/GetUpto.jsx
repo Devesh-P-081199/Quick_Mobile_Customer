@@ -1,4 +1,5 @@
 import { useContext, useEffect, useRef, useState, useCallback } from "react";
+import { Helmet } from "react-helmet-async";
 import styles from "./GetUpto.module.css";
 import backarrow from "../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
 import { useNavigate, useParams } from "react-router-dom";
@@ -178,6 +179,21 @@ const GetUpto = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          {deviceInfo?.deviceName
+            ? `Sell ${deviceInfo.deviceName} - Get Best Price | QuickMobile`
+            : "Get Best Price for Your Device | QuickMobile"}
+        </title>
+        <meta
+          name="description"
+          content={
+            deviceInfo?.deviceName
+              ? `Get the best price for your ${deviceInfo.deviceName}. QuickMobile offers free doorstep pickup and instant cash payment.`
+              : "Get the best price for your old device with QuickMobile. Free pickup and instant cash payment."
+          }
+        />
+      </Helmet>
       <MobileBackHeader title="Get Price" />
       <div className="page-content">
         <div className="page-content-wrapper">
@@ -232,11 +248,10 @@ const GetUpto = () => {
                         </div>
 
                         <span
-                          className={`${styles.currentPrice} ${
-                            sliderPositions.isNarrowRange
+                          className={`${styles.currentPrice} ${sliderPositions.isNarrowRange
                               ? styles.currentPriceMinNarrow
                               : styles.currentPriceMin
-                          }`}
+                            }`}
                           style={{
                             left: sliderPositions.thumb1Position,
                           }}
@@ -245,11 +260,10 @@ const GetUpto = () => {
                         </span>
 
                         <span
-                          className={`${styles.currentPrice} ${
-                            sliderPositions.isNarrowRange
+                          className={`${styles.currentPrice} ${sliderPositions.isNarrowRange
                               ? styles.currentPriceMaxNarrow
                               : styles.currentPriceMax
-                          }`}
+                            }`}
                           style={{
                             left: sliderPositions.thumb2Position,
                           }}

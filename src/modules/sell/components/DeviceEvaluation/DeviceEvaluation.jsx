@@ -6,6 +6,7 @@ import {
   useCallback,
   useMemo,
 } from "react";
+import { Helmet } from "react-helmet-async";
 import "./DeviceEvaluation.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import DeviceImg from "../../../../assets/images/Products/mobile.png";
@@ -282,58 +283,58 @@ function DeviceEvaluation() {
   };
 
   // ===== Save and price calculation =====
-const priceCalculationAndSave = async () => {
-  try {
-  
+  const priceCalculationAndSave = async () => {
+    try {
 
-    const urlParams = new URLSearchParams(location.search);
-    const deviceName = deviceInfo.deviceName || urlParams.get("pn") || "Unknown Device";
 
-    const isWarrantyRemoved = !allPackageData.some(pkg => pkg.packageType === "Warranty");
+      const urlParams = new URLSearchParams(location.search);
+      const deviceName = deviceInfo.deviceName || urlParams.get("pn") || "Unknown Device";
 
-    let transformedPackageData = allPackageData.map((pkg) => ({
-      ...pkg,
-      answers: transformAnswersForBackend(pkg.answers || {}, pkg.questions),
-    }));
+      const isWarrantyRemoved = !allPackageData.some(pkg => pkg.packageType === "Warranty");
 
-    if (isWarrantyRemoved) {
-      const originalWarrantyPkg = assignedPackages.find(p => p.packageId.packageType === "Warranty");
+      let transformedPackageData = allPackageData.map((pkg) => ({
+        ...pkg,
+        answers: transformAnswersForBackend(pkg.answers || {}, pkg.questions),
+      }));
 
-      if (originalWarrantyPkg) {
-        const fakeWarrantyEntry = {
-          packageId: originalWarrantyPkg.packageId._id,
-          packageName: originalWarrantyPkg.packageId.packageName,
-          packageType: originalWarrantyPkg.packageId.packageType,
-          pageTitle: originalWarrantyPkg.packageId.pageTitle,
-          titleExplanation: originalWarrantyPkg.packageId.titleExplanation,
-          
-          answers: {
-            [originalWarrantyPkg.packageId.questions[0]._id]: 0 
-          }
-        };
-        
-        transformedPackageData.push(fakeWarrantyEntry);
+      if (isWarrantyRemoved) {
+        const originalWarrantyPkg = assignedPackages.find(p => p.packageId.packageType === "Warranty");
+
+        if (originalWarrantyPkg) {
+          const fakeWarrantyEntry = {
+            packageId: originalWarrantyPkg.packageId._id,
+            packageName: originalWarrantyPkg.packageId.packageName,
+            packageType: originalWarrantyPkg.packageId.packageType,
+            pageTitle: originalWarrantyPkg.packageId.pageTitle,
+            titleExplanation: originalWarrantyPkg.packageId.titleExplanation,
+
+            answers: {
+              [originalWarrantyPkg.packageId.questions[0]._id]: 0
+            }
+          };
+
+          transformedPackageData.push(fakeWarrantyEntry);
+        }
       }
+
+      await api.post("/sell-module/user/price-estimation", {
+        packagesAnswer: transformedPackageData,
+        basePrice: 50000,
+        userSelection,
+        deviceName: deviceName,
+        deviceVariant: deviceInfo.variantDetail || urlParams.get("vid") || "Unknown Variant",
+      });
+
+      // Storage and Navigation
+      const productId = urlParams.get("pid");
+      sessionStorage.setItem(`packageDetails_${productId}`, JSON.stringify(allPackageData));
+      sessionStorage.setItem(`formSubmitted_${productId}`, "true");
+
+      navigate(`/${slug}/price-summary?${urlParams.toString()}`, { replace: true });
+    } catch (error) {
+      console.error("Error in price estimation:", error);
     }
-
-    await api.post("/sell-module/user/price-estimation", {
-      packagesAnswer: transformedPackageData,
-      basePrice: 50000,
-      userSelection,
-      deviceName: deviceName,
-      deviceVariant: deviceInfo.variantDetail || urlParams.get("vid") || "Unknown Variant",
-    });
-
-    // Storage and Navigation
-    const productId = urlParams.get("pid");
-    sessionStorage.setItem(`packageDetails_${productId}`, JSON.stringify(allPackageData));
-    sessionStorage.setItem(`formSubmitted_${productId}`, "true");
-
-    navigate(`/${slug}/price-summary?${urlParams.toString()}`, { replace: true });
-  } catch (error) {
-    console.error("Error in price estimation:", error);
-  }
-};
+  };
 
   // Watch for login completion if we have a pending calculation
   useEffect(() => {
@@ -648,88 +649,88 @@ const priceCalculationAndSave = async () => {
   ]);
 
   // ===== Handle option change =====
- const handleOptionChange = (questionId, optionValue, isMulti) => {
-  setLastInteractedQuestionId(questionId);
-  setActiveSectionIndex(currentPackageIndex);
+  const handleOptionChange = (questionId, optionValue, isMulti) => {
+    setLastInteractedQuestionId(questionId);
+    setActiveSectionIndex(currentPackageIndex);
 
-  setAllPackageData((prev) => {
-    const updatedWithAnswers = prev.map((pkg, index) => {
-      if (index !== currentPackageIndex) return pkg;
-      const prevAnswers = pkg.answers || {};
-      let updatedAnswers;
+    setAllPackageData((prev) => {
+      const updatedWithAnswers = prev.map((pkg, index) => {
+        if (index !== currentPackageIndex) return pkg;
+        const prevAnswers = pkg.answers || {};
+        let updatedAnswers;
 
-      if (isMulti) {
-        const current = prevAnswers[questionId] || [];
-        updatedAnswers = {
-          ...prevAnswers,
-          [questionId]: current.includes(optionValue)
-            ? current.filter((v) => v !== optionValue)
-            : [...current, optionValue],
-        };
-      } else {
-        updatedAnswers = {
-          ...prevAnswers,
-          [questionId]: optionValue,
-        };
-      }
-      return { ...pkg, answers: updatedAnswers };
-    });
-
-    let shouldSkipWarranty = false;
-
-    updatedWithAnswers.forEach(pkg => {
-      const originalPkg = assignedPackages.find(ap => ap.packageId._id === pkg.packageId);
-      
-      if (originalPkg) {
-        Object.entries(pkg.answers).forEach(([qId, selectedVal]) => {
-          const question = originalPkg.packageId.questions.find(q => q._id === qId);
-          if (question) {
-            const selectedOptions = question.options.filter(opt => 
-              Array.isArray(selectedVal) 
-                ? selectedVal.includes(String(question.options.indexOf(opt))) 
-                : String(question.options.indexOf(opt)) === selectedVal
-            );
-
-            if (selectedOptions.some(opt => opt.skipWarranty === true)) {
-              shouldSkipWarranty = true;
-            }
-          }
-        });
-      }
-    });
-
-    let finalData;
-    if (shouldSkipWarranty) {
-      finalData = updatedWithAnswers.filter(pkg => pkg.packageType !== "Warranty");
-    } else {
-      const hasWarranty = updatedWithAnswers.some(pkg => pkg.packageType === "Warranty");
-      if (!hasWarranty) {
-        const warrantyPkg = assignedPackages.find(p => p.packageId.packageType === "Warranty");
-        if (warrantyPkg) {
-          const transformedWarranty = {
-            packageId: warrantyPkg.packageId._id,
-            packageName: warrantyPkg.packageId.packageName,
-            packageType: warrantyPkg.packageId.packageType,
-            pageTitle: warrantyPkg.packageId.pageTitle,
-            questions: transformQuestions(warrantyPkg.packageId.questions || []),
-            answers: {},
+        if (isMulti) {
+          const current = prevAnswers[questionId] || [];
+          updatedAnswers = {
+            ...prevAnswers,
+            [questionId]: current.includes(optionValue)
+              ? current.filter((v) => v !== optionValue)
+              : [...current, optionValue],
           };
-          finalData = [...updatedWithAnswers, transformedWarranty];
+        } else {
+          updatedAnswers = {
+            ...prevAnswers,
+            [questionId]: optionValue,
+          };
+        }
+        return { ...pkg, answers: updatedAnswers };
+      });
+
+      let shouldSkipWarranty = false;
+
+      updatedWithAnswers.forEach(pkg => {
+        const originalPkg = assignedPackages.find(ap => ap.packageId._id === pkg.packageId);
+
+        if (originalPkg) {
+          Object.entries(pkg.answers).forEach(([qId, selectedVal]) => {
+            const question = originalPkg.packageId.questions.find(q => q._id === qId);
+            if (question) {
+              const selectedOptions = question.options.filter(opt =>
+                Array.isArray(selectedVal)
+                  ? selectedVal.includes(String(question.options.indexOf(opt)))
+                  : String(question.options.indexOf(opt)) === selectedVal
+              );
+
+              if (selectedOptions.some(opt => opt.skipWarranty === true)) {
+                shouldSkipWarranty = true;
+              }
+            }
+          });
+        }
+      });
+
+      let finalData;
+      if (shouldSkipWarranty) {
+        finalData = updatedWithAnswers.filter(pkg => pkg.packageType !== "Warranty");
+      } else {
+        const hasWarranty = updatedWithAnswers.some(pkg => pkg.packageType === "Warranty");
+        if (!hasWarranty) {
+          const warrantyPkg = assignedPackages.find(p => p.packageId.packageType === "Warranty");
+          if (warrantyPkg) {
+            const transformedWarranty = {
+              packageId: warrantyPkg.packageId._id,
+              packageName: warrantyPkg.packageId.packageName,
+              packageType: warrantyPkg.packageId.packageType,
+              pageTitle: warrantyPkg.packageId.pageTitle,
+              questions: transformQuestions(warrantyPkg.packageId.questions || []),
+              answers: {},
+            };
+            finalData = [...updatedWithAnswers, transformedWarranty];
+          } else {
+            finalData = updatedWithAnswers;
+          }
         } else {
           finalData = updatedWithAnswers;
         }
-      } else {
-        finalData = updatedWithAnswers;
       }
-    }
 
-    const storageKey = getStorageKey();
-    sessionStorage.setItem(storageKey, JSON.stringify(finalData));
-    return finalData;
-  });
+      const storageKey = getStorageKey();
+      sessionStorage.setItem(storageKey, JSON.stringify(finalData));
+      return finalData;
+    });
 
-  setMissingQuestions((prev) => prev.filter((id) => id !== questionId));
-};
+    setMissingQuestions((prev) => prev.filter((id) => id !== questionId));
+  };
 
   // ===== Render options =====
   const renderOptions = (q) => {
@@ -780,9 +781,8 @@ const priceCalculationAndSave = async () => {
 
     return (
       <div
-        className={`options ${
-          showIcons ? "box-grid icon-option-container" : gridClass
-        }`}
+        className={`options ${showIcons ? "box-grid icon-option-container" : gridClass
+          }`}
       >
         {q.options.map((opt) => {
           const isSelected = isMulti
@@ -826,9 +826,8 @@ const priceCalculationAndSave = async () => {
             <label
               key={opt.id}
               htmlFor={`${q.id}-${opt.value}`}
-              className={`option ${
-                isSelected ? "selected" : ""
-              } option-with-des-box`}
+              className={`option ${isSelected ? "selected" : ""
+                } option-with-des-box`}
             >
               <input
                 id={`${q.id}-${opt.value}`}
@@ -883,7 +882,7 @@ const priceCalculationAndSave = async () => {
 
       return;
     }
-console.log("Final package data before price calculation:", user);
+    console.log("Final package data before price calculation:", user);
     if (!user?.userId) {
       setPendingPriceCalculation(true);
       setIsLoginModalOpen(true);
@@ -976,9 +975,8 @@ console.log("Final package data before price calculation:", user);
             }}
           >
             <h3 className="answer-heading">
-              {`${index + 1}. ${
-                packageData?.pageTitle || packageData?.packageName
-              }`}
+              {`${index + 1}. ${packageData?.pageTitle || packageData?.packageName
+                }`}
             </h3>
             {isExpanded ? (
               <img src={dropdownIcon} alt="dropdownIcon" className="expanded" />
@@ -1013,11 +1011,10 @@ console.log("Final package data before price calculation:", user);
                   <div
                     key={qid}
                     ref={(el) => (sidebarAnswerRefs.current[qid] = el)}
-                    className={`answer-item ${
-                      lastInteractedQuestionId === qid
-                        ? "active-answer-item"
-                        : ""
-                    }`}
+                    className={`answer-item ${lastInteractedQuestionId === qid
+                      ? "active-answer-item"
+                      : ""
+                      }`}
                   >
                     <p className="question-text">{`${q?.question}`}</p>
                     <ul className="answer-text">
@@ -1076,7 +1073,23 @@ console.log("Final package data before price calculation:", user);
 
   return (
     <>
+      <Helmet>
+        <title>
+          {deviceInfo?.deviceName
+            ? `Evaluate Your ${deviceInfo.deviceName} | QuickMobile`
+            : "Device Evaluation | QuickMobile"}
+        </title>
+        <meta
+          name="description"
+          content={
+            deviceInfo?.deviceName
+              ? `Answer a few questions about your ${deviceInfo.deviceName} to get an accurate sell price. QuickMobile offers free pickup and instant cash.`
+              : "Answer a few questions about your device to get an accurate sell price with QuickMobile."
+          }
+        />
+      </Helmet>
       <MobileBackHeader title="Calculation" onBack={handlePrevious} />
+
       <div className="form-section page-content-wrapper space-remove">
         <div className="wrapper">
           {/* Left Side */}
@@ -1111,9 +1124,8 @@ console.log("Final package data before price calculation:", user);
                 {allPackageData.map((_, index) => (
                   <div
                     key={index}
-                    className={`progress-segment ${
-                      index <= currentPackageIndex ? "filled" : ""
-                    }`}
+                    className={`progress-segment ${index <= currentPackageIndex ? "filled" : ""
+                      }`}
                   />
                 ))}
               </div>
@@ -1142,8 +1154,8 @@ console.log("Final package data before price calculation:", user);
                       {(q.type === "radio" ||
                         q.type === "icon-radio" ||
                         q.type === "dropdown") && (
-                        <sup className="required-asterisk">*</sup>
-                      )}
+                          <sup className="required-asterisk">*</sup>
+                        )}
                     </p>
                     <p className="question-explaination-text">
                       {q?.questionExplanation}

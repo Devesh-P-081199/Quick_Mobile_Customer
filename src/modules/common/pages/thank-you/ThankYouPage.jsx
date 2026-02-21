@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef, useContext, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import styles from "./Thankyou.module.css";
 // Reuse OrderDetails styles
 import { FaPlus, FaTimes } from "react-icons/fa";
@@ -171,6 +172,10 @@ const ThankYouPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Order Confirmed | QuickMobile</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <MobileBackHeader
         title="Order Confirmation"
         onBack={() => navigate("/")}

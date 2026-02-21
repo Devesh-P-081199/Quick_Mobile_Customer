@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./SelectSeries.module.css";
 import api from "../../../../Utils/api";
@@ -43,8 +44,8 @@ function SelectSeries() {
   // Filter models based on selected series
   const filteredModels = seriesId
     ? allModels.filter(
-        (model) => model.deviceSeries?.toString() === seriesId?.toString(),
-      )
+      (model) => model.deviceSeries?.toString() === seriesId?.toString(),
+    )
     : allModels;
 
   const brandName = allModels?.[0]?.deviceBrandName || "";
@@ -56,6 +57,21 @@ function SelectSeries() {
 
   return (
     <>
+      <Helmet>
+        <title>
+          {brandName && categoryName
+            ? `Sell ${brandName} ${categoryName} - Select Series | QuickMobile`
+            : "Select Series to Sell | QuickMobile"}
+        </title>
+        <meta
+          name="description"
+          content={
+            brandName && categoryName
+              ? `Choose your ${brandName} ${categoryName} series and model to get the best sell price online. Free pickup & instant payment with QuickMobile.`
+              : "Select your device series and model to get the best sell price online with QuickMobile."
+          }
+        />
+      </Helmet>
       <MobileCommonHeader title={headerTitle} onSearch />
 
       <div className={styles.mobilePtSection}>
@@ -75,9 +91,8 @@ function SelectSeries() {
                           prev === item._id ? null : item._id,
                         )
                       }
-                      className={`${styles.seriesItem} ${
-                        seriesId === item._id ? styles.active : ""
-                      }`}
+                      className={`${styles.seriesItem} ${seriesId === item._id ? styles.active : ""
+                        }`}
                     >
                       {item.seriesName}
                       {seriesId === item._id && (
@@ -102,7 +117,7 @@ function SelectSeries() {
         {/* Models List */}
         <section className="page-content-wrapper">
           <div className="wrapper">
-            {}
+            { }
             {filteredModels.length > 0 ? (
               <div className={styles.wrapper}>
                 <div className={styles.headingFlex}>

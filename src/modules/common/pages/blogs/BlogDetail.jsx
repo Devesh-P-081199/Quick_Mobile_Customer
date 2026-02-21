@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import styles from "./BlogDetail.module.css";
 import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
@@ -46,6 +47,13 @@ const BlogDetail = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{blog.title} | QuickMobile Blog</title>
+        <meta
+          name="description"
+          content={blog.description || `Read our blog post: ${blog.title}. QuickMobile covers expert insights on buying, selling, and repairing mobile phones.`}
+        />
+      </Helmet>
       <MobileBackHeader title="Blog" />
 
       <div className="page-content-wrapper">

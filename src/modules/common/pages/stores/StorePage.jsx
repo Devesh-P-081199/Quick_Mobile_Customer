@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import styles from "./StorePage.module.css";
@@ -111,6 +112,13 @@ function StorePage() {
 
   return (
     <>
+      <Helmet>
+        <title>{STORE_DATA.name} | QuickMobile Store</title>
+        <meta
+          name="description"
+          content={`Visit ${STORE_DATA.name} at ${STORE_DATA.address}. Open ${STORE_DATA.time}. Sell, buy, or repair your mobile phone with QuickMobile.`}
+        />
+      </Helmet>
       <MobileBackHeader title="Our Stores" />
       <div className={styles.storePage}>
         <div className="wrapper page-content-wrapper">

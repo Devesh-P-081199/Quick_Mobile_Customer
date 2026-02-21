@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import styles from "./ComingSoon.module.css";
 // import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
 
@@ -8,6 +9,10 @@ const ComingSoon = () => {
 
     return (
         <div className={styles.pageContainer}>
+            <Helmet>
+                <title>Coming Soon | QuickMobile</title>
+                <meta name="robots" content="noindex, nofollow" />
+            </Helmet>
             {/* If you want the mobile header to appear above the red background, 
                  you might need to adjust the structure or z-index. 
                  For a full page immersive design, we might omit it or style it transparently. */}

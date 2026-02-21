@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import styles from "./ErrorPage.module.css";
 
 const NotFoundPage = () => {
@@ -23,6 +24,10 @@ const NotFoundPage = () => {
 
   return (
     <div className={styles.errorPage}>
+      <Helmet>
+        <title>404 – Page Not Found | QuickMobile</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Left Side Illustration */}
       <div className={styles.imageSection}>
         <div className={styles.illustration}>

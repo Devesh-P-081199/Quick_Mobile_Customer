@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import SellBanner from "../components/SellBanner/SellBanner";
 import StaticBanner from "../../common/components/SellYourOldDevice/StaticBanner";
 import SelectBrand from "../components/SelectBrand/SelectBrand";
@@ -13,7 +15,16 @@ import Testimonials from "../../buy/components/Cards/Testimonials";
 import FooterContent from "../../common/components/layout/Footer/FooterContent";
 
 function SellHome() {
+  const { slug1 } = useParams();
   const brandRef = useRef(null);
+
+  // Format slug to human-readable (e.g. "sell-phone" → "Sell Phone")
+  const categoryLabel = slug1
+    ? slug1
+      .split("-")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ")
+    : "Your Device";
   useEffect(() => {
     const fakeDelay = setTimeout(() => {
       // setLoading(false); // This line is commented out because loading state is removed
@@ -23,6 +34,13 @@ function SellHome() {
 
   return (
     <>
+      <Helmet>
+        <title>Sell {categoryLabel} Online | QuickMobile</title>
+        <meta
+          name="description"
+          content={`Sell your old ${categoryLabel} online with QuickMobile. Get the best price, free doorstep pickup, and instant cash. Sell now!`}
+        />
+      </Helmet>
       <SellBanner
         onViewAllClick={() => {
           if (brandRef.current) {

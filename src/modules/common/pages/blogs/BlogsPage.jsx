@@ -1,5 +1,6 @@
 // import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import styles from "./BlogsPage.module.css";
 import MobileBackHeader from "../../components/layout/MobileCommonHeader/MobileBackHeader";
 import blogsData from "./block-content.json";
@@ -34,6 +35,13 @@ const BlogsPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Mobile Phone Blogs &amp; Guides | QuickMobile</title>
+        <meta
+          name="description"
+          content="Explore QuickMobile's blog for expert tips, guides, and news on buying, selling, and repairing mobile phones. Stay informed with the latest in mobile tech."
+        />
+      </Helmet>
       <MobileBackHeader title="Blogs" />
 
       <div className="page-content-wrapper">
