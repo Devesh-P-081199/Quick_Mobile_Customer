@@ -7,6 +7,7 @@
     "dev": "vite",
     "dev:network": "vite --host 0.0.0.0",
     "build": "vite build",
+    "prerender": "node scripts/crawl.js",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "preview": "vite preview"
@@ -45,6 +46,7 @@
     "globals": "^15.15.0",
     "postcss": "^8.5.6",
     "prettier": "^3.7.4",
+    "puppeteer": "^24.37.5",
     "tailwindcss": "^3.4.18",
     "vite": "^6.2.0"
   }

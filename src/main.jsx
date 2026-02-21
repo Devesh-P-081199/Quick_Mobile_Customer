@@ -18,7 +18,8 @@ import Context from "./Context/contextAPI.jsx";
 
 import App from "./App.jsx";
 
-createRoot(document.getElementById("root")).render(
+const root = createRoot(document.getElementById("root"));
+root.render(
   <Context>
     <StrictMode>
       <HelmetProvider>
@@ -27,3 +28,8 @@ createRoot(document.getElementById("root")).render(
     </StrictMode>
   </Context>,
 );
+
+// Dispatch event for pre-rendering
+setTimeout(() => {
+  document.dispatchEvent(new Event("render-event"));
+}, 100);
