@@ -20,7 +20,7 @@ const BlogsPage = () => {
   // ];
 
   const handleBlogClick = (title) => {
-    navigate(`/blogs/${slugify(title)}`);
+    navigate(`/blog/${slugify(title)}`);
   };
 
   const getImageUrl = (name) => {

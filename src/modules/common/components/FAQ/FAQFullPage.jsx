@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./FAQFullPage.module.css";
 import uparrow from "../../../../assets/QuickSellNewIcons/BackArrowwithouttail.svg";
+import { Helmet } from "react-helmet-async";
 
 const allFaqs = [
   {
@@ -102,8 +103,21 @@ export default function FAQFullPage() {
 
   return (
     <div className="page-content-wrapper">
+       <Helmet>
+        <title> Frequently Asked Questions | Quick Mobile
+
+
+</title>
+        <meta
+          name="description"
+          content={` Find out how to sell, buy, exchange, or repair your phone with Quick Mobile, plus answers to common questions for a hassle-free experience.
+`}
+        />
+        <meta property="og:title" content="Frequently Asked Questions | Quick Mobile" />
+        <meta property="og:description" content="Find out how to sell, buy, exchange, or repair your phone with Quick Mobile, plus answers to common questions for a hassle-free experience." />
+      </Helmet>
       <div className={styles.faqSection}>
-        <h2 className={styles.faqTitle}>Frequently Asked Questions (FAQ)</h2>
+        <h1 className={styles.faqTitle}>Frequently Asked Questions (FAQ)</h1>
 
         <div className={styles.faqList}>
           {allFaqs.slice(0, visibleCount).map((faq, index) => (

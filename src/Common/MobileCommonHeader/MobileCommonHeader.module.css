@@ -1,0 +1,102 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 12px 16px;
+  border-radius: 0px;
+  /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
+  /* font-family: 'Segoe UI', sans-serif; */
+  height: 55px;
+  /* position: fixed; */
+  position: sticky;
+  top: 0px;
+  width: 100vw;
+  margin-bottom: 5px;
+  z-index: 20;
+  margin-top: -1px;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #000;
+}
+
+.title {
+  flex: 1;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500 !important;
+  color: #000;
+  padding-left: 10px;
+}
+
+
+
+.header img {
+
+    height: 27px;
+}
+
+
+.header {
+  position: sticky; /* stays at top */
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 5px 12px;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  height: 56px;
+}
+
+/* Search bar style (old modal style reused) */
+.searchBox {
+  display: flex;
+  align-items: center;
+  border: 1px solid #007bff;
+  border-radius: 6px;
+  padding: 6px 10px;
+  height: 47px;
+  flex: 1;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  margin: 0 8px;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  flex: 1;
+  /* text-align: center; */
+  /* font-size: 16px; */
+  font-weight: 600;
+}
+
+
+@media screen and (min-width : 480px) {
+
+    .header {
+        display: none !important;
+    }
+    
+}

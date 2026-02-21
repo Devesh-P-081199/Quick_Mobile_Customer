@@ -29,53 +29,53 @@ const getImageForModel = (modelName) => {
 const brands = [
   {
     name: "Apple iPhone 12",
-    url: "/sell-old-mobile/sell-used-apple-iphone-12",
+    url: "/sell-old-mobile-phone/sell-used-apple-iphone-12",
   },
   {
     name: "Apple iPhone 12 Pro",
-    url: "/sell-old-mobile/sell-used-apple-iphone-12-pro",
+    url: "/sell-old-mobile-phone/sell-used-apple-iphone-12-pro",
   },
   {
     name: "Apple iPhone 14",
-    url: "/sell-old-mobile/sell-used-apple-iphone-14",
+    url: "/sell-old-mobile-phone/sell-used-apple-iphone-14",
   },
-  { name: "OnePlus 11", url: "/sell-old-mobile/sell-used-oneplus-11-5g" },
+  { name: "OnePlus 11", url: "/sell-old-mobile-phone/sell-used-oneplus-11-5g" },
   {
     name: "Oppo F21 Pro",
-    url: "/sell-old-mobile/sell-old-oppo-f21-pro-8gb128gb",
+    url: "/sell-old-mobile-phone/sell-old-oppo-f21-pro-8gb128gb",
   },
-  { name: "Poco M3", url: "/sell-old-mobile/sell-used-poco-m3" },
-  { name: "Realme 8", url: "/sell-old-mobile/sell-used-realme-8" },
+  { name: "Poco M3", url: "/sell-old-mobile-phone/sell-used-poco-m3" },
+  { name: "Realme 8", url: "/sell-old-mobile-phone/sell-used-realme-8" },
   {
     name: "Realme Narzo 20A",
-    url: "/sell-old-mobile/sell-used-realme-narzo-20a",
+    url: "/sell-old-mobile-phone/sell-used-realme-narzo-20a",
   },
   {
     name: "Xiaomi Redmi Note 9 Pro",
-    url: "/sell-old-mobile/sell-used-xiaomi-redmi-note-9-pro",
+    url: "/sell-old-mobile-phone/sell-used-xiaomi-redmi-note-9-pro",
   },
   {
     name: "Xiaomi Redmi Note 7",
-    url: "/sell-old-mobile/sell-used-xiaomi-redmi-note-7",
+    url: "/sell-old-mobile-phone/sell-used-xiaomi-redmi-note-7",
   },
   {
     name: "Samsung Galaxy S21",
-    url: "/sell-old-mobile/sell-used-samsung-galaxy-s21-5g",
+    url: "/sell-old-mobile-phone/sell-used-samsung-galaxy-s21-5g",
   },
   {
     name: "Samsung Galaxy A14",
-    url: "/sell-old-mobile/sell-used-samsung-galaxy-a14-5g",
+    url: "/sell-old-mobile-phone/sell-used-samsung-galaxy-a14-5g",
   },
   {
     name: "Samsung Galaxy M14",
-    url: "/sell-old-mobile/sell-used-samsung-galaxy-m14-5g",
+    url: "/sell-old-mobile-phone/sell-used-samsung-galaxy-m14-5g",
   },
   {
     name: "Samsung Galaxy Note 20",
-    url: "/sell-old-mobile/sell-old-samsung-galaxy-note-20-8gb256gb",
+    url: "/sell-old-mobile-phone/sell-old-samsung-galaxy-note-20-8gb256gb",
   },
-  { name: "Vivo V25", url: "/sell-old-mobile/sell-used-vivo-v25-5g" },
-  { name: "Mi note 14 pro", url: "/sell-old-mobile/sell-old-mi-note-14-pro-128gb" },
+  { name: "Vivo V25", url: "/sell-old-mobile-phone/sell-used-vivo-v25-5g" },
+  { name: "Mi note 14 pro", url: "/sell-old-mobile-phone/sell-old-mi-note-14-pro-128gb" },
 ]
   .map((brand) => ({
     ...brand,
@@ -84,7 +84,7 @@ const brands = [
 
 function TopSellingModel() {
   const navigate = useNavigate();
-  return (
+  return ( 
     <div className="page-content-wrapper">
       <div className="wrapper">
         <div className={styles.topSellingWrapper}>

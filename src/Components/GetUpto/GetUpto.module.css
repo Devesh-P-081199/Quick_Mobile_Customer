@@ -1,0 +1,407 @@
+.wrapper {
+  background-color: #ffffff;
+  border: 0.3px solid #e1e1e1;
+  padding: 30px;
+  display: flex;
+  position: relative;
+  /* justify-content: center; */
+  border-radius: 10px;
+}
+
+
+
+.leftContent {
+  width: 38%;
+  height: 388px;
+  border-right: 0.5px solid #0a0a0a;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  /* padding-right: 30px; */
+}
+
+.leftImgBox > img {
+  height: 367px;
+  padding: 20px;
+}
+
+.backArrowImg {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 20px;
+  cursor: pointer;
+  height: 43px;
+  width: 43px;
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  padding: 0px 30px;
+  gap: 10px;
+  width: 55%;
+  /* height: 448px; */
+}
+
+.productTitle {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #000;
+}
+
+.priceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.priceLabel {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #000;
+}
+
+.infoIcon {
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.priceBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.priceDivider {
+  width: 100%;
+  height: 2px;
+}
+
+.userData {
+  font-size: 12px;
+  color: #000;
+}
+
+.extraInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.extraInfo p {
+  font-size: 24px;
+  font-weight: 500;
+  color: #000;
+}
+
+.highlightBox {
+  background: rgba(255, 224, 202, 0.56);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.sellButton {
+  width: 200px;
+  height: 54px;
+  background: #1968b3;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  padding: 25px 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.sellButton:hover {
+  background: #005bb5;
+}
+
+.redText {
+  color: red;
+  font-weight: 500;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .browsePopular {
+    flex-direction: column;
+  }
+
+  .productTitle {
+    font-size: 20px;
+  }
+
+  .productDetails {
+    width: 100%;
+    height: auto;
+  }
+
+  .productImage {
+    height: 200px;
+  }
+
+  .productImage img {
+    height: 150px;
+  }
+
+  .sellButton {
+    width: 100%;
+  }
+}
+.verient{
+
+  font-size: 22px;
+
+}
+
+@media (max-width: 480px) {
+
+  .getuptosection{
+    padding: 2px 0px;
+  }
+
+  .wrapper {
+
+    padding: 10px;
+    flex-direction: column;
+  }
+  .leftContent {
+
+  width: 100%; 
+  height: 210px;
+border-right: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   padding-right: 0px;
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    
+  }
+  .leftImgBox {
+    height: 100%;
+    width: 100%;
+    padding: 20px 0px;
+  }
+
+  .leftImgBox>img {
+
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .heading {
+
+    text-align: start;
+    /* border-bottom: 1px solid; */
+    padding-bottom: 10px;
+    font-size: 22px;
+  }
+  .selectBox p {
+    font-size: 12px;
+  }
+  .rightContent {
+    gap: 17px;
+    width: 100%;
+    padding-left: 0px;
+  }
+  .productTitle {
+    font-size: 20px;
+    text-align: start;
+    /* border-bottom: 1px solid; */
+  
+  }
+
+  .productTitle br{
+    display: none;
+  }
+
+  .productDetails {
+    padding: 10px;
+  }
+
+  .extraInfo  br {
+    display: none;
+  }
+  .backArrowImg {
+   display: none;
+  }
+  
+  .wrapper {
+  background: none;
+  border: none;
+  /* padding: 30px; */
+  display: flex;
+  position: relative;
+  border-radius: 10px;
+}
+
+.form {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  /* align-items: flex-start;
+  flex-wrap: wrap;
+  padding-bottom: 20px; */
+}
+.radioLabel span {
+  font-size: 12px;
+}
+.leftImgBox > img {
+
+  padding: 0px;
+}
+.verient{
+
+  font-size: 18px;
+  font-weight: 600;
+}
+.extraInfo p {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.extraInfo p span {
+
+  font-size: 22px;
+}
+
+.sellButton {
+
+   /* position: fixed;
+    bottom: 0vh;
+    left: 0vh; */
+    border-radius: 0px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 25px 11px; */
+    width: 100%;
+    /* padding: ; */
+    border-radius: 5px;
+}
+ .buttonBottomBox {
+    position: fixed;
+    bottom: 0vh;
+    left: 0vh;
+    height: 71px;
+
+    border-radius: 0px;
+    /* height: 39px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 11px;
+    background-color: #ffffff;
+    width: 100%;
+    border: none;
+    z-index: 99;
+  }
+  
+}
+
+
+.userData span {
+
+  color: #1968b3;
+  font-weight: 600;
+}
+
+.priceBox {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.sliderContainer {
+  position: relative;
+  width: 390px;
+  height: 80px;
+  background-color: rgba(209, 213, 219, 0.6); /* gray-300/60 */
+  border-radius: 8px;
+  padding: 0 8px;
+  user-select: none;
+  isolation: isolate;
+}
+
+.priceLabelMin,
+.priceLabelMax {
+  position: absolute;
+  bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000;
+}
+
+.priceLabelMin {
+  left: 10px;
+}
+
+.priceLabelMax {
+  right: 10px;
+}
+
+.currentPrice {
+  position: absolute;
+  top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #007fee;
+  transform: translateX(-50%);
+}
+
+.track {
+  position: absolute;
+  left: 20px;
+  top: 36px;
+  width: calc(100% - 40px);
+  height: 4px;
+  background-color: #000;
+  border-radius: 4px;
+}
+
+.thumb {
+  position: absolute;
+  top: 30px;
+  width: 14px;
+  height: 14px;
+  background-color: #000;
+  border-radius: 50%;
+  cursor: pointer;
+  touch-action: none;
+  transform: translateX(-50%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .sliderContainer {
+    width: 100%;
+    height: 70px;
+  }
+
+  .track {
+    width: calc(100% - 40px);
+  }
+}
+
+

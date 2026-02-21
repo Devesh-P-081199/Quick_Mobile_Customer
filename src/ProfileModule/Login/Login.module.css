@@ -1,0 +1,525 @@
+.signUpWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 100px 120px; */
+  width: 100%;
+  background: #ffffff;
+}
+
+.leftPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  /* width: 38%; */
+  width: 100%;
+}
+
+.leftHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 382px;
+}
+
+.brand {
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  color: #1968b3;
+  text-align: center;
+}
+
+.tagline {
+  font-family: "IBM Plex Mono";
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 42px;
+  color: #000000;
+  text-align: center;
+}
+
+.subtext {
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  color: #000000;
+}
+
+.leftButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 270px;
+}
+
+.primaryBtn {
+  background: #1968b3;
+  color: #ffffff;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+  font-size: 14px;
+  padding: 11px 35px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.secondaryBtn {
+  background: rgba(188, 188, 188, 0.7);
+  color: #000000;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+  font-size: 14px;
+  padding: 11px 35px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.formCard {
+  /* background: #ffffff; */
+  /* box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.06); */
+  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 20px; */
+}
+
+.formContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* gap: 157px; */
+  gap: 20px;
+}
+
+.formHeader {
+  /* text-align: center; */
+  gap: 10px;
+  margin-bottom: 120px;
+}
+
+.formTitle {
+  font-family: "IBM Plex Mono";
+  font-size: 32px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.formSubtitle {
+  font-family: "IBM Plex Sans";
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  width: 25px;
+  height: 20px;
+  /* background: #000; */
+}
+
+.inputContent {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.label {
+  font-family: "IBM Plex Sans";
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.inputValue {
+  font-family: "IBM Plex Sans";
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.submitBtn {
+  background: #1968b3;
+  color: #ffffff;
+  font-family: "IBM Plex Sans";
+  font-weight: 500;
+  font-size: 14px;
+  padding: 11px 35px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.loginLink {
+  font-family: "IBM Plex Sans";
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-top: 10px;
+}
+.mobileInput {
+  border: none;
+  /* border-bottom: 1px solid #ccc; */
+  font-size: 16px;
+  padding: 8px 0;
+  width: 100%;
+  outline: none;
+}
+
+.otpBoxContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.otpInput {
+  width: 45px;
+  height: 50px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  outline: none;
+}
+
+.passwordInput {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+  padding: 8px 0;
+  width: 100%;
+  outline: none;
+}
+
+.forgotPassword {
+  font-family: "IBM Plex Sans";
+  font-size: 14px;
+  font-weight: 400;
+  color: #1968b3;
+  text-align: right;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .signUpWrapper {
+    flex-direction: column;
+    padding: 0px;
+    gap: 30px;
+  }
+
+  .formContainer {
+    width: 100%;
+  }
+  .formCard {
+    width: 100%;
+  }
+
+  .formHeader {
+    margin-bottom: 20px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.loginWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  /* background: #f0f0f0; */
+  min-height: 100vh;
+}
+
+.modalBox {
+  display: flex;
+  width: 800px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  height: 545px;
+  /* border: 2px solid #1968b3; */
+}
+
+.leftSection {
+  background-color: #1968b3;
+  color: white;
+  padding: 2rem;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  text-align: start;
+}
+
+.greeting {
+  font-size: 24px;
+  margin-bottom: 0.5rem;
+}
+
+.greeting span {
+  font-weight: bold;
+}
+
+.description {
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.illustration {
+  width: 100%;
+  /* max-width: 180px; */
+  margin-top: auto;
+}
+
+.rightSection {
+  width: 60%;
+  padding: 2rem;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  background: none;
+  border: none;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 16px;
+  margin-bottom: 0.3rem;
+  color: #555;
+
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.countryCode {
+  /* font-weight: bold; */
+  margin-right: 0.5rem;
+}
+
+.inputField {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.otpBox {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+
+.otpInput {
+  width: 100%;
+  height: 50px;
+  font-size: 1.2rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.terms {
+  font-size: 0.75rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.terms a {
+  color: #1968b3;
+  text-decoration: none;
+  line-height: 21px;
+}
+
+.submitBtn {
+  background-color: #1968b3;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .loginWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 2rem; */
+    /* background: #f0f0f0; */
+    min-height: 100vh;
+    height: 100%;
+    /* width: 100vw; */
+    padding: 0px;
+    background-color: white;
+  }
+
+  .closeBtn {
+    font-size: 35px;
+    position: absolute;
+    top: 16px;
+    right: 12px;
+  }
+
+  .modalBox {
+    display: flex;
+    width: 100%;
+    background: white;
+    border-radius: 0px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    height: 545px;
+    /* border: 2px solid #1968b3; */
+    height: 100vh;
+  }
+  .leftSection {
+    display: none;
+  }
+
+  .rightSection {
+    width: 100%;
+    padding: 12px 12px;
+    position: relative;
+    border-radius: 0px !important;
+  }
+}
+
+.heading .para {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  margin-top: 5px;
+}
+
+.otpInfoWrapper {
+  margin-bottom: 1rem;
+  font-size: 14px;
+  color: #333;
+}
+
+.mobileNumber {
+  font-weight: bold;
+  color: #000;
+}
+
+.editButton {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 5px;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.otpSentText {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.editLink {
+  color: #007bff;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.otpActions {
+  display: flex;
+  justify-content: space-between;
+  /* margin-top: 10px; */
+}
+
+.link {
+  font-size: 13px;
+  color: #007bff;
+  cursor: pointer;
+}
+.mobileLoginTagLine {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .mobileLoginTagLine {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 16px;
+  }
+}
+
+
+.termClickInput {
+
+  cursor: pointer;
+  /* margin: 5px; */
+  margin-bottom: 0px;
+  height: 16px;
+  width: 16px;
+}
+
+.terms {
+
+  display: flex;
+  align-items:center;
+  gap: 5px;
+}

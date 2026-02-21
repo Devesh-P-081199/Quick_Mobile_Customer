@@ -78,7 +78,7 @@ function FooterContent({ page = "home" }) {
             <p className={Style.description}>
               * The best price for used phones
               <br />
-              * Certified Refurbished Phones 
+              * Certified Refurbished Phones
               <br />
               * Safe and secure payments
               <br />
@@ -89,16 +89,16 @@ function FooterContent({ page = "home" }) {
 
           <div className={Style.sectionBlock}>
             <h3 className={Style.subHeading}>
-             Your Complete Mobile Marketplace 
+              Your Complete Mobile Marketplace
             </h3>
             <p className={Style.description}>
               Quick Mobile provides a complete online solution for:
               <br />
-              * Online sell of used devices 
+              * Online sell of used devices
               <br />
-              *  Purchase refurbished mobile devices 
+              *  Purchase refurbished mobile devices
 
-              <br />* Smartphones can be effortlessly repaired 
+              <br />* Smartphones can be effortlessly repaired
             </p>
             <p className={Style.description}>
               Visit Quick Mobile, Enter your Device details, give answer for device condition, and get an instant quote, and complete your process of in minutes
@@ -112,7 +112,7 @@ function FooterContent({ page = "home" }) {
           <div className={Style.sectionBlock}>
             <h3 className={Style.subHeading}>Quick Links</h3>
             <p className={Style.description}>
-             Sell Old Apple Mobile | Sell Old Samsung Mobile | Sell Old OnePlus Mobile | Sell Old Oppo Mobile | Sell Old Vivo Mobile | Sell Old Huawei Mobile | Sell Old Xiaomi Mobile | Sell Old Motorola Mobile | Sell Old Google Mobile | Sell Old Lenovo Mobile | Sell Old Asus Mobile | Sell Old Nokia Mobile
+              Sell Old Apple Mobile | Sell Old Samsung Mobile | Sell Old OnePlus Mobile | Sell Old Oppo Mobile | Sell Old Vivo Mobile | Sell Old Huawei Mobile | Sell Old Xiaomi Mobile | Sell Old Motorola Mobile | Sell Old Google Mobile | Sell Old Lenovo Mobile | Sell Old Asus Mobile | Sell Old Nokia Mobile
 
             </p>
           </div>
@@ -130,15 +130,13 @@ function FooterContent({ page = "home" }) {
             Sell Your Mobile Phone Online with Quick Mobile
           </h2>
           <p className={Style.description}>
-            Selling your old phone can be difficult when you have to find the
-            right buyer and negotiate for a fair price. With Quick Mobile, you
-            can now sell your old or broken phone online in just a few simple
-            steps without leaving your home. We offer free doorstep pickup,
-            instant payment, and the best resale value for your smartphone.
+            Selling your old phone can be difficult when you have to find the right buyer and negotiate for a fair price. You can now sell your old or broken phone online with Quick Mobile in just a few simple steps, all from the convenience of your own home. We will pick up your smartphone for free, pay you immediately, and give you the best price for it when you sell it.
+
             <br />
             <br />
-            Whether your phone is old, used, or damaged, Quick Mobile helps you
-            turn it into instant cash while saving your time and effort.
+            Quick Mobile helps you turn your used or broken phone into instant cash, saving you time and effort.
+
+
           </p>
         </div>
 
@@ -147,70 +145,81 @@ function FooterContent({ page = "home" }) {
             Why Sell Your Phone on Quick Mobile?
           </h3>
           <p className={Style.description}>
-            Quick Mobile provides the most efficient and secure way to sell your
-            smartphone online. Our easy process lets you sell, buy, or repair
-            mobile phones on one trusted platform.
+            Quick Mobile provides the most efficient and secure way to sell your smartphone online. Our simple process lets you sell, buy, or repair mobile phones on one trusted platform.
+
             <br />
             <br />
-            * Sell in minutes
+            * Sell in a few minutes
             <br />
-            * Free doorstep pickup
+            * Pickup at your doorstep for free
+
             <br />
-            * Instant cash or online payment
-            <br />* 100% safe & transparent process
+            * Instant cash / online at pickup
+
+            <br />* Process that is 100% safe and simple
+
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>Where Can I Sell My Phone?</h3>
+          <h3 className={Style.subHeading}>Where can I sell my phone?
+          </h3>
           <p className={Style.description}>
-            Quick Mobile is the easiest answer.
-            <br />
+            Quick Mobile is the easiest answer
             We help you sell your old mobile phone in just a few steps.
+
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>1. Check Your Phone Price</h3>
+          <h3 className={Style.subHeading}>1. Select device model and variant.
+          </h3>
           <p className={Style.description}>
-            Search your mobile model and get the best resale price instantly.
+            Get the best resale price for your phone model instantly.
+
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>2. Quote Your Device</h3>
+          <h3 className={Style.subHeading}>2. Give a Price for Your Device
+          </h3>
           <p className={Style.description}>
-            Answer a few questions about your phone’s condition and receive an
-            instant quote.
+            Answer a few questions about how your phone is functioning and get an estimated value of the device.
+
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>3. Schedule Free Pickup</h3>
+          <h3 className={Style.subHeading}>3. Schedule pickup
+          </h3>
           <p className={Style.description}>
-            Choose a pickup time that suits you. Our executive will come to your
-            doorstep and confirm before arriving.
+            Pick a time that works for you to pick it up. Our executive will come to your door and confirm before they arrive.
+
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>4. Get Instant Payment</h3>
+          <h3 className={Style.subHeading}>4. Payment is processed instantly.
+          </h3>
           <p className={Style.description}>
-            Once your phone is collected, you receive instant payment via UPI,
-            bank transfer, or cash.
+            Once we pick up your phone, you can immediately access your money via UPI, a bank transfer.
+
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
           <h3 className={Style.subHeading}>100% Safe & Secure Process</h3>
           <p className={Style.description}>
-            Your phone is in safe hands. After pickup:
+         Your phone is in safe hands. After being picked up:
+
             <br />
             <br />
-            * Your data is fully erased (factory reset)
+          * Your data has been completely erased (factory reset).
+
             <br />
-            * Your privacy is protected
-            <br />* Your device is refurbished or recycled responsibly
+          * Your privacy is safe.
+
+            <br />* Your device is discarded or refurbished in a responsible way.
           </p>
         </div>
 
@@ -220,41 +229,41 @@ function FooterContent({ page = "home" }) {
             Where Can I Sell Broken Smartphones?
           </h3>
           <p className={Style.description}>
-            With Quick Mobile, you can sell broken, used, or old phones safely.
-            No more searching for buyers or worrying about fraud.
+          With Quick Mobile, you can sell used or broken phones instantly. There is no need to search for buyers or worrying about fraud.
+
           </p>
           <br />
           <h3 className={Style.subHeading}>Will I Get a Good Price?</h3>
           <p className={Style.description}>
-            Yes! We offer the best market value after carefully evaluating your
-            device.
+         Yes! We offer the best market value after carefully evaluating your device.
+
           </p>
           <br />
-          <h3 className={Style.subHeading}>Is My Phone Safe?</h3>
+          <h3 className={Style.subHeading}>Is My Personal Data Safe?</h3>
           <p className={Style.description}>
-            Absolutely. We follow strict privacy standards and provide 100% data
-            wipe assurance.
+          Yes, we follow strict privacy standards and provide 100% data wipe assurance.
+
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
           <h3 className={Style.subHeading}>Trusted by Thousands</h3>
           <p className={Style.description}>
-            Quick Mobile has safely sold 1,00,000+ phones with excellent
-            customer reviews. Our technicians ensure complete data erasure so
-            your personal photos, videos, and files are never compromised.
+         Quick Mobile has sold more than 100,000+ phones safely and has excellent reviews from customers. Our technicians make sure that all of your data is completely erased so that your personal photos, videos, and files are never compromised.
+
           </p>
         </div>
 
         <div className={Style.sectionBlock}>
-          <h3 className={Style.subHeading}>Sell Your Old Phone Today</h3>
+          <h3 className={Style.subHeading}>Sell Your Old Phone Today
+</h3>
           <p className={Style.description}>
-            If you’re wondering “How can I sell my mobile phone with best
-            price?” Quick Mobile is your trusted solution.
+  If you’re wondering, “How can I sell my mobile phone for the best price?” Quick Mobile is your trusted solution.
+
             <br />
             <br />
-            Quick Mobile - Sell your phone online safely, quickly, and at the
-            best price.
+           Quick Mobile – Sell your phone online safely, quickly, and at the best price.
+
           </p>
         </div>
 

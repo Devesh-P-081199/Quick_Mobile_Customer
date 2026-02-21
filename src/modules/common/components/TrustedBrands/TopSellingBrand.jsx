@@ -75,7 +75,7 @@ function TopSellingBrand() {
       }
 
       if (matchedBrand?.slugSell) {
-        navigate(`/sell-old-mobile/${matchedBrand.slugSell}`);
+        navigate(`/sell-old-mobile-phone/${matchedBrand.slugSell}`);
       } else {
         console.warn(`No slug found for brand: ${brandName}`);
       }

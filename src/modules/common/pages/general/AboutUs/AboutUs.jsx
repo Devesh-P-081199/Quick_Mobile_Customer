@@ -1,11 +1,23 @@
+import { Helmet } from "react-helmet-async";
 import styles from "./AboutUs.module.css";
 
 const AboutUs = () => {
   return (
     <div className="page-content-wrapper">
+       <Helmet>
+        <title> About Us | Quick Mobile
+
+</title>
+        <meta
+          name="description"
+          content={`Quick Mobile, India’s most trusted and transparent platform for buying, selling, and repairing mobile phones
+`}
+        />        <meta property="og:title" content="About Us | Quick Mobile" />
+        <meta property="og:description" content="Quick Mobile, India's most trusted and transparent platform for buying, selling, and repairing mobile phones" />      </Helmet>
       <div className={styles.container}>
         {/* About Us Section */}
-        <h2 className={styles.heading}>About Us</h2>
+        <h1 className={styles.heading}>About us Quick mobile
+</h1>
         <p className={styles.text}>
           Welcome to Quick Mobile, India’s most trusted and transparent platform
           for buying, selling, and repairing mobile phones. Established in 2017,

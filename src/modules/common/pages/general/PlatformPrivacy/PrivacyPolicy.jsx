@@ -1,10 +1,24 @@
+import { Helmet } from "react-helmet-async";
 import styles from "./PrivacyPolicy.module.css";
 
 const PrivacyPolicy = () => {
   return (
     <div className="page-content-wrapper">
+         <Helmet>
+        <title> Privacy Policy | Quick Mobile
+
+</title>
+        <meta
+          name="description"
+          content={` Quick Mobile is your complete smartphone solution. Sell, repair, or recycle your old device — we make it easy.
+`}
+        />
+        <meta property="og:title" content="Privacy Policy | Quick Mobile" />
+        <meta property="og:description" content="Quick Mobile is your complete smartphone solution. Sell, repair, or recycle your old device — we make it easy." />
+      </Helmet>
       <div className={styles.wrapper}>
-        <h2 className={styles.title}>Privacy Policy</h2>
+        <h1 className={styles.title}>Quick Mobile Privacy policy
+</h1>
 
         <p className={styles.intro}>Last updated: 5 January 2026</p>
 

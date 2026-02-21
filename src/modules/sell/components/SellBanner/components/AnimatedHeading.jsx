@@ -51,7 +51,7 @@ function AnimatedHeading({
 
   return (
     <div className={styles.bannerHeading}>
-      <h2>Sell Your Used {catName} And Get! </h2>
+      <h1>Sell Your Used {catName} And Get! </h1>
       <div className={styles.animatedText}>
         <h2>{displayedText}</h2>
       </div>

@@ -1,0 +1,127 @@
+/* CardSlider.module.css */
+.sliderContainer {
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.navBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.card {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.innerBox {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: #fff;
+  border: 0.3px solid #e1e1e1;
+  border-radius: 5px;
+  width: 100%;
+  height: 99px;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-right: 5px;
+}
+
+.image {
+  width: 31px;
+  height: 62px;
+  object-fit: contain;
+}
+
+.contentBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 65px;
+  flex-grow: 1;
+}
+
+.ctaText {
+  color: #1968b3;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.title {
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.price {
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.sellBtn {
+  background-color: #1968b3;
+  color: white;
+  border: none;
+  padding: 3px 19px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  cursor: pointer;
+  height: 30px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #ccc;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.activeDot {
+  width: 20px;
+  background: #1968b3;
+}
+
+
+@media screen and  (min-width : 480px ) {
+
+  .sliderContainer{
+
+    display: none;
+  }  
+}

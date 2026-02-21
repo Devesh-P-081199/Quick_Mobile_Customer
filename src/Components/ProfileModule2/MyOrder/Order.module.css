@@ -1,0 +1,134 @@
+.container {
+    position: absolute;
+    width: 732px;
+    height: 200px;
+    left: 20px;
+    top: 76px;
+    /* overflow-y: scroll; */
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 20px;
+    /* width: 725px; */
+    /* height: 190px; */
+    background: #f7f7f7;
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  .cardBody {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  
+  .deviceImage {
+    width: 65px;
+    /* height: 116px; */
+    object-fit: cover;
+  }
+  
+  .infoBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 323px;
+  }
+  
+  .title {
+    font-family: 'IBM Plex Sans';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    color: #000;
+  }
+  
+  .priceRow {
+    display: flex;
+    align-items: center;
+  }
+  
+  .price {
+    font-size: 20px;
+    font-weight: 500;
+    color: #e51b1b;
+  }
+  
+  .imei,
+  .pickup {
+    font-size: 12px;
+    line-height: 16px;
+    color: #000;
+  }
+  
+  .pickup {
+    color: #007fee;
+  }
+  
+  .actionRow {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+  }
+  
+  .blackButton,
+  .greenButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 11px;
+    font-family: 'IBM Plex Sans';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+  .blackButton {
+    background-color: #000;
+  }
+  
+  .greenButton {
+    background-color: #34a853;
+    gap: 10px;
+  }
+  
+  .chatIcon {
+    font-size: 16px;
+  }
+  
+  .viewMore {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #007fee;
+    cursor: pointer;
+  }
+  
+
+  @media ( max-width : 480px ){
+
+      
+  .title {
+ 
+    font-size: 14px;
+ 
+  }  
+  .price {
+    font-size: 14px;
+  }
+    .infoBlock {
+      gap: 5px;
+    }
+  }

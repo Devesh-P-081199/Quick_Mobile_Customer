@@ -18,6 +18,7 @@ const ContextAPI = (props) => {
   const [loadCities, setLoadCities] = useState(false); // trigger lazy load
   const [haveSubCategory, setHaveSubCategory] = useState(false);
   const [answersforMobile, setanswersforMobile] = useState([]);
+  const [seotest, setseotest] = useState([]);
 
   const toggleModal = useCallback(() => {
     setIsModalOpen((prev) => !prev);
@@ -164,6 +165,8 @@ const ContextAPI = (props) => {
         setPhoneName,
         setanswersforMobile,
         answersforMobile,
+        seotest,
+        setseotest
       }}
     >
       {props.children}

@@ -1811,7 +1811,7 @@ const Header = () => {
                           onClick={(e) => {
                             e.stopPropagation();
                             setHoveredItem(null);
-                            navigate("/sell-old-mobile");
+                            navigate("/sell-old-mobile-phone");
                           }}
                         >
                           All Brands
