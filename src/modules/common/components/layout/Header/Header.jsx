@@ -272,7 +272,7 @@ const Header = () => {
   const confirmLogout = () => {
     Cookies.remove("userSelection");
     Cookies.remove("user");
-    Cookies.remove("auth-token");
+    Cookies.remove("accessToken");
     setUser({});
     navigate("/");
     setShowLogoutModal(false);
@@ -556,7 +556,7 @@ const Header = () => {
    */
   const handleCategoryHover = (cat) => {
     setActiveCategory(cat.categoryName);
-  };
+  };categoryIdMap 
 
   const handleBrandHover = (brand) => {
     setHoveredBrand(brand);

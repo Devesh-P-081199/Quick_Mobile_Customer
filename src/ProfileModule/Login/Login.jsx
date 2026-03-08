@@ -79,7 +79,7 @@ const Login = ({ onSwitchToSignup, onSuccessLogin, setShowLoginModal }) => {
       });
 
       if (data?.token) {
-        Cookies.set("auth-token", JSON.stringify(data?.token), {
+        Cookies.set("accessToken", JSON.stringify(data?.token), {
           expires: 2,
           sameSite: "strict",
         });

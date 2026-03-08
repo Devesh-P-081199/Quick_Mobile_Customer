@@ -12,8 +12,8 @@ const SignUpModal = ({ isOpen, onClose }) => {
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState(Array(6).fill(""));
 
-    const { setUser } =
-      useContext(UserContext);
+  const { setUser } =
+    useContext(UserContext);
 
   const handleSendOtp = () => {
     if (mobile.length === 10) {
@@ -46,8 +46,8 @@ const SignUpModal = ({ isOpen, onClose }) => {
 
       if (response.data) {
         alert(`${response?.data?.message}`);
-        const token = response.data.token;
-        Cookies.set("auth-token", JSON.stringify(token), {
+        const token = response.data.accessToken;
+        Cookies.set("accessToken", JSON.stringify(token), {
           expires: 2,
           sameSite: "strict",
         });
@@ -57,7 +57,7 @@ const SignUpModal = ({ isOpen, onClose }) => {
       onClose();
     } catch (err) {
       // console.log("Error Occured",err);
-
+      console.log(err)
       toast.error("Error verifying OTP");
     }
   };

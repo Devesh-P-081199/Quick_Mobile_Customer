@@ -32,7 +32,7 @@ const ProfileCard = ({ onOptionClick }) => {
   const confirmLogout = () => {
     Cookies.remove("userSelection");
     Cookies.remove("user");
-    Cookies.remove("auth-token");
+    Cookies.remove("accessToken");
     setUser({});
     navigate("/");
     setShowLogoutModal(false);

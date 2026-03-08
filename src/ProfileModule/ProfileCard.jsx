@@ -23,7 +23,7 @@ const ProfileCard = () => {
     if (res) {
       Cookies.remove('userSelection');
       Cookies.remove('user');
-      Cookies.remove('auth-token');
+      Cookies.remove('accessToken');
       setUser({});
       navigate("/")
     }
