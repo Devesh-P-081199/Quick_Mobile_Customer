@@ -12,7 +12,7 @@ const Login = ({ setShowLoginModal }) => {
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [isTermsChecked, setIsTermsChecked] = useState(true);
-  const [timer, setTimer] = useState(0); // ⬅️ Timer state
+  const [timer, setTimer] = useState(0); //
   const otpRefs = useRef([]);
   const { setUser, setIsLoginModalOpen } = useContext(UserContext);
 
@@ -28,35 +28,25 @@ const Login = ({ setShowLoginModal }) => {
   }, [otpSent, timer]);
 
   const [loading, setLoading] = useState(false);
+  const isSendingRef = useRef(false);
+
   const handleSendOtp = async (e) => {
     e.preventDefault();
-    if (mobile.length === 10) {
-      try {
-        setLoading(true);
-        const loadingToast = toast.loading("Sending OTP...");
-        await api.post("/sell-module/user/sendotp", { phone: mobile });
-        toast.dismiss(loadingToast);
 
-        setOtpSent(true);
-        setTimer(60); // start 60 sec countdown
-        toast.success("OTP sent successfully", {
-          autoClose: 3000,
-          position: "bottom-center",
-          className: "custom-toast",
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: false,
-        });
-      } catch (error) {
+    if (isSendingRef.current) return;
+    isSendingRef.current = true;
 
-        toast.dismiss();
-        toast.error(error?.response?.data?.message || "Failed to send OTP");
-      }
-      finally { setLoading(false); }
+    try {
+      setLoading(true);
+      await api.post("/sell-module/user/sendotp", { phone: mobile });
+      setOtpSent(true);
+      setTimer(60);
+    } catch (err) {
+    } finally {
+      setLoading(false);
+      isSendingRef.current = false;
     }
   };
-
   const handleOtpChange = (value, index) => {
     if (!isNaN(value) && value.length <= 1) {
       const updatedOtp = [...otp];
@@ -79,7 +69,8 @@ const Login = ({ setShowLoginModal }) => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-
+    if (loading) return;
+    setLoading(true);
     try {
       const { data } = await api.post("/sell-module/user/signUp", {
         phone: mobile,
@@ -222,7 +213,7 @@ const Login = ({ setShowLoginModal }) => {
                   ) : (
                     <span
                       className={`${styles.link} ${styles.active}`}
-                      onClick={handleSendOtp}
+                      onClick={!loading ? handleSendOtp : undefined}
                     >
                       Resend OTP
                     </span>
@@ -245,8 +236,7 @@ const Login = ({ setShowLoginModal }) => {
                   : {}
               }
             >
-              {/* Text bhi badal sakte hain user ko dikhane ke liye */}
-              {loading ? "Processing..." : (otpSent ? "Submit" : "Send OTP")}
+              {loading ? "Processing..." : (otpSent ? "Submit" : "Send OTPs")}
             </button>
           </form>
         </div>
