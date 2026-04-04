@@ -27,10 +27,12 @@ const Login = ({ setShowLoginModal }) => {
     return () => clearInterval(interval);
   }, [otpSent, timer]);
 
+  const [loading, setLoading] = useState(false);
   const handleSendOtp = async (e) => {
     e.preventDefault();
     if (mobile.length === 10) {
       try {
+        setLoading(true);
         const loadingToast = toast.loading("Sending OTP...");
         await api.post("/sell-module/user/sendotp", { phone: mobile });
         toast.dismiss(loadingToast);
@@ -47,9 +49,11 @@ const Login = ({ setShowLoginModal }) => {
           draggable: false,
         });
       } catch (error) {
+
         toast.dismiss();
         toast.error(error?.response?.data?.message || "Failed to send OTP");
       }
+      finally { setLoading(false); }
     }
   };
 
@@ -230,9 +234,9 @@ const Login = ({ setShowLoginModal }) => {
             <button
               type="submit"
               className={styles.submitBtn}
-              disabled={!otpSent && !isTermsChecked}
+              disabled={loading || (!otpSent && !isTermsChecked)}
               style={
-                !otpSent && !isTermsChecked
+                (loading || (!otpSent && !isTermsChecked))
                   ? {
                     backgroundColor: "#e0e0e0",
                     color: "#aaa",
@@ -241,7 +245,8 @@ const Login = ({ setShowLoginModal }) => {
                   : {}
               }
             >
-              {otpSent ? "Submit" : "Send OTP"}
+              {/* Text bhi badal sakte hain user ko dikhane ke liye */}
+              {loading ? "Processing..." : (otpSent ? "Submit" : "Send OTP")}
             </button>
           </form>
         </div>
