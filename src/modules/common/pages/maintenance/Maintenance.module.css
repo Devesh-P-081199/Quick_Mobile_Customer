@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: #0f172a;
+  background-image: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+  color: #f8fafc;
+  font-family: var(--font-family-primary), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  text-align: center;
+}
+
+.card {
+  max-width: 480px;
+  width: 100%;
+  padding: 3rem 2.5rem;
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.iconWrapper {
+  margin-bottom: 2rem;
+  color: #3b82f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gearIcon {
+  animation: spin 10s linear infinite;
+  width: 72px;
+  height: 72px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.1);
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 400;
+}
+
+.footer {
+  margin-top: 3rem;
+  font-size: 0.75rem;
+  color: #475569;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
