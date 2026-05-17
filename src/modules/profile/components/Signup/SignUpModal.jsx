@@ -8,7 +8,7 @@ import Loader from "../../../common/components/layout/Loader/Loader";
 const SignUpModal = ({ isOpen, onClose }) => {
   //     // Focus next input
 
-  //       Cookies.set("auth-token", JSON.stringify(token), {
+  //       Cookies.set("accessToken", JSON.stringify(token), {
 
   if (!isOpen) return null;
   // handleloginclose

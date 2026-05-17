@@ -67,8 +67,8 @@ const SignUpModal = ({ isOpen, onClose }) => {
 
   //     if (response.data) {
   //       // alert(`${response?.data?.message}`);
-  //       const token = response.data.token;
-  //       Cookies.set("auth-token", JSON.stringify(token), {
+  //       const token = response.data.accessToken;
+  //       Cookies.set("accessToken", JSON.stringify(token), {
   //         expires: 2,
   //         sameSite: "strict",
   //       });
