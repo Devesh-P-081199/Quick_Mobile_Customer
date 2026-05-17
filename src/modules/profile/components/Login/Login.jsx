@@ -38,10 +38,13 @@ const Login = ({ setShowLoginModal }) => {
 
     try {
       setLoading(true);
-      await api.post("/sell-module/user/sendotp", { phone: mobile });
+      const data = await api.post("/sell-module/user/sendotp", { phone: mobile });
       setOtpSent(true);
       setTimer(60);
+      toast.success(data.data?.message || "OTP sent successfully!");
+
     } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to send OTP. Please try again.");
     } finally {
       setLoading(false);
       isSendingRef.current = false;
@@ -236,7 +239,7 @@ const Login = ({ setShowLoginModal }) => {
                   : {}
               }
             >
-              {loading ? "Processing..." : (otpSent ? "Submit" : "Send OTPs")}
+              {loading ? "Processing..." : (otpSent ? "Submit" : "Send OTP")}
             </button>
           </form>
         </div>
