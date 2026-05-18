@@ -82,7 +82,7 @@ const DynamicRouteHandler = () => {
 
         if (slug2) {
           const res2 = await api.get(
-            `/sell-module/user/resolve-brand-or-product/${slug2}`,
+            `/sell-module/user/resolve-brand-or-product/${slug2}/${slug1}/${slug2}`,
           );
           const type2 = res2.data?.type;
 
@@ -215,7 +215,7 @@ const DynamicRouteHandler = () => {
         }
 
         const res2 = await api.get(
-          `/sell-module/user/resolve-brand-or-product/${slug2}`,
+          `/sell-module/user/resolve-brand-or-product/${slug2}/${slug1}/${slug2}`,
         );
         const type2 = res2.data?.type;
         setSeoData(res2?.data?.seoData?.Sell);
