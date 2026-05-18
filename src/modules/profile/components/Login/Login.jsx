@@ -12,7 +12,7 @@ const Login = ({ setShowLoginModal }) => {
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [isTermsChecked, setIsTermsChecked] = useState(true);
-  const [timer, setTimer] = useState(0); // ⬅️ Timer state
+  const [timer, setTimer] = useState(0); //
   const otpRefs = useRef([]);
   const { setUser, setIsLoginModalOpen } = useContext(UserContext);
 
@@ -27,32 +27,29 @@ const Login = ({ setShowLoginModal }) => {
     return () => clearInterval(interval);
   }, [otpSent, timer]);
 
+  const [loading, setLoading] = useState(false);
+  const isSendingRef = useRef(false);
+
   const handleSendOtp = async (e) => {
     e.preventDefault();
-    if (mobile.length === 10) {
-      try {
-        const loadingToast = toast.loading("Sending OTP...");
-        await api.post("/sell-module/user/sendotp", { phone: mobile });
-        toast.dismiss(loadingToast);
 
-        setOtpSent(true);
-        setTimer(60); // start 60 sec countdown
-        toast.success("OTP sent successfully", {
-          autoClose: 3000,
-          position: "bottom-center",
-          className: "custom-toast",
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: false,
-        });
-      } catch (error) {
-        toast.dismiss();
-        toast.error(error?.response?.data?.message || "Failed to send OTP");
-      }
+    if (isSendingRef.current) return;
+    isSendingRef.current = true;
+
+    try {
+      setLoading(true);
+      const data = await api.post("/sell-module/user/sendotp", { phone: mobile });
+      setOtpSent(true);
+      setTimer(60);
+      toast.success(data.data?.message || "OTP sent successfully!");
+
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to send OTP. Please try again.");
+    } finally {
+      setLoading(false);
+      isSendingRef.current = false;
     }
   };
-
   const handleOtpChange = (value, index) => {
     if (!isNaN(value) && value.length <= 1) {
       const updatedOtp = [...otp];
@@ -75,7 +72,8 @@ const Login = ({ setShowLoginModal }) => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-
+    if (loading) return;
+    setLoading(true);
     try {
       const { data } = await api.post("/sell-module/user/signUp", {
         phone: mobile,
@@ -218,7 +216,7 @@ const Login = ({ setShowLoginModal }) => {
                   ) : (
                     <span
                       className={`${styles.link} ${styles.active}`}
-                      onClick={handleSendOtp}
+                      onClick={!loading ? handleSendOtp : undefined}
                     >
                       Resend OTP
                     </span>
@@ -230,9 +228,9 @@ const Login = ({ setShowLoginModal }) => {
             <button
               type="submit"
               className={styles.submitBtn}
-              disabled={!otpSent && !isTermsChecked}
+              disabled={loading || (!otpSent && !isTermsChecked)}
               style={
-                !otpSent && !isTermsChecked
+                (loading || (!otpSent && !isTermsChecked))
                   ? {
                     backgroundColor: "#e0e0e0",
                     color: "#aaa",
@@ -241,7 +239,7 @@ const Login = ({ setShowLoginModal }) => {
                   : {}
               }
             >
-              {otpSent ? "Submit" : "Send OTP"}
+              {loading ? "Processing..." : (otpSent ? "Submit" : "Send OTP")}
             </button>
           </form>
         </div>

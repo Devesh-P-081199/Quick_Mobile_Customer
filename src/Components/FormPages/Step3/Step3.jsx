@@ -537,7 +537,7 @@ function Step3() {
   // ===== Save and price calculation =====
   const priceCalculationAndSave = async () => {
     try {
-      const token = JSON.parse(Cookies.get("auth-token"));
+      const token = JSON.parse(Cookies.get("accessToken"));
       if (!token) return;
 
       if (!deviceInfo.deviceName) return;
@@ -616,7 +616,7 @@ function Step3() {
       return;
     }
 
-    const savedToken = Cookies.get("auth-token");
+    const savedToken = Cookies.get("accessToken");
     if (!savedToken) {
       setIsLoginModalOpen(true);
       return;

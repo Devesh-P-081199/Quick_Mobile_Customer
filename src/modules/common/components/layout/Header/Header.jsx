@@ -37,10 +37,9 @@ import LoggedInUser from "../../../../../assets/images/loggedinuser.png";
 
 // External Dependencies
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import { UserContext } from "../../../../../Context/contextAPI";
 import debounce from "lodash.debounce";
-import api from "../../../../../Utils/api";
+import api, { clearAuthSession } from "../../../../../Utils/api";
 import { createPortal } from "react-dom";
 import {
   FaShoppingBag,
@@ -270,9 +269,7 @@ const Header = () => {
   };
 
   const confirmLogout = () => {
-    Cookies.remove("userSelection");
-    Cookies.remove("user");
-    Cookies.remove("auth-token");
+    clearAuthSession();
     setUser({});
     navigate("/");
     setShowLogoutModal(false);
@@ -556,7 +553,7 @@ const Header = () => {
    */
   const handleCategoryHover = (cat) => {
     setActiveCategory(cat.categoryName);
-  };
+  };categoryIdMap 
 
   const handleBrandHover = (brand) => {
     setHoveredBrand(brand);

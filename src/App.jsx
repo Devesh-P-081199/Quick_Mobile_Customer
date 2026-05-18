@@ -97,6 +97,7 @@ const FAQFullPage = React.lazy(() => import("./modules/common/components/FAQ/FAQ
 import Header from "./modules/common/components/layout/Header/Header";
 import Footer from "./modules/common/components/layout/Footer/Footer";
 import HomePage from "./modules/buy/pages/HomePage";
+import Maintenance from "./modules/common/pages/maintenance/Maintenance";
 import { Helmet } from "react-helmet-async";
 import { UserContext } from "./Context/contextAPI";
 
@@ -640,6 +641,29 @@ const SEOUpdater = () => {
 };
 function App() {
   const dynamicUrl = window.location.origin + window.location.pathname;
+
+  // Track maintenance state (both environment variable and dynamic API 503 intercepts)
+  const [underMaintenance, setUnderMaintenance] = useState(
+    import.meta.env.VITE_UNDER_MAINTENANCE === "true" ||
+    sessionStorage.getItem("api_maintenance") === "true"
+  );
+
+  useEffect(() => {
+    const handleMaintenance = () => {
+      setUnderMaintenance(true);
+    };
+
+    window.addEventListener("api:maintenance", handleMaintenance);
+    return () => {
+      window.removeEventListener("api:maintenance", handleMaintenance);
+    };
+  }, []);
+
+  // Intercept and render Maintenance page if active
+  if (underMaintenance) {
+    return <Maintenance />;
+  }
+
   return (
     <Router>
       <SEOUpdater />

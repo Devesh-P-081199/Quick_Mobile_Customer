@@ -16,7 +16,7 @@ const ProfileCard = () => {
     alert("Are you sure want to logout");
     Cookies.remove('userSelection');
     Cookies.remove('user');
-    Cookies.remove('auth-token');
+    Cookies.remove('accessToken');
     setUser({});
     navigate("/")
   }
